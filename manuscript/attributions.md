@@ -44,3 +44,35 @@ Bruce Schneier: Data and Goliath: Introduction: USA National Security Agency (NS
 http://www.washingtonpost.com/world/national-security/nsa-tracking-cellphone-locations-worldwide-snowden-documents-show/2013/12/04/5492873a-5cf2-11e3-bc56-c6ca94801fac_story.html  
 http://www.washingtonpost.com/blogs/the-switch/wp/2013/12/10/new-documents-show-how-the-nsa-infers-relationships-based-on-mobile-location-data
 
+Kim Carter is a Software Engineer, Architect, Entrepreneur with a strong focus on security. Kim is also the founder of BinaryMist Ltd. He is passionate about and enjoys many things. Some of which include:
+
+Designing and creating robust software and networks.
+Breaking his and others software and networks, then fixing it/them.
+Teaching, training, mentoring, motivating, listening to and being around smart people.
+Increasing quality awareness and helping people and organisations implement higher quality in a cost effective manner.
+Helping organisations to increase productivity.
+
+Kim is an experienced Senior Software Architect / Engineer, Entrepreneur and the founder of BinaryMist.
+OWASP NZ Chapter Leader.
+
+Experienced and passionate about mentoring and motivating cross functional, self managing teams.
+One of my strengths is helping organisations realise how they can increase profit and reduce costs.
+
+How I do this:
+• Take a holistic view of the organisation and focus on the lowest hanging (biggest wins) fruit first
+• Bring visibility to all areas of the organisation
+• Help people discover their full potential, especially those involved in the software engineering field
+• When needed: acquire, design and build robust software and networks
+• Help people understand their security status: assets, risks, countermeasures, costs & trade-off's of possible solutions.
+• Increasing quality awareness and helping people and organisations implement higher quality in a cost effective manner.
+
+Very broad skill set, with many deep specialities. Some of which are:
+
+• Enterprise Application Architecture
+• Web Development
+• Networking & hardening
+• Security
+• DevOps
+
+Websites: http://binarymist.net
+Blog: http://blog.binarymist.net

@@ -4,7 +4,7 @@ To access the training, head on over to the [wiki](https://github.com/binarymist
 
 The contents of the book that's currently under way is listed below.
 
-[![BinaryMist Limited](manuscript/assets/img/BM-DesignBuildBreak.png)](http://binarymist.net/)
+[![BinaryMist Limited](manuscript/images/BM-DesignBuildBreak.png)](http://binarymist.net/)
 
 <br>
 
