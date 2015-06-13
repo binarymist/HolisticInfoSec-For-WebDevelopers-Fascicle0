@@ -1,10 +1,11 @@
 {mainmatter}
+
 # Starting with the 30,000' view
 
 ![](images/30000View.gif)
 
 This modelling process should be performed by a collection of the following people:  
- 1. Deeply technical (software expert (developer/engineer)). I specifically don't mention tester(s) here, as testing is the job of the developer. The developer is responsible for delivering high quality working code every Sprint.
+ 1. Deeply tehchnical (software expert (developer/engineer)). I specifically don't mention tester(s) here, as testing is the job of the developer. The developer is responsible for delivering high quality working code every Sprint.
  2. Network expert(s)
  3. Domain expert(s) 
  4. The person solely responsible for the project or product being delivered
