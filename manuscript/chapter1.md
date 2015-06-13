@@ -1,15 +1,17 @@
+
 {mainmatter}
 
 # Starting with the 30,000' view
 
 ![](images/30000View.gif)
 
-This modelling process should be performed by a collection of the following people:  
- 1. Deeply tehchnical (software expert (developer/engineer)). I specifically don't mention tester(s) here, as testing is the job of the developer. The developer is responsible for delivering high quality working code every Sprint.
- 2. Network expert(s)
- 3. Domain expert(s) 
- 4. The person solely responsible for the project or product being delivered
- 5. Person(s) with security specialisations in the areas involved in the finished product. Remember you need to step back in order for your peripheral vision to kick in.
+This modelling process should be performed by a collection of the following people:
+
+1. Deeply tehchnical (software expert (developer/engineer)). I specifically don't mention tester(s) here, as testing is the job of the developer. The developer is responsible for delivering high quality working code every Sprint.
+2. Network expert(s)
+3. Domain expert(s) 
+4. The person solely responsible for the project or product being delivered
+5. Person(s) with security specialisations in the areas involved in the finished product. Remember you need to step back in order for your peripheral vision to kick in.
 
 Having this process performed by a team brings out the best in everyone. There are of course times when it's more effective to break out and work alone for a period of time.
 
@@ -49,6 +51,7 @@ Assets will often emerge as you progress through the following steps.
 
 {#intel-threat-agent-library}
 and the [Intel Threat Agent Library](http://www.sbs.ox.ac.uk/cybersecurity-capacity/system/files/Intel%20-%20Threat%20Agent%20Library%20Helps%20Identify%20Information%20Security%20Risks.pdf)
+
 * [OWASP Threat Analysis](https://www.owasp.org/index.php/Application_Threat_Modeling#Threat_Analysis)
 {#owasp-ranking-of-threats}
 * [OWASP Ranking of Threats](https://www.owasp.org/index.php/Application_Threat_Modeling#Ranking_of_Threats)
