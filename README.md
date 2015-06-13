@@ -2,7 +2,7 @@
 
 Head on over to the [wiki](https://github.com/binarymist/HolisticInfoSec-For-WebDevelopers/wiki/BinaryMist-Approach-To-Threat-Modelling) to get started with training.
 
-[![BinaryMist Limited](assets/img/BM-DesignBuildBreak.png)](http://binarymist.net/)
+[![BinaryMist Limited](manuscript/assets/img/BM-DesignBuildBreak.png)](http://binarymist.net/)
 
 <br>
 
