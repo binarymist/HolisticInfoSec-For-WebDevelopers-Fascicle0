@@ -24,4 +24,5 @@ Iterate on the 30,000' view, then iterate on each of the 10,000' views that are 
 
 Where ever you see the following fiddling devil. It means there's a hands on attack demo coming up:
 
+{float=left}
 ![Hands On Hack](images/HandsOnHack.png)
