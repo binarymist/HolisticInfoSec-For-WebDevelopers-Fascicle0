@@ -132,7 +132,7 @@ Many of the social engineering attacks put a focus on a problem that doesn't exi
 ### Come On In Sir
 ![Average](images/ThreatTags/PreventionAVERAGE.png)
 
-<br>
+&nbsp;
 
 All of these attacks require: Train -> Test -> Repeat
 

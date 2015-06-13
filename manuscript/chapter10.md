@@ -15,7 +15,7 @@ Agile architecture does a little design up front in collaboration with the team 
 
 So, we don't really separate the discipline of architecture from a software developer that excels at doing what a traditional architect does as well as engineering.
 
-<br>
+&nbsp;
 ### Security Test-Driven Development (STDD)
 
 ![red green refactor](images/red_green_refactor.jpg)
@@ -33,7 +33,7 @@ There are a couple of aspects I'd like to focus on here. You can simply continue
 
  ![Cost Of Change with STDD](images/CostOfChange-WithSTDD.png)  
 
-<br>
+&nbsp;
 
 1. Continuing No. 1 from above: [OWASP ZAP](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project) (which also comes [pre-installed on Kali Linux](http://blog.binarymist.net/2014/03/29/up-and-running-with-kali-linux-and-friends/#zap) ) is a particularly useful tool for SBDD and regression testing. Because it not only provides a manual tool similar to the likes of Burp Suite + with many other features. ZAP also has the ability to run as a HTTP proxy:
  1. You can run ZAP manually then through the menu Tools -> Options... -> API turn the HTTP API on
@@ -74,7 +74,7 @@ OpenSSL Heartbleed and Apples Goto Fail could have been prevented if (S)TDD was 
 
 <!--- Other Resources: http://www.continuumsecurity.net/services.html#testing -->
 
-<br>
+&nbsp;
 ### Hand-crafted Penetration Testing
 
 Sometimes known as "gorilla testing".
@@ -91,7 +91,7 @@ Some developers gravitate toward security more than others, so it's important to
 
 BSIMM againg has some [good guidance](https://www.bsimm.com/online/deployment/pt/) on hands on penetration testing.
 
-<br>
+&nbsp;
 ### Code Review
 
 If we can't get the simple things right like [Coding standards and conventions](http://blog.binarymist.net/2012/12/19/javascript-coding-standards-and-guidelines/) to help remove some of the "wild west" attitudes and behaviours, then how will we ever get the complicated things right? The whole team needs to abide by the standards, conventions and guidelines.
@@ -119,7 +119,7 @@ Tooling is still immature here. We've got a way to go, but lets start getting ou
 * [Slide Deck](https://speakerdeck.com/ariya/dynamic-code-analysis-for-javascript)
 * [Jalangi](https://www.eecs.berkeley.edu/~gongliang13/jalangi_ff/)
 
-<br>
+&nbsp;
 ### Techniques for Asserting Discipline
 
 JavaScript is an inherently flexible and undisciplined language. This quality is a double edged sword. It provides us with extreme power and also allows us to slaughter ourselves. Discipline is very much needed in order to stay safe and be able to reason about our applications as they grow larger.
@@ -161,11 +161,11 @@ Go through same process as we did at the [top level](#2-ssm-identify-risks), but
 
 This slide was from a talk I did at OWASP NZ Day 2013. The top 10 vulnerabilities don't change a lot
 
-<br>
+&nbsp;
 
 ![OWASP Top 10 2013](images/2013OWASPTop10.jpg)
 
-<br>
+&nbsp;
 
 They were actually very similar 10 years ago.
    
@@ -179,11 +179,11 @@ The unchangeable vulnerabilities are:
 * No. 8 Frameworks are helping with CSRF
 * No. 9 is new, because we’re now consuming a lot more packages without vetting them.
 
-<br>
+&nbsp;
 
 ![Some Things Dont Change](images/OWASPTop10SomeThingsDontChange.jpg)
 
-<br>
+&nbsp;
 
 <a name="web-application-identify-risks-lack-of-input-sanitisation"/>
 ### Lack of Input Sanitisation

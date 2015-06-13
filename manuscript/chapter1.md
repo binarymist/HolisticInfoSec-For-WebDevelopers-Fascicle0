@@ -63,7 +63,8 @@ and the [Intel Threat Agent Library](http://www.sbs.ox.ac.uk/cybersecurity-capac
 ![what to fix first](images/BobTheBuilder.jpg)
  <!---This is where the images live: https://raw.githubusercontent.com/wiki/binarymist/HolisticInfoSec-For-WebDevelopers/BinaryMist-Approach-To-Threat-Modelling-Assets/BobTheBuilder.jpg-->
 
-Keep your eye on the vulnerability advisories:  
+Keep your eye on the vulnerability advisories:
+
 * [National Vulnerability Database](https://web.nvd.nist.gov/view/vuln/search)
 * [Exploit Database](https://www.exploit-db.com/) from Offensive Security
 
