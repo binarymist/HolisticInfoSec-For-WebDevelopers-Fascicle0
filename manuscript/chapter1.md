@@ -1,4 +1,4 @@
-[mainmatter]
+{mainmatter}
 # Starting with the 30,000' view
 
 ![](images/30000View.gif)
