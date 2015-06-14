@@ -45,7 +45,8 @@ There are a couple of aspects I'd like to focus on here. You can simply continue
 
     You can then access the API like this:
     
-        `curl http://localhost:8080 # Providing ZAP is listening on port 8080`
+        {linenos=off, lang=bash}
+        curl http://localhost:8080 # Providing ZAP is listening on port 8080
 
   
     This allows us to within our Behavioural, Acceptance tests, send requests programmatically directly to the ZAP HTTP API to do what ever we could do manually with the tool against the System Under Test (SUT).
