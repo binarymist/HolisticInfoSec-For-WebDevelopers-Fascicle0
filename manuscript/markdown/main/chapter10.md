@@ -16,6 +16,7 @@ Agile architecture does a little design up front in collaboration with the team 
 So, we don't really separate the discipline of architecture from a software developer that excels at doing what a traditional architect does as well as engineering.
 
 &nbsp;
+
 ### Security Test-Driven Development (STDD)
 
 ![](images/red_green_refactor.jpg)
@@ -25,46 +26,46 @@ There are a couple of aspects I'd like to focus on here. You can simply continue
 1. Add a **security focused test API** into the mix of your existing automated acceptance test suites.  
  You're chosen (language specific) BDD framework of choice, putting legs to your test conditions with automatable "[Given, When, Thens](http://blog.binarymist.net/2012/03/24/how-to-optimise-your-testing-effort/#planningTheTestEffort)".
 2. Add **security focused BDD/TDD/ATDD** tests.
- This is the same amount of work as any other automated TDD, but it has the huge benefit of bringing the finding of security faults from where it's very expensive to fix:
+ This is the same amount of work as any other automated TDD, but it has the huge benefit of bringing the finding of security faults from where it's very expensive to fix:  
 
- ![](images/CostOfChange.png)  
+   ![](images/CostOfChange.png)  
 
-  to where it's the cheapest possible place to fix:
+    to where it's the cheapest possible place to fix:
 
- ![](images/CostOfChange-WithSTDD.png)  
+   ![](images/CostOfChange-WithSTDD.png)  
 
 &nbsp;
 
 1. Continuing No. 1 from above: [OWASP ZAP](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project) (which also comes [pre-installed on Kali Linux](http://blog.binarymist.net/2014/03/29/up-and-running-with-kali-linux-and-friends/#zap) ) is a particularly useful tool for SBDD and regression testing. Because it not only provides a manual tool similar to the likes of Burp Suite + with many other features. ZAP also has the ability to run as a HTTP proxy:
- 1. You can run ZAP manually then through the menu Tools -> Options... -> API turn the HTTP API on
- 2. Run ZAP from the command line using the -daemon flag
- ```bash
- owasp-zap -daemon
- ```
- You can then access the API like this:  
- ```bash
- curl http://localhost:8080 # Providing ZAP is listening on port 8080
- ```
+  1. You can run ZAP manually then through the menu Tools -> Options... -> API turn the HTTP API on
+  2. Run ZAP from the command line using the -daemon flag
+
+        owasp-zap -daemon
+
+    You can then access the API like this:  
+
+        curl http://localhost:8080 # Providing ZAP is listening on port 8080
+
   
- This allows us to within our Behavioural, Acceptance tests, send requests programmatically directly to the ZAP HTTP API to do what ever we could do manually with the tool against the System Under Test (SUT).
+    This allows us to within our Behavioural, Acceptance tests, send requests programmatically directly to the ZAP HTTP API to do what ever we could do manually with the tool against the System Under Test (SUT).
  You can of course use Selenium 2 (WebDriver) also to drive browser tests and in parallel. I discussed this in ["Automating Specificatioin by Example"](http://blog.binarymist.net/2014/02/22/automating-specification-by-example-for-net/#scope).
 
- The ZAP API can be accessed directly or by any of the following client implementations:
+    The ZAP API can be accessed directly or by any of the following client implementations:
 
-  * Node.JS (by way of [zaproxy](https://www.npmjs.com/package/zaproxy))
-  * Python
-  * PHP
-  * Ruby
-  * .Net [write-up](http://www.codeproject.com/Articles/708129/Automated-penetration-testing-in-the-Microsoft-sta), [source](https://github.com/gustavorhm/ZapPenTester). It's easy to see how the API is started and used [here](https://github.com/gustavorhm/ZapPenTester/blob/master/ZAPPenTester/Zap.cs).  
+    * Node.JS (by way of [zaproxy](https://www.npmjs.com/package/zaproxy))
+    * Python
+    * PHP
+    * Ruby
+    * .Net [write-up](http://www.codeproject.com/Articles/708129/Automated-penetration-testing-in-the-Microsoft-sta), [source](https://github.com/gustavorhm/ZapPenTester). It's easy to see how the API is started and used [here](https://github.com/gustavorhm/ZapPenTester/blob/master/ZAPPenTester/Zap.cs).  
  There's also the [OWASP Secure TDD Project](https://www.owasp.org/index.php/OWASP_Secure_TDD_Project). A .Net solution. This project appears to either be abandoned or just very low activity. Feel free to offer to help though if you're a .Net developer. I'm not sure I agree with one of the opening statements: "they need to cover all tests prior development". The approach that I'd take would be to write some specification (test), execute it, (red) -> Write the smallest amount of code possible to make it pass (green) -> Add to the specification (test)(refactor). As you can see that's your red->green->refactor loop, with the smallest amount possible for each iteration.
-  * Java. A couple of client projects useful for seeing how to use the ZAP API: [zap-webdriver](https://github.com/continuumsecurity/zap-webdriver), [bdd-security](https://github.com/continuumsecurity/bdd-security)
+    * Java. A couple of client projects useful for seeing how to use the ZAP API: [zap-webdriver](https://github.com/continuumsecurity/zap-webdriver), [bdd-security](https://github.com/continuumsecurity/bdd-security)
 
   <!--- http://www.continuumsecurity.net/bdd-intro.html -->
 
- For getting started with OWASP ZAPs API chcek the
+    For getting started with OWASP ZAPs API chcek the
 
-  * [regression testing](https://code.google.com/p/zaproxy/wiki/SecRegTests)
-  * [API details](https://code.google.com/p/zaproxy/wiki/ApiDetails)
+    * [regression testing](https://code.google.com/p/zaproxy/wiki/SecRegTests)
+    * [API details](https://code.google.com/p/zaproxy/wiki/ApiDetails)
 
 2. Continuing No. 2 from above: This is adding another aspect to your existing TDD/BDD thought process. Instead of the business waiting until go-live before contracting the experts to beat up your system. Then tell you **your security sucks**. We take a proactive approach and move a lot of the effort traditionally performed at go-live **up front**, where you yourself as the developer can test and fix. Thus saving embarrassment and the business a lot of money.  
 BSIMM has some good [guidance on security testing](https://www.bsimm.com/online/ssdl/st/)
@@ -75,6 +76,7 @@ OpenSSL Heartbleed and Apples Goto Fail could have been prevented if (S)TDD was 
 <!--- Other Resources: http://www.continuumsecurity.net/services.html#testing -->
 
 &nbsp;
+
 ### Hand-crafted Penetration Testing
 
 Sometimes known as "gorilla testing".
@@ -86,12 +88,14 @@ Get creative.
 There is no reason why developers can not take a good chunk of the manual penetration testing effort on as part of their daily development practices. In fact in most teams I've lead, this has been exactly how we've worked. The gorilla testing needs to be performed in parallel with the PBIs in the Scrum Backlog as developers pull them into Work I Progress (WIP).
 
 Some developers gravitate toward security more than others, so it's important to have at least a none zero number of developers with a security focus within each team to:
- 1. take the lead on the security front
- 2. mentor and pass on their knowledge and passion to others
+
+1. take the lead on the security front
+2. mentor and pass on their knowledge and passion to others
 
 BSIMM againg has some [good guidance](https://www.bsimm.com/online/deployment/pt/) on hands on penetration testing.
 
 &nbsp;
+
 ### Code Review
 
 If we can't get the simple things right like [Coding standards and conventions](http://blog.binarymist.net/2012/12/19/javascript-coding-standards-and-guidelines/) to help remove some of the "wild west" attitudes and behaviours, then how will we ever get the complicated things right? The whole team needs to abide by the standards, conventions and guidelines.
@@ -120,6 +124,7 @@ Tooling is still immature here. We've got a way to go, but lets start getting ou
 * [Jalangi](https://www.eecs.berkeley.edu/~gongliang13/jalangi_ff/)
 
 &nbsp;
+
 ### Techniques for Asserting Discipline
 
 JavaScript is an inherently flexible and undisciplined language. This quality is a double edged sword. It provides us with extreme power and also allows us to slaughter ourselves. Discipline is very much needed in order to stay safe and be able to reason about our applications as they grow larger.
@@ -131,6 +136,7 @@ Because of the distinct lack of discipline within JavaScript (unlike most other 
 #### Static Type Checking
 
 In JavaScript we need as much help as we can to fail fast. Static type checking gives us this. It also feels like the step before DbC.
+
 * [flow](http://flowtype.org/) looks to be a good option. Providing consumers with the option of introducing type checking progressivly and/or to certain parts that make the most sense. Or rather missing parts that require the extra flexibility.
 
 
@@ -142,7 +148,7 @@ In JavaScript, I believe the DbC principle is even more important as part of add
 
 1. [ristretto-js](https://code.google.com/p/ristretto-js/w/list)
 2. [contract-js on NPM](https://www.npmjs.com/package/contracts-js)
- * [contract.js at home](http://www.contractsjs.org/)
+  * [contract.js at home](http://www.contractsjs.org/)
 3. [contractual on NPM](https://www.npmjs.com/package/contractual)
 
 In many cases you can implement your cross cutting code contracts using AOP. This gets it out of your code, so that it's not in your face.
@@ -156,8 +162,8 @@ Go through same process as we did at the [top level](#2-ssm-identify-risks), but
 
 * [MS Application Threats and Countermeasures](https://msdn.microsoft.com/en-us/library/ff648641.aspx#c02618429_008)
 * _Todo_ Exploit WebRTC
- * [Part 1](http://blog.beefproject.com/2015/01/hooked-browser-meshed-networks-with.html)
- * [Part 2](http://blog.beefproject.com/2015/01/hooked-browser-meshed-networks-with_26.html)
+  * [Part 1](http://blog.beefproject.com/2015/01/hooked-browser-meshed-networks-with.html)
+  * [Part 2](http://blog.beefproject.com/2015/01/hooked-browser-meshed-networks-with_26.html)
 
 This slide was from a talk I did at OWASP NZ Day 2013. The top 10 vulnerabilities don't change a lot
 
@@ -183,7 +189,7 @@ The unchangeable vulnerabilities are:
 
 ![](images/OWASPTop10SomeThingsDontChange.jpg)
 
-&nbsp;
+{pagebreak}
 
 {#web-application-identify-risks-lack-of-input-sanitisation}
 ### Lack of Input Sanitisation
@@ -249,8 +255,8 @@ _Todo_
 ### Cryptography on the Client (AKA Untrusted Crypto)
 
 * Untrusted Crypto (Web Crypto API). Is this really a good idea? _Todo_
- * [https://www.hackinparis.com/node/309](https://www.hackinparis.com/node/309)
- * [http://tonyarcieri.com/whats-wrong-with-webcrypto](http://tonyarcieri.com/whats-wrong-with-webcrypto)
+  * [https://www.hackinparis.com/node/309](https://www.hackinparis.com/node/309)
+  * [http://tonyarcieri.com/whats-wrong-with-webcrypto](http://tonyarcieri.com/whats-wrong-with-webcrypto)
 
 {#web-application-identify-risks-consuming-free-and-open-source}
 ### Consuming Free and Open Source
@@ -259,6 +265,7 @@ _Todo_
 This is where [A9 (Using Components with Known Vulnerabilities)](https://www.owasp.org/index.php/Top_10_2013-A9-Using_Components_with_Known_Vulnerabilities) of the 2013 OWASP Top 10 comes in.
 
 We are consuming far more free and open source libraries than we have ever before. Much of the code we're pulling into out projects is never intentionally used, but is still adding surface area for attack. Much of it:
+
 * Is not tested (for what it should do and what it shouldn't do)
 * Is not reviewed evaluated
 * Is created by amateurs that could and do include vulnerabilities
@@ -386,14 +393,13 @@ For .Net developers, there is the likes of [OWASP **SafeNuGet**](https://github.
  We don't want our applications being bullied and failing securely.  
  We want them to not fail at all in production, but rather defend themselves.
  
- The project defines a conceptual framework and methodology that offers prescriptive guidance to implement intrusion detection and automated response into your applications. Providing attack awareness baked in, with real-time defences.
+    The project defines a conceptual framework and methodology that offers prescriptive guidance to implement intrusion detection and automated response into your applications. Providing attack awareness baked in, with real-time defences.
   
- AppSensor provides > 50 (signature based) detection points.
-Provides guidance on how to respond once attack identified.  
-Possible actions include:
-logging out the user,
-locking the account or notifying an administrator,
-more than a dozen response actions are described.
+    AppSensor provides > 50 (signature based) detection points. Provides guidance on how to respond once attack identified. Possible actions include:
+    
+    * logging out the user
+    * locking the account or notifying an administrator
+    * more than a dozen response actions are described.
 
 ## 4. SSM Risks that Solution Causes
 > Are there any? If so what are they?

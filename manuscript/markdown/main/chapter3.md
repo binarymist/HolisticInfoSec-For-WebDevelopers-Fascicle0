@@ -99,11 +99,11 @@ Most of what you can do here comes down to the people problem:
 There are at least a couple of strategies to deal with RFID tag cloning
 
 1. Preventative.
-  1. Multi-factor authentication. Fingerprint, PIN number or some other type of mechanism to verify that the person swiping the card/tag is actually the owner of it.
-  2. There are all sorts of methods that the chip manufacturers and security community are using to make the cloning more costly in terms of time and effort.
+    1. Multi-factor authentication. Fingerprint, PIN number or some other type of mechanism to verify that the person swiping the card/tag is actually the owner of it.
+    2. There are all sorts of methods that the chip manufacturers and security community are using to make the cloning more costly in terms of time and effort.
 2. Detecting, reacting when it does happen. Methods such as:
-  1. writing a new random number on the tag's memory every time it's scanned. When a tag is scanned with the same id as another tag that's been issued a new random number which is also recorded by the back-end, the back-end knows there is a duplicate tag.
-  2. Video surveillance of the area where front-end (tag) to back-end (reader) communications are made
+    1. writing a new random number on the tag's memory every time it's scanned. When a tag is scanned with the same id as another tag that's been issued a new random number which is also recorded by the back-end, the back-end knows there is a duplicate tag.
+    2. Video surveillance of the area where front-end (tag) to back-end (reader) communications are made
 
 Keep in mind though, as Bruce Schneier said: "_Detection works where prevention fails and detection is of no use without response_."  
 As part of Identify Risks, you'll need to apply the ranking techniques discussed in order to decide the Likelihood, Impact on what's important to your business and all the other factors that the threat modelling techniques walk you through.  

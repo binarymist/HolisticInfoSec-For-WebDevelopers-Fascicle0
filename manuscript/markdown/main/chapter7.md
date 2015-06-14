@@ -80,3 +80,4 @@ Once you have sprung the questions from above on your service provider, you will
 
 ## 5. SSM Costs and Trade-offs
 > An exercise for the reader. What are they?
+

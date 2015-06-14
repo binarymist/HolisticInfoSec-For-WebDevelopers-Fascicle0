@@ -19,10 +19,11 @@ There are many offerings available to allow people to spy on other individuals a
 The USA National Security Agency (NSA) and its UK counterpart, Government Communications Headquarters (GCHQ), use location data to track people.
 
 
-
+_Todo_
 
 
 Some resources to start with:  
 https://bluebox.com/business/bluebox-and-nist-addressing-mobile-threats/  
 https://media.blackhat.com/bh-us-12/Briefings/C_Miller/BH_US_12_Miller_NFC_attack_surface_WP.pdf
 
+_Todo_

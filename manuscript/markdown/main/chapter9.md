@@ -8,6 +8,7 @@ Take results from [higher level Asset Identification](#1-ssm-asset-identificatio
 
 ## 2. SSM Identify Risks
 Go through same process as we did at the [top level](#2-ssm-identify-risks), but for the network.
+
 * [MS Network Threats and Countermeasures](https://msdn.microsoft.com/en-us/library/ff648641.aspx#c02618429_006)
 
 Network risks are obviously huge. I'm probably not even going to scratch the surface here at this stage. 
@@ -57,8 +58,8 @@ DNS spoofing refers to an end goal rather than a specific type of attack. There 
 * Poison the cache of the name server
 * Poison the cache of an upstream name server and wait for the downstream propagation
 * MitM attack. A good example of this is:
- * cloning a website you hope your victim will visit
- * offering a free wifi hot-spot attached to your gateway with DNS server provided.
+  * cloning a website you hope your victim will visit
+  * offering a free wifi hot-spot attached to your gateway with DNS server provided.
  Your DNS server provides your cloned website IP address. You may still have to deal with X.509 certificates though, unless the website enforces TLS across the entire site, which is definitely my recommendation. If not, and the potential victim already has the websites certificate they are wanting to visit in their browser, then you'll have to hope your victim will click through the warning or work out a TLS downgrade which is going to be harder.
 
 [dnschef](http://www.question-defense.com/2012/12/14/dnschef-backtrack-privilege-escalation-spoofing-attacks-network-spoofing-dnschef) is a flexible spoofing tool. Would be interesting to test on the likes of Arpon and Unbound.
@@ -156,6 +157,7 @@ Thoughts on [mitigations](http://www.jaringankita.com/blog/defense-arp-spoofing)
 Many cache poisoning attacks can be prevented on DNS servers by being less trusting of the information passed to them by other DNS servers, and ignoring any DNS records passed back which are not directly relevant to the query.
 
 [DNS Security Extensions](http://www.dnssec.net/) does the following for us. You'll probably need to configure it though on your name server(s). I did.
+
 * DNS cache poisoning
 * Origin authentication of DNS data
 * Data integrity
@@ -201,8 +203,8 @@ TLS works at the transport & session layer as opposed to S/MIME at the Applicati
 * Read your message headers and trace IP addresses, although any decent self respecting spammer or social engineer is going to be using proxies.
 * Don't click links or execute files from unsolicited emails even if the email appears to be from someone you know. It may not be.
 * Make sure your mail provider is using [Domain-based Message Authentication, Reporting and Conformance (DMARC)](http://dmarc.org/)
- * Sender Policy Framework (SPF)
- * DomainKeys Identified Mail (DKIM)
+  * Sender Policy Framework (SPF)
+  * DomainKeys Identified Mail (DKIM)
 
 {#network-countermeasures-spoofing-website}
 #### Website
@@ -211,7 +213,7 @@ TLS works at the transport & session layer as opposed to S/MIME at the Applicati
 There's nothing to stop someone cloning and hosting a website. The vital part to getting someone to visit an attackers illegitimate website is to either social engineer them to visit it, or just clone a website that you know they are likely to visit. An Intranet at your work place for example. Then you will need to carry out ARP and/or DNS spoofing. Again
 tools such as free and open source [ArpON (ARP handler inspection)](http://arpon.sourceforge.net/) cover website spoofing and a lot more.
 
-<a name="network-countermeasures-wrongfully-trusting-the-loading-of-untrusted-web-resources"/>
+{#network-countermeasures-wrongfully-trusting-the-loading-of-untrusted-web-resources}
 ### Wrongfully Trusting the Loading of Untrusted Web Resources
 
 * Escaping all untrusted data based on it's context (where and what it is)
@@ -220,7 +222,7 @@ tools such as free and open source [ArpON (ARP handler inspection)](http://arpon
 * Constrain max / min lengths.
 * Basically think in terms of least privilege
 
-<a href="https://www.owasp.org/index.php/Top_10_2013-A3-Cross-Site_Scripting_(XSS)">OWASP Top 10 A3 Cross Site Scripting (XSS)</a>
+[OWASP Top 10 A3 Cross Site Scripting (XSS)](https://www.owasp.org/index.php/Top_10_2013-A3-Cross-Site_Scripting_(XSS))
 
 {#network-countermeasures-wrongfully-trusting-the-loading-of-untrusted-web-resources-csp}
 #### Content Security Policy (CSP)
@@ -231,20 +233,19 @@ We do this by specifying particular response headers (more specifically directiv
 
 
 Names removed to save embarrassment. Sadly most banks don't take their web security very seriously.
+{lineons=off}
+   curl --head https://reputable.kiwi.bank.co.nz/
 
-```bash
-curl --head https://reputable.kiwi.bank.co.nz/
+   Content-Security-Policy: default-src 'self' secure.reputable.kiwi.bank.co.nz;
+   connect-src 'self' secure.reputable.kiwi.bank.co.nz;
+   frame-src 'self' secure.reputable.kiwi.bank.co.nz player.vimeo.com;
+   img-src 'self' secure.reputable.kiwi.bank.co.nz *.g.doubleclick.net www.google.com www.google.co.nz www.google-analytics.com seal.entrust.net;
+   object-src 'self' secure.reputable.kiwi.bank.co.nz seal.entrust.net;
+   # In either case, authors SHOULD NOT include either 'unsafe-inline' or data: as valid sources in their policies. Both enable XSS attacks by allowing code to be included directly in the document itself
+   # unsafe-eval should go without saying
+   script-src 'self' 'unsafe-eval' 'unsafe-inline' secure.reputable.kiwi.bank.co.nz seal.entrust.net www.googletagmanager.com www.googleadservices.com www.google-analytics.com;
+   style-src 'self' 'unsafe-inline' secure.reputable.kiwi.bank.co.nz seal.entrust.net;
 
-Content-Security-Policy: default-src 'self' secure.reputable.kiwi.bank.co.nz;
-connect-src 'self' secure.reputable.kiwi.bank.co.nz;
-frame-src 'self' secure.reputable.kiwi.bank.co.nz player.vimeo.com;
-img-src 'self' secure.reputable.kiwi.bank.co.nz *.g.doubleclick.net www.google.com www.google.co.nz www.google-analytics.com seal.entrust.net;
-object-src 'self' secure.reputable.kiwi.bank.co.nz seal.entrust.net;
-# In either case, authors SHOULD NOT include either 'unsafe-inline' or data: as valid sources in their policies. Both enable XSS attacks by allowing code to be included directly in the document itself
-# unsafe-eval should go without saying
-script-src 'self' 'unsafe-eval' 'unsafe-inline' secure.reputable.kiwi.bank.co.nz seal.entrust.net www.googletagmanager.com www.googleadservices.com www.google-analytics.com;
-style-src 'self' 'unsafe-inline' secure.reputable.kiwi.bank.co.nz seal.entrust.net;
-```
 
 
 Of course this is only as good as a clients connection is trusted. If the connection is not over TLS, then there is no real safety that the headers can't be changed. If the connection is over TLS, but the connection is intercepted before the TLS hand-shake, the same lack of trust applies. See the section on [TLS Downgrade](#network-countermeasures-tls-downgrade) for more information.  
@@ -258,9 +259,9 @@ Not to be confused with Cross Origin Resource Sharing (CORS). CORS instructs the
 * [OWASP CSP Cheat Sheet](https://www.owasp.org/index.php/Content_Security_Policy_Cheat_Sheet) which also lists which directives are new in version 2
 * MDN easily digestible [help](https://developer.mozilla.org/en-US/docs/Web/Security/CSP) on using CSP
 * Easy, but more in-depth:
- * [W3C specification 2](http://www.w3.org/TR/CSP2). It is the specification after all. Not sure about browser support here yet.  
+  * [W3C specification 2](http://www.w3.org/TR/CSP2). It is the specification after all. Not sure about browser support here yet.  
  _Todo: write script that performs feature detection of version 2 of the specification._
- * [W3C specification 1.1](http://www.w3.org/TR/2014/WD-CSP11-20140211/). Most browsers currently [support](http://caniuse.com/contentsecuritypolicy) this version. IE 11 has partial support.
+  * [W3C specification 1.1](http://www.w3.org/TR/2014/WD-CSP11-20140211/). Most browsers currently [support](http://caniuse.com/contentsecuritypolicy) this version. IE 11 has partial support.
 
 {#network-countermeasures-wrongfully-trusting-the-loading-of-untrusted-web-resources-sri}
 #### Sub-resource Integrity (SRI)
@@ -271,11 +272,11 @@ Provides the browser with the ability to verify that fetched resources (the actu
 How it plays out:  
 Requested resources also have an attribute `integrity` with the cryptographic hash of the expected resource. The browser checks the actual hash against the expected hash. If they don't match the requested resource will be blocked.
 
-```html
-<script src="https://example.com/example-framework.js"
-    integrity="sha256-C6CB9UYIS9UJeqinPHWTHVqh/E1uhG5Twh+Y5qFQmYg="
-    crossorigin="anonymous"></script>
-```
+{lineons=off}
+    <script src="https://example.com/example-framework.js"
+        integrity="sha256-C6CB9UYIS9UJeqinPHWTHVqh/E1uhG5Twh+Y5qFQmYg="
+        crossorigin="anonymous"></script>
+
 
 This is of course only useful for content that changes rarely or is under your control. Scripts that are dynamically generated and out of your control are not really a good fit for SRI. If they're dynamically generated as part of your build, then you can also embed the hash into the requesting resource as part of your build process. 
 Currently `script` and `link` tags are supported. Future versions of the specification are likely to expand this coverage to other tags.
@@ -298,11 +299,10 @@ Tools such as openssl and the standard sha[256|512]sum programmes normally suppl
 
 Trust the browser to do something to stop these **downgrades**.
 
-```bash
-curl --head https://reputable.kiwi.bank.co.nz/
+    curl --head https://reputable.kiwi.bank.co.nz/
+    
+    Strict-Transport-Security: max-age=31536000
 
-Strict-Transport-Security: max-age=31536000
-```
 
 By using the HSTS header, you're telling the browser that your website should never be reached over plain HTTP.  
 There is however still a problem with this. The very first request for the websites page. At this point the browser has no idea about HSTS because it still hasn't fetched that first page that will come with the header. Once the browser does receive the header, if it does, it records this information against the domain.  
@@ -355,7 +355,7 @@ _Todo_ document others.
 ## 4. SSM Risks that Solution Causes
 > Are there any? If so what are they?
 
-<a name="network-risks-that-solution-causes-wrongfully-trusting-the-loading-of-untrusted-web-resources"/>
+{#network-risks-that-solution-causes-wrongfully-trusting-the-loading-of-untrusted-web-resources}
 ### Wrongfully Trusting the Loading of Untrusted Web Resources
 
 {#network-risks-that-solution-causes-wrongfully-trusting-the-loading-of-untrusted-web-resources-csp}
@@ -395,7 +395,8 @@ Again your trusting the browser.
 ## 5. SSM Costs and Trade-offs
 > An exercise for the reader. What are they?
 
-# Wireless
+## Wireless
+
 A really large can of worms
 
 _Todo_
