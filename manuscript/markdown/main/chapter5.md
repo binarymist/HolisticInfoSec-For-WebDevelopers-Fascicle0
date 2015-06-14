@@ -1,7 +1,7 @@
 {#mobile}
 # Mobile
 
-![10,000' view of Mobile Security](../../images/10000Mobile.gif)
+![10,000' view of Mobile Security](images/10000Mobile.gif)
 
 
 Verint (a USA company) sells a cell phone tracking system called [SkyLock](http://apps.washingtonpost.com/g/page/business/skylock-product-description-2013/1276/) with a subtitle of "Locate. Track. Manipulate" to both corporations and governments worldwide. SkyLock not only finds people but also tracks them over time periods.

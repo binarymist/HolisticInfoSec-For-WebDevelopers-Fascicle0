@@ -1,7 +1,7 @@
 {#cloud}
 # Cloud
 
-![10,000' view of Cloud and In-house Cloud Security](../../images/10000Cloud.gif)
+![10,000' view of Cloud and In-house Cloud Security](images/10000Cloud.gif)
 
 See [VPS](#vps), as it has a lot of similarities due to the fact that in many cases your VPS may be on someone else's hardware and in their control.
 
