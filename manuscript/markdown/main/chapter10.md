@@ -18,7 +18,7 @@ So, we don't really separate the discipline of architecture from a software deve
 &nbsp;
 ### Security Test-Driven Development (STDD)
 
-![red green refactor](images/red_green_refactor.jpg)
+![](../../images/red_green_refactor.jpg)
 
 There are a couple of aspects I'd like to focus on here. You can simply continue to use your existing automated test suites and frameworks. All you have to do is:
 
@@ -27,11 +27,11 @@ There are a couple of aspects I'd like to focus on here. You can simply continue
 2. Add **security focused BDD/TDD/ATDD** tests.
  This is the same amount of work as any other automated TDD, but it has the huge benefit of bringing the finding of security faults from where it's very expensive to fix:
 
- ![Costs Of Change](images/CostOfChange.png)  
+ ![](../../images/CostOfChange.png)  
 
   to where it's the cheapest possible place to fix:
 
- ![Cost Of Change with STDD](images/CostOfChange-WithSTDD.png)  
+ ![](../../images/CostOfChange-WithSTDD.png)  
 
 &nbsp;
 
@@ -163,7 +163,7 @@ This slide was from a talk I did at OWASP NZ Day 2013. The top 10 vulnerabilitie
 
 &nbsp;
 
-![OWASP Top 10 2013](images/2013OWASPTop10.jpg)
+![](../../images/2013OWASPTop10.jpg)
 
 &nbsp;
 
@@ -181,13 +181,13 @@ The unchangeable vulnerabilities are:
 
 &nbsp;
 
-![Some Things Dont Change](images/OWASPTop10SomeThingsDontChange.jpg)
+![](../../images/OWASPTop10SomeThingsDontChange.jpg)
 
 &nbsp;
 
 <a name="web-application-identify-risks-lack-of-input-sanitisation"/>
 ### Lack of Input Sanitisation
-![Easy Common Average Severe](images/ThreatTags/easy-common-average-severe.png)
+![](../../images/ThreatTags/easy-common-average-severe.png)
 
 <a name="web-application-identify-risks-buffer-overflows"/>
 #### Buffer Overflows
@@ -203,7 +203,7 @@ _Todo_
 <a name="web-application-identify-risks-sqli"/>
 #### SQLi
 
-![Hands On Hack](images/HandsOnHack.png)
+![](../../images/HandsOnHack.png)
 
  One of the simplest and quickest vulnerabilities to fix, yet it's still top of the hit lists.  
  Lets hammer this home some more.
@@ -211,7 +211,7 @@ _Todo_
 <a name="web-application-identify-risks-command-injection"/>
 #### Command Injection
 
-![Hands On Hack](images/HandsOnHack.png)
+![](../../images/HandsOnHack.png)
 
 <a name="web-application-identify-risks-ldap-injection"/>
 #### LDAP Injection
@@ -254,7 +254,7 @@ _Todo_
 
 <a name="web-application-identify-risks-consuming-free-and-open-source"/>
 ### Consuming Free and Open Source
-![Average WideSpread Difficult Moderate](images/ThreatTags/average-widespread-difficult-moderate.png)
+![](../../images/ThreatTags/average-widespread-difficult-moderate.png)
 
 This is where [A9 (Using Components with Known Vulnerabilities)](https://www.owasp.org/index.php/Top_10_2013-A9-Using_Components_with_Known_Vulnerabilities) of the 2013 OWASP Top 10 comes in.
 
@@ -274,7 +274,7 @@ See Justin Searls [talk](http://blog.testdouble.com/posts/2014-12-02-the-social-
 
 <a name="web-application-countermeasures-lack-of-input-sanitisation"/>
 ### Lack of Input Sanitisation
-![Average](images/ThreatTags/PreventionAVERAGE.png)
+![](../../images/ThreatTags/PreventionAVERAGE.png)
 
 * All user input should be escaped
 * Ideally user input should conform to white lists
@@ -346,7 +346,7 @@ _Todo_
 
 <a name="web-application-countermeasures-consuming-free-and-open-source"/>
 ### Consuming Free and Open Source
-![Easy](images/ThreatTags/PreventionEASY.png)
+![](../../images/ThreatTags/PreventionEASY.png)
 
 Dibbe Edwards [discusses](https://soundcloud.com/owasp-podcast/dibbe-edwards-devops-and-open-source-at-ibm) some excellent initiatives on how they do it at IBM. I'll attempt to paraphrase some of them here:
 

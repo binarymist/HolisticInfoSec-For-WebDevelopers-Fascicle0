@@ -1,7 +1,7 @@
 {#network}
 #Network
 
-![10,000' view of Network Security](images/10000Network.gif)
+![10,000' view of Network Security](../../images/10000Network.gif)
 
 ## 1. SSM Asset Identification
 Take results from [higher level Asset Identification](#1-ssm-asset-identification). Remove any that are not applicable. Add any newly discovered.
@@ -21,7 +21,7 @@ The following are some of the different types of network spoofing
 
 <a name="network-identify-risks-spoofing-ip"/>
 #### [IP](http://en.wikipedia.org/wiki/IP_address_spoofing)
-![Easy Common Average Severe](images/ThreatTags/easy-common-average-severe.png)
+![](../../images/ThreatTags/easy-common-average-severe.png)
 
 Setting the IP address in your header to the victims IP address.
 
@@ -32,7 +32,7 @@ Many load testing tools also use this technique to stress a server or applicatio
 
 <a name="network-identify-risks-spoofing-arp"/>
 #### ARP (Address Resolution Protocol)
-![Easy Common Average Severe](images/ThreatTags/easy-common-average-severe.png)
+![](../../images/ThreatTags/easy-common-average-severe.png)
 
 Telling your target that the MAC address it associates with a particular legitimate node (by way of IP address) is now your (the attackers/MitM) MAC address.
 
@@ -40,14 +40,14 @@ Taking the IP spoofing attack further. The MitM sends out ARP replies across the
 This attack only works on a LAN.  
 The attack is often used as a component of larger attacks, harvesting credentials, cookies, CSRF tokens, hijacking. Even using TLS (in many cases TLS can be [downgraded](network-identify-risks-tls-downgrade)). 
 
-![Hands On Hack](images/HandsOnHack.png)
+![](../../images/HandsOnHack.png)
 
 * [MitM with ARP spoofing](http://blog.binarymist.net/2015/04/25/web-server-log-management/#mitm)
 * [With TLS](http://frishit.com/tag/ettercap/)
 
 <a name="network-identify-risks-spoofing-dns"/>
 #### DNS
-![Difficult UnCommon Average Moderate](images/ThreatTags/difficult-uncommon-average-severe.png)
+![](../../images/ThreatTags/difficult-uncommon-average-severe.png)
 
 Affects any domain name lookup. That includes email.
 This type of attack could allow an intermediary to intercept and read all company emails for example. Completely destroying any competitive advantage. The victim may never know it's happened.  
@@ -65,18 +65,18 @@ DNS spoofing refers to an end goal rather than a specific type of attack. There 
 
 <a name="network-identify-risks-spoofing-referrer"/>
 #### Referrer
-![Easy Common Average Moderate](images/ThreatTags/easy-common-average-moderate.png)
+![](../../images/ThreatTags/easy-common-average-moderate.png)
 
 This comes under the [OWASP Top 10 A7 Missing Function Level Access Control](https://www.owasp.org/index.php/Top_10_2013-A7-Missing_Function_Level_Access_Control)
 
 Often websites will allow access to certain resources so long as the request was referred from a specific page defined by the `referer` header.  
 The referrer (spelled `referer`) field in HTTP requests can be intercepted and modified, so it's not a good idea to use it for authentication or authorisation.
 
-![Hands On Hack](images/HandsOnHack.png)
+![](../../images/HandsOnHack.png)
 
 <a name="network-identify-risks-spoofing-email-address"/>
 #### E-Mail Address
-![Easy Widespread Average Severe](images/ThreatTags/easy-widespread-average-moderate.png)
+![](../../images/ThreatTags/easy-widespread-average-moderate.png)
 
 The act of creating and sending an email with a forged sender address.
 This is useful for spam campaigns sending large numbers of email and for social engineers often sending small numbers of email. The headers can be specified easily on the command line. The tools used essentially modify the headers: `From` and `Return-Path`.
@@ -90,7 +90,7 @@ Often the sender of a spoofed email will use a from address that you recognise i
 
 <a name="network-identify-risks-spoofing-website"/>
 #### Website
-![Difficult Common Average Severe](images/ThreatTags/difficult-common-average-severe.png)
+![](../../images/ThreatTags/difficult-common-average-severe.png)
 
 <!---Todo: Check out Subterfuge, mentioned in "Basic Security Testing With Kali Linux"-->
 <!---Todo: pg 160 of "The Hacker Playbook" could be worth demoing here-->
@@ -98,19 +98,19 @@ An attacker can clone a legitimate website (with the likes of the Social Enginee
 
 Often a website is cloned that the victim visits regularly, which can even remove the need for social engineering, phishing, email spoofing. The victim visits the attackers cloned website due to ARP or DNS spoofing. The attacker can do any number of things at this point. Simply harvest credentials or launch many different types of attacks. For example Subterfuge to run a plethora of attacks against the victims browser through the likes of the Metasploit Browser AutoPwn module. If >0 attacks are successful, the attacker will usually get a remote command shell to the victims system. Then simply forward them onto the legitimate website without them even being aware of the attack.
 
-![Hands On Hack](images/HandsOnHack.png)
+![](../../images/HandsOnHack.png)
 
 <a name="network-identify-risks-wrongfully-trusting-the-loading-of-untrusted-web-resources"/>
 ### Wrongfully Trusting the Loading of Untrusted Web Resources
-![Average VeryWidespread Easy Moderate](images/ThreatTags/average-verywidespread-easy-moderate.png)
+![](../../images/ThreatTags/average-verywidespread-easy-moderate.png)
 
 By default, the browser allows all resources from all locations to be loaded. What would happen if one of those servers was compromised or an attacker was tampering with the payload potentially changing what was expected for something malicious to be executed once loaded?
 
-![Hands On Hack](images/HandsOnHack.png)
+![](../../images/HandsOnHack.png)
 
 <a name="network-identify-risks-tls-downgrade"/>
 ### TLS Downgrade
-![Average Common Average Severe](images/ThreatTags/average-common-average-severe.png)
+![](../../images/ThreatTags/average-common-average-severe.png)
 
 When ever a user browses to a website, an attacker can intercept the request before the TLS handshake is made and redirect the user to the same website but without the TLS.
 
@@ -131,7 +131,7 @@ _Todo_
 
 <a name="network-countermeasures-spoofing-ip"/>
 #### IP
-![Difficult](images/ThreatTags/PreventionDIFFICULT.png)
+![](../../images/ThreatTags/PreventionDIFFICULT.png)
 
 Filter incoming packets (ingress) that appear to come from an internal IP address at your perimeter.  
 Filter outgoing packets (egress) that appear to originate from an invalid local IP address.  
@@ -139,7 +139,7 @@ Not relying on IP source address's for authentication (AKA trust relationships).
 
 <a name="network-countermeasures-spoofing-arp"/>
 #### ARP (Address Resolution Protocol)
-![Average](images/ThreatTags/PreventionAVERAGE.png)
+![](../../images/ThreatTags/PreventionAVERAGE.png)
 
 Use spoofing detection software.  
 As ARP poisoning is quite noisy. The attacker continually sends [ARP packets](http://en.wikipedia.org/wiki/Address_Resolution_Protocol), IDS can detect and flag it. Then an IPS can deal with it.
@@ -151,7 +151,7 @@ Thoughts on [mitigations](http://www.jaringankita.com/blog/defense-arp-spoofing)
 
 <a name="network-countermeasures-spoofing-dns"/>
 #### DNS
-![Average](images/ThreatTags/PreventionAVERAGE.png)
+![](../../images/ThreatTags/PreventionAVERAGE.png)
 
 Many cache poisoning attacks can be prevented on DNS servers by being less trusting of the information passed to them by other DNS servers, and ignoring any DNS records passed back which are not directly relevant to the query.
 
@@ -165,7 +165,7 @@ Make sure your [Name Server](http://www.dnssec.net/software) supports DNSSEC.
 
 <a name="network-countermeasures-spoofing-referrer"/>
 #### Referrer
-![Easy](images/ThreatTags/PreventionEASY.png)
+![](../../images/ThreatTags/PreventionEASY.png)
 
 Deny all access by default. Require explicit grants to specific roles for access to every function. Implement checks in the controller and possibly the business logic also (defence in depth). Never trust the fact that certain resources appear to be hidden so a user wont be able to access them. 
 
@@ -173,7 +173,7 @@ Check the [OWASP Failure to Restrict URL Access](https://www.owasp.org/index.php
 
 <a name="network-countermeasures-spoofing-email-address"/>
 #### EMail Address
-![Difficult](images/ThreatTags/PreventionDIFFICULT.png)
+![](../../images/ThreatTags/PreventionDIFFICULT.png)
 
 Spoofing of Email is hard to trace and stop.
 
@@ -206,7 +206,7 @@ TLS works at the transport & session layer as opposed to S/MIME at the Applicati
 
 <a name="network-countermeasures-spoofing-website"/>
 #### Website
-![Average](images/ThreatTags/PreventionAVERAGE.png)
+![](../../images/ThreatTags/PreventionAVERAGE.png)
 
 There's nothing to stop someone cloning and hosting a website. The vital part to getting someone to visit an attackers illegitimate website is to either social engineer them to visit it, or just clone a website that you know they are likely to visit. An Intranet at your work place for example. Then you will need to carry out ARP and/or DNS spoofing. Again
 tools such as free and open source [ArpON (ARP handler inspection)](http://arpon.sourceforge.net/) cover website spoofing and a lot more.
@@ -224,7 +224,7 @@ tools such as free and open source [ArpON (ARP handler inspection)](http://arpon
 
 <a name="network-countermeasures-wrongfully-trusting-the-loading-of-untrusted-web-resources-csp"/>
 #### Content Security Policy (CSP)
-![Average](images/ThreatTags/PreventionEASY.png)
+![](../../images/ThreatTags/PreventionEASY.png)
 
 By using CSP, we're providing the browser with a white-list of the types of resources and from where, that we allow to be loaded.  
 We do this by specifying particular response headers (more specifically directives).
@@ -264,7 +264,7 @@ Not to be confused with Cross Origin Resource Sharing (CORS). CORS instructs the
 
 <a name="network-countermeasures-wrongfully-trusting-the-loading-of-untrusted-web-resources-sri"/>
 #### Sub-resource Integrity (SRI)
-![Easy](images/ThreatTags/PreventionEASY.png)
+![](../../images/ThreatTags/PreventionEASY.png)
 
 Provides the browser with the ability to verify that fetched resources (the actual content) haven't been tampered with, potentially swapping the expected resource or modifying it for a malicious resource, no matter where it comes from.
 
@@ -294,7 +294,7 @@ Tools such as openssl and the standard sha[256|512]sum programmes normally suppl
 
 <a name="network-countermeasures-tls-downgrade-hsts"/>
 #### HTTP Strict Transport Security (HSTS)
-![Easy](images/ThreatTags/PreventionEASY.png)
+![](../../images/ThreatTags/PreventionEASY.png)
 
 Trust the browser to do something to stop these **downgrades**.
 
@@ -317,7 +317,7 @@ Welcome to [HSTS Preload](#user-content-network-countermeasures-tls-downgrade-hs
 
 <a name="network-countermeasures-tls-downgrade-hsts-preload"/>
 #### HTTP Strict Transport Security (HSTS) Preload
-![Easy](images/ThreatTags/PreventionEASY.png)
+![](../../images/ThreatTags/PreventionEASY.png)
 
 This includes a list that browsers have with any domains that have been submitted. When a use requests one of the pages from a domain on the browsers HSTS preload list, the browser will always initiate all requests to that domain over TLS.
 

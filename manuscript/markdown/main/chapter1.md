@@ -3,7 +3,7 @@
 
 # Starting with the 30,000' view
 
-![](images/30000View.gif)
+![](../../images/30000View.gif)
 
 This modelling process should be performed by a collection of the following people:
 
@@ -21,6 +21,7 @@ Having this process performed by a team brings out the best in everyone. There a
 
 Assets will often emerge as you progress through the following steps.
 
+{#2-ssm-identify-risks}
 ## 2. SSM Identify Risks
 * [MS 2. Create an Architecture Overview](https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_007)
 * [MS 3. Decompose the Application](https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_008)
@@ -32,13 +33,13 @@ Assets will often emerge as you progress through the following steps.
   I also like to abstract things a bit here and think about some of the entities that could be risky to the target business.
 
   {#threat-agents}
-  ![threat agents opponents](images/ThreatAgents.gif)
+  ![threat agents opponents](../../images/ThreatAgents.gif)
 
   Then think about some of the relationships the target business depends on...  
   How they could be leaking IP.
 
   {#likelihood-and-impact}
-  ![how might your threat agents gain access](images/LikelihoodAndImpact.gif)
+  ![how might your threat agents gain access](../../images/LikelihoodAndImpact.gif)
 
 {#ms-5-document-the-threats}
 * [MS 5. Document the Threats](https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_010)
@@ -60,7 +61,7 @@ and the [Intel Threat Agent Library](http://www.sbs.ox.ac.uk/cybersecurity-capac
   * Risk = Likelihood * Impact
 * Just as you would with any development features, create Product Backlog Items (PBI's) and order based on highest scoring risks.
 
-![what to fix first](images/BobTheBuilder.jpg)
+![](../../images/BobTheBuilder.jpg)
  <!---This is where the images live: https://raw.githubusercontent.com/wiki/binarymist/HolisticInfoSec-For-WebDevelopers/BinaryMist-Approach-To-Threat-Modelling-Assets/BobTheBuilder.jpg-->
 
 Keep your eye on the vulnerability advisories:

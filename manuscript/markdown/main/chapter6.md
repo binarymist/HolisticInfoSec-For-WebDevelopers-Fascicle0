@@ -1,7 +1,7 @@
 {#people)
 # People
 
-![10,000' view of People Security](images/10000People.gif)
+![10,000' view of People Security](../../images/10000People.gif)
 
 Like the section on [Physical](#physical) security, the people problem is often over-looked, not only by technical people this time, but by all. For a proficient social engineer, it's generally fairly easy to craft and execute attacks. Although not quite as easy and simple as walking through the front door that's left open. With a little patience, practice and the right frame of mind, the majority of people can be played successfully, even those that are very aware.
 
@@ -17,24 +17,24 @@ Take results from [higher level Asset Identification](#1-ssm-asset-identificatio
 
 ## 2. SSM Identify Risks
 Risks based on the failures of people present a very different set of attack vectors than any others mentioned in this material. People are both complex, complicated and our personalities are full of faults just waiting to be compromised, thus the approach at finding vulnerabilities is quite different.  
-You can still use some of the processes from [2. SSM Identify Risks](#2-ssm-identify-risks), but the outcomes can look quite different.  
+You can still use some of the processes from [2. SSM Identify Risks](chapter1.md/#2-ssm-identify-risks), but the outcomes can look quite different.  
 I find the [Threat agents cloud](#threat-agents) and [Likelihood and impact](#likelihood-and-impact) diagrams still quite useful. Also [MS 5. Document the Threats](#ms-5-document-the-threats), [OWASP Risk Rating Methodology](#owasp-risk-rating-methodology) and the [intel-threat-agent-library](#intel-threat-agent-library) as they're technology agnostic.  
 [OWASP Ranking of Threats](#owasp-ranking-of-threats), [MS 6. Rate the Threats](#ms-6-rate-the-threats)  and DREAD to a degree are useful.
 
 People are the strongest point in a security process, they are often also the weakest.
 
-<a name="people-identify-risks-phone-calls"/>
+{#people-identify-risks-phone-calls}
 ### Phone calls
-![Average Common Average Severe](images/ThreatTags/average-common-average-severe.png)
+![](../../images/ThreatTags/average-common-average-severe.png)
 
 With practice this can become reasonably easy to pull off, also with very little risk. Plus the social engineer (SE) can practice, practice, practice until they get the results they're looking for. If at first they don't succeed, then they can simply hangup and try again in a few days. Each attempt improving on what let them down last time.  
 As mentioned in Bruce Schneier's Beyond Fear: Convicted hacker Kevin Mitnick testified before Congress in
 2000 about social engineering. “I was so successful in that line of attack that I rarely had to resort to a technical attack,” he said. “Companies can spend **millions of dollars toward technological protections**, and that’s wasted if somebody can basically call someone on the telephone and either convince them to do something on the computer that lowers the computers defences or reveals the information they were seeking.”  
 The government that imprisoned Kevin Mitnick for nearly five years, later [sought his advice](http://www.politechbot.com/p-00969.html) about how to keep its own networks safe from intruders.
 
-<a name="people-identify-risks-spoofing-caller-id"/>
+{#people-identify-risks-spoofing-caller-id}
 ### Spoofing Caller Id
-![Easy WideSpread Difficult Low](images/ThreatTags/easy-widespread-difficult-low.png)
+![](../../images/ThreatTags/easy-widespread-difficult-low.png)
 
 This is arranging an impersonated identification (name or number) to be displayed on the receiving end of a phone that's in the state of receiving a call. The telephony providers don't perform authentication on whether the caller Id is valid or spoofed. To disambiguate, this is the caller Id and not the caller number.  
 This can be quite a useful confirmation for a social engineer to use as part of their pretexting. Caller Id spoofing has been around since at least 2004, with companies offering paid services like:
@@ -46,9 +46,9 @@ This can be quite a useful confirmation for a social engineer to use as part of 
 
 Or you can DIY with the likes of [Asterisk](http://www.asterisk.org/get-started) an open source framework providing all the tools anyone would need to spoof caller Ids and much more.
 
-<a name="people-identify-risks-favour-for-a-favour"/>
+{#people-identify-risks-favour-for-a-favour}
 ### Favour for a Favour
-![Easy Common Average Severe](images/ThreatTags/easy-common-average-severe.png)
+![](../../images/ThreatTags/easy-common-average-severe.png)
 
 How this works:
 An Attacker (Pretexter) calls someone at the target organisation (often an employee). Then explains to them that something has just happened that will stop them from doing their work. Ideally something that the victim can not immediately verify. Attacker suggests that they may be able to fix the problem for the employee, but it'll be a big favour. Victim agrees and is very appreciative. Once the attacker has pretended to fix the employees issue, they get the victim to confirm that it is now working (of course it always was working). Victim confirms it's now working and is very appreciative. Now the victim essentially ows the attacker a favour. The attacker can use this favour that's essentially owed to them immediately or often more effectively the next day (next day seems more genuine).
@@ -58,27 +58,27 @@ These attacks are the easiest to carry out on:
 * new people
 * people with limited computer knowledge and skills, as they probably won't realise what value exists on the computer or network for the person that's just apparently helped them out
 
-<a name="people-identify-risks-the-new-employee"/>
+{#people-identify-risks-the-new-employee}
 ### The New Employee
-![Easy Common Average Severe](images/ThreatTags/easy-common-average-severe.png)
+![](../../images/ThreatTags/easy-common-average-severe.png)
 
 New employees won't intuitively know a lot of people in the organisation yet. They won't yet understand the hierarchical relationships and processes. They won't be aware of the security policies and culture in force. They'll be as keen as can be to make good impressions with everyone they relate with.
 
-<a name="people-identify-risks-we-have-a-problem"/>
+{#people-identify-risks-we-have-a-problem}
 ### We Have a Problem
-![Average Common Average Severe](images/ThreatTags/average-common-average-severe.png)
+![](../../images/ThreatTags/average-common-average-severe.png)
 
 An excellent way of gaining additional trust is to fix the problem that doesn't exist. Lead the victim to believe that there's a problem that will stop them from getting there work done in some way. Request a little information. Fix the problem that never existed. Victim verifies that there is no longer a problem. Request additional sensitive information. Using the fact that you just did a favour for the victim to elicit what you're after.
 
-<a name="people-identify-risks-its-just-the-cleaner"/>
+{#people-identify-risks-its-just-the-cleaner}
 ### It's Just the Cleaner
-![Easy Common Easy Severe](images/ThreatTags/easy-common-easy-severe.png)
+![](../../images/ThreatTags/easy-common-easy-severe.png)
 
 Grab your self a cleaners uniform and you've got access to just about everything within an organisation. It really is that simple. Often when my wife was doing commercial cleaning and she walked into a room at 20:00 - 21:00 with a few developers left working away. They would sometimes be surprised because they hadn't been told that the cleaners were coming, let-a-lone, who they were. The response would usually go something like "Oh, it's just the cleaners". Why? Because they had their free pass... a cleaners uniform, maybe a broom or vacuum cleaner or mop.
 
-<a name="people-identify-risks-come-on-in-sir"/>
+{#people-identify-risks-come-on-in-sir}
 ### Come On In Sir
-![Easy Common Easy Severe](images/ThreatTags/easy-common-easy-severe.png)
+![](../../images/ThreatTags/easy-common-easy-severe.png)
 
 Two effective ways at getting into a work premises.
 
@@ -87,50 +87,50 @@ Two effective ways at getting into a work premises.
 
 ## 3. SSM Countermeasures
 
-<a name="people-countermeasures-phone-calls"/>
+{#people-countermeasures-phone-calls}
 ### Phone calls
-![Difficult](images/ThreatTags/PreventionDIFFICULT.png)
+![](../../images/ThreatTags/PreventionDIFFICULT.png)
 
 Even the most technically and security focussed people can be played.
 
 Focus on the low hanging fruit. Social Engineering attacks via phone calls is definitely one of the lowest. Using the output from the various risk rating and ranking of threats from [2 SSM Identify Risks](#2-ssm-identify-risks) will help you realise this.  
 Make sure that people being trusted are trustworthy. Test them. Most attacks target trusted people because they have something of value. Make sure the amount of value they have access to is in proportion to how trustworthy they actually are. Don't assume. Educate (train) and test employees. Make sure they are well compensated. Do what ever it takes to keep their levels of passion and engagement high. People with these qualities will be far more likely to succeed in recognising and warding off attacks.
 
-<a name="people-countermeasures-spoofing-caller-id"/>
+{#people-countermeasures-spoofing-caller-id}
 ### Spoofing Caller Id
-![Average](images/ThreatTags/PreventionDIFFICULT.png)
+![](../../images/ThreatTags/PreventionDIFFICULT.png)
 
 Don't rely on caller Id. It's untrusted. I'm not aware of any way to successfully [detect](http://www.cse.sc.edu/~mustafah/download/cid_USC_CSE_TR-2013-001.pdf) caller Id spoofing before the call is answered.
 
-<a name="people-countermeasures-favour-for-a-favour"/>
+{#people-countermeasures-favour-for-a-favour}
 ### Favour for a Favour
-![Average](images/ThreatTags/PreventionAVERAGE.png)
+![](../../images/ThreatTags/PreventionAVERAGE.png)
 
 If someone you don't know does you a favour then asks for a favour. You're probably being played. Get suspicious. Start thinking hard about what they're actually asking for. 
 
-<a name="people-countermeasures-the-new-employee"/>
+{#people-countermeasures-the-new-employee}
 ### The New Employee
-![Average](images/ThreatTags/PreventionAVERAGE.png)
+![](../../images/ThreatTags/PreventionAVERAGE.png)
 
 All employees must be educated in that they should never reveal their passwords. It doesn't matter who to. If a password is asked for, suspicions should be instantly raised to finding out the identity of the requester, as they're obviously malicious or extremely ill-informed. This is often a good candidate to practise reverse social engineering on the requester, finding out as much about the person and what they're after as possible without raising suspicions that their disguise has been identified.
 
-<a name="people-countermeasures-we-have-a-problem"/>
+{#people-countermeasures-we-have-a-problem}
 ### We Have a Problem
-![Average](images/ThreatTags/PreventionAVERAGE.png)
+![](../../images/ThreatTags/PreventionAVERAGE.png)
 
 Many of the social engineering attacks put a focus on a problem that doesn't exist, but sounds very real. If the pretend problem could stop the victim from getting their work done, that'll provide more leverage and more willingness on the part of the victim to give up sensitive data that they otherwise wouldn't.
 
-<a name="people-countermeasures-its-just-the-cleaner"/>
+{#people-countermeasures-its-just-the-cleaner}
 ### It's Just the Cleaner
-![VeryEasy](images/ThreatTags/PreventionVERYEASY.png)
+![](../../images/ThreatTags/PreventionVERYEASY.png)
 
 1. Think. Respect your workers. Provide them with the visibility as to who is allowed access to where and when.
 2. Train your workers
 3. Test them. Send some random in without telling your workers and see what happens. Adjust your training to suite
 
-<a name="people-countermeasures-come-on-in-sir"/>
+{#people-countermeasures-come-on-in-sir}
 ### Come On In Sir
-![Average](images/ThreatTags/PreventionAVERAGE.png)
+![](../../images/ThreatTags/PreventionAVERAGE.png)
 
 &nbsp;
 

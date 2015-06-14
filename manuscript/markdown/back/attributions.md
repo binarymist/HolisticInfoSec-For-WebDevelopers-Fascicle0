@@ -3,12 +3,12 @@
 
 # Attributions
 
-## [The 30,000' View](ch01.md)
+## [The 30,000' View](../main/chapter1.md)
 
 **Vulnerability advisories**  
 [kitploit.com](http://www.kitploit.com/) did a small [explanation](http://www.kitploit.com/2015/06/the-exploit-database-git-repository.html) of using the [Exploit Database](https://www.exploit-db.com/) from [Offensive Security](https://www.offensive-security.com/)
  
-## [Mobile](ch05.md)
+## [Mobile](../main/chapter5.md)
 
 **Sells cell phone tracking systems** to both corporations and governments worldwide.
 Bruce Schneier: Data and Goliath: Introduction
@@ -46,4 +46,8 @@ News story discussed in Bruce Schneie: Data and Goliath: Introduction. Along wit
 Bruce Schneier: Data and Goliath: Introduction: USA National Security Agency (NSA) and its UK counterpart, Government Communications Headquarters (GCHQ), use location data to track people.  
 [http://www.washingtonpost.com/world/national-security/nsa-tracking-cellphone-locations-worldwide-snowden-documents-show/2013/12/04/5492873a-5cf2-11e3-bc56-c6ca94801fac_story.html](http://www.washingtonpost.com/world/national-security/nsa-tracking-cellphone-locations-worldwide-snowden-documents-show/2013/12/04/5492873a-5cf2-11e3-bc56-c6ca94801fac_story.html)  
 [http://www.washingtonpost.com/blogs/the-switch/wp/2013/12/10/new-documents-show-how-the-nsa-infers-relationships-based-on-mobile-location-data](http://www.washingtonpost.com/blogs/the-switch/wp/2013/12/10/new-documents-show-how-the-nsa-infers-relationships-based-on-mobile-location-data)
+
+## [Web Applications](../main/chapter10.md)
+
+**Cost of Change** curve adapted from Scott W. Ambler's article on [Examining the Agile Cost of Change Curve](http://www.agilemodeling.com/essays/costOfChange.htm), which I've used in many presentations and workshops.
 

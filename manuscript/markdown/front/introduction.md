@@ -1,5 +1,4 @@
-
-{frontmatter}
+# Introduction
 
 Target Audience:
 
@@ -25,7 +24,7 @@ The crux of the Bruce Schneier Sensible Security Model (SSM) can be found here.
 
 Iterate on the 30,000' view, then iterate on each of the 10,000' views that are applicable for your specific domain and system.
 
-Where ever you see the following fiddling devil. It means there's a hands on attack demo coming up:
+Where ever you see the following fiddling devil. It means it's hands on attack demo time:
 
 {float=left}
-![Hands On Hack](images/HandsOnHack.png)
+![](../../images/HandsOnHack.png)

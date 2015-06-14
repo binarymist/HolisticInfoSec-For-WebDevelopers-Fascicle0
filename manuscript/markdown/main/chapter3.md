@@ -1,7 +1,7 @@
 {#physical}
 # Physical
 
-![10,000' view of Physical Security](images/10000Physical.gif)
+![10,000' view of Physical Security](../../images/10000Physical.gif)
 
 The area of physical security is often over looked, especially by technical people, although in most cases, it's the easiest and simplest to circumvent and also the easiest and simplest to mitigate.
 
@@ -18,7 +18,7 @@ I'm also a qualified carpenter and as part of my job when I was practising was o
 {#physical-identify-risks-fortress-mentality}
 ### Fortress Mentality
 {float=left}
-![](images/ThreatTags/easy-widespread-easy-severe.png)
+![](../../images/ThreatTags/easy-widespread-easy-severe.png)
 
 We see the same analogy of the candy bar (fortress) running through many areas of security.  
 “_Many organizations still adopt a fortress mentality, where everyone on the outside is bad and stuff on the inside is less dangerous_,” said Brian Krebs, author of the Krebs on Security blog. “_Years of experience has taught us that the biggest problems often stem from the fact that once something gets through the outer defenses, it’s often a cakewalk to move around the internal network unimpeded._”  
@@ -27,28 +27,28 @@ We not only see this principle applied to networks, but also physical security.
 {#physical-identify-risks-internal-doors-and-cabinets-unlocked}
 ### Internal Doors and Cabinets Left Unlocked
 {float=left}
-![Easy Common Easy Moderate](images/ThreatTags/easy-common-easy-moderate.png)
+![Easy Common Easy Moderate](../../images/ThreatTags/easy-common-easy-moderate.png)
 
 Filing cabinets and other cupboards left unlocked or locked and keys or combinations put in obvious places.
 
 {#physical-identify-risks-insecure-doors-windows}
 ### Insecure Doors and/or Windows
 {float=left}
-![](images/ThreatTags/easy-widespread-easy-severe.png)
+![](../../images/ThreatTags/easy-widespread-easy-severe.png)
 
 Open doors, open windows. Uninteresting right, because there seems to be little challenge to mitigate. So little challenge that the vulnerability often gets ignored. Believe it or not, but it's often the cleaners responsibility to lock doors, windows and set alarms. I've discussed some of these types of threat agents [here](http://blog.binarymist.net/2012/11/04/sanitising-user-input-from-browser-part-1/#threat-agents). Many places I've worked in have had double latched windows only single latched when I do the rounds just before I leave. It's very easy to pry a double latch window open from the outside that is single latched.
 
 {#physical-identify-risks-computers-logged-in-unlocked}
 ### Computers Logged in and Unlocked
 {float=left}
-![](images/ThreatTags/easy-widespread-easy-severe.png)
+![](../../images/ThreatTags/easy-widespread-easy-severe.png)
 
 Computers logged in, not locked and even screens still turned on. Often with very sensitive material clearly displayed on the screens. This is very common. Again physical security is rendered useless due to the people problem.
 
 {#physical-identify-risks-rfid}
 ### RFID Tags
 {float=left}
-![](images/ThreatTags/average-uncommon-easy-severe.png)
+![](../../images/ThreatTags/average-uncommon-easy-severe.png)
 
 Then there's all the RFID cards, tags for accessing buildings, elevators, car parks, etc. Again, relatively easily exploitable with [readers and cloners](http://proxmark3.com/products/PM3KIT/) which you can buy for varying prices or build your own.
 
@@ -61,14 +61,14 @@ Of course there are many more, but I'm running out of time, so I'm going to move
 
 ### Fortress Mentality
 {float=left}
-![](images/ThreatTags/PreventionAVERAGE.png)
+![](../../images/ThreatTags/PreventionAVERAGE.png)
 
 Harden internal attack vectors. BinaryMist takes the approach of [De-perimeterisation](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#fire-walling). That's   not relying on network firewalls or LAN segmentation. [Hardening every layer](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#fire-walling) (defence in depth) as though all other layers are weak and easily compromised. I've [blogged](http://blog.binarymist.net/2012/11/04/sanitising-user-input-from-browser-part-1/#defense-in-depth) and [spoken](http://blog.binarymist.net/presentations-publications/#whats-our-software-doing-with-all-that-user-input) about this on many occasions.
 
 {#physical-countermeasures-internal-doors-and-cabinets-unlocked}
 ### Internal Doors and Cabinets Left Unlocked
 {float=left}
-![](images/ThreatTags/PreventionEASY.png)
+![](../../images/ThreatTags/PreventionEASY.png)
 
 1. Education
 2. Test that the education is taking effect.
@@ -76,14 +76,14 @@ Harden internal attack vectors. BinaryMist takes the approach of [De-perimeteris
 {#physical-countermeasures-insecure-doors-windows}
 ### Insecure Doors and/or Windows
 {float=left}
-![](images/ThreatTags/PreventionVERYEASY.png)
+![](../../images/ThreatTags/PreventionVERYEASY.png)
 
 Similar to [Computers Logged in and Unlocked](#computers-logged-in-and-unlocked)
 
 {#physical-countermeasures-computers-logged-in-unlocked}
 ### Computers Logged in and Unlocked
 {float=left}
-![](images/ThreatTags/PreventionEASY.png)
+![](../../images/ThreatTags/PreventionEASY.png)
 
 Most of what you can do here comes down to the people problem:
 
@@ -95,16 +95,16 @@ Most of what you can do here comes down to the people problem:
 {#physical-countermeasures-rfid}
 ### RFID Tags
 {float=left}
-![](images/ThreatTags/PreventionAVERAGE.png)
+![](../../images/ThreatTags/PreventionAVERAGE.png)
 
 There are at least a couple of strategies to deal with RFID tag cloning
 
 1. Preventative.
-    1. Multi-factor authentication. Fingerprint, PIN number or some other type of mechanism to verify that the person swiping the card/tag is actually the owner of it.
-    2. There are all sorts of methods that the chip manufacturers and security community are using to make the cloning more costly in terms of time and effort.
+  1. Multi-factor authentication. Fingerprint, PIN number or some other type of mechanism to verify that the person swiping the card/tag is actually the owner of it.
+  2. There are all sorts of methods that the chip manufacturers and security community are using to make the cloning more costly in terms of time and effort.
 2. Detecting, reacting when it does happen. Methods such as:
-    1. writing a new random number on the tag's memory every time it's scanned. When a tag is scanned with the same id as another tag that's been issued a new random number which is also recorded by the back-end, the back-end knows there is a duplicate tag.
-    2. Video surveillance of the area where front-end (tag) to back-end (reader) communications are made
+  1. writing a new random number on the tag's memory every time it's scanned. When a tag is scanned with the same id as another tag that's been issued a new random number which is also recorded by the back-end, the back-end knows there is a duplicate tag.
+  2. Video surveillance of the area where front-end (tag) to back-end (reader) communications are made
 
 Keep in mind though, as Bruce Schneier said: "_Detection works where prevention fails and detection is of no use without response_."  
 As part of Identify Risks, you'll need to apply the ranking techniques discussed in order to decide the Likelihood, Impact on what's important to your business and all the other factors that the threat modelling techniques walk you through.  

@@ -1,7 +1,7 @@
 {#vps}
 # VPS
 
-[![10,000' view of VPS Security](images/10000VPS.gif)](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/)
+[![10,000' view of VPS Security](../../images/10000VPS.gif)](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/)
 
 I usually advocate bringing VPS(s) [in-house](http://blog.binarymist.net/2014/11/29/journey-to-self-hosting/) where you have control.
 
@@ -16,7 +16,7 @@ Go through same process as we did at the [top level](#2-ssm-identify-risks), but
 
 <a name="vps-identify-risks-forfeit-control-thus-security"/>
 ### Forfeit Control thus Security
-![Average WideSpread Average Severe](images/ThreatTags/average-widespread-average-severe.png)
+![](../../images/ThreatTags/average-widespread-average-severe.png)
 
 In terms of security, unless your provider is [Swiss](http://www.computerweekly.com/news/2240187513/Is-Switzerland-turning-into-a-cloud-haven-in-the-wake-of-Prism-scandal), you give up so much when you forfeit your system(s) to an external provider. I cover this in my talk ["Does Your Cloud Solution Look Like a Mushroom"](http://blog.binarymist.net/presentations-publications/#does-your-cloud-solution-look-like-a-mushroom).
 
@@ -43,12 +43,12 @@ _Todo_
 
 <a name="vps-countermeasures-forfeit-control-thus-security"/>
 ### Forfeit Control thus Security
-![Average WideSpread Average Severe](images/ThreatTags/PreventionEASY.png)
+![](../../images/ThreatTags/PreventionEASY.png)
 
 Bringing your VPS(s) in-house provides all the flexibility/power required to mitigate just about all the risks due to outsourcing to a cloud or hosting provider. Cloud offerings are often more expensive in monetary terms for medium to large environments.
 
 ### Minimise Attack Surface by [Granular Partitioning](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#partitioning)
-![Average](images/ThreatTags/PreventionAVERAGE.png)
+![](../../images/ThreatTags/PreventionAVERAGE.png)
 
 By creating many partitions and [applying the least privileges](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#lock-down-the-mounting-of-partitions) necessary to each in order to be useful, you're making it difficult for an attacker to carry out many malicious activities that they would otherwise be able to. This is where you play with your `/etc/fstab`
 
@@ -57,22 +57,22 @@ This is a similar concept to tightly [constraining](http://blog.binarymist.net/2
 
 
 ### Minimise Attack Surface by Installing [Only what you Need](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#continuing-with-the-install)
-![VeryEasy](images/ThreatTags/PreventionVERYEASY.png)
+![](../../images/ThreatTags/PreventionVERYEASY.png)
 
 This pretty much goes without saying I think, unless you're setting up a Windows server with "all the stuff" that you have no control over. Which is why I prefer UNIX based servers. I have all the control. If anything goes wrong, it's usually my own fault.
 
 ### Review Password Strategies
-![Easy](images/ThreatTags/PreventionEASY.png)
+![](../../images/ThreatTags/PreventionEASY.png)
 
 Make sure passwords are encrypted with an algorithm that will stand up to the types of attacks you anticipate. Details [here](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#passwords). 
 
 ### Disable Remote Root Logins
-![VeryEasy](images/ThreatTags/PreventionVERYEASY.png)
+![](../../images/ThreatTags/PreventionVERYEASY.png)
 
 There are a handful of files to check & modify for [disabling root logins](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#disable-remote-root-logins).
 
 ### [Harden SSH](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#ssh)
-![VeryEasy](images/ThreatTags/PreventionVERYEASY.png)
+![](../../images/ThreatTags/PreventionVERYEASY.png)
 
 There are a bunch of things you can do to minimise SSH being used as an attack vector.  
 Use Key-pairs, Long pass-phrases. Appropriate changes to `sshd_config` file.  
@@ -81,36 +81,36 @@ Specify Host(s).
 Consider non default port below 1025 that only root can bind to in order to stop the sshd being swapped.
 
 ### [Disable Boot Options](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#disable-boot-options)
-![VeryEasy](images/ThreatTags/PreventionVERYEASY.png)
+![](../../images/ThreatTags/PreventionVERYEASY.png)
 
 Just another attack vector that should be removed
 
 ### Disable, Remove Services. Harden what's left
-![Easy](images/ThreatTags/PreventionEASY.png)
+![](../../images/ThreatTags/PreventionEASY.png)
 
 There are often a few services you can [disable](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#disable-services-we-dont-need) even on a bare bones Debian install and some that are just easier to [remove](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#remove-services). Then go through the process of [hardening](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#secure-services) what's left. Make sure you test before and after each service you attack. Watch the port being open/closed, etc.
 
 ### [Schedule Backups](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#scheduled-backups)
-![Easy](images/ThreatTags/PreventionEASY.png)
+![](../../images/ThreatTags/PreventionEASY.png)
 
 and make sure you can restore from them. Yes it's extra work, but work that will be invaluable if those backups don't restore.  
 Also consider setting up automatic updates.
 
 <a name="host-intrusion-detection-systems-hids"/>
 ### Host Intrusion Detection Systems (HIDS)
-![Average](images/ThreatTags/PreventionAVERAGE.png)
+![](../../images/ThreatTags/PreventionAVERAGE.png)
 
 I recently performed an [in-depth evaluation](http://blog.binarymist.net/2015/05/30/evaluation-of-host-intrusion-detection-systems-hids/) of a couple of HIDS. The choice of which candidates to take into the second round came from my [initial evaluation](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#hids). 
 
 ### Logging and Alerting
-![Average](images/ThreatTags/PreventionAVERAGE.png)
+![](../../images/ThreatTags/PreventionAVERAGE.png)
 
 I recently performed an [in-depth evaluation](http://blog.binarymist.net/2015/04/25/web-server-log-management/) of a small collection of logging and alerting offerings. The choice of which candidates to take into the second round came from my [initial evaluation](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#logging-alerting-and-monitoring).
 
 It's very important to make sure you have reliable and all-encompassing logging to an off-site location. This way attackers will have to also compromise that location in order to effectively [cover their tracks](http://www.win.tue.nl/~aeb/linux/hh/hh-13.html).
 
 ### Monitoring
-![Average](images/ThreatTags/PreventionAVERAGE.png)
+![](../../images/ThreatTags/PreventionAVERAGE.png)
 
 I recently performed an [in-depth evaluation](http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#the-following-are-better-suited-to-monitoring) of a collection of tools that one of their responsibilities was monitoring and performing actions on your processes and applications.
 
@@ -120,7 +120,7 @@ I recently performed an [in-depth evaluation](http://blog.binarymist.net/2015/06
 3. Passenger [evaluation](http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#passenger)
 
 ### Host Firewall
-![Easy](images/ThreatTags/PreventionEASY.png)
+![](../../images/ThreatTags/PreventionEASY.png)
 
 [This](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#fire-walling) is one of the last things you should look at. In fact, it's not really needed if you've taking the time to remove unnecessary services and harden what's left. If you use a host firewall keep your set of rules to a minimum to reduce confusion and increase legibility. Maintain both ingress & egress.
 
