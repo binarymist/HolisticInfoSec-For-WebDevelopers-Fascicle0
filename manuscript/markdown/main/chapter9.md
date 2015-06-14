@@ -12,14 +12,14 @@ Go through same process as we did at the [top level](#2-ssm-identify-risks), but
 
 Network risks are obviously huge. I'm probably not even going to scratch the surface here at this stage. 
 
-<a name="network-identify-risks-spoofing"/>
+{#network-identify-risks-spoofing}
 ### Spoofing
 
 Spoofing on a network is the act of an entity (often malicious(Mallory), [but not necessarily](http://blog.binarymist.net/2015/04/25/web-server-log-management/#mitm)) successfully masquerading/impersonating another (Bob) in order to receive information from Alice (sometimes via Eve) that should then reach Bob.
 
 The following are some of the different types of network spoofing 
 
-<a name="network-identify-risks-spoofing-ip"/>
+{#network-identify-risks-spoofing-ip}
 #### [IP](http://en.wikipedia.org/wiki/IP_address_spoofing)
 ![](images/ThreatTags/easy-common-average-severe.png)
 
@@ -30,7 +30,7 @@ This is where a sending node will spoof its public IP address (not actually chan
 In a Distributed DoS (D-DoS) Often the attacker will impersonate the target (often a router or some server it want to be brought to its knees) and broadcast messages. The nodes that receive these messages consult their ARP tables looking up the spoofed IP address and find the targets associated MAC address and reply to it. This way the replies will be sourced from many nodes. Thus swamping the targets network interface.  
 Many load testing tools also use this technique to stress a server or application.
 
-<a name="network-identify-risks-spoofing-arp"/>
+{#network-identify-risks-spoofing-arp}
 #### ARP (Address Resolution Protocol)
 ![](images/ThreatTags/easy-common-average-severe.png)
 
@@ -45,7 +45,7 @@ The attack is often used as a component of larger attacks, harvesting credential
 * [MitM with ARP spoofing](http://blog.binarymist.net/2015/04/25/web-server-log-management/#mitm)
 * [With TLS](http://frishit.com/tag/ettercap/)
 
-<a name="network-identify-risks-spoofing-dns"/>
+{#network-identify-risks-spoofing-dns}
 #### DNS
 ![](images/ThreatTags/difficult-uncommon-average-severe.png)
 
@@ -63,7 +63,7 @@ DNS spoofing refers to an end goal rather than a specific type of attack. There 
 
 [dnschef](http://www.question-defense.com/2012/12/14/dnschef-backtrack-privilege-escalation-spoofing-attacks-network-spoofing-dnschef) is a flexible spoofing tool. Would be interesting to test on the likes of Arpon and Unbound.
 
-<a name="network-identify-risks-spoofing-referrer"/>
+{#network-identify-risks-spoofing-referrer}
 #### Referrer
 ![](images/ThreatTags/easy-common-average-moderate.png)
 
@@ -74,7 +74,7 @@ The referrer (spelled `referer`) field in HTTP requests can be intercepted and m
 
 ![](images/HandsOnHack.png)
 
-<a name="network-identify-risks-spoofing-email-address"/>
+{#network-identify-risks-spoofing-email-address}
 #### E-Mail Address
 ![](images/ThreatTags/easy-widespread-average-moderate.png)
 
@@ -88,7 +88,7 @@ There are also [on-line services](http://www.anonymailer.net/) that allow the se
 
 Often the sender of a spoofed email will use a from address that you recognise in hope that you'll click on a link within the email thus satisfying their phish.
 
-<a name="network-identify-risks-spoofing-website"/>
+{#network-identify-risks-spoofing-website}
 #### Website
 ![](images/ThreatTags/difficult-common-average-severe.png)
 
@@ -100,7 +100,7 @@ Often a website is cloned that the victim visits regularly, which can even remov
 
 ![](images/HandsOnHack.png)
 
-<a name="network-identify-risks-wrongfully-trusting-the-loading-of-untrusted-web-resources"/>
+{#network-identify-risks-wrongfully-trusting-the-loading-of-untrusted-web-resources}
 ### Wrongfully Trusting the Loading of Untrusted Web Resources
 ![](images/ThreatTags/average-verywidespread-easy-moderate.png)
 
@@ -108,7 +108,7 @@ By default, the browser allows all resources from all locations to be loaded. Wh
 
 ![](images/HandsOnHack.png)
 
-<a name="network-identify-risks-tls-downgrade"/>
+{#network-identify-risks-tls-downgrade}
 ### TLS Downgrade
 ![](images/ThreatTags/average-common-average-severe.png)
 
@@ -116,7 +116,7 @@ When ever a user browses to a website, an attacker can intercept the request bef
 
 This is a danger for all websites that don't enforce TLS for every page. For example many websites are run over plain HTTP until the user wants to log-in. At which point the browser issues a request to an HTTPS resource (that's listed on an unencrypted page). These requests can easily be intercepted and downgraded to a plain HTTP request.
 
-<a name="network-identify-risks-firewall-router"/>
+{#network-identify-risks-firewall-router}
 ### Firewall/Router
 
 Routing Configurations
@@ -126,10 +126,10 @@ _Todo_
 
 * [MS Network Threats and Countermeasures](https://msdn.microsoft.com/en-us/library/ff648641.aspx#c02618429_006)
 
-<a name="network-countermeasures-spoofing"/>
+{#network-countermeasures-spoofing}
 ### Spoofing
 
-<a name="network-countermeasures-spoofing-ip"/>
+{#network-countermeasures-spoofing-ip}
 #### IP
 ![](images/ThreatTags/PreventionDIFFICULT.png)
 
@@ -137,7 +137,7 @@ Filter incoming packets (ingress) that appear to come from an internal IP addres
 Filter outgoing packets (egress) that appear to originate from an invalid local IP address.  
 Not relying on IP source address's for authentication (AKA trust relationships). I've seen this on quite a few occasions when I was younger and it didn't feel right, but I couldn't put my finger on why? Now it's obvious.
 
-<a name="network-countermeasures-spoofing-arp"/>
+{#network-countermeasures-spoofing-arp}
 #### ARP (Address Resolution Protocol)
 ![](images/ThreatTags/PreventionAVERAGE.png)
 
@@ -149,7 +149,7 @@ There's also [ArpWatch](http://linux.die.net/man/8/arpwatch) and others.
 
 Thoughts on [mitigations](http://www.jaringankita.com/blog/defense-arp-spoofing)
 
-<a name="network-countermeasures-spoofing-dns"/>
+{#network-countermeasures-spoofing-dns}
 #### DNS
 ![](images/ThreatTags/PreventionAVERAGE.png)
 
@@ -163,7 +163,7 @@ Many cache poisoning attacks can be prevented on DNS servers by being less trust
 
 Make sure your [Name Server](http://www.dnssec.net/software) supports DNSSEC.
 
-<a name="network-countermeasures-spoofing-referrer"/>
+{#network-countermeasures-spoofing-referrer}
 #### Referrer
 ![](images/ThreatTags/PreventionEASY.png)
 
@@ -171,7 +171,7 @@ Deny all access by default. Require explicit grants to specific roles for access
 
 Check the [OWASP Failure to Restrict URL Access](https://www.owasp.org/index.php/Top_10_2007-Failure_to_Restrict_URL_Access) for countermeasures and the [Guide to Authorisation](https://www.owasp.org/index.php/Guide_to_Authorization).
 
-<a name="network-countermeasures-spoofing-email-address"/>
+{#network-countermeasures-spoofing-email-address}
 #### EMail Address
 ![](images/ThreatTags/PreventionDIFFICULT.png)
 
@@ -204,7 +204,7 @@ TLS works at the transport & session layer as opposed to S/MIME at the Applicati
  * Sender Policy Framework (SPF)
  * DomainKeys Identified Mail (DKIM)
 
-<a name="network-countermeasures-spoofing-website"/>
+{#network-countermeasures-spoofing-website}
 #### Website
 ![](images/ThreatTags/PreventionAVERAGE.png)
 
@@ -222,7 +222,7 @@ tools such as free and open source [ArpON (ARP handler inspection)](http://arpon
 
 <a href="https://www.owasp.org/index.php/Top_10_2013-A3-Cross-Site_Scripting_(XSS)">OWASP Top 10 A3 Cross Site Scripting (XSS)</a>
 
-<a name="network-countermeasures-wrongfully-trusting-the-loading-of-untrusted-web-resources-csp"/>
+{#network-countermeasures-wrongfully-trusting-the-loading-of-untrusted-web-resources-csp}
 #### Content Security Policy (CSP)
 ![](images/ThreatTags/PreventionEASY.png)
 
@@ -262,7 +262,7 @@ Not to be confused with Cross Origin Resource Sharing (CORS). CORS instructs the
  _Todo: write script that performs feature detection of version 2 of the specification._
  * [W3C specification 1.1](http://www.w3.org/TR/2014/WD-CSP11-20140211/). Most browsers currently [support](http://caniuse.com/contentsecuritypolicy) this version. IE 11 has partial support.
 
-<a name="network-countermeasures-wrongfully-trusting-the-loading-of-untrusted-web-resources-sri"/>
+{#network-countermeasures-wrongfully-trusting-the-loading-of-untrusted-web-resources-sri}
 #### Sub-resource Integrity (SRI)
 ![](images/ThreatTags/PreventionEASY.png)
 
@@ -289,10 +289,10 @@ Tools such as openssl and the standard sha[256|512]sum programmes normally suppl
 * [Slide Deck](https://speakerdeck.com/fmarier/integrity-protection-for-third-party-javascript) from Francois Marier. Covering other headers also
 * [W3C specification](http://www.w3.org/TR/SRI/)
 
-<a name="network-countermeasures-tls-downgrade"/>
+{#network-countermeasures-tls-downgrade}
 ### TLS Downgrade
 
-<a name="network-countermeasures-tls-downgrade-hsts"/>
+{#network-countermeasures-tls-downgrade-hsts}
 #### HTTP Strict Transport Security (HSTS)
 ![](images/ThreatTags/PreventionEASY.png)
 
@@ -315,7 +315,7 @@ Welcome to [HSTS Preload](#user-content-network-countermeasures-tls-downgrade-hs
 
 [Online Certificate Status Protocol (OCSP)](CertificateRevocation#initiative-2-online-certificate-status-protocol-ocsp) is very similar to HSTS, but at the X.509 certificate level.
 
-<a name="network-countermeasures-tls-downgrade-hsts-preload"/>
+{#network-countermeasures-tls-downgrade-hsts-preload}
 #### HTTP Strict Transport Security (HSTS) Preload
 ![](images/ThreatTags/PreventionEASY.png)
 
@@ -325,7 +325,7 @@ In order to have your domain added to the browsers preload list, submit it [here
 
 [OCSP Must-Staple](CertificateRevocation#initiative-4-fix-to-the-ocsp-stapling-problem) is very similar to HSTS Preload, but at the X.509 certificate level.
 
-<a name="network-countermeasures-firewall-router"/>
+{#network-countermeasures-firewall-router}
 ### Firewall/Router
 I don't trust commercial proprietary routers. I've seen too many vulnerabilities in them to take them seriously for any network I have control of. Yes open source hardware and software routers can and do have vulnerabilities, but they can be patched. There are a few good choices here. Some of which also come with enterprise support if you want it. This means the software and the hardware, if you choose to obtain the hardware as well is open to inspection. The vendor also supplies regular firmware updates which is crucial for there to be any hope of having a system that in some way resembles a device that places a priority on your networks security.
 
@@ -358,7 +358,7 @@ _Todo_ document others.
 <a name="network-risks-that-solution-causes-wrongfully-trusting-the-loading-of-untrusted-web-resources"/>
 ### Wrongfully Trusting the Loading of Untrusted Web Resources
 
-<a name="network-risks-that-solution-causes-wrongfully-trusting-the-loading-of-untrusted-web-resources-csp"/>
+{#network-risks-that-solution-causes-wrongfully-trusting-the-loading-of-untrusted-web-resources-csp}
 #### Content Security Policy (CSP)
 
 Trusting the (all supported) browser(s) to do the right thing.  
@@ -368,7 +368,7 @@ Take care in making sure all requests are to HTTPS URLs. You could also automate
 
 Make sure your web server only ever responds over HTTPS, including the very first response.
 
-<a name="network-risks-that-solution-causes-wrongfully-trusting-the-loading-of-untrusted-web-resources-sri"/>
+{#network-risks-that-solution-causes-wrongfully-trusting-the-loading-of-untrusted-web-resources-sri}
 #### Sub-resource Integrity (SRI)
 
 Similar to the above with trusting the browser to support the SRI header. All requests should be made over HTTPS. The server should not respond to any requests for unencrypted data.
@@ -377,17 +377,17 @@ Take care in making sure all requests are to HTTPS URLs. You could also automate
 
 Make sure your web server only ever responds over HTTPS, including the very first response.
 
-<a name="network-risks-that-solution-causes-tls-downgrade"/>
+{#network-risks-that-solution-causes-tls-downgrade}
 ### TLS Downgrade
 
-<a name="network-risks-that-solution-causes-tls-downgrade-hsts"/>
+{#network-risks-that-solution-causes-tls-downgrade-hsts}
 #### HTTP Strict Transport Security (HSTS)
 
 Unless the browsers know about your domain and have it added to their HSTS Preload list, then the connection is still not safe.
 
 Make sure your web server only ever responds over HTTPS, including the very first response.
 
-<a name="network-risks-that-solution-causes-tls-downgrade-hsts-preload"/>
+{#network-risks-that-solution-causes-tls-downgrade-hsts-preload}
 #### HTTP Strict Transport Security (HSTS) Preload
 
 Again your trusting the browser.

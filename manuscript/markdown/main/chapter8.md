@@ -14,7 +14,7 @@ Go through same process as we did at the [top level](#2-ssm-identify-risks), but
 * [MS Securing Your Web Server](https://msdn.microsoft.com/en-us/library/ff648653.aspx) This is Windows specific, but does offer some insight into technology agnostic risks and countermeasures.
 * [MS Securing Your Application Server](https://msdn.microsoft.com/en-us/library/ff648657.aspx) As above, Microsoft specific, but does provide some ideas for vendor agnostic concepts
 
-<a name="vps-identify-risks-forfeit-control-thus-security"/>
+{#vps-identify-risks-forfeit-control-thus-security}
 ### Forfeit Control thus Security
 ![](images/ThreatTags/average-widespread-average-severe.png)
 
@@ -30,7 +30,7 @@ In terms of security, unless your provider is [Swiss](http://www.computerweekly.
 * \> distribution = > attack surface. Where is your data? Where are your VM images running from? Further distributed on iSCSI targets? Where are the targets?
 * Your provider knows little (at best) about your domain, how you operate, or what you have running on their system(s). How are they supposed to protect you if they have no knowledge of your domain?
 
-<a name="vps-identify-risks-system-compromise"/>
+{#vps-identify-risks-system-compromise}
 ### System Compromise
 
 This is pretty much a blanket heading. It really needs to be broken down more.  
@@ -41,7 +41,7 @@ _Todo_
 * [MS Securing Your Web Server](https://msdn.microsoft.com/en-us/library/ff648653.aspx) This is Microsoft specific, but does offer some insight into technology agnostic risks and countermeasures
 * [MS Securing Your Application Server](https://msdn.microsoft.com/en-us/library/ff648657.aspx) As above, Microsoft specific, but does provide some ideas for vendor agnostic concepts
 
-<a name="vps-countermeasures-forfeit-control-thus-security"/>
+{#vps-countermeasures-forfeit-control-thus-security}
 ### Forfeit Control thus Security
 ![](images/ThreatTags/PreventionEASY.png)
 
@@ -96,7 +96,7 @@ There are often a few services you can [disable](http://blog.binarymist.net/2014
 and make sure you can restore from them. Yes it's extra work, but work that will be invaluable if those backups don't restore.  
 Also consider setting up automatic updates.
 
-<a name="host-intrusion-detection-systems-hids"/>
+{#host-intrusion-detection-systems-hids}
 ### Host Intrusion Detection Systems (HIDS)
 ![](images/ThreatTags/PreventionAVERAGE.png)
 

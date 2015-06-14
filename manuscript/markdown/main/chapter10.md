@@ -185,22 +185,22 @@ The unchangeable vulnerabilities are:
 
 &nbsp;
 
-<a name="web-application-identify-risks-lack-of-input-sanitisation"/>
+{#web-application-identify-risks-lack-of-input-sanitisation}
 ### Lack of Input Sanitisation
 ![](images/ThreatTags/easy-common-average-severe.png)
 
-<a name="web-application-identify-risks-buffer-overflows"/>
+{#web-application-identify-risks-buffer-overflows}
 #### Buffer Overflows
 
 _Todo_
 <!--- https://msdn.microsoft.com/en-us/library/ff648641.aspx#c02618429_008 -->
 
-<a name="web-application-identify-risks-cross-site-scripting"/>
+{#web-application-identify-risks-cross-site-scripting}
 #### Cross-Site Scripting (XSS)
 
 _Todo_
 
-<a name="web-application-identify-risks-sqli"/>
+{#web-application-identify-risks-sqli}
 #### SQLi
 
 ![](images/HandsOnHack.png)
@@ -208,51 +208,51 @@ _Todo_
  One of the simplest and quickest vulnerabilities to fix, yet it's still top of the hit lists.  
  Lets hammer this home some more.
 
-<a name="web-application-identify-risks-command-injection"/>
+{#web-application-identify-risks-command-injection}
 #### Command Injection
 
 ![](images/HandsOnHack.png)
 
-<a name="web-application-identify-risks-ldap-injection"/>
+{#web-application-identify-risks-ldap-injection}
 #### LDAP Injection
 
 _Todo_
 
-<a name="web-application-identify-risks-xpath-injection"/>
+{#web-application-identify-risks-xpath-injection}
 #### XPath Injection
 
 _Todo_
 
-<a name="web-application-identify-risks-xquery-injection"/>
+{#web-application-identify-risks-xquery-injection}
 #### XQuery Injection
 
 _Todo_
 
-<a name="web-application-identify-risks-xslt-injection"/>
+{#web-application-identify-risks-xslt-injection}
 #### XSLT Injection
 
 _Todo_
 
-<a name="web-application-identify-risks-xml-injection"/>
+{#web-application-identify-risks-xml-injection}
 #### XML Injection
 
 _Todo_
 
-<a name="web-application-identify-risks-lack-of-authentication"/>
+{#web-application-identify-risks-lack-of-authentication}
 ### Lack of Authentication
 
 _Todo_  
 _Todo_  
 ...
 
-<a name="web-application-identify-risks-cryptography-on-the-client"/>
+{#web-application-identify-risks-cryptography-on-the-client}
 ### Cryptography on the Client (AKA Untrusted Crypto)
 
 * Untrusted Crypto (Web Crypto API). Is this really a good idea? _Todo_
  * [https://www.hackinparis.com/node/309](https://www.hackinparis.com/node/309)
  * [http://tonyarcieri.com/whats-wrong-with-webcrypto](http://tonyarcieri.com/whats-wrong-with-webcrypto)
 
-<a name="web-application-identify-risks-consuming-free-and-open-source"/>
+{#web-application-identify-risks-consuming-free-and-open-source}
 ### Consuming Free and Open Source
 ![](images/ThreatTags/average-widespread-difficult-moderate.png)
 
@@ -272,7 +272,7 @@ See Justin Searls [talk](http://blog.testdouble.com/posts/2014-12-02-the-social-
 
 * [MS Application Threats and Countermeasures](https://msdn.microsoft.com/en-us/library/ff648641.aspx#c02618429_008)
 
-<a name="web-application-countermeasures-lack-of-input-sanitisation"/>
+{#web-application-countermeasures-lack-of-input-sanitisation}
 ### Lack of Input Sanitisation
 ![](images/ThreatTags/PreventionAVERAGE.png)
 
@@ -282,17 +282,17 @@ See Justin Searls [talk](http://blog.testdouble.com/posts/2014-12-02-the-social-
 * I cover input sanitisation [here](http://blog.binarymist.net/2012/11/04/sanitising-user-input-from-browser-part-1/)
 * Well structured data, like dates, social security numbers, zip codes, e-mail addresses, etc. then the developer should be able to define a very strong validation pattern
 
-<a name="web-application-countermeasures-buffer-overflows"/>
+{#web-application-countermeasures-buffer-overflows}
 #### Buffer Overflows
 
 _Todo_
 
-<a name="web-application-countermeasures-cross-site-scripting"/>
+{#web-application-countermeasures-cross-site-scripting}
 #### Cross-Site Scripting (XSS)
 
 _Todo_
 
-<a name="web-application-countermeasures-sqli"/>
+{#web-application-countermeasures-sqli}
 #### SQLi
 
 There are a few options here:
@@ -301,50 +301,50 @@ There are a few options here:
 * Consider using Stored Procedures
 * Read up on the [OWASP SQLi Prevention Cheat Sheet](https://www.owasp.org/index.php/SQL_Injection_Prevention_Cheat_Sheet)
 
-<a name="web-application-countermeasures-command-injection"/>
+{#web-application-countermeasures-command-injection}
 #### Command Injection
 
 On top of the points mentioned above under [Lack of Input Sanitisation](#web-application-countermeasures-lack-of-input-sanitisation)
 [This article](http://www.golemtechnologies.com/articles/shell-injection) is quite good.
 
-<a name="web-application-countermeasures-ldap-injection"/>
+{#web-application-countermeasures-ldap-injection}
 #### LDAP Injection
 
 _Todo_
 
-<a name="web-application-countermeasures-xpath-injection"/>
+{#web-application-countermeasures-xpath-injection}
 #### XPath Injection
 
 _Todo_
 
-<a name="web-application-countermeasures-xquery-injection"/>
+{#web-application-countermeasures-xquery-injection}
 #### XQuery Injection
 
 _Todo_
 
-<a name="web-application-countermeasures-xslt-injection"/>
+{#web-application-countermeasures-xslt-injection}
 #### XSLT Injection
 
 _Todo_
 
-<a name="web-application-countermeasures-xml-injection"/>
+{#web-application-countermeasures-xml-injection}
 #### XML Injection
 
 _Todo_
 
-<a name="web-application-countermeasures-lack-of-authentication"/>
+{#web-application-countermeasures-lack-of-authentication}
 ### Lack of Authentication
 
 _Todo_  
 _Todo_   
 ...
 
-<a name="web-application-countermeasures-cryptography-on-the-client"/>
+{#web-application-countermeasures-cryptography-on-the-client}
 ### Cryptography on the Client (AKA Untrusted Crypto)
 
 _Todo_
 
-<a name="web-application-countermeasures-consuming-free-and-open-source"/>
+{#web-application-countermeasures-consuming-free-and-open-source}
 ### Consuming Free and Open Source
 ![](images/ThreatTags/PreventionEASY.png)
 

@@ -8,7 +8,7 @@ See [VPS](#vps), as it has a lot of similarities due to the fact that in many ca
 ## 1. SSM Asset Identification
 Take results from [higher level Asset Identification](#1-ssm-asset-identification). Remove any that are not applicable. Add any newly discovered.
 
-<a name="cloud-identify-risks"/>
+{#cloud-identify-risks}
 ## 2. SSM Identify Risks
 Go through same process as we did at the [top level](#2-ssm-identify-risks), but for your VPS(s).
 
