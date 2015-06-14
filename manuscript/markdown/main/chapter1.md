@@ -43,7 +43,6 @@ Assets will often emerge as you progress through the following steps.
   ![](images/LikelihoodAndImpact.gif)
 
 {#ms-5-document-the-threats}
-{#owasp-risk-rating-methodology}
 * [MS 5. Document the Threats](https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_010)
 * [OWASP Risk Rating Methodology](https://www.owasp.org/index.php/OWASP_Risk_Rating_Methodology) Used in my talk ["Does Your Cloud Solution Look Like a Mushroom"](https://speakerdeck.com/binarymist/does-your-cloud-solution-look-like-a-mushroom) on slides
   * Likelihood "Threat Agent Factors"
@@ -54,7 +53,6 @@ Assets will often emerge as you progress through the following steps.
 {#intel-threat-agent-library}
 and the [Intel Threat Agent Library](http://www.sbs.ox.ac.uk/cybersecurity-capacity/system/files/Intel%20-%20Threat%20Agent%20Library%20Helps%20Identify%20Information%20Security%20Risks.pdf)
 
-{#owasp-ranking-of-threats}
 {#ms-6-rate-the-threats}
 * [OWASP Threat Analysis](https://www.owasp.org/index.php/Application_Threat_Modeling#Threat_Analysis)
 * [OWASP Ranking of Threats](https://www.owasp.org/index.php/Application_Threat_Modeling#Ranking_of_Threats)

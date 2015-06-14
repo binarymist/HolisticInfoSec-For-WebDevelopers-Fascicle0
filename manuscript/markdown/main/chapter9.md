@@ -39,7 +39,7 @@ Telling your target that the MAC address it associates with a particular legitim
 
 Taking the IP spoofing attack further. The MitM sends out ARP replies across the LAN to the target, telling it that the legitimate MAC address that the target associates with the MitM box has now changed to say the routers IP address. This way when the target wants to send a message to say the router, it looks up its ARP table for the routers IP address in order to find its MAC address and now gets the MitM MAC address for the routers IP address, thus the targets ARP cache is said to be poisoned with the MitM MAC address. The target goes ahead and sends its messages to the MitM box which can do what ever it likes with the data. Choose to drop the message or to forward it on to the router in its original or altered state.  
 This attack only works on a LAN.  
-The attack is often used as a component of larger attacks, harvesting credentials, cookies, CSRF tokens, hijacking. Even using TLS (in many cases TLS can be [downgraded](network-identify-risks-tls-downgrade)). 
+The attack is often used as a component of larger attacks, harvesting credentials, cookies, CSRF tokens, hijacking. Even using TLS (in many cases TLS can be [downgraded](#network-identify-risks-tls-downgrade)). 
 
 ![](images/HandsOnHack.png)
 
@@ -308,14 +308,14 @@ Trust the browser to do something to stop these **downgrades**.
 
 By using the HSTS header, you're telling the browser that your website should never be reached over plain HTTP.  
 There is however still a problem with this. The very first request for the websites page. At this point the browser has no idea about HSTS because it still hasn't fetched that first page that will come with the header. Once the browser does receive the header, if it does, it records this information against the domain.  
-Welcome to [HSTS Preload](#user-content-network-countermeasures-tls-downgrade-hsts-preload)
+Welcome to [HSTS Preload](#network-countermeasures-tls-downgrade-hsts-preload)
 
 * [Another Slide Deck](https://speakerdeck.com/fmarier/integrity-protection-for-third-party-javascript) from Francois Marier. Also covering HTTP Strict Transport Security (HSTS)
-* MDN easily digestible [help](https://developer.mozilla.org/en-US/docs/Web/Security/CSP) on using HSTS
+* MDN easily digestible [help](https://developer.mozilla.org/en-US/docs/Web/Security/HTTP_strict_transport_security) on using HSTS
 * Easy Reading: [OWASP](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security)
 * [IETF specification](https://tools.ietf.org/html/draft-ietf-websec-strict-transport-sec-14). Most browsers currently have support. IE < 12 doesn't. 12 is [expected to](http://blogs.msdn.com/b/ie/archive/2015/02/16/http-strict-transport-security-comes-to-internet-explorer.aspx).
 
-[Online Certificate Status Protocol (OCSP)](CertificateRevocation#initiative-2-online-certificate-status-protocol-ocsp) is very similar to HSTS, but at the X.509 certificate level.
+[Online Certificate Status Protocol (OCSP)](https://github.com/binarymist/HolisticInfoSec-For-WebDevelopers/wiki/CertificateRevocation#initiative-2-online-certificate-status-protocol-ocsp) is very similar to HSTS, but at the X.509 certificate level.
 
 {#network-countermeasures-tls-downgrade-hsts-preload}
 #### HTTP Strict Transport Security (HSTS) Preload
@@ -325,7 +325,7 @@ This includes a list that browsers have with any domains that have been submitte
 
 In order to have your domain added to the browsers preload list, submit it [here](https://hstspreload.appspot.com/).
 
-[OCSP Must-Staple](CertificateRevocation#initiative-4-fix-to-the-ocsp-stapling-problem) is very similar to HSTS Preload, but at the X.509 certificate level.
+[OCSP Must-Staple](https://github.com/binarymist/HolisticInfoSec-For-WebDevelopers/wiki/CertificateRevocation#initiative-4-fix-to-the-ocsp-stapling-problem) is very similar to HSTS Preload, but at the X.509 certificate level.
 
 {#network-countermeasures-firewall-router}
 ### Firewall/Router
@@ -364,7 +364,7 @@ _Todo_ document others.
 #### Content Security Policy (CSP)
 
 Trusting the (all supported) browser(s) to do the right thing.  
-Don't. Remember defence in depth. Expect each layer to fail, but do your best to make sure it doesn't. Check the likes of the OWASP <a href="https://www.owasp.org/index.php/Top_10_2013-A3-Cross-Site_Scripting_(XSS)">How Do I Prevent Cross-Site Scripting (XSS)</a> for taking the responsibility yourself rather than deferring to trust the clients browser.
+Don't. Remember defence in depth. Expect each layer to fail, but do your best to make sure it doesn't. Check the likes of the OWASP (How Do I Prevent Cross-Site Scripting)[https://www.owasp.org/index.php/Top_10_2013-A3-Cross-Site_Scripting_(XSS)] for taking the responsibility yourself rather than deferring to trust the clients browser.
 
 Take care in making sure all requests are to HTTPS URLs. You could also automate this as part of your linting procedure or on a pre-commit hook on source control.
 

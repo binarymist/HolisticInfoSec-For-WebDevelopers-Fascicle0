@@ -18,8 +18,8 @@ Take results from [higher level Asset Identification](#ssm-asset-identification)
 ## 2. SSM Identify Risks
 Risks based on the failures of people present a very different set of attack vectors than any others mentioned in this material. People are both complex, complicated and our personalities are full of faults just waiting to be compromised, thus the approach at finding vulnerabilities is quite different.  
 You can still use some of the processes from [2. SSM Identify Risks](#ssm-identify-risks), but the outcomes can look quite different.  
-I find the [Threat agents cloud](#threat-agents) and [Likelihood and impact](#likelihood-and-impact) diagrams still quite useful. Also [MS 5. Document the Threats](#ms-5-document-the-threats), [OWASP Risk Rating Methodology](#owasp-risk-rating-methodology) and the [intel-threat-agent-library](#intel-threat-agent-library) as they're technology agnostic.  
-[OWASP Ranking of Threats](#owasp-ranking-of-threats), [MS 6. Rate the Threats](#ms-6-rate-the-threats)  and DREAD to a degree are useful.
+I find the [Threat agents cloud](#threat-agents) and [Likelihood and impact](#likelihood-and-impact) diagrams still quite useful. Also [MS 5. Document the Threats](#ms-5-document-the-threats), [OWASP Risk Rating Methodology](#ms-5-document-the-threats) and the [intel-threat-agent-library](#intel-threat-agent-library) as they're technology agnostic.  
+[OWASP Ranking of Threats](#ms-6-rate-the-threats), [MS 6. Rate the Threats](#ms-6-rate-the-threats)  and DREAD to a degree are useful.
 
 People are the strongest point in a security process, they are often also the weakest.
 

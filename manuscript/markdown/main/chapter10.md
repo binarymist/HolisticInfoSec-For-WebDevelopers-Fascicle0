@@ -28,23 +28,23 @@ There are a couple of aspects I'd like to focus on here. You can simply continue
 2. Add **security focused BDD/TDD/ATDD** tests.
  This is the same amount of work as any other automated TDD, but it has the huge benefit of bringing the finding of security faults from where it's very expensive to fix:  
 
-   ![](images/CostOfChange.png)  
+    ![](images/CostOfChange.png)  
 
     to where it's the cheapest possible place to fix:
 
-   ![](images/CostOfChange-WithSTDD.png)  
+    ![](images/CostOfChange-WithSTDD.png)  
 
 &nbsp;
 
 1. Continuing No. 1 from above: [OWASP ZAP](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project) (which also comes [pre-installed on Kali Linux](http://blog.binarymist.net/2014/03/29/up-and-running-with-kali-linux-and-friends/#zap) ) is a particularly useful tool for SBDD and regression testing. Because it not only provides a manual tool similar to the likes of Burp Suite + with many other features. ZAP also has the ability to run as a HTTP proxy:
-  1. You can run ZAP manually then through the menu Tools -> Options... -> API turn the HTTP API on
-  2. Run ZAP from the command line using the -daemon flag
-
-        owasp-zap -daemon
+    1. You can run ZAP manually then through the menu Tools -> Options... -> API turn the HTTP API on
+    2. Run ZAP from the command line using the -daemon flag
+        {linenos=off}
+            owasp-zap -daemon
 
     You can then access the API like this:  
-
-        curl http://localhost:8080 # Providing ZAP is listening on port 8080
+        {linenos=off}
+            curl http://localhost:8080 # Providing ZAP is listening on port 8080
 
   
     This allows us to within our Behavioural, Acceptance tests, send requests programmatically directly to the ZAP HTTP API to do what ever we could do manually with the tool against the System Under Test (SUT).
@@ -385,13 +385,13 @@ For .Net developers, there is the likes of [OWASP **SafeNuGet**](https://github.
 
 [WAFs](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#wafs) are similar to Intrusion Prevention Systems (IPS) except they operate at the [Application Layer](http://en.wikipedia.org/wiki/Application_layer)(HTTP), Layer 7 of the [OSI model](http://en.wikipedia.org/wiki/OSI_model). So they understand the concerns of your web application at a technical level. WAFs protect your application against the likes of XSS, CSRF, SQLi, [Local File Inclusion (LFI)](https://www.owasp.org/index.php/Testing_for_Local_File_Inclusion), session hijacking, invalid requests (requests to things that don't exist (think 404)). WAFs sit in-line between a gateway and the web application. They run as a proxy. Either on the physical web server or on another network node, but only the traffic directed to the web application is inspected, where as an IDS/IPS inspects all network traffic passed through it's interfaces. WAFs use signatures that look like specific vulnerabilities to compare the network traffic targeting the web application and apply the associated rule(s) when matches are detected. Although not only limited to dealing with known signatures, some WAFs can detect and prevent attacks they haven't seen before like responses containing larger than specified payloads.
 
- 1. [Fusker](https://www.npmjs.com/package/fusker). Not sure if this is still actively maintained. At this point, there hasn't been any recent commits for about three years, but it does look like the best offering we have at this stage for NodeJS. So if your looking to help a security project out...
- 2. [express-waf](https://www.npmjs.com/package/express-waf) has recent commits, but there is only a single developer working on it when I checked.
- 3. [AppSensor](http://appsensor.org/) brings detection -> prevention to your domain level.  
- Most applications today just take attacks & fall over.  
- I've heard so many times we want our applications to fail securely when they get bad input.  
- We don't want our applications being bullied and failing securely.  
- We want them to not fail at all in production, but rather defend themselves.
+1. [Fusker](https://www.npmjs.com/package/fusker). Not sure if this is still actively maintained. At this point, there hasn't been any recent commits for about three years, but it does look like the best offering we have at this stage for NodeJS. So if your looking to help a security project out...
+2. [express-waf](https://www.npmjs.com/package/express-waf) has recent commits, but there is only a single developer working on it when I checked.
+3. [AppSensor](http://appsensor.org/) brings detection -> prevention to your domain level.
+  Most applications today just take attacks & fall over.
+  I've heard so many times we want our applications to fail securely when they get bad input.
+  We don't want our applications being bullied and failing securely.
+  We want them to not fail at all in production, but rather defend themselves.
  
     The project defines a conceptual framework and methodology that offers prescriptive guidance to implement intrusion detection and automated response into your applications. Providing attack awareness baked in, with real-time defences.
   
