@@ -25,3 +25,4 @@ The USA National Security Agency (NSA) and its UK counterpart, Government Commun
 Some resources to start with:  
 https://bluebox.com/business/bluebox-and-nist-addressing-mobile-threats/  
 https://media.blackhat.com/bh-us-12/Briefings/C_Miller/BH_US_12_Miller_NFC_attack_surface_WP.pdf
+

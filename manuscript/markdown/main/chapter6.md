@@ -89,7 +89,8 @@ Two effective ways at getting into a work premises.
 
 {#people-countermeasures-phone-calls}
 ### Phone calls
-![](images/ThreatTags/PreventionDIFFICULT.png)
+{icon=fire}
+G> ![](images/ThreatTags/PreventionDIFFICULT.png)
 
 Even the most technically and security focussed people can be played.
 
@@ -98,7 +99,8 @@ Make sure that people being trusted are trustworthy. Test them. Most attacks tar
 
 {#people-countermeasures-spoofing-caller-id}
 ### Spoofing Caller Id
-![](images/ThreatTags/PreventionDIFFICULT.png)
+{icon-fire-extinguisher}
+G> ![](images/ThreatTags/PreventionDIFFICULT.png)
 
 Don't rely on caller Id. It's untrusted. I'm not aware of any way to successfully [detect](http://www.cse.sc.edu/~mustafah/download/cid_USC_CSE_TR-2013-001.pdf) caller Id spoofing before the call is answered.
 
