@@ -15,13 +15,14 @@ This modelling process should be performed by a collection of the following peop
 
 Having this process performed by a team brings out the best in everyone. There are of course times when it's more effective to break out and work alone for a period of time.
 
+{#ssm-asset-identification}
 ## 1. SSM Asset Identification
 * [MS 1. Identify Assets](https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_006)
 * [OWASP Assets](https://www.owasp.org/index.php/Application_Threat_Modeling#Assets)
 
 Assets will often emerge as you progress through the following steps.
 
-{#2-ssm-identify-risks}
+{#ssm-identify-risks}
 ## 2. SSM Identify Risks
 * [MS 2. Create an Architecture Overview](https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_007)
 * [MS 3. Decompose the Application](https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_008)

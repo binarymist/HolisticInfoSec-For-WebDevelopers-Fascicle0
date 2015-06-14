@@ -13,11 +13,11 @@ Why is it often over-looked? A couple of reasons I can think of.
 As with many other attacks, this is often one that is a key component of a larger attack. 
 
 ## 1. SSM Asset Identification
-Take results from [higher level Asset Identification](#1-ssm-asset-identification). Remove any that are not applicable. Add any newly discovered.
+Take results from [higher level Asset Identification](#ssm-asset-identification). Remove any that are not applicable. Add any newly discovered.
 
 ## 2. SSM Identify Risks
 Risks based on the failures of people present a very different set of attack vectors than any others mentioned in this material. People are both complex, complicated and our personalities are full of faults just waiting to be compromised, thus the approach at finding vulnerabilities is quite different.  
-You can still use some of the processes from [2. SSM Identify Risks](chapter1.md/#2-ssm-identify-risks), but the outcomes can look quite different.  
+You can still use some of the processes from [2. SSM Identify Risks](#ssm-identify-risks), but the outcomes can look quite different.  
 I find the [Threat agents cloud](#threat-agents) and [Likelihood and impact](#likelihood-and-impact) diagrams still quite useful. Also [MS 5. Document the Threats](#ms-5-document-the-threats), [OWASP Risk Rating Methodology](#owasp-risk-rating-methodology) and the [intel-threat-agent-library](#intel-threat-agent-library) as they're technology agnostic.  
 [OWASP Ranking of Threats](#owasp-ranking-of-threats), [MS 6. Rate the Threats](#ms-6-rate-the-threats)  and DREAD to a degree are useful.
 
@@ -93,7 +93,7 @@ Two effective ways at getting into a work premises.
 
 Even the most technically and security focussed people can be played.
 
-Focus on the low hanging fruit. Social Engineering attacks via phone calls is definitely one of the lowest. Using the output from the various risk rating and ranking of threats from [2 SSM Identify Risks](#2-ssm-identify-risks) will help you realise this.  
+Focus on the low hanging fruit. Social Engineering attacks via phone calls is definitely one of the lowest. Using the output from the various risk rating and ranking of threats from [2 SSM Identify Risks](#ssm-identify-risks) will help you realise this.  
 Make sure that people being trusted are trustworthy. Test them. Most attacks target trusted people because they have something of value. Make sure the amount of value they have access to is in proportion to how trustworthy they actually are. Don't assume. Educate (train) and test employees. Make sure they are well compensated. Do what ever it takes to keep their levels of passion and engagement high. People with these qualities will be far more likely to succeed in recognising and warding off attacks.
 
 {#people-countermeasures-spoofing-caller-id}

@@ -1,4 +1,4 @@
-{#web-application"}
+{#web-application}
 # Web Applications
 
 ![10,000' view of Web Application Security](images/10000WebApp.gif)
@@ -155,10 +155,10 @@ In many cases you can implement your cross cutting code contracts using AOP. Thi
 
 
 ## 1. SSM Asset Identification
-Take results from [higher level Asset Identification](#1-ssm-asset-identification). Remove any that are not applicable. Add any newly discovered.
+Take results from [higher level Asset Identification](#ssm-asset-identification). Remove any that are not applicable. Add any newly discovered.
 
 ## 2. SSM Identify Risks
-Go through same process as we did at the [top level](#2-ssm-identify-risks), but for Web Application.
+Go through same process as we did at the [top level](#ssm-identify-risks), but for Web Application.
 
 * [MS Application Threats and Countermeasures](https://msdn.microsoft.com/en-us/library/ff648641.aspx#c02618429_008)
 * _Todo_ Exploit WebRTC

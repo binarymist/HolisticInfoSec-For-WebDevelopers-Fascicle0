@@ -6,10 +6,10 @@
 If possible, I usually advocate bringing VPS(s) [in-house](http://blog.binarymist.net/2014/11/29/journey-to-self-hosting/) where you have control. A lot of the ideas in this section originated from a blog post of mine on [hardening Debian web servers](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/).
 
 ## 1. SSM Asset Identification
-Take results from [higher level Asset Identification](#1-ssm-asset-identification). Remove any that are not applicable. Add any newly discovered.
+Take results from [higher level Asset Identification](#ssm-asset-identification). Remove any that are not applicable. Add any newly discovered.
 
 ## 2. SSM Identify Risks
-Go through same process as we did at the [top level](#2-ssm-identify-risks), but for your VPS(s).
+Go through same process as we did at the [top level](#ssm-identify-risks), but for your VPS(s).
 
 * [MS Host Threats and Countermeasures](https://msdn.microsoft.com/en-us/library/ff648641.aspx#c02618429_007)
 * [MS Securing Your Web Server](https://msdn.microsoft.com/en-us/library/ff648653.aspx) This is Windows specific, but does offer some insight into technology agnostic risks and countermeasures.

@@ -6,10 +6,10 @@
 The area of physical security is often over looked, especially by technical people, although in most cases, it's the easiest and simplest to circumvent and also the easiest and simplest to mitigate.
 
 ## 1. SSM Asset Identification
-Take results from [higher level Asset Identification](#1-ssm-asset-identification). Remove any that are not applicable. Add any newly discovered.
+Take results from [higher level Asset Identification](#ssm-asset-identification). Remove any that are not applicable. Add any newly discovered.
 
 ## 2. SSM Identify Risks
-You can take the same process that we did at the [top level](#2-ssm-identify-risks), but abstract the ideas and then solidify them on physical components. Some of the ideas will work, some wont.
+You can take the same process that we did at the [top level](#ssm-identify-risks), but abstract the ideas and then solidify them on physical components. Some of the ideas will work, some wont.
 
 Many times physical security is good, but it's compromised by the people problem. My wife used to do a lot of commercial cleaning and every night she would come home with new stories about how people were the weakest link when it came to security. Most of the time when physical security is breached there actually is no security, because **people** have failed the design.
 
@@ -77,7 +77,7 @@ Provide Education -> Test that the education is taking effect.
 
 ![](images/ThreatTags/PreventionVERYEASY.png)
 
-Similar to [Computers Logged in and Unlocked](#computers-logged-in-and-unlocked)
+Similar to [Computers Logged in and Unlocked](#physical-identify-risks-computers-logged-in-unlocked)
 
 {#physical-countermeasures-computers-logged-in-unlocked}
 ### Computers Logged in and Unlocked

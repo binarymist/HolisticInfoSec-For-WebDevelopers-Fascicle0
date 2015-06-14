@@ -6,11 +6,11 @@
 See [VPS](#vps), as it has a lot of similarities due to the fact that in many cases your VPS may be on someone else's hardware and in their control.
 
 ## 1. SSM Asset Identification
-Take results from [higher level Asset Identification](#1-ssm-asset-identification). Remove any that are not applicable. Add any newly discovered.
+Take results from [higher level Asset Identification](#ssm-asset-identification). Remove any that are not applicable. Add any newly discovered.
 
 {#cloud-identify-risks}
 ## 2. SSM Identify Risks
-Go through same process as we did at the [top level](#2-ssm-identify-risks), but for your VPS(s).
+Go through same process as we did at the [top level](#ssm-identify-risks), but for your VPS(s).
 
 The following is an excellent set of ten must-answer questions from [DarkReading](http://www.darkreading.com/) to throw at your CSP as part of your threat modelling before (or even after) you sign their service agreement.  
 Most of these questions were already part of my [Cloud vs In-house talk](http://blog.binarymist.net/presentations-publications/#does-your-cloud-solution-look-like-a-mushroom) at Saturn before I saw them. I'd recommend using these as a basis for identifying risks that may be important for you to consider. Then you should be well armed to come up with countermeasures.

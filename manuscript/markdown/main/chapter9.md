@@ -4,10 +4,10 @@
 ![10,000' view of Network Security](images/10000Network.gif)
 
 ## 1. SSM Asset Identification
-Take results from [higher level Asset Identification](#1-ssm-asset-identification). Remove any that are not applicable. Add any newly discovered.
+Take results from [higher level Asset Identification](#ssm-asset-identification). Remove any that are not applicable. Add any newly discovered.
 
 ## 2. SSM Identify Risks
-Go through same process as we did at the [top level](#2-ssm-identify-risks), but for the network.
+Go through same process as we did at the [top level](#ssm-identify-risks), but for the network.
 
 * [MS Network Threats and Countermeasures](https://msdn.microsoft.com/en-us/library/ff648641.aspx#c02618429_006)
 
