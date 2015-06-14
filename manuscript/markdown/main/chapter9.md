@@ -364,7 +364,7 @@ _Todo_ document others.
 #### Content Security Policy (CSP)
 
 Trusting the (all supported) browser(s) to do the right thing.  
-Don't. Remember defence in depth. Expect each layer to fail, but do your best to make sure it doesn't. Check the likes of the OWASP (How Do I Prevent Cross-Site Scripting)[https://www.owasp.org/index.php/Top_10_2013-A3-Cross-Site_Scripting_(XSS)] for taking the responsibility yourself rather than deferring to trust the clients browser.
+Don't. Remember defence in depth. Expect each layer to fail, but do your best to make sure it doesn't. Check the likes of the OWASP [How Do I Prevent Cross-Site Scripting](https://www.owasp.org/index.php/Top_10_2013-A3-Cross-Site_Scripting_(XSS)) for taking the responsibility yourself rather than deferring to trust the clients browser.
 
 Take care in making sure all requests are to HTTPS URLs. You could also automate this as part of your linting procedure or on a pre-commit hook on source control.
 

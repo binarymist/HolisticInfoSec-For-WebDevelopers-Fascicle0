@@ -39,10 +39,12 @@ There are a couple of aspects I'd like to focus on here. You can simply continue
 1. Continuing No. 1 from above: [OWASP ZAP](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project) (which also comes [pre-installed on Kali Linux](http://blog.binarymist.net/2014/03/29/up-and-running-with-kali-linux-and-friends/#zap) ) is a particularly useful tool for SBDD and regression testing. Because it not only provides a manual tool similar to the likes of Burp Suite + with many other features. ZAP also has the ability to run as a HTTP proxy:
     1. You can run ZAP manually then through the menu Tools -> Options... -> API turn the HTTP API on
     2. Run ZAP from the command line using the -daemon flag
+    
         {linenos=off}
             owasp-zap -daemon
 
-    You can then access the API like this:  
+    You can then access the API like this:
+    
         {linenos=off}
             curl http://localhost:8080 # Providing ZAP is listening on port 8080
 
@@ -60,9 +62,7 @@ There are a couple of aspects I'd like to focus on here. You can simply continue
  There's also the [OWASP Secure TDD Project](https://www.owasp.org/index.php/OWASP_Secure_TDD_Project). A .Net solution. This project appears to either be abandoned or just very low activity. Feel free to offer to help though if you're a .Net developer. I'm not sure I agree with one of the opening statements: "they need to cover all tests prior development". The approach that I'd take would be to write some specification (test), execute it, (red) -> Write the smallest amount of code possible to make it pass (green) -> Add to the specification (test)(refactor). As you can see that's your red->green->refactor loop, with the smallest amount possible for each iteration.
     * Java. A couple of client projects useful for seeing how to use the ZAP API: [zap-webdriver](https://github.com/continuumsecurity/zap-webdriver), [bdd-security](https://github.com/continuumsecurity/bdd-security)
 
-  <!--- http://www.continuumsecurity.net/bdd-intro.html -->
-
-    For getting started with OWASP ZAPs API chcek the
+    For getting started with OWASP ZAPs API chcek the:
 
     * [regression testing](https://code.google.com/p/zaproxy/wiki/SecRegTests)
     * [API details](https://code.google.com/p/zaproxy/wiki/ApiDetails)
