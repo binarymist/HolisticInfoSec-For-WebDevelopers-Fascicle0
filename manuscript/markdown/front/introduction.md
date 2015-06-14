@@ -14,9 +14,7 @@ Moving much of the focus of labour intensive and costly security assessments and
 
 The processes and practices I'm going to introduce will help you reduce (the most likely to be compromised (thus removing wasted effort)) security defects at the earliest possible point in time. Right where they are introduced. Iterate on Design -> Build -> Break, at every point of the development life cycle. Including within each Sprint for each Product Backlog Item (PBI) that's pulled into work in progress (WIP). We become good at what we do by failing fast in development, fixing it, then trying again. This same strategy applies to all areas of life.
 
-> Don't wait until you're on the stage, where the cost of your mistakes are at their highest.
-
-<br>
+W> Don't wait until you're on the stage, where the cost of your mistakes are at their highest.
 
 The crux of the Bruce Schneier Sensible Security Model (SSM) can be found here.
 
