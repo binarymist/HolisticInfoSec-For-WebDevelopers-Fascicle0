@@ -27,4 +27,4 @@ Iterate on the 30,000' view, then iterate on each of the 10,000' views that are 
 Where ever you see the following fiddling devil. It means it's hands on attack demo time:
 
 {float=left}
-![](../../images/HandsOnHack.png)
+![](images/HandsOnHack.png)
