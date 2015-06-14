@@ -233,7 +233,8 @@ We do this by specifying particular response headers (more specifically directiv
 
 
 Names removed to save embarrassment. Sadly most banks don't take their web security very seriously.
-{lineons=off}
+
+{linenos=off}
     curl --head https://reputable.kiwi.bank.co.nz/
 
     Content-Security-Policy: default-src 'self' secure.reputable.kiwi.bank.co.nz;
