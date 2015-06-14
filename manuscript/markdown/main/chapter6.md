@@ -1,4 +1,4 @@
-{#people)
+{#people}
 # People
 
 ![10,000' view of People Security](images/10000People.gif)

@@ -25,7 +25,11 @@ The crux of the Bruce Schneier Sensible Security Model (SSM) can be found here.
 Iterate on the 30,000' view, then iterate on each of the 10,000' views that are applicable for your specific domain and system.
 
 I've used a similar graphic as the OWASP Top 10 uses for vulnerabilities through out the book for the risk in the following vein:  
-"Exploitability: [EASY|AVERAGE|DIFFICULT|VERY DIFFICULT], Prevalence: [VERY WIDESPREAD|WIDESPREAD|COMMON|UNCOMMON], Detectability: [DIFFICULT|AVERAGE|EASY|VERY EASY], Impact: [SEVERE|MODERATE|LOW]".  
+"Exploitability: [EASY|AVERAGE|DIFFICULT|VERY DIFFICULT],
+Prevalence: [VERY WIDESPREAD|WIDESPREAD|COMMON|UNCOMMON],
+Detectability: [DIFFICULT|AVERAGE|EASY|VERY EASY],
+Impact: [SEVERE|MODERATE|LOW]".  
+
 Then for the countermeasures again following OWASP's lead:
 "Prevention: [DIFFICULT|AVERAGE|EASY|VERY EASY]".
 

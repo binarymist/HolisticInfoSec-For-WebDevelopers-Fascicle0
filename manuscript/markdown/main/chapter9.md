@@ -234,17 +234,17 @@ We do this by specifying particular response headers (more specifically directiv
 
 Names removed to save embarrassment. Sadly most banks don't take their web security very seriously.
 {lineons=off}
-   curl --head https://reputable.kiwi.bank.co.nz/
+    curl --head https://reputable.kiwi.bank.co.nz/
 
-   Content-Security-Policy: default-src 'self' secure.reputable.kiwi.bank.co.nz;
-   connect-src 'self' secure.reputable.kiwi.bank.co.nz;
-   frame-src 'self' secure.reputable.kiwi.bank.co.nz player.vimeo.com;
-   img-src 'self' secure.reputable.kiwi.bank.co.nz *.g.doubleclick.net www.google.com www.google.co.nz www.google-analytics.com seal.entrust.net;
-   object-src 'self' secure.reputable.kiwi.bank.co.nz seal.entrust.net;
-   # In either case, authors SHOULD NOT include either 'unsafe-inline' or data: as valid sources in their policies. Both enable XSS attacks by allowing code to be included directly in the document itself
-   # unsafe-eval should go without saying
-   script-src 'self' 'unsafe-eval' 'unsafe-inline' secure.reputable.kiwi.bank.co.nz seal.entrust.net www.googletagmanager.com www.googleadservices.com www.google-analytics.com;
-   style-src 'self' 'unsafe-inline' secure.reputable.kiwi.bank.co.nz seal.entrust.net;
+    Content-Security-Policy: default-src 'self' secure.reputable.kiwi.bank.co.nz;
+    connect-src 'self' secure.reputable.kiwi.bank.co.nz;
+    frame-src 'self' secure.reputable.kiwi.bank.co.nz player.vimeo.com;
+    img-src 'self' secure.reputable.kiwi.bank.co.nz *.g.doubleclick.net www.google.com www.google.co.nz www.google-analytics.com seal.entrust.net;
+    object-src 'self' secure.reputable.kiwi.bank.co.nz seal.entrust.net;
+    # In either case, authors SHOULD NOT include either 'unsafe-inline' or data: as valid sources in their policies. Both enable XSS attacks by allowing code to be included directly in the document itself
+    # unsafe-eval should go without saying
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' secure.reputable.kiwi.bank.co.nz seal.entrust.net www.googletagmanager.com www.googleadservices.com www.google-analytics.com;
+    style-src 'self' 'unsafe-inline' secure.reputable.kiwi.bank.co.nz seal.entrust.net;
 
 
 
@@ -272,7 +272,7 @@ Provides the browser with the ability to verify that fetched resources (the actu
 How it plays out:  
 Requested resources also have an attribute `integrity` with the cryptographic hash of the expected resource. The browser checks the actual hash against the expected hash. If they don't match the requested resource will be blocked.
 
-{lineons=off}
+{linenos=off}
     <script src="https://example.com/example-framework.js"
         integrity="sha256-C6CB9UYIS9UJeqinPHWTHVqh/E1uhG5Twh+Y5qFQmYg="
         crossorigin="anonymous"></script>
@@ -299,6 +299,7 @@ Tools such as openssl and the standard sha[256|512]sum programmes normally suppl
 
 Trust the browser to do something to stop these **downgrades**.
 
+{linenos=off}
     curl --head https://reputable.kiwi.bank.co.nz/
     
     Strict-Transport-Security: max-age=31536000
