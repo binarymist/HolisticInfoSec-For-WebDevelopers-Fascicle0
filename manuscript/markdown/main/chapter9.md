@@ -104,7 +104,7 @@ Often a website is cloned that the victim visits regularly, which can even remov
 {#network-identify-risks-doppelganger-domains}
 ### Doppelganger Domains
 
-Often domain consumers (people: sending emails, browsing websites, SSH'ing, etc) miss type the domain. The most common errors are leaving `.` out between the domain and sub domain. Even using incorrect country suffixes. Attackers can take advantage of this by purchasing the miss typed domains. This allows them to intercept requests with: credentials, email and other sensitive information that comes their way by unsuspecting domain consumers.
+Often domain consumers (people: sending emails, browsing websites, SSH'ing, etc) miss type the domain. The most common errors are leaving '.' out between the domain and sub domain. Even using incorrect country suffixes. Attackers can take advantage of this by purchasing the miss typed domains. This allows them to intercept requests with: credentials, email and other sensitive information that comes their way by unsuspecting domain consumers.
 
 {#network-identify-risks-doppelganger-domains-websites}
 #### Web-sites
