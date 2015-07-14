@@ -80,10 +80,12 @@ The referrer (spelled `referer`) field in HTTP requests can be intercepted and m
 ![](images/ThreatTags/easy-widespread-average-moderate.png)
 
 The act of creating and sending an email with a forged sender address.
-This is useful for spam campaigns sending large numbers of email and for social engineers often sending small numbers of email. The headers can be specified easily on the command line. The tools used essentially modify the headers: `From` and `Return-Path`.
+This is useful for spam campaigns sending large numbers of email and for social engineers often sending small numbers of email. The headers can be specified easily on the command line. The tools used essentially modify the headers: `From` and `Reply-To`.
+<!--Useful inof on the From, Reply-To and Return-Path fields http://stackoverflow.com/questions/1235534/what-is-the-behavior-difference-between-return-path-reply-to-and-from-->
+The Social Engineer Toolkit (SET) can be handy for sending emails that appear to be from someone the receiver expects to receive email from. Set is capable of doing many tasks associated with social engineering. It even provides the capability to create executable payloads that the receiver may run once opening the email. Payloads in the form of a pdf with embedded exe, which Set allows you to choose form having Set do all the work for you, or you supplying the custom payload and file format.
 
 Most people just assume that an email they've received came from the address it appears to be sent from. The Email headers are very easy to tamper with.
-Often other types of spoofing attacks are necessary in order to have the `From` and `Return-Path` set to an address that a victim recognises and trust rather than the attackers address or some other obviously obscure address.
+Often other types of spoofing attacks are necessary in order to have the `From` and `Reply-To` set to an address that a victim recognises and trusts rather than the attackers address or some other obviously obscure address.
 
 There are also [on-line services](http://www.anonymailer.net/) that allow the sending of email and specifying any from address.
 
@@ -98,6 +100,43 @@ Often the sender of a spoofed email will use a from address that you recognise i
 An attacker can clone a legitimate website (with the likes of the Social Engineering Kit (SET)) and through [social engineering](#people), phishing, email spoofing or any other number of tricks coerce a victim to browse the spoofed website. Once on the spoofed website, the attacker can harvest credentials or carry out many other types of attacks against the non-suspecting user.
 
 Often a website is cloned that the victim visits regularly, which can even remove the need for social engineering, phishing, email spoofing. The victim visits the attackers cloned website due to ARP or DNS spoofing. The attacker can do any number of things at this point. Simply harvest credentials or launch many different types of attacks. For example Subterfuge to run a plethora of attacks against the victims browser through the likes of the Metasploit Browser AutoPwn module. If >0 attacks are successful, the attacker will usually get a remote command shell to the victims system. Then simply forward them onto the legitimate website without them even being aware of the attack.
+
+{#network-identify-risks-doppelganger-domains}
+### Doppelganger Domains
+
+Often domain consumers (people: sending emails, browsing websites, SSH'ing, etc) miss type the domain. The most common errors are leaving `.` out between the domain and sub domain. Even using incorrect country suffixes. Attackers can take advantage of this by purchasing the miss typed domains. This allows them to intercept requests with: credentials, email and other sensitive information that comes their way by unsuspecting domain consumers.
+
+{#network-identify-risks-doppelganger-domains-websites}
+#### Web-sites
+![](images/ThreatTags/easy-common-average-moderate.png)
+
+Useful for social engineering users to a spoofed web-site. The attacker may not be able to spoof the DNS entries, although this is the next best thing. For example `accountsgoogle.co.nz` could look reasonably legitimate for a New Zealand user intending to sign into their legitimate google account at `accounts.google.com`. In fact at the time of writing, this domain is available. Using the methods described in the Website section to clone and host a site and convince someone to browse to it with a doppelganger domain like this is reasonably easy.
+
+![](images/accountsgoogle-available.jpg)
+
+{#network-identify-risks-doppelganger-domains-smtp}
+#### SMTP
+![](images/ThreatTags/average-common-difficult-moderate.png)
+
+1. By purchasing the doppelganger (miss typed) domains
+2. configuring the mail exchanger (MX) record
+3. setting up an SMTP server to catch all
+    1. record
+    2. modify the to address to the legitimate address
+    3. modify the from address to the doppelganger domain that the attacker owns (thus also intercepting the mail replies)
+    4. forward (essentially MITM).
+
+The attacker gleans a lot of potentially sensitive information.
+
+{#network-identify-risks-doppelganger-domains-ssh}
+#### SSH
+![](images/ThreatTags/average-common-difficult-severe.png)
+
+Less traffic, but if/when compromised, potentially much larger gains. You don't get better than shell access. Especially if they haven't disallowed root.
+
+Setup the DNS A record value to be the IP address of the attackers SSH server and the left most part of the name to be "*", so that all possible substitutions that do not exist (not just that don't have any matching records) will receive the attackers SSH server IP address. The DNS wildcard rules are complicated.
+
+An SSH server needs to be setup to record the usernames and passwords. The OpenSSH code needs to be modified in order to do this.
 
 ![](images/HandsOnHack.png)
 
@@ -177,7 +216,7 @@ Check the [OWASP Failure to Restrict URL Access](https://www.owasp.org/index.php
 #### EMail Address
 ![](images/ThreatTags/PreventionDIFFICULT.png)
 
-Spoofing of Email is hard to trace and stop.
+Spoofing of Email will only work if the victim's SMTP server does not perform reverse lookups on the hostname.
 
 Key-pair encryption helps somewhat. The headers can still be spoofed, but the message can not, thus providing secrecy and authenticity:
 
@@ -212,6 +251,29 @@ TLS works at the transport & session layer as opposed to S/MIME at the Applicati
 
 There's nothing to stop someone cloning and hosting a website. The vital part to getting someone to visit an attackers illegitimate website is to either social engineer them to visit it, or just clone a website that you know they are likely to visit. An Intranet at your work place for example. Then you will need to carry out ARP and/or DNS spoofing. Again
 tools such as free and open source [ArpON (ARP handler inspection)](http://arpon.sourceforge.net/) cover website spoofing and a lot more.
+
+{#network-countermeasures-doppelganger-domains}
+### Doppelganger Domains
+
+Purchase as many doppelganger domains related to your own domain as makes sense and that you can afford.  
+Do what the attacker does on your internal DNS server.
+
+{#network-countermeasures-doppelganger-domains-websites}
+#### Web-sites
+![](images/ThreatTags/PreventionAVERAGE.png)
+
+{#network-countermeasures-doppelganger-domains-smtp}
+#### SMTP
+![](images/ThreatTags/PreventionAVERAGE.png)
+
+Seup your own internal catch-all SMTP server to correct miss typed domains before someone else does.
+
+{#network-countermeasures-doppelganger-domains-ssh}
+#### SSH
+![](images/ThreatTags/PreventionAVERAGE.png)
+
+Don't miss type the domain.  
+Use [key pair authentication](http://blog.binarymist.net/2010/04/06/a-few-steps-to-secure-a-freenas-server/) so no passwords are exchanged.
 
 {#network-countermeasures-wrongfully-trusting-the-loading-of-untrusted-web-resources}
 ### Wrongfully Trusting the Loading of Untrusted Web Resources

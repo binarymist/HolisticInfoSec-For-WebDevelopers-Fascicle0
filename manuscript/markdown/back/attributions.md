@@ -7,7 +7,17 @@
 
 **Vulnerability advisories**  
 [kitploit.com](http://www.kitploit.com/) did a small [explanation](http://www.kitploit.com/2015/06/the-exploit-database-git-repository.html) of using the [Exploit Database](https://www.exploit-db.com/) from [Offensive Security](https://www.offensive-security.com/)
+
+
+
+## [Physical](../main/chapter3.md)
+
+
+## [IoT](../main/chapter4.md)
+
  
+ 
+
 ## [Mobile](../main/chapter5.md)
 
 **Sells cell phone tracking systems** to both corporations and governments worldwide.
@@ -47,7 +57,25 @@ Bruce Schneier: Data and Goliath: Introduction: USA National Security Agency (NS
 [http://www.washingtonpost.com/world/national-security/nsa-tracking-cellphone-locations-worldwide-snowden-documents-show/2013/12/04/5492873a-5cf2-11e3-bc56-c6ca94801fac_story.html](http://www.washingtonpost.com/world/national-security/nsa-tracking-cellphone-locations-worldwide-snowden-documents-show/2013/12/04/5492873a-5cf2-11e3-bc56-c6ca94801fac_story.html)  
 [http://www.washingtonpost.com/blogs/the-switch/wp/2013/12/10/new-documents-show-how-the-nsa-infers-relationships-based-on-mobile-location-data](http://www.washingtonpost.com/blogs/the-switch/wp/2013/12/10/new-documents-show-how-the-nsa-infers-relationships-based-on-mobile-location-data)
 
+
+## [People](../main/chapter6.md)
+
+
+## [Cloud](../main/chapter7.md)
+
+
+## [VPS](../main/chapter8.md)
+
+
+## [Network](../main/chapter9.md)
+
+**If the victim's SMTP server does not perform reverse [lookups on the hostname](http://www.social-engineer.org/framework/se-tools/computer-based/social-engineer-toolkit-set/)**, an email `from` and `reply-to` fields can be successfully spoofed.
+
+**Doppelganger Domains** An old trick brought back to light by Peter Kim's [research](http://www.wired.com/2011/09/doppelganger-domains/) involving fortune 500 companies where they intercepted 20 GB of e-mail from miss typed addresses.  
+Peter Kim discusses in "The Hacker PlayBook" about how he set-up SMTP and SSH doppelganger domains. This is an excellent book that I recommend reading.
+
 ## [Web Applications](../main/chapter10.md)
 
 **Cost of Change** curve adapted from Scott W. Ambler's article on [Examining the Agile Cost of Change Curve](http://www.agilemodeling.com/essays/costOfChange.htm), which I've used in many presentations and workshops.
+
 

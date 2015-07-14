@@ -24,7 +24,7 @@ I find the [Threat agents cloud](#threat-agents) and [Likelihood and impact](#li
 People are the strongest point in a security process, they are often also the weakest.
 
 {#people-identify-risks-phone-calls}
-### Phone calls
+### Phone Calls
 ![](images/ThreatTags/average-common-average-severe.png)
 
 With practice this can become reasonably easy to pull off, also with very little risk. Plus the social engineer (SE) can practice, practice, practice until they get the results they're looking for. If at first they don't succeed, then they can simply hangup and try again in a few days. Each attempt improving on what let them down last time.  
@@ -88,7 +88,7 @@ Two effective ways at getting into a work premises.
 ## 3. SSM Countermeasures
 
 {#people-countermeasures-phone-calls}
-### Phone calls
+### Phone Calls
 ![](images/ThreatTags/PreventionDIFFICULT.png)
 
 Even the most technically and security focussed people can be played.

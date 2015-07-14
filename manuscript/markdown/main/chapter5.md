@@ -3,6 +3,22 @@
 
 ![10,000' view of Mobile Security](images/10000Mobile.gif)
 
+_Todo_
+
+Some resources to start with:  
+https://bluebox.com/business/bluebox-and-nist-addressing-mobile-threats/  
+https://media.blackhat.com/bh-us-12/Briefings/C_Miller/BH_US_12_Miller_NFC_attack_surface_WP.pdf
+
+_Todo_
+
+## 1. SSM Asset Identification
+
+
+## 2. SSM Identify Risks
+
+Kali Linux [NetHunter](http://www.nethunter.com/) can be very useful for identifying risks in the mobile landscape. [zANTI](https://www.zimperium.com/zanti-mobile-penetration-testing) can also be [very useful](https://forums.kali.org/showthread.php?23861-Tutorial-Easy-Beef-XSS-hook).
+
+### Data Collection
 
 Verint (a USA company) sells a cell phone tracking system called [SkyLock](http://apps.washingtonpost.com/g/page/business/skylock-product-description-2013/1276/) with a subtitle of "Locate. Track. Manipulate" to both corporations and governments worldwide. SkyLock not only finds people but also tracks them over time periods.
 
@@ -19,11 +35,11 @@ There are many offerings available to allow people to spy on other individuals a
 The USA National Security Agency (NSA) and its UK counterpart, Government Communications Headquarters (GCHQ), use location data to track people.
 
 
-_Todo_
+## 3. SSM Countermeasures
 
 
-Some resources to start with:  
-https://bluebox.com/business/bluebox-and-nist-addressing-mobile-threats/  
-https://media.blackhat.com/bh-us-12/Briefings/C_Miller/BH_US_12_Miller_NFC_attack_surface_WP.pdf
+## 4. SSM Risks that Solution Causes
 
-_Todo_
+
+## 5. SSM Costs and Trade-offs
+
