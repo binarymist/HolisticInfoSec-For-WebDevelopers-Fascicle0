@@ -82,9 +82,10 @@ G> SET now hosts cloned and php file in apache web dir `/var/www/` and starts ap
 G>
 G> Now we see the cloned artefacts and the key log file `harvester_<yyyy-mm-dd HH:mm:ss.n>.txt` in `/var/www/` which will be currently empty.
 G>
-G> The victim clicks the link that was passed to them via social engineering. At this stage this is just the IP address that SET cloned and hosted your website from. Your cloned website is loaded in the victims browser. This could be any site that you know the victim has credentials for that you would like. As soon as the victim posts (as discussed above in the synopsis) SET:  
+G> The victim clicks the link that was passed to them via social engineering. At this stage this is just the IP address that SET cloned and hosted your website from. Your cloned website is loaded in the victims browser. This could be any site that you know the victim has credentials for that you would like. As soon as the victim posts (as discussed above in the synopsis) SET:
+G>
 G> 1) intercepts the request
-
+G>
 G> 2) harvests the credentials
 G>
 G> 3) writes to the harvest file
@@ -93,31 +94,17 @@ G> 4) and the page redirects to the real accounts.google.com.
 G>
 G> SET provides the ability to craft emails with spoofed from address. You just need to install and configure sendmail.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 {#people-identify-infectious-media}
 ### Infectious Media
 
 _Todo_
-<!--- Resources:
 
-http://www.social-engineer.org/framework/se-tools/computer-based/social-engineer-toolkit-set/
+%% Resources:
 
-Book: Social Engineering The Art Of Human Hacking
-   Pg 50 has good info about what people are likely to click on.-->
+%% http://www.social-engineer.org/framework/se-tools/computer-based/social-engineer-toolkit-set/
+
+%% Book: Social Engineering The Art Of Human Hacking
+%%   Pg 50 has good info about what people are likely to click on.-->
 
 {#people-identify-risks-phone-calls}
 ### Phone Calls

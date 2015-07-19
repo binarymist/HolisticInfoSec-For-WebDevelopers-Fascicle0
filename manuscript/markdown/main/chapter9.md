@@ -101,7 +101,7 @@ Often the sender of a spoofed email will use a from address that you recognise i
 <!---Todo: pg 160 of "The Hacker Playbook" could be worth demoing here-->
 An attacker can clone a legitimate website (with the likes of the Social Engineering Kit (SET)) or the Browser Exploitation Framework (BeEF) and through [social engineering](#people), phishing, email spoofing or any other number of tricks, coerce a victim to browse the spoofed website. In fact, if you clone a website that you know your victim visits regularly, then you can just do that and sit and wait for them to take the bait. Better still automote your attack so that when they do take the bait exploits are fired at them automatically. Once the victim is on the spoofed website, the attacker can harvest credentials or carry out many other types of attacks against the non-suspecting user.
 
-The victim may visit the attackers cloned website due to ARP and/or DNS spoofing. Subterfuge is handy to run a plethora of attacks against the victims browser through the likes of the Metasploit Browser AutoPwn module. If >0 attacks are successful (we've managed to install a rootkit), the attacker will usually get a remote command shell to the victims system by way of reverse or bind shell. Then simply forward them onto the legitimate website without them even being aware of the attack.
+The victim may visit the attackers cloned website due to ARP and/or DNS spoofing. Subterfuge is handy to run a plethora of attacks against the victims browser through the likes of the Metasploit Browser AutoPwn module. If >0 attacks are successful (we've managed to install a root-kit), the attacker will usually get a remote command shell to the victims system by way of reverse or bind shell. Then simply forward them onto the legitimate website without them even being aware of the attack.
 
 ![](images/HandsOnHack.png)
 
@@ -149,7 +149,7 @@ G> You can now log into the BeEF web UI.
 G>
 G> Now when the victim visits your cloned web site, the URL will look legitimate and they'll have no idea that their browser is a BeEF zombie continually asking it's master (the BeEF comms server) what to execute next.
 
-T> BeEF Can Also Clone
+T> ## BeEF Can Also Clone
 T>
 T> BeEF can also be used to clone web sites using it's REST API, but it takes more work. The below on using BeEF to do this is only if you really have to.
 T>
@@ -169,23 +169,6 @@ T> `/usr/share/beef-xss/extensions/social_engineering/web_cloner/interceptor.rb`
 T> and also modified to add new [config "hook"](http://sourceforge.net/p/piwat/WAT-Pentoo/ci/6402fce4c6966639927acb72c516edd203c41b77/tree/bin/beef/extensions/social_engineering/web_cloner/web_cloner.rb#l17),  
 T> also added to `/usr/share/beef-xss/config.yaml`.  
 T> Within the same config.yaml file `host` seems to serve two purposes. The address to access beef and where to fetch hook.js from. If I use an external address, beef only listens on the external interface (can't reach via loopback). So I added a `hook` config which is the address that the beef communications server is listening on that gets inserted into the cloned web page.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 {#network-identify-risks-doppelganger-domains}
 ### Doppelganger Domains
