@@ -34,3 +34,8 @@ Prevention: [DIFFICULT|AVERAGE|EASY|VERY EASY].
 Where ever you see the following fiddling devil. It means it's hands on attack demo time:
 
 ![](images/HandsOnHack.png)
+
+W> This is a Warning.
+
+T> This is a Tip.
+

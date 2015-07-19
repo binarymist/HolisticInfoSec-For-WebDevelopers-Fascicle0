@@ -5,6 +5,6 @@
 
 ## [People](../main/chapter6.md)
 
-[**Social Engineer**](http://www.social-engineer.org/) webiste has a plethora of excellent resources.
+[**Social Engineer**](http://www.social-engineer.org/) website has a plethora of excellent resources.
 
 

@@ -63,7 +63,7 @@ G> ## The Play
 G>
 G> Clear out the public web directory (`/var/www/`) on your Kali Linux machine. If you don't, SET will archive what's already in there.
 G>
-G> Run `setoolkit`
+G> Run `setoolkit`.
 G>
 G> Choose:  
 G> `Select: 1) Social-Engineering Attacks`
@@ -78,7 +78,7 @@ G> Enter IP address that SET listens on to capture the key log. In this case it'
 G>
 G> We clone accounts.google.com
 G>
-G> SET now hosts cloned and php file in apache web dir `/var/www/` and starts apache if it’s not already running.
+G> SET now hosts cloned and php files in the apache web dir `/var/www/` and starts apache if it’s not already running.
 G>
 G> Now we see the cloned artefacts and the key log file `harvester_<yyyy-mm-dd HH:mm:ss.n>.txt` in `/var/www/` which will be currently empty.
 G>
@@ -92,7 +92,11 @@ G> 3) writes to the harvest file
 G>
 G> 4) and the page redirects to the real accounts.google.com.
 G>
-G> SET provides the ability to craft emails with spoofed from address. You just need to install and configure sendmail.
+G> Now if you have a look in the `/var/www/harvester_<yyyy-mm-dd HH:mm:ss.n>.txt` file, you'll find the targets credentials.
+
+T> ## Crafting Emails with SET
+T>
+T> SET provides the ability to craft emails with spoofed from address. You just need to install and configure sendmail.
 
 {#people-identify-infectious-media}
 ### Infectious Media
