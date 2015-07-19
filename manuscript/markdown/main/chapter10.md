@@ -1,4 +1,4 @@
-{#web-application}
+{#web-applications}
 # Web Applications
 
 ![10,000' view of Web Application Security](images/10000WebApp.gif)
