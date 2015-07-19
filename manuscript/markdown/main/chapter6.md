@@ -61,20 +61,36 @@ I> Making the URL look more legitimate is covered in the [ARP](#network-identify
 {icon=bomb}
 G> ## The Play
 G>
-G> Clear out the public web directory (`/var/www/`) on your Kali Linux machine. G> If you don't, SET will archive what's already in there.  
-G> Run `setoolkit`  
+G> Clear out the public web directory (`/var/www/`) on your Kali Linux machine. If you don't, SET will archive what's already in there.
+G>
+G> Run `setoolkit`
+G>
 G> Choose:  
-G> `Select: 1) Social-Engineering Attacks`  
-G> `Select: 2) Website Attack Vectors`  
-G> `Select: 3) Credential Harvester Attack`  
-G> `Select: 2) Site Cloner`  
-G> Enter IP address that SET listens on to capture the key log. In this case it'll be your local IP address.  
-G> We clone accounts.google.com  
-G> SET now hosts cloned and php file in apache web dir `/var/www/` and starts apache if it’s not already running.  
-G> Now we see the cloned artefacts and the key log file `harvester_<yyyy-mm-dd HH:mm:ss.n>.txt` in `/var/www/` which will be currently empty.  
-G> Victim clicks link that was passed to them via social engineering. At this stage this is just the IP address that SET cloned and hosted your website from. Your cloned website is loaded in the victims browser.  
-G> This could be any site that you know the victim has credentials for that you would like.  
-G> As soon as the victim posts (as discussed above in the synopsis) SET intercepts the request, harvests the credentials, writes to the harvest file and the page redirects to the real accounts.google.com.  
+G> `Select: 1) Social-Engineering Attacks`
+G>
+G> `Select: 2) Website Attack Vectors`
+G>
+G> `Select: 3) Credential Harvester Attack`
+G>
+G> `Select: 2) Site Cloner`
+G>
+G> Enter IP address that SET listens on to capture the key log. In this case it'll be your local IP address.
+G>
+G> We clone accounts.google.com
+G>
+G> SET now hosts cloned and php file in apache web dir `/var/www/` and starts apache if it’s not already running.
+G>
+G> Now we see the cloned artefacts and the key log file `harvester_<yyyy-mm-dd HH:mm:ss.n>.txt` in `/var/www/` which will be currently empty.
+G>
+G> The victim clicks the link that was passed to them via social engineering. At this stage this is just the IP address that SET cloned and hosted your website from. Your cloned website is loaded in the victims browser. This could be any site that you know the victim has credentials for that you would like. As soon as the victim posts (as discussed above in the synopsis) SET:  
+G> 1) intercepts the request
+
+G> 2) harvests the credentials
+G>
+G> 3) writes to the harvest file
+G>
+G> 4) and the page redirects to the real accounts.google.com.
+G>
 G> SET provides the ability to craft emails with spoofed from address. You just need to install and configure sendmail.
 
 
@@ -96,14 +112,12 @@ G> SET provides the ability to craft emails with spoofed from address. You just 
 ### Infectious Media
 
 _Todo_
-<!---
-Resources:
+<!--- Resources:
 
 http://www.social-engineer.org/framework/se-tools/computer-based/social-engineer-toolkit-set/
 
 Book: Social Engineering The Art Of Human Hacking
-   Pg 50 has good info about what people are likely to click on.
--->
+   Pg 50 has good info about what people are likely to click on.-->
 
 {#people-identify-risks-phone-calls}
 ### Phone Calls

