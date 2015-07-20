@@ -26,6 +26,10 @@ mainmatter:
    
    markdown/main/chapter10.md
    
+   markdown/main/chapter11.md
+
+   markdown/main/chapter12.md
+   
 backmatter:
 
    markdown/back/additional-resources.md

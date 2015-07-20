@@ -50,7 +50,7 @@ Tobias Engel's [video of his presentation](https://www.youtube.com/watch?v=lQ0I5
 Nicholas Skiller's [implementation of Tobias Engel's research](http://www.ns-tech.co.uk/products/track-any-mobile/)
 
 **Many offerings available to allow people to spy** on other individuals activities and location in regards to mobile phones.  
-News story discussed in Bruce Schneie: Data and Goliath: Introduction. Along with [hellospy](http://hellospy.com/homepage.aspx?lang=en-US) Also [reported on](http://www.washingtonpost.com/business/technology/make-of-app-used-for-spying-indicted-in-virginia/2014/09/29/816b45b8-4805-11e4-a046-120a8a855cca_story.html) by Craig Timberg and Matt Zapotosky.
+News story discussed in Bruce Schneier: Data and Goliath: Introduction. Along with [hellospy](http://hellospy.com/homepage.aspx?lang=en-US) Also [reported on](http://www.washingtonpost.com/business/technology/make-of-app-used-for-spying-indicted-in-virginia/2014/09/29/816b45b8-4805-11e4-a046-120a8a855cca_story.html) by Craig Timberg and Matt Zapotosky.
 
 **Use location data to track people**  
 Bruce Schneier: Data and Goliath: Introduction: USA National Security Agency (NSA) and its UK counterpart, Government Communications Headquarters (GCHQ), use location data to track people.  

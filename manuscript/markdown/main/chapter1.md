@@ -1,6 +1,4 @@
-
-{#starting-with-the-30000-foot-view}
-# Starting with the 30,000' view
+# Starting with the 30,000' view {#starting-with-the-30000-foot-view}
 
 ![](images/30000View.gif)
 
@@ -14,15 +12,13 @@ This modelling process should be performed by a collection of the following peop
 
 Having this process performed by a team brings out the best in everyone. There are of course times when it's more effective to break out and work alone for a period of time.
 
-{#ssm-asset-identification}
-## 1. SSM Asset Identification
+## 1. SSM Asset Identification {#ssm-asset-identification}
 * [MS 1. Identify Assets](https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_006)
 * [OWASP Assets](https://www.owasp.org/index.php/Application_Threat_Modeling#Assets)
 
 Assets will often emerge as you progress through the following steps.
 
-{#ssm-identify-risks}
-## 2. SSM Identify Risks
+## 2. SSM Identify Risks {#ssm-identify-risks}
 * [MS 2. Create an Architecture Overview](https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_007)
 * [MS 3. Decompose the Application](https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_008)
 * [MS 4. Identify the Threats](https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_009)
@@ -67,12 +63,12 @@ Keep your eye on the vulnerability advisories:
 * [National Vulnerability Database](https://web.nvd.nist.gov/view/vuln/search)
 * [Exploit Database](https://www.exploit-db.com/) from Offensive Security
 
-## 3. SSM Countermeasures
+## 3. SSM Countermeasures {#ssm-countermeasures}
 * [OWASP Countermeasure Identification](https://www.owasp.org/index.php/Application_Threat_Modeling#Countermeasure_Identification)
 * [MS STRIDE provides countermeasures to identified threats](https://msdn.microsoft.com/en-us/library/ff648641.aspx#c02618429_005)
 * [MS Threats and Countermeasures](https://msdn.microsoft.com/en-us/library/ff648641.aspx)
 
-## 4. SSM Risks that Solution Causes
+## 4. SSM Risks that Solution Causes {#ssm-risks-that-solution-causes}
 
 This is really dependent on the solution(s) you discover.
 
@@ -81,7 +77,7 @@ This is really dependent on the solution(s) you discover.
 * Complacency?
 * Spending too much on technological solutions and ignoring the fact that the person on the front desk can easily be tricked to reveal information an attacker needs or lower the defences of a computer system. See the section on [People](#people).
 
-## 5. SSM Costs and Trade-offs
+## 5. SSM Costs and Trade-offs {#ssm-costs-and-trade-offs}
 I'm not here to do the work for you, but rather to help you do it.
 
 > Give a man a fish and feed him for a day. Teach a man to fish and feed him for life
