@@ -2,7 +2,7 @@
 
 To access the training (which is now behind the book), head on over to the [wiki](https://github.com/binarymist/HolisticInfoSec-For-WebDevelopers/wiki/BinaryMist-Approach-To-Threat-Modelling) to get started.
 
-The contents of the book that's currently under way is listed below.
+The contents of the book that's currently under way is listed below. The actual book can be found [here](https://leanpub.com/holistic-infosec-for-web-developers).
 
 [![BinaryMist Limited](manuscript/images/BM-DesignBuildBreak.png)](http://binarymist.net/)
 

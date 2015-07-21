@@ -1,4 +1,4 @@
-#Network {#network}
+# Network {#network}
 
 ![10,000' view of Network Security](images/10000Network.gif)
 

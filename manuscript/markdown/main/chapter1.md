@@ -60,8 +60,13 @@ and the [Intel Threat Agent Library](http://www.sbs.ox.ac.uk/cybersecurity-capac
 
 Keep your eye on the vulnerability advisories:
 
+* [Exploit Database](https://github.com/offensive-security/exploit-database) from Offensive Security
+  * [Web Front-end](https://www.exploit-db.com/)
+  * CLI (searchsploit) in Kali Linux
+* SecurityFocus [BugTraq](http://www.securityfocus.com/archive/1)
+* Rapid7 (current owner of Metasploit) also has a [database](http://www.rapid7.com/db/modules/search)
+* [NodeSecurity](https://nodesecurity.io/advisories)
 * [National Vulnerability Database](https://web.nvd.nist.gov/view/vuln/search)
-* [Exploit Database](https://www.exploit-db.com/) from Offensive Security
 
 ## 3. SSM Countermeasures {#ssm-countermeasures}
 * [OWASP Countermeasure Identification](https://www.owasp.org/index.php/Application_Threat_Modeling#Countermeasure_Identification)

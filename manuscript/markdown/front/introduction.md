@@ -16,7 +16,9 @@ The processes and practices I'm going to introduce will help you reduce (the mos
 
 W> Don't wait until you're on the stage, where the cost of your mistakes are at their highest.
 
-The crux of the Bruce Schneier Sensible Security Model (SSM) can be found here.
+When it comes to providing countermeasures to the identified risks, measuring the security posture of an application or network is the step before. The best defence against an attacker is offence. What does that mean? It means your best defence is to have someone with your best interests (generally employed or contracted by you), if we’re talking about your assets, assess the vulnerabilities of your assets and attempt to exploit them.
+
+The crux of the Bruce Schneier Sensible Security Model (SSM) can be found [here](http://www.win.tue.nl/~wstomv/quotes/beyond-fear.html).
 
 "MS" identifies a Microsoft resource. "OWASP" identifies an "Open Web Application Security Project" resource.
 

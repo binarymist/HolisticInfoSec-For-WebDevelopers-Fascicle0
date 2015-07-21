@@ -1,4 +1,3 @@
-
 {backmatter}
 
 # Attributions
@@ -7,6 +6,14 @@
 
 **Vulnerability advisories**  
 [kitploit.com](http://www.kitploit.com/) did a small [explanation](http://www.kitploit.com/2015/06/the-exploit-database-git-repository.html) of using the [Exploit Database](https://www.exploit-db.com/) from [Offensive Security](https://www.offensive-security.com/)
+
+## [Tooling Setup](#tooling-setup)
+
+**Peter Kim discusses a selection of tools** in "The Hacker Playbook" that he uses regularly. I've included them in this section as they have been found to be very useful. 
+
+**SecLists is a collection of multiple types of lists** used during security assessments. List types include usernames, passwords, URLs, sensitive data grep strings, fuzzing payloads, and many more.
+
+## [Process](#process)
 
 
 
