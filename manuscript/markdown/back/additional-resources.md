@@ -9,22 +9,22 @@
 
 #### Useful metasploit [commands](https://www.offensive-security.com/metasploit-unleashed/msfconsole-commands/)
 
-* msf > [help](https://www.offensive-security.com/metasploit-unleashed/msfconsole-commands/#help)
-* msf > [show](https://www.offensive-security.com/metasploit-unleashed/msfconsole-commands/#show)
-  * Valid options to add to show are: all, encoders, nops, exploits, payloads, auxiliary, plugins, options  
-  * Additional module specific parameters are: missing, advanced, evasion, targets, actions  
-* msf > show options
-* msf > info <module name>   https://www.offensive-security.com/metasploit-unleashed/msfconsole-commands/#info
+* `msf >` [help](https://www.offensive-security.com/metasploit-unleashed/msfconsole-commands/#help)
+* `msf >` [show](https://www.offensive-security.com/metasploit-unleashed/msfconsole-commands/#show)
+  * Valid options to add to show are: `all`, `encoders`, `nops`, `exploits`, `payloads`, `auxiliary`, `plugins`, `options`  
+  * Additional module specific parameters are: `missing`, `advanced`, `evasion`, `targets`, `actions`  
+* `msf > show options`
+* `msf > info <module name>` [info](https://www.offensive-security.com/metasploit-unleashed/msfconsole-commands/#info)
 
 #### metasploit meterpreter client commands
 
-* https://en.wikibooks.org/wiki/Metasploit/MeterpreterClient
-* https://www.offensive-security.com/metasploit-unleashed/meterpreter-basics/
+* [Meterpreter Client](https://en.wikibooks.org/wiki/Metasploit/MeterpreterClient)
+* [Meterpreter Basics](https://www.offensive-security.com/metasploit-unleashed/meterpreter-basics/)
 
 #### Using the database and workspaces in metasploit
 
-* https://www.offensive-security.com/metasploit-unleashed/using-databases/
-* http://resources.infosecinstitute.com/information-gathering-using-metasploit/
+* [Using databases](https://www.offensive-security.com/metasploit-unleashed/using-databases/)
+* [Information gathering](http://resources.infosecinstitute.com/information-gathering-using-metasploit/)
 
 ## [People](#people)
 

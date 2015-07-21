@@ -23,6 +23,8 @@ _Todo_
 
 ### Vulnerability Searching
 
+_Todo_ This is actually in chapter 1 under bob the builder. Remove from here and add.
+
    Offensive Security's Exploit Database https://www.exploit-db.com/
       and their searchsploit tool: https://github.com/offensive-security/exploit-database/blob/master/searchsploit
    Security Fucus www.securityfocus.com/bid
@@ -46,5 +48,5 @@ If I can encourage even one developer within each team to lead the charge on tak
 
 Primarily this is about significantly reducing the cost of producing quality products.
 
-_Todo_
+_Todo_  
 

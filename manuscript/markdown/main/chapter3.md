@@ -14,8 +14,8 @@ All the tools I use for penetration and security testing are free and most are a
 
 In the words of Offensive Security (Creators of Kali Linux), [Kali Linux](http://docs.kali.org/introduction/what-is-kali-linux) is an advanced Penetration Testing and Security Auditing Linux distribution. For those that are familiar with BackTrack, basically Kali is a new creation based on Debian rather than Ubuntu, with significant improvements over BackTrack.
 
-Offensive Securities Kali Linux is free and always will be. It’s also completely open (as it’s based on debian) to modification of it’s OS or programmes.  
-FHS compliant. That means the file system complies to the Linux Filesystem Hierarchy Standard  
+Offensive Security Kali Linux is free and always will be. It’s also completely open (as it’s based on debian) to modification of it’s OS or programmes.  
+FHS compliant. That means the file system complies to the Linux File-system Hierarchy Standard.  
 Wireless device support is vast. Including USB devices.  
 Forensics Mode. As with BackTrack 5, the Kali ISO also has an option to boot into the forensic mode. No drives are written to (including swap). No drives will be auto mounted upon insertion.
 
@@ -43,19 +43,19 @@ Greater than 300 security programmes packaged with the operating system. Before 
 
 To find out a little more about the application:
 
-`dpkg-query -l '*[some text you think may exist in the package name]*'`
+`dpkg-query -l '*<some text you think may exist in the package name>*'`
 
-Or if you know the package name your after:
+Or if you know the package name you're after:
 
 `dpkg -l [package name]``
 
 Want more info still?
 
-`man [package name]``
+`man [package name]`
 
 ### Kali Linux Install {#tooling-setup-kali-linux-kali-linux-install}
 
-Offensive Security (the creators of Kali Linux) provide many options for running their distribution. ISO, turn-key VMware image, [custom ARM images](https://www.offensive-security.com/kali-linux-vmware-arm-image-download/), Mobile images ([NetHunter](https://www.kali.org/kali-linux-nethunter/))
+Offensive Security (the creators of Kali Linux) provide many options for running their distribution. ISO, turn-key VMware image, [custom ARM images](https://www.offensive-security.com/kali-linux-vmware-arm-image-download/), Mobile images ([NetHunter](https://www.kali.org/kali-linux-nethunter/)).
 I've used the ISO installed on a VM guest in this setup, as I had a capable host for running this VM and the Windows VM that I setup below. I didn't want the pre-generated SSH host key, which is why I chose the ISO over the turn-key image. If you install on physical hardware, you can just skip this section and move to the "[Tools I Use](#tooling-setup-kali-linux-tools-i-use-on-kali-linux)" section.
 
 The Offensive Security team which can be found on [IRC](http://docs.kali.org/community/kali-linux-irc-channel) are also very helpful and quick to respond to package requests, etc.
@@ -69,12 +69,16 @@ The VMware and VirtualBox images were [here](https://www.offensive-security.com/
 For this install I created a new VirtualBox VM based on Debian 64.  
 Made a fixed disk of size 40GB and 4GB RAM. More RAM is helpful sometimes, but in most cases I've found 4GB to be enough.
 
-The ISO can be downloaded from [here](https://www.kali.org/downloads/) via torrent and direct download a little over 3GB.
+The ISO can be downloaded from [here](https://www.kali.org/downloads/) via torrent and direct download. A little over 3GB.
 
-you’re going to want to check the validity of the ISO or other image if that's your preference by verifying the SHA1 checksums. Now this is where the [instructions](http://docs.kali.org/introduction/download-official-kali-linux-images) can be a little confusing. You’ll need to make sure that the SHA1SUMS file that contains the specific checksum you’re going to use to verify the checksum of the image you downloaded, is in fact the authentic SHA1SUMS file. instructions say “When you download an image, be sure to download the SHA1SUMS and SHA1SUMS.gpg files that are next to the downloaded image (i.e. in the same directory on the server).”. You’ve got to read between the lines a bit here. A little further down the page has the key to where these files are. It’s buried in a wget command. Plus you have to add another directory to find them. The location was [here](http://archive.kali.org/kali-images/). Now that you’ve got these two files downloaded in the same directory, verify the SHA1SUMS.gpg signature as follows:
+you’re going to want to check the validity of the ISO (or other image if that's your preference) by verifying the SHA1 checksums. Now this is where the [instructions](http://docs.kali.org/introduction/download-official-kali-linux-images) can be a little confusing. You’ll need to make sure that the SHA1SUMS file that contains the specific checksum you’re going to use to verify the checksum of the image you downloaded, is in fact the authentic SHA1SUMS file. Instructions say on the Kali [downloads](https://www.kali.org/downloads/) page: “When you download an image, be sure to download the SHA1SUMS and SHA1SUMS.gpg files that are next to the downloaded image (i.e. in the same directory on the server).”. You’ve got to read between the lines a bit here. A little further down the page has the key to where these files are. It’s buried in a wget command. Plus you have to add another directory to find them. The location was [here](http://archive.kali.org/kali-images/). Now that you’ve got these two files downloaded in the same directory, verify the SHA1SUMS.gpg signature as follows:
 
 {linenos=off}
-    $ gpg --verify SHA1SUMS.gpg SHA1SUMS
+    gpg --verify SHA1SUMS.gpg SHA1SUMS
+
+Output:
+
+{linenos=off}
     gpg: Signature made Thu 25 Jul 2013 08:05:16 NZST using RSA key ID 7D8D0BF6
     gpg: Good signature from "Kali Linux Repository <devel@kali.org>
 
@@ -88,13 +92,15 @@ Compare the output of the following two commands. They should be the same.
 
 {linenos=off}
     # Calculate the checksum of your downloaded image file.
-    $ sha1sum [name of your downloaded image file]
+    sha1sum [name of your downloaded image file]
+
     # Print the checksum from the SHA1SUMS file for your specific downloaded image file name.
-    $ grep [name of your downloaded image file] SHA1SUMS
+    grep [name of your downloaded image file] SHA1SUMS
 
 You can refer to [the hard-disk install](http://docs.kali.org/installation/kali-linux-hard-disk-install) for running through the OS installer if you need it.
 
 Once installed, run:
+
 {linenos=off}
     apt-get update
     apt-get dist-upgrade
@@ -110,6 +116,7 @@ I now took a backup in case I needed to revert. With VirtualBox it's very easy t
 A> ## Adding Shortcuts to your Panel
 A>
 A> [Alt]+[right click]->[Add to Panel…]
+A>
 A>
 A> If your Kali install is on VirtualBox:
 A>
@@ -140,10 +147,10 @@ To install:
 2. 
     {line-numbers=off}
        git clone https://github.com/pentestgeek/smbexec/smbexec.git
-3.
+3. 
     {line-numbers=off}
        cd smbexec
-4.
+4. 
     {line-numbers=off}
        ./install.sh
 5. Choose number 1
@@ -156,9 +163,10 @@ To install:
 
 You may also need to:
 
-    {line-numbers=off}
-       ln -s /usr/bin/pth-smbclient smbexeclient
-       # For me the smbexeclient already existed, so I only needed to create the single symbolic link.
+{linenos=off}
+    ln -s /usr/bin/pth-smbclient smbexeclient
+    # For me the smbexeclient already existed,
+    # so I only needed to create the single symbolic link.
 
 #### Veil Framework {#tooling-setup-kali-linux-tools-i-use-on-kali-linux-veil-framework}
 
@@ -187,7 +195,7 @@ To install:
 6. When the install reaches the "Select Destination Directory", go with the default.
 7. Click the "Yes" when asked if you want to overwrite the existing Python files.
 8. Select the defaults for the rest of the Python install.
-9. Next us is the pywin32 setup. Press "Next" to continue.
+9. Next up is the pywin32 setup. Click "Next" to continue.
 10. Leaving the default Phthon directory location -> click "Next" -> "Next" -> "Finish"
 11. Next up is pycrypto. "Next" -> "Next" -> "Next" -> "Finish"
 
@@ -197,8 +205,8 @@ To install:
 2. Download password lists:
   * Web Search for "crackstation-human-only.txt.gz"
   * Take your pick of:
-    * https://downloads.skullsecurity.org/passwords/
-    * http://download.g0tmi1k.com/wordlists/large/
+     * https://downloads.skullsecurity.org/passwords/
+     * http://download.g0tmi1k.com/wordlists/large/
 3. Decompress any that need it.
 
 #### Peepingtom {#tooling-setup-kali-linux-tools-i-use-on-kali-linux-peepingtom}
@@ -252,71 +260,69 @@ In order to run this under the root account, you’ll need to add the following 
 
 `--user-data-dir`
 
-I like to install the following extensions: Cookies, ScriptSafe
-
 #### Chromium Extensions {#tooling-setup-kali-linux-tools-i-use-on-kali-linux-chromium-extensions}
 
-##### FoxyProxy Standard {#tooling-setup-kali-linux-tools-i-use-on-kali-linux-chromium-extensions-foxyproxy-standard}
+##### FoxyProxy Standard {#tooling-setup-kali-linux-tools-i-use-on-kali-linux-chromium-extensions-foxyproxy-standard}  
 
-Although nothing to do with Kali Linux and could possibly be in the IceWeasel add-ons section below, I’ve added it here instead as it really reduces friction with web proxy interception. FoxyProxy is a very handy add-on for both FireFox and chromium. Although it seems to have more options for FireFox, or at least they are more easily accessible. It allows you to set-up a list of proxies and then switch between them as you need. When I run chromium as a non root user I can’t change the proxy settings once the browser is running. I have to run the following command in order to set the proxy to my intermediary before run time like this:
+Really reduces friction with web proxy interception. FoxyProxy is a very handy add-on for both Chromium and FireFox. Although it seems to have more options for FireFox, or at least they are more easily accessible. It allows you to set-up a list of proxies and then switch between them as you need. When I run Chromium as a non root user I can’t change the proxy settings once the browser is running. I have to run the following command in order to set the proxy to my intermediary before run time like this:
 
 `chromium-browser --temp-profile –proxy-server=localhost:3001`
 
 Firefox is a little easier, but neither browsers allow you to build up lists of proxies and then switch them in mid flight. FoxyProxy provides a menu button, so with two clicks you can disable the add-on completely to revert to your previous settings, or select any or your predefined proxies. This is a real time saver.
 
-##### Cookies
+##### Cookies  
 
-##### EditThisCookie
+##### EditThisCookie  
 
-##### ScriptSafe
+##### ScriptSafe  
 
 Because I like to know where my JavaScript is coming from.
 
-##### SessionBuddy
+##### SessionBuddy  
 
 For storage of browser sessions and easy hydration.
 
-##### User Agent Switcher for Chrome
+##### User Agent Switcher for Chrome  
 
-##### Web Developer
+##### Web Developer  
 
 Because I'm a web developer and it has some really useful tools that provide visibility and insight.
 
-#### IceWeasel (FireFox with different Licensing) add-ons {#tooling-setup-kali-linux-tools-i-use-on-kali-linux-iceweasel-add-ons}
+#### IceWeasel (FireFox with different Licensing) add-ons {#tooling-setup-kali-linux-tools-i-use-on-kali-linux-iceweasel-add-ons}  
 
-##### FoxyProxy Standard
+##### FoxyProxy Standard  
 
-As for [chromium](#tooling-setup-kali-linux-tools-i-use-on-kali-linux-chromium-extensions-foxyproxy-standard)
+As for [Chromium](#tooling-setup-kali-linux-tools-i-use-on-kali-linux-chromium-extensions-foxyproxy-standard)
 
-##### NoScript
+##### NoScript  
 
 Because I like to know where my JavaScript is coming from.
 
-##### Web Developer
+##### Web Developer  
 
 Because I'm a web developer and it has some really useful tools that provide visibility and insight.
 
-##### HackBar
+##### HackBar  
 
 Somewhat useful for (en/de)coding (Base64, Hex, MD5, SHA-(1/256), etc), manipulating and splitting URLs
 
-##### Advanced Cookie Manager
+##### Advanced Cookie Manager  
 
-##### NoScript
+##### NoScript  
 
 Because I like to know where my JavaScript is coming from.
 
-##### SQL Inject Me
+##### SQL Inject Me  
 
-Simple and often useful for running a quick vulnerability assessment. Open source software (GPLv3) from Security Compass Labs. SQL Inject Me is a component of the Exploit-Me suite. Allows you to test all or any number of input fields on all or any of a pages forms. You just fill in the fields with valid data, then test with all the tools attacks or with the top that you’ve defined in the options menu. It then looks for database errors which are rendered into the returned HTML as a result of sending escape strings, so doesn’t cater for blind injection. You can also add remove escape strings and resulting error strings that SQL Inject Me should look for on response. The order in which each escape string can be tried can also be changed. All you need to know can be found [here](http://labs.securitycompass.com/exploit-me/sql-inject-me/sql-inject-me-faq/).
+Simple and often useful for running a quick vulnerability assessment. Open source software (GPLv3) from Security Compass Labs. SQL Inject Me is a component of the Exploit-Me suite. Allowing you to test all or any number of input fields on all or any of a pages forms. You just fill in the fields with valid data, then test with all the tools attacks or with the top that you’ve defined in the options menu. It then looks for database errors which are rendered into the returned HTML as a result of sending escape strings, so doesn’t cater for blind injection. You can also add remove escape strings and resulting error strings that SQL Inject Me should look for on response. The order in which each escape string can be tried can also be changed. All you need to know can be found [here](http://labs.securitycompass.com/exploit-me/sql-inject-me/sql-inject-me-faq/).
 
-##### XSS Me
+##### XSS Me  
 
-Simple and often useful for running a quick vulnerability assessment. Open source software (GPLv3) from Security Compass Labs. XSS Me is also a component of the Exploit-Me suite. This tool’s behaviour is very similar to SQL Inject Me (follows the POLA) which makes using the tools very easy. Both these add-ons have next to no learning curve. The level of entry is very low and I think are exactly what web developers that make excuses for not testing their own security need. The other thing is that it helps developers understand how these attacks can be carried out. XSS Me currently only tests for reflected XSS. It doesn’t attempt to compromise the security of the target system. Both XSS Me and SQL Inject Me are reconnaissance tools, where the information is the vulnerabilities found. XSS Me doesn’t support stored XSS or user supplied data from sources such as cookies, links, or HTTP headers. How effective XSS Me is in finding vulnerabilities is also determined by the list of attack strings the tool has available. Out of the box the list of XSS attack strings are derived from RSnakes collection which were donated to OWASP who now maintains it as one of their [cheat-sheets](https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet).. Multiple encodings are not yet supported, but are planned for the future. You can help to keep the collection up to date by submitting new attack strings.
+Simple and often useful for running a quick vulnerability assessment. Open source software (GPLv3) from Security Compass Labs. XSS Me is also a component of the Exploit-Me suite. This tool’s behaviour is very similar to SQL Inject Me (follows the Principle of Least Astonishment (POLA)) which makes using the tools very easy. Both these add-ons have next to no learning curve. The level of entry is very low and I think are exactly what web developers that make excuses for not testing their own security need. The other thing is that it helps developers understand how these attacks can be carried out. XSS Me currently only tests for reflected XSS. It doesn’t attempt to compromise the security of the target system. Both XSS Me and SQL Inject Me are reconnaissance tools, where the information is the vulnerabilities found. XSS Me doesn’t support stored XSS or user supplied data from sources such as cookies, links, or HTTP headers. How effective XSS Me is in finding vulnerabilities is also determined by the list of attack strings the tool has available. Out of the box the list of XSS attack strings are derived from RSnakes collection which were donated to OWASP who now maintains it as one of their [cheat-sheets](https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet).. Multiple encodings are not yet supported, but are planned for the future. You can help to keep the collection up to date by submitting new attack strings.
 
-##### Tamper Data
+##### Tamper Data  
 
-##### User Agent Switcher
+##### User Agent Switcher  
 
 
 
