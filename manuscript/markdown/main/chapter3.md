@@ -56,7 +56,7 @@ Want more info still?
 ### Kali Linux Install {#tooling-setup-kali-linux-kali-linux-install}
 
 Offensive Security (the creators of Kali Linux) provide many options for running their distribution. ISO, turn-key VMware image, [custom ARM images](https://www.offensive-security.com/kali-linux-vmware-arm-image-download/), Mobile images ([NetHunter](https://www.kali.org/kali-linux-nethunter/)).
-I've used the ISO installed on a VM guest in this setup, as I had a capable host for running this VM and the Windows VM that I setup below. I didn't want the pre-generated SSH host key, which is why I chose the ISO over the turn-key image. If you install on physical hardware, you can just skip this section and move to the "[Tools I Use](#tooling-setup-kali-linux-tools-i-use-on-kali-linux)" section.
+I've used the ISO installed on a VM guest in this setup, as I had a capable host for running this VM and the Windows VM that I setup below. I didn't want the pre-generated SSH host key, which is why I chose the ISO over the turn-key image. If you install on physical hardware, you can just skip this section and move to the "[Tools I Use](#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux)" section.
 
 The Offensive Security team which can be found on [IRC](http://docs.kali.org/community/kali-linux-irc-channel) are also very helpful and quick to respond to package requests, etc.
 
@@ -178,11 +178,11 @@ A> If your Kali install is on VirtualBox:
 A>
 A> [Windows]+[Alt]+[right click]->[Add to Panel…]
 
-#### Terminator {#tooling-setup-kali-linux-tools-i-use-on-kali-linux-terminator}
+#### Terminator {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-terminator}
 
 As I spend most of my life in a terminal, I want a good one. I've found Terminator does everything I need from a terminal. Briefly discussed [here](http://blog.binarymist.net/2013/01/19/a-decent-console-for-windows/) in my blog post. If you also like a decent terminal experience, then: `apt-get install terminator`
 
-#### Discover Scripts {#tooling-setup-kali-linux-tools-i-use-on-kali-linux-discover-scripts}
+#### Discover Scripts {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-discover-scripts}
 
 A set of shell scripts tied together in a CUI to aggregate Kali Linux information gathering tools & automate various pentesting tasks. Both passive and active options allowing you to dig up a lot of dirt on your target long before you start trying to penetrate them. So rather than getting familiar with all the recon tools, you can just get familiar with Discover Scripts.
 
@@ -191,7 +191,7 @@ A set of shell scripts tied together in a CUI to aggregate Kali Linux informatio
 3. `cd discover`
 4. `./setup.sh`
 
-#### SmbExec {#tooling-setup-kali-linux-tools-i-use-on-kali-linux-smbexec}
+#### SmbExec {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-smbexec}
 
 To install:
 
@@ -222,7 +222,7 @@ You may also need to:
     # For me the smbexeclient already existed,
     # so I only needed to create the single symbolic link.
 
-#### Veil Framework {#tooling-setup-kali-linux-tools-i-use-on-kali-linux-veil-framework}
+#### Veil Framework {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-veil-framework}
 
 I decided to clone the Veil-Framework, as it has a good collection of very useful tools. Veil-Evasion is specifically useful for Anti Virus Evasion. The homepage is [here](https://www.veil-framework.com/).  
 The Veil super project which has an install script to install all of the projects can be found [here](https://github.com/Veil-Framework/Veil).
@@ -253,7 +253,7 @@ To install:
 10. Leaving the default Phthon directory location -> click "Next" -> "Next" -> "Finish"
 11. Next up is pycrypto. "Next" -> "Next" -> "Next" -> "Finish"
 
-#### Password Lists {#tooling-setup-kali-linux-tools-i-use-on-kali-linux-password-lists}
+#### Password Lists {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-password-lists}
 
 1. `mkdir ~/Desktop/password_list`
 2. Download password lists:
@@ -263,7 +263,7 @@ To install:
     2. http://download.g0tmi1k.com/wordlists/large/
 3. Decompress any that need it.
 
-#### Peepingtom {#tooling-setup-kali-linux-tools-i-use-on-kali-linux-peepingtom}
+#### Peepingtom {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-peepingtom}
 
 1. `cd /opt/`
 2. `wget http://thehackerplaybook.com/Download/peepingtom.zip`
@@ -271,7 +271,7 @@ To install:
 4. `cd peepingtom`
 5. `chmod +x *`
 
-#### NMap Script {#tooling-setup-kali-linux-tools-i-use-on-kali-linux-nmap-script}
+#### NMap Script {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-nmap-script}
 
 Fast scanning and Smart identification.
 
@@ -280,7 +280,7 @@ https://github.com/hdm/scan-tools/blob/master/nse/banner-plus.nse
 1. `cd /usr/share/nmap/scripts`
 2. `wget https://raw.githubusercontent.com/hdm/scan-tools/master/nse/banner-plus.nse`
 
-#### PowerSploit {#tooling-setup-kali-linux-tools-i-use-on-kali-linux-powersploit}
+#### PowerSploit {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-powersploit}
 
 PowerShell scripts for post exploitation.
 
@@ -290,7 +290,7 @@ PowerShell scripts for post exploitation.
 4. `wget http://raw.github.com/obscuresec/random/master/StartListener.py`
 5. `wget http://raw.github.com/darkoperator/powershell_scripts/master/ps_encoder.py`
 
-#### BypassUAC {#tooling-setup-kali-linux-tools-i-use-on-kali-linux-bypassuac}
+#### BypassUAC {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-bypassuac}
 
 Used to bypass UAC at post exploitation, allowing us to get the system account.
 
@@ -300,23 +300,23 @@ Used to bypass UAC at post exploitation, allowing us to get the system account.
 4. `cp bypassuac/bypassuac.rb /opt/metasploit/apps/pro/msf3/scripts/meterpreter/`
 5. `mv bypassuac/uac/ /opt/metasploit/apps/pro/msf3/data/exploits/`
 
-#### OWASP SecLists {#tooling-setup-kali-linux-tools-i-use-on-kali-linux-owasp-seclists}
+#### OWASP SecLists {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-owasp-seclists}
 
 Collection of multiple types of lists used during security assessments.
 
 1. `cd /opt`
 2. `git clone http://github.com/danielmiessler/SecLists.git`
 
-#### Chromium {#tooling-setup-kali-linux-tools-i-use-on-kali-linux-chromium}
+#### Chromium {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-chromium}
 
 As a web developer I use the chromium dev tools more frequently than FireFox dev tools, although both have their strengths.  
 In order to run this under the root account, you’ll need to add the following parameter to `/etc/chromium/default` between the quotes for `CHROMIUM_FLAGS=””`
 
 `--user-data-dir`
 
-#### Chromium Extensions {#tooling-setup-kali-linux-tools-i-use-on-kali-linux-chromium-extensions}
+#### Chromium Extensions {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-chromium-extensions}
 
-##### FoxyProxy Standard {#tooling-setup-kali-linux-tools-i-use-on-kali-linux-chromium-extensions-foxyproxy-standard}
+##### FoxyProxy Standard {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-chromium-extensions-foxyproxy-standard}
 
 Really reduces friction with web proxy interception. FoxyProxy is a very handy add-on for both Chromium and FireFox. Although it seems to have more options for FireFox, or at least they are more easily accessible. It allows you to set-up a list of proxies and then switch between them as you need. When I run Chromium as a non root user I can’t change the proxy settings once the browser is running. I have to run the following command in order to set the proxy to my intermediary before run time like this:
 
@@ -342,11 +342,11 @@ For storage of browser sessions and easy hydration.
 
 Because I'm a web developer and it has some really useful tools that provide visibility and insight.
 
-#### IceWeasel (FireFox with different Licensing) add-ons {#tooling-setup-kali-linux-tools-i-use-on-kali-linux-iceweasel-add-ons}
+#### IceWeasel (FireFox with different Licensing) add-ons {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-iceweasel-add-ons}
 
 ##### FoxyProxy Standard
 
-As for [Chromium](#tooling-setup-kali-linux-tools-i-use-on-kali-linux-chromium-extensions-foxyproxy-standard)
+As for [Chromium](#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-chromium-extensions-foxyproxy-standard)
 
 ##### NoScript
 
