@@ -109,7 +109,7 @@ Install Guest Additions.
 
 As with BackTrack, the default user is “root” without the quotes. If your installing, make sure you use a decent password. Not a dictionary word or similar. It’s generally a good idea to use a mix of upper case, lower case characters, numbers and special characters and of a decent length. At the terminal, enter: `passwd` and follow the prompts.
 
-### Tools I Use In Kali Linux, Config, Etc {#tooling-setup-kali-linux-tools-i-use-in-kali-linux-config-etc}
+### Tools I Use in Kali Linux requiring config, etc {#tooling-setup-kali-linux-tools-i-use-in-kali-linux-requiring-config-etc}
 
 #### Metasploit {#tooling-setup-kali-linux-tools-i-use-in-kali-linux-config-etc-metasploit}
 
@@ -117,30 +117,37 @@ As with BackTrack, the default user is “root” without the quotes. If your in
 `ss -ant`
 2. Then start postgresql if you require [database support](#additional-resources-using-the-database-and-workspaces-in-metasploit). Which is generally quite useful:  
 `service postgresql start`  
-Followed by  
+Followed by:  
 `ss -ant`  
-If your interested in which ports are being opened.
+if your interested in which ports are being opened.
 3. Start the Metasploit service:  
 `service metasploit start`  
 4. Start the Metasploit Framework Console:  
-`msfconsole` or possibly with a resource script, `msfconsole -r <your custom resource>.rc`
+`msfconsole`  
+or possibly with a resource script:  
+`msfconsole -r <your custom resource>.rc`
 
 #### BeEF {#tooling-setup-kali-linux-tools-i-use-in-kali-linux-config-etc-beef}
 
 Check-out the recommended [configuration](https://github.com/beefproject/beef/wiki/Configuration).
 
-Modify the following two files as required:  
-`/etc/beef-xss/config.yaml`
-`/usr/share/beef-xss/extensions/metasploit/config.yaml`
+Modify the following two files as required:
 
-If you need Metasploit integration in BeEF (in most cases you'll want this), set: `extension: metasploit: enable: true` in the `/etc/beef-xss/config.yaml` file.  
-Also make sure enable is set to `true` in `/usr/share/beef-xss/extensions/metasploit/config.yaml`
+1. `/etc/beef-xss/config.yaml`
+2. `/usr/share/beef-xss/extensions/metasploit/config.yaml`
+
+If you need Metasploit integration in BeEF (in most cases you'll want this), set:  
+`extension: metasploit: enable: true`  
+in the `/etc/beef-xss/config.yaml` file.  
+Also make sure:  
+`enable`  
+is set to `true` in `/usr/share/beef-xss/extensions/metasploit/config.yaml`
 
 [Start Metasploit](#tooling-setup-kali-linux-tools-i-use-in-kali-linux-config-etc-metasploit).
 
-When running Metasploit for BeEF, I often provide msfconsole with a Metasploit resource file specifically for BeEF (I call this `beef.rc` and put it in `~/`. This resource file will have the following at least in it:  
+When running Metasploit for BeEF, I often provide `msfconsole` with a Metasploit resource file specifically for BeEF (I call this `beef.rc` and put it in `~/`. This resource file will have the following at least in it:  
 `load msgrpc ServerHost=127.0.0.1 Pass=abc123`  
-Then once the Metasploit service is started, I'd start msfconsole like:  
+Then once the Metasploit service is started, I'd start `msfconsole` like:  
 `msfconsole -r beef.rc`  
 If not using the resource file, then once `msfconsole` was running, in order to enable RPC communication for BeEF, I'd enter:  
 `load msgrpc ServerHost=127.0.0.1 Pass=abc123`
@@ -149,15 +156,17 @@ Finally... starting BeEF. There are three ways. I find the first to be the most 
 
 * Contrary to a blog post on the [beefproject](http://blog.beefproject.com/2014/06/kali-formerly-backtrack-linux-beef.html), I've found the most useful way to run BeEF to be from the `/usr/share/beef-xss/` directory  
 `./beef`  
-This way provides the most feedback. If the main config.yaml (That resides in `/etc/beef-xss/config.yaml`) contains `extension: console: shell: enable: true`, then we also get an interactive [console](https://github.com/beefproject/beef/wiki/BeEF-Console).
-* The other way, running from the command line:  
+This way provides the most feedback. If the main `config.yaml` (That resides in `/etc/beef-xss/config.yaml`) contains:  
+`extension: console: shell: enable: true`  
+then we also get an interactive [console](https://github.com/beefproject/beef/wiki/BeEF-Console).
+* The second way, running from the command line:  
 `service beef-xss start`  
 gives no feedback other than a return.
-* Running BeEF from the Kali menu:  
-Menu: Exploitation Tools -> BeEF XSS Framework -> beef
+* The third way, running BeEF from the Kali menu:  
+Menu: Exploitation Tools -> BeEF XSS Framework -> beef  
 doesn't provide a lot of feedback as to what's loaded.
 
-### Tools I Use That Need Adding To Kali Linux {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux}
+### Tools I Use That Need Adding to Kali Linux {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux}
 
 I now took a backup in case I needed to revert. With VirtualBox it's very easy to take a snap-shot that can be reverted to at any time. Snap-shots are excellent for returning to a known state between penetration tests. Testing is not really testing at all unless you can reproduce the same results each test. Starting from a known state is essential for this.
 
