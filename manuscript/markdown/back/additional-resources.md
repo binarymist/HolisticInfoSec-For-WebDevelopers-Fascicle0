@@ -1,4 +1,4 @@
-# Additional Resources
+# Additional Resources {#additional-resources}
 
 * [MS Security Development Lifecycle](http://www.microsoft.com/en-us/SDL/process/design.aspx) is actually pretty good.
 * Although not specifically referred to in this model, the [Building Security In Maturity Model (BSIMM)](https://www.bsimm.com/online/) resources are very helpful. They don't really tell you how to implement secure software, but they do provide scales to measure the maturity of your development processes on many dimensions.
@@ -21,7 +21,7 @@
 * [Meterpreter Client](https://en.wikibooks.org/wiki/Metasploit/MeterpreterClient)
 * [Meterpreter Basics](https://www.offensive-security.com/metasploit-unleashed/meterpreter-basics/)
 
-#### Using the database and workspaces in metasploit
+#### Using the database and workspaces in metasploit {#additional-resources-using-the-database-and-workspaces-in-metasploit}
 
 * [Using databases](https://www.offensive-security.com/metasploit-unleashed/using-databases/)
 * [Information gathering](http://resources.infosecinstitute.com/information-gathering-using-metasploit/)
