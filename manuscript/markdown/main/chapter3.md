@@ -204,8 +204,8 @@ To install:
 2. Download password lists:
   * Web Search for "crackstation-human-only.txt.gz"
   * Take your pick of:
-     - https://downloads.skullsecurity.org/passwords/
-     - http://download.g0tmi1k.com/wordlists/large/
+    1. https://downloads.skullsecurity.org/passwords/
+    2. http://download.g0tmi1k.com/wordlists/large/
 3. Decompress any that need it.
 
 #### Peepingtom {#tooling-setup-kali-linux-tools-i-use-on-kali-linux-peepingtom}
@@ -263,7 +263,6 @@ In order to run this under the root account, you’ll need to add the following 
 
 ##### FoxyProxy Standard {#tooling-setup-kali-linux-tools-i-use-on-kali-linux-chromium-extensions-foxyproxy-standard}
 
-
 Really reduces friction with web proxy interception. FoxyProxy is a very handy add-on for both Chromium and FireFox. Although it seems to have more options for FireFox, or at least they are more easily accessible. It allows you to set-up a list of proxies and then switch between them as you need. When I run Chromium as a non root user I can’t change the proxy settings once the browser is running. I have to run the following command in order to set the proxy to my intermediary before run time like this:
 
 `chromium-browser --temp-profile –proxy-server=localhost:3001`
@@ -276,11 +275,9 @@ Firefox is a little easier, but neither browsers allow you to build up lists of 
 
 ##### ScriptSafe
 
-
 Because I like to know where my JavaScript is coming from.
 
 ##### SessionBuddy
-
 
 For storage of browser sessions and easy hydration.
 
@@ -288,24 +285,19 @@ For storage of browser sessions and easy hydration.
 
 ##### Web Developer
 
-
 Because I'm a web developer and it has some really useful tools that provide visibility and insight.
 
 #### IceWeasel (FireFox with different Licensing) add-ons {#tooling-setup-kali-linux-tools-i-use-on-kali-linux-iceweasel-add-ons}
 
-
 ##### FoxyProxy Standard
-
 
 As for [Chromium](#tooling-setup-kali-linux-tools-i-use-on-kali-linux-chromium-extensions-foxyproxy-standard)
 
 ##### NoScript
 
-
 Because I like to know where my JavaScript is coming from.
 
 ##### Web Developer
-
 
 Because I'm a web developer and it has some really useful tools that provide visibility and insight.
 
@@ -317,7 +309,6 @@ Somewhat useful for (en/de)coding (Base64, Hex, MD5, SHA-(1/256), etc), manipula
 
 ##### NoScript
 
-
 Because I like to know where my JavaScript is coming from.
 
 ##### SQL Inject Me
@@ -325,7 +316,6 @@ Because I like to know where my JavaScript is coming from.
 Simple and often useful for running a quick vulnerability assessment. Open source software (GPLv3) from Security Compass Labs. SQL Inject Me is a component of the Exploit-Me suite. Allowing you to test all or any number of input fields on all or any of a pages forms. You just fill in the fields with valid data, then test with all the tools attacks or with the top that you’ve defined in the options menu. It then looks for database errors which are rendered into the returned HTML as a result of sending escape strings, so doesn’t cater for blind injection. You can also add remove escape strings and resulting error strings that SQL Inject Me should look for on response. The order in which each escape string can be tried can also be changed. All you need to know can be found [here](http://labs.securitycompass.com/exploit-me/sql-inject-me/sql-inject-me-faq/).
 
 ##### XSS Me
-
 
 Simple and often useful for running a quick vulnerability assessment. Open source software (GPLv3) from Security Compass Labs. XSS Me is also a component of the Exploit-Me suite. This tool’s behaviour is very similar to SQL Inject Me (follows the Principle of Least Astonishment (POLA)) which makes using the tools very easy. Both these add-ons have next to no learning curve. The level of entry is very low and I think are exactly what web developers that make excuses for not testing their own security need. The other thing is that it helps developers understand how these attacks can be carried out. XSS Me currently only tests for reflected XSS. It doesn’t attempt to compromise the security of the target system. Both XSS Me and SQL Inject Me are reconnaissance tools, where the information is the vulnerabilities found. XSS Me doesn’t support stored XSS or user supplied data from sources such as cookies, links, or HTTP headers. How effective XSS Me is in finding vulnerabilities is also determined by the list of attack strings the tool has available. Out of the box the list of XSS attack strings are derived from RSnakes collection which were donated to OWASP who now maintains it as one of their [cheat-sheets](https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet).. Multiple encodings are not yet supported, but are planned for the future. You can help to keep the collection up to date by submitting new attack strings.
 
