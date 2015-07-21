@@ -190,15 +190,15 @@ The unchangeable vulnerabilities are:
 
 {pagebreak}
 
-### Lack of Input Sanitisation {#web-application-identify-risks-lack-of-input-sanitisation}
+### Lack of Input Sanitisation {#web-applications-identify-risks-lack-of-input-sanitisation}
 ![](images/ThreatTags/easy-common-average-severe.png)
 
-#### Buffer Overflows {#web-application-identify-risks-buffer-overflows}
+#### Buffer Overflows {#web-applications-identify-risks-buffer-overflows}
 
 _Todo_
 <!--- https://msdn.microsoft.com/en-us/library/ff648641.aspx#c02618429_008 -->
 
-#### Cross-Site Scripting (XSS) {#web-application-identify-risks-cross-site-scripting}
+#### Cross-Site Scripting (XSS) {#web-applications-identify-risks-cross-site-scripting}
 ![](images/ThreatTags/average-verywidespread-easy-moderate.png)
 
 &nbsp;
@@ -264,50 +264,50 @@ G> If you select the victims node and click on the Commands tab in the BeEF web 
 G>
 G> Click on the Execute button and on the next request -> response from the hook.js, the victims browser should pop a "Facebook Session Timed Out" modal. To get rid of this modal, the victim must enter their credentials and Log-in. There is no cancel or 'x' button. Once the victim has sent their credentials, they will be visible in the Command results of the BeEF web UI.  
 
-#### SQLi {#web-application-identify-risks-sqli}
+#### SQLi {#web-applications-identify-risks-sqli}
 
 ![](images/HandsOnHack.png)
 
  One of the simplest and quickest vulnerabilities to fix, yet it's still top of the hit lists.  
  Lets hammer this home some more.
 
-#### Command Injection {#web-application-identify-risks-command-injection}
+#### Command Injection {#web-applications-identify-risks-command-injection}
 
 ![](images/HandsOnHack.png)
 
-#### LDAP Injection {#web-application-identify-risks-ldap-injection}
+#### LDAP Injection {#web-applications-identify-risks-ldap-injection}
 
 _Todo_
 
-#### XPath Injection {#web-application-identify-risks-xpath-injection}
+#### XPath Injection {#web-applications-identify-risks-xpath-injection}
 
 _Todo_
 
-#### XQuery Injection {#web-application-identify-risks-xquery-injection}
+#### XQuery Injection {#web-applications-identify-risks-xquery-injection}
 
 _Todo_
 
-#### XSLT Injection {#web-application-identify-risks-xslt-injection}
+#### XSLT Injection {#web-applications-identify-risks-xslt-injection}
 
 _Todo_
 
-#### XML Injection {#web-application-identify-risks-xml-injection}
+#### XML Injection {#web-applications-identify-risks-xml-injection}
 
 _Todo_
 
-### Lack of Authentication {#web-application-identify-risks-lack-of-authentication}
+### Lack of Authentication {#web-applications-identify-risks-lack-of-authentication}
 
 _Todo_  
 _Todo_  
 ...
 
-### Cryptography on the Client (AKA Untrusted Crypto) {#web-application-identify-risks-cryptography-on-the-client}
+### Cryptography on the Client (AKA Untrusted Crypto) {#web-applications-identify-risks-cryptography-on-the-client}
 
 * Untrusted Crypto (Web Crypto API). Is this really a good idea? _Todo_
   * [https://www.hackinparis.com/node/309](https://www.hackinparis.com/node/309)
   * [http://tonyarcieri.com/whats-wrong-with-webcrypto](http://tonyarcieri.com/whats-wrong-with-webcrypto)
 
-### Consuming Free and Open Source {#web-application-identify-risks-consuming-free-and-open-source}
+### Consuming Free and Open Source {#web-applications-identify-risks-consuming-free-and-open-source}
 ![](images/ThreatTags/average-widespread-difficult-moderate.png)
 
 This is where [A9 (Using Components with Known Vulnerabilities)](https://www.owasp.org/index.php/Top_10_2013-A9-Using_Components_with_Known_Vulnerabilities) of the 2013 OWASP Top 10 comes in.
@@ -327,7 +327,7 @@ See Justin Searls [talk](http://blog.testdouble.com/posts/2014-12-02-the-social-
 
 * [MS Application Threats and Countermeasures](https://msdn.microsoft.com/en-us/library/ff648641.aspx#c02618429_008)
 
-### Lack of Input Sanitisation {#web-application-countermeasures-lack-of-input-sanitisation}
+### Lack of Input Sanitisation {#web-applications-countermeasures-lack-of-input-sanitisation}
 ![](images/ThreatTags/PreventionAVERAGE.png)
 
 * All user input should be escaped
@@ -336,15 +336,15 @@ See Justin Searls [talk](http://blog.testdouble.com/posts/2014-12-02-the-social-
 * I cover input sanitisation [here](http://blog.binarymist.net/2012/11/04/sanitising-user-input-from-browser-part-1/)
 * Well structured data, like dates, social security numbers, zip codes, e-mail addresses, etc. then the developer should be able to define a very strong validation pattern
 
-#### Buffer Overflows {#web-application-countermeasures-buffer-overflows}
+#### Buffer Overflows {#web-applications-countermeasures-buffer-overflows}
 
 _Todo_
 
-#### Cross-Site Scripting (XSS) {#web-application-countermeasures-cross-site-scripting}
+#### Cross-Site Scripting (XSS) {#web-applications-countermeasures-cross-site-scripting}
 
 _Todo_
 
-#### SQLi {#web-application-countermeasures-sqli}
+#### SQLi {#web-applications-countermeasures-sqli}
 
 There are a few options here:
 
@@ -352,42 +352,42 @@ There are a few options here:
 * Consider using Stored Procedures
 * Read up on the [OWASP SQLi Prevention Cheat Sheet](https://www.owasp.org/index.php/SQL_Injection_Prevention_Cheat_Sheet)
 
-#### Command Injection {#web-application-countermeasures-command-injection}
+#### Command Injection {#web-applications-countermeasures-command-injection}
 
-On top of the points mentioned above under [Lack of Input Sanitisation](#web-application-countermeasures-lack-of-input-sanitisation)
+On top of the points mentioned above under [Lack of Input Sanitisation](#web-applications-countermeasures-lack-of-input-sanitisation)
 [This article](http://www.golemtechnologies.com/articles/shell-injection) is quite good.
 
-#### LDAP Injection {#web-application-countermeasures-ldap-injection}
+#### LDAP Injection {#web-applications-countermeasures-ldap-injection}
 
 _Todo_
 
-#### XPath Injection {#web-application-countermeasures-xpath-injection}
+#### XPath Injection {#web-applications-countermeasures-xpath-injection}
 
 _Todo_
 
-#### XQuery Injection {#web-application-countermeasures-xquery-injection}
+#### XQuery Injection {#web-applications-countermeasures-xquery-injection}
 
 _Todo_
 
-#### XSLT Injection {#web-application-countermeasures-xslt-injection}
+#### XSLT Injection {#web-applications-countermeasures-xslt-injection}
 
 _Todo_
 
-#### XML Injection {#web-application-countermeasures-xml-injection}
+#### XML Injection {#web-applications-countermeasures-xml-injection}
 
 _Todo_
 
-### Lack of Authentication {#web-application-countermeasures-lack-of-authentication}
+### Lack of Authentication {#web-applications-countermeasures-lack-of-authentication}
 
 _Todo_  
 _Todo_   
 ...
 
-### Cryptography on the Client (AKA Untrusted Crypto) {#web-application-countermeasures-cryptography-on-the-client}
+### Cryptography on the Client (AKA Untrusted Crypto) {#web-applications-countermeasures-cryptography-on-the-client}
 
 _Todo_
 
-### Consuming Free and Open Source {#web-application-countermeasures-consuming-free-and-open-source}
+### Consuming Free and Open Source {#web-applications-countermeasures-consuming-free-and-open-source}
 ![](images/ThreatTags/PreventionEASY.png)
 
 Dibbe Edwards [discusses](https://soundcloud.com/owasp-podcast/dibbe-edwards-devops-and-open-source-at-ibm) some excellent initiatives on how they do it at IBM. I'll attempt to paraphrase some of them here:

@@ -41,7 +41,7 @@ This type of attack is targeted toward a smaller number of receivers generally w
 
 ![](images/HandsOnHack.png)
 
-The following attack was one of five that I demonstrated at WDCNZ in 2015. There was one leading up to this which focused on exploiting a Cross-Site Scripting (XSS) vulnerable website with the Browser Exploitation Framework (BeEF). This can be found in chapter 12 under the [Cross-Site Scripting (XSS)](#web-application-identify-risks-cross-site-scripting) section.
+The following attack was one of five that I demonstrated at WDCNZ in 2015. There was one leading up to this which focused on exploiting a Cross-Site Scripting (XSS) vulnerable website with the Browser Exploitation Framework (BeEF). This can be found in chapter 12 under the [Cross-Site Scripting (XSS)](#web-applications-identify-risks-cross-site-scripting) section.
 
 You can find the video of how this attack is played out [here](https://www.youtube.com/watch?v=tb4o5UCHzSA).
 
@@ -49,7 +49,7 @@ I> ## Synopsis
 I>
 I> Clone a website that we know our victim visits and has to log-in at.  
 I> Host the clone from our attack machine, although this could be hosted anywhere and would be more effective in not getting caught, hosting on the likes of one of the free VPS's on the internet.  
-I> Using the Credential Harvester from the Social Engineer Toolkit (SET) or setoolkit in Kali Linux. This uses the `HTML` `referer` header, in which it intercepts the request that comes from the victims IP address and harvests the posted credential fields. We demonstrate a similar attack on a XSS vulnerable website that we have hooked with BeEF, where we use BeEF's "Pretty Theft" module to harvest the victims credentials when they log in to the website in the [Cross-Site Scripting (XSS)](#web-application-identify-risks-cross-site-scripting) section in chapter 12 Web Applications.  
+I> Using the Credential Harvester from the Social Engineer Toolkit (SET) or setoolkit in Kali Linux. This uses the `HTML` `referer` header, in which it intercepts the request that comes from the victims IP address and harvests the posted credential fields. We demonstrate a similar attack on a XSS vulnerable website that we have hooked with BeEF, where we use BeEF's "Pretty Theft" module to harvest the victims credentials when they log in to the website in the [Cross-Site Scripting (XSS)](#web-applications-identify-risks-cross-site-scripting) section in chapter 12 Web Applications.  
 I> Social engineer our victim to our cloned website.  
 I> Once victim enters their credentials and submits, SET harvests the credentials.  
 I> They are redirected to the original website to make it look less conspicuous, kind of like a failed log-in.  
