@@ -145,7 +145,7 @@ is set to `true` in `/usr/share/beef-xss/extensions/metasploit/config.yaml`
 
 [Start Metasploit](#tooling-setup-kali-linux-tools-i-use-in-kali-linux-config-etc-metasploit).
 
-When running Metasploit for BeEF, I often provide `msfconsole` with a Metasploit resource file specifically for BeEF (I call this `beef.rc` and put it in `~/`. This resource file will have the following at least in it:  
+When running Metasploit for BeEF, I often provide `msfconsole` with a Metasploit resource file specifically for BeEF (I call this `beef.rc` and put it in `~/`). This resource file will have the following at least in it:  
 `load msgrpc ServerHost=127.0.0.1 Pass=abc123`  
 Then once the Metasploit service is started, I'd start `msfconsole` like:  
 `msfconsole -r beef.rc`  
