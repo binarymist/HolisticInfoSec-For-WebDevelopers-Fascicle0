@@ -235,7 +235,7 @@ G> Attempt to elevate privileges:
 G> `getsystem`  
 G> Doesn't work on this shell.
 
-
+{icon=bomb}
 G> Let's list the available meterpreter extensions to make sure we have `priv`.  
 G> `use -l`  
 G> and priv is in the list.  
