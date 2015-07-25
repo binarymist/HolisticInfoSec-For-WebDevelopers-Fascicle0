@@ -39,6 +39,7 @@ SET can use sendmail, gmail or your own open-mail relay out of the box to perfor
 
 This type of attack is targeted toward a smaller number of receivers generally with more specifically tailored scams. In order to pull a successful attack off, that's one that has a high catch rate and where no receivers actually raise alarm bells with managers, scrupulous reconnaissance needs to be carried out on your target(s).
 
+{#wdcnz-demo-2}
 ![](images/HandsOnHack.png)
 
 The following attack was one of five that I demonstrated at WDCNZ in 2015. There was one leading up to this which focused on exploiting a Cross-Site Scripting (XSS) vulnerable website with the Browser Exploitation Framework (BeEF). This can be found in chapter 12 under the [Cross-Site Scripting (XSS)](#web-applications-identify-risks-cross-site-scripting) section.

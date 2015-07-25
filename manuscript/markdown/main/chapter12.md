@@ -207,6 +207,7 @@ _Todo_ Discuss intricacies of XSS
 
 &nbsp;
 
+{#wdcnz-demo-1}
 ![](images/HandsOnHack.png)
 
 The following attack was the first one of five that I demonstrated at WDCNZ in 2015. The attack after this one was a credential harvest based on a spoofed website that hypothetically was fetched due to a spear phishing attack. That particular attack can be found in chapter 8 People, under [Spear Phishing](#people-identify-risks-spear-phishing). 
