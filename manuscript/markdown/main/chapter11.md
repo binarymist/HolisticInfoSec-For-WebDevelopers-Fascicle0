@@ -165,11 +165,6 @@ T> and also modified to add new [config "hook"](http://sourceforge.net/p/piwat/W
 T> also added to `/usr/share/beef-xss/config.yaml`.  
 T> Within the same config.yaml file `host` seems to serve two purposes. The address to access beef and where to fetch hook.js from. If I use an external address, beef only listens on the external interface (can't reach via loopback). So I added a `hook` config which is the address that the beef communications server is listening on that gets inserted into the cloned web page.
 
-
-
-
-
-
 {#wdcnz-demo-4}
 ![](images/HandsOnHack.png)
 
@@ -186,11 +181,13 @@ I> The website you choose to clone doesn't have to be one that the attacker spen
 G> ## The Play
 G>
 G> Start postgresql:  
-G> `service postgresql start`  
+G> `service postgresql start`
+G>
 G> Start the Metasploit service:  
-G> `service metasploit start`  
+G> `service metasploit start`
+G>
 G> Start the Social Engineering Toolkit:  
-G> `setoolkit`   
+G> `setoolkit`
 G>
 G> Choose:  
 G> `1) Social-Engineering Attacks`
@@ -238,12 +235,13 @@ G> Attempt to elevate privileges:
 G> `getsystem`  
 G> Doesn't work on this shell.
 G>
-G> Let's list the available meterpreter extensions to make sure we have `priv`. 
+G> Let's list the available meterpreter extensions to make sure we have `priv`.  
 G> `use -l`  
-G> and priv is in the list.
-G> Now that we know we have priv, we can:
+G> and priv is in the list.  
+G> Now that we know we have [priv](https://www.offensive-security.com/metasploit-unleashed/privilege-escalation/), we can:
+G>
 G> `run bypassuac`  
-G> Now that's successful, but Anti-Virus detects bad signatures on some of the root-kits. On this shell I only got the privileges of the target running the browser exploit.
+G> Now that's successful, but anti-virus detects bad signatures on some of the root-kits. On this shell I only got the privileges of the target running the browser exploit.
 
 
 
