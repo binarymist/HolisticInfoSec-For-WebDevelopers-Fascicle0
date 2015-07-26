@@ -4,6 +4,8 @@ To access the training (which is now behind the book), head on over to the [wiki
 
 The contents of the book that's currently under way is listed below. The actual book can be found [here](https://leanpub.com/holistic-infosec-for-web-developers).
 
+If there is something you would like to see included in the book, please [submit an issue](https://github.com/binarymist/HolisticInfoSec-For-WebDevelopers/issues).
+
 [![BinaryMist Limited](manuscript/images/BM-DesignBuildBreak.png)](http://binarymist.net/)
 
 <br>

@@ -168,13 +168,13 @@ T> Within the same config.yaml file `host` seems to serve two purposes. The addr
 {#wdcnz-demo-4}
 ![](images/HandsOnHack.png)
 
-The following attack was the fourth one of five that I demonstrated at WDCNZ in 2015. The (previous demo)[#wdcnz-demo-3] will provide some additional context and it's probably best to look at it first if you haven't already.
+The following attack was the fourth one of five that I demonstrated at WDCNZ in 2015. The [previous demo](#wdcnz-demo-3) will provide some additional context and it's probably best to look at it first if you haven't already.
 
 You can find the video of how it is played out [here](https://www.youtube.com/watch?v=tb4o5UCHzSA).
 
 I> ## Synopsis
 I>
-I> This demo differs from the previous in that the target will be presented with a Java "needs to be updated" popup. When the target plays along and executes what they think is an update, they are in fact starting a reverse shell to the attacker.  
+I> This demo differs from the previous in that the target will be presented with a Java "needs to be updated" pop-up. When the target plays along and executes what they think is an update, they are in fact starting a reverse shell to the attacker.  
 I> The website you choose to clone doesn't have to be one that the attacker spends much time on. All that's needed is for the attacker to have done their reconnaissance and know which web sites the target frequently visits. Clone one of them. Then wait for the target to fetch it. Then succumb to the attackers bait by clicking the "Update" or "Run this time" button.
 
 {icon=bomb}
@@ -208,7 +208,7 @@ G> Turn on `1. Java Applet Attack Method` & `2. Metasploit Browser Exploit Metho
 G> Proceed with the attack.  
 G> The website is now cloned.  
 G>
-G> Select the vulns to exploit: `2) Meterpreter Multi-Memory Injection`.  
+G> Select the vulnerabilities to exploit: `2) Meterpreter Multi-Memory Injection`.  
 G>
 G> Select the payloads to deliver. Select them all.  
 G> Confirm Port 443 to help disguise the reverse connection as legit.  
