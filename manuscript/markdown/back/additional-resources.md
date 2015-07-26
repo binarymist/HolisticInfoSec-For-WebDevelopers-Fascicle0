@@ -7,4 +7,10 @@
 
 [**Social Engineer**](http://www.social-engineer.org/) website has a plethora of excellent resources.
 
+## [VPS](#vps)
+
+[**Details**](https://community.rapid7.com/community/metasploit/blog/2013/03/09/psexec-demystified) on the Metasploit PSExec module.
+
+[**Distributed Computing Environment / Remote Procedure Call**](https://en.wikipedia.org/wiki/DCE/RPC).
+
 

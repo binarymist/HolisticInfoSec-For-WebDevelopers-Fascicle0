@@ -73,6 +73,12 @@ Bruce Schneier: Data and Goliath: Introduction: USA National Security Agency (NS
 
 ## [VPS](#vps)
 
+**PSExec is a telnet replacement** also providing full interactivity for console applications. Check out the [home page](https://technet.microsoft.com/en-us/sysinternals/bb897553.aspx).
+
+**The PSExec utility requires** a few things on the remote system. [Details on rapid7](https://community.rapid7.com/community/metasploit/blog/2013/03/09/psexec-demystified).
+
+**The PSExec executable** has a Windows Service image inside which it deploys to the Admin$ share on the target machine.  
+[https://community.rapid7.com/community/metasploit/blog/2013/03/09/psexec-demystified](https://community.rapid7.com/community/metasploit/blog/2013/03/09/psexec-demystified).
 
 ## [Network](#network)
 
