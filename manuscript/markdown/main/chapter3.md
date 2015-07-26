@@ -127,6 +127,25 @@ if your interested in which ports are being opened.
 or possibly with a resource script:  
 `msfconsole -r <your custom resource>.rc`
 
+##### Useful metasploit [commands](https://www.offensive-security.com/metasploit-unleashed/msfconsole-commands/)
+
+* `msf >` [help](https://www.offensive-security.com/metasploit-unleashed/msfconsole-commands/#help)
+* `msf >` [show](https://www.offensive-security.com/metasploit-unleashed/msfconsole-commands/#show)
+  * Valid options to add to show are: `all`, `encoders`, `nops`, `exploits`, `payloads`, `auxiliary`, `plugins`, `options`  
+  * Additional module specific parameters are: `missing`, `advanced`, `evasion`, `targets`, `actions`  
+* `msf > show options`
+* `msf > info <module name>` [info](https://www.offensive-security.com/metasploit-unleashed/msfconsole-commands/#info)
+
+##### metasploit meterpreter client commands
+
+* [Meterpreter Client](https://en.wikibooks.org/wiki/Metasploit/MeterpreterClient)
+* [Meterpreter Basics](https://www.offensive-security.com/metasploit-unleashed/meterpreter-basics/)
+
+##### Using the database and workspaces in metasploit {#additional-resources-using-the-database-and-workspaces-in-metasploit}
+
+* [Using databases](https://www.offensive-security.com/metasploit-unleashed/using-databases/)
+* [Information gathering](http://resources.infosecinstitute.com/information-gathering-using-metasploit/)
+
 #### BeEF {#tooling-setup-kali-linux-tools-i-use-in-kali-linux-config-etc-beef}
 
 Check-out the recommended [configuration](https://github.com/beefproject/beef/wiki/Configuration).

