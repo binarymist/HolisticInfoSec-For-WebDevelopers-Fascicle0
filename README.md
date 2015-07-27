@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/binarymist/HolisticInfoSec-For-WebDevelopers.png?label=ready&title=Ready)](https://waffle.io/binarymist/HolisticInfoSec-For-WebDevelopers)
 # Holistic InfoSec For Web Developers
 
 To access the training (which is now behind the book), head on over to the [wiki](https://github.com/binarymist/HolisticInfoSec-For-WebDevelopers/wiki/BinaryMist-Approach-To-Threat-Modelling) to get started.
