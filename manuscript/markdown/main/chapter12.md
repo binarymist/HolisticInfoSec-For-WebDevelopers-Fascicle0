@@ -203,7 +203,7 @@ _Todo_
 
 &nbsp;
 
-_Todo_ Discuss intricacies of XSS
+_Todo_ [Discuss intricacies of XSS](https://github.com/binarymist/HolisticInfoSec-For-WebDevelopers/issues/4)
 
 &nbsp;
 
@@ -343,7 +343,7 @@ _Todo_
 
 #### Cross-Site Scripting (XSS) {#web-applications-countermeasures-cross-site-scripting}
 
-_Todo_
+_Todo_: [Take this further](https://github.com/binarymist/HolisticInfoSec-For-WebDevelopers/issues/4)
 
 #### SQLi {#web-applications-countermeasures-sqli}
 
