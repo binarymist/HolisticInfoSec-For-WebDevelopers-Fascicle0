@@ -6,6 +6,9 @@ The contents of the book that's currently under way is listed below. The actual 
 
 If there is something you would like to see included in the book, please [submit an issue](https://github.com/binarymist/HolisticInfoSec-For-WebDevelopers/issues) for consideration.
 
+[![Stories in Ready](https://badge.waffle.io/binarymist/HolisticInfoSec-For-WebDevelopers.png?label=ready&title=Ready)](https://waffle.io/binarymist/HolisticInfoSec-For-WebDevelopers)
+[![Stories in Progress](https://badge.waffle.io/binarymist/HolisticInfoSec-For-WebDevelopers.png?label=in%20progress&title=In%20Progress)](https://waffle.io/binarymist/HolisticInfoSec-For-WebDevelopers)
+
 [![BinaryMist Limited](manuscript/images/BM-DesignBuildBreak.png)](http://binarymist.net/)
 
 <br>
