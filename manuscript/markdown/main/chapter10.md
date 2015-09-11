@@ -7,6 +7,13 @@ If possible, I usually advocate bringing VPS(s) [in-house](http://blog.binarymis
 ## 1. SSM Asset Identification
 Take results from [higher level Asset Identification](#ssm-asset-identification). Remove any that are not applicable. Add any newly discovered.
 
+* Ownership. At first this may sound strange, but that's because of an assumption you may have that it's a given that you will always own, or at least have control of your server. I'm going to dispel this myth. When an attacker wants to compromise your server, they want to do so for a reason. Possibly it's just for kicks, possibly it's for some more sinister reason. They want an asset that presumably belongs to you or your organisation. If they can take control of your server (own it/steal it/what ever you want to call the act), then they have a foot hold to launch further attacks and gain other assets that don't belong to them. With this in mind, you could think of your server as an asset. On the other hand you could think of it as a liability. Both may be correct. In any case, you need to protect it and in many cases take it to school and teach it how to protect itself. This is covered under the [SSM Countermeasures](#vps-countermeasures) section with items such as HIDS and Logging and Alerting.
+* Taking the confidential business and client information from the "Starting with the 30,000' view" chapter, here we can concretise these concepts into forms such as:
+  * Email, Web, Data-store servers and of course the data on them.
+  * You could even stretch this to individuals PC's and other devices which may be carrying this sort of confidential information on them. Mobile devices are a huge risk for example (covered in the [Mobile](#mobile) chapter)
+
+This is probably an incomplete list for your domain. I've given you a start. Put your thinking cap on and populate the rest, or come back to it as additional assets enter your mind.
+
 ## 2. SSM Identify Risks
 Go through same process as we did at the [top level](#ssm-identify-risks), but for your VPS(s).
 
@@ -29,11 +36,19 @@ In terms of security, unless your provider is [Swiss](http://www.computerweekly.
 * \> distribution = > attack surface. Where is your data? Where are your VM images running from? Further distributed on iSCSI targets? Where are the targets?
 * Your provider knows little (at best) about your domain, how you operate, or what you have running on their system(s). How are they supposed to protect you if they have no knowledge of your domain?
 
+### Using Components with Known Vulnerabilities
+
+_Todo_
+Similar section in network chapter
+https://www.owasp.org/index.php/Top_10_2013-A9-Using_Components_with_Known_Vulnerabilities
+
 ### System Compromise {#vps-identify-risks-system-compromise}
 
 This is pretty much a blanket heading. It really needs to be broken down more.
 
 _Todo_
+
+
 
 ### Windows
 
@@ -135,7 +150,7 @@ _Todo_: [Take this further](https://github.com/binarymist/HolisticInfoSec-For-We
 
 
 
-## 3. SSM Countermeasures
+## 3. SSM Countermeasures {#vps-countermeasures}
 * [MS Host Threats and Countermeasures](https://msdn.microsoft.com/en-us/library/ff648641.aspx#c02618429_007)
 * [MS Securing Your Web Server](https://msdn.microsoft.com/en-us/library/ff648653.aspx) This is Microsoft specific, but does offer some insight into technology agnostic risks and countermeasures
 * [MS Securing Your Application Server](https://msdn.microsoft.com/en-us/library/ff648657.aspx) As above, Microsoft specific, but does provide some ideas for vendor agnostic concepts
@@ -145,12 +160,18 @@ _Todo_: [Take this further](https://github.com/binarymist/HolisticInfoSec-For-We
 
 Bringing your VPS(s) in-house provides all the flexibility/power required to mitigate just about all the risks due to outsourcing to a cloud or hosting provider. Cloud offerings are often more expensive in monetary terms for medium to large environments.
 
+### Using Components with Known Vulnerabilities
+
+_Todo_ Patching.
+Similar section in network chapter.
+https://www.owasp.org/index.php/Top_10_2013-A9-Using_Components_with_Known_Vulnerabilities
+
 ### Minimise Attack Surface by [Granular Partitioning](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#partitioning)
 ![](images/ThreatTags/PreventionAVERAGE.png)
 
 By creating many partitions and [applying the least privileges](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#lock-down-the-mounting-of-partitions) necessary to each in order to be useful, you're making it difficult for an attacker to carry out many malicious activities that they would otherwise be able to. This is where you play with your `/etc/fstab`
 
-This is a similar concept to tightly [constraining](http://blog.binarymist.net/2012/11/04/sanitising-user-input-from-browser-part-1/#minimising-the-attack-surface) input fields to only be able to accept structured data (names (alpha only) dates, social security numbers, zip codes, e-mail addresses, etc) rather than just leaving the input wide open to be able to enter any text.
+This is a similar concept to tightly [constraining](http://blog.binarymist.net/2012/11/04/sanitising-user-input-from-browser-part-1/#minimising-the-attack-surface) input fields to only be able to accept structured data (names (alpha only) dates, social security numbers, zip codes, email addresses, etc) rather than just leaving the input wide open to be able to enter any text.
 
 
 

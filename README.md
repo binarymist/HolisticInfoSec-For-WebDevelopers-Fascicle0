@@ -9,7 +9,7 @@ If there is something you would like to see included in the book, please [submit
 [![Stories in Ready](https://badge.waffle.io/binarymist/HolisticInfoSec-For-WebDevelopers.png?label=ready&title=Ready)](https://waffle.io/binarymist/HolisticInfoSec-For-WebDevelopers)
 [![Stories in Progress](https://badge.waffle.io/binarymist/HolisticInfoSec-For-WebDevelopers.png?label=in%20progress&title=In%20Progress)](https://waffle.io/binarymist/HolisticInfoSec-For-WebDevelopers)
 
-[![BinaryMist Limited](manuscript/images/BM-DesignBuildBreak.png)](http://binarymist.net/)
+[![BinaryMist Limited](manuscript/images/BM-DesignBuildBreak.png)](https://binarymist.io/)
 
 <br>
 

@@ -19,6 +19,17 @@
 
 ## [Physical](#physical)
 
+**There are competitions devoted** to reassembling shredded printed documents with contestants that have successfully reassembled all printed matter.
+http://archive.darpa.mil/shredderchallenge/
+
+**Not all paper shredders** are created equal. Understand the pros and cons. https://en.wikipedia.org/wiki/Paper_shredder 
+
+**Detection works where prevention fails** and detection is of no use without response
+Beyond Fear by Bruce Schneier
+
+**You will also need to think about company culture** and whether this needs some work. http://blog.binarymist.net/2014/04/26/culture-in-the-work-place/
+
+**People can be your strongest or your weakest defence**. This is your choice. Cultural change can be implemented from any level. The most successfully being from the shop flaw. http://blog.binarymist.net/2014/04/26/culture-in-the-work-place/
 
 ## [IoT](#iot)
 
@@ -67,6 +78,19 @@ Bruce Schneier: Data and Goliath: Introduction: USA National Security Agency (NS
 
 ## [People](#people)
 
+**Studies show that motivation** has a larger effect on productivity and quality than any other factor. Software Engineering Economics by Barry W. Boehm 1981
+
+**Those distracted by incoming email** and phone calls saw a 10-point fall in their IQ by BBC
+http://news.bbc.co.uk/2/hi/uk_news/4471607.stm
+
+**Gerald Weinberg's rule** that 20% of our time is lost every time we perform a context switch. This is from "Quality Software Management: Systems Thinking" by Gerald Weinberg.
+
+**The Multi-Tasking Myth** by Jeff Atwood
+http://blog.codinghorror.com/the-multi-tasking-myth/
+
+**What you need to do** is be aware of how much productivity is killed with each switch. Then do everything in your power to make sure your Development Team is sheltered from as much as possible. [How to Increase Software Developer Productivity](http://blog.binarymist.net/2013/03/02/how-to-increase-software-developer-productivity/#context-switching) by Kim Carter.
+
+**The trick here** is that when you manage programmers, specifically, task switches take a really, really, really long time. [Human Task Switches Considered Harmful](http://www.joelonsoftware.com/articles/fog0000000022.html).
 
 ## [Cloud](#cloud)
 
@@ -80,15 +104,45 @@ Bruce Schneier: Data and Goliath: Introduction: USA National Security Agency (NS
 **The PSExec executable** has a Windows Service image inside which it deploys to the Admin$ share on the target machine.  
 [https://community.rapid7.com/community/metasploit/blog/2013/03/09/psexec-demystified](https://community.rapid7.com/community/metasploit/blog/2013/03/09/psexec-demystified).
 
+
+
+
+https://en.wikipedia.org/wiki/DCE/RPC
+
 ## [Network](#network)
 
 **If the victim's SMTP server does not perform reverse [lookups on the hostname](http://www.social-engineer.org/framework/se-tools/computer-based/social-engineer-toolkit-set/)**, an email `from` and `reply-to` fields can be successfully spoofed.
 
-**Doppelganger Domains** An old trick brought back to light by Peter Kim's [research](http://www.wired.com/2011/09/doppelganger-domains/) involving fortune 500 companies where they intercepted 20 GB of e-mail from miss typed addresses.  
+**Doppelganger Domains** An old trick brought back to light by Peter Kim's [research](http://www.wired.com/2011/09/doppelganger-domains/) involving fortune 500 companies where they intercepted 20 GB of email from miss typed addresses.  
 Peter Kim discusses in "The Hacker PlayBook" about how he set-up SMTP and SSH doppelganger domains. This is an excellent book that I recommend reading.
 
 ## [Web Applications](#web-applications)
 
 **Cost of Change** curve adapted from Scott W. Ambler's article on [Examining the Agile Cost of Change Curve](http://www.agilemodeling.com/essays/costOfChange.htm), which I've used in many presentations and workshops.
 
+**Before the breach**, the company boasted about airtight data security but ironically, still proudly displays a graphic with the phrase “trusted security award” on its homepage.
+http://www.darkreading.com/operations/what-ashley-madison-can-teach-the-rest-of-us-about-data-security-/a/d-id/1322129
 
+**Other notable data-store compromises were LinkedIn** with 6.5 million user accounts compromised and 95% of the users passwords cracked in days. Why so fast? Because they used simple hashing, specifically SHA-1. Details provided here on the findings: http://securitynirvana.blogspot.co.nz/2012/06/final-word-on-linkedin-leak.html
+
+**The function used to protect stored credentials** should balance attacker and defender verification. The defender needs an acceptable response time for verification of users’ credentials during peak use. However, the time required to map <credential> → <protected form> must remain beyond threats’ hardware (GPU, FPGA) and technique (dictionary-based, brute force, etc) capabilities.
+https://www.owasp.org/index.php/Password_Storage_Cheat_Sheet#Impose_infeasible_verification_on_attacker
+
+**You may read in many places** that having data-store passwords and other types of secrets in configuration files in clear text is an insecurity that must be addressed.
+https://www.owasp.org/index.php/Password_Plaintext_Storage
+
+**Encrypt sections** of a web, executable, machine-level, application-level or configuration files with Aspnet_regiis.exe
+[SQL Authentication](https://msdn.microsoft.com/en-us/library/ff648340.aspx)
+[Windows Authentication](https://msdn.microsoft.com/en-us/library/ff647396.aspx)
+
+**PBKDF2, bcrypt and scrypt are KDFs**
+[Storing one-way salted values](PBKDF2, bcrypt and [scrypt](http://www.tarsnap.com/scrypt.html) are KDFs)
+
+**bcrypt which uses the Eksblowfish cipher** which was designed specifically for bcrypt from the blowfish cipher, to be very slow to initiate thus boosting protection against dictionary attacks which were often run on custom Application-specific Integrated Circuits (ASICs) with [low gate counts](http://security.stackexchange.com/questions/4781/do-any-security-experts-recommend-bcrypt-for-password-storage)
+
+**far greater memory required** for each hash, small and frequent pseudo-random memory accesses, making it harder to cache the data into faster memory.
+http://openwall.info/wiki/john/GPU/bcrypt
+
+**bcrypt brute-forcing** is becoming more accessible due to easily obtainable cheap hardware.
+http://www.openwall.com/lists/announce/2013/12/03/1
+http://www.openwall.com/presentations/Passwords13-Energy-Efficient-Cracking/

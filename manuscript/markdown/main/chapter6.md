@@ -6,7 +6,12 @@ _Todo_
 
 Bruce Schneier has good [insight](http://www.networkworld.com/article/2909212/security0/schneier-on-really-bad-iot-security-it-s-going-to-come-crashing-down.html) on the problems to come I believe.
 
+If you think of the attack surface that Wi-Fi brought with it, you could probably double that for what we're going to experience with IoT, and I fear that may be an underestimate.
+
 OWASP also has an IoT Top 10 https://www.owasp.org/index.php/OWASP_Internet_of_Things_Top_Ten_Project
 
 _Todo_
 
+%% Implement an IoT device on maybe the tessel 2 using a fork of nodeminder, or on possibly raspberry pi using zoneminder. Some writing around this in the Physical chapter under ### Cameras, Sensors and Alarms. Link to this once done.
+
+%% Another option would be to create a FPGA or use one for brute forcing bcrypt hashes. Details in the Web Applications chapter. Just search for bcrypt.

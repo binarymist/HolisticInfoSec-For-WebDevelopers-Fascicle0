@@ -5,12 +5,20 @@
 ## 1. SSM Asset Identification
 Take results from [higher level Asset Identification](#ssm-asset-identification). Remove any that are not applicable. Add any newly discovered.
 
+Here are some possibilities to get you started:
+
+* Switches: Mainly because of the data that passes through them.
+* Routers: Same as above, plus there will be a lot of sensitive network related information stored here.
+* Syslog servers: For similar reasons to routers, plus events and sensitive information from all sorts of systems collected in one place.
+
+There will almost certainly be many others. Think about your network topology. What information is stored where and over which channels it may pass. If you've decided to hand your precious data over to a cloud provider, then you're not going to have much control over this and in most cases, you're CSP won't have much control either (addressed in the [Cloud](#cloud) chapter). Also think about the areas that may be easier to compromise than others and take this information into the next step.
+
 ## 2. SSM Identify Risks
 Go through same process as we did at the [top level](#ssm-identify-risks), but for the network.
 
 * [MS Network Threats and Countermeasures](https://msdn.microsoft.com/en-us/library/ff648641.aspx#c02618429_006)
 
-Network risks are obviously huge. I'm probably not even going to scratch the surface here at this stage. 
+Network risks are obviously huge. I'm probably not even going to scratch the surface here at this stage.
 
 ### Spoofing {#network-identify-risks-spoofing}
 
@@ -54,7 +62,7 @@ DNS spoofing refers to an end goal rather than a specific type of attack. There 
 * Poison the cache of an upstream name server and wait for the downstream propagation
 * MitM attack. A good example of this is:
   * cloning a website you hope your victim will visit
-  * offering a free wifi hot-spot attached to your gateway with DNS server provided.
+  * offering a free Wi-Fi hot-spot attached to your gateway with DNS server provided.
  Your DNS server provides your cloned website IP address. You may still have to deal with X.509 certificates though, unless the website enforces TLS across the entire site, which is definitely my recommendation. If not, and the potential victim already has the websites certificate they are wanting to visit in their browser, then you'll have to hope your victim will click through the warning or work out a TLS downgrade which is going to be harder.
 
 There is a complete cloning example of a website, ARP spoof, DNS spoof and hands on hack, in the [website section below](#network-identify-risks-spoofing-website)
@@ -73,7 +81,7 @@ The referrer (spelled `referer`) field in HTTP requests can be intercepted and m
 
 _Todo_
 
-#### E-Mail Address {#network-identify-risks-spoofing-email-address}
+#### EMail Address {#network-identify-risks-spoofing-email-address}
 ![](images/ThreatTags/easy-widespread-average-moderate.png)
 
 The act of creating and sending an email with a forged sender address.
@@ -300,6 +308,37 @@ This is a danger for all websites that don't enforce TLS for every page. For exa
 Routing Configurations
 _Todo_
 
+### Component Placement {#network-identify-risks-component-placement}
+
+_Todo_
+DMZ for example. You may need to place your web server in a DMZ, but that doesn't mean it's dependencies like data-store servers should also be there.
+
+### Wire Inspecting
+
+_Todo_
+
+
+
+### Wi-Fi
+
+
+### Using Components with Known Vulnerabilities
+
+_Todo_
+https://www.owasp.org/index.php/Top_10_2013-A9-Using_Components_with_Known_Vulnerabilities
+
+
+
+
+
+
+
+
+_Todo_ Discuss the huge attack surface discussed briefly in the [Physical](#physical-identify-risks-wifi) chapter.
+
+
+
+
 ## 3. SSM Countermeasures
 
 * [MS Network Threats and Countermeasures](https://msdn.microsoft.com/en-us/library/ff648641.aspx#c02618429_006)
@@ -515,6 +554,31 @@ I don't trust commercial proprietary routers. I've seen too many vulnerabilities
 
 Most closed routers suffer from the [same problems](https://securityevaluators.com/knowledge/case_studies/routers/soho_service_hacks.php) I illustrate on my blog. They have active unsecured services that have little to nothing to do with routing and in many cases, you can not [Disable](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#disable-services-we-dont-need), [Remove](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#remove-services), or [Harden](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#secure-services) them.
 
+### Component Placement 
+
+_Todo_
+
+Consider putting resources like data-stores in a secluded segment. VLAN or physical, but isolate them as much as possible.
+https://www.owasp.org/index.php/Configuration#Database_security
+Also consider using Linux containers, thus providing more isolation, making compromise just a little more time consuming.
+
+
+### Wire Inspecting {#network-countermeasures-wire-inspecting}
+
+%% Linked to from web applications chapter
+_Todo_ Here we want to discuss possible sensitive information flowing through your network. Authentication requests and data transmission for many things. Your web applications data-store (web app sitting in DMZ, data store on another segment), SMB, obtaining hashes, email accounts, any communications between machines (consider using SSH and/or SSL for everything to prevent the data from being intercepted and possibly modified over the wire. Show my blog posts on the topic. Consider internal networks just as malicious as the internet) syslog servers, health monitoring services, many things. Show a few tools that we can use and how to use them. Ethereal, Wireshark, http intercepting proxies.
+
+### Wi-Fi
+
+_Todo_
+
+### Using Components with Known Vulnerabilities
+
+_Todo_
+https://www.owasp.org/index.php/Top_10_2013-A9-Using_Components_with_Known_Vulnerabilities
+Patch your systems
+
+
 ### Network Intrusion Detection Systems (NIDS)
 Similar to [HIDS](#host-intrusion-detection-systems-hids) but acting as a network spy with its network interface (NIC) in promiscuous mode, capturing all traffic crossing the specific network segment that the NIDS is on.
 
@@ -573,8 +637,4 @@ Again your trusting the browser.
 ## 5. SSM Costs and Trade-offs
 > An exercise for the reader. What are they?
 
-## Wireless
 
-A really large can of worms
-
-_Todo_

@@ -16,7 +16,27 @@ Having this process performed by a team brings out the best in everyone. There a
 * [MS 1. Identify Assets](https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_006)
 * [OWASP Assets](https://www.owasp.org/index.php/Application_Threat_Modeling#Assets)
 
-Assets will often emerge as you progress through the following steps.
+So the first question we must ask ourselves is: What are assets in the context of threat modelling? Assets are something we or our clients place value on that we are responsible for and subsequently will probably want to protect because someone unauthorised to access them also places value (covets) on them.
+
+Assets will often emerge as you progress through the following steps, so you'll probably end up modifying this list as you go, but it's vital that you don't miss this step in your eagerness to secure your world. If you don't have a good grasp on what it is that you're trying to protect, then there may be nothing or at least little to protect. This is unlikely, but still, you will want to have some idea of what your assets are before taking the next step. Feel free as you progress to come back and modify the list of assets.
+
+Identifying your assets is a domain specific task, so you are the best person to do this. I'll help to direct your thoughts as we progress though.
+
+Many of the following chapters will address asset identification as the first step. Many assets will be the same for many chapters. Don't think about the assets as the be all and end all, but they can be useful to keep in your thoughts through the following steps of this chapter, which will be specialised in each chapter.
+
+Here are some that may or may not apply to your domain:
+
+* User credentials
+  Often stored within data stores, but also often found on the likes of post-it notes stuck to monitors or under a keyboard etc.
+* Identity information
+  such as: Email addresses, physical addresses, phone numbers, birth certificates
+* Credit card numbers and similar
+* Confidential business information
+  This could come in many forms such as email, organisation wide wikis, document storage, and be stored in many places, such as: in data stores, code, configuration files, peoples heads, peoples desks and many others
+* Confidential client information
+* Reputation. I'm sure you can think of a few ways that you or your organisations reputation could be tarnished or worse.
+
+Now if you relate the potential loses with information security vectors, you'll come up with a target list we can take into the next stages.
 
 ## 2. SSM Identify Risks {#ssm-identify-risks}
 * [MS 2. Create an Architecture Overview](https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_007)

@@ -9,6 +9,10 @@
 
 ## [People](#people)
 
+**Morale, Productivity and Engagement Killers**: An excellent resource around motivation can be found in Chapter 11 of Steve McConnell's excellent "Rapid Development" book.
+
+**Presentation I performed at AgileNZ 2014** around [increasing developer productivity](https://speakerdeck.com/binarymist/how-to-increase-software-developer-productivity)
+
 [**Social Engineer**](http://www.social-engineer.org/) website has a plethora of excellent resources.
 
 ## [VPS](#vps)
@@ -17,4 +21,18 @@
 
 [**Distributed Computing Environment / Remote Procedure Call**](https://en.wikipedia.org/wiki/DCE/RPC).
 
+## [Web Applications](#web-applications)
 
+[**Blowfish cipher**](https://en.wikipedia.org/wiki/Blowfish_(cipher))
+
+[**PBKDF2**](https://en.wikipedia.org/wiki/PBKDF2)
+
+[**Key Derivation Function**](https://en.wikipedia.org/wiki/Key_derivation_function) (KDF)
+
+[**bcrypt**](https://en.wikipedia.org/wiki/Bcrypt)
+
+[**Cryptographic hash function**](https://en.wikipedia.org/wiki/Cryptographic_hash_function): MD5, SHA1, SHA2, etc
+
+[**Key stretching**](https://en.wikipedia.org/wiki/Key_stretching)
+
+[**scrypt**](https://en.wikipedia.org/wiki/Scrypt)
