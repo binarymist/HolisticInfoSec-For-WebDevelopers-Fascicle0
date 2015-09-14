@@ -7,6 +7,8 @@ See [VPS](#vps), as it has a lot of similarities due to the fact that in many ca
 ## 1. SSM Asset Identification
 Take results from [higher level Asset Identification](#ssm-asset-identification). Remove any that are not applicable. Add any newly discovered.
 
+_Todo_ Flesh this out. Pull from https://speakerdeck.com/binarymist/does-your-cloud-solution-look-like-a-mushroom
+
 ## 2. SSM Identify Risks {#cloud-identify-risks}
 Go through same process as we did at the [top level](#ssm-identify-risks), but for your VPS(s).
 

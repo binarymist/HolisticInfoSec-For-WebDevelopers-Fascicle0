@@ -15,6 +15,14 @@
 
 [**Social Engineer**](http://www.social-engineer.org/) website has a plethora of excellent resources.
 
+The following books have been influential for me and the content from the People chapter should reflect that. They are very insightful and well worth the investment.
+
+* The Social Engineers Playbook: A Practical Guide to Pretexting by Jeremiah Talamantes
+* Social Engineering: The Art of Human Hacking by Christopher Hadnagy
+* The Art Of Deception by Kevin Mitnick
+* Chapter 10 of Beyond Fear by Bruce Schneier
+* Gray Hat Hacking The Ethical Hacker's Handbook
+
 ## [VPS](#vps)
 
 [**Details**](https://community.rapid7.com/community/metasploit/blog/2013/03/09/psexec-demystified) on the Metasploit PSExec module.

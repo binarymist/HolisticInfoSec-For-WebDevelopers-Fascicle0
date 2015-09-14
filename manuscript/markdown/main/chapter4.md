@@ -1,6 +1,6 @@
 # Process {#process}
 
-_Todo_
+_Todo_ Similar process to that discussed in https://speakerdeck.com/binarymist/0wn1ng-the-web-at-www-dot-wdcnz-dot-com
 
 %% This chapter needs to be about the process of carrying out penetration testing.
 %% From the pentesters point of view
