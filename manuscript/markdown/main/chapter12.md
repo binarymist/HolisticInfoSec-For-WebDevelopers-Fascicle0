@@ -393,7 +393,7 @@ See Justin Searls [talk](http://blog.testdouble.com/posts/2014-12-02-the-social-
 
 _Todo_
 
-### Logging {#web-applications-countermeasures-lack-of-visibility-logging}
+#### Logging {#web-applications-countermeasures-lack-of-visibility-logging}
 
 _Todo_
 

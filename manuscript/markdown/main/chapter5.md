@@ -71,6 +71,7 @@ Then there is all the RFID cards, tags for accessing buildings, elevators, car p
 &nbsp;
 
 Of course there are many more.
+
 _Todo_ what are they?
 
 %% https://www.google.co.nz/search?q=rfid+tags&oq=rfid+tags&aqs=chrome..69i57j0l5.13744j0j7&client=ubuntu&sourceid=chrome&es_sm=93&ie=UTF-8#q=rfid+tag+exploitation
