@@ -650,6 +650,50 @@ _Todo_
 
 _Todo_
 
+### Spoofing
+
+_Todo_
+
+#### IP
+
+_Todo_
+
+#### ARP (Address Resolution Protocol)
+
+_Todo_
+
+#### DNS
+
+_Todo_
+
+#### Referrer
+
+_Todo_
+
+#### EMail Address
+
+_Todo_
+
+#### Website
+
+_Todo_
+
+### Doppelganger Domains
+
+
+#### Web-sites
+
+_Todo_
+
+#### SMTP
+
+_Todo_
+
+#### SSH
+
+_Todo_
+
+
 ### Wrongfully Trusting the Loading of Untrusted Web Resources {#network-risks-that-solution-causes-wrongfully-trusting-the-loading-of-untrusted-web-resources}
 
 #### Content Security Policy (CSP) {#network-risks-that-solution-causes-wrongfully-trusting-the-loading-of-untrusted-web-resources-csp}
@@ -681,6 +725,26 @@ Make sure your web server only ever responds over HTTPS, including the very firs
 
 Again your trusting the browser.
 
+### Firewall/Router
+
+_Todo_
+
+### Component Placement
+
+_Todo_
+
+### Wire Inspecting
+
+_Todo_
+
+### Wi-Fi
+
+_Todo_
+
+### Using Components with Known Vulnerabilities
+
+_Todo_
+
 ### Lack of Offensiveness
 
 _Todo_
@@ -703,8 +767,97 @@ _Todo_
 
 _Todo_
 
+### Spoofing
+
+_Todo_
+
+#### IP
+
+_Todo_
+
+#### ARP (Address Resolution Protocol)
+
+_Todo_
+
+#### DNS
+
+_Todo_
+
+#### Referrer
+
+_Todo_
+
+#### EMail Address
+
+_Todo_
+
+#### Website
+
+_Todo_
+
+### Doppelganger Domains
+
+
+#### Web-sites
+
+_Todo_
+
+#### SMTP
+
+_Todo_
+
+#### SSH
+
+_Todo_
+
+### Wrongfully Trusting the Loading of Untrusted Web Resources
+
+_Todo_
+
+#### Content Security Policy (CSP)
+
+_Todo_
+
+#### Sub-resource Integrity (SRI)
+
+_Todo_
+
+### TLS Downgrade {#network-risks-that-solution-causes-tls-downgrade}
+
+_Todo_
+
+#### HTTP Strict Transport Security (HSTS)
+
+_Todo_
+
+#### HTTP Strict Transport Security (HSTS) Preload
+
+_Todo_
+
+### Firewall/Router
+
+_Todo_
+
+### Component Placement
+
+_Todo_
+
+### Wire Inspecting
+
+_Todo_
+
+### Wi-Fi
+
+_Todo_
+
+### Using Components with Known Vulnerabilities
+
+_Todo_
+
 ### Lack of Offensiveness
 
 _Todo_
 
 #### Vulnerability Scanners
+
+_Todo_

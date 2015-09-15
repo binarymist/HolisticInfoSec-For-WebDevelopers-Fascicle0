@@ -43,16 +43,15 @@ _Todo_
 ### Using Components with Known Vulnerabilities
 
 _Todo_
+
 Similar section in network chapter
 https://www.owasp.org/index.php/Top_10_2013-A9-Using_Components_with_Known_Vulnerabilities
 
 ### System Compromise {#vps-identify-risks-system-compromise}
 
-This is pretty much a blanket heading. It really needs to be broken down more.
-
 _Todo_
 
-
+This is pretty much a blanket heading. It really needs to be broken down more.
 
 ### Windows
 
@@ -192,9 +191,14 @@ I recently performed an [in-depth evaluation](http://blog.binarymist.net/2015/06
  * [Deep dive](http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#getting-started-with-monit) into Monit. What happens if the process we use to monitor stops working? [Keep Monit Alive](http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#keep-monit-alive)
 3. Passenger [evaluation](http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#passenger)
 
+#### File Integrity Checking
+
+_Todo_
+
 ### Using Components with Known Vulnerabilities
 
 _Todo_ Patching.
+
 Similar section in network chapter.
 https://www.owasp.org/index.php/Top_10_2013-A9-Using_Components_with_Known_Vulnerabilities
 
@@ -270,13 +274,148 @@ Also consider setting up automatic updates.
 * Possible time constraints: It takes time to find skilled workers, gain expertise, set-up and configure.
 * Many of the points I have raised around VPS hardening require maintenance.
 
+### Forfeit Control thus Security
+
+_Todo_
+
 ### Lack of Visibility
+
+_Todo_
+
+#### Host Intrusion Detection Systems (HIDS)
+
+_Todo_
+
+#### Logging and Alerting
+
+_Todo_
+
+#### Monitoring
+
+_Todo_
+
+#### File Integrity Checking
+
+_Todo_
+
+### Using Components with Known Vulnerabilities
+
+_Todo_
+
+### Windows
+
+_Todo_
+
+#### PSExec
+
+_Todo_
+
+### Minimise Attack Surface by Granular Partitioning
+
+_Todo_
+
+### Minimise Attack Surface by Installing Only what you Need
+
+_Todo_
+
+### Review Password Strategies
+
+_Todo_
+
+### Disable Remote Root Logins
+
+_Todo_
+
+### Harden SSH
+
+_Todo_
+
+### Disable Boot Options
+
+_Todo_
+
+### Disable, Remove Services. Harden what's left
+
+_Todo_
+
+### Schedule Backups
+
+_Todo_
+
+### Host Firewall
 
 _Todo_
 
 ## 5. SSM Costs and Trade-offs
 
+### Forfeit Control thus Security
+
+_Todo_
+
 ### Lack of Visibility
 
 _Todo_
 
+#### Host Intrusion Detection Systems (HIDS)
+
+_Todo_
+
+#### Logging and Alerting
+
+_Todo_
+
+#### Monitoring
+
+_Todo_
+
+#### File Integrity Checking
+
+_Todo_
+
+### Using Components with Known Vulnerabilities
+
+_Todo_
+
+### Windows
+
+_Todo_
+
+#### PSExec
+
+_Todo_
+
+### Minimise Attack Surface by Granular Partitioning
+
+_Todo_
+
+### Minimise Attack Surface by Installing Only what you Need
+
+_Todo_
+
+### Review Password Strategies
+
+_Todo_
+
+### Disable Remote Root Logins
+
+_Todo_
+
+### Harden SSH
+
+_Todo_
+
+### Disable Boot Options
+
+_Todo_
+
+### Disable, Remove Services. Harden what's left
+
+_Todo_
+
+### Schedule Backups
+
+_Todo_
+
+### Host Firewall
+
+_Todo_

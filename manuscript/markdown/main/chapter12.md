@@ -218,7 +218,11 @@ The unchangeable vulnerabilities are:
 
 _Todo_
 
-### Lack of Input Sanitisation {#web-applications-identify-risks-lack-of-input-sanitisation}
+#### Logging
+
+_Todo_
+
+### Lack of Input Validation and Sanitisation {#web-applications-identify-risks-lack-of-input-validation-and-sanitisation}
 ![](images/ThreatTags/easy-common-average-severe.png)
 
 #### Buffer Overflows {#web-applications-identify-risks-buffer-overflows}
@@ -353,10 +357,6 @@ Other notable data-store compromises were [LinkedIn](https://en.wikipedia.org/wi
 
 Are you using well salted and quality strong key derivation functions (KDFs) for all of your sensitive data? Are you making sure you are notifying your customers about using high quality passwords? Are you informing them what a high quality password is? Consider checking new user credentials against a list of the most frequently used and insecure passwords collected.
 
-### Logging
-
-_Todo_
-
 ### Lack of Authentication {#web-applications-identify-risks-lack-of-authentication}
 
 _Todo_  
@@ -393,7 +393,11 @@ See Justin Searls [talk](http://blog.testdouble.com/posts/2014-12-02-the-social-
 
 _Todo_
 
-### Lack of Input Sanitisation {#web-applications-countermeasures-lack-of-input-sanitisation}
+### Logging {#web-applications-countermeasures-lack-of-visibility-logging}
+
+_Todo_
+
+### Lack of Input Validation and Sanitisation {#web-applications-countermeasures-lack-of-input-validation-and-sanitisation}
 ![](images/ThreatTags/PreventionAVERAGE.png)
 
 * All user input should be escaped
@@ -420,7 +424,7 @@ There are a few options here:
 
 #### Command Injection {#web-applications-countermeasures-command-injection}
 
-On top of the points mentioned above under [Lack of Input Sanitisation](#web-applications-countermeasures-lack-of-input-sanitisation), 
+On top of the points mentioned above under [Lack of Input Validation and Sanitisation](#web-applications-countermeasures-lack-of-input-validation-and-sanitisation), 
 [This article](http://www.golemtechnologies.com/articles/shell-injection) is quite good.
 
 %% Command Injection in NodeJS: https://blog.liftsecurity.io/2014/08/19/Avoid-Command-Injection-Node.js
@@ -582,7 +586,7 @@ The contents of the above example configuration files may look like the followin
        }
     }
 
-The [Logging](#web-applications-countermeasures-logging) section shows more configuration options to provide a slightly bigger picture.
+The [Logging](#web-applications-countermeasures-lack-of-visibility-logging) section shows more configuration options to provide a slightly bigger picture.
 
 node-config also:
 
@@ -670,7 +674,7 @@ If you follow the recommendations below, data-store theft will be an inconvenien
 
 Consider what sensitive information you really need to store. Consider using the following key derivation functions (KDFs) for all sensitive data. Not just passwords. Also continue to [remind your customers](https://speakerdeck.com/binarymist/passwords-lol) to always use unique passwords that are made up of alphanumeric, upper-case, lower-case and special characters. It is also worth considering pushing the use of high quality password vaults. Do not limit password lengths. Encourage long passwords.
 
-PBKDF2, bcrypt and [scrypt](http://www.tarsnap.com/scrypt.html) are KDFs that are designed to be slow. Used in a process commonly known as key stretching. The process of key stretching in terms of how long it takes can be tuned by increasing or decreasing the number of cycles used. Often 1000 cycles or more for passwords. "_The function used to protect stored credentials should balance attacker and defender verification. The defender needs an acceptable response time for verification of users’ credentials during peak use. However, the time required to map_" `<credential> → <protected form>` "_must remain beyond threats’ hardware (GPU, FPGA) and technique (dictionary-based, brute force, etc) capabilities._"
+PBKDF2, bcrypt and [scrypt](http://www.tarsnap.com/scrypt.html) are KDFs that are designed to be slow. Used in a process commonly known as key stretching. The process of key stretching in terms of how long it takes can be tuned by increasing or decreasing the number of cycles used. Often 1000 cycles or more for passwords. "_The function used to protect stored credentials should balance attacker and defender verification. The defender needs an acceptable response time for verification of users’ credentials during peak use. However, the time required to map_ `<credential> -> <protected form>` _must remain beyond threats’ hardware (GPU, FPGA) and technique (dictionary-based, brute force, etc) capabilities._"
 
 > OWASP Password Storage
 
@@ -694,10 +698,6 @@ This depends on many considerations. I am not going to tell you which is best, b
 * [Haswell](http://www.theplatform.net/2015/06/02/intel-finishes-haswell-xeon-e5-rollout-launches-broadwell-e3/)
 
 The sensitive data stored within a data-store should be the output of using one of the three key derivation functions we have just discussed. Feed with the data you want protected and a salt. All good frameworks will have at least PBKDF2 and bcrypt APIs
-
-### Logging {#web-applications-countermeasures-logging}
-
-_Todo_
 
 ### Lack of Authentication {#web-applications-countermeasures-lack-of-authentication}
 
@@ -766,6 +766,97 @@ For .Net developers, there is the likes of [OWASP **SafeNuGet**](https://github.
 
 _Todo_
 
+#### Logging
+
+_Todo_
+
+### Lack of Input Validation and Sanitisation
+
+_Todo_
+
+#### Buffer Overflows
+
+_Todo_
+
+#### Cross-Site Scripting (XSS)
+
+_Todo_
+
+#### SQLi
+
+_Todo_
+
+#### Command Injection
+
+_Todo_
+
+#### LDAP Injection
+
+_Todo_
+
+#### XPath Injection
+
+_Todo_
+
+#### XQuery Injection
+
+_Todo_
+
+#### XSLT Injection
+
+_Todo_
+
+#### XML Injection
+
+_Todo_
+
+### Management of Application Secrets
+
+_Todo_
+
+#### Store Configuration in Configuration files
+
+_Todo_
+
+##### node-config
+
+_Todo_
+
+##### Windows
+
+_Todo_
+
+##### Linux
+
+_Todo_
+
+#### Least Privilege
+
+_Todo_
+
+#### Location
+
+_Todo_
+
+#### Data-store Compromise
+
+_Todo_
+
+### Lack of Authentication
+
+_Todo_
+
+### Cryptography on the Client (AKA Untrusted Crypto)
+
+_Todo_
+
+### Consuming Free and Open Source
+
+_Todo_
+
+### Web Application Firewall (WAF)
+
+_Todo_
 
 ## 5. SSM Costs and Trade-offs
 
@@ -773,3 +864,94 @@ _Todo_
 
 _Todo_
 
+#### Logging
+
+_Todo_
+
+### Lack of Input Validation and Sanitisation
+
+_Todo_
+
+#### Buffer Overflows
+
+_Todo_
+
+#### Cross-Site Scripting (XSS)
+
+_Todo_
+
+#### SQLi
+
+_Todo_
+
+#### Command Injection
+
+_Todo_
+
+#### LDAP Injection
+
+_Todo_
+
+#### XPath Injection
+
+_Todo_
+
+#### XQuery Injection
+
+_Todo_
+
+#### XSLT Injection
+
+_Todo_
+
+#### XML Injection
+
+_Todo_
+
+### Management of Application Secrets
+
+_Todo_
+
+#### Store Configuration in Configuration files
+
+_Todo_
+
+##### node-config
+
+_Todo_
+
+##### Windows
+
+_Todo_
+
+##### Linux
+
+_Todo_
+
+#### Least Privilege
+
+_Todo_
+
+#### Location
+
+_Todo_
+
+#### Data-store Compromise
+
+_Todo_
+
+### Lack of Authentication
+
+_Todo_
+
+### Cryptography on the Client (AKA Untrusted Crypto)
+
+_Todo_
+
+### Consuming Free and Open Source
+
+_Todo_
+
+### Web Application Firewall (WAF)
+
+_Todo_

@@ -49,9 +49,12 @@ The USA National Security Agency (NSA) and its UK counterpart, Government Commun
 
 ## 3. SSM Countermeasures
 
+_Todo_
 
 ## 4. SSM Risks that Solution Causes
 
+_Todo_
 
 ## 5. SSM Costs and Trade-offs
 
+_Todo_

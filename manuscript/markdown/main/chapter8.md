@@ -216,6 +216,8 @@ _Todo_
 %% Book: Social Engineering The Art Of Human Hacking
 %%   Pg 50 has good info about what people are likely to click on.-->
 
+%% Demo USB RUBBER DUCKY 
+
 ## 3. SSM Countermeasures
 
 ### [Morale, Productivity and Engagement Killers](https://speakerdeck.com/binarymist/how-to-increase-software-developer-productivity) {#people-countermeasures-morale-productivity-and-engagement-killers}
@@ -345,12 +347,23 @@ Many of the social engineering attacks put a focus on a problem that does not ex
 
 &nbsp;
 
-All of these attacks require: Train -> Test -> Repeat
+All of these attacks require: Train -> Monitor -> Test, repeat
 
 Creating an organisation wide single point of contact that can process all security related concerns will help to see when an attack is in progress, as in most cases, the attacker(s) will be making multiple attempts to pre-load and elicit sensitive information. Often from multiple targets. Emphasise that employees should contact that single point at even the slightest feeling of something being a bit suspicious.
 
 If you took the people out of the security equation, there would be no insecurities. People are the source of (I am fairly sure) all of the security issues we face today. So realistically, this is where we need to focus most of our attention. Education, establishing cultures of people that understand the issues, are prepared to and expect to be played and can and do react appropriately. 
 
+### Phishing
+
+_Todo_
+
+### Spear Phishing
+
+_Todo_
+
+### Infectious Media
+
+_Todo_
 
 ## 4. SSM Risks that Solution Causes
 Often the modern thinking is that we can replace flawed people with technology. People are resilient and dynamic. They can spot a threat they have never seen before and defend against it. Computers can only defend against what they have been programmed to defend against. Technological defences are brittle. It is the role of technology to support humans to make good decisions.
@@ -359,7 +372,167 @@ Employees can get complacent with training, unless they are faced with very real
 
 _Todo_
 
+### Morale, Productivity and Engagement Killers
+
+_Todo_
+
+#### Undermined Motivation
+
+_Todo_
+
+#### Adding people to a Late Project
+
+_Todo_
+
+#### Noisy, Crowded Offices
+
+_Todo_
+
+#### Email
+
+_Todo_
+
+#### Meetings
+
+_Todo_
+
+#### Context Switching
+
+_Todo_
+
+#### Top Developer Motivators in Order
+
+_Todo_
+
+### Employee Snatching
+
+_Todo_
+
+#### Exit Interviews
+
+_Todo_
+
+### Phone Calls
+
+_Todo_
+
+### Spoofing Caller Id
+
+_Todo_
+
+### Favour for a Favour
+
+_Todo_
+
+### The New Employee
+
+_Todo_
+
+### We Have a Problem
+
+_Todo_
+
+### It’s Just the Cleaner
+
+_Todo_
+
+### Come On In Sir
+
+_Todo_
+
+### Phishing
+
+_Todo_
+
+### Spear Phishing
+
+_Todo_
+
+### Infectious Media
+
+_Todo_
+
+
 ## 5. SSM Costs and Trade-offs
+
+
+### Morale, Productivity and Engagement Killers
+
+_Todo_
+
+#### Undermined Motivation
+
+_Todo_
+
+#### Adding people to a Late Project
+
+_Todo_
+
+#### Noisy, Crowded Offices
+
+_Todo_
+
+#### Email
+
+_Todo_
+
+#### Meetings
+
+_Todo_
+
+#### Context Switching
+
+_Todo_
+
+#### Top Developer Motivators in Order
+
+_Todo_
+
+### Employee Snatching
+
+_Todo_
+
+#### Exit Interviews
+
+_Todo_
+
+### Phone Calls
+
+_Todo_
+
+### Spoofing Caller Id
+
+_Todo_
+
+### Favour for a Favour
+
+_Todo_
+
+### The New Employee
+
+_Todo_
+
+### We Have a Problem
+
+_Todo_
+
+### It’s Just the Cleaner
+
+_Todo_
+
+### Come On In Sir
+
+_Todo_
+
+### Phishing
+
+_Todo_
+
+### Spear Phishing
+
+_Todo_
+
+### Infectious Media
 
 _Todo_
 
