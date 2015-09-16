@@ -5,7 +5,7 @@
 The area of physical security is often over looked, especially by technical people, although in most cases, it is the easiest and simplest to circumvent and also the easiest and simplest to mitigate.
 
 ## 1. SSM Asset Identification
-Take results from [higher level Asset Identification](#ssm-asset-identification). Remove any that are not applicable. Add any newly discovered. Here are some to get you started:
+Take results from [higher level Asset Identification](#asset-identification). Remove any that are not applicable. Add any newly discovered. Here are some to get you started:
 
 * Servers, the cabinets they reside in, the rooms cabinets reside in.
 * Physical buildings, their openings such as doors and windows. Keys, RFID cards, Access codes
@@ -13,7 +13,7 @@ Take results from [higher level Asset Identification](#ssm-asset-identification)
 * Plant, such as work-stations or any other devices that could be used to launch attack sequences from. Laptops and mobile devices (including personal) configured to access internal Access Points (APs). Wi-Fi APs
 
 ## 2. SSM Identify Risks
-You can take the same process that we did at the [top level](#ssm-identify-risks), but abstract the ideas and then solidify them on physical components. Some of the ideas will work, some wont.
+You can take the same process that we did at the [top level](#identify-risks), but abstract the ideas and then solidify them on physical components. Some of the ideas will work, some wont.
 
 Many times physical security is good, but it is compromised by the people problem. My wife used to do a lot of commercial cleaning and every night she would come home with new stories about how people were the weakest link when it came to security. Most of the time when physical security is breached there actually is no security, because **people** have failed the design.
 

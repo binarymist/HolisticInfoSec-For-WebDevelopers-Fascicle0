@@ -8,7 +8,7 @@ Bruce Schneier has good [insight](http://www.networkworld.com/article/2909212/se
 
 If you think of the attack surface that Wi-Fi brought with it, you could probably double that for what we are going to experience with IoT, and I fear that may be an underestimate.
 
-OWASP also has an IoT Top 10 https://www.owasp.org/index.php/OWASP_Internet_of_Things_Top_Ten_Project
+OWASP also has an IoT Top 10 https://www.owasp.org/index.php/OWASP_Internet_of_Things_Top_Ten_Project which I could potentially fill in.
 
 _Todo_
 
@@ -16,4 +16,6 @@ _Todo_
 
 %% Tessel 2 podcast on NodeUp 85_01 covering RX.js, functional programming, piping.
 
-%% Another option would be to create a FPGA or use one for brute forcing bcrypt hashes. Details in the Web Applications chapter. Just search for bcrypt.
+%% Another option would be to create a FPGA or use one for brute forcing bcrypt hashes. Details in the Web Applications chapter under #web-applications-countermeasures-data-store-compromise
+
+%% Submit CFP to Saturn no later than January 15, 2016.

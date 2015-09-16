@@ -174,14 +174,14 @@ _Todo_
 
 
 ## 1. SSM Asset Identification
-Take results from [higher level Asset Identification](#ssm-asset-identification). Remove any that are not applicable. Add any newly discovered. Here are some to get you started:
+Take results from [higher level Asset Identification](#asset-identification). Remove any that are not applicable. Add any newly discovered. Here are some to get you started:
 
 * Ownership. Similarly as addressed in the VPS chapter, Do not assume that ownership, or at least control of your server(s) is something you will always have. Ownership is often one of the first assets an attacker will attempt to take from a target in order to execute further exploits. At first this may sound strange, but that is because of an assumption you may have that you will always own (have control of) your web application. Hopefully I dispelled this myth in the VPS chapter. If an attacker can take control of your web application (own it/steal it/what ever you want to call the act), then they have a foot hold to launch further attacks and gain other assets of greater value. The web application itself will often just be a stepping stone to other assets that you assume are safe. With this in mind, your web application is an asset. On the other hand you could think of it as a liability. Both may be correct. In any case, you need to protect your web application and in many cases take it to school and teach it how to protect itself. I cover that under the [Web Application Firewall](#web-applications-countermeasures-waf) section, where AppSensor can help.
-* Intellectual property or sensitive information within the code or configuration files such as email addresses and account credentials for the likes of data-stores, syslog servers, monitoring services. We address this in [Management of Application Secrets](#web-applications-ssm-identify-risks-management-of-application-secrets)
+* Intellectual property or sensitive information within the code or configuration files such as email addresses and account credentials for the likes of data-stores, syslog servers, monitoring services. We address this in [Management of Application Secrets](#web-applications-identify-risks-management-of-application-secrets)
 * Sensitive Client/Customer data.
 
 ## 2. SSM Identify Risks
-Go through same process as we did at the [top level](#ssm-identify-risks), but for Web Application.
+Go through same process as we did at the [top level](#identify-risks), but for Web Application.
 
 * [MS Application Threats and Countermeasures](https://msdn.microsoft.com/en-us/library/ff648641.aspx#c02618429_008)
 * _Todo_ Exploit WebRTC
@@ -332,7 +332,7 @@ _Todo_
 
 _Todo_
 
-### Management of Application Secrets {#web-applications-ssm-identify-risks-management-of-application-secrets}
+### Management of Application Secrets {#web-applications-identify-risks-management-of-application-secrets}
 
 Passwords and other secrets for things like data-stores, syslog servers, monitoring services, email accounts and so on can be useful to an attacker to compromise data-stores, obtain further secrets from email accounts, file servers, system logs, services being monitoring, etc and may even provide credentials to continue moving through the network compromising other machines.
 
@@ -449,7 +449,7 @@ _Todo_
 
 _Todo_
 
-### Management of Application Secrets {#web-applications-ssm-identify-risks-management-of-application-secrets}
+### Management of Application Secrets {#web-applications-countermeasures-management-of-application-secrets}
 
 Secure password management within applications is a case of doing what you can, often relying on obscurity and leaning on other layers of defence to make it harder for compromise. Like many of the layers already discussed in the previous chapters.
 
@@ -661,7 +661,7 @@ Put your services like data-stores on network segments that are as [sheltered](#
 
 Maintain as few user accounts on the servers in question as possible and with the least privileges as possible. 
 
-#### Data-store Compromise
+#### Data-store Compromise {#web-applications-countermeasures-data-store-compromise}
 ![](images/ThreatTags/PreventionEASY.png)
 
 As part of your defence in depth strategy, you should expect that your data-store is going to get stolen, but hope that it does not. What assets within the data-store are sensitive? How are you going to stop an attacker that has gained access to the data-store from making sense of the sensitive data?

@@ -12,7 +12,7 @@ This modelling process should be performed by a collection of the following peop
 
 Having this process performed by a team brings out the best in everyone. There are of course times when it is more effective to break out and work alone for a period of time.
 
-## 1. SSM Asset Identification {#ssm-asset-identification}
+## 1. SSM Asset Identification {#starting-with-the-30000-foot-view-asset-identification}
 * [MS 1. Identify Assets](https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_006)
 * [OWASP Assets](https://www.owasp.org/index.php/Application_Threat_Modeling#Assets)
 
@@ -38,7 +38,7 @@ Here are some that may or may not apply to your domain:
 
 Now if you relate the potential loses with information security vectors, you will come up with a target list we can take into the next stages.
 
-## 2. SSM Identify Risks {#ssm-identify-risks}
+## 2. SSM Identify Risks {#starting-with-the-30000-foot-view-identify-risks}
 * [MS 2. Create an Architecture Overview](https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_007)
 * [MS 3. Decompose the Application](https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_008)
 * [MS 4. Identify the Threats](https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_009)
@@ -48,13 +48,13 @@ Now if you relate the potential loses with information security vectors, you wil
 
   I also like to abstract things a bit here and think about some of the entities that could be risky to the target business.
 
-  {#threat-agents}
+  {#starting-with-the-30000-foot-view-identify-risks-threat-agents}
   ![](images/ThreatAgents.gif)
 
   Then think about some of the relationships the target business depends on...  
   How they could be leaking IP.
 
-  {#likelihood-and-impact}
+  {#starting-with-the-30000-foot-view-identify-risks-likelihood-and-impact}
   ![](images/LikelihoodAndImpact.gif)
 
 {#ms-5-document-the-threats}
@@ -88,12 +88,12 @@ Keep your eye on the vulnerability advisories:
 * [NodeSecurity](https://nodesecurity.io/advisories)
 * [National Vulnerability Database](https://web.nvd.nist.gov/view/vuln/search)
 
-## 3. SSM Countermeasures {#ssm-countermeasures}
+## 3. SSM Countermeasures {#starting-with-the-30000-foot-view-countermeasures}
 * [OWASP Countermeasure Identification](https://www.owasp.org/index.php/Application_Threat_Modeling#Countermeasure_Identification)
 * [MS STRIDE provides countermeasures to identified threats](https://msdn.microsoft.com/en-us/library/ff648641.aspx#c02618429_005)
 * [MS Threats and Countermeasures](https://msdn.microsoft.com/en-us/library/ff648641.aspx)
 
-## 4. SSM Risks that Solution Causes {#ssm-risks-that-solution-causes}
+## 4. SSM Risks that Solution Causes {#starting-with-the-30000-foot-view-risks-that-solution-causes}
 
 This is really dependent on the solution(s) you discover.
 
@@ -102,7 +102,7 @@ This is really dependent on the solution(s) you discover.
 * Complacency?
 * Spending too much on technological solutions and ignoring the fact that the person on the front desk can easily be tricked to reveal information an attacker needs or lower the defences of a computer system. See the section on [People](#people).
 
-## 5. SSM Costs and Trade-offs {#ssm-costs-and-trade-offs}
+## 5. SSM Costs and Trade-offs {#starting-with-the-30000-foot-view-costs-and-trade-offs}
 I am not here to do the work for you, but rather to help you do it.
 
 > Give a man a fish and feed him for a day. Teach a man to fish and feed him for life

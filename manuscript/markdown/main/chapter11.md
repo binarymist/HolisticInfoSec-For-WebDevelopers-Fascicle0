@@ -3,7 +3,7 @@
 ![10,000' view of Network Security](images/10000Network.gif)
 
 ## 1. SSM Asset Identification
-Take results from [higher level Asset Identification](#ssm-asset-identification). Remove any that are not applicable. Add any newly discovered.
+Take results from [higher level Asset Identification](#asset-identification). Remove any that are not applicable. Add any newly discovered.
 
 Here are some possibilities to get you started:
 
@@ -14,7 +14,7 @@ Here are some possibilities to get you started:
 There will almost certainly be many others. Think about your network topology. What information is stored where and over which channels it may pass. If you have decided to hand your precious data over to a cloud provider, then you are not going to have much control over this and in most cases, your CSP will not have much control either (addressed in the [Cloud](#cloud) chapter). Also think about the areas that may be easier to compromise than others and take this information into the next step.
 
 ## 2. SSM Identify Risks
-Go through same process as we did at the [top level](#ssm-identify-risks), but for the network.
+Go through same process as we did at the [top level](#identify-risks), but for the network.
 
 * [MS Network Threats and Countermeasures](https://msdn.microsoft.com/en-us/library/ff648641.aspx#c02618429_006)
 

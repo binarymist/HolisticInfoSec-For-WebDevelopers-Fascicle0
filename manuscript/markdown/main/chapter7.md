@@ -13,7 +13,7 @@ https://media.blackhat.com/bh-us-12/Briefings/C_Miller/BH_US_12_Miller_NFC_attac
 _Todo_
 
 ## 1. SSM Asset Identification
-Take results from [higher level Asset Identification](#ssm-asset-identification). Remove any that are not applicable. Add any newly discovered. Here are some to get you started:
+Take results from [higher level Asset Identification](#asset-identification). Remove any that are not applicable. Add any newly discovered. Here are some to get you started:
 
 * Taking the confidential business and client information from the "Starting with the 30,000' view" chapter, we have another set of attack vectors that threaten the information that may be carried around on laptops and mobile devices such as smart-phones, tablets and other devices, which can and do of course get taken away from an organisations premises. Many forms of confidential information may reside on or be accessible via these transient devices. Everything that could reside on your internal network could also reside on or be accessible from these transient devices.
 * Email on any number of devices
