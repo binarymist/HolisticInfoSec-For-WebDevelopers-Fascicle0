@@ -49,7 +49,7 @@ Now if you relate the potential loses with information security vectors, you wil
   I also like to abstract things a bit here and think about some of the entities that could be risky to the target business.
 
   {#starting-with-the-30000-foot-view-identify-risks-threat-agents}
-  ![](images/ThreatAgents.gif)
+  ![](images/ThreatAgents.png)
 
   Then think about some of the relationships the target business depends on...  
   How they could be leaking IP.
