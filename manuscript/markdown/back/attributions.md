@@ -13,6 +13,9 @@
 
 **SecLists is a collection of multiple types of lists** used during security assessments. List types include usernames, passwords, URLs, sensitive data grep strings, fuzzing payloads, and many more.
 
+**Install the particular VirtualBox Extension Pack** on to the host.
+[https://www.virtualbox.org/ticket/9511?cversion=0&cnum_hist=2](https://www.virtualbox.org/ticket/9511?cversion=0&cnum_hist=2)
+
 ## [Process](#process)
 
 

@@ -7,6 +7,14 @@
 
 [**Kali Linux package version tracking**](http://tools.kali.org/version-tracking) is useful for seeing what versions of tools are currently in the distribution.
 
+**TP-LINK TL-WN722N USB Wireless Adapter**
+
+1. ath9k_htc [Debian Module](https://wiki.debian.org/ath9k_htc)
+2. VirtualBox [information](https://www.virtualbox.org/ticket/9511?cversion=0&cnum_hist=2) around setting up the TL-WN722N
+3. TP-LINK TL-WN722N [wiki](https://wikidevi.com/wiki/TP-LINK_TL-WN722N)
+4. [Loading and unloading](http://docs.oracle.com/cd/E37670_01/E41138/html/ch06s03.html) Linux Kernel Modules
+5. Kernel Module [Blacklisting](http://docs.oracle.com/cd/E37670_01/E41138/html/ch06s03.html)
+
 ## [People](#people)
 
 **Morale, Productivity and Engagement Killers**: An excellent resource around motivation can be found in Chapter 11 of Steve McConnell's excellent "Rapid Development" book.

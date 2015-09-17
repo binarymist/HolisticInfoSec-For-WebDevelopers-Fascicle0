@@ -1,14 +1,6 @@
 # Tooling Setup {#tooling-setup}
 
-_Todo_
-
-%% This chapter needs to be about the setup of my tools.
-%%   Kali Linux
-
-%%   Incl BeEF and all the others.
-%%      Three ways I started it and best way.
-
-All the tools I use for penetration and security testing are free and most are also open source (other than Windows of course). I always try hard to stick to this, as it makes pitching tooling acquisition to managers and those that hold the purse strings easy.
+All the software tools I use for penetration and security testing are free and most are also open source (other than Windows of course). I always try hard to stick to this, as it makes pitching tooling acquisition to managers and those that hold the purse strings easy.
 
 ## Kali Linux {#tooling-setup-kali-linux}
 
@@ -405,8 +397,155 @@ Simple and often useful for running a quick vulnerability assessment. Open sourc
 %% http://blog.binarymist.net/2014/03/29/up-and-running-with-kali-linux-and-friends/#openVAS
    
 
+### Additional Hardware
 
-   
+
+#### TP-LINK TL-WN722N USB Wireless Adapter
+
+It is often very helpful to have at least a couple of Wi-Fi adapters when you are performing certain wireless attacks or even so you can maintain internet connectivity using your phone as a wireless hot-spot while you are on another network. Useful for researching while your connected to a targets wireless Access Point (AP). An easy way to do this is to use the laptops on-board wireless interface to connect to the phones wireless hot-spot and pass the USB Wi-Fi adapter straight to the guest.
+
+There are many devices of varying specifications. I've found (along with others) that the TL-WN722N hits a good sweet spot of cross platform compatibility, price, size, easy to find and a few other considerations.
+
+As I find it flexible to run pen testing set-ups as VMs, that is what the following addresses. Using VirtualBox 4.3.18_r96516 (but known to work on later releases also), USB devices have to be "passed through" to the guest. The following process explains what is involved.
+
+The following is the process I found to set-up the pass-through on Kali 1.1.0
+(same process for 2.0) guest, by-passing the Linux Mint 17.1 (Rebecca) Host (in my case).
+
+##### Wi-Fi Adapter
+
+TP-LINK TL-WN722N Version 1.10
+
+* chip-set: Atheros ar9271
+* Vendor ID: 0cf3
+* Product ID: 9271
+* Module (driver): ath9k_htc
+
+![](images/TL-WN722N.jpg)
+
+##### Useful commands
+
+* `iwconfig`
+* `ifconfig`
+* `sudo lshw -C network`
+* `iwlist scan`
+* `lsusb`
+* `dmesg | grep -e wlan -e ath9`
+* contents of `/var/log/syslog`
+* `lsmod`
+* Release DHCP assigned IP. Similar to Windows ipconfig /release  
+`dhclient -r [interface-name]``
+* Renew DHCP assigned IP. Similar to Windows ipconfig /renew  
+`dhclient [interface-name]`
+
+##### Reconnaissance
+
+When you plug the Wifi adapter into your laptop and run `lsusb`, you should see a line that looks like:
+
+`ID 0cf3:9271 Atheros Communications, Inc. AR9271 802.11n`
+
+The first four hex digits are the Vendor ID and the second four hex digits are the Product ID.
+
+If you have a look from the bottom up of the `/var/log/syslog` file, you’ll see similar output to the following:
+
+{title="/var/log/syslog", linenos=off, lang=bash}
+    kernel: [ 98.212097] usb 2-2: USB disconnect, device number 3
+    kernel: [ 102.654780] usb 1-1: new high-speed USB device number 2 using ehci_hcd
+    kernel: [ 103.279004] usb 1-1: New USB device found, idVendor=0cf3, idProduct=7015
+    kernel: [ 103.279014] usb 1-1: New USB device strings: Mfr=16, Product=32, SerialNumber=48
+    kernel: [ 103.279020] usb 1-1: Product: UB95
+    kernel: [ 103.279025] usb 1-1: Manufacturer: ATHEROS
+    kernel: [ 103.279030] usb 1-1: SerialNumber: 12345
+    kernel: [ 103.597849] usb 1-1: ath9k_htc: Transferred FW: htc_7010.fw, size: 72992
+    kernel: [ 104.596310] ath9k_htc 1-1:1.0: ath9k_htc: Target is unresponsive
+    kernel: [ 104.596328] Failed to initialize the device
+    kernel: [ 104.605694] ath9k_htc: probe of 1-1:1.0 failed with error -22
+
+##### Provide USB privileges to guest
+
+First of all you need to add the user that controls guest to the vboxusers group on the host so that VMs can control USB devices. logout/in of/to host.
+
+##### Provide USB recognition to guest
+
+Install the particular VirtualBox Extension Pack on to the host. These packs can be found [here](https://www.virtualbox.org/ticket/9511?cversion=0&cnum_hist=2). If you have an older version of VirtualBox, you can find them [here](https://www.virtualbox.org/wiki/Download_Old_Builds_4_3_pre24). Do not forget to checksum the pack before you add the extension.
+
+1. `apt-get update`
+2. `apt-get upgrade`
+3. `apt-get dist-upgrade`
+4. `apt-get install linux-headers-$(uname -r)``
+5. Shutdown Linux guest OS
+6. Apply extension to VirtualBox in the host at: File -> Preferences -> Extensions
+
+##### Blacklist Wifi Module on Host
+
+Unload the `ath9k_htc` module to take effect immediately and blacklist it so that it does not load on boot. The module needs to be blacklisted on the host in order for the guest to be able to load it. Now we need to check to see if the module is loaded on the host with the following command:
+
+`lsmod | grep -e ath`
+
+We are looking for `ath9k_htc`. If it is visible in the output produced from previous command, unload it with the following command:
+
+`modprobe -r ath9k_htc`
+
+Now you will need to create a blacklist file in `/etc/modprobe.d/`. Create `/etc/modprobe.d/blacklist-ath9k.conf` and add the following text into it and save:
+
+`blacklist ath9k_htc`
+
+Now go into the settings of your VM -> USB -> and add a Device Filter. I name this tl-wn722n and add the Vendor and Product ID’s we discovered with `lsusb`. Make sure The “Enable USB 2.0 (EHCI) Controller” is enabled also.
+
+##### Upgrade Driver on Guest
+
+Start the VM.
+
+Install the latest firmware-atheros package:
+
+On the guest, check to see which version of firmware-atheros is installed:
+
+`dpkg-query -l '*atheros*'`
+
+Will probably be `0.44kali` whether you’re on Kali Linux 1.0.0 or 2.
+
+`aptitude show firmware-atheros`
+
+Will provide lots more information if you are interested. So now we need to remove this old package:
+
+`apt-get remove --purge firmware-atheros`
+
+Add the jessie-backports (that’s Debian 8.0) repository to your `/etc/apt/sources.list` in the following form:
+
+`deb http://ftp.nz.debian.org/debian jessie-backports main contrib non-free`
+
+Change the country prefix to your country if you like and follow it up with an update:
+
+`apt-get update`
+
+Then install the later package from the new repository we just added:
+
+`apt-get install -t jessie-backports firmware-atheros`
+
+Now if you run the `dpkg-query -l '*atheros*'` command again, your package should be on version `0.44~bp8+1`
+
+##### Test
+
+Plug your Wifi adapter into your laptop.
+
+In the Devices menu of your guest -> USB Devices, you should be able to select the “ATHEROS USB2.0 WLAN” adapter.
+
+Run `dmesg | grep htc` and you should see something similar to the following printed:
+
+{linenos=off, lang=bash}
+    [ 4.648701] usb 2-1: ath9k_htc: Firmware htc_9271.fw requested
+    [ 4.648805] usbcore: registered new interface driver ath9k_htc
+    [ 4.649951] usb 2-1: firmware: direct-loading firmware htc_9271.fw
+    [ 4.966479] usb 2-1: ath9k_htc: Transferred FW: htc_9271.fw, size: 50980
+    [ 5.217395] ath9k_htc 2-1:1.0: ath9k_htc: HTC initialized with 33 credits
+    [ 5.860808] ath9k_htc 2-1:1.0: ath9k_htc: FW Version: 1.3
+
+You should now be able to select the phones wireless hot-spot you want to connect to in network manager.
+
+
+
+
+
+
 
 ## Windows
 
