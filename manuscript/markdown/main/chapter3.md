@@ -2,7 +2,7 @@
 
 All the software tools I use for penetration and security testing are free and most are also open source (other than Windows of course). I always try hard to stick to this, as it makes:
 
-1. Pitching tooling acquisition to managers and those that hold the purse strings easy.
+1. Pitching tooling acquisition to managers and those that hold the purse strings easy
 2. Learning how the tools work and contributing to the security ecosystem
 
 ## Kali Linux {#tooling-setup-kali-linux}
@@ -405,7 +405,7 @@ Simple and often useful for running a quick vulnerability assessment. Open sourc
 
 #### TP-LINK TL-WN722N USB Wireless Adapter
 
-It is often very helpful to have at least a couple of Wi-Fi adapters when you are performing certain wireless Reconnaissance or attacks or even so you can maintain internet connectivity using your phone as a wireless hot-spot while you are on another network. Useful for researching while your connected to a targets wireless Access Point (AP). An easy way to do this is to use the laptops on-board wireless interface to connect to the phones wireless hot-spot and pass the USB Wi-Fi adapter straight to the guest.
+It is often very helpful to have at least a couple of Wi-Fi adapters when you are performing certain wireless reconnaissance or attacks or even so you can maintain internet connectivity using your phone as a wireless hot-spot while you are on another network. Useful for researching while your connected to a targets wireless Access Point (AP). An easy way to do this is to use the laptops on-board wireless interface to connect to the phones wireless hot-spot and pass the USB Wi-Fi adapter straight to the guest.
 
 There are many devices of varying specifications. I've found (along with others) that the TL-WN722N hits a good sweet spot of cross platform compatibility, price, size, easy to find and a few other considerations.
 
