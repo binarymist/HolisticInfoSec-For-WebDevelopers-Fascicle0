@@ -1,6 +1,9 @@
 # Tooling Setup {#tooling-setup}
 
-All the software tools I use for penetration and security testing are free and most are also open source (other than Windows of course). I always try hard to stick to this, as it makes pitching tooling acquisition to managers and those that hold the purse strings easy.
+All the software tools I use for penetration and security testing are free and most are also open source (other than Windows of course). I always try hard to stick to this, as it makes:
+
+1. Pitching tooling acquisition to managers and those that hold the purse strings easy.
+2. Learning how the tools work and contributing to the security ecosystem
 
 ## Kali Linux {#tooling-setup-kali-linux}
 
@@ -402,7 +405,7 @@ Simple and often useful for running a quick vulnerability assessment. Open sourc
 
 #### TP-LINK TL-WN722N USB Wireless Adapter
 
-It is often very helpful to have at least a couple of Wi-Fi adapters when you are performing certain wireless attacks or even so you can maintain internet connectivity using your phone as a wireless hot-spot while you are on another network. Useful for researching while your connected to a targets wireless Access Point (AP). An easy way to do this is to use the laptops on-board wireless interface to connect to the phones wireless hot-spot and pass the USB Wi-Fi adapter straight to the guest.
+It is often very helpful to have at least a couple of Wi-Fi adapters when you are performing certain wireless Reconnaissance or attacks or even so you can maintain internet connectivity using your phone as a wireless hot-spot while you are on another network. Useful for researching while your connected to a targets wireless Access Point (AP). An easy way to do this is to use the laptops on-board wireless interface to connect to the phones wireless hot-spot and pass the USB Wi-Fi adapter straight to the guest.
 
 There are many devices of varying specifications. I've found (along with others) that the TL-WN722N hits a good sweet spot of cross platform compatibility, price, size, easy to find and a few other considerations.
 
@@ -411,7 +414,7 @@ As I find it flexible to run pen testing set-ups as VMs, that is what the follow
 The following is the process I found to set-up the pass-through on Kali 1.1.0
 (same process for 2.0) guest, by-passing the Linux Mint 17.1 (Rebecca) Host (in my case).
 
-##### Wi-Fi Adapter
+##### Wi-Fi Adapter:
 
 TP-LINK TL-WN722N Version 1.10
 
@@ -422,7 +425,7 @@ TP-LINK TL-WN722N Version 1.10
 
 ![](images/TL-WN722N.jpg)
 
-##### Useful commands
+##### Useful commands:
 
 * `iwconfig`
 * `ifconfig`
@@ -437,9 +440,9 @@ TP-LINK TL-WN722N Version 1.10
 * Renew DHCP assigned IP. Similar to Windows ipconfig /renew  
 `dhclient [interface-name]`
 
-##### Reconnaissance
+##### Reconnaissance:
 
-When you plug the Wifi adapter into your laptop and run `lsusb`, you should see a line that looks like:
+When you plug the Wi-Fi adapter into your laptop and run `lsusb`, you should see a line that looks like:
 
 `ID 0cf3:9271 Atheros Communications, Inc. AR9271 802.11n`
 
@@ -460,22 +463,22 @@ If you have a look from the bottom up of the `/var/log/syslog` file, you’ll se
     kernel: [ 104.596328] Failed to initialize the device
     kernel: [ 104.605694] ath9k_htc: probe of 1-1:1.0 failed with error -22
 
-##### Provide USB privileges to guest
+##### Provide USB privileges to guest:
 
 First of all you need to add the user that controls guest to the vboxusers group on the host so that VMs can control USB devices. logout/in of/to host.
 
-##### Provide USB recognition to guest
+##### Provide USB recognition to guest:
 
 Install the particular VirtualBox Extension Pack on to the host. These packs can be found [here](https://www.virtualbox.org/ticket/9511?cversion=0&cnum_hist=2). If you have an older version of VirtualBox, you can find them [here](https://www.virtualbox.org/wiki/Download_Old_Builds_4_3_pre24). Do not forget to checksum the pack before you add the extension.
 
 1. `apt-get update`
 2. `apt-get upgrade`
 3. `apt-get dist-upgrade`
-4. `apt-get install linux-headers-$(uname -r)``
+4. `apt-get install linux-headers-$(uname -r)`
 5. Shutdown Linux guest OS
 6. Apply extension to VirtualBox in the host at: File -> Preferences -> Extensions
 
-##### Blacklist Wifi Module on Host
+##### Blacklist Wi-Fi Module on Host:
 
 Unload the `ath9k_htc` module to take effect immediately and blacklist it so that it does not load on boot. The module needs to be blacklisted on the host in order for the guest to be able to load it. Now we need to check to see if the module is loaded on the host with the following command:
 
@@ -491,7 +494,7 @@ Now you will need to create a blacklist file in `/etc/modprobe.d/`. Create `/etc
 
 Now go into the settings of your VM -> USB -> and add a Device Filter. I name this tl-wn722n and add the Vendor and Product ID’s we discovered with `lsusb`. Make sure The “Enable USB 2.0 (EHCI) Controller” is enabled also.
 
-##### Upgrade Driver on Guest
+##### Upgrade Driver on Guest:
 
 Start the VM.
 
@@ -523,9 +526,9 @@ Then install the later package from the new repository we just added:
 
 Now if you run the `dpkg-query -l '*atheros*'` command again, your package should be on version `0.44~bp8+1`
 
-##### Test
+##### Test: 
 
-Plug your Wifi adapter into your laptop.
+Plug your Wi-Fi adapter into your laptop.
 
 In the Devices menu of your guest -> USB Devices, you should be able to select the “ATHEROS USB2.0 WLAN” adapter.
 
