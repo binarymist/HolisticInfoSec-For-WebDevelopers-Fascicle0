@@ -158,3 +158,6 @@ Peter Kim discusses in "The Hacker PlayBook" about how he set-up SMTP and SSH do
 **bcrypt brute-forcing** is becoming more accessible due to easily obtainable cheap hardware.
 [http://www.openwall.com/lists/announce/2013/12/03/1](http://www.openwall.com/lists/announce/2013/12/03/1)  
 [http://www.openwall.com/presentations/Passwords13-Energy-Efficient-Cracking/](http://www.openwall.com/presentations/Passwords13-Energy-Efficient-Cracking/)
+
+"**Using four AMD Radeon HD6990 graphics cards**, _I am able to make about 15.5 billion guesses per second using the SHA-1 algorithm._"
+[Per Thorsheim](http://securitynirvana.blogspot.co.nz/2012/06/final-word-on-linkedin-leak.html)

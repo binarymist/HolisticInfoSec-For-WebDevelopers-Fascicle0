@@ -334,9 +334,8 @@ _Todo_
 
 ### Management of Application Secrets {#web-applications-identify-risks-management-of-application-secrets}
 
-Passwords and other secrets for things like data-stores, syslog servers, monitoring services, email accounts and so on can be useful to an attacker to compromise data-stores, obtain further secrets from email accounts, file servers, system logs, services being monitoring, etc and may even provide credentials to continue moving through the network compromising other machines.
-
-Passwords and/or their hashes travelling over the network. Also see the [Wire Inspecting](#network-identify-risks-wire-inspecting) section in the [Network](#network) chapter.
+* Passwords and other secrets for things like data-stores, syslog servers, monitoring services, email accounts and so on can be useful to an attacker to compromise data-stores, obtain further secrets from email accounts, file servers, system logs, services being monitored, etc, and may even provide credentials to continue moving through the network compromising other machines.
+* Passwords and/or their hashes travelling over the network. Also see the [Wire Inspecting](#network-identify-risks-wire-inspecting) section in the [Network](#network) chapter.
 
 #### Data-store Compromise
 ![](images/ThreatTags/difficult-common-average-moderate.png)
@@ -462,6 +461,8 @@ You may read in many places that having data-store passwords and other types of 
 
 Do not hard code passwords in source files for all developers to see. Doing so also means the code has to be patched when services are breached. At the very least, store them in configuration files and use different configuration files for different deployments and consider keeping them out of source control.
 
+Here are some examples using the node-config module.
+
 ##### node-config
 
 is a fully featured, well maintained configuration package that I have used on a good number of projects.
@@ -500,7 +501,7 @@ A good collection of different formats can be used for the config files: `.json`
 
 There is a specific [file loading order](https://github.com/lorenwest/node-config/wiki/Configuration-Files) which you specify by file naming convention, which provides a lot of flexibility and which caters for:
 
-* Having multiple instances of the same application running on the same machine.
+* Having multiple instances of the same application running on the same machine
 * The use of short and full host names to mitigate machine naming collisions
 * The type of deployment. This can be anything you set the `$NODE_ENV` environment variable to for example: `development`, `production`, `staging`, `whatever`.
 * Using and creating config files which stay out of source control. These config files have a prefix of `local`. These files are to be managed by external configuration management tools, build scripts, etc. Thus providing even more flexibility about where your sensitive configuration values come from.
@@ -596,13 +597,13 @@ node-config also:
 &nbsp;
 
 Encrypting/decrypting credentials in code may provide some obscurity, but not much more than that.  
-There are different answers for different platforms. None of which provide complete security, if there is such a thing, but instead focussing on different levels of obscurity.
+There are different answers for different platforms. None of which provide complete security, if there is such a thing, but instead focusing on different levels of obscurity.
 
 ##### Windows 
 
 **Store database credentials as a Local Security Authority (LSA) secret** and create a DSN with the stored credential. Use a SqlServer [connection string](https://www.owasp.org/index.php/Configuration#Secure_connection_strings) with `Trusted_Connection=yes`
 
-The hashed credentials are stored in the SAM file and the registry. If an attacker has physical access to the storage, they can easily copy the hashes if the machine is not running or can be shut-down. The hashes can be sniffed [from the wire](#network-identify-risks-wire-inspecting) in transit. The hashes can be pulled from the running machines memory (specifically the Local Security Authority Subsystem Service (LSASS.exe)) using tools such as Mimikatz, WCE, hashdump or fgdump. An attacker generally only needs the hash. Trusted tools like psexec take care of this for us. All discussed in my ["0wn1ng The Web"](https://speakerdeck.com/binarymist/0wn1ng-the-web-at-www-dot-wdcnz-dot-com) presentation. 
+The hashed credentials are stored in the SAM file and the registry. If an attacker has physical access to the storage, they can easily copy the hashes if the machine is not running or can be shut-down. The hashes can be sniffed [from the wire](#network-identify-risks-wire-inspecting) in transit. The hashes can be pulled from the running machines memory (specifically the Local Security Authority Subsystem Service (`LSASS.exe`)) using tools such as Mimikatz, WCE, hashdump or fgdump. An attacker generally only needs the hash. Trusted tools like psexec take care of this for us. All discussed in my ["0wn1ng The Web"](https://speakerdeck.com/binarymist/0wn1ng-the-web-at-www-dot-wdcnz-dot-com) presentation. 
 
 &nbsp;
 
@@ -610,7 +611,7 @@ The hashed credentials are stored in the SAM file and the registry. If an attack
 `string connStr = ConfigurationManager.ConnectionString["MyDbConn1"].ToString();`
 
 Of course there is a problem with this also. DPAPI uses LSASS, which again an attacker can extract the hash from its memory. If the `RSAProtectedConfigurationProvider` has been used, a key container is required. Mimikatz will force an export from the key container to a `.pvk` file.
-Which can then be [read](http://stackoverflow.com/questions/7332722/export-snk-from-non-exportable-key-container) using OpenSSL or tools from the Mono.Security assembly
+Which can then be [read](http://stackoverflow.com/questions/7332722/export-snk-from-non-exportable-key-container) using OpenSSL or tools from the `Mono.Security` assembly.
 
 &nbsp;
 
@@ -685,11 +686,12 @@ Do not use MD5, SHA-1 or the SHA-2 family of cryptographic one-way hashing funct
 
 > Per Thorsheim
 
-In saying that, PBKDF2 can use MD5, SHA-1 and the SHA-2 family of hashing functions. Bcrypt uses the Blowfish (more specifically the Eksblowfish) cipher. Scrypt does not have user replaceable parts like PBKDF2. The PRF can not be changed from SHA-256 to something else
+In saying that, PBKDF2 can use MD5, SHA-1 and the SHA-2 family of hashing functions. Bcrypt uses the Blowfish (more specifically the Eksblowfish) cipher. Scrypt does not have user replaceable parts like PBKDF2. The PRF can not be changed from SHA-256 to something else.
 
-**Which to use?**
+**Which KDF to use?**
 
-This depends on many considerations. I am not going to tell you which is best, because there is no best. Which to use depends on many things. You are going to have to gain understanding into at least all three KDFs. PBKDF2 is the oldest so it is the most battle tested, but there has also been lessons learnt from it that have been taken to the latter two. The next oldest is bcrypt which uses the Eksblowfish cipher which was designed specifically for bcrypt from the blowfish cipher, to be very slow to initiate thus boosting protection against dictionary attacks which were often run on custom Application-specific Integrated Circuits (ASICs) with low gate counts, often found in GPUs of the day (1999). The hashing functions that PBKDF2 uses were a lot easier to get speed increases due to ease of parallelisation as opposed to the Eksblowfish cipher attributes such as: far greater memory required for each hash, small and frequent pseudo-random memory accesses, making it harder to cache the data into faster memory. Now with hardware utilising large Field-programmable Gate Arrays (FPGAs), bcrypt brute-forcing is becoming more accessible due to easily obtainable cheap hardware such as:
+This depends on many considerations. I am not going to tell you which is best, because there is no best. Which to use depends on many things. You are going to have to gain understanding into at least all three KDFs. PBKDF2 is the oldest so it is the most battle tested, but there has also been lessons learnt from it that have been taken to the latter two. The next oldest is bcrypt which uses the Eksblowfish cipher which was designed specifically for bcrypt from the blowfish cipher, to be very slow to initiate thus boosting protection against dictionary attacks which were often run on custom Application-specific Integrated Circuits (ASICs) with low gate counts, often found in GPUs of the day (1999).  
+The hashing functions that PBKDF2 uses were a lot easier to get speed increases due to ease of parallelisation as opposed to the Eksblowfish cipher attributes such as: far greater memory required for each hash, small and frequent pseudo-random memory accesses, making it harder to cache the data into faster memory. Now with hardware utilising large Field-programmable Gate Arrays (FPGAs), bcrypt brute-forcing is becoming more accessible due to easily obtainable cheap hardware such as:
 
 * [Parallella board](https://www.parallella.org/board/) with Epiphany chip
 * [ZedBoard / Zynq 7020](http://picozed.org/product/zedboard)
