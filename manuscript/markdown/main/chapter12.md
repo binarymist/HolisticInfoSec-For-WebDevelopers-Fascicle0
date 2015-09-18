@@ -738,13 +738,13 @@ Leverage [**RetireJS**](https://github.com/RetireJS/retire.js) to help you find 
 RetireJS has the following:
 
 1. Command line scanner.
-    * Excellent for CI builds. Include it in one of your build definitions and let it do the work for you.  
+    * Excellent for CI builds. Include it in one of your build definitions and let it do the work for you.
       * To install globally:  
       `npm i -g retire`
       * To run it over your project:  
       `retire my-project`  
       Results like the following may be generated:
-    
+
         {linenos=off}
             public/plugins/jquery/jquery-1.4.4.min.js
             ↳ jquery 1.4.4.min has known vulnerabilities:
@@ -754,8 +754,8 @@ RetireJS has the following:
 
     * To install RetireJS locally to your project and run as a git precommit-hook.  
     There is an NPM package that can help us with this called `precommit-hook` which installs the git pre-commit hook into the usual `.git/hooks/pre-commit` file of your projects repository. This will allow us to run any scripts immediately before a commit is issued.  
-    Install both packages locally and save to devDependencies of your package.json. This will make sure that when other team members fetch your code, the same `retire` script will be run on their pre-commit action.  
-  
+    Install both packages locally and save to devDependencies of your package.json. This will make sure that when other team members fetch your code, the same `retire` script will be run on their pre-commit action.
+
       {linenos=off}
           npm install precommit-hook --save-dev
           npm install retire --save-dev
@@ -778,7 +778,7 @@ RetireJS has the following:
           }
 
     Adding the `pre-commit` property allows you to specify which scripts you want run before a successful commit is performed. The following package.json defines that the `lint` and `validate` scripts will be run. `validate` runs our `retire` command.
-  
+
       {title="package.json", linenos=off, lang=JavaScript}
           {
              "name": "my-project",
@@ -794,7 +794,7 @@ RetireJS has the following:
              },
              "pre-commit": ["lint", "validate"]
           }
-
+          
     Keep in mind that pre-commit hooks can be very useful for all sorts of checking of things immediately before your code is committed. For example running security tests mentioned previously with the [OWASP ZAP API](#web-applications-development-practices-security-test-driven-development).
 2. Chrome extension
 3. Firefox extension
