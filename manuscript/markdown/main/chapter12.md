@@ -756,45 +756,45 @@ RetireJS has the following:
     There is an NPM package that can help us with this called `precommit-hook` which installs the git pre-commit hook into the usual `.git/hooks/pre-commit` file of your projects repository. This will allow us to run any scripts immediately before a commit is issued.  
     Install both packages locally and save to devDependencies of your package.json. This will make sure that when other team members fetch your code, the same `retire` script will be run on their pre-commit action.
     
-      {linenos=off}
-          npm install precommit-hook --save-dev
-          npm install retire --save-dev
-    
+        {linenos=off}
+            npm install precommit-hook --save-dev
+            npm install retire --save-dev
+        
     If you do not configure the hook via the package.json to run specific scripts, it will run `lint`, `validate` and `test` by default. See the RetireJS documentation for options.
     
-      {title="package.json", linenos=off, lang=JavaScript}
-          {
-             "name": "my-project",
-             "description": "my project does wiz bang",
-             "devDependencies": {
-                "retire": "~0.3.2",
-                "precommit-hook": "~1.0.7"
-             },
-             "scripts": {
-                "validate": "retire -n -j",
-                "test": "a-test-script",
-                "lint": "jshint --with --different-options"
-             }
-          }
-    
+        {title="package.json", linenos=off, lang=JavaScript}
+            {
+               "name": "my-project",
+               "description": "my project does wiz bang",
+               "devDependencies": {
+                  "retire": "~0.3.2",
+                  "precommit-hook": "~1.0.7"
+               },
+               "scripts": {
+                  "validate": "retire -n -j",
+                  "test": "a-test-script",
+                  "lint": "jshint --with --different-options"
+               }
+            }
+        
     Adding the `pre-commit` property allows you to specify which scripts you want run before a successful commit is performed. The following package.json defines that the `lint` and `validate` scripts will be run. `validate` runs our `retire` command.
     
-      {title="package.json", linenos=off, lang=JavaScript}
-          {
-             "name": "my-project",
-             "description": "my project does wiz bang",
-             "devDependencies": {
-                "retire": "~0.3.2",
-                "precommit-hook": "~1.0.7"
-             },
-             "scripts": {
-                "validate": "retire -n -j",
-                "test": "a-test-script",
-                "lint": "jshint --with --different-options"
-             },
-             "pre-commit": ["lint", "validate"]
-          }
-    
+        {title="package.json", linenos=off, lang=JavaScript}
+            {
+               "name": "my-project",
+               "description": "my project does wiz bang",
+               "devDependencies": {
+                  "retire": "~0.3.2",
+                  "precommit-hook": "~1.0.7"
+               },
+               "scripts": {
+                  "validate": "retire -n -j",
+                  "test": "a-test-script",
+                  "lint": "jshint --with --different-options"
+               },
+               "pre-commit": ["lint", "validate"]
+            }
+        
     Keep in mind that pre-commit hooks can be very useful for all sorts of checking of things immediately before your code is committed. For example running security tests mentioned previously with the [OWASP ZAP API](#web-applications-development-practices-security-test-driven-development).
 2. Chrome extension
 3. Firefox extension
