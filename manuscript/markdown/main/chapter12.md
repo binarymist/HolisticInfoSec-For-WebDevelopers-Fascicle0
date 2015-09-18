@@ -16,15 +16,16 @@ So, we do not really separate the discipline of architecture from a software dev
 
 &nbsp;
 
-### Security Test-Driven Development (STDD)
+### Security Test-Driven Development (STDD) {#web-applications-development-practices-security-test-driven-development}
 
 ![](images/red_green_refactor.jpg)
 
-There are a couple of aspects I would like to focus on here. You can simply continue to use your existing automated test suites and frameworks. All you have to do is:
+There are three aspects I would like to focus on here. You can simply continue to use your existing automated test suites and frameworks. All you have to do is:
 
 1. Add a **security focused test API** into the mix of your existing automated acceptance test suites.  
  Your chosen (language specific) BDD framework of choice, putting legs to your test conditions with automatable "[Given, When, Thens](http://blog.binarymist.net/2012/03/24/how-to-optimise-your-testing-effort/#planningTheTestEffort)".
-2. Add **security focused BDD/TDD/ATDD** tests.
+2. If you are using NodeJS and have not already got your tests running as part of a CI build or pre-commit hook, check out the Consuming Free and Open Source [Tooling](#web-applications-countermeasures-consuming-free-and-open-source-tooling) section for some info on how to set this up
+3. Add **security focused BDD/TDD/ATDD** tests.
  This is the same amount of work as any other automated TDD, but it has the huge benefit of bringing the finding of security faults from where it is very expensive to fix:  
 
     ![](images/CostOfChange.png)  
@@ -198,7 +199,7 @@ This slide was from a talk I did at OWASP NZ Day 2013. The top 10 vulnerabilitie
 
 They were actually very similar 10 years ago.
    
-The unchangeable vulnerabilities are:
+The vulnerabilities that have not changed a lot are:
 
 * No. 1 Injection (and the easiest to fix)
 * No. 2 Broken Authentication and Session Management
@@ -714,6 +715,8 @@ _Todo_
 ### Consuming Free and Open Source {#web-applications-countermeasures-consuming-free-and-open-source}
 ![](images/ThreatTags/PreventionEASY.png)
 
+#### Process
+
 Dibbe Edwards [discusses](https://soundcloud.com/owasp-podcast/dibbe-edwards-devops-and-open-source-at-ibm) some excellent initiatives on how they do it at IBM. I will attempt to paraphrase some of them here:
 
 * Implement process and governance around which open source libraries you can use
@@ -727,18 +730,112 @@ If not on the list, make request and it should go through the same process.
 There is an excellent paper by the SANS Institute on [Security Concerns in Using Open Source Software
 for Enterprise Requirements](http://www.sans.org/reading-room/whitepapers/awareness/security-concerns-open-source-software-enterprise-requirements-1305) that is well worth a read. It confirms what the likes of IBM are doing in regards to their consumption of free and open source libraries
 
-For NodeJS developers: Keep your eye on the [nodesecurity advisories](https://nodesecurity.io/advisories)
+#### Tooling {#web-applications-countermeasures-consuming-free-and-open-source-tooling}
 
-Leverage [**RetireJS**](https://github.com/RetireJS/retire.js) to help you work out JavaScript libraries with known vulnerabilities. RetireJS has:
+For **NodeJS developers**: Keep your eye on the [nodesecurity advisories](https://nodesecurity.io/advisories). Identified security issues can be posted to [NodeSecurity report](https://nodesecurity.io/report)
 
-1. A command line scanner. Excellent for builds. Include it in one of your build definitions and let it do the work for you.
-2. A Chrome extension
-3. A Grunt plugin
+Leverage [**RetireJS**](https://github.com/RetireJS/retire.js) to help you find JavaScript libraries with known vulnerabilities. RetireJS has the following :
+
+1. Command line scanner.
+  * Excellent for CI builds. Include it in one of your build definitions and let it do the work for you.
+    * To install globally:  
+    `npm i -g retire`
+    * To run it over your project:  
+    `retire my-project`  
+    Results like the following may be generated:
+    
+    {linenos=off}
+        public/plugins/jquery/jquery-1.4.4.min.js
+        ↳ jquery 1.4.4.min has known vulnerabilities:
+        http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-4969
+        http://research.insecurelabs.org/jquery/test/
+        http://bugs.jquery.com/ticket/11290
+    
+  * To install RetireJS locally to your project and run as a git precommit-hook.  
+  There is an NPM package that can help us with this called `precommit-hook` which installs the git pre-commit hook into the usual `.git/hooks/pre-commit` file of your projects repository. This will allow us to run any scripts immediately before a commit is issued.  
+  Install both packages locally and save to devDependencies of your package.json. This will make sure that when other team members fetch your code, the same `retire` script will be run on their pre-commit action.  
+  
+  {linenos=off}
+      npm install precommit-hook --save-dev
+      npm install retire --save-dev
+  
+  If you do not configure the hook via the package.json to run specific scripts, it will run `lint`, `validate` and `test` by default.  
+  See the RetireJS documentation for options.
+  
+  {title="package.json", linenos=off, lang=JavaScript}
+      {
+        "name": "my-project",
+        "description": "my project does wiz bang",
+           "devDependencies": {
+              "retire": "~0.3.2",
+              "precommit-hook": "~1.0.7"
+        },
+        "scripts": {
+           "validate": "retire -n -j",
+           "test": "a-test-script",
+           "lint": "jshint --with --different-options"
+        }
+      }
+  
+  Adding the `pre-commit` property allows you to specify which scripts you want run before a successful commit is performed. The following package.json defines that the `lint` and `validate` scripts will be run. `validate` runs our `retire` command.
+  
+  {title="package.json", linenos=off, lang=JavaScript}
+      {
+        "name": "my-project",
+        "description": "my project does wiz bang",
+           "devDependencies": {
+              "retire": "~0.3.2",
+              "precommit-hook": "~1.0.7"
+        },
+        "scripts": {
+           "validate": "retire -n -j",
+           "test": "a-test-script",
+           "lint": "jshint --with --different-options"
+        },
+        "pre-commit": ["lint", "validate"]
+      }
+  
+  Keep in mind that pre-commit hooks can be very useful for all sorts of checking of things immediately before your code is committed. For example running security tests mentioned previously with the [OWASP ZAP API](#web-applications-development-practices-security-test-driven-development).
+2. Chrome extension
+3. Firefox extension
+3. Grunt plugin
+4. Gulp task
 4. Burp and OWASP ZAP plugin
+5. [On-line tool](http://retire.insecurity.today/) you can simply enter your web applications URL and the resource will be analysed.
 
-Test your web site with the RetireJS [online tool](http://retire.insecurity.today/)
+##### requireSafe 
 
-For .Net developers, there is the likes of [OWASP **SafeNuGet**](https://github.com/OWASP/SafeNuGet)
+RequireSafe provides "_intentful auditing as a stream of intel for bithound_". I guess watch this space, as in speaking with Adam Baldwin, there doesn't appear to be much happening here yet.
+
+##### bithound
+
+In regards to NPM packages, we know the following things:
+
+1. We know about a small collection of vulnerable NPM packages. Some of which have high fan-in (many packages depend on them).
+2. The vulnerable packages have published patched versions
+3. Many packages are still consuming the vulnerable unpatched versions of the packages that have published patched versions
+  * So although we could have removed a much larger number of vulnerable packages due to their persistence on depending on unpatched packages, we have not. I think this mostly comes down to visibility, awareness and education.
+
+Bithound supports:
+
+* JavaScript, TypeScript and JSX (back-end and front-end)
+* In terms of version control systems, only git is supported
+* Opening of bitbucket and github issues.
+* Providing statistics on code quality, maintainability and stability. I'm unsure how they do this though.
+
+Can be configured to not analyse some files. Very large repositories are prevented from being analysed due to large scale performance.
+
+Analyses both NPM and Bower dependencies and notifies you if any are:
+
+* Out of date
+* Insecure. Assuming this is based on the known vulnerabilities (41 node advisories at the time of writing this)
+* Unused
+
+Analysis of opensource projects are free.
+
+You could of course just list all of your projects and global packages and check that there are none in the [advisories](https://nodesecurity.io/advisories), but this would be more work and who is going to remember to do that all the time?
+
+For **.Net developers**, there is the likes of [OWASP **SafeNuGet**](https://github.com/OWASP/SafeNuGet)
 
 ### Web Application Firewall (WAF) {#web-applications-countermeasures-waf}
 

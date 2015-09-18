@@ -164,3 +164,18 @@ Peter Kim discusses in "The Hacker PlayBook" about how he set-up SMTP and SSH do
 
 "**Using four AMD Radeon HD6990 graphics cards**, _I am able to make about 15.5 billion guesses per second using the SHA-1 algorithm._"
 [Per Thorsheim](http://securitynirvana.blogspot.co.nz/2012/06/final-word-on-linkedin-leak.html)
+
+**There is an excellent paper by the SANS Institute** on Security Concerns in Using Open Source Software for Enterprise Requirements that is well worth a read. It confirms what the likes of IBM are doing in regards to their consumption of free and open source libraries  
+[http://www.sans.org/reading-room/whitepapers/awareness/security-concerns-open-source-software-enterprise-requirements-1305](http://www.sans.org/reading-room/whitepapers/awareness/security-concerns-open-source-software-enterprise-requirements-1305)
+
+**For NodeJS developers**: Keep your eye on the [nodesecurity advisories](https://nodesecurity.io/advisories)
+
+**There is an NPM package** that can help us with this called `precommit-hook` which installs the git pre-commit  
+[https://www.npmjs.com/package/precommit-hook](https://www.npmjs.com/package/precommit-hook)
+
+**To install RetireJS locally to your project** and run as a git precommit-hook  
+[https://blog.andyet.com/2014/11/19/managing-code-changes](https://blog.andyet.com/2014/11/19/managing-code-changes)
+
+**RequireSafe provides** "_intentful auditing as a stream of intel for bithound_".  
+[https://blog.liftsecurity.io/2015/02/10/introducing-requiresafe-peace-of-mind-third-party-node-modules](https://blog.liftsecurity.io/2015/02/10/introducing-requiresafe-peace-of-mind-third-party-node-modules)
+
