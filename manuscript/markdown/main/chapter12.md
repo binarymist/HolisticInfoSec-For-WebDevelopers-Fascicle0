@@ -734,7 +734,9 @@ for Enterprise Requirements](http://www.sans.org/reading-room/whitepapers/awaren
 
 For **NodeJS developers**: Keep your eye on the [nodesecurity advisories](https://nodesecurity.io/advisories). Identified security issues can be posted to [NodeSecurity report](https://nodesecurity.io/report)
 
-Leverage [**RetireJS**](https://github.com/RetireJS/retire.js) to help you find JavaScript libraries with known vulnerabilities.  
+##### [RetireJS](https://github.com/RetireJS/retire.js)
+
+Is useful to help you find JavaScript libraries with known vulnerabilities.  
 RetireJS has the following:
 
 1. Command line scanner.
@@ -753,7 +755,7 @@ RetireJS has the following:
             http://bugs.jquery.com/ticket/11290
 
     * To install RetireJS locally to your project and run as a git precommit-hook.  
-    There is an NPM package that can help us with this called `precommit-hook` which installs the git pre-commit hook into the usual `.git/hooks/pre-commit` file of your projects repository. This will allow us to run any scripts immediately before a commit is issued.  
+    There is an NPM package that can help us with this, called `precommit-hook`, which installs the git pre-commit hook into the usual `.git/hooks/pre-commit` file of your projects repository. This will allow us to run any scripts immediately before a commit is issued.  
     Install both packages locally and save to devDependencies of your package.json. This will make sure that when other team members fetch your code, the same `retire` script will be run on their pre-commit action.
     
       {linenos=off}
@@ -805,7 +807,7 @@ RetireJS has the following:
 
 ##### requireSafe:
 
-provides "_intentful auditing as a stream of intel for bithound_". I guess watch this space, as in speaking with Adam Baldwin, there doesn't appear to be much happening here yet.
+provides "_intentful auditing as a stream of intel for bithound_". I guess watch this space, as in speaking with [Adam Baldwin](https://twitter.com/adam_baldwin), there doesn't appear to be much happening here yet.
 
 ##### bithound:
 
@@ -814,16 +816,16 @@ In regards to NPM packages, we know the following things:
 1. We know about a small collection of vulnerable NPM packages. Some of which have high fan-in (many packages depend on them).
 2. The vulnerable packages have published patched versions
 3. Many packages are still consuming the vulnerable unpatched versions of the packages that have published patched versions
-  * So although we could have removed a much larger number of vulnerable packages due to their persistence on depending on unpatched packages, we have not. I think this mostly comes down to visibility, awareness and education. 
+  * So although we could have removed a much larger number of vulnerable packages due to their persistence on depending on unpatched packages, we have not. I think this mostly comes down to lack of visibility, awareness and education. This is exactly what I'm trying to change.
 
 bithound supports:
 
 * JavaScript, TypeScript and JSX (back-end and front-end)
 * In terms of version control systems, only git is supported
 * Opening of bitbucket and github issues.
-* Providing statistics on code quality, maintainability and stability. I'm unsure how they do this though.
+* Providing statistics on code quality, maintainability and stability. I queried Adam on this, but not a lot of information was forth coming.
 
-Can be configured to not analyse some files. Very large repositories are prevented from being analysed due to large scale performance.
+bithound can be configured to not analyse some files. Very large repositories are prevented from being analysed due to large scale performance issues.
 
 Analyses both NPM and Bower dependencies and notifies you if any are:
 
