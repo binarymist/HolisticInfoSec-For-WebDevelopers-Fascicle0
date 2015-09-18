@@ -762,7 +762,7 @@ RetireJS has the following:
         
       If you do not configure the hook via the package.json to run specific scripts, it will run `lint`, `validate` and `test` by default. See the RetireJS documentation for options.
     
-      {title="package.json", linenos=off, lang=JavaScript}
+      {linenos=off, lang=JavaScript}
           {
              "name": "my-project",
              "description": "my project does wiz bang",
@@ -779,7 +779,7 @@ RetireJS has the following:
         
       Adding the `pre-commit` property allows you to specify which scripts you want run before a successful commit is performed. The following package.json defines that the `lint` and `validate` scripts will be run. `validate` runs our `retire` command.
     
-      {title="package.json", linenos=off, lang=JavaScript}
+      {linenos=off, lang=JavaScript}
           {
              "name": "my-project",
              "description": "my project does wiz bang",
