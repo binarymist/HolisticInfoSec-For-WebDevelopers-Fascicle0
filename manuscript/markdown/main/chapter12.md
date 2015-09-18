@@ -734,68 +734,69 @@ for Enterprise Requirements](http://www.sans.org/reading-room/whitepapers/awaren
 
 For **NodeJS developers**: Keep your eye on the [nodesecurity advisories](https://nodesecurity.io/advisories). Identified security issues can be posted to [NodeSecurity report](https://nodesecurity.io/report)
 
-Leverage [**RetireJS**](https://github.com/RetireJS/retire.js) to help you find JavaScript libraries with known vulnerabilities. RetireJS has the following :
+Leverage [**RetireJS**](https://github.com/RetireJS/retire.js) to help you find JavaScript libraries with known vulnerabilities.  
+RetireJS has the following:
 
 1. Command line scanner.
   * Excellent for CI builds. Include it in one of your build definitions and let it do the work for you.
-    * To install globally:  
-    `npm i -g retire`
-    * To run it over your project:  
-    `retire my-project`  
-    Results like the following may be generated:
+      * To install globally:  
+      `npm i -g retire`
+      * To run it over your project:  
+      `retire my-project`  
+      Results like the following may be generated:
     
-    {linenos=off}
-        public/plugins/jquery/jquery-1.4.4.min.js
-        ↳ jquery 1.4.4.min has known vulnerabilities:
-        http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-4969
-        http://research.insecurelabs.org/jquery/test/
-        http://bugs.jquery.com/ticket/11290
-    
+        {linenos=off}
+            public/plugins/jquery/jquery-1.4.4.min.js
+            ↳ jquery 1.4.4.min has known vulnerabilities:
+            http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-4969
+            http://research.insecurelabs.org/jquery/test/
+            http://bugs.jquery.com/ticket/11290
+        
   * To install RetireJS locally to your project and run as a git precommit-hook.  
   There is an NPM package that can help us with this called `precommit-hook` which installs the git pre-commit hook into the usual `.git/hooks/pre-commit` file of your projects repository. This will allow us to run any scripts immediately before a commit is issued.  
   Install both packages locally and save to devDependencies of your package.json. This will make sure that when other team members fetch your code, the same `retire` script will be run on their pre-commit action.  
   
-  {linenos=off}
-      npm install precommit-hook --save-dev
-      npm install retire --save-dev
+    {linenos=off}
+        npm install precommit-hook --save-dev
+        npm install retire --save-dev
+    
+    If you do not configure the hook via the package.json to run specific scripts, it will run `lint`, `validate` and `test` by default. See the RetireJS documentation for options.
   
-  If you do not configure the hook via the package.json to run specific scripts, it will run `lint`, `validate` and `test` by default.  
-  See the RetireJS documentation for options.
-  
-  {title="package.json", linenos=off, lang=JavaScript}
-      {
-        "name": "my-project",
-        "description": "my project does wiz bang",
+    {title="package.json", linenos=off, lang=JavaScript}
+        {
+           "name": "my-project",
+           "description": "my project does wiz bang",
            "devDependencies": {
               "retire": "~0.3.2",
               "precommit-hook": "~1.0.7"
-        },
-        "scripts": {
-           "validate": "retire -n -j",
-           "test": "a-test-script",
-           "lint": "jshint --with --different-options"
+           },
+           "scripts": {
+              "validate": "retire -n -j",
+              "test": "a-test-script",
+              "lint": "jshint --with --different-options"
+           }
         }
-      }
   
-  Adding the `pre-commit` property allows you to specify which scripts you want run before a successful commit is performed. The following package.json defines that the `lint` and `validate` scripts will be run. `validate` runs our `retire` command.
+    Adding the `pre-commit` property allows you to specify which scripts you want run before a successful commit is performed. The following package.json defines that the `lint` and `validate` scripts will be run. `validate` runs our `retire` command.
   
-  {title="package.json", linenos=off, lang=JavaScript}
-      {
-        "name": "my-project",
-        "description": "my project does wiz bang",
+    {title="package.json", linenos=off, lang=JavaScript}
+        {
+           "name": "my-project",
+           "description": "my project does wiz bang",
            "devDependencies": {
               "retire": "~0.3.2",
               "precommit-hook": "~1.0.7"
-        },
-        "scripts": {
-           "validate": "retire -n -j",
-           "test": "a-test-script",
-           "lint": "jshint --with --different-options"
-        },
-        "pre-commit": ["lint", "validate"]
-      }
+           },
+           "scripts": {
+              "validate": "retire -n -j",
+              "test": "a-test-script",
+              "lint": "jshint --with --different-options"
+           },
+           "pre-commit": ["lint", "validate"]
+        }
   
-  Keep in mind that pre-commit hooks can be very useful for all sorts of checking of things immediately before your code is committed. For example running security tests mentioned previously with the [OWASP ZAP API](#web-applications-development-practices-security-test-driven-development).
+    Keep in mind that pre-commit hooks can be very useful for all sorts of checking of things immediately before your code is committed. For example running security tests mentioned previously with the [OWASP ZAP API](#web-applications-development-practices-security-test-driven-development).
+    
 2. Chrome extension
 3. Firefox extension
 3. Grunt plugin
@@ -803,20 +804,20 @@ Leverage [**RetireJS**](https://github.com/RetireJS/retire.js) to help you find 
 4. Burp and OWASP ZAP plugin
 5. [On-line tool](http://retire.insecurity.today/) you can simply enter your web applications URL and the resource will be analysed.
 
-##### requireSafe 
+##### requireSafe:
 
-RequireSafe provides "_intentful auditing as a stream of intel for bithound_". I guess watch this space, as in speaking with Adam Baldwin, there doesn't appear to be much happening here yet.
+provides "_intentful auditing as a stream of intel for bithound_". I guess watch this space, as in speaking with Adam Baldwin, there doesn't appear to be much happening here yet.
 
-##### bithound
+##### bithound:
 
 In regards to NPM packages, we know the following things:
 
 1. We know about a small collection of vulnerable NPM packages. Some of which have high fan-in (many packages depend on them).
 2. The vulnerable packages have published patched versions
 3. Many packages are still consuming the vulnerable unpatched versions of the packages that have published patched versions
-  * So although we could have removed a much larger number of vulnerable packages due to their persistence on depending on unpatched packages, we have not. I think this mostly comes down to visibility, awareness and education.
+  * So although we could have removed a much larger number of vulnerable packages due to their persistence on depending on unpatched packages, we have not. I think this mostly comes down to visibility, awareness and education. 
 
-Bithound supports:
+bithound supports:
 
 * JavaScript, TypeScript and JSX (back-end and front-end)
 * In terms of version control systems, only git is supported
@@ -834,6 +835,8 @@ Analyses both NPM and Bower dependencies and notifies you if any are:
 Analysis of opensource projects are free.
 
 You could of course just list all of your projects and global packages and check that there are none in the [advisories](https://nodesecurity.io/advisories), but this would be more work and who is going to remember to do that all the time?
+
+&nbsp;
 
 For **.Net developers**, there is the likes of [OWASP **SafeNuGet**](https://github.com/OWASP/SafeNuGet)
 
