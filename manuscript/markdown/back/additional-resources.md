@@ -39,6 +39,10 @@ The following books have been influential for me and the content from the People
 
 ## [Web Applications](#web-applications)
 
+[**Essentials for Creating and Maintaining a High Performance Development Team**](http://blog.binarymist.net/2014/01/25/essentials-for-creating-and-maintaining-a-high-performance-development-team/)
+
+[**How to Increase Software Developer Productivity**](https://speakerdeck.com/binarymist/how-to-increase-software-developer-productivity)
+
 [**Blowfish cipher**](https://en.wikipedia.org/wiki/Blowfish_(cipher))
 
 [**PBKDF2**](https://en.wikipedia.org/wiki/PBKDF2)

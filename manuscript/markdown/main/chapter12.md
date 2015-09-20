@@ -8,11 +8,12 @@ Let us look at some of the practices we can use as developers to lift the level 
 
 ### Architecture
 
-There are no architects in Scrum. Just Developers. Some of those developers have architect qualities. They like to step back often to see the bigger picture and understand the interactions between the components and the people using the software. Including every aspect to do with the end product, the people intending to use it and the risks.
+There are no architects in Scrum. Just Developers. Some of those developers have architect qualities. They like to step back often to see the bigger picture and understand the interactions between the components and the people using the software. Including every aspect to do with the end product, the people intending to use it and the risks. A
 
 Agile architecture does a little design up front in collaboration with the team and everyone that has a vested interest. Agile architecture is not siloed, because it is part of development, just as analysing requirements and testing. It is all done in parallel.
 
-So, we do not really separate the discipline of architecture from a software developer that excels at doing what a traditional architect does as well as engineering.
+So, we do not really separate the discipline of architecture from a software developer that excels at doing what a traditional architect does as well as engineering. An architect is essentially an extreme version of the 'T' shaped developer. They have very broad knowledge and skill bases, with multiple deep specialities.  
+Another defining factor that sets the architect apart is their ability to translate effectively between the most technical people on a project and the least technical. I like to think of them as the people that spend a lot of time riding the elevator of a high rise building. Most technical people toward the bottom of the building and least technical people at the top. The architect spends time on each level taking what he/she has learnt from all the other levels, then translating and applying it to the specific level.
 
 &nbsp;
 
@@ -87,7 +88,7 @@ Get creative.
 
 There is no reason why developers can not take a good chunk of the manual penetration testing effort on as part of their daily development practices. In fact in most teams I have lead, this has been exactly how we have worked. The gorilla testing needs to be performed in parallel with the PBIs in the Scrum Backlog as developers pull them into Work I Progress (WIP).
 
-Some developers gravitate toward security more than others, so it is important to have at least a none zero number of developers with a security focus within each team to:
+Some developers have an inquisitiveness about how their work can be exploited, so it is important to have at least a none zero number of developers with a security focus within each team to:
 
 1. take the lead on the security front
 2. mentor and pass on their knowledge and passion to others
@@ -106,9 +107,9 @@ Manual and Automated.
 
 Check out the [BSIMM Code Review](https://www.bsimm.com/online/ssdl/cr/) for some good ideas.
 
-#### Why?
+#### Why? {#web-applications-development-practices-code-review-why}
 
-Because when humans are in creative mode, we often struggle to see the defects in our own creation. That is why tightly knit teams are a force to be reckoned with. We are good at seeing faults in others and their creations. That is why we really do need each other. Never underestimate this blindness in us all and that we have a very powerful mitigation tool in the team. Use it.
+Because when humans are in creative mode, we often struggle to see the defects in our own creation. That is why tightly knit teams with high morale (as discussed in the people chapter under the "Morale, Productivity and Engagement Killers" sections) are a force to be reckoned with. We are all watching each others backs. We are good at seeing faults in others and their creations. That is why we really do need each other. Never underestimate this blindness in us all and that we have a very powerful mitigation tool in the team. Use it.
 
 #### Linting, Static Analysis
 
@@ -180,6 +181,15 @@ Take results from [higher level Asset Identification](#asset-identification). Re
 * Ownership. Similarly as addressed in the VPS chapter, Do not assume that ownership, or at least control of your server(s) is something you will always have. Ownership is often one of the first assets an attacker will attempt to take from a target in order to execute further exploits. At first this may sound strange, but that is because of an assumption you may have that you will always own (have control of) your web application. Hopefully I dispelled this myth in the VPS chapter. If an attacker can take control of your web application (own it/steal it/what ever you want to call the act), then they have a foot hold to launch further attacks and gain other assets of greater value. The web application itself will often just be a stepping stone to other assets that you assume are safe. With this in mind, your web application is an asset. On the other hand you could think of it as a liability. Both may be correct. In any case, you need to protect your web application and in many cases take it to school and teach it how to protect itself. I cover that under the [Web Application Firewall](#web-applications-countermeasures-waf) section, where AppSensor can help.
 * Intellectual property or sensitive information within the code or configuration files such as email addresses and account credentials for the likes of data-stores, syslog servers, monitoring services. We address this in [Management of Application Secrets](#web-applications-identify-risks-management-of-application-secrets)
 * Sensitive Client/Customer data.
+* Sanity and piece of mind of people within your organisation. Those that are:
+  * Well informed
+  * Do not cut corners that should not be cut
+  * Passionate and driven to be their best
+  * Smart
+  * Humble yet fearless
+  * Recognise technical debt and are professional enough to speak up
+  * Engaged and love passing on their knowledge to others  
+  are truly an asset. Some of the following risks will threaten the sanity of these people if the countermeasures are not employed.
 
 ## 2. SSM Identify Risks
 Go through same process as we did at the [top level](#identify-risks), but for Web Application.
@@ -374,11 +384,11 @@ _Todo_
 
 This is where [A9 (Using Components with Known Vulnerabilities)](https://www.owasp.org/index.php/Top_10_2013-A9-Using_Components_with_Known_Vulnerabilities) of the 2013 OWASP Top 10 comes in.
 
-We are consuming far more free and open source libraries than we have ever before. Much of the code we are pulling into out projects is never intentionally used, but is still adding surface area for attack. Much of it:
+We are consuming far more free and open source libraries than we have ever before. Much of the code we are pulling into our projects is never intentionally used, but is still adding surface area for attack. Much of it:
 
-* Is not tested (for what it should do and what it should not do)
-* Is not reviewed evaluated
-* Is created by amateurs that could and do include vulnerabilities
+* Is not thoroughly tested (for what it should do and what it should not do). We are relying on developers we do not know a lot about to have not introduced defects. As I discussed in the [Code Review](#web-applications-development-practices-code-review-why) section, most developers are more focused on building than breaking, they don't even see the defects they are introducing.
+* Is not reviewed evaluated. That is right, many of the packages we are consuming are created by solo developers with a single focus of creating and little to no focus of how their creations can be exploited. Even some teams without a security hero are not doing a lot better.
+* Is created by amateurs that could and do include vulnerabilities. Anyone can write code and publish to an open source repository. Much of this code ends up in our package management repositories which we consume.
 * Does not undergo the same requirement analysis, defining the scope, acceptance criteria, test conditions and sign off by a development team and product owner.
 
 Many vulnerabilities can hide in these external dependencies. It is not just one attack vector any more, it provides the opportunity for many vulnerabilities to be sitting waiting to be exploited. If you do not find and deal with them, I can assure you, someone else will.
@@ -724,8 +734,9 @@ Dibbe Edwards [discusses](https://soundcloud.com/owasp-podcast/dibbe-edwards-dev
 * Scanning the code for vulnerabilities, manual and automated code review
 * Maintain a list containing all the libraries that have been approved for use.  
 If not on the list, make request and it should go through the same process.
-* Once the libraries are in your product they should become as part of your own code so that they get the same rigour over them as any of your other code written in-house.  
-* There needs to be automated process that runs over the code base to check that nothing that is not on the approved list is included.
+* Once the libraries are in your product they should become as part of your own code so that they get the same rigour over them as any of your other code written in-house
+* There needs to be automated process that runs over the code base to check that nothing that is not on the approved list is included
+* Consider automating some of the suggested tooling options below.
 
 There is an excellent paper by the SANS Institute on [Security Concerns in Using Open Source Software
 for Enterprise Requirements](http://www.sans.org/reading-room/whitepapers/awareness/security-concerns-open-source-software-enterprise-requirements-1305) that is well worth a read. It confirms what the likes of IBM are doing in regards to their consumption of free and open source libraries
@@ -805,7 +816,7 @@ RetireJS has the following:
 6. Burp and OWASP ZAP plugin
 7. [On-line tool](http://retire.insecurity.today/) you can simply enter your web applications URL and the resource will be analysed.
 
-##### requireSafe:
+##### requireSafe
 
 provides "_intentful auditing as a stream of intel for bithound_". I guess watch this space, as in speaking with [Adam Baldwin](https://twitter.com/adam_baldwin), there doesn't appear to be much happening here yet.
 
@@ -955,7 +966,20 @@ _Todo_
 
 ### Consuming Free and Open Source
 
-_Todo_
+Some of the packages we consume may have good test coverage, but are the tests testing the right things? Are the tests testing that something can not happen? That is where the likes of RetireJS comes in.
+
+#### Process
+
+There is a danger of implementing to much manual process thus slowing development down more than necessary. The way the process is implemented will have a lot to do with its level of success. For example automating as much as possible, so developers don't have to think about as much as possible is going to make for more productive, focused and [happier](https://en.wikipedia.org/wiki/Kaizen) developers.
+
+For example, when a Development Team needs to pull a library into their project, which often happens in the middle of working on a product backlog item (not planned at the beginning of the Sprint), if they have to context switch while a legal review and/or manual code review takes place, then this will cause friction and reduce the teams performance even though it may be out of their hands.  
+In this case, the Development Team really needs a dedicated resource to perform the legal review. The manual review could be done by another team member or even themselves with perhaps another team member having a quicker review after the fact. These sorts of decisions need to be made by the Development Team, not mandated by someone outside of the team that doesn't have skin in the game or doesn't have the localised understanding that the people working on the project do.
+
+Maintaining a list of the approved libraries really needs to be a process that does not take a lot of human interaction. How ever you work out your process, make sure it does not require a lot of extra developer effort on an ongoing basis. Some effort up front to automate as much as possible will facilitate this.
+
+#### Tooling
+
+Using the likes of pre-commit hooks, the other tooling options detailed in the [Countermeasures](#web-applications-countermeasures-consuming-free-and-open-source) section and creating scripts to do most of the work for us is probably going to be a good option to start with.
 
 ### Web Application Firewall (WAF)
 
@@ -1053,7 +1077,9 @@ _Todo_
 
 ### Consuming Free and Open Source
 
-_Todo_
+The process has to be streamlined so that it does not get in the developers way. A good way to do this is to ask the developers how it should be done. They know what will get in their way. In order for the process to be a success, the person(s) mandating it will need to get solid buy-in from the people using it (the developers).
+
+The idea of setting up a process that notifies at least the Development Team if a library they want to use has know security defects needs to be pitched to all stakeholders (developers, product owner, even external stakeholders) the right way. It needs to provide obvious benefit and not make anyones life harder than it already is. I think this sort of a pitch is actually reasonably easy if you keep these factors in mind.
 
 ### Web Application Firewall (WAF)
 
