@@ -60,3 +60,5 @@ The following books have been influential for me and the content from the People
 **bcrypt brute-forcing** becoming feasible with well ordered rainbow tables  
 [http://www.openwall.com/presentations/Passwords13-Energy-Efficient-Cracking/Passwords13-Energy-Efficient-Cracking.pdf](http://www.openwall.com/presentations/Passwords13-Energy-Efficient-Cracking/Passwords13-Energy-Efficient-Cracking.pdf)  
 [https://www.usenix.org/system/files/conference/woot14/woot14-malvoni.pdf](https://www.usenix.org/system/files/conference/woot14/woot14-malvoni.pdf)
+
+[**Effecting Change**](http://blog.binarymist.net/2013/06/22/ideas-for-more-effective-meetings-and-presentations/)
