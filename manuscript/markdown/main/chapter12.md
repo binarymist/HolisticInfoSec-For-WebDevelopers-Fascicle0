@@ -386,8 +386,8 @@ This is where [A9 (Using Components with Known Vulnerabilities)](https://www.owa
 
 We are consuming far more free and open source libraries than we have ever before. Much of the code we are pulling into our projects is never intentionally used, but is still adding surface area for attack. Much of it:
 
-* Is not thoroughly tested (for what it should do and what it should not do). We are relying on developers we do not know a lot about to have not introduced defects. As I discussed in the [Code Review](#web-applications-development-practices-code-review-why) section, most developers are more focused on building than breaking, they don't even see the defects they are introducing.
-* Is not reviewed evaluated. That is right, many of the packages we are consuming are created by solo developers with a single focus of creating and little to no focus of how their creations can be exploited. Even some teams without a security hero are not doing a lot better.
+* Is not thoroughly tested (for what it should do and what it should not do). We are relying on developers we do not know a lot about to have not introduced defects. As I discussed in the [Code Review](#web-applications-development-practices-code-review-why) section, most developers are more focused on building than breaking, they do not even see the defects they are introducing.
+* Is not reviewed evaluated. That is right, many of the packages we are consuming are created by solo developers with a single focus of creating and little to no focus of how their creations can be exploited. Even some teams with a security hero are not doing a lot better.
 * Is created by amateurs that could and do include vulnerabilities. Anyone can write code and publish to an open source repository. Much of this code ends up in our package management repositories which we consume.
 * Does not undergo the same requirement analysis, defining the scope, acceptance criteria, test conditions and sign off by a development team and product owner.
 
@@ -739,18 +739,18 @@ If not on the list, make request and it should go through the same process.
 * Consider automating some of the suggested tooling options below
 
 There is an excellent paper by the SANS Institute on [Security Concerns in Using Open Source Software
-for Enterprise Requirements](http://www.sans.org/reading-room/whitepapers/awareness/security-concerns-open-source-software-enterprise-requirements-1305) that is well worth a read. It confirms what the likes of IBM are doing in regards to their consumption of free and open source libraries
+for Enterprise Requirements](http://www.sans.org/reading-room/whitepapers/awareness/security-concerns-open-source-software-enterprise-requirements-1305) that is well worth a read. It confirms what the likes of IBM are doing in regards to their consumption of free and open source libraries.
 
 #### Tooling {#web-applications-countermeasures-consuming-free-and-open-source-tooling}
 
-For **NodeJS developers**: Keep your eye on the [nodesecurity advisories](https://nodesecurity.io/advisories). Identified security issues can be posted to [NodeSecurity report](https://nodesecurity.io/report)
+For **NodeJS developers**: Keep your eye on the [nodesecurity advisories](https://nodesecurity.io/advisories). Identified security issues can be posted to [NodeSecurity report](https://nodesecurity.io/report).
 
 ##### [RetireJS](https://github.com/RetireJS/retire.js)
 
 Is useful to help you find JavaScript libraries with known vulnerabilities.  
 RetireJS has the following:
 
-1. Command line scanner.
+1. Command line scanner
     * Excellent for CI builds. Include it in one of your build definitions and let it do the work for you.
       * To install globally:  
       `npm i -g retire`
@@ -765,15 +765,15 @@ RetireJS has the following:
             http://research.insecurelabs.org/jquery/test/
             http://bugs.jquery.com/ticket/11290
 
-    * To install RetireJS locally to your project and run as a git precommit-hook.  
-    There is an NPM package that can help us with this, called `precommit-hook`, which installs the git pre-commit hook into the usual `.git/hooks/pre-commit` file of your projects repository. This will allow us to run any scripts immediately before a commit is issued.  
-    Install both packages locally and save to devDependencies of your package.json. This will make sure that when other team members fetch your code, the same `retire` script will be run on their pre-commit action.
+    * To install RetireJS locally to your project and run as a git `precommit-hook`.  
+    There is an NPM package that can help us with this, called `precommit-hook`, which installs the git `pre-commit` hook into the usual `.git/hooks/pre-commit` file of your projects repository. This will allow us to run any scripts immediately before a commit is issued.  
+    Install both packages locally and save to `devDependencies` of your `package.json`. This will make sure that when other team members fetch your code, the same `retire` script will be run on their `pre-commit` action.
     
       {linenos=off}
           npm install precommit-hook --save-dev
           npm install retire --save-dev
         
-      If you do not configure the hook via the package.json to run specific scripts, it will run `lint`, `validate` and `test` by default. See the RetireJS documentation for options.
+      If you do not configure the hook via the `package.json` to run specific scripts, it will run `lint`, `validate` and `test` by default. See the RetireJS documentation for options.
     
       {linenos=off, lang=JavaScript}
           {
@@ -790,7 +790,7 @@ RetireJS has the following:
              }
           }
         
-      Adding the `pre-commit` property allows you to specify which scripts you want run before a successful commit is performed. The following package.json defines that the `lint` and `validate` scripts will be run. `validate` runs our `retire` command.
+      Adding the `pre-commit` property allows you to specify which scripts you want run before a successful commit is performed. The following `package.json` defines that the `lint` and `validate` scripts will be run. `validate` runs our `retire` command.
     
       {linenos=off, lang=JavaScript}
           {
@@ -808,13 +808,13 @@ RetireJS has the following:
              "pre-commit": ["lint", "validate"]
           }
         
-      Keep in mind that pre-commit hooks can be very useful for all sorts of checking of things immediately before your code is committed. For example running security tests mentioned previously with the [OWASP ZAP API](#web-applications-development-practices-security-test-driven-development).
+      Keep in mind that `pre-commit` hooks can be very useful for all sorts of checking of things immediately before your code is committed. For example running security tests mentioned previously with the [OWASP ZAP API](#web-applications-development-practices-security-test-driven-development).
 2. Chrome extension
 3. Firefox extension
 4. Grunt plugin
 5. Gulp task
 6. Burp and OWASP ZAP plugin
-7. [On-line tool](http://retire.insecurity.today/) you can simply enter your web applications URL and the resource will be analysed.
+7. [On-line tool](http://retire.insecurity.today/) you can simply enter your web applications URL and the resource will be analysed
 
 ##### requireSafe
 
@@ -833,7 +833,7 @@ bithound supports:
 
 * JavaScript, TypeScript and JSX (back-end and front-end)
 * In terms of version control systems, only git is supported
-* Opening of bitbucket and github issues.
+* Opening of bitbucket and github issues
 * Providing statistics on code quality, maintainability and stability. I queried Adam on this, but not a lot of information was forth coming.
 
 bithound can be configured to not analyse some files. Very large repositories are prevented from being analysed due to large scale performance issues.
@@ -850,7 +850,7 @@ You could of course just list all of your projects and global packages and check
 
 &nbsp;
 
-For **.Net developers**, there is the likes of [OWASP **SafeNuGet**](https://github.com/OWASP/SafeNuGet)
+For **.Net developers**, there is the likes of [OWASP **SafeNuGet**](https://github.com/OWASP/SafeNuGet).
 
 ### Web Application Firewall (WAF) {#web-applications-countermeasures-waf}
 
@@ -973,7 +973,7 @@ Some of the packages we consume may have good test coverage, but are the tests t
 There is a danger of implementing to much manual process thus slowing development down more than necessary. The way the process is implemented will have a lot to do with its level of success. For example automating as much as possible, so developers don't have to think about as much as possible is going to make for more productive, focused and [happier](https://en.wikipedia.org/wiki/Kaizen) developers.
 
 For example, when a Development Team needs to pull a library into their project, which often happens in the middle of working on a product backlog item (not planned at the beginning of the Sprint), if they have to context switch while a legal review and/or manual code review takes place, then this will cause friction and reduce the teams performance even though it may be out of their hands.  
-In this case, the Development Team really needs a dedicated resource to perform the legal review. The manual review could be done by another team member or even themselves with perhaps another team member having a quicker review after the fact. These sorts of decisions need to be made by the Development Team, not mandated by someone outside of the team that doesn't have skin in the game or doesn't have the localised understanding that the people working on the project do.
+In this case, the Development Team really needs a dedicated resource to perform the legal review. The manual review could be done by another team member or even themselves with perhaps another team member having a quicker review after the fact. These sorts of decisions need to be made by the Development Team, not mandated by someone outside of the team that doesn't have skin in the game or does not have the localised understanding that the people working on the project do.
 
 Maintaining a list of the approved libraries really needs to be a process that does not take a lot of human interaction. How ever you work out your process, make sure it does not require a lot of extra developer effort on an ongoing basis. Some effort up front to automate as much as possible will facilitate this.
 
