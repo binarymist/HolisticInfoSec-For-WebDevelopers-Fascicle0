@@ -8,7 +8,7 @@ Let us look at some of the practices we can use as developers to lift the level 
 
 ### Architecture
 
-There are no architects in Scrum. Just Developers. Some of those developers have architect qualities. They like to step back often to see the bigger picture and understand the interactions between the components and the people using the software. Including every aspect to do with the end product, the people intending to use it and the risks. A
+There are no architects in Scrum. Just Developers. Some of those developers have architect qualities. They like to step back often to see the bigger picture and understand the interactions between the components and the people using the software. Including every aspect to do with the end product, the people intending to use it and the risks.
 
 Agile architecture does a little design up front in collaboration with the team and everyone that has a vested interest. Agile architecture is not siloed, because it is part of development, just as analysing requirements and testing. It is all done in parallel.
 
@@ -90,8 +90,8 @@ There is no reason why developers can not take a good chunk of the manual penetr
 
 Some developers have an inquisitiveness about how their work can be exploited, so it is important to have at least a none zero number of developers with a security focus within each team to:
 
-1. take the lead on the security front
-2. mentor and pass on their knowledge and passion to others
+1. Take the lead on the security front
+2. Mentor and pass on their knowledge and passion to others
 
 BSIMM again has some [good guidance](https://www.bsimm.com/online/deployment/pt/) on hands on penetration testing.
 
@@ -188,8 +188,8 @@ Take results from [higher level Asset Identification](#asset-identification). Re
   * Smart
   * Humble yet fearless
   * Recognise technical debt and are professional enough to speak up
-  * Engaged and love passing on their knowledge to others  
-  are truly an asset. Some of the following risks will threaten the sanity of these people if the countermeasures are not employed.
+  * Engaged and love passing on their knowledge to others are truly an asset.  
+  Some of the following risks will threaten the sanity of these people if the countermeasures are not employed.
 
 ## 2. SSM Identify Risks
 Go through same process as we did at the [top level](#identify-risks), but for Web Application.
@@ -736,7 +736,7 @@ Dibbe Edwards [discusses](https://soundcloud.com/owasp-podcast/dibbe-edwards-dev
 If not on the list, make request and it should go through the same process.
 * Once the libraries are in your product they should become as part of your own code so that they get the same rigour over them as any of your other code written in-house
 * There needs to be automated process that runs over the code base to check that nothing that is not on the approved list is included
-* Consider automating some of the suggested tooling options below.
+* Consider automating some of the suggested tooling options below
 
 There is an excellent paper by the SANS Institute on [Security Concerns in Using Open Source Software
 for Enterprise Requirements](http://www.sans.org/reading-room/whitepapers/awareness/security-concerns-open-source-software-enterprise-requirements-1305) that is well worth a read. It confirms what the likes of IBM are doing in regards to their consumption of free and open source libraries
@@ -1079,7 +1079,7 @@ _Todo_
 
 The process has to be streamlined so that it does not get in the developers way. A good way to do this is to ask the developers how it should be done. They know what will get in their way. In order for the process to be a success, the person(s) mandating it will need to get solid buy-in from the people using it (the developers).
 
-The idea of setting up a process that notifies at least the Development Team if a library they want to use has know security defects needs to be pitched to all stakeholders (developers, product owner, even external stakeholders) the right way. It needs to provide obvious benefit and not make anyones life harder than it already is. I think this sort of a pitch is actually reasonably easy if you keep these factors in mind.
+The idea of setting up a process that notifies at least the Development Team if a library they want to use has know security defects, needs to be pitched to all stakeholders (developers, product owner, even external stakeholders) the right way. It needs to provide obvious benefit and not make anyones life harder than it already is. Everyone has their own agendas. Rather than fighting against them, include consideration for them in your pitch. I think this sort of a pitch is actually reasonably easy if you keep these factors in mind.
 
 ### Web Application Firewall (WAF)
 
