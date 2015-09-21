@@ -4,7 +4,7 @@
 
 The area of physical security is often over looked, especially by technical people, although in most cases, it is the easiest and simplest to circumvent and also the easiest and simplest to mitigate.
 
-## 1. SSM Asset Identification
+## 1. SSM Asset Identification {#physical-asset-identification}
 Take results from [higher level Asset Identification](#starting-with-the-30000-foot-view-asset-identification). Remove any that are not applicable. Add any newly discovered. Here are some to get you started:
 
 * Servers, the cabinets they reside in, the rooms cabinets reside in.
@@ -55,7 +55,7 @@ There are many building materials in use today that are trivially easy to compro
 
 Often labels are attached to doors, windows, air conditioning units and any other number of electrical appliances and similar, clearly displaying who the service agent is. This sort of information can be very useful to aid an attacker in their social engineering pretexts. With this sort of information, an attacker can pretend to be the service agent specified on the label and will more likely get away with this attack.
 
-### Sensitive Printed Matter
+### Sensitive Printed Matter {#physical-identify-risks-sensitive-printed-matter}
 
 ![](images/ThreatTags/average-common-difficult-moderate.png)
 

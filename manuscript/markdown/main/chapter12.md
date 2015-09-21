@@ -466,6 +466,8 @@ Secure password management within applications is a case of doing what you can, 
 
 [Find out](#network-countermeasures-wire-inspecting) how secret the data that is supposed to be secret that is being sent over the network actually is and consider your internal network just as malicious as the internet. Then you will be starting to get the idea of what defence in depth is about. That way when one defence breaks down, you will still be in good standing.
 
+![](images//home/kim/Source/HolisticInfoSec-For-WebDevelopers/manuscript/images/DefenceInDepth.png)
+
 You may read in many places that having data-store passwords and other types of secrets in configuration files in clear text is an insecurity that must be addressed. Then when it comes to mitigation, there seems to be a few techniques for helping, but most of them are based around obscuring the secret rather than securing it. Essentially just making discovery a little more inconvenient like using an alternative port to SSH to other than the default of 22. Maybe surprisingly though, obscurity does significantly reduce the number of opportunistic type attacks from bots and script kiddies.
 
 #### Store Configuration in Configuration files
@@ -683,7 +685,7 @@ As part of developing the application that uses the data-store, a strategy also 
 
 * All following logins should be instructed to change passwords
 
-If you follow the recommendations below, data-store theft will be an inconvenience, but not a disaster.
+If you follow the recommendations below, data-store theft alone will be an inconvenience, but not a disaster.
 
 Consider what sensitive information you really need to store. Consider using the following key derivation functions (KDFs) for all sensitive data. Not just passwords. Also continue to [remind your customers](https://speakerdeck.com/binarymist/passwords-lol) to always use unique passwords that are made up of alphanumeric, upper-case, lower-case and special characters. It is also worth considering pushing the use of high quality password vaults. Do not limit password lengths. Encourage long passwords.
 
@@ -988,35 +990,58 @@ _Todo_
 
 ### Management of Application Secrets
 
-_Todo_
+Reliance on adjacent layers of defence means those layers have to actually be up to scratch. There is a possibility that they will not be.
+
+Possibility of missing secrets being sent over the wire.
+
+Possible reliance on obscurity with many of the strategies I've seen proposed. Just be aware that obscurity may slow an attacker down a little, but it will not stop them.
 
 #### Store Configuration in Configuration files
 
-_Todo_
+With moving any secrets from source code to configuration files, there is a possibility that the secrets will not be changed at the same time. If they are not changed, then you have not really helped much, as the secrets are still in source control.
+
+With good configuration tools like node-config, you are provided with plenty of options of splitting up meta-data, creating overrides, storing different parts in different places, etc. There is a risk that you do not use the potential power and flexibility to your best advantage. Learn the ins and outs of what ever system it is you are using and leverage its features to do the best at obscuring your secrets and if possible securing them.
 
 ##### node-config
 
-_Todo_
+is an excellent configuration package with lots of great features. There is no security provided with node-config, just some potential obscurity. Just be aware of that and as discussed previously, make sure surrounding layers have beefed up security.
 
 ##### Windows
 
-_Todo_
+As is often the case with Microsoft solutions, their marketing often leads people to believe that they have secure solutions to problems when that is not the case. As discussed previously, there are plenty of ways to get around the Microsoft so called security features. As anything else in this space, they may provide some obscurity, but don't depend on them being secure.
+
+Statements like the following have the potential for producing over confidence:
+
+"_vSentry protects desktops without requiring patches or updates, defeating and automatically discarding all known and unknown malware, and eliminating the need for costly remediation._"
+
+Please keep your systems patched and updated.
+
+"_With Bromium micro-virtualization, we now have an answer: A desktop that is utterly secure and a joy to use_"
+
+There is a risk that people will believe this.
 
 ##### Linux
 
-_Todo_
+As with Microsofts "virtualisation-based security" Linux containers may slow system compromise down, but a determined attacker will find other ways to get around container isolation. Maintaining a small set of user accounts is a worthwhile practise, but that alone will not be enough to stop a highly skilled attacker moving forward.  
+Even when technical security is very good, an experienced attacker will use other mediums to gain what they want, like [social engineering](#people-identify-risks), [physical] compromise, both, or some other attack vectors listed in this book. Defence in depth is crucial in achieving good security. Concentrating on the lowest hanging fruit first and working your way up the tree.
+
+Locking file permissions and ownership down is good, but that alone will not save you. 
 
 #### Least Privilege
 
-_Todo_
+Applying least privilege to everything can take quite a bit of work. Yes, it is probably not that hard to do, but does require a breadth of thought and time. Some of the areas discussed could be missed. Having more than one person working on the task is often effective as each person can bounce ideas off of each other and the other person is likely to notice areas that you may have missed and visa-versa.
 
 #### Location
 
-_Todo_
+Segmentation is useful, and a common technique to helping to build resistance against attacks. It does introduce some complexity though. With complexity comes the added likely-hood of introducing a fault. 
 
 #### Data-store Compromise
 
-_Todo_
+If you follow the advice in the [countermeasures](#web-applications-countermeasures-data-store-compromise) section, you'll be doing more than most other organisations in this area. It's not hard, but if implemented could increase complacency/over confidence. Always be on your guard. Always expect that although you have done a lot to increase your security stance, a determined and experienced attacker is going to push buttons you may have never realised you had. If they want something enough and have the resources and determination to get it, they probably will. This is where you need strategies in place to deal with post compromise. Create process (ideally partly automated) to deal with theft.
+
+Also consider that once an attacker has made off with your data-store, even if it is currently infeasible to brute-force the secrets, there may be other ways around obtaining the missing pieces of information they need. Think about the [paper shredders](#physical-identify-risks-sensitive-printed-matter) and the associated [competitions](http://archive.darpa.mil/shredderchallenge/). With patience, most puzzles can be cracked. If the compromise is an opportunistic type of attack, they will most likely just give up and seek an easier target. If it is a targeted attack by determined and experienced attackers, they will probably try other attack vectors until they get what they want.
+
+Do not let over confidence be your weakness. An attacker will search out the weak link. Do your best to remove weak links.
 
 ### Lack of Authentication
 
