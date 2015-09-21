@@ -1124,35 +1124,31 @@ _Todo_
 
 ### Management of Application Secrets
 
-_Todo_
+There is potential for hidden costs here, as adjacent layers will need to be hardened. There could be trade-offs here that force us to focus on the adjacent layers. This is never a bad thing though. It helps us to step back and take a holistic view of our security.
 
 #### Store Configuration in Configuration files
 
-_Todo_
+There should be little cost in moving secrets out of source code and into configuration files.
 
-##### node-config
+##### Windows:
 
-_Todo_
-
-##### Windows
-
-_Todo_
+You will need to weigh up whether the effort to obfuscate secrets is worth it or not. It can also make the developers job more cumbersome. Some of the options provided may be worthwhile doing.
 
 ##### Linux
 
-_Todo_
+Containers have many other advantages and you may already be using them for making your deployment processes easier and less likely to have dependency issues. They also help with scaling and load balancing, so they have multiple benefits.
 
 #### Least Privilege
 
-_Todo_
+Is something you should be at least considering and probably doing in every case. It is one of those considerations that is worth while applying to most layers.
 
 #### Location
 
-_Todo_
+Segmenting of resources is a common and effective measure to take for at least slowing down attacks and a cost well worth considering if you have not already.
 
 #### Data-store Compromise
 
-_Todo_
+The countermeasures discussed here go without saying, although many organisations do not do them well if at all. It is up to you whether you want to be one of the statistics that has all of their secrets revealed. Following the countermeasures here is something that just needs to be done if you have any data that is sensitive in your data-store(s). 
 
 ### Lack of Authentication
 
