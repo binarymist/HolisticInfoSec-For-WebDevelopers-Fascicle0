@@ -744,7 +744,7 @@ for Enterprise Requirements](http://www.sans.org/reading-room/whitepapers/awaren
 
 #### Consumption is Your Responsibility
 
-As a developer, you are responsible for what you install and consume. [Malicious NodeJS packages](https://github.com/joaojeronimo/rimrafall) do end up on NPM from time to time. The same goes for any source or binary you download and run. The following commands are often encountered as being the way to install things:
+As a developer, you are responsible for what you install and consume. [Malicious NodeJS packages](https://github.com/joaojeronimo/rimrafall) do end up on NPM from time to time. The same goes for any source or binary you download and run. The following commands are often encountered as being "the way" to install things:
 
 {title="wget", linenos=off}
     # Fetching install.sh and running immediately in your shell.
