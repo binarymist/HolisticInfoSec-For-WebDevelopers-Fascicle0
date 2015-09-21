@@ -772,7 +772,7 @@ A>
 
 ##### wget, curl, etc:
 
-Please do not wget, curl or fetch in any way and pipe what you think is an installer or any script to your shell without first verifying that what you are about to run is not malicious. Do not download and run in the same command.
+Please do not `wget`, `curl` or fetch in any way and pipe what you think is an installer or any script to your shell without first verifying that what you are about to run is not malicious. Do not download and run in the same command.
 
 The better option is to:
 
@@ -783,7 +783,7 @@ The better option is to:
 
 ##### npm install:
 
-As part of an `npm install`, package creators, maintainers (or even a malicious entity intercepting and modifying your request on the [wire](#network-identify-risks-wire-inspecting)) can define scripts to be run on specific [NPM hooks](https://docs.npmjs.com/misc/scripts). You can check to see if any package has hooks that will run scripts by issuing the following command:  
+As part of an `npm install`, package creators, maintainers (or even a malicious entity intercepting and modifying your request on the [wire](#network-identify-risks-wire-inspecting)) can define scripts to be run on specific [NPM hooks](https://docs.npmjs.com/misc/scripts). You can check to see if any package has hooks (before installation) that will run scripts by issuing the following command:  
 `npm show [module-you-want-to-install] scripts`
 
 Recommended procedure:
@@ -796,7 +796,7 @@ The most important step here is downloading and inspecting before you run.
 
 ##### Doppelganger Packages:
 
-Similarly to [Doppelganger Domains](#network-identify-risks-doppelganger-domains) People often miss-type what they want to install. If you were someone that wanted to do something malicious like have consumers of your package destroy or modify their systems, send sensitive information to you, or any number of other criminal activities (ideally identified in the Identify Risks section. If not already, add), doppelganger packages are an excellent avenue for raising the likelihood that someone will install your malicious package by miss typing the name of it with the name of another package that has a very similar name. I covered this in my ["0wn1ng The Web"](https://speakerdeck.com/binarymist/0wn1ng-the-web-at-www-dot-wdcnz-dot-com) presentation with demos.
+Similarly to [Doppelganger Domains](#network-identify-risks-doppelganger-domains), People often miss-type what they want to install. If you were someone that wanted to do something malicious like have consumers of your package destroy or modify their systems, send sensitive information to you, or any number of other criminal activities (ideally identified in the Identify Risks section. If not already, add), doppelganger packages are an excellent avenue for raising the likelihood that someone will install your malicious package by miss typing the name of it with the name of another package that has a very similar name. I covered this in my ["0wn1ng The Web"](https://speakerdeck.com/binarymist/0wn1ng-the-web-at-www-dot-wdcnz-dot-com) presentation, with demos.
 
 Make sure you are typing the correct package name. Copy -> Pasting works.
 

@@ -179,12 +179,11 @@ Peter Kim discusses in "The Hacker PlayBook" about how he set-up SMTP and SSH do
 **Check to see if any package has hooks** that will run scripts  
 [https://blog.liftsecurity.io/2015/01/27/a-malicious-module-on-npm#inspect-the-source-before-you-npm-install-it](https://blog.liftsecurity.io/2015/01/27/a-malicious-module-on-npm#inspect-the-source-before-you-npm-install-it)
 
+**Can define scripts to be run** on specific NPM hooks.  
+[https://docs.npmjs.com/misc/scripts](https://docs.npmjs.com/misc/scripts)
+
 **People often miss-type** what they want to install  
 [https://blog.liftsecurity.io/2015/01/27/a-malicious-module-on-npm#make-sure-you-re-installing-the-right-thing](https://blog.liftsecurity.io/2015/01/27/a-malicious-module-on-npm#make-sure-you-re-installing-the-right-thing)
-
-
-
-
 
 **For NodeJS developers**: Keep your eye on the [nodesecurity advisories](https://nodesecurity.io/advisories)
 
