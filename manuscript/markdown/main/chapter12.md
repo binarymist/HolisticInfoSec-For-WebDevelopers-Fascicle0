@@ -994,7 +994,7 @@ Reliance on adjacent layers of defence means those layers have to actually be up
 
 Possibility of missing secrets being sent over the wire.
 
-Possible reliance on obscurity with many of the strategies I've seen proposed. Just be aware that obscurity may slow an attacker down a little, but it will not stop them.
+Possible reliance on obscurity with many of the strategies I have seen proposed. Just be aware that obscurity may slow an attacker down a little, but it will not stop them.
 
 #### Store Configuration in Configuration files
 
@@ -1004,11 +1004,11 @@ With good configuration tools like node-config, you are provided with plenty of 
 
 ##### node-config
 
-is an excellent configuration package with lots of great features. There is no security provided with node-config, just some potential obscurity. Just be aware of that and as discussed previously, make sure surrounding layers have beefed up security.
+is an excellent configuration package with lots of great features. There is no security provided with node-config, just some potential obscurity. Just be aware of that, and as discussed previously, make sure surrounding layers have beefed up security.
 
 ##### Windows:
 
-As is often the case with Microsoft solutions, their marketing often leads people to believe that they have secure solutions to problems when that is not the case. As discussed previously, there are plenty of ways to get around the Microsoft so called security features. As anything else in this space, they may provide some obscurity, but don't depend on them being secure.
+As is often the case with Microsoft solutions, their marketing often leads people to believe that they have secure solutions to problems when that is not the case. As discussed previously, there are plenty of ways to get around the Microsoft so called security features. As anything else in this space, they may provide some obscurity, but do not depend on them being secure.
 
 Statements like the following have the potential for producing over confidence:
 
@@ -1022,7 +1022,7 @@ There is a risk that people will believe this.
 
 ##### Linux:
 
-As with Microsofts "virtualisation-based security" Linux containers may slow system compromise down, but a determined attacker will find other ways to get around container isolation. Maintaining a small set of user accounts is a worthwhile practise, but that alone will not be enough to stop a highly skilled attacker moving forward.  
+As with Microsofts "virtualisation-based security" Linux containers may slow system compromise down, but a determined attacker will find other ways to get around container isolation. Maintaining a small set of user accounts is a worthwhile practise, but that alone will not be enough to stop a highly skilled and determined attacker moving forward.  
 Even when technical security is very good, an experienced attacker will use other mediums to gain what they want, like [social engineering](#people-identify-risks), [physical](#physical-identify-risks) compromise, both, or some other attack vectors listed in this book. Defence in depth is crucial in achieving good security. Concentrating on the lowest hanging fruit first and working your way up the tree.
 
 Locking file permissions and ownership down is good, but that alone will not save you. 
@@ -1037,7 +1037,7 @@ Segmentation is useful, and a common technique to helping to build resistance ag
 
 #### Data-store Compromise
 
-If you follow the advice in the [countermeasures](#web-applications-countermeasures-data-store-compromise) section, you'll be doing more than most other organisations in this area. It's not hard, but if implemented could increase complacency/over confidence. Always be on your guard. Always expect that although you have done a lot to increase your security stance, a determined and experienced attacker is going to push buttons you may have never realised you had. If they want something enough and have the resources and determination to get it, they probably will. This is where you need strategies in place to deal with post compromise. Create process (ideally partly automated) to deal with theft.
+If you follow the advice in the [countermeasures](#web-applications-countermeasures-data-store-compromise) section, you will be doing more than most other organisations in this area. It is not hard, but if implemented could increase complacency/over confidence. Always be on your guard. Always expect that although you have done a lot to increase your security stance, a determined and experienced attacker is going to push buttons you may have never realised you had. If they want something enough and have the resources and determination to get it, they probably will. This is where you need strategies in place to deal with post compromise. Create process (ideally partly automated) to deal with theft.
 
 Also consider that once an attacker has made off with your data-store, even if it is currently infeasible to brute-force the secrets, there may be other ways around obtaining the missing pieces of information they need. Think about the [paper shredders](#physical-identify-risks-sensitive-printed-matter) and the associated [competitions](http://archive.darpa.mil/shredderchallenge/). With patience, most puzzles can be cracked. If the compromise is an opportunistic type of attack, they will most likely just give up and seek an easier target. If it is a targeted attack by determined and experienced attackers, they will probably try other attack vectors until they get what they want.
 

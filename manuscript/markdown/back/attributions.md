@@ -137,6 +137,9 @@ Peter Kim discusses in "The Hacker PlayBook" about how he set-up SMTP and SSH do
 [SQL Authentication](https://msdn.microsoft.com/en-us/library/ff648340.aspx)  
 [Windows Authentication](https://msdn.microsoft.com/en-us/library/ff647396.aspx)
 
+"_vSentry protects desktops without requiring patches or updates, defeating and automatically discarding all known and unknown malware, and eliminating the need for costly remediation._"  
+[https://www.google.co.nz/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0CBsQFjAAahUKEwj4h8br2ofIAhULpJQKHdE1Cfg&url=http%3A%2F%2Fwww.bromium.com%2Fsites%2Fdefault%2Ffiles%2FBromium-Datasheet-vSentry.pdf&usg=AFQjCNHj08aV26awuSnIc9rQiHf6ER9ANQ&sig2=ynekdS3BwHgB9_8WBfGzTw&bvm=bv.103073922,d.dGo](https://www.google.co.nz/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0CBsQFjAAahUKEwj4h8br2ofIAhULpJQKHdE1Cfg&url=http%3A%2F%2Fwww.bromium.com%2Fsites%2Fdefault%2Ffiles%2FBromium-Datasheet-vSentry.pdf&usg=AFQjCNHj08aV26awuSnIc9rQiHf6ER9ANQ&sig2=ynekdS3BwHgB9_8WBfGzTw&bvm=bv.103073922,d.dGo)
+
 **Every user** [**task is isolated**](http://security.stackexchange.com/questions/23674/how-will-microvirtualisation-change-the-security-field-if-at-all) into its own micro-VM.
 
 "**vSentry empowers users** _to access whatever information they need from any network, application or website, without risk to the enterprise_"
