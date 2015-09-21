@@ -171,6 +171,21 @@ Peter Kim discusses in "The Hacker PlayBook" about how he set-up SMTP and SSH do
 **There is an excellent paper by the SANS Institute** on Security Concerns in Using Open Source Software for Enterprise Requirements that is well worth a read. It confirms what the likes of IBM are doing in regards to their consumption of free and open source libraries  
 [http://www.sans.org/reading-room/whitepapers/awareness/security-concerns-open-source-software-enterprise-requirements-1305](http://www.sans.org/reading-room/whitepapers/awareness/security-concerns-open-source-software-enterprise-requirements-1305)
 
+**As a developer, you are responsible** for what you install and consume  
+[https://blog.liftsecurity.io/2015/01/27/a-malicious-module-on-npm#you-are-responsible-for-what-you-require-](https://blog.liftsecurity.io/2015/01/27/a-malicious-module-on-npm#you-are-responsible-for-what-you-require-)
+
+**The** [**official way**](https://github.com/nodesource/distributions) **to install NodeJS.** Do not do this.  
+
+**Check to see if any package has hooks** that will run scripts  
+[https://blog.liftsecurity.io/2015/01/27/a-malicious-module-on-npm#inspect-the-source-before-you-npm-install-it](https://blog.liftsecurity.io/2015/01/27/a-malicious-module-on-npm#inspect-the-source-before-you-npm-install-it)
+
+**People often miss-type** what they want to install  
+[https://blog.liftsecurity.io/2015/01/27/a-malicious-module-on-npm#make-sure-you-re-installing-the-right-thing](https://blog.liftsecurity.io/2015/01/27/a-malicious-module-on-npm#make-sure-you-re-installing-the-right-thing)
+
+
+
+
+
 **For NodeJS developers**: Keep your eye on the [nodesecurity advisories](https://nodesecurity.io/advisories)
 
 **There is an NPM package** that can help us with this called `precommit-hook` which installs the git pre-commit  

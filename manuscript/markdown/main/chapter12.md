@@ -386,14 +386,12 @@ This is where [A9 (Using Components with Known Vulnerabilities)](https://www.owa
 
 We are consuming far more free and open source libraries than we have ever before. Much of the code we are pulling into our projects is never intentionally used, but is still adding surface area for attack. Much of it:
 
-* Is not thoroughly tested (for what it should do and what it should not do). We are relying on developers we do not know a lot about to have not introduced defects. As I discussed in the [Code Review](#web-applications-development-practices-code-review-why) section, most developers are more focused on building than breaking, they do not even see the defects they are introducing.
+* Is not thoroughly tested (for what it should do and what it should not do). We are often relying on developers we do not know a lot about to have not introduced defects. As I discussed in the [Code Review](#web-applications-development-practices-code-review-why) section, most developers are more focused on building than breaking, they do not even see the defects they are introducing.
 * Is not reviewed evaluated. That is right, many of the packages we are consuming are created by solo developers with a single focus of creating and little to no focus of how their creations can be exploited. Even some teams with a security hero are not doing a lot better.
 * Is created by amateurs that could and do include vulnerabilities. Anyone can write code and publish to an open source repository. Much of this code ends up in our package management repositories which we consume.
-* Does not undergo the same requirement analysis, defining the scope, acceptance criteria, test conditions and sign off by a development team and product owner.
+* Does not undergo the same requirement analysis, defining the scope, acceptance criteria, test conditions and sign off by a development team and product owner that our commercial software does.
 
 Many vulnerabilities can hide in these external dependencies. It is not just one attack vector any more, it provides the opportunity for many vulnerabilities to be sitting waiting to be exploited. If you do not find and deal with them, I can assure you, someone else will.
-
-See Justin Searls [talk](http://blog.testdouble.com/posts/2014-12-02-the-social-coding-contract.html) on consuming all the open source.
 
 ## 3. SSM Countermeasures
 
@@ -740,6 +738,67 @@ If not on the list, make request and it should go through the same process.
 
 There is an excellent paper by the SANS Institute on [Security Concerns in Using Open Source Software
 for Enterprise Requirements](http://www.sans.org/reading-room/whitepapers/awareness/security-concerns-open-source-software-enterprise-requirements-1305) that is well worth a read. It confirms what the likes of IBM are doing in regards to their consumption of free and open source libraries.
+
+#### Consumption is Your Responsibility
+
+As a developer, you are responsible for what you install and consume. [Malicious NodeJS packages](https://github.com/joaojeronimo/rimrafall) do end up on NPM from time to time. The same goes for any source or binary you download and run. The following commands are often encountered as being the way to install things:
+
+{title="wget", linenos=off}
+    # Fetching install.sh and running immediately in your shell.
+    # Do not do this. Download first -> Check and verify good -> run if good.
+    sh -c "$(wget https://raw.github.com/account/repo/install.sh -O -)"
+
+{title="curl", linenos=off}
+    # Fetching install.sh and running immediately in your shell.
+    # Do not do this. Download first -> Check and verify good -> run if good.
+    sh -c "$(curl -fsSL https://raw.github.com/account/repo/install.sh)"
+
+Below is the [official way](https://github.com/nodesource/distributions) to install NodeJS. Do not do this. `wget` or `curl` first, then make sure what you have just downloaded is not malicious.
+
+A>
+A> Inspect the code before you run it.
+A>
+
+1. The repository could have been tampered with
+2. The transmission from the repository to you could have been intercepted and modified.
+
+{title="curl", linenos=off}
+    # Fetching install.sh and running immediately in your shell.
+    # Do not do this. Download first -> Check and verify good -> run if good.
+    curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+    sudo apt-get install -y nodejs
+
+#### Keeping Safe
+
+##### wget, curl, etc:
+
+Please do not wget, curl or fetch in any way and pipe what you think is an installer or any script to your shell without first verifying that what you are about to run is not malicious. Do not download and run in the same command.
+
+The better option is to:
+
+1. Verify the source that you are about to download, if all good
+2. Download it
+3. Check it again, if all good
+4. Only then should you run it
+
+##### npm install:
+
+As part of an `npm install`, package creators, maintainers (or even a malicious entity intercepting and modifying your request on the [wire](#network-identify-risks-wire-inspecting)) can define scripts to be run on specific [NPM hooks](https://docs.npmjs.com/misc/scripts). You can check to see if any package has hooks that will run scripts by issuing the following command:  
+`npm show [module-you-want-to-install] scripts`
+
+Recommended procedure:
+
+1. Verify the source that you are about to download, if all good
+2. `npm show [module-you-want-to-install] scripts`
+3. Download the module without installing it and inspect it. You can download it from `http://registry.npmjs.org/[module-you-want-to-install]/-/[module-you-want-to-install]-VERSION.tgz`
+
+The most important step here is downloading and inspecting before you run.
+
+##### Doppelganger Packages:
+
+Similarly to [Doppelganger Domains](#network-identify-risks-doppelganger-domains) People often miss-type what they want to install. If you were someone that wanted to do something malicious like have consumers of your package destroy or modify their systems, send sensitive information to you, or any number of other criminal activities (ideally identified in the Identify Risks section. If not already, add), doppelganger packages are an excellent avenue for raising the likelihood that someone will install your malicious package by miss typing the name of it with the name of another package that has a very similar name. I covered this in my ["0wn1ng The Web"](https://speakerdeck.com/binarymist/0wn1ng-the-web-at-www-dot-wdcnz-dot-com) presentation with demos.
+
+Make sure you are typing the correct package name. Copy -> Pasting works.
 
 #### Tooling {#web-applications-countermeasures-consuming-free-and-open-source-tooling}
 
