@@ -466,7 +466,7 @@ Secure password management within applications is a case of doing what you can, 
 
 [Find out](#network-countermeasures-wire-inspecting) how secret the data that is supposed to be secret that is being sent over the network actually is and consider your internal network just as malicious as the internet. Then you will be starting to get the idea of what defence in depth is about. That way when one defence breaks down, you will still be in good standing.
 
-![](images//home/kim/Source/HolisticInfoSec-For-WebDevelopers/manuscript/images/DefenceInDepth.png)
+![](images/DefenceInDepth.png)
 
 You may read in many places that having data-store passwords and other types of secrets in configuration files in clear text is an insecurity that must be addressed. Then when it comes to mitigation, there seems to be a few techniques for helping, but most of them are based around obscuring the secret rather than securing it. Essentially just making discovery a little more inconvenient like using an alternative port to SSH to other than the default of 22. Maybe surprisingly though, obscurity does significantly reduce the number of opportunistic type attacks from bots and script kiddies.
 
@@ -1006,7 +1006,7 @@ With good configuration tools like node-config, you are provided with plenty of 
 
 is an excellent configuration package with lots of great features. There is no security provided with node-config, just some potential obscurity. Just be aware of that and as discussed previously, make sure surrounding layers have beefed up security.
 
-##### Windows
+##### Windows:
 
 As is often the case with Microsoft solutions, their marketing often leads people to believe that they have secure solutions to problems when that is not the case. As discussed previously, there are plenty of ways to get around the Microsoft so called security features. As anything else in this space, they may provide some obscurity, but don't depend on them being secure.
 
@@ -1020,10 +1020,10 @@ Please keep your systems patched and updated.
 
 There is a risk that people will believe this.
 
-##### Linux
+##### Linux:
 
 As with Microsofts "virtualisation-based security" Linux containers may slow system compromise down, but a determined attacker will find other ways to get around container isolation. Maintaining a small set of user accounts is a worthwhile practise, but that alone will not be enough to stop a highly skilled attacker moving forward.  
-Even when technical security is very good, an experienced attacker will use other mediums to gain what they want, like [social engineering](#people-identify-risks), [physical] compromise, both, or some other attack vectors listed in this book. Defence in depth is crucial in achieving good security. Concentrating on the lowest hanging fruit first and working your way up the tree.
+Even when technical security is very good, an experienced attacker will use other mediums to gain what they want, like [social engineering](#people-identify-risks), [physical](#physical-identify-risks) compromise, both, or some other attack vectors listed in this book. Defence in depth is crucial in achieving good security. Concentrating on the lowest hanging fruit first and working your way up the tree.
 
 Locking file permissions and ownership down is good, but that alone will not save you. 
 
