@@ -30,6 +30,8 @@ _Todo_
 
 _Todo_
 
+Check the Lack of Visibility from VPS chapter, there will be some cross over.
+
 %% #### Network Intrusion Detection Systems (NIDS)
 
 ### Spoofing {#network-identify-risks-spoofing}

@@ -4,10 +4,22 @@
 
 If possible, I usually advocate bringing VPS(s) [in-house](http://blog.binarymist.net/2014/11/29/journey-to-self-hosting/) where you have control. A lot of the ideas in this section originated from a blog post of mine on [hardening Debian web servers](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/).
 
-## 1. SSM Asset Identification
+## 1. SSM Asset Identification {#vps-asset-identification}
 Take results from [higher level Asset Identification](#asset-identification). Remove any that are not applicable. Add any newly discovered. Here are some to get you started:
 
 * Ownership. At first this may sound strange, but that is because of an assumption you may have that it is a given that you will always own, or at least have control of your server(s). I am going to dispel this myth. When an attacker wants to compromise your server(s), they want to do so for a reason. Possibly it is just for kicks, possibly it is for some more sinister reason. They want an asset that presumably belongs to you, your organisation, or your customers. If they can take control of your server(s) (own it/steal it/what ever you want to call the act), then they have a foot hold to launch further attacks and gain other assets that do not belong to them. With this in mind, you could think of your server(s) as an asset. On the other hand you could think of your it as a liability. Both may be correct. In any case, you need to protect your server(s) and in many cases take it to school and teach it how to protect itself. This is covered under the [SSM Countermeasures](#vps-countermeasures) section with items such as HIDS and Logging and Alerting.
+* Visibility into and of many things, such as:
+  * Disk space
+  * Disk IO
+  * CPU usage
+  * Memory usage
+  * File integrity and time stamp changes
+  * Which system processes are running
+  * System process health and responsiveness
+  * Current login sessions
+  * What any user is doing on the system currently
+  * Network connections
+  * Etc
 * Taking the confidential business and client information from the "Starting with the 30,000' view" chapter, here we can concretise these concepts into forms such as:
   * Email, Web, Data-store servers and of course the data on them.
   * You could even stretch this to individuals PCs and other devices which may be carrying this sort of confidential information on them. Mobile devices are a huge risk for example (covered in the [Mobile](#mobile) chapter)
@@ -38,7 +50,28 @@ In terms of security, unless your provider is [Swiss](http://www.computerweekly.
 
 ### Lack of Visibility
 
-_Todo_
+As I was writing this section, I realised that visibility is actually an asset (so I went back and added it... actually to several chapters). Without visibility, an attacker can do a lot more damage than they could if you were watching them, or even if you have good auditing capabilities. It is in fact an asset that attackers often try and remove for this very reason.
+
+Any attacker worth their weight will try to cover their tracks as they progress. Once an attacker has shell access to a system, they may:
+
+* Check running processes to make sure that they have not left anything they used to enter still running
+* Remove messages in logs related to their break (walk) in
+* Same with the shell history file. Or even:  
+  `ln /dev/null ~/.bash_history -sf` so that all following history vanishes.
+* They may change time stamps on new files with:  
+  `touch -r <referenceFile> <fileThatGetsReferenceFileTimeStampsApplied>`  
+  Or better is to use the original date-time:
+
+    {linenos=off}
+        touch -r <originalFile> <trojanFile>
+        mv <trojanFile> <originalFile>
+
+* Make sure any trojan files they drop are the same size as the originals
+* Replace `md5sum` so that it contains sums for the files that were replaced including itself. Although if an administrator ran `rpm -V` or `debsums -c` (Debian, Ubuntu) it would not be affected by a modified `md5sum`.
+
+If an attacker wants their actions to be invisible, they may try replacing the likes of `ps`, `pstree`, `top` and possibly `netstat` or `ss` if they are trying to hide network activity from the host.
+
+Taking things further, an attacker may load a kernel module that modifies the `readdir()` call and the `proc` filesystem so that any changes on the file system are untrustworthy, or if going to the length of loading custom modules, everything can be done from kernel space which is invisible until reboot.
 
 ### Using Components with Known Vulnerabilities
 
@@ -163,7 +196,7 @@ _Todo_: [Take this further](https://github.com/binarymist/HolisticInfoSec-For-We
 
 Bringing your VPS(s) in-house provides all the flexibility/power required to mitigate just about all the risks due to outsourcing to a cloud or hosting provider. Cloud offerings are often more expensive in monetary terms for medium to large environments.
 
-### Lack of Visibility
+### Lack of Visibility {#vps-countermeasures-lack-of-visibility}
 
 #### Host Intrusion Detection Systems (HIDS) {#vps-countermeasures-host-intrusion-detection-systems-hids}
 ![](images/ThreatTags/PreventionAVERAGE.png)
@@ -181,17 +214,39 @@ It is very important to make sure you have reliable and all-encompassing logging
 
 _Todo_ Elaborate
 
-#### Monitoring
+logrotate
+
+#### Monitoring {#vps-countermeasures-lack-of-visibility-monitoring}
 ![](images/ThreatTags/PreventionAVERAGE.png)
+
+_Todo_
 
 I recently performed an [in-depth evaluation](http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#the-following-are-better-suited-to-monitoring) of a collection of tools that one of their responsibilities was monitoring and performing actions on your processes and applications.
 
 1. Supervisor [evaluation](http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#supervisor)
-2. Monit [evaluation](http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#monit)
- * [Deep dive](http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#getting-started-with-monit) into Monit. What happens if the process we use to monitor stops working? [Keep Monit Alive](http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#keep-monit-alive)
+2. Monit [evaluation](http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#monit)  (free and open source) sweet spot: smaller deployments, but I'm sure you could scale it. I love this tool. It is so easy to work with.  
+  * [Deep dive](http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#getting-started-with-monit) into Monit. What happens if the process we use to monitor stops working? [Keep Monit Alive](http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#keep-monit-alive)
+  * File checksum testing
+  * File size testing
+  * File content testing
+  * Filesystem flags testing
 3. Passenger [evaluation](http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#passenger)
+4. [Zabbix](http://www.zabbix.com/) (free and open source) sweet spot: enterprise
+5. Nagios (costs money)
+
+
+I also looked into the following offerings which cater to providing visibility into many aspects of the applications, services, servers and networks, but none that really address security concerns:
+
+* New Relic (have a free tier)
+* Raygun (costs money)
 
 #### File Integrity Checking
+
+_Todo_
+
+The faster you can respond to an attacker modifying system files, the more likely you are to circumvent their attempts.
+Ossec provides real-time cheacking.
+Stealth provides agentless checking (It runs from another machine), using the checksum programme of your choice that it copies on first run.
 
 _Todo_
 
@@ -291,6 +346,19 @@ _Todo_
 _Todo_
 
 #### Monitoring
+
+_Todo_
+
+Over confidence in monitoring tools. For example an attacker could try and replace the configuration files for Monit or the Monit daemon itself, so the following sorts of tests would either not run or return tampered with results:
+
+  * File checksum testing
+  * File size testing
+  * File content testing
+  * Filesystem flags testing
+
+In saying that, if you have an agentless (running from somewhere else) file integrity checker or even several of them running on different machines and as part of their scope are checking Monit, then the attacker is going to have to find the agentless file integrity checker(s) and disable them also without being noticed. This is increasing the level difficulty significantly.
+
+You could and should also have NIDs running on your network which makes this even more likely that an attacker is going to step on a land mine.
 
 _Todo_
 

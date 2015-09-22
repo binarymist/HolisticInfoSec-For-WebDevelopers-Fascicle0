@@ -178,7 +178,8 @@ _Todo_
 ## 1. SSM Asset Identification
 Take results from [higher level Asset Identification](#asset-identification). Remove any that are not applicable. Add any newly discovered. Here are some to get you started:
 
-* Ownership. Similarly as addressed in the VPS chapter, Do not assume that ownership, or at least control of your server(s) is something you will always have. Ownership is often one of the first assets an attacker will attempt to take from a target in order to execute further exploits. At first this may sound strange, but that is because of an assumption you may have that you will always own (have control of) your web application. Hopefully I dispelled this myth in the VPS chapter. If an attacker can take control of your web application (own it/steal it/what ever you want to call the act), then they have a foot hold to launch further attacks and gain other assets of greater value. The web application itself will often just be a stepping stone to other assets that you assume are safe. With this in mind, your web application is an asset. On the other hand you could think of it as a liability. Both may be correct. In any case, you need to protect your web application and in many cases take it to school and teach it how to protect itself. I cover that under the [Web Application Firewall](#web-applications-countermeasures-waf) section, where AppSensor can help.
+* Ownership. Similarly as addressed in the VPS chapter, Do not assume that ownership, or at least control of your server(s) is something you will always have. Ownership is often one of the first assets an attacker will attempt to take from a target in order to execute further exploits. At first this may sound strange, but that is because of an assumption you may have that you will always own (have control of) your web application. Hopefully I dispelled this myth in the VPS chapter. If an attacker can take control of your web application (own it/steal it/what ever you want to call the act), then they have a foot hold to launch further attacks and gain other assets of greater value. The web application itself will often just be a stepping stone to other assets that you assume are safe. With this in mind, your web application is an asset. On the other hand you could think of it as a liability. Both may be correct. In any case, you need to protect your web application and in many cases take it to school and teach it how to protect itself. I cover that under the [Web Application Firewall](#web-applications-countermeasures-lack-of-active-automated-prevention-waf) section, where AppSensor can help.
+* Similarly to the [Asset Identification](#vps-asset-identification) section in the VPS chapter, Visibility is an asset that is up for grabs
 * Intellectual property or sensitive information within the code or configuration files such as email addresses and account credentials for the likes of data-stores, syslog servers, monitoring services. We address this in [Management of Application Secrets](#web-applications-identify-risks-management-of-application-secrets)
 * Sensitive Client/Customer data.
 * Sanity and piece of mind of people within your organisation. Those that are:
@@ -227,6 +228,7 @@ The vulnerabilities that have not changed a lot are:
 
 ### Lack of Visibility
 
+I see this as an indirect risk to the asset of web application ownership.
 
 
 
@@ -234,8 +236,26 @@ The vulnerabilities that have not changed a lot are:
 
 
 
-#### Logging
 
+
+
+
+
+Someone or something using your application in a way that it wasn't intended to be used.
+
+Anticipated and unanticipated exploitation of vulnerabilities.
+
+Violating policy. For example circumventing client side input sanitisation
+         
+Poor performance, potential DoS.
+
+
+
+#### Insufficient Logging and Monitoring
+
+Logic edge cases and blind spots that stake holders, Product Owners and Developers have missed.
+
+Abnormal application behaviour / unexpected logic threads
 
 
 
@@ -406,17 +426,27 @@ Many vulnerabilities can hide in these external dependencies. It is not just one
 Running install or any scripts from non local sources without first downloading them and inspecting can destroy or modify your and any other reachable systems, send sensitive information to an attacker, or any number
 of other criminal activities.
 
+### Lack of Active Automated Prevention
+
+_Todo_
+
 ## 3. SSM Countermeasures
 
 * [MS Application Threats and Countermeasures](https://msdn.microsoft.com/en-us/library/ff648641.aspx#c02618429_008)
 
 ### Lack of Visibility
 
-_Todo_
 
-#### Logging {#web-applications-countermeasures-lack-of-visibility-logging}
+Bruce Schneier said: "_Detection works where prevention fails and detection is of no use without response_."  
 
-_Todo_
+
+#### Insufficient Logging and Monitoring {#web-applications-countermeasures-lack-of-visibility-insufficient-logging-and-monitoring}
+
+Also refer to the ["Lack of Visibility"](#vps-countermeasures-lack-of-visibility) section in the VPS chapter where I discuss a number of tried and tested solutions.
+
+
+
+
 
 ### Lack of Input Validation and Sanitisation {#web-applications-countermeasures-lack-of-input-validation-and-sanitisation}
 ![](images/ThreatTags/PreventionAVERAGE.png)
@@ -611,7 +641,7 @@ The contents of the above example configuration files may look like the followin
        }
     }
 
-The [Logging](#web-applications-countermeasures-lack-of-visibility-logging) section shows more configuration options to provide a slightly bigger picture.
+The [Logging](#web-applications-countermeasures-lack-of-visibility-insufficient-logging-and-monitoring) section shows more configuration options to provide a slightly bigger picture.
 
 node-config also:
 
@@ -926,13 +956,20 @@ You could of course just list all of your projects and global packages and check
 
 For **.Net developers**, there is the likes of [OWASP **SafeNuGet**](https://github.com/OWASP/SafeNuGet).
 
-### Web Application Firewall (WAF) {#web-applications-countermeasures-waf}
+### Lack of Active Automated Prevention
+
+#### Web Application Firewall (WAF) {#web-applications-countermeasures-lack-of-active-automated-prevention-waf}
 
 [WAFs](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#wafs) are similar to Intrusion Prevention Systems (IPS) except they operate at the [Application Layer](http://en.wikipedia.org/wiki/Application_layer)(HTTP), Layer 7 of the [OSI model](http://en.wikipedia.org/wiki/OSI_model). So they understand the concerns of your web application at a technical level. WAFs protect your application against a large number of attacks, like XSS, CSRF, SQLi, [Local File Inclusion (LFI)](https://www.owasp.org/index.php/Testing_for_Local_File_Inclusion), session hijacking, invalid requests (requests to things that do not exist (think 404)). WAFs sit in-line between a gateway and the web application. They run as a proxy. Either on the physical web server or on another network node, but only the traffic directed to the web application is inspected, where as an IDS/IPS inspects all network traffic passed through its interfaces. WAFs use signatures that look like specific vulnerabilities to compare the network traffic targeting the web application and apply the associated rule(s) when matches are detected. Although not only limited to dealing with known signatures, some WAFs can detect and prevent attacks they have not seen before like responses containing larger than specified payloads. Source code of the web application does not have to be modified.
 
 1. [Fusker](https://www.npmjs.com/package/fusker). Not sure if this is still actively maintained. At this point, there has not been any recent commits for about three years, but it does look like the best offering we have at this stage for NodeJS. So if your looking to help a security project out...
 2. [express-waf](https://www.npmjs.com/package/express-waf) has recent commits, but there is only a single developer working on it when I checked.
-3. [AppSensor](http://appsensor.org/) brings detection -> prevention to your domain level.
+
+#### Application Intrusion Detection and Response
+
+You can think of this as taking a WAF one level closer to your application. That is right, augmenting your application with logic to detect and respond to threats
+
+AppSensor [AppSensor](http://appsensor.org/) brings detection -> prevention to your domain level.
   Most applications today just take attacks & fall over.
   I have heard so many times we want our applications to fail securely when they get bad input.
   We do not want our applications being bullied and failing securely.
@@ -954,7 +991,7 @@ For **.Net developers**, there is the likes of [OWASP **SafeNuGet**](https://git
 
 _Todo_
 
-#### Logging
+#### Insufficient Logging and Monitoring
 
 _Todo_
 
@@ -1078,7 +1115,13 @@ Maintaining a list of the approved libraries really needs to be a process that d
 
 Using the likes of pre-commit hooks, the other tooling options detailed in the [Countermeasures](#web-applications-countermeasures-consuming-free-and-open-source) section and creating scripts to do most of the work for us is probably going to be a good option to start with.
 
-### Web Application Firewall (WAF)
+### Lack of Active Automated Prevention
+
+#### Web Application Firewall (WAF)
+
+_Todo_
+
+#### Application Intrusion Detection and Response
 
 _Todo_
 
@@ -1088,7 +1131,7 @@ _Todo_
 
 _Todo_
 
-#### Logging
+#### Insufficient Logging and Monitoring
 
 _Todo_
 
@@ -1174,6 +1217,12 @@ The process has to be streamlined so that it does not get in the developers way.
 
 The idea of setting up a process that notifies at least the Development Team if a library they want to use has known security defects, needs to be pitched to all stakeholders (developers, product owner, even external stakeholders) the right way. It needs to provide obvious benefit and not make anyones life harder than it already is. Everyone has their own agendas. Rather than fighting against them, include consideration for them in your pitch. I think this sort of a pitch is actually reasonably easy if you keep these factors in mind.
 
-### Web Application Firewall (WAF)
+### Lack of Active Automated Prevention
+
+#### Web Application Firewall (WAF)
+
+_Todo_
+
+#### Application Intrusion Detection and Response
 
 _Todo_

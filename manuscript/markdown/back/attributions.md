@@ -103,6 +103,12 @@ Bruce Schneier: Data and Goliath: Introduction: USA National Security Agency (NS
 
 ## [VPS](#vps)
 
+**Any attacker worth their weight** will try to cover their tracks as they progress  
+[http://www.win.tue.nl/~aeb/linux/hh/hh-13.html](http://www.win.tue.nl/~aeb/linux/hh/hh-13.html)
+
+**Taking things further**, an attacker may load a kernel module that modifies the `readdir()` call  
+[http://pubs.opengroup.org/onlinepubs/9699919799/functions/readdir.html](http://pubs.opengroup.org/onlinepubs/9699919799/functions/readdir.html)
+
 **PSExec is a telnet replacement** also providing full interactivity for console applications. Check out the [home page](https://technet.microsoft.com/en-us/sysinternals/bb897553.aspx).
 
 **The PSExec utility requires** a few things on the remote system. [Details on rapid7](https://community.rapid7.com/community/metasploit/blog/2013/03/09/psexec-demystified).

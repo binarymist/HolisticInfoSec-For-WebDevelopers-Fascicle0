@@ -11,6 +11,7 @@ Take results from [higher level Asset Identification](#starting-with-the-30000-f
 * Physical buildings, their openings such as doors and windows. Keys, RFID cards, Access codes
 * Sensitive printed matter
 * Plant, such as work-stations or any other devices that could be used to launch attack sequences from. Laptops and mobile devices (including personal) configured to access internal Access Points (APs). Wi-Fi APs
+* Visibility into who is where and doing what. Visibility brings immense power to make good decisions and is often an excellent target for an attacker to remove from you.
 
 ## 2. SSM Identify Risks {#physical-identify-risks}
 You can take the same process that we did at the [top level](#starting-with-the-30000-foot-view-identify-risks), but abstract the ideas and then solidify them on physical components. Some of the ideas will work, some wont.
@@ -134,6 +135,13 @@ Once connected, the wireless pass-phrase can be extracted from the Enrolled devi
 ![](images/ThreatTags/easy-verywidespread-average-severe.png)
 
 From my experience, when a staff member finishes working for an organisation, they are never made to or even encouraged to remove wireless access point credentials from their personal transient devices, but yet, keys and RFID tags are claimed. This makes no sense at all.
+
+### Lack of Visibility
+
+![](images/ThreatTags/easy-widespread-average-moderate.png)
+
+Removing the ability to make well informed decisions, or being able to react when a malicious actor is doing something to compromise your asset(s) is what the removal of visibility is all about.  
+Depending on what tools you use to provide visibility, will determine what an attacker needs to do to go about avoiding or removing it.
 
 ## 3. SSM Countermeasures
 
@@ -294,9 +302,11 @@ Use DHCP static mappings and have your DHCP server configured to deny unknown cl
 
 Company policy and culture may require some work also.
 
-### Cameras, Sensors and Alarms
+### Lack of Visibility
 
-%% No image required here.
+![](images/ThreatTags/PreventionEASY.png)
+
+#### Cameras, Sensors and Alarms
 
 Detection is an important part of the over-all security of your premises. When your prevention fails, you are going to want to know about it so that you can react appropriately. Ideally surveillance systems should also be configured to send alerts to someone that is going to take notice of them. I have addressed some of the concerns around alerts that fail to trigger human reaction in regards to "Morale, Productivity and Engagement Killers" in the [People](#people) chapter. I have found ZoneMinder which is an open source video surveillance solution to be excellent at recording, detecting motion and providing events. You can then do what ever you like with the events, including email, SMS, push notifications, etc. Be prepared to get your hands dirty here though as this is an open and extensible platform. I have also noticed NodeMinder which was of interest to me, but at the time of writing this, is not being maintained, like so many NPM packages.
 
@@ -364,11 +374,15 @@ I am not sure that there is a risk here. Possible, although unlikely, you may no
 
 There could be potential kickback due to the fact of tightening up policy and implementation of. People often do not like change. 
 
-### Cameras, Sensors and Alarms
+### Lack of Visibility
+
+#### Cameras, Sensors and Alarms
 
 Alarms may scare off a non determined attacker, but besides that, they generally just annoy neighbours due to the regular occurrence of false alarms. Do everything you can to minimise false alarms. Physically silent alarms that actually reach someone that is alert and that cares can be far more effective. Do what ever it takes to make sure the person supposed to be monitoring alarms and alerts does notice. Get creative if need be.
 
 Possible complacency. We are under surveillance and have alarms, so we must be safe. Education may be required to make sure people understand that these are only one layer of defence and only as effective as the weakest link, which may be the person tasked with monitoring.
+
+Consider the potential of an attacker avoiding, vandalising or removing any of these mechanisms.
 
 ## 5. SSM Costs and Trade-offs
 
@@ -434,6 +448,8 @@ The costs of upgrading if you have to change your APs which is unlikely because 
 
 There may be a little more work in recording who access has been granted to and removed from. Consider whether the fact that you now have much better visibility of who has access to the network is worth the extra overhead. The fact that you can remove access from staff members, ex-staff members and guests and have a pretty good idea of who can access the network can be quite empowering and make it easier to track down unwanted visitors. 
 
-### Cameras, Sensors and Alarms
+### Lack of Visibility
+
+#### Cameras, Sensors and Alarms
 
 I have found CCTV systems using ZoneMinder an excellent cost effective physical surveillance tool-kit with many options for configuring to suite what ever scenario will work best for you. There will be some set-up time and you may have to pay for physical cameras if you do not already have them, computer hardware and video capture cards. The cameras can be expensive if you require high resolution images. Video capture cards and the other hardware is cheap. Lighting can be an issue as well. In dark areas, you may have to use infra-red lighting around the cameras (often come as part of the camera). Although movement sensors that switch flood lights on can also be an option in dark areas.
