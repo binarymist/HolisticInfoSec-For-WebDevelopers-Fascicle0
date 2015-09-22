@@ -227,11 +227,21 @@ The vulnerabilities that have not changed a lot are:
 
 ### Lack of Visibility
 
-_Todo_
+
+
+
+
+
+
 
 #### Logging
 
-_Todo_
+
+
+
+
+
+
 
 ### Lack of Input Validation and Sanitisation {#web-applications-identify-risks-lack-of-input-validation-and-sanitisation}
 ![](images/ThreatTags/easy-common-average-severe.png)

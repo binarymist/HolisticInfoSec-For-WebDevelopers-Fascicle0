@@ -1,4 +1,4 @@
-# Starting with the 30,000' view {#starting-with-the-30000-foot-view}
+# Starting with the 30,000' View {#starting-with-the-30000-foot-view}
 
 ![](images/30000View.gif)
 
@@ -18,9 +18,9 @@ Having this process performed by a team brings out the best in everyone. There a
 
 The first question we must ask ourselves is: What are assets in the context of threat modelling? Assets are something we or our clients place value on that we are responsible for and subsequently will probably want to protect because someone unauthorised to access them also places value (covets) on them.
 
-Assets will often emerge as you progress through the following steps, so you will probably end up modifying this list as you go, but it is vital that you do not miss this step in your eagerness to secure your world. If you do not have a good grasp on what it is that you are trying to protect, then there may be nothing or at least little to protect. This is unlikely, but still, you will want to have some idea of what your assets are before taking the next step. Feel free as you progress to come back and modify the list of assets.
+Assets will often emerge as you progress through the following steps, so you will probably end up modifying this list as you go, but it is vital that you do not miss this step in your eagerness to secure your world. If you do not have a good grasp on what it is that you are trying to protect, then there may be nothing or at least little to protect. This is unlikely, but still, you will want to have some idea of what your assets are before taking the next step. Feel free as you progress to jump back and modify the list of assets. More than likely you will keep adding to it as you identify additional risks and even work through the countermeasures of each chapter. This is how the process usually unfolds.
 
-Identifying your assets is a domain specific task, so you are the best person to do this. I will help to direct your thoughts as we progress though.
+Identifying your assets is a domain specific task, so you are the best person(s) to do this. I will help to direct your thoughts as we progress though.
 
 Many of the following chapters will address asset identification as the first step. Many assets will be the same for many chapters. Do not think about the assets as the be all and end all, but they can be useful to keep in your thoughts through the following steps of this chapter, which will be specialised in each following chapter.
 
