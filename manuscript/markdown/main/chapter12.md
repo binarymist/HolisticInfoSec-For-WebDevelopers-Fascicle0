@@ -490,9 +490,6 @@ If you do not need to push syslog events to another machine, then it does not ma
     514/udp open|filtered syslog  no-response
     MAC Address: 34:25:C9:96:AC:E0 (My Computer)
 
-    Service detection performed. Please report any incorrect results at http://nmap.org/submit/ .
-    Nmap done: 1 IP address (1 host up) scanned in 113.13 seconds
-
 ##### Using Posix
 
 the [`winston-syslog-posix`](https://www.npmjs.com/package/winston-syslog-posix) package was inspired by [blargh](http://tmont.com/blargh/2013/12/writing-to-the-syslog-with-winston). `winston-syslog-posix` uses [`node-posix`](https://www.npmjs.com/package/posix).
@@ -503,9 +500,9 @@ If going this route, you will need the following in your `/etc/rsyslog.conf` ins
     # Logging for your app.
     local0.* /var/log/yourapp.log
 
-Now you can see on line 7 below the that the syslog port is no longer open
+Now you can see on line 7 below that the syslog port is no longer open:
 
-{title="nmap with winston-syslog", linenos=on}
+{title="nmap with winston-syslog-posix", linenos=on}
     root@kali:~# nmap -p514 -sU -sV <target IP> --reason
 
     Starting Nmap 6.47 ( http://nmap.org )
@@ -514,9 +511,6 @@ Now you can see on line 7 below the that the syslog port is no longer open
     PORT    STATE  SERVICE REASON       VERSION
     514/udp closed syslog  port-unreach
     MAC Address: 34:25:C9:96:AC:E0 (My Computer)
-
-    Service detection performed. Please report any incorrect results at http://nmap.org/submit/ .
-    Nmap done: 1 IP address (1 host up) scanned in 0.29 seconds
 
 &nbsp;
 
