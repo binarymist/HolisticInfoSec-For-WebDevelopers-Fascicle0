@@ -431,7 +431,7 @@ With good visibility we should be able to see anticipated and unanticipated expl
 ![](images/ThreatTags/PreventionAVERAGE.png)
 
 
-When it comes to logging in NodeJS, you can't really go past winston. It has a lot of functionality and what it does not have is either provided by extensions, or you can create your own. It's fully featured, reliable and easy to configure like NLog in the .NET world.
+When it comes to logging in NodeJS, you can't really go past winston. It has a lot of functionality and what it does not have is either provided by extensions, or you can create your own. It is fully featured, reliable and easy to configure like NLog in the .NET world.
 
 I also looked at `express-winston`, but could not see why it needed to exist.
 
@@ -561,7 +561,7 @@ Notice the syslog transport in the configuration below starting on line 39.
        }   
     }
 
-In development I have chosen here to not use syslog. You can see this on line 3 below. If you want to test syslog, you just need to change the configuration and add one line to the `/etc/rsyslog.conf` file to turn on. As mentioned in a comment above in the default.js config file on line 44.
+In development I have chosen here to not use syslog. You can see this on line 3 below. If you want to test syslog, you just need to change the configuration and add one line to the `/etc/rsyslog.conf` file to turn on. As mentioned in a comment above in the `default.js` config file on line 44.
 
 {title="devbox1-development.js", linenos=on, lang=JavaScript}
     module.exports = {
@@ -570,7 +570,7 @@ In development I have chosen here to not use syslog. You can see this on line 3 
        }
     }
 
-In production we log to syslog and because of that we do not need the file transport you can see configured starting on line 30 above in the default.js configuration file, so we set it to null as seen on line 6 below.
+In production we log to syslog and because of that we do not need the file transport you can see configured starting on line 30 above in the `default.js` configuration file, so we set it to null as seen on line 6 below in the `prodbox-production.js` file.
 
 I have gone into more depth about how we handle syslogs in the VPS chapter under the [Logging and Alerting](#vps-countermeasures-lack-of-visibility-logging-and-alerting) section, where all of our logs including these ones get streamed to an off-site syslog server. Thus providing easy aggregation of all system logs into one user interface that DevOpps can watch on their monitoring panels in real-time and also easily go back in time to visit past events. This provides excellent visibility as one layer of defence.
 
@@ -603,7 +603,7 @@ There were also some other [options](http://help.papertrailapp.com/kb/configurat
        }
     }
 
-The logger.js file wraps and hides extra features and transports applied to the logging package we are consuming.
+The `logger.js` file wraps and hides extra features and transports applied to the logging package we are consuming.
 
 {title="logger.js", linenos=off, lang=JavaScript}
     var winston = require('winston');
@@ -675,7 +675,7 @@ The logger.js file wraps and hides extra features and transports applied to the 
        }
     };
 
-When the app first starts it initialises the logger on line 8 below.
+When the app first starts it initialises the logger on line 7 below.
 
 {title="app.js", linenos=on, lang=JavaScript}
     //...
@@ -716,7 +716,7 @@ When the app first starts it initialises the logger on line 8 below.
 * You can also optionally log JSON metadata
 * You can provide an optional callback to do any work required, which will be called once all transports have logged the specified message.
 
-Here are some examples of how you can use the logger. The `logger.log(level` can be replaced with `logger.<level>(` where level is any of the levels defined in the default.js configuration file above:
+Here are some examples of how you can use the logger. The `logger.log(level` can be replaced with `logger.<level>(` where level is any of the levels defined in the `default.js` configuration file above:
 
 {title="Anywhere you need logging", linenos=off, lang=JavaScript}
     logger.log('info', 'test message %s', 'my string');
@@ -731,7 +731,7 @@ Here are some examples of how you can use the logger. The `logger.log(level` can
     );
     logger.log(
        'info', 'test message %s, %s', 'first', 'second',
-       {aPropertyName: 'Some message details'}, function(){}
+       {aPropertyName: 'Some message details'}, logger.emailLoggerFailure
     );
     logger.log(
        'info', 'test message', 'first', 'second',

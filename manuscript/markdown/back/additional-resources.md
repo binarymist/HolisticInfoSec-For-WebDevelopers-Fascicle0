@@ -60,7 +60,7 @@ The following books have been influential for me and the content from the People
 **Monit is an excellent tool** for the dark cockpit approach:  
 [http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#monit](http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#monit)
 
-**I've personally had excellent success** with Monit:  
+**I have personally had excellent success** with Monit:  
 [http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#getting-started-with-monit](http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#getting-started-with-monit)
 
 [**Blowfish cipher**](https://en.wikipedia.org/wiki/Blowfish_(cipher))
