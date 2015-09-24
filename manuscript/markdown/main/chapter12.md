@@ -231,7 +231,7 @@ The vulnerabilities that have not changed a lot are:
 
 I see this as an indirect risk to the asset of [web application ownership](#web-applications-asset-identification-ownership). The same sections in the VPS and Network chapters may also be worth reading if you have not already as there is crossover.
 
-Not being able to introspect your applications at any given time or being able to know how the health status is, is not a comfortable place to be in and there is no reason you should be there.
+Not being able to introspect your application at any given time or being able to know how the health status is, is not a comfortable place to be in and there is no reason you should be there.
 
 #### Insufficient Logging and Monitoring
 
@@ -239,7 +239,7 @@ Not being able to introspect your applications at any given time or being able t
 
 Can you tell at any point in time if someone or something is:
 
-* Using your application in a way that it was not intended to be used.
+* Using your application in a way that it was not intended to be used
 * Violating policy. For example circumventing client side input sanitisation.
 
 How easy is it for you to notice:
@@ -443,12 +443,11 @@ I also looked at `express-winston`, but could not see why it needed to exist.
           "config": "^1.15.0",
           "express": "^4.13.3",
           "morgan": "^1.6.1",
-          "//": "nodemailer not strictly necessary for this example,"
-          "//": "but used later under the node-config section."
+          "//": "nodemailer not strictly necessary for this example,",
+          "//": "but used later under the node-config section.",
           "nodemailer": "^1.4.0",
-          "//": "What we use for logging."
-          "winston": "^1.0.1",
-          "//": ""
+          "//": "What we use for logging.",
+          "winston": "^1.0.1",          
           "winston-email": "0.0.10",
           "winston-syslog-posix": "^0.1.5",
           ...
@@ -492,7 +491,7 @@ If you do not need to push syslog events to another machine, then it does not ma
 
 ##### Using Posix
 
-the [`winston-syslog-posix`](https://www.npmjs.com/package/winston-syslog-posix) package was inspired by [blargh](http://tmont.com/blargh/2013/12/writing-to-the-syslog-with-winston). `winston-syslog-posix` uses [`node-posix`](https://www.npmjs.com/package/posix).
+The [`winston-syslog-posix`](https://www.npmjs.com/package/winston-syslog-posix) package was inspired by [blargh](http://tmont.com/blargh/2013/12/writing-to-the-syslog-with-winston). `winston-syslog-posix` uses [`node-posix`](https://www.npmjs.com/package/posix).
 
 If going this route, you will need the following in your `/etc/rsyslog.conf` instead of the above:
 
