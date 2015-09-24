@@ -476,19 +476,49 @@ If going this route, you will need the following in your `/etc/rsyslog.conf`:
     # Logging for your app.
     local0.* /var/log/yourapp.log
 
-I Also looked at winston-rsyslog2 and winston-syslogudp, but they did not measure up for me.
+I Also looked at `winston-rsyslog2` and `winston-syslogudp`, but they did not measure up for me.
 
-If you do not need to push syslog events to another machine, then it does not make much sense to push through a local network interface when you can use your posix syscalls as they are faster and safer.
+If you do not need to push syslog events to another machine, then it does not make much sense to push through a local network interface when you can use your posix syscalls as they are faster and safer. Line 7 below shows the open port.
+
+{title="nmap with winston-syslog", linenos=on}
+    root@kali:~# nmap -p514 -sU -sV <target IP> --reason
+
+    Starting Nmap 6.47 ( http://nmap.org )
+    Nmap scan report for kali (<target IP>)
+    Host is up, received arp-response (0.0015s latency).
+    PORT    STATE         SERVICE REASON      VERSION
+    514/udp open|filtered syslog  no-response
+    MAC Address: 34:25:C9:96:AC:E0 (My Computer)
+
+    Service detection performed. Please report any incorrect results at http://nmap.org/submit/ .
+    Nmap done: 1 IP address (1 host up) scanned in 113.13 seconds
 
 ##### Using Posix
 
 the [`winston-syslog-posix`](https://www.npmjs.com/package/winston-syslog-posix) package was inspired by [blargh](http://tmont.com/blargh/2013/12/writing-to-the-syslog-with-winston). `winston-syslog-posix` uses [`node-posix`](https://www.npmjs.com/package/posix).
 
-If going this route, you will need the following in your `/etc/rsyslog.conf`:
+If going this route, you will need the following in your `/etc/rsyslog.conf` instead of the above:
 
 {title="/etc/rsyslog.conf", linenos=off, lang=Bash}    
     # Logging for your app.
     local0.* /var/log/yourapp.log
+
+Now you can see on line 7 below the that the syslog port is no longer open
+
+{title="nmap with winston-syslog", linenos=on}
+    root@kali:~# nmap -p514 -sU -sV <target IP> --reason
+
+    Starting Nmap 6.47 ( http://nmap.org )
+    Nmap scan report for kali (<target IP>)
+    Host is up, received arp-response (0.0014s latency).
+    PORT    STATE  SERVICE REASON       VERSION
+    514/udp closed syslog  port-unreach
+    MAC Address: 34:25:C9:96:AC:E0 (My Computer)
+
+    Service detection performed. Please report any incorrect results at http://nmap.org/submit/ .
+    Nmap done: 1 IP address (1 host up) scanned in 0.29 seconds
+
+&nbsp;
 
 Logging configuration should not be in the application startup file. It should be in the configuration files. This is discussed further under the ["Store Configuration in Configuration files"](#web-applications-countermeasures-management-of-application-secrets-store-configuration) section.
 
@@ -561,7 +591,7 @@ Notice the syslog transport in the configuration below starting on line 39.
        }   
     }
 
-In development I have chosen here to not use syslog. You can see this on line 3 below. If you want to test syslog, you just need to change the configuration and add one line to the `/etc/rsyslog.conf` file to turn on. As mentioned in a comment above in the `default.js` config file on line 44.
+In development I have chosen here to not use syslog. You can see this on line 3 below. If you want to test syslog in development, you can either remove the logger object override from the `devbox1-development.js` file or modify it to be similar to the above. Then add one line to the `/etc/rsyslog.conf` file to turn on. As mentioned in a comment above in the `default.js` config file on line 44.
 
 {title="devbox1-development.js", linenos=on, lang=JavaScript}
     module.exports = {
@@ -719,6 +749,7 @@ When the app first starts it initialises the logger on line 7 below.
 Here are some examples of how you can use the logger. The `logger.log(level` can be replaced with `logger.<level>(` where level is any of the levels defined in the `default.js` configuration file above:
 
 {title="Anywhere you need logging", linenos=off, lang=JavaScript}
+    // With string interpolation also.
     logger.log('info', 'test message %s', 'my string');
     logger.log('info', 'test message %d', 123);
     logger.log('info', 'test message %j', {aPropertyName: 'Some message details'}, {});
