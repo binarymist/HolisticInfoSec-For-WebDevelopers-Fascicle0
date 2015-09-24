@@ -43,6 +43,20 @@ The following books have been influential for me and the content from the People
 
 [**How to Increase Software Developer Productivity**](https://speakerdeck.com/binarymist/how-to-increase-software-developer-productivity)
 
+Details that helped setup NodeJS logging:
+[https://gist.github.com/rtgibbons/7354879](https://gist.github.com/rtgibbons/7354879)  
+[https://thejsf.wordpress.com/2015/01/18/node-js-logging-with-winston/](https://thejsf.wordpress.com/2015/01/18/node-js-logging-with-winston/)
+
+Application logging to syslog server on another machine:  
+[http://unix.stackexchange.com/questions/67250/where-does-rsyslog-keep-facility-local0](http://unix.stackexchange.com/questions/67250/where-does-rsyslog-keep-facility-local0)  
+[http://wiki.rsyslog.com/index.php/Very_simple_config_--_starting_point_for_modifications](http://wiki.rsyslog.com/index.php/Very_simple_config_--_starting_point_for_modifications)
+
+**Or the new style configuration**:  
+http://www.rsyslog.com/doc/v8-stable/configuration/modules/imudp.html
+
+**Syslog compatible protocol severities**:  
+[https://wiki.gentoo.org/wiki/Rsyslog#Severity](https://wiki.gentoo.org/wiki/Rsyslog#Severity)
+
 [**Blowfish cipher**](https://en.wikipedia.org/wiki/Blowfish_(cipher))
 
 [**PBKDF2**](https://en.wikipedia.org/wiki/PBKDF2)

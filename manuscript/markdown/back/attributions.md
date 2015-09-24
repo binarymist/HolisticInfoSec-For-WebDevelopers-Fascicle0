@@ -13,7 +13,7 @@
 
 **SecLists is a collection of multiple types of lists** used during security assessments. List types include usernames, passwords, URLs, sensitive data grep strings, fuzzing payloads, and many more.
 
-**Install the particular VirtualBox Extension Pack** on to the host.  
+**Install the particular VirtualBox Extension Pack** on to the host:  
 [https://www.virtualbox.org/ticket/9511?cversion=0&cnum_hist=2](https://www.virtualbox.org/ticket/9511?cversion=0&cnum_hist=2)
 
 ## [Process](#process)
@@ -22,19 +22,19 @@
 
 ## [Physical](#physical)
 
-**There are competitions devoted** to reassembling shredded printed documents with contestants that have successfully reassembled all printed matter.  
+**There are competitions devoted** to reassembling shredded printed documents with contestants that have successfully reassembled all printed matter:  
 [http://archive.darpa.mil/shredderchallenge/](http://archive.darpa.mil/shredderchallenge/)
 
-**Not all paper shredders** are created equal. Understand the pros and cons.  
+**Not all paper shredders** are created equal. Understand the pros and cons:  
 [https://en.wikipedia.org/wiki/Paper_shredder](https://en.wikipedia.org/wiki/Paper_shredder)
 
 **Detection works where prevention fails** and detection is of no use without response.  
 Beyond Fear by Bruce Schneier
 
-**You will also need to think about company culture** and whether this needs some work.  
+**You will also need to think about company culture** and whether this needs some work:  
 [http://blog.binarymist.net/2014/04/26/culture-in-the-work-place/](http://blog.binarymist.net/2014/04/26/culture-in-the-work-place/)
 
-**People can be your strongest or your weakest defence**. This is your choice. Cultural change can be implemented from any level. The most successfully being from the shop flaw.  
+**People can be your strongest or your weakest defence**. This is your choice. Cultural change can be implemented from any level. The most successfully being from the shop flaw:  
 [http://blog.binarymist.net/2014/04/26/culture-in-the-work-place/](http://blog.binarymist.net/2014/04/26/culture-in-the-work-place/)
 
 ## [IoT](#iot)
@@ -47,10 +47,10 @@ Beyond Fear by Bruce Schneier
 **Sells cell phone tracking systems** to both corporations and governments worldwide.
 Bruce Schneier: Data and Goliath: Introduction
 
-**Locate. Track. Manipulate**  
+**Locate. Track. Manipulate**:  
 [http://www.washingtonpost.com/business/technology/for-sale-systems-that-can-secretly-track-where-cellphone-users-go-around-the-globe/2014/08/24/f0700e8a-f003-11e3-bf76-447a5df6411f_story.html](http://www.washingtonpost.com/business/technology/for-sale-systems-that-can-secretly-track-where-cellphone-users-go-around-the-globe/2014/08/24/f0700e8a-f003-11e3-bf76-447a5df6411f_story.html)
 
-**SkyLock not only finds people**  
+**SkyLock not only finds people**:  
 [http://apps.washingtonpost.com/g/page/business/skylock-product-description-2013/1276/](http://apps.washingtonpost.com/g/page/business/skylock-product-description-2013/1276/)
 
 **UK company Cobham sells a system** that allows someone to send a "blind" call to a phone. Bruce Schneier: Data and Goliath: Introduction
@@ -77,7 +77,7 @@ Nicholas Skiller's [implementation of Tobias Engel's research](http://www.ns-tec
 News story discussed in Bruce Schneier: Data and Goliath: Introduction. Along with [hellospy](http://hellospy.com/homepage.aspx?lang=en-US) Also [reported on](http://www.washingtonpost.com/business/technology/make-of-app-used-for-spying-indicted-in-virginia/2014/09/29/816b45b8-4805-11e4-a046-120a8a855cca_story.html) by Craig Timberg and Matt Zapotosky.
 
 **Use location data to track people**  
-Bruce Schneier: Data and Goliath: Introduction: USA National Security Agency (NSA) and its UK counterpart, Government Communications Headquarters (GCHQ), use location data to track people.  
+Bruce Schneier: Data and Goliath: Introduction: USA National Security Agency (NSA) and its UK counterpart, Government Communications Headquarters (GCHQ), use location data to track people:  
 [http://www.washingtonpost.com/world/national-security/nsa-tracking-cellphone-locations-worldwide-snowden-documents-show/2013/12/04/5492873a-5cf2-11e3-bc56-c6ca94801fac_story.html](http://www.washingtonpost.com/world/national-security/nsa-tracking-cellphone-locations-worldwide-snowden-documents-show/2013/12/04/5492873a-5cf2-11e3-bc56-c6ca94801fac_story.html)  
 [http://www.washingtonpost.com/blogs/the-switch/wp/2013/12/10/new-documents-show-how-the-nsa-infers-relationships-based-on-mobile-location-data](http://www.washingtonpost.com/blogs/the-switch/wp/2013/12/10/new-documents-show-how-the-nsa-infers-relationships-based-on-mobile-location-data)
 
@@ -86,12 +86,12 @@ Bruce Schneier: Data and Goliath: Introduction: USA National Security Agency (NS
 
 **Studies show that motivation** has a larger effect on productivity and quality than any other factor. Software Engineering Economics by Barry W. Boehm 1981.
 
-**Those distracted by incoming email** and phone calls saw a 10-point fall in their IQ by BBC  
+**Those distracted by incoming email** and phone calls saw a 10-point fall in their IQ by BBC:  
 [http://news.bbc.co.uk/2/hi/uk_news/4471607.stm](http://news.bbc.co.uk/2/hi/uk_news/4471607.stm)
 
 **Gerald Weinberg's rule** that 20% of our time is lost every time we perform a context switch. This is from "Quality Software Management: Systems Thinking" by Gerald Weinberg.
 
-**The Multi-Tasking Myth** by Jeff Atwood  
+**The Multi-Tasking Myth** by Jeff Atwood:  
 [http://blog.codinghorror.com/the-multi-tasking-myth/](http://blog.codinghorror.com/the-multi-tasking-myth/)
 
 **What you need to do** is be aware of how much productivity is killed with each switch. Then do everything in your power to make sure your Development Team is sheltered from as much as possible. [How to Increase Software Developer Productivity](http://blog.binarymist.net/2013/03/02/how-to-increase-software-developer-productivity/#context-switching) by Kim Carter.
@@ -103,17 +103,17 @@ Bruce Schneier: Data and Goliath: Introduction: USA National Security Agency (NS
 
 ## [VPS](#vps)
 
-**Any attacker worth their weight** will try to cover their tracks as they progress  
+**Any attacker worth their weight** will try to cover their tracks as they progress:  
 [http://www.win.tue.nl/~aeb/linux/hh/hh-13.html](http://www.win.tue.nl/~aeb/linux/hh/hh-13.html)
 
-**Taking things further**, an attacker may load a kernel module that modifies the `readdir()` call  
+**Taking things further**, an attacker may load a kernel module that modifies the `readdir()` call:  
 [http://pubs.opengroup.org/onlinepubs/9699919799/functions/readdir.html](http://pubs.opengroup.org/onlinepubs/9699919799/functions/readdir.html)
 
 **PSExec is a telnet replacement** also providing full interactivity for console applications. Check out the [home page](https://technet.microsoft.com/en-us/sysinternals/bb897553.aspx).
 
 **The PSExec utility requires** a few things on the remote system. [Details on rapid7](https://community.rapid7.com/community/metasploit/blog/2013/03/09/psexec-demystified).
 
-**The PSExec executable** has a Windows Service image inside which it deploys to the Admin$ share on the target machine.  
+**The PSExec executable** has a Windows Service image inside which it deploys to the Admin$ share on the target machine:  
 [https://community.rapid7.com/community/metasploit/blog/2013/03/09/psexec-demystified](https://community.rapid7.com/community/metasploit/blog/2013/03/09/psexec-demystified).
 
 ## [Network](#network)
@@ -134,16 +134,20 @@ Peter Kim discusses in "The Hacker PlayBook" about how he set-up SMTP and SSH do
 
 **EBay with 145 million active buyers** had a small number of employee log-in credentials [compromised](http://www.darkreading.com/attacks-breaches/ebay-database-hacked-with-stolen-employee-credentials-/d/d-id/1269093) allowing unauthorised access to eBay's corporate network.
 
-**The function used to protect stored credentials** should balance attacker and defender verification. The defender needs an acceptable response time for verification of users’ credentials during peak use. However, the time required to map `<credential> -> <protected form>` must remain beyond threats’ hardware (GPU, FPGA) and technique (dictionary-based, brute force, etc) capabilities.  
+**There were also some other options** for those using Papertrail as their off-site syslog and aggregation PaaS:  
+[http://help.papertrailapp.com/kb/configuration/configuring-centralized-logging-from-nodejs-apps/](http://help.papertrailapp.com/kb/configuration/configuring-centralized-logging-from-nodejs-apps/)
+
+
+**The function used to protect stored credentials** should balance attacker and defender verification. The defender needs an acceptable response time for verification of users’ credentials during peak use. However, the time required to map `<credential> -> <protected form>` must remain beyond threats’ hardware (GPU, FPGA) and technique (dictionary-based, brute force, etc) capabilities:  
 [https://www.owasp.org/index.php/Password_Storage_Cheat_Sheet#Impose_infeasible_verification_on_attacker](https://www.owasp.org/index.php/Password_Storage_Cheat_Sheet#Impose_infeasible_verification_on_attacker)
 
 **You may read in many places** that having data-store passwords and other types of secrets in configuration files in clear text is an insecurity that [must be addressed](https://www.owasp.org/index.php/Password_Plaintext_Storage).
 
-**Encrypt sections** of a web, executable, machine-level, application-level or configuration files with Aspnet_regiis.exe  
+**Encrypt sections** of a web, executable, machine-level, application-level or configuration files with Aspnet_regiis.exe:  
 [SQL Authentication](https://msdn.microsoft.com/en-us/library/ff648340.aspx)  
 [Windows Authentication](https://msdn.microsoft.com/en-us/library/ff647396.aspx)
 
-"**vSentry protects desktops without requiring patches or updates**_, defeating and automatically discarding all known and unknown malware, and eliminating the need for costly remediation._"  
+"**vSentry protects desktops without requiring patches or updates**_, defeating and automatically discarding all known and unknown malware, and eliminating the need for costly remediation._":  
 [https://www.google.co.nz/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0CBsQFjAAahUKEwj4h8br2ofIAhULpJQKHdE1Cfg&url=http%3A%2F%2Fwww.bromium.com%2Fsites%2Fdefault%2Ffiles%2FBromium-Datasheet-vSentry.pdf&usg=AFQjCNHj08aV26awuSnIc9rQiHf6ER9ANQ&sig2=ynekdS3BwHgB9_8WBfGzTw&bvm=bv.103073922,d.dGo](https://www.google.co.nz/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0CBsQFjAAahUKEwj4h8br2ofIAhULpJQKHdE1Cfg&url=http%3A%2F%2Fwww.bromium.com%2Fsites%2Fdefault%2Ffiles%2FBromium-Datasheet-vSentry.pdf&usg=AFQjCNHj08aV26awuSnIc9rQiHf6ER9ANQ&sig2=ynekdS3BwHgB9_8WBfGzTw&bvm=bv.103073922,d.dGo)
 
 **Every user** [**task is isolated**](http://security.stackexchange.com/questions/23674/how-will-microvirtualisation-change-the-security-field-if-at-all) into its own micro-VM.
@@ -177,31 +181,31 @@ Peter Kim discusses in "The Hacker PlayBook" about how he set-up SMTP and SSH do
 **Dibbe Edwards discusses** some excellent initiatives on how they do it at IBM  
 [https://soundcloud.com/owasp-podcast/dibbe-edwards-devops-and-open-source-at-ibm](https://soundcloud.com/owasp-podcast/dibbe-edwards-devops-and-open-source-at-ibm)
 
-**There is an excellent paper by the SANS Institute** on Security Concerns in Using Open Source Software for Enterprise Requirements that is well worth a read. It confirms what the likes of IBM are doing in regards to their consumption of free and open source libraries  
+**There is an excellent paper by the SANS Institute** on Security Concerns in Using Open Source Software for Enterprise Requirements that is well worth a read. It confirms what the likes of IBM are doing in regards to their consumption of free and open source libraries:  
 [http://www.sans.org/reading-room/whitepapers/awareness/security-concerns-open-source-software-enterprise-requirements-1305](http://www.sans.org/reading-room/whitepapers/awareness/security-concerns-open-source-software-enterprise-requirements-1305)
 
-**As a developer, you are responsible** for what you install and consume  
+**As a developer, you are responsible** for what you install and consume:  
 [https://blog.liftsecurity.io/2015/01/27/a-malicious-module-on-npm#you-are-responsible-for-what-you-require-](https://blog.liftsecurity.io/2015/01/27/a-malicious-module-on-npm#you-are-responsible-for-what-you-require-)
 
 **The** [**official way**](https://github.com/nodesource/distributions) **to install NodeJS.** Do not do this.  
 
-**Check to see if any package has hooks** that will run scripts  
+**Check to see if any package has hooks** that will run scripts:  
 [https://blog.liftsecurity.io/2015/01/27/a-malicious-module-on-npm#inspect-the-source-before-you-npm-install-it](https://blog.liftsecurity.io/2015/01/27/a-malicious-module-on-npm#inspect-the-source-before-you-npm-install-it)
 
-**Can define scripts to be run** on specific NPM hooks.  
+**Can define scripts to be run** on specific NPM hooks:  
 [https://docs.npmjs.com/misc/scripts](https://docs.npmjs.com/misc/scripts)
 
-**People often miss-type** what they want to install  
+**People often miss-type** what they want to install:  
 [https://blog.liftsecurity.io/2015/01/27/a-malicious-module-on-npm#make-sure-you-re-installing-the-right-thing](https://blog.liftsecurity.io/2015/01/27/a-malicious-module-on-npm#make-sure-you-re-installing-the-right-thing)
 
 **For NodeJS developers**: Keep your eye on the [nodesecurity advisories](https://nodesecurity.io/advisories)
 
-**There is an NPM package** that can help us with this called `precommit-hook` which installs the git pre-commit  
+**There is an NPM package** that can help us with this called `precommit-hook` which installs the git pre-commit:  
 [https://www.npmjs.com/package/precommit-hook](https://www.npmjs.com/package/precommit-hook)
 
 **To install RetireJS locally to your project** and run as a git precommit-hook  
 [https://blog.andyet.com/2014/11/19/managing-code-changes](https://blog.andyet.com/2014/11/19/managing-code-changes)
 
-**RequireSafe provides** "_intentful auditing as a stream of intel for bithound_".  
+**RequireSafe provides** "_intentful auditing as a stream of intel for bithound_":  
 [https://blog.liftsecurity.io/2015/02/10/introducing-requiresafe-peace-of-mind-third-party-node-modules](https://blog.liftsecurity.io/2015/02/10/introducing-requiresafe-peace-of-mind-third-party-node-modules)
 

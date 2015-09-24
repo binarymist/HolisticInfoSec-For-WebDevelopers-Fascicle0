@@ -198,21 +198,26 @@ Bringing your VPS(s) in-house provides all the flexibility/power required to mit
 
 ### Lack of Visibility {#vps-countermeasures-lack-of-visibility}
 
-#### Host Intrusion Detection Systems (HIDS) {#vps-countermeasures-host-intrusion-detection-systems-hids}
+#### Host Intrusion Detection Systems (HIDS) {#vps-countermeasures-lack-of-visibility-host-intrusion-detection-systems-hids}
 ![](images/ThreatTags/PreventionAVERAGE.png)
 
 I recently performed an [in-depth evaluation](http://blog.binarymist.net/2015/05/30/evaluation-of-host-intrusion-detection-systems-hids/) of a couple of HIDS. The choice of which candidates to take into the second round came from my [initial evaluation](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#hids). 
 
 _Todo_ Elaborate
 
-#### Logging and Alerting
+#### Logging and Alerting {#vps-countermeasures-lack-of-visibility-logging-and-alerting}
 ![](images/ThreatTags/PreventionAVERAGE.png)
+
+_Todo_
 
 I recently performed an [in-depth evaluation](http://blog.binarymist.net/2015/04/25/web-server-log-management/) of a small collection of logging and alerting offerings. The choice of which candidates to take into the second round came from my [initial evaluation](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#logging-alerting-and-monitoring).
 
+%% Make sure my logging-alerting blog post goes into the attributions chapter also
+%% Contact papertrail for some generic dashboard images. This section is also linked to from the "Insufficient Logging and Monitoring" section in web applications.
+
 It is very important to make sure you have reliable and all-encompassing logging to an off-site location. This way attackers will have to also compromise that location in order to effectively [cover their tracks](http://www.win.tue.nl/~aeb/linux/hh/hh-13.html).
 
-_Todo_ Elaborate
+_Todo_ Elaborate on how we set this up.
 
 logrotate
 
