@@ -134,6 +134,10 @@ Peter Kim discusses in "The Hacker PlayBook" about how he set-up SMTP and SSH do
 
 **EBay with 145 million active buyers** had a small number of employee log-in credentials [compromised](http://www.darkreading.com/attacks-breaches/ebay-database-hacked-with-stolen-employee-credentials-/d/d-id/1269093) allowing unauthorised access to eBay's corporate network.
 
+**the winston-syslog-posix package** was inspired by blargh  
+[https://www.npmjs.com/package/winston-syslog-posix](https://www.npmjs.com/package/winston-syslog-posix)  
+[http://tmont.com/blargh/2013/12/writing-to-the-syslog-with-winston](http://tmont.com/blargh/2013/12/writing-to-the-syslog-with-winston)
+
 **There were also some other options** for those using Papertrail as their off-site syslog and aggregation PaaS:  
 [http://help.papertrailapp.com/kb/configuration/configuring-centralized-logging-from-nodejs-apps/](http://help.papertrailapp.com/kb/configuration/configuring-centralized-logging-from-nodejs-apps/)
 

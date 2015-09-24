@@ -178,6 +178,7 @@ _Todo_
 ## 1. SSM Asset Identification
 Take results from [higher level Asset Identification](#asset-identification). Remove any that are not applicable. Add any newly discovered. Here are some to get you started:
 
+{#web-applications-asset-identification-ownership}
 * Ownership. Similarly as addressed in the VPS chapter, Do not assume that ownership, or at least control of your server(s) is something you will always have. Ownership is often one of the first assets an attacker will attempt to take from a target in order to execute further exploits. At first this may sound strange, but that is because of an assumption you may have that you will always own (have control of) your web application. Hopefully I dispelled this myth in the VPS chapter. If an attacker can take control of your web application (own it/steal it/what ever you want to call the act), then they have a foot hold to launch further attacks and gain other assets of greater value. The web application itself will often just be a stepping stone to other assets that you assume are safe. With this in mind, your web application is an asset. On the other hand you could think of it as a liability. Both may be correct. In any case, you need to protect your web application and in many cases take it to school and teach it how to protect itself. I cover that under the [Web Application Firewall](#web-applications-countermeasures-lack-of-active-automated-prevention-waf) section, where AppSensor can help.
 * Similarly to the [Asset Identification](#vps-asset-identification) section in the VPS chapter, Visibility is an asset that is up for grabs
 * Intellectual property or sensitive information within the code or configuration files such as email addresses and account credentials for the likes of data-stores, syslog servers, monitoring services. We address this in [Management of Application Secrets](#web-applications-identify-risks-management-of-application-secrets)
@@ -228,7 +229,7 @@ The vulnerabilities that have not changed a lot are:
 
 ### Lack of Visibility
 
-I see this as an indirect risk to the asset of web application ownership. The same sections in the VPS and Network chapters may also be worth reading if you have not already as there is crossover. 
+I see this as an indirect risk to the asset of [web application ownership](#web-applications-asset-identification-ownership). The same sections in the VPS and Network chapters may also be worth reading if you have not already as there is crossover.
 
 Not being able to introspect your applications at any given time or being able to know how the health status is, is not a comfortable place to be in and there is no reason you should be there.
 
@@ -244,7 +245,7 @@ Can you tell at any point in time if someone or something is:
 How easy is it for you to notice:
 
 * Poor performance and potential DoS?
-* Abnormal application behaviour / unexpected logic threads
+* Abnormal application behaviour or unexpected logic threads
 * Logic edge cases and blind spots that stake holders, Product Owners and Developers have missed?
 
 ### Lack of Input Validation and Sanitisation {#web-applications-identify-risks-lack-of-input-validation-and-sanitisation}
@@ -430,7 +431,7 @@ With good visibility we should be able to see anticipated and unanticipated expl
 ![](images/ThreatTags/PreventionAVERAGE.png)
 
 
-When it comes to logging in NodeJS, you can't really go past winston. It has a lot of functionality and what it does not have is either provided by extensions, or you can create your own. It's like NLog in the .NET world. It is reliable and free.
+When it comes to logging in NodeJS, you can't really go past winston. It has a lot of functionality and what it does not have is either provided by extensions, or you can create your own. It's fully featured, reliable and easy to configure like NLog in the .NET world.
 
 I also looked at `express-winston`, but could not see why it needed to exist.
 
@@ -442,7 +443,8 @@ I also looked at `express-winston`, but could not see why it needed to exist.
           "config": "^1.15.0",
           "express": "^4.13.3",
           "morgan": "^1.6.1",
-          "//":  "nodemailer not strictly necessary for this example, but used later under the node-config section."
+          "//": "nodemailer not strictly necessary for this example,"
+          "//": "but used later under the node-config section."
           "nodemailer": "^1.4.0",
           "//": "What we use for logging."
           "winston": "^1.0.1",
@@ -457,7 +459,7 @@ I also looked at `express-winston`, but could not see why it needed to exist.
 
 ##### Opening UDP port
 
-with [`winston-syslog`](https://www.npmjs.com/package/winston-syslog) seems to be what a lot of people are doing. I think it may be due to the fact that `winston-syslog` is the first package that works well for winston and syslog.
+with [`winston-syslog`](https://www.npmjs.com/package/winston-syslog) seems to be what a lot of people are using. I think it may be due to the fact that `winston-syslog` is the first package that works well for winston and syslog.
 
 If going this route, you will need the following in your `/etc/rsyslog.conf`:
 
@@ -474,7 +476,7 @@ If going this route, you will need the following in your `/etc/rsyslog.conf`:
     # Logging for your app.
     local0.* /var/log/yourapp.log
 
-    Also looked at winston-rsyslog2 and winston-syslogudp
+I Also looked at winston-rsyslog2 and winston-syslogudp, but they did not measure up for me.
 
 If you do not need to push syslog events to another machine, then it does not make much sense to push through a local network interface when you can use your posix syscalls as they are faster and safer.
 
@@ -490,9 +492,9 @@ If going this route, you will need the following in your `/etc/rsyslog.conf`:
 
 Logging configuration should not be in the application startup file. It should be in the configuration files. This is discussed further under the ["Store Configuration in Configuration files"](#web-applications-countermeasures-management-of-application-secrets-store-configuration) section.
 
-Notice the syslog transport in the configuration below. 
+Notice the syslog transport in the configuration below starting on line 39. 
 
-{title="default.js", linenos=off, lang=JavaScript}
+{title="default.js", linenos=on, lang=JavaScript}
     module.exports = {
        logger: {      
           colours: {
@@ -537,7 +539,9 @@ Notice the syslog transport in the configuration below.
              identity: 'yourapp_winston'
              //facility: 'local0' // default
                 // /etc/rsyslog.conf also needs: local0.* /var/log/yourapp.log
-                // If non posix syslog is used, then /etc/rsyslog.conf or one of the files in /etc/rsyslog.d/ also needs the following two settings:
+                // If non posix syslog is used, then /etc/rsyslog.conf or one
+                // of the files in /etc/rsyslog.d/ also needs the following
+                // two settings:
                 // $ModLoad imudp // Load the udp module.
                 // $UDPServerRun 514 // Open the standard syslog port.
                 // $UDPServerAddress 127.0.0.1 // Interface to bind to.
@@ -557,16 +561,16 @@ Notice the syslog transport in the configuration below.
        }   
     }
 
-In development I have chosen here to not use syslog. You just need to change the configuration and add one line to the `/etc/rsyslog.conf` file to turn on. As mentioned in a comment above in the default.js config file.
+In development I have chosen here to not use syslog. You can see this on line 3 below. If you want to test syslog, you just need to change the configuration and add one line to the `/etc/rsyslog.conf` file to turn on. As mentioned in a comment above in the default.js config file on line 44.
 
-{title="devbox1-development.js", linenos=off, lang=JavaScript}
+{title="devbox1-development.js", linenos=on, lang=JavaScript}
     module.exports = {
        logger: {
           syslogPosixTransportOptions: null
        }
     }
 
-In production we log to syslog and because of that we do not need the file transport you can see configured in the default.js configuration file, so we set it to null.
+In production we log to syslog and because of that we do not need the file transport you can see configured starting on line 30 above in the default.js configuration file, so we set it to null as seen on line 6 below.
 
 I have gone into more depth about how we handle syslogs in the VPS chapter under the [Logging and Alerting](#vps-countermeasures-lack-of-visibility-logging-and-alerting) section, where all of our logs including these ones get streamed to an off-site syslog server. Thus providing easy aggregation of all system logs into one user interface that DevOpps can watch on their monitoring panels in real-time and also easily go back in time to visit past events. This provides excellent visibility as one layer of defence.
 
@@ -599,6 +603,8 @@ There were also some other [options](http://help.papertrailapp.com/kb/configurat
        }
     }
 
+The logger.js file wraps and hides extra features and transports applied to the logging package we are consuming.
+
 {title="logger.js", linenos=off, lang=JavaScript}
     var winston = require('winston');
     var loggerConfig = require('config').logger;
@@ -610,7 +616,8 @@ There were also some other [options](http://help.papertrailapp.com/kb/configurat
     var logger = new winston.Logger({
        // Alternatively: set to winston.config.syslog.levels
        exitOnError: false,
-       // Alternatively use winston.addColors(customColours); There are many ways to do the same thing with winston
+       // Alternatively use winston.addColors(customColours); There are many ways
+       // to do the same thing with winston
        colors: loggerConfig.colours,
        levels: loggerConfig.levels
     });
@@ -640,7 +647,14 @@ There were also some other [options](http://help.papertrailapp.com/kb/configurat
     logger.emailLoggerFailure = function (err /*level, msg, meta*/) {
        // If called with an error, then only the err param is supplied.
        // If not called with an error, level, msg and meta are supplied.
-       if (err) logger.alert( JSON.stringify( 'error-code:' + err.code + '. ' + 'error-message:' + err.message + '. ' + 'error-response:' + err.response + '. logger-level:' + err.transport.level + '. transport:' + err.transport.name ) );
+       if (err) logger.alert(
+          JSON.stringify(
+             'error-code:' + err.code + '. '
+             + 'error-message:' + err.message + '. '
+             + 'error-response:' + err.response + '. logger-level:'
+             + err.transport.level + '. transport:' + err.transport.name
+          )
+       );
     };
 
     logger.init = function () {
@@ -661,11 +675,13 @@ There were also some other [options](http://help.papertrailapp.com/kb/configurat
        }
     };
 
-{title="app.js", linenos=off, lang=JavaScript}
+When the app first starts it initialises the logger on line 8 below.
+
+{title="app.js", linenos=on, lang=JavaScript}
     //...
     var express = require('express');
     var morganLogger = require('morgan');
-    var logger = require('./util/logger'); // Or use requireFrom module to do away with relative paths.
+    var logger = require('./util/logger'); // Or use requireFrom module so no relative paths.
     var app = express();
     //...
     logger.init();
@@ -673,7 +689,8 @@ There were also some other [options](http://help.papertrailapp.com/kb/configurat
     app.set('views', __dirname + '/views');
     app.set('view engine', 'jade');
     //...
-    // In order to utilise connect/express logger module in our third party logger, Pipe the messages through.
+    // In order to utilise connect/express logger module in our third party logger,
+    // Pipe the messages through.
     app.use(morganLogger('combined', {stream: logger.stream}));
     //...
     app.use(express.static(path.join(__dirname, 'public')));
@@ -690,28 +707,36 @@ There were also some other [options](http://help.papertrailapp.com/kb/configurat
     }
 
     http.createServer(app).listen(app.get('port'), function(){
-       logger.info("Express server listening on port " + app.get('port') + ' in ' + process.env.NODE_ENV + ' mode');
+       logger.info(
+          "Express server listening on port " + app.get('port') + ' in '
+          + process.env.NODE_ENV + ' mode'
+       );
     });
 
-You can also optionally log JSON metadata.  
-You can provide an optional callback to do any work required, which will be called once all transports have logged the specified message.
+* You can also optionally log JSON metadata
+* You can provide an optional callback to do any work required, which will be called once all transports have logged the specified message.
 
 Here are some examples of how you can use the logger. The `logger.log(level` can be replaced with `logger.<level>(` where level is any of the levels defined in the default.js configuration file above:
 
-{title="Anywhere you need logging", linenos=on, lang=JavaScript}
+{title="Anywhere you need logging", linenos=off, lang=JavaScript}
     logger.log('info', 'test message %s', 'my string');
-
     logger.log('info', 'test message %d', 123);
-
     logger.log('info', 'test message %j', {aPropertyName: 'Some message details'}, {});
-
-    logger.log('info', 'test message %s, %s', 'first', 'second', {aPropertyName: 'Some message details'});
-
-    logger.log('info', 'test message', 'first', 'second', {aPropertyName: 'Some message details'});
-
-    logger.log('info', 'test message %s, %s', 'first', 'second', {aPropertyName: 'Some message details'}, function(){});
-
-    logger.log('info', 'test message', 'first', 'second', {aPropertyName: 'Some message details'}, logger.emailLoggerFailure);
+    logger.log(
+       'info', 'test message %s, %s', 'first', 'second',
+       {aPropertyName: 'Some message details'}
+    );
+    logger.log(
+       'info', 'test message', 'first', 'second', {aPropertyName: 'Some message details'}
+    );
+    logger.log(
+       'info', 'test message %s, %s', 'first', 'second',
+       {aPropertyName: 'Some message details'}, function(){}
+    );
+    logger.log(
+       'info', 'test message', 'first', 'second',
+       {aPropertyName: 'Some message details'}, logger.emailLoggerFailure
+    );
 
 Also consider hiding cross cutting concerns like logging using Aspect Oriented Programing (AOP)
 
@@ -720,7 +745,7 @@ Also consider hiding cross cutting concerns like logging using Aspect Oriented P
 
 There are a couple of ways of approaching monitoring. You may want to see the health of your application even if it is all fine, or only to be notified if it is not fine (sometimes called the dark cockpit approach).
 
-As discussed in the VPS chapter, Monit is an excellent tool for the dark cockpit approach. It's easy to configure. Has excellent short [documentation](https://mmonit.com/monit/documentation/monit.html) that is easy to understand and the configuration file has lots of examples commented out ready for you to take as is and modify to suite your environment. I've personally had excellent success with Monit.
+As discussed in the VPS chapter, Monit is an [excellent tool](http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#monit) for the dark cockpit approach. It's easy to configure. Has excellent short [documentation](https://mmonit.com/monit/documentation/monit.html) that is easy to understand and the configuration file has lots of examples commented out ready for you to take as is and modify to suite your environment. I've personally had excellent [success](http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#getting-started-with-monit) with Monit.
 
 ### Lack of Input Validation and Sanitisation {#web-applications-countermeasures-lack-of-input-validation-and-sanitisation}
 ![](images/ThreatTags/PreventionAVERAGE.png)
@@ -1409,7 +1434,7 @@ _Todo_
 
 #### Insufficient Logging and Monitoring
 
-You can do a lot for little cost here. I would rather trade off a few days in order to have a really good logging system through your code base that is going to show you errors fast in development and then show you different errors in the places your DevOps need to see them in production.
+You can do a lot for little cost here. I would rather trade off a few days work in order to have a really good logging system through your code base that is going to show you errors fast in development and then show you different errors in the places your DevOps need to see them in production.
 
 Same for monitoring. Find a tool that you find working with a pleasure. There are just about always free and open source tools to every commercial alternative. If you are working with a start-up or young business, the free and open source tools can be excellent to keep ongoing costs down. Especially mature tools that are also well maintained like Monit.
 
