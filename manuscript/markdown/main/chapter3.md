@@ -494,6 +494,8 @@ Now you will need to create a blacklist file in `/etc/modprobe.d/`. Create `/etc
 
 Now go into the settings of your VM -> USB -> and add a Device Filter. I name this tl-wn722n and add the Vendor and Product ID’s we discovered with `lsusb`. Make sure The “Enable USB 2.0 (EHCI) Controller” is enabled also.
 
+![](images/USBDeviceFilter.png)
+
 ##### Upgrade Driver on Guest:
 
 Start the VM.
