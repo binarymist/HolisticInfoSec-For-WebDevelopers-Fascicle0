@@ -247,6 +247,7 @@ How easy is it for you to notice:
 * Poor performance and potential DoS?
 * Abnormal application behaviour or unexpected logic threads
 * Logic edge cases and blind spots that stake holders, Product Owners and Developers have missed?
+* Any statistics that may be helpful in diagnosing any application specific issue
 
 ### Lack of Input Validation and Sanitisation {#web-applications-identify-risks-lack-of-input-validation-and-sanitisation}
 ![](images/ThreatTags/easy-common-average-severe.png)
@@ -767,9 +768,19 @@ Also consider hiding cross cutting concerns like logging using Aspect Oriented P
 #### Insufficient Monitoring
 ![](images/ThreatTags/PreventionEASY.png)
 
-There are a couple of ways of approaching monitoring. You may want to see the health of your application even if it is all fine, or only to be notified if it is not fine (sometimes called the dark cockpit approach).
+There are a couple of ways of approaching monitoring. You may want to see/be notified of the health of your application only when it is not fine (sometimes called the dark cockpit approach), or whether it is fine or not.
+
+##### Dark Cockpit:
 
 As discussed in the VPS chapter, Monit is an [excellent tool](http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#monit) for the dark cockpit approach. It's easy to configure. Has excellent short [documentation](https://mmonit.com/monit/documentation/monit.html) that is easy to understand and the configuration file has lots of examples commented out ready for you to take as is and modify to suite your environment. I've personally had excellent [success](http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#getting-started-with-monit) with Monit.
+
+##### Statistics Graphing:
+
+
+
+{title="statsd -> graphite", linenos=off}
+
+
 
 ### Lack of Input Validation and Sanitisation {#web-applications-countermeasures-lack-of-input-validation-and-sanitisation}
 ![](images/ThreatTags/PreventionAVERAGE.png)
@@ -910,7 +921,7 @@ The config files for the required attributes used above may take the following d
     |  |
     |  +-- ...
     |
-    +-- util
+    +-- clients
     |  |
     |  +-- ...
     |
@@ -1311,6 +1322,10 @@ AppSensor [AppSensor](http://appsensor.org/) brings detection -> prevention to y
   * logging out the user
   * locking the account or notifying an administrator
   * more than a dozen response actions are described.
+
+_Todo_
+
+%% http://www.slideshare.net/jtmelton/appsensor-near-real-time-event-detection-and-response
 
 ## 4. SSM Risks that Solution Causes
 
