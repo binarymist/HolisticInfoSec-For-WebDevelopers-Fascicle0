@@ -67,7 +67,13 @@ Often labels are attached to doors, windows, air conditioning units and any othe
 
 ![](images/ThreatTags/average-uncommon-easy-severe.png)
 
-Then there is all the RFID cards, tags for accessing buildings, elevators, car parks, etc. Again, relatively easily exploitable with [readers and cloners](http://hackerwarehouse.com/product/proxmark3-kit/) which you can buy for varying prices or build your own.
+Then there is all the RFID cards, tags for accessing buildings, elevators, car parks, etc. Again, relatively easily exploitable with [readers and cloners](http://hackerwarehouse.com/product/proxmark3-kit/) which you can buy for varying prices.
+
+Or build your own with the likes of the Tessel and its [RFID module](https://tessel.io/modules#module-rfid).
+
+![](images/tesselRFID.jpg)
+
+%% https://github.com/tessel/rfid-pn532/issues/24 Used with permission.
 
 &nbsp;
 
