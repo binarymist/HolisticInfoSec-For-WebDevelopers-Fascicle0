@@ -420,7 +420,7 @@ _Todo_
 
 * [MS Application Threats and Countermeasures](https://msdn.microsoft.com/en-us/library/ff648641.aspx#c02618429_008)
 
-### Lack of Visibility
+### Lack of Visibility {#web-applications-countermeasures-lack-of-visibility}
 
 Also refer to the ["Lack of Visibility"](#vps-countermeasures-lack-of-visibility) section in the VPS chapter where I discuss a number of tried and tested solutions.
 
@@ -784,14 +784,14 @@ Continuing on with the [Statistics Graphing](#vps-countermeasures-lack-of-visibi
        | statsd client|--+
     +-<| collectd     |  |
     |  +--------------+  |
-    |                    V    Graphing
-    V   Server2          |    Server
+    |                    v    Graphing
+    v   Server2          |    Server
     |  +--------------+  |   +-----------+
     |  | statsd client|--+-->| statsd    |
     +-<| collectd     |  |   |   |       |
-    |  +--------------+  |   |   V       |
+    |  +--------------+  |   |   v       |
     |                    ^   | graphite  |<-+
-    V   Server3, etc     |   +-----------+  |
+    v   Server3, etc     |   +-----------+  |
     |  +--------------+  |                  |
     |  | statsd client|--+                  ^
     +-<| collectd     |                     |
@@ -804,30 +804,37 @@ Just as collectd can send data to graphite to provide continual system visibilit
 statsd is a lightweight NodeJS daemon that collects statistics by listening for UDP packets containing them and aggregates. The protocol that statsd expects to receive looks like the following:
 
 **statsd receiving protocol**
-{linenos=off}
-    <metric name>:<value>|<type>
+
+~~~~~~~~
+<metric name>:<value>|<type>
+~~~~~~~~
 
 Where `<type>` is one of the following:
 
-**Counting**  
+**Counting**
+
 {linenos=off}
     c
 
-**Timing**  
+**Timing**
+
 {linenos=off}
     ms
 
-**Gauges**  
+**Gauges**
+
 {linenos=off}
     g
 
-**Sets**  
+**Sets**
+
 {linenos=off}
     s
 
 So for example if you have statsd running locally with the default server and port, you can test with the following command:
 
-**statsd receiving protocol**  
+**statsd receiving protocol**
+
 {linenos=off}
     echo "foo:1|c" | nc -u -w0 127.0.0.1 8125
 
@@ -1407,6 +1414,8 @@ With the added visibility, you will have to make decisions based on the new foun
 
 There will be learning and work to be done to become familiar with libraries and tooling. Code will have to be written around logging as in wrapping libraries, initialising and adding logging statements or hiding them using AOP.
 
+Instrumentation will have to be placed in your code. Again another excellent candidate for AOP.
+
 ### Lack of Input Validation and Sanitisation
 
 _Todo_
@@ -1543,9 +1552,9 @@ _Todo_
 
 #### Insufficient Logging and Monitoring
 
-You can do a lot for little cost here. I would rather trade off a few days work in order to have a really good logging system through your code base that is going to show you errors fast in development and then show you different errors in the places your DevOps need to see them in production.
+You can do a lot for little cost here. I would rather trade off a few days work in order to have really good logging and instrumentation systems through your code base that is going to show you errors fast in development and pretty much anything you want to measure. Then show the types of errors and statistics devops need to see in production.
 
-Same for monitoring. Find a tool that you find working with a pleasure. There are just about always free and open source tools to every commercial alternative. If you are working with a start-up or young business, the free and open source tools can be excellent to keep ongoing costs down. Especially mature tools that are also well maintained like Monit.
+Same goes for dark cockpit type monitoring. Find a tool that you find working with a pleasure. There are just about always free and open source tools to every commercial alternative. If you are working with a start-up or young business, the free and open source tools can be excellent to keep ongoing costs down. Especially mature tools that are also well maintained like the ones I've mentioned in the [Countermeasures](#web-applications-countermeasures-lack-of-visibility) section.
 
 ### Lack of Input Validation and Sanitisation
 

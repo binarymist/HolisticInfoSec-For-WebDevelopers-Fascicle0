@@ -262,18 +262,18 @@ This is where collectd and graphite come to the party.
     +-<| collectd     |
     |  +--------------+
     |                         Graphing
-    |   Server2               Server
+    v   Server2               Server
     |  +--------------+      +-----------+
     |  |              |      |           |
     +-<| collectd     |      |           |
     |  +--------------+      |           |
     |                        | graphite  |<-+
-    |   Server3, etc         +-----------+  |
+    v   Server3, etc         +-----------+  |
     |  +--------------+                     |
-    |  |              |                     |
+    |  |              |                     ^
     +-<| collectd     |                     |
     |  +--------------+                     |
-    +---------------------------------------+ 
+    +-------------------->------------------+
 
 This is an excellent set of tools for system instrumentation.  
 In the Web Applications chapter we add statsd to the mix to provide application specific statistics.
