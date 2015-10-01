@@ -778,58 +778,64 @@ As discussed in the VPS chapter, Monit is an [excellent tool](http://blog.binary
 
 Continuing on with the [Statistics Graphing](#vps-countermeasures-lack-of-visibility-monitoring-statistics-graphing) section in the VPS chapter, we look at adding [statsd](https://github.com/etsy/statsd/) as application instrumentation to our existing collectd -> graphite set-up.
 
-{title="", linenos=off}
+{linenos=off}
       Server1   
        +--------------+
        | statsd client|--+
     +-<| collectd     |  |
     |  +--------------+  |
-    |                    ▼    Graphing
-    ▼   Server2          |    Server
+    |                    V    Graphing
+    V   Server2          |    Server
     |  +--------------+  |   +-----------+
     |  | statsd client|--+-->| statsd    |
     +-<| collectd     |  |   |   |       |
-    |  +--------------+  |   |   ▼       |
-    |                    ▲   | graphite  |<-+
-    ▼   Server3, etc     |   +-----------+  |
+    |  +--------------+  |   |   V       |
+    |                    ^   | graphite  |<-+
+    V   Server3, etc     |   +-----------+  |
     |  +--------------+  |                  |
-    |  | statsd client|--+                  ▲
+    |  | statsd client|--+                  ^
     +-<| collectd     |                     |
     |  +--------------+                     |
-    +-------------------->------------------+ 
+    +-------------------->------------------+
 
 
 Just as collectd can send data to graphite to provide continual system visibility ,statsd can do the same for our applications. 
 
 statsd is a lightweight NodeJS daemon that collects statistics by listening for UDP packets containing them and aggregates. The protocol that statsd expects to receive looks like the following:
 
-{title="statsd receiving protocol", linenos=off}
+**statsd receiving protocol**
+{linenos=off}
     <metric name>:<value>|<type>
 
 Where `<type>` is one of the following:
 
-{title="Counting", linenos=off}
+**Counting**
+{linenos=off}
     c
 
-{title="Timing", linenos=off}
+**Timing**
+{linenos=off}
     ms
 
-{title="Gauges", linenos=off}
+**Gauges**
+{linenos=off}
     g
 
-{title="Sets", linenos=off}
+**Sets**
+{linenos=off}
     s
 
 So for example if you have statsd running locally with the default server and port, you can test with the following command:
 
-{title="statsd receiving protocol", linenos=off}
+**statsd receiving protocol**
+{linenos=off}
     echo "foo:1|c" | nc -u -w0 127.0.0.1 8125
 
-The server and port are specified in the config file that you create for yourself. You can create this from the `exampleConfig.js` as a starting point. In `exampleConfig.js` you will see the server and port properties. The current options for server are tcp or udp, with udp being the default. The server file must exist in the `./servers/` directory.
+The server and port are specified in the config file that you create for yourself. You can create this from the [`exampleConfig.js`](https://github.com/etsy/statsd/blob/master/exampleConfig.js) as a starting point. In `exampleConfig.js` you will see the server and port properties. The current options for server are tcp or udp, with udp being the default. The server file must exist in the [`./servers/`](https://github.com/etsy/statsd/tree/master/servers) directory.
 
 One of the ways we can generate statistics for our statsd daemon is by using one of the many language specific [statsd clients](https://github.com/etsy/statsd/wiki#client-implementations).
 
-{title="", linenos=off}
+{linenos=off}
     +----------------------+
     | your application     |--> statsd -> graphite
     | with a statsd client |

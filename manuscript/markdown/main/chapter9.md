@@ -255,7 +255,7 @@ I recently performed an [in-depth evaluation](http://blog.binarymist.net/2015/06
 
 This is where collectd and graphite come to the party.
 
-{title="", linenos=off}
+{linenos=off}
         Server1   
        +--------------+
        |              |
