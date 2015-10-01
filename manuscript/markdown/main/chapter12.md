@@ -803,39 +803,26 @@ Just as collectd can send data to graphite to provide continual system visibilit
 
 statsd is a lightweight NodeJS daemon that collects statistics by listening for UDP packets containing them and aggregates. The protocol that statsd expects to receive looks like the following:
 
-**statsd receiving protocol**
-
-~~~~~~~~
-<metric name>:<value>|<type>
-~~~~~~~~
+{title="statsd receiving protocol", linenos=off}
+    <metric name>:<value>|<type>
 
 Where `<type>` is one of the following:
 
-**Counting**
-
-{linenos=off}
+{title="Counting", linenos=off}
     c
 
-**Timing**
-
-{linenos=off}
+{title="Timing", linenos=off}
     ms
 
-**Gauges**
-
-{linenos=off}
+{title="Gauges", linenos=off}
     g
 
-**Sets**
-
-{linenos=off}
+{title="Sets", linenos=off}
     s
 
 So for example if you have statsd running locally with the default server and port, you can test with the following command:
 
-**statsd receiving protocol**
-
-{linenos=off}
+{title="statsd receiving protocol", linenos=off}
     echo "foo:1|c" | nc -u -w0 127.0.0.1 8125
 
 The server and port are specified in the config file that you create for yourself. You can create this from the [`exampleConfig.js`](https://github.com/etsy/statsd/blob/master/exampleConfig.js) as a starting point. In `exampleConfig.js` you will see the server and port properties. The current options for server are tcp or udp, with udp being the default. The server file must exist in the [`./servers/`](https://github.com/etsy/statsd/tree/master/servers) directory.
