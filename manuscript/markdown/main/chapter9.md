@@ -251,30 +251,31 @@ I recently performed an [in-depth evaluation](http://blog.binarymist.net/2015/06
 
 
 
-##### Statistics Graphing:
+##### Statistics Graphing: {#vps-countermeasures-lack-of-visibility-monitoring-statistics-graphing}
 
 This is where collectd and graphite come to the party.
 
-{title="collectd -> graphite", linenos=off}
+{title="", linenos=off}
         Server1   
        +--------------+
        |              |
-    +--| collectd     |
+    +-<| collectd     |
     |  +--------------+
     |                         Graphing
     |   Server2               Server
     |  +--------------+      +-----------+
     |  |              |      |           |
-    +--| collectd     |      |           |
+    +-<| collectd     |      |           |
     |  +--------------+      |           |
     |                        | graphite  |<-+
     |   Server3, etc         +-----------+  |
     |  +--------------+                     |
     |  |              |                     |
-    +--| collectd     |                     |
+    +-<| collectd     |                     |
     |  +--------------+                     |
     +---------------------------------------+ 
 
+This is an excellent set of tools for system instrumentation.  
 In the Web Applications chapter we add statsd to the mix to provide application specific statistics.
 
 _Todo_

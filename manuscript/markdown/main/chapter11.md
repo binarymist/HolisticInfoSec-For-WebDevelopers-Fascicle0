@@ -101,7 +101,7 @@ Once you have sprung the questions from the ["Questions to Ask Your CSP"](#cloud
 
 ##### Statistics Graphing:
 
-_Todo_
+_Todo_  
 collectd and graphite on OpenStack
 
 %% Plugins for collecting OpenStack metrics: https://github.com/catalyst/collectd-openstack

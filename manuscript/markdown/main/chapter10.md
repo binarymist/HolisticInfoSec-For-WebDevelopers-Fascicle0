@@ -368,7 +368,7 @@ _Todo_
 
 _Todo_
 
-#### Network segmentation
+#### Network Segmentation
 
 _Todo_
 

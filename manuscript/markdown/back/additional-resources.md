@@ -63,6 +63,25 @@ The following books have been influential for me and the content from the People
 **I have personally had excellent success** with Monit:  
 [http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#getting-started-with-monit](http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#getting-started-with-monit)
 
+**statsd source code**:  
+https://github.com/etsy/statsd/
+
+**One of the ways we can generate statistics for our statsd daemon** is by using one of the many language specific statsd clients  
+https://github.com/etsy/statsd/wiki#client-implementations
+
+**First statsd spec for metric types**:  
+https://github.com/b/statsd_spec/blob/master/README.md  
+**Current, or at least more recent statsd spec** for metric types:  
+https://github.com/etsy/statsd/blob/master/docs/metric_types.md
+
+
+
+
+
+
+
+
+
 [**Blowfish cipher**](https://en.wikipedia.org/wiki/Blowfish_(cipher))
 
 [**PBKDF2**](https://en.wikipedia.org/wiki/PBKDF2)
