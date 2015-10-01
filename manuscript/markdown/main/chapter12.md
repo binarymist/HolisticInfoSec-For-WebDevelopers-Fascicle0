@@ -809,25 +809,25 @@ statsd is a lightweight NodeJS daemon that collects statistics by listening for 
 
 Where `<type>` is one of the following:
 
-**Counting**
+**Counting**  
 {linenos=off}
     c
 
-**Timing**
+**Timing**  
 {linenos=off}
     ms
 
-**Gauges**
+**Gauges**  
 {linenos=off}
     g
 
-**Sets**
+**Sets**  
 {linenos=off}
     s
 
 So for example if you have statsd running locally with the default server and port, you can test with the following command:
 
-**statsd receiving protocol**
+**statsd receiving protocol**  
 {linenos=off}
     echo "foo:1|c" | nc -u -w0 127.0.0.1 8125
 
