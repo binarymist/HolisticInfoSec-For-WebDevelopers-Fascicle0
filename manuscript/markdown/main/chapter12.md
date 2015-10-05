@@ -1477,11 +1477,11 @@ Now the code that satisfies the above executable specifications, and more:
                                numberOfEscapes = numberOfEscapes + 2;
                                continue;
                             case '<':
-                               output.Write("<");
+                               output.Write("&lt;");
                                numberOfEscapes++;
                                continue;
                             case '>':
-                               output.Write("&lt;");
+                               output.Write("&gt;");
                                numberOfEscapes++;
                                continue;
                             case '/':
