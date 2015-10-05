@@ -938,7 +938,7 @@ There are a number of types of escaping you need to know about depending on wher
 6. Sanitise HTML
 7. Prevent DOM-based XSS
 
-All of the above points are covered in depth in the [XSS (Cross Site Scripting) Prevention Cheat Sheet](https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet#XSS_Prevention_Rules). **Familiarise yourself with the rules before completing any custom sanitisation work**.
+All of the above points are covered in depth in the OWASP [XSS (Cross Site Scripting) Prevention Cheat Sheet](https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet#XSS_Prevention_Rules). **Familiarise yourself with the rules before completing any custom sanitisation work**.
 
 ##### Example in JavaScript and C\# {#web-applications-countermeasures-lack-of-input-validation-filtering-and-sanitisation-generic-example-in-javascript-and-csharp}
 
@@ -974,8 +974,8 @@ The following was the strategy that evolved. Performance was measured and even w
           textareaChanged: function (obj) {
              var initialValue = obj.value;
              var replacedValue = initialValue.
-	        replace(whiteList, "").
-		slice(0, textAreaMaxLength);
+                replace(whiteList, "").
+                slice(0, textAreaMaxLength);
              if (replacedValue !== initialValue) {
                 this.textarea = replacedValue;
                 return true;
@@ -1048,9 +1048,8 @@ HTML5 provides the `pattern` attribute on the `input` tag, which allows us to sp
 
 Now what we do here is extend the `String` prototype with a function called `htmlEscape`.
 
-{#sanitisation-using-escaping}
 
-{title="Sanitisation using escaping", linenos=on, lang=JavaScript}
+{title="Sanitisation using escaping", linenos=off, lang=JavaScript}
     if (typeof Function.prototype.method !== "function") {
        Function.prototype.method = function (name, func) {
           this.prototype[name] = func;
@@ -1073,16 +1072,16 @@ Now what we do here is extend the `String` prototype with a function called `htm
           '"': '&quot;',
           // Double escape character entity references. Why?
           // The XmlTextReader that is setup in XmlDocument.LoadXml on the service considers
-	  // the character entity references (&#xxxx;) to be the character they represent.
+          // the character entity references (&#xxxx;) to be the character they represent.
           // All XML is converted to unicode on reading and any such entities are
-	  // removed in favour of the unicode character they represent.
+          // removed in favour of the unicode character they represent.
           // So we double escape character entity references.
           // These now get read to the XmlDocument and saved to the database as
-	  // double encoded Html entities.
+          // double encoded Html entities.
           // Now when these values are pulled from the database and sent to the browser,
-	  // it decodes the & and displays #x27; and/or #x2F.
+          // it decodes the & and displays #x27; and/or #x2F.
           // This isn't what we want to see in the browser, so on the way out,
-	  // we use the below SingleDecodeDoubleEncodedHtml extension method.
+          // we use the below SingleDecodeDoubleEncodedHtml extension method.
           "'": '&amp;#x27;',    // &apos; is not recommended
           '/': '&amp;#x2F;'     // forward slash is included as it helps end an HTML entity
        };
@@ -1123,7 +1122,7 @@ All the legitimate double quotes are interpreted as the double quote `HTML` enti
 {title="", linenos=off, lang=JavaScript}
     value=" &quot; onmouseover=&quot;alert(2)"
 
-Now in regards to the code comments in the block of code [above](#sanitisation-using-escaping) titled "Sanitisation using escaping", I mentioned having to double escape character references. We were using `XSL` for the `HTML` because we needed to perform transformations before delivering to the browser. Because we were sending the strings to the browser, it was easiest to single decode the double encoded `HTML` on the service side only. Now because we were still focused on the client side sanitisation and we would soon be shifting our focus to making sure we cover the server side, we knew we were going to have to create some sanitisation routines for our .NET service. Because the routines are quite likely going to be static and we were pretty much just dealing with strings, we created an extensions class in a new project in a common library we already had. This would provide the widest use from our sanitisation routines. It also allowed us to wrap any existing libraries or parts of them that we wanted to get use of.
+Now in regards to the code comments in the block of code above titled "Sanitisation using escaping", I mentioned having to double escape character references. We were using `XSL` for the `HTML` because we needed to perform transformations before delivering to the browser. Because we were sending the strings to the browser, it was easiest to single decode the double encoded `HTML` on the service side only. Now because we were still focused on the client side sanitisation and we would soon be shifting our focus to making sure we cover the server side, we knew we were going to have to create some sanitisation routines for our .NET service. Because the routines are quite likely going to be static and we were pretty much just dealing with strings, we created an extensions class in a new project in a common library we already had. This would provide the widest use from our sanitisation routines. It also allowed us to wrap any existing libraries or parts of them that we wanted to get use of.
 
 {title="Common.Security.Encoding.Extensions.SingleDecodeDoubleEncodedHtml", linenos=off, lang=C#}
     namespace Common.Security.Encoding {
@@ -1135,7 +1134,7 @@ Now in regards to the code comments in the block of code [above](#sanitisation-u
        public static class Extensions {
           /// <summary>
           /// Returns a new string in which all occurrences of a double escaped html character
-	  /// (that's an html entity immediatly prefixed with another html entity)
+          /// (that's an html entity immediatly prefixed with another html entity)
           /// in the current instance are replaced with the single escaped character.
           /// </summary>
           /// <param name="source"></param>
@@ -1165,20 +1164,20 @@ First up, the exceptions we used:
        public abstract class WcfException : Exception {
           /// <summary>
           /// In order to set the message for the client, set it here,
-	  /// or via the property directly in order to over ride default value.
+          /// or via the property directly in order to over ride default value.
           /// </summary>
           /// <param name="message">
-	  /// The message to be assigned to the Exception's Message.
-	  /// </param>
+          /// The message to be assigned to the Exception's Message.
+          /// </param>
           /// <param name="innerException">
-	  /// The exception to be assigned to the Exception's InnerException.
-	  /// </param>
+          /// The exception to be assigned to the Exception's InnerException.
+          /// </param>
           /// <param name="messageForClient">
-	  /// The client friendly message. This parameter is optional, but should be set.
-	  /// </param>
+          /// The client friendly message. This parameter is optional, but should be set.
+          /// </param>
           public WcfException(
-	     string message, Exception innerException = null, string messageForClient = null
-	  ) : base(message, innerException) {
+             string message, Exception innerException = null, string messageForClient = null
+          ) : base(message, innerException) {
              MessageForClient = messageForClient;
           }
 
@@ -1211,26 +1210,26 @@ And the more specific `SanitisationWcfException`:
        /// </summary>
        public class SanitisationWcfException : WcfException {
           private const string _defaultMessageForClient =
-	     "Answers were NOT saved. User input validation was unsuccessful.";
+             "Answers were NOT saved. User input validation was unsuccessful.";
           public string UnsanitisedAnswer { get; private set; }
  
           /// <summary>
           /// In order to set the message for the client, set it here,
-	  /// or via the property directly in order to over ride default value.
+          /// or via the property directly in order to over ride default value.
           /// </summary>
           /// <param name="message">
-	  /// The message to be assigned to the Exception's Message.
-	  /// </param>
+          /// The message to be assigned to the Exception's Message.
+          /// </param>
           /// <param name="innerException">
-	  /// The Exception to be assigned to the base class instance's inner exception.
-	  /// This parameter is optional.
-	  /// </param>
+          /// The Exception to be assigned to the base class instance's inner exception.
+          /// This parameter is optional.
+          /// </param>
           /// <param name="messageForClient">
-	  /// The client friendly message. This parameter is optional, but should be set.
-	  /// </param>
+          /// The client friendly message. This parameter is optional, but should be set.
+          /// </param>
           /// <param name="unsanitisedAnswer">
-	  /// The user input string before service side sanitisatioin is performed.
-	  /// </param>
+          /// The user input string before service side sanitisatioin is performed.
+          /// </param>
           public SanitisationWcfException (
              string message,
              Exception innerException = null,
@@ -1239,8 +1238,9 @@ And the more specific `SanitisationWcfException`:
           ) : base (
              message,
              innerException,
-             messageForClient + " If this continues to happen, please contact " +
-	     ConfigurationManager.AppSettings["SupportEmail"] + Environment.NewLine
+             messageForClient +
+             " If this continues to happen, please contact " +
+             ConfigurationManager.AppSettings["SupportEmail"] + Environment.NewLine
           ) {
              UnsanitisedAnswer = unsanitisedAnswer;
           }
@@ -1258,15 +1258,15 @@ Now we defined whether our requirements were satisfied by way of executable requ
        public class ExtensionsTest {
     
           private readonly string _inNeedOfEscaping =
-	     @"One #x2F / two amp & three #x27 ' four lt < five quot "" six gt >.";
+             @"One #x2F / two amp & three #x27 ' four lt < five quot "" six gt >.";
           private readonly string _noNeedForEscaping =
-	     @"One x2F two amp three x27 four lt five quot six gt       .";
+             @"One x2F two amp three x27 four lt five quot six gt       .";
           
           [Test]
           public void SingleDecodeDoubleEncodedHtml_ShouldSingleDecodeDoubleEncodedHtml() {
              string doubleEncodedHtml = @" &amp;#x27; some text &amp;#x2F; ";
-             string singleEncodedHtmlShouldLookLike = @" &#x27; some text &#x2F; ";             
-             string singleEncodedHtml = doubleEncodedHtml.SingleDecodeDoubleEncodedHtml();             
+             string singleEncodedHtmlShouldLookLike = @" &#x27; some text &#x2F; ";
+             string singleEncodedHtml = doubleEncodedHtml.SingleDecodeDoubleEncodedHtml();
              Assert.That(singleEncodedHtml, Is.EqualTo(singleEncodedHtmlShouldLookLike));
           }
  
@@ -1275,7 +1275,7 @@ Now we defined whether our requirements were satisfied by way of executable requ
              Assert.That(
                 _inNeedOfEscaping.CompliesWithWhitelist(whiteList: @"^[\w\s\.,]+$"),
                 Is.False
-	     );
+             );
           }
  
           [Test]
@@ -1283,7 +1283,7 @@ Now we defined whether our requirements were satisfied by way of executable requ
              Assert.That(
                 _noNeedForEscaping.CompliesWithWhitelist(whiteList: @"^[\w\s\.,]+$"),
                 Is.True
-	     );
+             );
              Assert.That(
                 _inNeedOfEscaping.CompliesWithWhitelist(whiteList: @"^[\w\s\.,#/&'<"">]+$"),
                 Is.True
@@ -1314,12 +1314,12 @@ Now the code that satisfies the above executable specifications, and more:
        
           /// <summary>
           /// Returns a new string in which all occurrences of a double escaped html character
-	  /// (that's an html entity immediatly prefixed with another html entity)
+          /// (that's an html entity immediatly prefixed with another html entity)
           /// in the current instance are replaced with the single escaped character.
           /// </summary>
           /// <param name="source">
-	  /// The target text used to strip one layer of Html entity encoding.
-	  /// </param>
+          /// The target text used to strip one layer of Html entity encoding.
+          /// </param>
           /// <returns>The singly escaped text.</returns>
           public static string SingleDecodeDoubleEncodedHtml(this string source) {
              return source.Replace("&amp;#x", "&#x");
@@ -1331,10 +1331,10 @@ Now the code that satisfies the above executable specifications, and more:
           /// <param name="target">The text that is filtered using the whitelist.</param>
           /// <param name="alternativeTarget"></param>
           /// <param name="whiteList">
-	  /// Needs to be be assigned a valid whitelist, otherwise nothing gets through.
-	  /// </param>
+          /// Needs to be be assigned a valid whitelist, otherwise nothing gets through.
+          /// </param>
           public static bool CompliesWithWhitelist(
-	     this string target, string alternativeTarget = "", string whiteList = ""
+             this string target, string alternativeTarget = "", string whiteList = ""
           ) {
              if (string.IsNullOrEmpty(target))
                 target = alternativeTarget;
@@ -1342,22 +1342,25 @@ Now the code that satisfies the above executable specifications, and more:
              return Regex.IsMatch(target, whiteList);
           }
 
+          // Warning!
+          // The following code is not pretty, it came from System.Net.WebUtility.
+
           /// <summary>
           /// Takes a string and returns another with a single layer of
-	  /// Html entity encoding replaced with it's Html entity literals.
+          /// Html entity encoding replaced with it's Html entity literals.
           /// </summary>
           /// <param name="encodedUserInput">
-	  /// The text to perform the opperation on.
-	  /// </param>
+          /// The text to perform the opperation on.
+          /// </param>
           /// <param name="numberOfEscapes">
-	  /// The number of Html entity encodings that were replaced.
-	  /// </param>
+          /// The number of Html entity encodings that were replaced.
+          /// </param>
           /// <returns>
-	  /// The text that's had a single layer of Html entity encoding
-	  /// replaced with it's Html entity literals.
+          /// The text that's had a single layer of Html entity encoding
+          /// replaced with it's Html entity literals.
 	  /// </returns>
           public static string HtmlDecode(
-	     this string encodedUserInput, ref int numberOfEscapes
+             this string encodedUserInput, ref int numberOfEscapes
           ) {
              const int NotFound = -1;
           
@@ -1384,19 +1387,19 @@ Now the code that satisfies the above executable specifications, and more:
                             ushort result;
                             if (entity[1] == 120 || entity[1] == 88)
                                ushort.TryParse(
-			          entity.Substring(2),
-				  NumberStyles.AllowHexSpecifier,
-				  NumberFormatInfo.InvariantInfo,
-				  out result
+                                  entity.Substring(2),
+                                  NumberStyles.AllowHexSpecifier,
+                                  NumberFormatInfo.InvariantInfo,
+                                  out result
                                );
                             else
                                ushort.TryParse(
-			          entity.Substring(1),
-				  NumberStyles.AllowLeadingWhite |
-				  NumberStyles.AllowTrailingWhite |
-				  NumberStyles.AllowLeadingSign,
-				  NumberFormatInfo.InvariantInfo,
-				  out result
+                                  entity.Substring(1),
+                                  NumberStyles.AllowLeadingWhite |
+                                  NumberStyles.AllowTrailingWhite |
+                                  NumberStyles.AllowLeadingSign,
+                                  NumberFormatInfo.InvariantInfo,
+                                  out result
                                );
                             if (result != 0) {
                                ch1 = (char)result;
@@ -1429,17 +1432,17 @@ Now the code that satisfies the above executable specifications, and more:
           /// <summary>
           /// Escapes all character entity references (double escaping where necessary).
           /// Why? The XmlTextReader that is setup in XmlDocument.LoadXml on the service
-	  /// considers the character entity references (&#xxxx;)
-	  /// to be the character they represent.
+          /// considers the character entity references (&#xxxx;)
+          /// to be the character they represent.
           /// All XML is converted to unicode on reading and any such entities are removed
-	  /// in favor of the unicode character they represent.
+          /// in favor of the unicode character they represent.
           /// </summary>
           /// <param name="unencodedUserInput">The string that needs to be escaped.</param>
           /// <param name="numberOfEscapes">The number of escapes applied.</param>
           /// <returns>The escaped text.</returns>
           public static unsafe string HtmlEncode(
-	     this string unencodedUserInput,
-	     ref int numberOfEscapes
+             this string unencodedUserInput,
+             ref int numberOfEscapes
           ) {
              if (string.IsNullOrEmpty(unencodedUserInput))
                 return string.Empty;
@@ -1797,7 +1800,7 @@ Now the code that satisfies the above executable specifications, and more:
 
              private static Dictionary<string, char> GenerateLookupTable() {
                 Dictionary<string, char> dictionary =
-		   new Dictionary<string, char>(StringComparer.Ordinal);
+                   new Dictionary<string, char>(StringComparer.Ordinal);
                 foreach (string str in _entitiesList)
                    dictionary.Add(str.Substring(2), str[0]);
                 return dictionary;
@@ -1830,18 +1833,18 @@ To drive the development of the `Sanitisation` API, we wrote the following tests
        public class SanitiseTest {
           private const string _myTestIpv4Address = "My.Test.Ipv4.Address";
           private readonly int _maxLengthHtmlEncodedUserInput =
-	     int.Parse(ConfigurationManager.AppSettings["MaxLengthHtmlEncodedUserInput"]);
+             int.Parse(ConfigurationManager.AppSettings["MaxLengthHtmlEncodedUserInput"]);
           private readonly int _maxLengthHtmlDecodedUserInput =
-	     int.Parse(ConfigurationManager.AppSettings["MaxLengthHtmlDecodedUserInput"]);
+             int.Parse(ConfigurationManager.AppSettings["MaxLengthHtmlDecodedUserInput"]);
           private readonly string _encodedUserInput_thatsMaxDecodedLength =
-	     @"One #x2F &amp;#x2F; two amp &amp; three #x27 &amp;#x27; four lt &lt; five quot &quot; six gt &gt;.
+             @"One #x2F &amp;#x2F; two amp &amp; three #x27 &amp;#x27; four lt &lt; five quot &quot; six gt &gt;.
     One #x2F &amp;#x2F; two amp &amp; three #x27 &amp;#x27; four lt &lt; five quot &quot; six gt &gt;.
     One #x2F &amp;#x2F; two amp &amp; three #x27 &amp;#x27; four lt &lt; five quot &quot; six gt &gt;.
     One #x2F &amp;#x2F; two amp &amp; three #x27 &amp;#x27; four lt &lt; five quot &quot; six gt &gt;.
     One #x2F &amp;#x2F; two amp &amp; three #x27 &amp;#x27; four lt &lt; five quot &quot; six gt &gt;.
     One #x2F &amp;#x2F; two amp &amp; three #x27 &amp;#x27; four lt &lt; five quot &quot; six gt &gt;.";
           private readonly string _decodedUserInput_thatsMaxLength =
-	     @"One #x2F / two amp & three #x27 ' four lt < five quot "" six gt >.
+             @"One #x2F / two amp & three #x27 ' four lt < five quot "" six gt >.
     One #x2F / two amp & three #x27 ' four lt < five quot "" six gt >.
     One #x2F / two amp & three #x27 ' four lt < five quot "" six gt >.
     One #x2F / two amp & three #x27 ' four lt < five quot "" six gt >.
@@ -1860,7 +1863,7 @@ To drive the development of the `Sanitisation` API, we wrote the following tests
 
           [Test]
           public void Sanitise_UserInput_WhenGivenSanitisedString_ShouldReturnSanitisedString(
-	     ) {
+          ) {
              // Open the whitelist up in order to test the encoding without restriction.
              Assert.That(
                 new Sanitise(whiteList: @"^[\w\s\.,#/&'<"">]+$").
@@ -1872,11 +1875,11 @@ To drive the development of the `Sanitisation` API, we wrote the following tests
           [Test]
           [ExpectedException(typeof(SanitisationWcfException))]
           public void Sanitise_UserInput_ShouldThrowExceptionIfEscapedInputToLong() {
-	     // Concatenated just for display. Create a string of 4001 characters.
+             // Truncated just for display. Create a string of 4001 characters.
              string fourThousandAndOneCharacters =
-                "Four thousand characters. Four thousand characters. Four thousand characters.";
+                "Four thousand characters.";
              string expectedError =
-	        "The un-modified string received from the client with the following IP address: " +
+                "The un-modified string received from the client with the following IP address: " +
                 '"' + _myTestIpv4Address + "\" " +
                 "exceeded the allowed maximum length of an escaped Html user input string. " +
                 "The maximum length allowed is: " +
@@ -1902,27 +1905,27 @@ To drive the development of the `Sanitisation` API, we wrote the following tests
              char oneCharOverTheLimit = '.';
              string expectedError =
                 "The string received from the client with the following IP address: " +
-		"\"" + _myTestIpv4Address + "\" " +
-		"after Html decoding exceded the allowed maximum length of" +
-		" an un-escaped Html user input string." +
+                "\"" + _myTestIpv4Address + "\" " +
+                "after Html decoding exceded the allowed maximum length of" +
+                " an un-escaped Html user input string." +
                 Environment.NewLine +
                 "The maximum length allowed is: " +
-		_maxLengthHtmlDecodedUserInput +
-		". The length was: " +
+                _maxLengthHtmlDecodedUserInput +
+                ". The length was: " +
                 (_decodedUserInput_thatsMaxLength + oneCharOverTheLimit).Length +
-		oneCharOverTheLimit;    
+                oneCharOverTheLimit;    
 
              using(new MockedOperationContext(StubbedOperationContext)) {
                 try {
                    new Sanitise().UserInput(
-		      _encodedUserInput_thatsMaxDecodedLength + oneCharOverTheLimit
-		   );
+                      _encodedUserInput_thatsMaxDecodedLength + oneCharOverTheLimit
+                   );
                 }
                 catch(SanitisationWcfException e) {
                    Assert.That(e.Message, Is.EqualTo(expectedError));
                    Assert.That(
-		      e.UnsanitisedAnswer,
-		      Is.EqualTo(_encodedUserInput_thatsMaxDecodedLength + oneCharOverTheLimit)
+                      e.UnsanitisedAnswer,
+                      Is.EqualTo(_encodedUserInput_thatsMaxDecodedLength + oneCharOverTheLimit)
                    );
                    throw;
                 }
@@ -1932,18 +1935,18 @@ To drive the development of the `Sanitisation` API, we wrote the following tests
           [Test]
           public void Sanitise_UserInput_ShouldLogAndSendEmail_IfNumberOfDecodedHtmlEntitiesDoesNotMatchNumberOfEscapes() {
              string encodedUserInput_with6HtmlEntitiesNotEscaped =
-	        _encodedUserInput_thatsMaxDecodedLength.Replace("&amp;#x2F;", "/");
+                _encodedUserInput_thatsMaxDecodedLength.Replace("&amp;#x2F;", "/");
              string errorWeAreExpecting =
                 "It appears as if someone has circumvented the client side Html entity " +
-		"encoding." + Environment.NewLine +
+                "encoding." + Environment.NewLine +
                 "The requesting IP address was: " +
                 "\"" + _myTestIpv4Address + "\" " +
                 "The sanitised input we receive from the client was the following:" +
-		Environment.NewLine +
+                Environment.NewLine +
                 "\"" + encodedUserInput_with6HtmlEntitiesNotEscaped + "\"" +
-		Environment.NewLine +
+                Environment.NewLine +
                 "The same input after decoding and re-escaping on the server side was the following:" +
-		Environment.NewLine +
+                Environment.NewLine +
                 "\"" + _encodedUserInput_thatsMaxDecodedLength + "\"";
              string sanitised;
              // setup _logger
@@ -1964,13 +1967,13 @@ To drive the development of the `Sanitisation` API, we wrote the following tests
           private static IOperationContext StubbedOperationContext {
              get {
                 IOperationContext operationContext =
-		   MockRepository.GenerateStub<IOperationContext>();
+                   MockRepository.GenerateStub<IOperationContext>();
                 int port = 80;
                 RemoteEndpointMessageProperty remoteEndpointMessageProperty =
-		   new RemoteEndpointMessageProperty(_myTestIpv4Address, port);
+                   new RemoteEndpointMessageProperty(_myTestIpv4Address, port);
                 operationContext.Stub(
-		   oc => oc.IncomingMessageProperties[RemoteEndpointMessageProperty.Name]
-		).Return(remoteEndpointMessageProperty);
+                   oc => oc.IncomingMessageProperties[RemoteEndpointMessageProperty.Name]
+                ).Return(remoteEndpointMessageProperty);
                 return operationContext;
              }
           }
@@ -2001,25 +2004,25 @@ Simple Injector
           private string RequestingIpAddress {
              get {
                 RemoteEndpointMessageProperty remoteEndpointMessageProperty =
-		   OperationContext.Current.IncomingMessageProperties[
-		      RemoteEndpointMessageProperty.Name
+                   OperationContext.Current.IncomingMessageProperties[
+                      RemoteEndpointMessageProperty.Name
                    ] as RemoteEndpointMessageProperty;
                 return (
-		   (remoteEndpointMessageProperty != null) ?
-		   remoteEndpointMessageProperty.Address :
-		   string.Empty
-		);
+                   (remoteEndpointMessageProperty != null) ?
+                   remoteEndpointMessageProperty.Address :
+                   string.Empty
+                );
              }
           }
 
           /// <summary>
           /// Provides server side escaping of Html entities, and runs the supplied
-	  /// whitelist character filter over the user input string.
+          /// whitelist character filter over the user input string.
           /// </summary>
           /// <param name="whiteList">Should be provided by DI from the ResourceFile.</param>
           /// <param name="logger">
-	  /// Should be provided by DI. Needs to be an asynchronous logger.
-	  /// </param>
+          /// Should be provided by DI. Needs to be an asynchronous logger.
+          /// </param>
           /// <example>
           /// The whitelist can be obtained from a ResourceFile like so...
           /// <code>
@@ -2038,11 +2041,11 @@ Simple Injector
           /// 3) Check Html escaping.         Client side validation may have been negated.
            
           /// Generic Fail actions:   * Drop the payload.
-	  ///                           No point in trying to massage and save,
-	  ///                           as it won't be what the user was expecting,
+          ///                           No point in trying to massage and save,
+          ///                           as it won't be what the user was expecting,
           ///                         * Add full error to a WCFException Message and throw.
-          ///                         * WCF interception reads the WCFException.MessageForClient,
-	  ///                           and sends it to the user. 
+          ///                         * WCF interception reads WCFException.MessageForClient,
+          ///                           and sends it to the user.
           ///                         * On return, log the WCFException's Message.
           ///                         
           /// Escape Fail actions:    * Asynchronously Log and email full error to support.
@@ -2056,17 +2059,17 @@ Simple Injector
           ///     10 is the length of our double escaped character references.
           ///     Or, we ask the business for a number."
           ///     If we fail here,
-	  ///        perform Generic Fail actions and don't complete the following steps.
+          ///        perform Generic Fail actions and don't complete the following steps.
           /// 
           ///     Convert all Html Entity Encodings back to their equivalent characters,
-	  ///        and count how many occurrences.
+          ///        and count how many occurrences.
           ///
           ///     If the string is longer than 400,
-	  ///        perform Generic Fail actions and don't complete the following steps.
+          ///        perform Generic Fail actions and don't complete the following steps.
           /// 
           /// 2) check all characters against the white list
           ///     If any don't match,
-	  ///        perform Generic Fail actions and don't complete the following steps.
+          ///        perform Generic Fail actions and don't complete the following steps.
           /// 
           /// 3) re html escape (as we did in JavaScript), and count how many escapes.
           ///     If cnt > cnt of Html Entity Encodings back to their equivalent characters,
@@ -2076,13 +2079,13 @@ Simple Injector
            
            
           /// Performs checking on the text passed in,
-	  ///    to verify that client side escaping and whitelist validation
-	  ///    has already been performed.
+          ///    to verify that client side escaping and whitelist validation
+          ///    has already been performed.
           /// Performs decoding, and re-encodes.
-	  ///    Counts that the number of escapes was the same,
-	  ///    otherwise we log and send email with the details to support.
+          ///    Counts that the number of escapes was the same,
+          ///    otherwise we log and send email with the details to support.
           /// Throws exception if the client side validation failed to restrict the
-	  ///    number of characters in the escaped string we received.
+          ///    number of characters in the escaped string we received.
           ///    This needs to be intercepted at the service.
           ///    The exceptions default message for client needs to be passed back to the user.
           ///    On return, the interception needs to log the exception's message.
@@ -2097,11 +2100,11 @@ Simple Injector
            
              int numberOfDecodedHtmlEntities = 0;
              string decodedUserInput =
-	        HtmlDecodeUserInput(sanitiseMe, ref numberOfDecodedHtmlEntities);
+                HtmlDecodeUserInput(sanitiseMe, ref numberOfDecodedHtmlEntities);
            
              if(!decodedUserInput.CompliesWithWhitelist(whiteList: _whiteList)) {
                 string error =
-		   "The answer received from client with the following IP address: " +
+                   "The answer received from client with the following IP address: " +
                    "\"" + RequestingIpAddress + "\" " +
                    "had characters that failed to match the whitelist.";
                 throw new SanitisationWcfException(error);
@@ -2125,42 +2128,42 @@ Simple Injector
 
              _logger.logError(
                 "It appears as if someone has circumvented the client side " +
-		"Html entity encoding." +
-		Environment.NewLine +
+                "Html entity encoding." +
+                Environment.NewLine +
                 "The requesting IP address was: " +
                 "\"" + RequestingIpAddress + "\" " +
                 "The sanitised input we receive from the client was the following:" +
-		Environment.NewLine +
+                Environment.NewLine +
                 "\"" + sanitiseMe + "\"" +
-		Environment.NewLine +
+                Environment.NewLine +
                 "The same input after decoding and re-escaping on the " +
-		"server side was the following:" +
-		Environment.NewLine +
+                "server side was the following:" +
+                Environment.NewLine +
                 "\"" + sanitisedUserInput + "\""
-                );
+             );
           }
 
           /// <summary>
           /// This procedure may throw a SanitisationWcfException.
           /// If it does, ErrorHandlerBehaviorAttribute will need to pass the
-	  /// "messageForClient" back to the client from within the
-	  /// IErrorHandler.ProvideFault procedure.
+          /// "messageForClient" back to the client from within the
+          /// IErrorHandler.ProvideFault procedure.
           /// Once execution is returned,
-	  /// the IErrorHandler.HandleError procedure of ErrorHandlerBehaviorAttribute
+          /// the IErrorHandler.HandleError procedure of ErrorHandlerBehaviorAttribute
           /// will continue to process the exception that was thrown in the way of
-	  /// logging sensitive info.
+          /// logging sensitive info.
           /// </summary>
           /// <param name="toSanitise"></param>
           private void ThrowExceptionIfEscapedInputToLong(string toSanitise) {
              int maxLengthHtmlEncodedUserInput =
-	        int.Parse(ConfigurationManager.AppSettings["MaxLengthHtmlEncodedUserInput"]);
+                int.Parse(ConfigurationManager.AppSettings["MaxLengthHtmlEncodedUserInput"]);
              if (toSanitise.Length > maxLengthHtmlEncodedUserInput) {
                 string error =
-		   "The un-modified string received from the client " +
-		   "with the following IP address: " +
+                   "The un-modified string received from the client " +
+                   "with the following IP address: " +
                    "\"" + RequestingIpAddress + "\" " +
                    "exceeded the allowed maximum length of " +
-		   "an escaped Html user input string. " +
+                   "an escaped Html user input string. " +
                    "The maximum length allowed is: " +
                    maxLengthHtmlEncodedUserInput +
                    ". The length was: " +
@@ -2170,31 +2173,31 @@ Simple Injector
           }
 
           private string HtmlDecodeUserInput(
-	     string doubleEncodedUserInput,
-	     ref int numberOfDecodedHtmlEntities
+             string doubleEncodedUserInput,
+             ref int numberOfDecodedHtmlEntities
           ) {
              string decodedUserInput =
-	        doubleEncodedUserInput.HtmlDecode(
+                doubleEncodedUserInput.HtmlDecode(
                    ref numberOfDecodedHtmlEntities
-		).HtmlDecode(ref numberOfDecodedHtmlEntities) ??
-		string.Empty;
+                ).HtmlDecode(ref numberOfDecodedHtmlEntities) ??
+                string.Empty;
              
              // if the decoded string is longer than MaxLengthHtmlDecodedUserInput throw
              int maxLengthHtmlDecodedUserInput =
-	        int.Parse(ConfigurationManager.AppSettings["MaxLengthHtmlDecodedUserInput"]);
+                int.Parse(ConfigurationManager.AppSettings["MaxLengthHtmlDecodedUserInput"]);
              if(decodedUserInput.Length > maxLengthHtmlDecodedUserInput) {
                 throw new SanitisationWcfException(
                    "The string received from the client with the following IP address: " +
                    "\"" + RequestingIpAddress + "\" " +
                    "after Html decoding exceded the allowed maximum length " +
-		   "of an un-escaped Html user input string." +
+                   "of an un-escaped Html user input string." +
                    Environment.NewLine +
                    "The maximum length allowed is: " +
-		   maxLengthHtmlDecodedUserInput +
-		   ". The length was: " +
+                   maxLengthHtmlDecodedUserInput +
+                   ". The length was: " +
                    decodedUserInput.Length + ".",
                    unsanitisedAnswer: doubleEncodedUserInput
-                   );
+                );
              }
              return decodedUserInput;
           }
