@@ -1358,7 +1358,7 @@ Now the code that satisfies the above executable specifications, and more:
           /// <returns>
           /// The text that's had a single layer of Html entity encoding
           /// replaced with it's Html entity literals.
-	  /// </returns>
+          /// </returns>
           public static string HtmlDecode(
              this string encodedUserInput, ref int numberOfEscapes
           ) {
@@ -1879,7 +1879,8 @@ To drive the development of the `Sanitisation` API, we wrote the following tests
              string fourThousandAndOneCharacters =
                 "Four thousand characters.";
              string expectedError =
-                "The un-modified string received from the client with the following IP address: " +
+                "The un-modified string received from the client with " +
+                "the following IP address: " +
                 '"' + _myTestIpv4Address + "\" " +
                 "exceeded the allowed maximum length of an escaped Html user input string. " +
                 "The maximum length allowed is: " +
@@ -1945,7 +1946,8 @@ To drive the development of the `Sanitisation` API, we wrote the following tests
                 Environment.NewLine +
                 "\"" + encodedUserInput_with6HtmlEntitiesNotEscaped + "\"" +
                 Environment.NewLine +
-                "The same input after decoding and re-escaping on the server side was the following:" +
+                "The same input after decoding and re-escaping on the server side was " +
+                "the following:" +
                 Environment.NewLine +
                 "\"" + _encodedUserInput_thatsMaxDecodedLength + "\"";
              string sanitised;
