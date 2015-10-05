@@ -44,7 +44,7 @@ The following books have been influential for me and the content from the People
 [**How to Increase Software Developer Productivity**](https://speakerdeck.com/binarymist/how-to-increase-software-developer-productivity)
 
 **Pair Programming Metrics** from Fog Creek  
-[http://discuss.fogcreek.com/joelonsoftware1/default.asp?cmd=show&ixPost=33575&ixReplies=12](http://discuss.fogcreek.com/joelonsoftware1/default.asp?cmd=show&ixPost=33575&ixReplies=12)
+[http://discuss.fogcreek.com/joelonsoftware1/default.asp?cmd=show&ixPost=33575](http://discuss.fogcreek.com/joelonsoftware1/default.asp?cmd=show&ixPost=33575)
 
 **Details that helped setup NodeJS logging**:  
 [https://gist.github.com/rtgibbons/7354879](https://gist.github.com/rtgibbons/7354879)  
@@ -79,8 +79,7 @@ The following books have been influential for me and the content from the People
 
 
 
-**Excellent resource for dealing with user input** based on the execution contexts that it passes through  
-[https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet](https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet)
+
 
 
 

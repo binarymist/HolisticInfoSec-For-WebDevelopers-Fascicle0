@@ -145,8 +145,8 @@ Peter Kim discusses in "The Hacker PlayBook" about how he set-up SMTP and SSH do
 
 
 
-
-
+**Excellent resource for dealing with user input** based on the execution contexts that it passes through  
+[https://www.owasp.org/index.php/XSS_%28Cross_Site_Scripting%29_Prevention_Cheat_Sheet](https://www.owasp.org/index.php/XSS_%28Cross_Site_Scripting%29_Prevention_Cheat_Sheet)
 
 
 **The function used to protect stored credentials** should balance attacker and defender verification. The defender needs an acceptable response time for verification of users’ credentials during peak use. However, the time required to map `<credential> -> <protected form>` must remain beyond threats’ hardware (GPU, FPGA) and technique (dictionary-based, brute force, etc) capabilities:  
