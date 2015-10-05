@@ -507,11 +507,10 @@ Use [key pair authentication](http://blog.binarymist.net/2010/04/06/a-few-steps-
 
 ### Wrongfully Trusting the Loading of Untrusted Web Resources {#network-countermeasures-wrongfully-trusting-the-loading-of-untrusted-web-resources}
 
-* Escaping all untrusted data based on its context (where and what it is)
-* White-list
-* Constrain to types where possibly
+* White listing
+* Constrain to types where possible
 * Constrain max / min lengths.
-* Basically think in terms of least privilege
+* Think in terms of [least privilege](#web-applications-countermeasures-management-of-application-secrets-least-privilege)
 
 [OWASP Top 10 A3 Cross Site Scripting (XSS)](https://www.owasp.org/index.php/Top_10_2013-A3-Cross-Site_Scripting_(XSS))
 

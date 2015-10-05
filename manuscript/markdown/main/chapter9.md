@@ -299,6 +299,10 @@ _Todo_
 %%      Plugins for collecting OpenStack metrics: https://github.com/catalyst/collectd-openstack
 %%      Nagios, Graphite, Collectd for OpenStack.
 
+%% There is also the RackSpace free Monitoring Agent writen in Lua. Details in NodeUp83_libuv.txt
+%% http://www.rackspace.com/cloud/monitoring/features
+%% https://luvit.io/blog/iot-relay.html
+%% https://www.tomaz.me/2013/11/28/running-luvit-and-rackspace-monitoring-agent-on-raspberry-pi.html
 
 I also looked into the following offerings which cater to providing visibility into many aspects of the applications, services, servers and networks, but none that really address security concerns:
 

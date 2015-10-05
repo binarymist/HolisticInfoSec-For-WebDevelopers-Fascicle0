@@ -277,7 +277,7 @@ In a previous Scrum Team that I was Scrum Master of, The Development Team decide
 
 > Joel Spolsky
 
-#### Top Developer Motivators in Order
+#### Top Developer Motivators in Order {#people-countermeasures-morale-productivity-and-engagement-killers-top-developer-motivators-in-order}
 ![](images/ThreatTags/PreventionEASY.png)
 
 1. Developers love to develop software. The best way to motivate developers is to let them develop. Provide an environment to stimulate focus.
@@ -293,7 +293,7 @@ More than that and developers loose the focus. Developers do not respond well to
 meet.   
 5. Opportunities for Growth. Half of what a developer knows in order to do his job today will be out of date in 3 years time. If not moving forward in this industry, you are moving backwards. Developers are very motivated by learning new things. Let developers determine how they wish to grow professionally. The best developers will gravitate toward organisations that foster personal growth.
 6. Personal Life. Top developers like to invest a lot in their own time (experimenting, researching, teaching others, running events). Let them, and in-fact encourage them.
-7. Technical Leadership. Top developers love passing on their knowledge. This is part of what drives them. Assign each team member to be technical lead and possibly mentor for a particular domain, technology and process area.
+7. Technical Leadership. Top developers love passing on their knowledge. This is part of what drives them. Assign each team member to be technical lead (sometimes referred to as champion) and possibly mentor for a particular domain, technology and process area.
 
 ### Employee Snatching
 ![](images/ThreatTags/PreventionDIFFICULT.png)

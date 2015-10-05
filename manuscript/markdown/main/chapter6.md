@@ -16,6 +16,8 @@ _Todo_
 
 %% Tessel 2 podcast on NodeUp 85_01 covering RX.js, functional programming, piping.
 
+%% Details around luvit, Tessels use of Duktape and LuaJIT: NodeUp83_libuv.txt
+
 %% Another option would be to create a FPGA or use one for brute forcing bcrypt hashes. Details in the Web Applications chapter under #web-applications-countermeasures-data-store-compromise
 
 %% Submit CFP to Saturn no later than January 15, 2016.
