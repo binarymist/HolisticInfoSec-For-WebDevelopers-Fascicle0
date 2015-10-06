@@ -714,10 +714,18 @@ The `logger.js` file wraps and hides extra features and transports applied to th
 When the app first starts it initialises the logger on line 7 below.
 
 {title="app.js", linenos=on, lang=JavaScript}
-    //...
+    var http = require('http');
     var express = require('express');
+    var path = require('path');
     var morganLogger = require('morgan');
+    // Due to bug in node-config the next line is needed before config
+    // is required: https://github.com/lorenwest/node-config/issues/202
+    if (process.env.NODE_ENV === 'production')
+       process.env.NODE_CONFIG_DIR = path.join(__dirname, 'config');
+    // Yes the following are hoisted, but it's OK in this situation.
     var logger = require('./util/logger'); // Or use requireFrom module so no relative paths.
+    //...
+    var errorHandler = require('errorhandler');
     var app = express();
     //...
     logger.init();
@@ -728,7 +736,9 @@ When the app first starts it initialises the logger on line 7 below.
     // In order to utilise connect/express logger module in our third party logger,
     // Pipe the messages through.
     app.use(morganLogger('combined', {stream: logger.stream}));
-    //...
+    app.use(methodOverride());
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: true }));
     app.use(express.static(path.join(__dirname, 'public')));
     //...
     require('./routes')(app);
@@ -867,7 +877,7 @@ Detail how we collect application statistics and send to graphite. Show real lif
 
 Your staple practises when it comes to defending against potentially dangerous input are validation and filtering. There are cases though when the business requires that input must be accepted that is dangerous yet still valid. This is where you will need to implement sanitisation. There is a lot more research and thought involved when you need to perform sanitisation, so the first cause of action should be to confirm that the specific dangerous yet valid input is in-fact essential.
 
-##### What is Validation:
+##### What is Validation: {#web-applications-countermeasures-lack-of-input-validation-filtering-and-sanitisation-generic-what-is-validation}
 
 Decide what input is valid by way of a white list (list of input characters that are allowed to be received). Often each input field will have a different white list. Validation is binary, the data is either allowed to be received or not allowed. If it is not allowed, then it is rejected. This is usually not to complicated to work out what is good, what is not and thus rejected. There are a few strategies to use for white listing, such as the actual collection of characters or using regular expressions.
 
@@ -2214,22 +2224,226 @@ A>
 A> Without sanitisation, things are a lot simpler.
 A>
 
+For the next example we switch to `jQuery.validator` on the client side and `express-form` on the server side. Our example is a simple contact form. I only show the parts relevant to validation and filtering.
 
-_Todo_ Also show the sanitisation functions
+Once the jQuery plugin (which is a module) validate is loaded, jQuery is passed to it. The plugin extends the jQuery prototype with its `validate` method. Our contact.js script then loads in the browser. We then call `ContactForm.initContactForm();`. ContactForm is immediately invoked and returns an object, of which we call `initContactForm()` on.
 
+We add a custom validation function to our `validator` by way of `addMethod`. This function will take the value being tested, the element itself and a regular expression to test against. You can see we use this function when we pass our rules within the `options` object to `validate` which internally passes them to its `validator`.
 
-Some of the libraries seem confused about the differences between these practises. For example express-form has sanitisation functions that are under their ["Filter API"](https://github.com/freewil/express-form#filter-api)
+The documentation explains the sequence of events that your custom rules will be applied in.
 
+We pass `options` containing:
+* `rules`
+* `messages`
+* `submitHandler` which is bound to the native `submit` event
 
+There are many other options you can provide. I think the code is fairly self explanatory:
 
+{title="contact.js", linenos=off, lang=JavaScript}
+    var ContactForm = function () {
 
+       return {
 
+          //Contact Form
+          initContactForm: function () {
+             // Validation
+             $.validator.addMethod('fieldValidated', function (value, element, regexpr) {
+               return regexpr.test(value);
+             },
+             'No dodgy characters thanks.');
+             $("#sky-form3").validate({
+                // Rules for form validation
+                rules: {
+                   name: {
+                      required: true,
+                      minlength: 2,
+                      maxlength: 50,
+                      fieldValidated: /^[a-zA-Z ']+$/
+                   },
+                   email: {
+                      required: true,
+                      email: true
+                   },
+                   message: {
+                      required: true,
+                      minlength: 10,
+                      maxlength: 1000,
+                      fieldValidated: /^[a-zA-Z0-9-_ \?.,]+$/
+                   }
+                },
 
+                // Messages for form validation
+                messages: {
+                   name: {
+                      required: 'Please enter your name'
+                   },
+                   email: {
+                      required: 'Please enter your email address',
+                      email: 'Please enter a VALID email address'
+                   },
+                   message: {
+                      required: 'Please enter your message'
+                   }
+                },
 
+                // Ajax form submition. For details see jQuery Form Plugin: http://malsup.com/jquery/form/
+                submitHandler: function (form) {
+                   $(form).ajaxSubmit({
+                      beforeSend: function () {
+                         // Useful for doing things like adding wait spinners or any work you want to do before sending.
+                         // Todo: I think we need a wait spinner here.
+                      },
+                      // type: 'POST' // Default;
+                      dataType: 'json',
+                      success: function (responseText, statusText) {
+                         // Handle success
+                      },
+                      error: function (error) {
+                         // Handle error
+                      }
+                   });
+                },
 
+                // Do not change code below
+                errorPlacement: function(error, element) {
+                   error.insertAfter(element.parent());
+                }
+             });
+          }
 
+       };
+       
+    }();
 
+Shifting our attention to the server side now. First up we have got the home route of the single page app. Within the home route, we have also got the `/contact` route which uses the `express-form` middleware. You can see the middleware first in action on line 47
 
+{title="routes/home.js", linenos=on, lang=JavaScript}
+    var logger = require('../util/logger');
+    var form = require('express-form');
+    var fieldToValidate = form.field;
+    var os = require('os');    
+
+    function home(req, res) {
+      res.redirect('/');
+    }
+
+    function index(req, res) {
+       res.render('home', { title: 'Home', id: 'home', brand: 'your brand' });
+    }
+
+    function validate() {
+       return form(
+          // trim is filtering. toBoolean is some simple sanitisation. The rest is validation.
+          fieldToValidate('name').trim().required().minLength(2).maxLength(50).is(/^[a-zA-Z ']+$/), // Regex same as cleint side.
+          fieldToValidate('email').trim().required().isEmail(),
+          fieldToValidate('message').trim().required().minLength(10).maxLength(1000).is(/^[a-zA-Z0-9-_ \?.,]+$/), // Regex same as cleint side.
+          fieldToValidate('subscribe-to-mailing-list').toBoolean(),
+          fieldToValidate('bot-pot').maxLength(0) // Bots love to populate everything.
+          //fieldToValidate('bot-pot').equals("")
+       );
+    }
+
+    // Using express-form: req.form is the validated req.body
+    function contact(req, res) {
+       
+       if(req.form.isValid)
+          sendEmail(req, res);
+       else {
+          (function alertEmail() {
+             var reqBody = 'Body of contact request (server-side unvalidated): ' + JSON.stringify(req.body);
+             var reqForm = 'Form of contact request (server-side validated): ' + JSON.stringify(req.form);
+             var validationErrors = 'Errors produced by express-form validation: ' + req.form.errors;
+             var details = os.EOL + reqBody + os.EOL + os.EOL + reqForm + os.EOL + os.EOL + validationErrors + os.EOL;
+             // Logger.emailLoggerFailure shown in the Insufficient Logging section
+             logger.crit('', 'Validation error for my website contact form. ', {details: details}, logger.emailLoggerFailure);
+          }());
+          res.status(418).send({error: 'User input was not valid. Try teliporting instead.'});
+       }
+    }
+
+    module.exports = function (app) {
+       app.get('/', index);
+       app.get('/home', home); 
+       app.post('/contact', validate(), contact);
+    };
+
+Following is the routing module that loads all other routes
+
+{title="routes/index.js", linenos=off, lang=JavaScript}
+    // This module loads dynamically all routes modules located in the routes/ directory.
+     
+    'use strict';
+    var fs = require('fs');
+    var path = require('path');
+
+    module.exports = function (app) {
+       fs.readdirSync(path.join(__dirname)).forEach(function (file) {
+          // Avoid to read this current file.
+          if (file === path.basename(__filename)) { return; }
+
+          // Load the route file.
+          require('./' + file)(app);
+       });
+    };
+
+Now our entry point into the application. We load routes on line 28.
+
+{title="app.js", linenos=on, lang=JavaScript}
+    var http = require('http');
+    var express = require('express');
+    var path = require('path');
+    var morganLogger = require('morgan');
+    // Due to bug in node-config the next line is needed before config is required.
+    if (process.env.NODE_ENV === 'production')
+       process.env.NODE_CONFIG_DIR = path.join(__dirname, 'config');
+    // Yes the following are hoisted, but it's OK in this situation.
+    var logger = require('./util/logger'); // Or use requireFrom module so no relative paths.
+    var methodOverride = require('method-override');
+    // body-parser needs to be added in the middleware stack before using
+    // express-form: https://github.com/freewil/express-form/issues/21
+    var bodyParser = require('body-parser');
+    var errorHandler = require('errorhandler');
+    var app = express();
+    //...
+    logger.init();
+    app.set('port', process.env.PORT || 3000);
+    app.set('views', __dirname + '/views');
+    app.set('view engine', 'jade');
+    //...
+    // In order to utilise connect/express logger module in our third party logger,
+    // Pipe the messages through.
+    app.use(morganLogger('combined', {stream: logger.stream}));
+    app.use(methodOverride());
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: true }));
+    app.use(express.static(path.join(__dirname, 'public')));
+    //...
+    require('./routes')(app);
+
+    if ('development' == app.get('env')) {
+       app.use(errorHandler({ dumpExceptions: true, showStack: true }));
+       //...
+    }
+    if ('production' == app.get('env')) {
+       app.use(errorHandler());
+       //...
+    }
+
+    http.createServer(app).listen(app.get('port'), function(){
+       logger.info(
+          "Express server listening on port " + app.get('port') + ' in '
+          + process.env.NODE_ENV + ' mode'
+       );
+    });
+
+As I mentioned previously in the ["What is Validation"](#web-applications-countermeasures-lack-of-input-validation-filtering-and-sanitisation-generic-what-is-validation) section, some of the libraries seem confused about the differences between the practises of validation, filtering and sanitisation. For example `express-form` has sanitisation functions that are under their ["Filter API"](https://github.com/freewil/express-form#filter-api). 
+`entityEncode`, `entityDecode`, even the Type Coercion functions are actually sanitisation rather than filtering.
+
+Maybe it is semantics, but `toFloat`, `toInt`, ... `ifNull` are sanitisation functions.
+
+`trim`, ... is filtering, but `toLower`, ... is sanitisation again. These functions listed in the documentation under the Filter API should be in their specific sections.
+
+Refer to the section [above](#web-applications-countermeasures-lack-of-input-validation-filtering-and-sanitisation-generic-what-is-validation) for a refresher on validation, filtering and sanitisation if you need it.
 
 ##### Other things to think about
 

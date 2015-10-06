@@ -77,14 +77,23 @@ The following books have been influential for me and the content from the People
 **Current, or at least more recent statsd spec** for metric types:  
 [https://github.com/etsy/statsd/blob/master/docs/metric_types.md](https://github.com/etsy/statsd/blob/master/docs/metric_types.md)
 
-
-
-
-
-
-
 **I would recommend NSubstitute** instead if you were looking for a mocking framework for .NET.  
 [http://blog.binarymist.net/2013/12/14/evaluation-of-net-mocking-libraries/](http://blog.binarymist.net/2013/12/14/evaluation-of-net-mocking-libraries/)
+
+**Information on how jQuery plugins plugin**  
+[https://learn.jquery.com/plugins/](https://learn.jquery.com/plugins/)
+
+**jQuery Validation** documentation  
+[http://jqueryvalidation.org/documentation/](http://jqueryvalidation.org/documentation/)
+
+[http://jqueryvalidation.org/validate](http://jqueryvalidation.org/validate)
+
+[http://jqueryvalidation.org/jQuery.validator.addMethod](http://jqueryvalidation.org/jQuery.validator.addMethod)
+
+[http://jqueryvalidation.org/rules](http://jqueryvalidation.org/rules)
+
+**express-form**  
+[https://github.com/freewil/express-form](https://github.com/freewil/express-form)
 
 
 
