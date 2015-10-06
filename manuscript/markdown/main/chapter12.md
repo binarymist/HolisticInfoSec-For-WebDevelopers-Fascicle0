@@ -711,7 +711,7 @@ The `logger.js` file wraps and hides extra features and transports applied to th
        }
     };
 
-When the app first starts it initialises the logger on line 7 below.
+When the app first starts it initialises the logger on line 15 below.
 
 {title="app.js", linenos=on, lang=JavaScript}
     var http = require('http');
@@ -2224,15 +2224,16 @@ A>
 A> Without sanitisation, things are a lot simpler.
 A>
 
-For the next example we switch to `jQuery.validator` on the client side and `express-form` on the server side. Our example is a simple contact form. I only show the parts relevant to validation and filtering.
+For the next example we use a single page app. Switching to `jQuery.validator` on the client side and `express-form` on the server side. Our example is a simple contact form. I have only shown the parts relevant to validation and filtering.
 
-Once the jQuery plugin (which is a module) validate is loaded, jQuery is passed to it. The plugin extends the jQuery prototype with its `validate` method. Our contact.js script then loads in the browser. We then call `ContactForm.initContactForm();`. ContactForm is immediately invoked and returns an object, of which we call `initContactForm()` on.
+Once the jQuery plugin (which is a module) `validate` is loaded, jQuery is passed to it. The plugin extends the jQuery prototype with its `validate` method. Our contact.js script then loads in the browser. We then call `ContactForm.initContactForm();`. ContactForm is immediately invoked and returns an object, of which we call `initContactForm()` on.
 
 We add a custom validation function to our `validator` by way of `addMethod`. This function will take the value being tested, the element itself and a regular expression to test against. You can see we use this function when we pass our rules within the `options` object to `validate` which internally passes them to its `validator`.
 
-The documentation explains the sequence of events that your custom rules will be applied in.
+The `validate` documentation explains the sequence of events that your custom rules will be applied in.
 
 We pass `options` containing:
+
 * `rules`
 * `messages`
 * `submitHandler` which is bound to the native `submit` event
@@ -2248,7 +2249,7 @@ There are many other options you can provide. I think the code is fairly self ex
           initContactForm: function () {
              // Validation
              $.validator.addMethod('fieldValidated', function (value, element, regexpr) {
-               return regexpr.test(value);
+                return regexpr.test(value);
              },
              'No dodgy characters thanks.');
              $("#sky-form3").validate({
@@ -2286,11 +2287,13 @@ There are many other options you can provide. I think the code is fairly self ex
                    }
                 },
 
-                // Ajax form submition. For details see jQuery Form Plugin: http://malsup.com/jquery/form/
+                // Ajax form submition. For details see jQuery Form Plugin:
+                // http://malsup.com/jquery/form/
                 submitHandler: function (form) {
                    $(form).ajaxSubmit({
                       beforeSend: function () {
-                         // Useful for doing things like adding wait spinners or any work you want to do before sending.
+                         // Useful for doing things like adding wait spinners
+                         // or any work you want to do before sending.
                          // Todo: I think we need a wait spinner here.
                       },
                       // type: 'POST' // Default;
@@ -2310,12 +2313,10 @@ There are many other options you can provide. I think the code is fairly self ex
                 }
              });
           }
-
        };
-       
     }();
 
-Shifting our attention to the server side now. First up we have got the home route of the single page app. Within the home route, we have also got the `/contact` route which uses the `express-form` middleware. You can see the middleware first in action on line 47
+Shifting our attention to the server side now. First up we have got the home route of the single page app. Within the home route, we have also got the `/contact` route which uses the `express-form` middleware. You can see the middleware first in action on line 81.
 
 {title="routes/home.js", linenos=on, lang=JavaScript}
     var logger = require('../util/logger');
@@ -2334,9 +2335,22 @@ Shifting our attention to the server side now. First up we have got the home rou
     function validate() {
        return form(
           // trim is filtering. toBoolean is some simple sanitisation. The rest is validation.
-          fieldToValidate('name').trim().required().minLength(2).maxLength(50).is(/^[a-zA-Z ']+$/), // Regex same as cleint side.
-          fieldToValidate('email').trim().required().isEmail(),
-          fieldToValidate('message').trim().required().minLength(10).maxLength(1000).is(/^[a-zA-Z0-9-_ \?.,]+$/), // Regex same as cleint side.
+          fieldToValidate('name').
+             trim().
+             required().
+             minLength(2).
+             maxLength(50).
+             is(/^[a-zA-Z ']+$/), // Regex same as cleint side.
+          fieldToValidate('email').
+             trim().
+             required().
+             isEmail(),
+          fieldToValidate('message').
+             trim().
+             required().
+             minLength(10).
+             maxLength(1000).
+             is(/^[a-zA-Z0-9-_ \?.,]+$/), // Regex same as cleint side.
           fieldToValidate('subscribe-to-mailing-list').toBoolean(),
           fieldToValidate('bot-pot').maxLength(0) // Bots love to populate everything.
           //fieldToValidate('bot-pot').equals("")
@@ -2350,12 +2364,32 @@ Shifting our attention to the server side now. First up we have got the home rou
           sendEmail(req, res);
        else {
           (function alertEmail() {
-             var reqBody = 'Body of contact request (server-side unvalidated): ' + JSON.stringify(req.body);
-             var reqForm = 'Form of contact request (server-side validated): ' + JSON.stringify(req.form);
-             var validationErrors = 'Errors produced by express-form validation: ' + req.form.errors;
-             var details = os.EOL + reqBody + os.EOL + os.EOL + reqForm + os.EOL + os.EOL + validationErrors + os.EOL;
+             var reqBody =
+                'Body of contact request (server-side unvalidated): ' +
+                JSON.stringify(req.body);
+             var reqForm =
+                'Form of contact request (server-side validated): ' +
+                JSON.stringify(req.form);
+             var validationErrors =
+                'Errors produced by express-form validation: ' +
+                req.form.errors;
+             var details =
+                os.EOL +
+                reqBody +
+                os.EOL +
+                os.EOL +
+                reqForm +
+                os.EOL +
+                os.EOL +
+                validationErrors +
+                os.EOL;
              // Logger.emailLoggerFailure shown in the Insufficient Logging section
-             logger.crit('', 'Validation error for my website contact form. ', {details: details}, logger.emailLoggerFailure);
+             logger.crit(
+                '',
+                'Validation error for my website contact form. ',
+                {details: details},
+                logger.emailLoggerFailure
+             );
           }());
           res.status(418).send({error: 'User input was not valid. Try teliporting instead.'});
        }
@@ -2386,7 +2420,7 @@ Following is the routing module that loads all other routes
        });
     };
 
-Now our entry point into the application. We load routes on line 28.
+Now our entry point into the application. We load routes on line 30.
 
 {title="app.js", linenos=on, lang=JavaScript}
     var http = require('http');
