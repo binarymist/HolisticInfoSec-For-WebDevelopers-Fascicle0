@@ -2316,7 +2316,7 @@ There are many other options you can provide. I think the code is fairly self ex
        };
     }();
 
-Shifting our attention to the server side now. First up we have got the home route of the single page app. Within the home route, we have also got the `/contact` route which uses the `express-form` middleware. You can see the middleware first in action on line 81.
+Shifting our attention to the server side now. First up we have got the home route of the single page app. Within the home route, we have also got the `/contact` route which uses the `express-form` middleware. You can see the middleware first in action on line 80.
 
 {title="routes/home.js", linenos=on, lang=JavaScript}
     var logger = require('../util/logger');
