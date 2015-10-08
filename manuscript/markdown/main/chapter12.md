@@ -2348,7 +2348,7 @@ Shifting our attention to the server side now. First up we have got the home rou
     var os = require('os');    
 
     function home(req, res) {
-      res.redirect('/');
+       res.redirect('/');
     }
 
     function index(req, res) {
@@ -2606,7 +2606,7 @@ In NPM land, as usual there are many options to choose from. The following were 
 * [re-captcha](https://www.npmjs.com/package/re-captcha) was one of the first captcha offerings, created at the Carnegie Mellon University by Luis von Ahn, Ben Maurer, Colin McMillen, David Abraham and Manuel Blum who invented the term captcha. Google later acquired it in September 2009. recaptcha is a text recognition captcha that uses scanned text that optical character recognition (OCR) technology has failed to interpret, which has the added benefit of helping to digitise text for The New York Times and Google Books.  
 ![](images/reCaptcha.jpg)  
 * [sweetcaptcha](https://www.npmjs.com/package/sweetcaptcha) uses the sweetcaptcha cloud service of which you must abide by their terms and conditions, requires another node package, and requires some integration work. sweetcaptcha is an image recognition type of captcha.  
-![](sweetcaptcha.jpg)
+![](images/sweetcaptcha.jpg)
 * [textcaptcha](http://textcaptcha.com/) is a logic question captcha relying on an external service for the questions and md5 hashes of the correct lower cased answers. This looks pretty simple to set up, but again expects your users to use their brain on things they should not have to.
 
 &nbsp;
@@ -2622,7 +2622,7 @@ Some other considerations I had. Ideally I wanted a simple solution requiring fe
 
 The above solutions are excellent targets for creating exploits that will have a large pay off due to the fact that so many websites are using them. There are exploits discovered for these services regularly.
 
-##### Still not cutting it:
+##### Still not cutting it
 
 &nbsp;
 
@@ -2634,11 +2634,15 @@ The above solutions are excellent targets for creating exploits that will have a
 
 > Tim Kadlec: [Death to Captchas](http://timkadlec.com/2011/01/death-to-captchas/)
 
-##### User Time Expenditure:
+##### User Time Expenditure
+
+&nbsp;
 
 Recording how long it takes from fetch to submit. This is another technique, in which the time is measured from fetch to submit. For example if the time span is under five seconds it is more than likely a bot, so handle the message accordingly.
 
-##### Bot Pot:
+##### Bot Pot
+
+&nbsp;
 
 Spamming bots operating on custom mechanisms will in most cases just try, then move on. If you decide to use one of the common offerings from above, exploits will be more common, depending on how wide spread the offering is. This is one of the cases where going custom is a better option. Worse case is you get some spam and you can modify your technique, but you get to keep things simple, tailored to your web application, your users needs, no external dependencies and no monthly fees. This is also the simplest technique and requires very little work to implement.
 
