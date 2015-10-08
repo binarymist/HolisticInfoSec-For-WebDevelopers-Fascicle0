@@ -940,7 +940,7 @@ Detail how we collect application statistics and send to graphite. Show real lif
 
 Your staple practises when it comes to defending against potentially dangerous input are validation and filtering. There are cases though when the business requires that input must be accepted that is dangerous yet still valid. This is where you will need to implement sanitisation. There is a lot more research and thought involved when you need to perform sanitisation, so the first cause of action should be to confirm that the specific dangerous yet valid input is in-fact essential.
 
-**Recommendations**
+**Recommendations:**
 
 Research:
 
@@ -2339,7 +2339,7 @@ There are many other options you can provide. I think the code is fairly self ex
        };
     }();
 
-Shifting our attention to the server side now. First up we have got the home route of the single page app. Within the home route, we have also got the `/contact` route which uses the `express-form` middleware. You can see the middleware first in action on line 86.
+Shifting our attention to the server side now. First up we have got the home route of the single page app. Within the home route, we have also got the `/contact` route which uses the `express-form` middleware. You can see the middleware first in action on line 82.
 
 {title="routes/home.js", linenos=on, lang=JavaScript}
     var logger = require('../util/logger');
@@ -2377,7 +2377,8 @@ Shifting our attention to the server side now. First up we have got the home rou
           fieldToValidate('subscribe-to-mailing-list').toBoolean(),
           // I discuss the next line of code as part of a solution to what
           // captchas are trying to solve below in the Captcha section.
-          fieldToValidate('bot-pot').maxLength(0) // Bots love to populate everything.          
+          // Bots love to populate everything.
+          fieldToValidate('bot-pot').maxLength(0)
        );
     }
 
@@ -2564,6 +2565,8 @@ _Todo_
 
 ##### Types
 
+&nbsp;
+
 **Text Recognition**
 
 recaptcha uses this technique. See below for details.
@@ -2578,16 +2581,16 @@ Pioneered by... you guessed it. Facebook. This type of captcha focusses on human
 
 "_Instead of showing you a traditional captcha on Facebook, one of the ways we may help verify your identity is through social authentication. We will show you a few pictures of your friends and ask you to name the person in those photos. Hackers halfway across the world might know your password, but they don't know who your friends are._"
 
-I disagree with that statement. A determined hacker will usually be able to find out who your friends are. There is another problem, do you know who all of your friends are? Every acquaintance? This is supposed to be used to authenticate you. So you have to be able to answer the questions before you can log in.
+I disagree with that statement. A determined hacker will usually be able to find out who your friends are. There is another problem, do you know who all of your friends are? Every acquaintance? I am terrible with names and so are many people. This is supposed to be used to authenticate you. So you have to be able to answer the questions before you can log in.
 
 **Logic Questions**
 
-This is what textcaptcha uses. Simple logic questions designed for the intelligence of a seven year old child. These are more accessible than image and textual image recognition, but they can take longer than image recognition to answer. The questions are usually language specific also, usually targeting the English language.
+This is what textcaptcha uses. Simple logic questions designed for the intelligence of a seven year old child. These are more accessible than image and textual image recognition, but they can take longer than image recognition to answer, unless the user is visually impared. The questions are usually language specific also, usually targeting the English language.
 
 **User Interaction**
 
 This is a little like image recognition. Users have to perform actions that virtual intelligence can not work out... yet. Like dragging a slider a certain number of notches.  
-If an offering gets popular, creating some code to perform the action may not be that hard and would definitely be worth the effort.  
+If an offering gets popular, creating some code to perform the action may not be that hard and would definitely be worth the effort for bot creators.  
 This is obviously not going to work for the visually impaired or for people with handicapped motor skills.
 
 &nbsp;
@@ -2602,23 +2605,26 @@ In NPM land, as usual there are many options to choose from. The following were 
 * [node-captcha](https://www.npmjs.com/package/node-captcha) Depends on canvas. By the look of the package this is another text recognition in a generated image.
 * [re-captcha](https://www.npmjs.com/package/re-captcha) was one of the first captcha offerings, created at the Carnegie Mellon University by Luis von Ahn, Ben Maurer, Colin McMillen, David Abraham and Manuel Blum who invented the term captcha. Google later acquired it in September 2009. recaptcha is a text recognition captcha that uses scanned text that optical character recognition (OCR) technology has failed to interpret, which has the added benefit of helping to digitise text for The New York Times and Google Books.  
 ![](images/reCaptcha.jpg)  
-* [sweetcaptcha](https://www.npmjs.com/package/sweetcaptcha) uses the sweetcaptcha cloud service of which you must abide by their terms and conditions, requires another node package, and requires some integration work. sweetcaptcha is an image recognition type of captcha.
+* [sweetcaptcha](https://www.npmjs.com/package/sweetcaptcha) uses the sweetcaptcha cloud service of which you must abide by their terms and conditions, requires another node package, and requires some integration work. sweetcaptcha is an image recognition type of captcha.  
+![](sweetcaptcha.jpg)
 * [textcaptcha](http://textcaptcha.com/) is a logic question captcha relying on an external service for the questions and md5 hashes of the correct lower cased answers. This looks pretty simple to set up, but again expects your users to use their brain on things they should not have to.
 
 &nbsp;
 
-I did some more research and worked out why they didn't feel like a good fit. It pretty much came down to user experience. Why should genuine users, customers of your web app be disadvantaged by having to jump through hoops because you have decided you want to stop bots spamming you? Would it not make more sense to make life harder for the bots rather than for your genuine users?
+I did some more research and worked out why the above types and offerings didn't feel like a good fit. It pretty much came down to user experience. Why should genuine users/customers of your web application be disadvantaged by having to jump through hoops because you have decided you want to stop bots spamming you? Would it not make more sense to make life harder for the bots rather than for your genuine users?
 
 Some other considerations I had. Ideally I wanted a simple solution requiring few or ideally no external dependencies, no JavaScript required, no reliance on the browser or anything out of my control, no images and it definitely should not cost any money.
 
 ##### Alternative approaches
 
-* Services like Disqus can be good for commenting. Obviously the comments are all stored somewhere in the cloud out of your control and this is an external dependency. For simple text input, this is probably not what you want. Similar services such as all the social media authentication services can take things a bit too far I think. They remove freedoms from your users. Why should your users be disadvantaged by leaving a comment or posting a message on your web app? Disqus tracks users activities from hosting website to website whether you have an account, are are logged in or not. Any information they collect such as IP address, web browser details, installed add-ons, referring pages and exit links may be disclosed to any third party. When this data is aggregated it is useful for de-anonymising users. If users choose to block the Disqus script, the comments are not visible. Disqus has also published its registered users entire commenting histories, along with a list of connected blogs and services on publicly viewable user profile pages. Disqus also engage in add targeting and blackhat SEO techniques from the websites in which it is installed.
-* Services like Akismet and Mollom which take user input and analyse for spam signatures. Mollom sometimes presents a captcha if it is unsure. These two services learn from their mistakes if they make something as spam and you unmark it, but of course you are going to have to be watching for that. Matt Mullenweg created Akismet so that his mother could blog in safety. "_His first attempt was a JavaScript plugin which modified the comment form and hid fields, but within hours of launching it, spammers downloaded it, figured out how it worked, and bypassed it. This is a common pitfall for anti-spam plugins: once they get traction_". My advice to this is not to use a common plugin, but to create something custom. I discuss this soon.
+* Services like Disqus can be good for commenting. Obviously the comments are all stored somewhere in the cloud out of your control and this is an external dependency. For simple text input, this is probably not what you want. Similar services such as all the social media authentication services can take things a bit too far I think. They remove freedoms from your users. Why should your users be disadvantaged by leaving a comment or posting a message on your web application? Disqus tracks users activities from hosting website to website whether you have an account, are logged in or not. Any information they collect such as IP address, web browser details, installed add-ons, referring pages and exit links may be disclosed to any third party. When this data is aggregated it is useful for de-anonymising users. If users choose to block the Disqus script, the comments are not visible. Disqus has also published its registered users entire commenting histories, along with a list of connected blogs and services on publicly viewable user profile pages. Disqus also engage in add targeting and blackhat SEO techniques from the websites in which their script is installed.
+* Services like Akismet and Mollom which take user input and analyse for spam signatures. Mollom sometimes presents a captcha if it is unsure. These two services learn from their mistakes if they mark something as spam and you unmark it, but of course you are going to have to be watching for that. Matt Mullenweg created Akismet so that his mother could blog in safety. "_His first attempt was a JavaScript plugin which modified the comment form and hid fields, but within hours of launching it, spammers downloaded it, figured out how it worked, and bypassed it. This is a common pitfall for anti-spam plugins: once they get traction_". My advice to this is not to use a common plugin, but to create something custom. I discuss this soon.
 
 The above solutions are excellent targets for creating exploits that will have a large pay off due to the fact that so many websites are using them. There are exploits discovered for these services regularly.
 
-##### Still not cutting it.
+##### Still not cutting it:
+
+&nbsp;
 
 "_Given the fact that many clients count on conversions to make money, not receiving 3.2% of those conversions could put a dent in sales.  Personally, I would rather sort through a few SPAM conversions instead of losing out on possible income._"
 
@@ -2626,15 +2632,13 @@ The above solutions are excellent targets for creating exploits that will have a
 
 "_Spam is not the user’s problem; it is the problem of the business that is providing the website. It is arrogant and lazy to try and push the problem onto a website’s visitors._"
 
-> Tim Kadlec: Death to Captchas
+> Tim Kadlec: [Death to Captchas](http://timkadlec.com/2011/01/death-to-captchas/)
 
-According to studies, Captchas just do not cut it.
-
-##### User Time Expenditure
+##### User Time Expenditure:
 
 Recording how long it takes from fetch to submit. This is another technique, in which the time is measured from fetch to submit. For example if the time span is under five seconds it is more than likely a bot, so handle the message accordingly.
 
-##### Bot Pot
+##### Bot Pot:
 
 Spamming bots operating on custom mechanisms will in most cases just try, then move on. If you decide to use one of the common offerings from above, exploits will be more common, depending on how wide spread the offering is. This is one of the cases where going custom is a better option. Worse case is you get some spam and you can modify your technique, but you get to keep things simple, tailored to your web application, your users needs, no external dependencies and no monthly fees. This is also the simplest technique and requires very little work to implement.
 
@@ -2649,17 +2653,21 @@ This is so simple, does not get in the way of your users, yet very effective at 
 
 Client side:
 
-{title="", linenos=off, lang=CSS}
+{title="CSS", linenos=off, lang=CSS}
     form .bot-pot {
        display: none;
     }
 
-{title="", linenos=off, lang=HTML}
+{title="HTML", linenos=off, lang=HTML}
     <form>
+       <!--...-->
        <div><input type="text" name="bot-pot" class="bot-pot"></div>
+       <!--...-->
     </form>
 
-Server side: This is also shown above in a larger example in the [Lack of Input Validation, Filtering and Sanitisation](#web-applications-countermeasures-lack-of-input-validation-filtering-and-sanitisation-generic-example-in-javascript-and-nodejs) section. I show the validation code middle ware of the route on line 28 below. The validation is performed on line 14
+Server side:
+
+This is also shown above in a larger example in the [Lack of Input Validation, Filtering and Sanitisation](#web-applications-countermeasures-lack-of-input-validation-filtering-and-sanitisation-generic-example-in-javascript-and-nodejs) section. I show the validation code middle ware of the route on line 28 below. The validation is performed on line 14
 
 {title="routes/home.js", linenos=on, lang=JavaScript}
     //...

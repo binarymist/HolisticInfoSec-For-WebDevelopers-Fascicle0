@@ -101,9 +101,6 @@ The following books have been influential for me and the content from the People
 
 [http://stackoverflow.com/questions/8472/practical-non-image-based-captcha-approaches](http://stackoverflow.com/questions/8472/practical-non-image-based-captcha-approaches)
 
-
-
-
 [**Blowfish cipher**](https://en.wikipedia.org/wiki/Blowfish_(cipher))
 
 [**PBKDF2**](https://en.wikipedia.org/wiki/PBKDF2)
