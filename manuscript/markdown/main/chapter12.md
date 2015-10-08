@@ -260,6 +260,56 @@ How easy is it for you to notice:
 ### Lack of Input Validation, Filtering and Sanitisation {#web-applications-identify-risks-lack-of-input-validation-and-sanitisation}
 ![](images/ThreatTags/easy-common-average-severe.png)
 
+#### Generic
+
+The risks here are around accepting untrusted data and parsing it, rendering it, executing it or storing it verbatim to have the same performed on it at a later stage. 
+
+Untrusted territory is usually a location that is not close to your back-end executing code. If your back-end is in the cloud that you do not control, I.E. not your hardware, not your staff running it, then you have serious potential issues there as well that you may want to address. I've discussed in depth what these issues are in the previous chapters and how to mitigate the risks. Anywhere outside of your local network is untrusted. Inside your local network is semi-trusted. The amount of trust you afford depends on the relationships you have with your staff, how large your staff base is, how large your network is, how APs are managed and many of the other issues I have discussed in the previous chapters, especially Physical, IoT, Mobile, People and Network. The closer data gets to the executing back-end code, the less untrustworthy the territory should be. Of course there are many exceptions to this rule as well.
+
+So I could say, just do not trust anyone or anything, but there comes a time and a place that you have to afford trust. Just keep it as close to the back-end executing code as possible.
+
+If you parse, render or execute data that you can not trust, that is data accepted by an unknown user, whether it be through a browser, intercepting communications somewhere along untrusted territory.
+
+Below are a few techniques widely accepted that we need to use on any untrusted data before it makes its travels through your system to be stored or hydrated.
+
+##### What is Validation: {#web-applications-identify-risks-lack-of-input-validation-filtering-and-sanitisation-generic-what-is-validation}
+
+Decide what input is valid by way of a white list (list of input characters that are allowed to be received). Often each input field will have a different white list. Validation is binary, the data is either allowed to be received or not allowed. If it is not allowed, then it is rejected. This is usually not to complicated to work out what is good, what is not and thus rejected. There are a few strategies to use for white listing, such as the actual collection of characters or using regular expressions.
+
+There are other criteria that you can validate against as well, such as:
+
+* Field lengths
+* Whether or not something is required
+* Whether or not something is a specific type or in a specific format and many other criteria
+
+{title="Validation", linenos=off, lang=JavaScript}
+    // The NodeJS module express-form provides validation, filtering
+    // and some light weight sanitisation as Express middleware.
+    var form = require('express-form');
+    var fieldToValidate = form.field;
+
+    // trim is filtering.
+    fieldToValidate('name').trim().
+    // required is validation.
+    required().
+    // minLength is validation.
+    minLength(2).
+    // maxLength is validation.
+    maxLength(50).
+    // is is validation.
+    is(/^[a-zA-Z ']+$/)
+    // There is no sanitisation here.
+
+##### What is Filtering:
+
+When some data can pass through (be received) and some is captured by the filter element (thou shalt not pass).
+
+##### What is Sanitisation:
+
+Sanitisation of input data is where the input data whether it is in your white list or not is accepted and transformed into a medium that is no longer dangerous. Now it will probably go through validation first. The reason you sanitise character signatures (may be more than single characters, character combinations) not in your white list is a defence in depth strategy. The white list may change in the future due to a change in business requirements and the developer may forget to revise the sanitisation routines. Always think of any security measure as standing on its own when you create it, but standing alongside many other security measures once done.
+
+You need to know which contexts your input data will pass through in order to sanitise correctly for all potential execution contexts. This requires lateral thinking and following all execution paths. Both into and out of your application (once rehydrated), being pushed back to the client. We cover this in depth below in the ["Example in JavaScript and C#"](#web-applications-countermeasures-lack-of-input-validation-filtering-and-sanitisation-generic-example-in-javascript-and-csharp) section in the countermeasures.
+
 #### Buffer Overflows {#web-applications-identify-risks-buffer-overflows}
 
 _Todo_
@@ -370,6 +420,19 @@ _Todo_
 #### XML Injection {#web-applications-identify-risks-xml-injection}
 
 _Todo_
+
+#### Captcha
+![](images/ThreatTags/easy-verywidespread-easy-low.png)
+
+Lack of captchas are a risk, but so are captchas themselves...
+
+What is the problem here? What are we trying to stop?
+
+Bots submitting. What ever it is, whether advertising, creating an unfair advantage over real humans, link creation in attempt to increase SEO, malicious code insertion, you are more than likely not interested in accepting it.
+
+What do we not want to block?
+
+People submitting genuinely innocent input. If a person is prepared to fill out a form manually, even if it is spam, then a person can view the submission and very quickly delete the validated, filtered and possibly sanitised message.
 
 ### Management of Application Secrets {#web-applications-identify-risks-management-of-application-secrets}
 
@@ -876,44 +939,6 @@ Detail how we collect application statistics and send to graphite. Show real lif
 #### Generic
 
 Your staple practises when it comes to defending against potentially dangerous input are validation and filtering. There are cases though when the business requires that input must be accepted that is dangerous yet still valid. This is where you will need to implement sanitisation. There is a lot more research and thought involved when you need to perform sanitisation, so the first cause of action should be to confirm that the specific dangerous yet valid input is in-fact essential.
-
-##### What is Validation: {#web-applications-countermeasures-lack-of-input-validation-filtering-and-sanitisation-generic-what-is-validation}
-
-Decide what input is valid by way of a white list (list of input characters that are allowed to be received). Often each input field will have a different white list. Validation is binary, the data is either allowed to be received or not allowed. If it is not allowed, then it is rejected. This is usually not to complicated to work out what is good, what is not and thus rejected. There are a few strategies to use for white listing, such as the actual collection of characters or using regular expressions.
-
-There are other criteria that you can validate against as well, such as:
-
-* Field lengths
-* Whether or not something is required
-* Whether or not something is a specific type or in a specific format and many other criteria
-
-{title="Validation", linenos=off, lang=JavaScript}
-    // The NodeJS module express-form provides validation, filtering
-    // and some light weight sanitisation as Express middleware.
-    var form = require('express-form');
-    var fieldToValidate = form.field;
-
-    // trim is filtering.
-    fieldToValidate('name').trim().
-    // required is validation.
-    required().
-    // minLength is validation.
-    minLength(2).
-    // maxLength is validation.
-    maxLength(50).
-    // is is validation.
-    is(/^[a-zA-Z ']+$/)
-    // There is no sanitisation here.
-
-##### What is Filtering:
-
-When some data can pass through (be received) and some is captured by the filter element (thou shalt not pass).
-
-##### What is Sanitisation:
-
-Sanitisation of input data is where the input data whether it is in your white list or not is accepted and transformed into a medium that is no longer dangerous. Now it will probably go through validation first. The reason you sanitise character signatures (may be more than single characters, character combinations) not in your white list is a defence in depth strategy. The white list may change in the future due to a change in business requirements and the developer may forget to revise the sanitisation routines. Always think of any security measure as standing on its own when you create it, but standing alongside many other security measures once done.
-
-You need to know which contexts your input data will pass through in order to sanitise correctly for all potential execution contexts. This requires lateral thinking and following all execution paths. Both into and out of your application (once rehydrated), being pushed back to the client. We cover this in depth below in the ["Example in JavaScript and C#"](#web-applications-countermeasures-lack-of-input-validation-filtering-and-sanitisation-generic-example-in-javascript-and-csharp) section.
 
 **Recommendations**
 
@@ -1994,8 +2019,6 @@ To drive the development of the `Sanitisation` API, we wrote the following tests
 
 And finally the API code we used to perform the sanitisation:
 
-Simple Injector
-
 {title="Sanitisation API", linenos=on, lang=C#}
     using System;
     using System.Configuration;
@@ -2218,7 +2241,7 @@ Simple Injector
 
 As you can see, there is a lot more work on the server side than the client side.
 
-##### Example in JavaScript and NodeJS
+##### Example in JavaScript and NodeJS {#web-applications-countermeasures-lack-of-input-validation-filtering-and-sanitisation-generic-example-in-javascript-and-nodejs}
 
 A>
 A> Without sanitisation, things are a lot simpler.
@@ -2316,7 +2339,7 @@ There are many other options you can provide. I think the code is fairly self ex
        };
     }();
 
-Shifting our attention to the server side now. First up we have got the home route of the single page app. Within the home route, we have also got the `/contact` route which uses the `express-form` middleware. You can see the middleware first in action on line 80.
+Shifting our attention to the server side now. First up we have got the home route of the single page app. Within the home route, we have also got the `/contact` route which uses the `express-form` middleware. You can see the middleware first in action on line 86.
 
 {title="routes/home.js", linenos=on, lang=JavaScript}
     var logger = require('../util/logger');
@@ -2352,8 +2375,9 @@ Shifting our attention to the server side now. First up we have got the home rou
              maxLength(1000).
              is(/^[a-zA-Z0-9-_ \?.,]+$/), // Regex same as cleint side.
           fieldToValidate('subscribe-to-mailing-list').toBoolean(),
-          fieldToValidate('bot-pot').maxLength(0) // Bots love to populate everything.
-          //fieldToValidate('bot-pot').equals("")
+          // I discuss the next line of code as part of a solution to what
+          // captchas are trying to solve below in the Captcha section.
+          fieldToValidate('bot-pot').maxLength(0) // Bots love to populate everything.          
        );
     }
 
@@ -2470,14 +2494,14 @@ Now our entry point into the application. We load routes on line 30.
        );
     });
 
-As I mentioned previously in the ["What is Validation"](#web-applications-countermeasures-lack-of-input-validation-filtering-and-sanitisation-generic-what-is-validation) section, some of the libraries seem confused about the differences between the practises of validation, filtering and sanitisation. For example `express-form` has sanitisation functions that are under their ["Filter API"](https://github.com/freewil/express-form#filter-api). 
+As I mentioned previously in the ["What is Validation"](#web-applications-identify-risks-lack-of-input-validation-filtering-and-sanitisation-generic-what-is-validation) section, some of the libraries seem confused about the differences between the practises of validation, filtering and sanitisation. For example `express-form` has sanitisation functions that are under their ["Filter API"](https://github.com/freewil/express-form#filter-api). 
 `entityEncode`, `entityDecode`, even the Type Coercion functions are actually sanitisation rather than filtering.
 
 Maybe it is semantics, but `toFloat`, `toInt`, ... `ifNull` are sanitisation functions.
 
 `trim`, ... is filtering, but `toLower`, ... is sanitisation again. These functions listed in the documentation under the Filter API should be in their specific sections.
 
-Refer to the section [above](#web-applications-countermeasures-lack-of-input-validation-filtering-and-sanitisation-generic-what-is-validation) for a refresher on validation, filtering and sanitisation if you need it.
+Refer to the section [above](#web-applications-identify-risks-lack-of-input-validation-filtering-and-sanitisation-generic-what-is-validation) for a refresher on validation, filtering and sanitisation if you need it.
 
 ##### Other things to think about
 
@@ -2534,6 +2558,141 @@ _Todo_
 #### XML Injection {#web-applications-countermeasures-xml-injection}
 
 _Todo_
+
+#### Captcha
+![](images/ThreatTags/PreventionVERYEASY.png)
+
+##### Types
+
+**Text Recognition**
+
+recaptcha uses this technique. See below for details.
+
+**Image Recognition**
+
+Uses images which users have to perform certain operations on, like dragging them to another image. For example: "Please drag all cat images to the cat mat.", or "Please select all images of things that dogs eat." sweetcaptcha is an example of this type of captcha. This type completely rules out the visually impaired users.
+
+**Friend Recognition**
+
+Pioneered by... you guessed it. Facebook. This type of captcha focusses on human hackers, the idea being that they will not know who your friends are. 
+
+"_Instead of showing you a traditional captcha on Facebook, one of the ways we may help verify your identity is through social authentication. We will show you a few pictures of your friends and ask you to name the person in those photos. Hackers halfway across the world might know your password, but they don't know who your friends are._"
+
+I disagree with that statement. A determined hacker will usually be able to find out who your friends are. There is another problem, do you know who all of your friends are? Every acquaintance? This is supposed to be used to authenticate you. So you have to be able to answer the questions before you can log in.
+
+**Logic Questions**
+
+This is what textcaptcha uses. Simple logic questions designed for the intelligence of a seven year old child. These are more accessible than image and textual image recognition, but they can take longer than image recognition to answer. The questions are usually language specific also, usually targeting the English language.
+
+**User Interaction**
+
+This is a little like image recognition. Users have to perform actions that virtual intelligence can not work out... yet. Like dragging a slider a certain number of notches.  
+If an offering gets popular, creating some code to perform the action may not be that hard and would definitely be worth the effort.  
+This is obviously not going to work for the visually impaired or for people with handicapped motor skills.
+
+&nbsp;
+
+In NPM land, as usual there are many options to choose from. The following were the offerings I evaluated. None of which really felt like a good fit:
+
+##### Offerings
+
+* total-captcha. Depends on node-canvas. Have to install cairo first, but why? No explanation. Very little of anything here. Move on. How does this work? Do not know. What type is it? Presume text recognition.
+* [easy-captcha](https://www.npmjs.com/package/easy-captcha) is a text recognition offering generating images.
+* [simple-captcha](https://www.npmjs.com/package/simple-captcha) looks like another text recognition offering. I really do not want to be writing image files to my server.
+* [node-captcha](https://www.npmjs.com/package/node-captcha) Depends on canvas. By the look of the package this is another text recognition in a generated image.
+* [re-captcha](https://www.npmjs.com/package/re-captcha) was one of the first captcha offerings, created at the Carnegie Mellon University by Luis von Ahn, Ben Maurer, Colin McMillen, David Abraham and Manuel Blum who invented the term captcha. Google later acquired it in September 2009. recaptcha is a text recognition captcha that uses scanned text that optical character recognition (OCR) technology has failed to interpret, which has the added benefit of helping to digitise text for The New York Times and Google Books.  
+![](images/reCaptcha.jpg)  
+* [sweetcaptcha](https://www.npmjs.com/package/sweetcaptcha) uses the sweetcaptcha cloud service of which you must abide by their terms and conditions, requires another node package, and requires some integration work. sweetcaptcha is an image recognition type of captcha.
+* [textcaptcha](http://textcaptcha.com/) is a logic question captcha relying on an external service for the questions and md5 hashes of the correct lower cased answers. This looks pretty simple to set up, but again expects your users to use their brain on things they should not have to.
+
+&nbsp;
+
+I did some more research and worked out why they didn't feel like a good fit. It pretty much came down to user experience. Why should genuine users, customers of your web app be disadvantaged by having to jump through hoops because you have decided you want to stop bots spamming you? Would it not make more sense to make life harder for the bots rather than for your genuine users?
+
+Some other considerations I had. Ideally I wanted a simple solution requiring few or ideally no external dependencies, no JavaScript required, no reliance on the browser or anything out of my control, no images and it definitely should not cost any money.
+
+##### Alternative approaches
+
+* Services like Disqus can be good for commenting. Obviously the comments are all stored somewhere in the cloud out of your control and this is an external dependency. For simple text input, this is probably not what you want. Similar services such as all the social media authentication services can take things a bit too far I think. They remove freedoms from your users. Why should your users be disadvantaged by leaving a comment or posting a message on your web app? Disqus tracks users activities from hosting website to website whether you have an account, are are logged in or not. Any information they collect such as IP address, web browser details, installed add-ons, referring pages and exit links may be disclosed to any third party. When this data is aggregated it is useful for de-anonymising users. If users choose to block the Disqus script, the comments are not visible. Disqus has also published its registered users entire commenting histories, along with a list of connected blogs and services on publicly viewable user profile pages. Disqus also engage in add targeting and blackhat SEO techniques from the websites in which it is installed.
+* Services like Akismet and Mollom which take user input and analyse for spam signatures. Mollom sometimes presents a captcha if it is unsure. These two services learn from their mistakes if they make something as spam and you unmark it, but of course you are going to have to be watching for that. Matt Mullenweg created Akismet so that his mother could blog in safety. "_His first attempt was a JavaScript plugin which modified the comment form and hid fields, but within hours of launching it, spammers downloaded it, figured out how it worked, and bypassed it. This is a common pitfall for anti-spam plugins: once they get traction_". My advice to this is not to use a common plugin, but to create something custom. I discuss this soon.
+
+The above solutions are excellent targets for creating exploits that will have a large pay off due to the fact that so many websites are using them. There are exploits discovered for these services regularly.
+
+##### Still not cutting it.
+
+"_Given the fact that many clients count on conversions to make money, not receiving 3.2% of those conversions could put a dent in sales.  Personally, I would rather sort through a few SPAM conversions instead of losing out on possible income._"
+
+> Casey Henry: [Captchas' Effect on Conversion Rates](https://moz.com/blog/captchas-affect-on-conversion-rates)
+
+"_Spam is not the user’s problem; it is the problem of the business that is providing the website. It is arrogant and lazy to try and push the problem onto a website’s visitors._"
+
+> Tim Kadlec: Death to Captchas
+
+According to studies, Captchas just do not cut it.
+
+##### User Time Expenditure
+
+Recording how long it takes from fetch to submit. This is another technique, in which the time is measured from fetch to submit. For example if the time span is under five seconds it is more than likely a bot, so handle the message accordingly.
+
+##### Bot Pot
+
+Spamming bots operating on custom mechanisms will in most cases just try, then move on. If you decide to use one of the common offerings from above, exploits will be more common, depending on how wide spread the offering is. This is one of the cases where going custom is a better option. Worse case is you get some spam and you can modify your technique, but you get to keep things simple, tailored to your web application, your users needs, no external dependencies and no monthly fees. This is also the simplest technique and requires very little work to implement.
+
+Spam bots:
+
+* Love to populate form fields
+* Usually ignore CSS. For example, if you have some CSS that hides a form field and especially if the CSS is not inline on the same page, they will usually fail at realising that the field is not supposed to be visible.
+
+So what we do is create a field that is not visible to humans and is supposed to be kept empty. On the server once the form is submitted, we check that it is still empty. If it is not, then we assume a bot has been at it.
+
+This is so simple, does not get in the way of your users, yet very effective at filtering bot spam.
+
+Client side:
+
+{title="", linenos=off, lang=CSS}
+    form .bot-pot {
+       display: none;
+    }
+
+{title="", linenos=off, lang=HTML}
+    <form>
+       <div><input type="text" name="bot-pot" class="bot-pot"></div>
+    </form>
+
+Server side: This is also shown above in a larger example in the [Lack of Input Validation, Filtering and Sanitisation](#web-applications-countermeasures-lack-of-input-validation-filtering-and-sanitisation-generic-example-in-javascript-and-nodejs) section. I show the validation code middle ware of the route on line 28 below. The validation is performed on line 14
+
+{title="routes/home.js", linenos=on, lang=JavaScript}
+    //...
+    
+    function home(req, res) {
+      res.redirect('/');
+    }
+    
+    function index(req, res) {
+       res.render('home', { title: 'Home', id: 'home', brand: 'your brand' });
+    }
+    
+    function validate() {
+       return form(
+          // Bots love to populate everything.
+          fieldToValidate('bot-pot').maxLength(0)
+       );
+    }
+    
+    function contact(req, res) {
+       
+       if(req.form.isValid)
+          // We know the bot-pot is of zero length. So no bots.
+       //...
+    }
+    
+    module.exports = function (app) {
+       app.get('/', index);
+       app.get('/home', home); 
+       app.post('/contact', validate(), contact);
+    };
+
+So as you can see, a very simple solution. You could even consider combining the above two techniques.
 
 ### Management of Application Secrets {#web-applications-countermeasures-management-of-application-secrets}
 
@@ -3028,6 +3187,8 @@ _Todo_
 
 %% http://www.slideshare.net/jtmelton/appsensor-near-real-time-event-detection-and-response
 
+%% JohnMelton-AppSensor.mp3 from OWASP 24/7 also on soundcloud.
+
 ## 4. SSM Risks that Solution Causes
 
 ### Lack of Visibility
@@ -3042,7 +3203,11 @@ Instrumentation will have to be placed in your code. Again another excellent can
 
 ### Lack of Input Validation, Filtering and Sanitisation
 
-_Todo_
+You may have to invest considerable time yourself to gain good understanding into what can go wrong, where, how and how to mitigate it happening. Be inquisitive and experiment.
+
+There will be more code in your systems. More code is more code that can have faults.
+
+Be very careful with sanitisation. Try first to use well tested and battle hardened libraries. Resist going out on your own to modify or create sanitisation routines. They are very easy to miss edge cases and small spots that your untrusted data may end up in that you did not anticipate, thus leaving you susceptible to attack.
 
 #### Buffer Overflows
 
@@ -3083,6 +3248,16 @@ _Todo_
 #### XML Injection
 
 _Todo_
+
+#### Captcha
+
+Bots may/will get smarter and start reading and thinking for themselves. It is probably worth not crossing that bridge until it arrives. This will not stop humans spamming, but neither will any other captcha, unless they also stop genuine users, which according to the studies mentioned in the countermeasures section happens very often.
+
+If you decide to go with one of the captcha options, there is the risk of:
+
+1. Losing customers or potential customers
+2. Simply annoying the people that you value
+3. Creating/using a captcha that does not suite the capabilities of the legitimate users likely to interact with your web application
 
 ### Management of Application Secrets
 
@@ -3186,7 +3361,9 @@ Same goes for dark cockpit type monitoring. Find a tool that you find working wi
 
 ### Lack of Input Validation, Filtering and Sanitisation
 
-_Todo_
+If you can tighten up your validation and filtering, then less work will be required around sanitisation and that is where most of the effort (effort ≈ time) seems to go. This often reduces the end user experience though.
+
+Once you fully understand the dangers you'll be able to make these decisions easier.
 
 #### Buffer Overflows
 
@@ -3227,6 +3404,12 @@ _Todo_
 #### XML Injection
 
 _Todo_
+
+#### Captcha
+
+The proposed solution costs very little time to implement, is simple, has no external dependencies, is not circumvented if JavaScript is disabled, in fact is not dependant on the browser or what is in it at all. Humans are not disadvantaged.
+
+It does mean that any spam submitted by a real human will have to be moderated by a real human, although this usually takes less time than the human submitting the spam. For me, this is a trade-off worth taking to provide an optimal user experience for my customers/clients.
 
 ### Management of Application Secrets
 

@@ -95,6 +95,13 @@ The following books have been influential for me and the content from the People
 **express-form**  
 [https://github.com/freewil/express-form](https://github.com/freewil/express-form)
 
+**Recording and testing user time expenditure**
+
+[http://www.smashingmagazine.com/2011/03/in-search-of-the-perfect-captcha/#recording-user-time-expenditure](http://www.smashingmagazine.com/2011/03/in-search-of-the-perfect-captcha/#recording-user-time-expenditure)
+
+[http://stackoverflow.com/questions/8472/practical-non-image-based-captcha-approaches](http://stackoverflow.com/questions/8472/practical-non-image-based-captcha-approaches)
+
+
 
 
 [**Blowfish cipher**](https://en.wikipedia.org/wiki/Blowfish_(cipher))

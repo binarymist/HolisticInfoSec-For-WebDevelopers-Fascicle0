@@ -8,6 +8,8 @@ Some resources to start with:
 https://bluebox.com/business/bluebox-and-nist-addressing-mobile-threats/  
 https://media.blackhat.com/bh-us-12/Briefings/C_Miller/BH_US_12_Miller_NFC_attack_surface_WP.pdf
 
+%% https://www.owasp.org/index.php/OWASP_Mobile_Security_Project
+
 %% I will probably use [NetHunter](https://www.kali.org/kali-linux-nethunter/) to get up and running quickly on a mobile device.
 
 _Todo_
