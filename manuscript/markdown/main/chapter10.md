@@ -651,10 +651,10 @@ You can check the CRL yourself by just browsing to the CRL distribution point. T
 {title="", linenos=off, lang=bash}
     openssl crl -inform DER -text -in evcal-g5.crl
 
-`DER` is the encoding
-`-inform` specifies the input format
-`-text` specifies the output format
-`-in` specifies the CRL file you want printed
+`DER` is the encoding  
+`-inform` specifies the input format  
+`-text` specifies the output format  
+`-in` specifies the CRL file you want printed  
 
 So what's happening with the CRLs now is that they are getting larger and larger because more and more entities are using certificates. Now the certificates serial number only stays on the CRL until shortly after the certificate expires, at which point the serial number is removed from the CRL, but even so, because there are more and more certificates being created, the CRLs are getting larger. Of course we only care about one certificates serial number. So the browser fetches this entire CRL file just to find one serial number.
 
@@ -670,7 +670,8 @@ Conscientious CA's segment their CRLs, so that when you make a request to the CR
 
 &nbsp;
 
-The next stage of the evolution was [Online Certificate Status Protocol (OCSP)](http://en.wikipedia.org/wiki/Online_Certificate_Status_Protocol) which came about in [1998](http://tools.ietf.org/html/rfc6960#page-31). Details can be found in the [specification](http://tools.ietf.org/html/rfc6960). So with OCSP, another extension was added to certificates. Authority Information Access (AIA), whos value contains amongst other things `OCSP Responder: URI: http://<ocsp.specific-certificate-authorities-domain.com>`
+The next stage of the evolution was [Online Certificate Status Protocol (OCSP)](http://en.wikipedia.org/wiki/Online_Certificate_Status_Protocol) which came about in [1998](http://tools.ietf.org/html/rfc6960#page-31). Details can be found in the [specification](http://tools.ietf.org/html/rfc6960). So with OCSP, another extension was added to certificates. Authority Information Access (AIA), whos value contains amongst other things  
+`OCSP Responder: URI: http://<ocsp.specific-certificate-authorities-domain.com>`
 
 So with OCSP, instead of querying the CRL distribution point and getting back a potentially large list of certificate serial number revocations, the browser can query the OCSP for the specific single certificates serial number, asking whether it's still valid.
 
@@ -737,8 +738,8 @@ So how this now plays out: The browser on its first request to the web server, t
 
 There are two ways that the "must staple" are being looked at for solution. The [OCSP Must-Staple](https://casecurity.org/2014/06/18/ocsp-must-staple/) section of the article with the same name on the casecurity.org blog provides details.
 
-1. In the certificate as discussed above
-2. An interim solution that TBH, doesn't look like much of a solution to me. It is to add a `Must-Staple` header to the response, which of course can easily be stripped out by a MitM on the very first response. This solution is very similar to HSTS that I discussed [above](#network-countermeasures-tls-downgrade-hsts). Of course if you want similar behaviour to the [HSTS Preload](#network-countermeasures-tls-downgrade-hsts-preload) also discussed above, then the "must staple" must be part of the certificate.
+1. [In the certificate](http://tools.ietf.org/html/draft-hallambaker-tlssecuritypolicy-03) as discussed above
+2. An [interim solution](https://wiki.mozilla.org/CA:ImprovingRevocation#OCSP_Must-Staple) that TBH, doesn't look like much of a solution to me. It is to add a `Must-Staple` header to the response, which of course can easily be stripped out by a MitM on the very first response. This solution is very similar to HSTS that I discussed [above](#network-countermeasures-tls-downgrade-hsts). Of course if you want similar behaviour to the [HSTS Preload](#network-countermeasures-tls-downgrade-hsts-preload) also discussed above, then the "must staple" must be part of the certificate.
 
 As far as I know Firefox and Chrome are both working toward implementing Must-Staple in certificates, but I haven't seen or heard anything yet for Internet Explorer.
 
