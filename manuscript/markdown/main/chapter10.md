@@ -743,22 +743,6 @@ There are two ways that the "must staple" are being looked at for solution. The 
 
 As far as I know Firefox and Chrome are both working toward implementing Must-Staple in certificates, but I haven't seen or heard anything yet for Internet Explorer.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ### Firewall/Router {#network-countermeasures-firewall-router}
 I do not trust commercial proprietary routers. I have seen too many vulnerabilities in them to take them seriously for any network I have control of. Yes open source hardware and software routers can and do have vulnerabilities, but they can be patched. There are a few good choices here. Some of which also come with enterprise support if you want it. This means the software and the hardware, if you choose to obtain the hardware as well is open to inspection. The vendor also supplies regular firmware updates which is crucial for there to be any hope of having a system that in some way resembles a device that places a priority on your networks security.
 

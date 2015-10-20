@@ -487,6 +487,12 @@ Many vulnerabilities can hide in these external dependencies. It is not just one
 Running install or any scripts from non local sources without first downloading them and inspecting can destroy or modify your and any other reachable systems, send sensitive information to an attacker, or any number
 of other criminal activities.
 
+### Insecure Direct Object References
+
+_Todo_
+
+%% Todo: Spider my website. Document how to. Node Goat also had some good exercises around this.
+
 ### Lack of Active Automated Prevention
 
 _Todo_
@@ -3172,6 +3178,10 @@ You could of course just list all of your projects and global packages and check
 
 For **.Net developers**, there is the likes of [OWASP **SafeNuGet**](https://github.com/OWASP/SafeNuGet).
 
+### Insecure Direct Object References
+
+_Todo_
+
 ### Lack of Active Automated Prevention
 
 #### Web Application Firewall (WAF) {#web-applications-countermeasures-lack-of-active-automated-prevention-waf}
@@ -3357,6 +3367,10 @@ Maintaining a list of the approved libraries really needs to be a process that d
 
 Using the likes of pre-commit hooks, the other tooling options detailed in the [Countermeasures](#web-applications-countermeasures-consuming-free-and-open-source) section and creating scripts to do most of the work for us is probably going to be a good option to start with.
 
+### Insecure Direct Object References
+
+_Todo_
+
 ### Lack of Active Automated Prevention
 
 #### Web Application Firewall (WAF)
@@ -3470,6 +3484,10 @@ _Todo_
 The process has to be streamlined so that it does not get in the developers way. A good way to do this is to ask the developers how it should be done. They know what will get in their way. In order for the process to be a success, the person(s) mandating it will need to get solid buy-in from the people using it (the developers).
 
 The idea of setting up a process that notifies at least the Development Team if a library they want to use has known security defects, needs to be pitched to all stakeholders (developers, product owner, even external stakeholders) the right way. It needs to provide obvious benefit and not make anyones life harder than it already is. Everyone has their own agendas. Rather than fighting against them, include consideration for them in your pitch. I think this sort of a pitch is actually reasonably easy if you keep these factors in mind.
+
+### Insecure Direct Object References
+
+_Todo_
 
 ### Lack of Active Automated Prevention
 
