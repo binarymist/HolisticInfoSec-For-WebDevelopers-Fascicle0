@@ -611,6 +611,153 @@ In order to have your domain added to the browsers preload list, submit it [here
 
 [OCSP Must-Staple](https://github.com/binarymist/HolisticInfoSec-For-WebDevelopers/wiki/CertificateRevocation#initiative-4-fix-to-the-ocsp-stapling-problem) is very similar to HSTS Preload, but at the X.509 certificate level.
 
+#### X.509 Certificate Revocation Evolution
+
+This is a condensed version of the evolution.
+
+1. Server generates a public key pair
+2. Keeps the private key for itself
+3. Gives the public key and some identifying information (domain, etc) to the Certificate Authority (CA) for them to bind to the certificate
+
+End user browses to your website and they get the certificate from your server. The browser verifies that the URL it's fetched matches one of the URLs in the certificate. Certificates can have wild-cards or a collection of specific sub-domains.
+
+All of the CAs now use intermediate certificates to sign your certificate, so that they can keep their root certificate off line. Similar to what I did with GPG in my [blog post](http://blog.binarymist.net/2015/01/31/gnupg-key-pair-with-sub-keys/#master-key-pair-generation). This way if their main signing certificate is compromised, they can revoke it and create another one from their root certificate. You can see the root, intermediate and your certificate as part of the certificate chain when you check the details of a certificate in your browser.
+
+What happened with Heartbleed is that the server's private keys were able to be located and stolen from RAM before they expired, so those keys had to be revoked. So the attackers that now had the private keys could set-up a cloned website with the stolen private key(s), then divert traffic to the cloned website by:
+
+* [Phishing](#people-identify-risks-phishing)
+* [DNS spoofing](#network-identify-risks-spoofing-dns)
+* [ARP spoofing](#network-identify-risks-spoofing-arp)
+* Many other ways
+
+Users would be non the wiser.
+
+##### Initiative 1: Certification Revocation List (CRL)
+
+&nbsp;
+
+When you find that your private key has been compromised or you can no longer trust that it's still secret.  
+You tell the CA that created your certificate and bound your public key and identifying information to it.  
+The CA then adds the serial number of the key your requesting to be revoked to a list they publish.  
+Now bound into each certificate, including the one you just requested revocation of, is a URL to a revocation list that will contain your certificates serial number if it's ever revoked.
+This URL is known as the [Certification Revocation List (CRL)](http://en.wikipedia.org/wiki/Revocation_list) distribution point. Plenty of details can be found in the [specification](http://tools.ietf.org/html/rfc5280).
+
+So, the browser **trusts** the certificate **by default**.  
+If the browser decides to check the CRL and finds your revoked certificates serial number then it may issue a warning to you.  
+The certificate can't be tampered with because if it is, then the signature that the browser knows about wouldn't match that of the certificate being presented by the web server.
+
+You can check the CRL yourself by just browsing to the CRL distribution point. Then run the following command on the downloaded file to read it as it's binary.
+
+{title="", linenos=off, lang=bash}
+    openssl crl -inform DER -text -in evcal-g5.crl
+
+`DER` is the encoding
+`-inform` specifies the input format
+`-text` specifies the output format
+`-in` specifies the CRL file you want printed
+
+So what's happening with the CRLs now is that they are getting larger and larger because more and more entities are using certificates. Now the certificates serial number only stays on the CRL until shortly after the certificate expires, at which point the serial number is removed from the CRL, but even so, because there are more and more certificates being created, the CRLs are getting larger. Of course we only care about one certificates serial number. So the browser fetches this entire CRL file just to find one serial number.
+
+So when you go to fetch a web page over TLS, before the browser will do so, it fetches the certificate from your web server, then downloads the CRL, then looks for your certificates serial number just in case it's on the list. All this is done before any page is fetched over TLS.
+
+CRLs are generally published daily with a week expiration, you can see this in the CRL that you download. This of course allows a window of opportunity where the browser could still be using a cached CRL even though a new CRL is available from the distribution point with a revoked certificate.
+
+This wasn't such a big deal in the early days of the internet when there were so few CAs and in many cases the CRL that your browser had already downloaded was useful for many websites that you would visit.
+
+Conscientious CA's segment their CRLs, so that when you make a request to the CRL distribution point you get back a small list of serial numbers for revoked certificates.
+
+##### Initiative 2: Online Certificate Status Protocol (OCSP)
+
+&nbsp;
+
+The next stage of the evolution was [Online Certificate Status Protocol (OCSP)](http://en.wikipedia.org/wiki/Online_Certificate_Status_Protocol) which came about in [1998](http://tools.ietf.org/html/rfc6960#page-31). Details can be found in the [specification](http://tools.ietf.org/html/rfc6960). So with OCSP, another extension was added to certificates. Authority Information Access (AIA), whos value contains amongst other things `OCSP Responder: URI: http://<ocsp.specific-certificate-authorities-domain.com>`
+
+So with OCSP, instead of querying the CRL distribution point and getting back a potentially large list of certificate serial number revocations, the browser can query the OCSP for the specific single certificates serial number, asking whether it's still valid.
+
+There have been some proposals to OCSP so that instead of having certificates lasting years, they could instead last only a few days and it be the responsibility of the web server to update the CA with a new certificate every few days. If it failed to do that, then the CA would be presenting an expired certificate, which of course the browser would produce a warning to the user for.  
+The problem with this initiative was that we have long standing reliance on some long-lived certificates with the likes of [**pinning**](http://en.wikipedia.org/wiki/HTTP_Public_Key_Pinning). So this short lived type of certificate proposal didn't stick. You can read more about pinning on the [OWASP Certificate and Public Key Pinning](https://www.owasp.org/index.php/Certificate_and_Public_Key_Pinning) page and also the [specification](https://tools.ietf.org/html/draft-ietf-websec-key-pinning-21).
+
+Details of what An OCSP request should look like can be seen in 2.1 of the [OCSP specification](http://tools.ietf.org/html/rfc6960#section-2.1). There are plenty of examples around to follow.
+
+Details of what the OCSP response will look like can be seen in 2.2 of the [OCSP specification](http://tools.ietf.org/html/rfc6960#section-2.2). Notable items of the response are:
+
+* Valid certificate status of `good` | `revoked` | `unknown`
+* Response validity interval (How long the response is valid before the OCSP must be re-queried
+* `thisUpdate`
+* `nextUpdate`
+
+The `thisUpdate` and the `nextUpdate` define the recommended validity interval. Similar to the same fields in the CRLs, but I think the interval with OCSP is usually much shorter, as the browser only has to send requests for single certificates.
+
+##### One of the Big Problems
+
+&nbsp;
+
+So all CAs now support both CRLs and OCSP. One problem that we've seen is that some responses for both CRLs and OCSP have been very slow or non-existent. In which case the browsers have just continued to trust the validity of the certificate. So if the revocation response can be blocked by an attacker, then the browser just continues to trust a certificate that was valid last time it managed to get a response of `good`.
+
+##### Initiative 3: Welcome to [OCSP Stapling](http://en.wikipedia.org/wiki/OCSP_stapling)
+
+&nbsp;
+
+In the case of OCSP stapling, the web server is responsible for making the OCSP requests to the CA at regular intervals (not per client request)(generally several times per day) rather than the browser. The web server then "staples" the signed time-stamped OCSP response (which generally expires daily) to the certificate supplied as part of the response from the web server to the browser.
+
+The stapled response can't be forged as it must be signed directly by the CA. If the client does not receive a stapled response from the web server, it just contacts the OCSP itself. If the client receives an invalid stapled response, the connection will be aborted.
+
+If no `good` response is received, then the certificate will be considered valid until the last signed OCSP response that was received (if one was) expires.
+
+This is a much better solution. Clients can now have assurance that the certificate is currently valid or was valid at some point within the last few hours, which is a much smaller time window for an attacker.
+
+The client no longer needs to contact DNS for the CAs IP address, nor does it have to contact the CA to fetch either a CRL or/and make a OCSP request, as the web server has already done it before the client makes a request to the web server. All the web server needs to do on each request from the client is staple the OCSP response to it's response. So performance is improved significantly.
+
+You can read the specification for OCSP stapling (officially known as the TLS "Certificate Status Request" extension in the [TLS Extensions: Extensions Definitions](http://tools.ietf.org/html/rfc6066#section-8).
+
+OCSP stapling has been available since at least 2003. Windows Server 2003 onwards all have it enabled by default. Most of the other web servers have it disabled by default.
+
+For the sake of compatibility the browser must initiate the request for stapling. This happens after the transports TCP connection is established. Next the presentations TLS.
+
+Most web servers currently on the internet don't support OCSP stapling, because it's off by default on most non windows servers.
+
+The following websites will tell you if a website supports OCSP, CRL, OCSP stapling and lots of other goodies:
+
+* [digicert](https://www.digicert.com/help/)
+* [ssl labs](https://www.ssllabs.com/ssltest/)
+
+##### OCSP Stapling Problem
+
+&nbsp;
+
+The client doesn't know whether the web server supports OCSP stapling or not. When the client asks if it does, the legitimate web server may support stapling, but the fraudulent web site that the client may be dealing with just says "no I don't support stapling". So the browser falls back to using OCSP or CRL.
+
+##### Initiative 4: Fix to the OCSP Stapling Problem
+
+&nbsp;
+
+[OCSP Must-Staple](https://wiki.mozilla.org/CA:ImprovingRevocation) now provides us with hard-fail. The idea with this is that when you submit a certificate request to the CA, there will be an option for "must staple". Not sure of what it's actually going to be called yet. So if you request your new certificate to have the "must staple" option listed on it, it can't be removed by an attacker because again that would break the signature that the browser knows about.
+
+So how this now plays out: The browser on its first request to the web server, tells the web server that it supports stapling and if the web server can provide a certificate with a stapled OCSP response, then we want it. The web server then responds with the certificate that has the "must staple" cryptographically bound to it. Now if the web server being an illegitimate server says "no I don't support stapling", the browser won't accept that, because the "must staple" is part of the certificate.
+
+There are two ways that the "must staple" are being looked at for solution. The [OCSP Must-Staple](https://casecurity.org/2014/06/18/ocsp-must-staple/) section of the article with the same name on the casecurity.org blog provides details.
+
+1. In the certificate as discussed above
+2. An interim solution that TBH, doesn't look like much of a solution to me. It is to add a `Must-Staple` header to the response, which of course can easily be stripped out by a MitM on the very first response. This solution is very similar to HSTS that I discussed [above](#network-countermeasures-tls-downgrade-hsts). Of course if you want similar behaviour to the [HSTS Preload](#network-countermeasures-tls-downgrade-hsts-preload) also discussed above, then the "must staple" must be part of the certificate.
+
+As far as I know Firefox and Chrome are both working toward implementing Must-Staple in certificates, but I haven't seen or heard anything yet for Internet Explorer.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### Firewall/Router {#network-countermeasures-firewall-router}
 I do not trust commercial proprietary routers. I have seen too many vulnerabilities in them to take them seriously for any network I have control of. Yes open source hardware and software routers can and do have vulnerabilities, but they can be patched. There are a few good choices here. Some of which also come with enterprise support if you want it. This means the software and the hardware, if you choose to obtain the hardware as well is open to inspection. The vendor also supplies regular firmware updates which is crucial for there to be any hope of having a system that in some way resembles a device that places a priority on your networks security.
 

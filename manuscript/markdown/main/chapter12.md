@@ -2600,7 +2600,7 @@ In NPM land, as usual there are many options to choose from. The following were 
 ##### Offerings
 
 * total-captcha. Depends on node-canvas. Have to install cairo first, but why? No explanation. Very little of anything here. Move on. How does this work? Do not know. What type is it? Presume text recognition.
-* [easy-captcha](https://www.npmjs.com/package/easy-captcha) is a text recognition offering generating images.
+* [easy-captcha](https://www.npmjs.com/package/easy-captcha) is a text recognition offering generating images
 * [simple-captcha](https://www.npmjs.com/package/simple-captcha) looks like another text recognition offering. I really do not want to be writing image files to my server.
 * [node-captcha](https://www.npmjs.com/package/node-captcha) Depends on canvas. By the look of the package this is another text recognition in a generated image.
 * [re-captcha](https://www.npmjs.com/package/re-captcha) was one of the first captcha offerings, created at the Carnegie Mellon University by Luis von Ahn, Ben Maurer, Colin McMillen, David Abraham and Manuel Blum who invented the term captcha. Google later acquired it in September 2009. recaptcha is a text recognition captcha that uses scanned text that optical character recognition (OCR) technology has failed to interpret, which has the added benefit of helping to digitise text for The New York Times and Google Books.  
@@ -2611,18 +2611,18 @@ In NPM land, as usual there are many options to choose from. The following were 
 
 &nbsp;
 
-I did some more research and worked out why the above types and offerings didn't feel like a good fit. It pretty much came down to user experience. Why should genuine users/customers of your web application be disadvantaged by having to jump through hoops because you have decided you want to stop bots spamming you? Would it not make more sense to make life harder for the bots rather than for your genuine users?
+After some additional research I worked out why the above types and offerings didn't feel like a good fit. It pretty much came down to user experience. Why should genuine users/customers of your web application be disadvantaged by having to jump through hoops because you have decided you want to stop bots spamming you? Would it not make more sense to make life harder for the bots rather than for your genuine users?
 
 Some other considerations I had. Ideally I wanted a simple solution requiring few or ideally no external dependencies, no JavaScript required, no reliance on the browser or anything out of my control, no images and it definitely should not cost any money.
 
-##### Alternative approaches
+##### Alternative Approaches
 
 * Services like Disqus can be good for commenting. Obviously the comments are all stored somewhere in the cloud out of your control and this is an external dependency. For simple text input, this is probably not what you want. Similar services such as all the social media authentication services can take things a bit too far I think. They remove freedoms from your users. Why should your users be disadvantaged by leaving a comment or posting a message on your web application? Disqus tracks users activities from hosting website to website whether you have an account, are logged in or not. Any information they collect such as IP address, web browser details, installed add-ons, referring pages and exit links may be disclosed to any third party. When this data is aggregated it is useful for de-anonymising users. If users choose to block the Disqus script, the comments are not visible. Disqus has also published its registered users entire commenting histories, along with a list of connected blogs and services on publicly viewable user profile pages. Disqus also engage in add targeting and blackhat SEO techniques from the websites in which their script is installed.
 * Services like Akismet and Mollom which take user input and analyse for spam signatures. Mollom sometimes presents a captcha if it is unsure. These two services learn from their mistakes if they mark something as spam and you unmark it, but of course you are going to have to be watching for that. Matt Mullenweg created Akismet so that his mother could blog in safety. "_His first attempt was a JavaScript plugin which modified the comment form and hid fields, but within hours of launching it, spammers downloaded it, figured out how it worked, and bypassed it. This is a common pitfall for anti-spam plugins: once they get traction_". My advice to this is not to use a common plugin, but to create something custom. I discuss this soon.
 
 The above solutions are excellent targets for creating exploits that will have a large pay off due to the fact that so many websites are using them. There are exploits discovered for these services regularly.
 
-##### Still not cutting it
+##### Still Not Cutting it
 
 &nbsp;
 
@@ -2705,6 +2705,12 @@ This is also shown above in a larger example in the [Lack of Input Validation, F
     };
 
 So as you can see, a very simple solution. You could even consider combining the above two techniques.
+
+##### Testing
+
+&nbsp;
+
+Check out the "Testing for Captcha (OWASP-AT-008" in v3 of the OWASP Testing Guide for summary and description of the issue and testing examples. The Offensive Web Testing Framework (OWTF) also has a [plugin](https://github.com/owtf/owtf/wiki/Listing-Plugins) for it.
 
 ### Management of Application Secrets {#web-applications-countermeasures-management-of-application-secrets}
 

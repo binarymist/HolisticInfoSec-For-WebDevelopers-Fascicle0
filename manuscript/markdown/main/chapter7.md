@@ -53,6 +53,16 @@ The USA National Security Agency (NSA) and its UK counterpart, Government Commun
 
 _Todo_
 
+Useful OWASP projects:
+
+%% Email received from Johanna Curiel from OWASP
+
+https://www.owasp.org/index.php/OWASP_Mobile_Security_Project
+http://project-imas.github.io/
+https://www.owasp.org/index.php/OWASP_SeraphimDroid_Project
+
+%% https://www.fireeye.com/blog/threat-research/2014/08/ssl-vulnerabilities-who-listens-when-android-applications-talk.html
+
 ## 4. SSM Risks that Solution Causes
 
 _Todo_
