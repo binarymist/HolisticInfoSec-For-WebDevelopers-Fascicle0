@@ -306,17 +306,17 @@ meet.
 
 A lot of combating snatching of staff comes down to the countermeasures of [Morale, Productivity and Engagement Killers](#people-countermeasures-morale-productivity-and-engagement-killers).
 
-### Weak Password Strategies
-
-_Todo_
-
-Pull from toastmasters talk and pg 292 of Social Engineering: The Art Of Human Hacking "Password Profilers" and my notes taken.
-
 #### Exit Interviews
 
 _Todo_
 
 %% Remove accounts from everything. domains, databases, APs, email, cloud applications/storage, etc
+
+### Weak Password Strategies
+
+_Todo_
+
+Pull from toastmasters talk and pg 292 of Social Engineering: The Art Of Human Hacking "Password Profilers" and my notes taken.
 
 ### Phone Calls {#people-countermeasures-phone-calls}
 ![](images/ThreatTags/PreventionDIFFICULT.png)

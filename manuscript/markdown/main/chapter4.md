@@ -15,7 +15,7 @@ This is the process and the steps commonly taken by a penetration tester.
 
 ### Reconnaissance {#process-and-practises-penetration-testing-reconnaissance}
 
-This is the act of information gathering. The quieter you can do this, the less likely you will be to raise suspicions or raise your clients defenses.
+This is the act of information gathering. The quieter you can do this, the less likely you will be to raise suspicions or raise your clients defences.  
 Here we want to gather as much information that will be potentially useful for taking into the following stages. Where we start to obtain more information about services & other software being used & their versions. Moving from passive to more active techniques. We need to learn as much as possible about the people involved within, related to and how they are related to the target organisation.  
 This way we will be able to create effective attack strategies including non technical aspects such as physical security and pretexts for the people we want to exploit.
 
@@ -38,6 +38,7 @@ Is gathering information directly from the target, but in a manner that looks no
 #### Active
 
 Here we interact with the target directly, engaging in activities like:
+
 * Snooping physical premises
 * Port scanning the entire range `nmap -p- <target>` and some of the aggressive nmap scanning modes shown below
 * Spidering public facing resources. Directories and files, often public without the administrators realising it. If they ran a spidering tool against their servers they would see all the publicly accessible resources.
@@ -47,9 +48,9 @@ Here we interact with the target directly, engaging in activities like:
 
 &nbsp;
 
-No where near as configurable as a dedicated port scanner, but still scans ports is Netcat. Netcat is a network swiss army knife. It can be used to host a web page, send files, poking at things to see what happens and so many other uses. Lets look at some uses.
+No where near as configurable as a dedicated port scanner, but still scans ports is Netcat. Netcat is a network Swiss army knife. It can be used to host a web page, send files, poking at things to see what happens and so many other uses. Lets look at some uses.
 
-{title="", linenos=off, lang=bash}
+{linenos=off, lang=bash}
     # -z is the argument to instruct for a port scan.
     # 1-1000 is the port range
     # -r randomises the order of port scans to make it a little less obvious
@@ -84,7 +85,8 @@ As you can see with using the aggressive option `-A` the pen tester makes a lot 
     22/tcp  open     tcpwrapped
     2000/tcp open     http       Node.js (Express middleware)
     |_http-title: title
-    No exact OS matches for host (If you know what OS is running on it, see http://nmap.org/submit/ ).
+    No exact OS matches for host
+    (If you know what OS is running on it, see http://nmap.org/submit/ ).
     TCP/IP fingerprint:
     # Some more info that isn't really helpful
     
@@ -95,32 +97,75 @@ As you can see with using the aggressive option `-A` the pen tester makes a lot 
     1   2.58 ms <target router> (<target router ip>)
     2   1.79 ms <target> (<target ip>)
     
-    OS and Service detection performed. Please report any incorrect results at http://nmap.org/submit/ .
+    OS and Service detection performed.
+    Please report any incorrect results at http://nmap.org/submit/ .
     Nmap done: 1 IP address (1 host up) scanned in 35.18 seconds
 
 {title="target system logs", linenos=off, lang=bash}
     <time> <target> sshd:  refused connect from <kali ip> (<kali ip>)
-    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "OPTIONS / HTTP/1.1" 200 8 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
-    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "GET / HTTP/1.1" 200 56328 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
-    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "OPTIONS / HTTP/1.1" 200 8 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
-    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "GET /master.jsp HTTP/1.1" 404 23 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
-    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "GET /flumemaster.jsp HTTP/1.1" 404 28 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
-    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "GET /tasktracker.jsp HTTP/1.1" 404 28 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
-    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "GET /dfshealth.jsp HTTP/1.1" 404 26 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
-    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "GET /jobtracker.jsp HTTP/1.1" 404 27 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
-    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "GET /robots.txt HTTP/1.1" 404 23 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
-    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "GET /status.jsp HTTP/1.1" 404 23 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
-    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "GET /rs-status HTTP/1.1" 404 22 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
-    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "GET /.git/HEAD HTTP/1.1" 404 22 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
-    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "GET /browseDirectory.jsp HTTP/1.1" 404 32 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
-    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "OPTIONS / HTTP/1.1" 200 8 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
-    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "OPTIONS / HTTP/1.1" 200 8 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
-    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "OPTIONS / HTTP/1.1" 200 8 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
-    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "OPTIONS / HTTP/1.1" 200 8 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
-    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "OPTIONS / HTTP/1.1" 200 8 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
-    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "OPTIONS / HTTP/1.1" 200 8 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
-    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "OPTIONS / HTTP/1.1" 200 8 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
-    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "OPTIONS / HTTP/1.1" 200 8 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+       <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - 
+       [<time>] "OPTIONS / HTTP/1.1" 200 8 "-" 
+       "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - 
+       [<time>] "GET / HTTP/1.1" 200 56328 "-" 
+       "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - 
+       [<time>] "OPTIONS / HTTP/1.1" 200 8 "-" 
+       "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - 
+       [<time>] "GET /master.jsp HTTP/1.1" 404 23 "-" 
+       "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - 
+       [<time>] "GET /flumemaster.jsp HTTP/1.1" 404 28 "-" 
+       "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - 
+       [<time>] "GET /tasktracker.jsp HTTP/1.1" 404 28 "-" 
+       "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - 
+       [<time>] "GET /dfshealth.jsp HTTP/1.1" 404 26 "-" 
+       "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - 
+       [<time>] "GET /jobtracker.jsp HTTP/1.1" 404 27 "-" 
+       "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - 
+       [<time>] "GET /robots.txt HTTP/1.1" 404 23 "-" 
+       "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - 
+       [<time>] "GET /status.jsp HTTP/1.1" 404 23 "-" 
+       "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - 
+       [<time>] "GET /rs-status HTTP/1.1" 404 22 "-" 
+       "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - 
+       [<time>] "GET /.git/HEAD HTTP/1.1" 404 22 "-" 
+       "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - 
+       [<time>] "GET /browseDirectory.jsp HTTP/1.1" 404 32 "-" 
+       "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - 
+       [<time>] "OPTIONS / HTTP/1.1" 200 8 "-" 
+       "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - 
+       [<time>] "OPTIONS / HTTP/1.1" 200 8 "-" 
+       "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - 
+       [<time>] "OPTIONS / HTTP/1.1" 200 8 "-" 
+       "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - 
+       [<time>] "OPTIONS / HTTP/1.1" 200 8 "-" 
+       "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - 
+       [<time>] "OPTIONS / HTTP/1.1" 200 8 "-" 
+       "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - 
+       [<time>] "OPTIONS / HTTP/1.1" 200 8 "-" 
+       "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - 
+       [<time>] "OPTIONS / HTTP/1.1" 200 8 "-" 
+       "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - 
+       [<time>] "OPTIONS / HTTP/1.1" 200 8 "-" 
+       "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
     <time> <target> sshd:  refused connect from <kali ip> (<kali ip>)
 
 Now using the service detection option `-sV` the results provide almost as much information. Even with the intensity maxed out, the pen tester makes very little noise and if the logs are being even closely inspected, the chance of missing these probes is likely. The only part that really stands out at all is the `sshd` auth request failure. As there are only two of these lines, it's likely that a system administrator wouldn't think that much of it. Without the `sshd` entries, this would fit into the Semi-Active form mentioned above.
@@ -138,12 +183,13 @@ Now using the service detection option `-sV` the results provide almost as much 
     22/tcp  open     tcpwrapped
     2000/tcp open     http       Node.js (Express middleware)
     
-    Service detection performed. Please report any incorrect results at http://nmap.org/submit/ .
+    Service detection performed. Please report any incorrect results at http://nmap.org/submit/
     Nmap done: 1 IP address (1 host up) scanned in 17.63 seconds
 
 {title="target system logs", linenos=off, lang=bash}
     <time> <target> sshd:  refused connect from <kali ip> (<kali ip>)
-    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - <time> "GET / HTTP/1.0" 200 56328 "-" "-"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - 
+       <time> "GET / HTTP/1.0" 200 56328 "-" "-"
     <time> <target> sshd:  refused connect from <kali ip> (<kali ip>)
 
 NMap and the scripting engine are a very powerful tool-set for gathering information. From passive to active. There are many scripts available and they are easy to work out what each is for by using the `--script-help` option.
@@ -156,19 +202,19 @@ An attacker will often attempt to conceal their source IP address during an NMap
 
 &nbsp;
 
-What this does is make it appear to the target that the scans are coming from all the decoy hosts. You can optionally use ME as one of the decoys to represent your/the attackers address. Putting ME in the sixth position or later will will cause some common port scan detectors such as Scanlogd to not show your IP address at all. You can also use RND to generate a random non-reserved IP address. For more details check the man page.
+What this does is make it appear to the target that the scans are coming from all the decoy hosts. You can optionally use ME as one of the decoys to represent your/the attackers address. Putting ME in the sixth position or later will will cause some common port scan detectors such as Scanlogd to not show your IP address at all. You can also use `RND` to generate a random non-reserved IP address. For more details check the man page.
 
-You probably want to make sure that the hosts you use as fakes/decoys are actually up otherwise you may `SYN` flood your target(s). There will be no RST flag sent to the target being scanned from the decoy thus keeping the connection open. As nmap continues to send more requests to the target with the decoy IP address as the source, the target will maintain a growing list of open connections
+You probably want to make sure that the hosts you use as fakes/decoys are actually up otherwise you may `SYN` flood your target(s). There will be no `RST` flag sent to the target being scanned from the decoy thus keeping the connection open. As nmap continues to send more requests to the target with the decoy IP address as the source, the target will maintain a growing list of open connections
 
-A> The RST (TCP reset) flag used to be sent indicating that a session be terminated due to problems. In recent years the RST flag has been used to terminate sessions instead of FIN-> <-ACK <-FIN ACK-> basically because it is faster and releases stack resources immediately.
+A> The `RST` (TCP reset) flag used to be sent indicating that a session be terminated due to problems. In recent years the `RST` flag has been used to terminate sessions instead of `FIN`-> <-`ACK`, <-`FIN` `ACK`-> basically because it is faster and releases stack resources immediately.
 
-With the decoy actually being up and receiving the <-SYN ACK-> it responds with the TCP reset and the target knows the connecting is finished and releases its resources.
+With the decoy actually being up and receiving the <-`SYN` `ACK`-> it responds with the TCP reset and the target knows the connecting is finished and releases its resources.
 
 It is also kind of obvious as to which IP address the attack is coming from if the decoy hosts are not actually up.
 
-Use too many decoys will slow your scan down and possibly make the results less accurate. Some ISPs may filter out your spoofed packets.
+Useing too many decoys will slow your scan down and possibly make the results less accurate. Some ISPs may filter out your spoofed packets.
 
-{title="", linenos=off, lang=bash}
+{linenos=off, lang=bash}
     # Make sure your decoys are up unless you want to DOS your target.
     nmap -D <decoyip1>,<decoyip2>,<decoyip3>,<decoyip4>,<decoyip5>,ME <target>
 
@@ -178,7 +224,7 @@ Use too many decoys will slow your scan down and possibly make the results less 
 
 There are a few things you need to know in order to use this and be able to reason about what is going to happen. This is a side-channel attack which exploits predictable IP fragmentation ID sequence generation on the zombie (fake) host to glean information about the open ports on the target IDS systems will display the scan as coming from the zombie machine you specify (which must be up and meet certain criteria). Check the man page.
 
-{title="", linenos=off, lang=bash}
+{linenos=off, lang=bash}
     nmap -sI 1.1.1.1:1234 <target>
 
 #### Service Fingerprinting
@@ -342,7 +388,7 @@ Let us look at SSH.
 
 Using nmaps service detection `-sV` option has the smarts to work most of this out because nmap uses service specific probes. So relying on higher level tools are often quicker and more effective as the manual work has already been done and backed into the tooling.
 
-{title="", linenos=off, lang=bash}
+{linenos=off, lang=bash}
     nmap -sV -p 22 <target>
 
 {title="Results", linenos=off, lang=bash}
@@ -364,7 +410,9 @@ Now if the system administrator had of modified the `/etc/hosts.deny` to be `ALL
     PORT    STATE SERVICE    VERSION
     22/tcp open  tcpwrapped
 
-{title="", linenos=off, lang=bash}
+Not the information an attacker is looking for.
+
+{linenos=off, lang=bash}
     nc -v <target> 22
 
 {title="Results", linenos=off, lang=bash}
@@ -377,7 +425,7 @@ And again if the system administrator had setup the hosts files like above:
     DNS fwd/rev mismatch: <target> != <target.domain>
     <target> [<target ip>] 22 (?) open
 
-We also discuss risks and countermeasures around SSH in the VPS chapter.
+Again not the information an attacker is looking for. We also discuss risks and countermeasures around SSH in the VPS chapter.
 
 #### Web Application Firewall (WAF) Fingerprinting
 
@@ -417,7 +465,7 @@ To perform DNS lookup:
 {title="dig", linenos=off, lang=bash}
     dig <domain you are wanting info on>
 
-To perform a reverse looking on an IP address:
+To perform a reverse lookup on an IP address:
 
 {title="dig reverse lookup", linenos=off, lang=bash}
     dig -x <ip address>
@@ -436,13 +484,13 @@ There is no man page for dnsenum. Simply run dnsenum and you will be presented w
 
 In order to find all subdomains associated with the target domain, you can use a wordlist. A good collection can be found in Kali Linux by simply issuing the following command:
 
-{title="", linenos=off, lang=bash}
+{linenos=off, lang=bash}
     locate wordlist
 
 Recon-ng as discussed below also has some in `/usr/share/recon-ng/data/` that it uses for similar tasks. Choose your wordlist then apply it to dnsenum. The results found will only be as good as your wordlist. So choose wisely.  
 `/usr/share/dirbuster/wordlists/directories.jbrofuzz` is not great, but it is not bad either
 
-{title="", linenos=off, lang=bash}
+{linenos=off, lang=bash}
     # This is a noisy command, but it is still passive. The target is not being touched.
     # Be patient, it can take some time if you use a large wordlist.
     dnsenum <target domain> -f <your chosen wordlist>
@@ -450,7 +498,7 @@ Recon-ng as discussed below also has some in `/usr/share/recon-ng/data/` that it
 
 This will provide the same results as a simple `dnsenum <target domain>` and then start the bruteforce which lists the IP addresses with the domains and record types
 
-{title="", linenos=off, lang=bash}
+{linenos=off, lang=bash}
     binarymist.net.             3174    IN   A       202.46.170.8
     binarymist.net.             3174    IN   A       202.46.170.8
     binarymist.net.             3174    IN   A       202.46.170.8
@@ -533,7 +581,7 @@ This is a collection of shell scripts to aggregate Kali Linux tools & automate v
 
 To run, within Kali Linux you just need to run the `/opt/discover/discover.sh` script. This is one of the additional tools we [added](#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-discover-scripts) to Kali.
 
-For example
+For example  
 Recon -> Domain -> Passive combines:
 
 * goofile
@@ -574,7 +622,7 @@ It depends on which moduels you use as to what information you receive.
 
 When you run recon-ng with no arguments, you will be presented with the titles of the collections of the included modules and you'll be dropped at a recon-ng prompt showing the current workspace you are in. It looks like:
 
-{title="", linenos=off, lang=bash}
+{linenos=off, lang=bash}
     [recon-ng][default] > 
 
 Type `help` and you will be presented with the recon-ng commands.
@@ -583,14 +631,14 @@ Prepend any of the commands with help or simply type the command by itself if yo
 
 For example type `show` and you will be presented with:
 
-{title="", linenos=off, lang=bash}
+{linenos=off, lang=bash}
     Shows various framework items
     
     Usage: show [banner|companies|contacts|credentials|dashboard|domains|hosts|leaks|locations|modules|netblocks|options|ports|profiles|pushpins|schema|vulnerabilities]
 
 The above outputs are actually table names that contain data you add (discussed soon).
 
-Then type `show modules` and you will be presented with a listing of all the moduels in `/usr/share/recon-ng/modules/`. When I last looked they were:
+Then type `show modules` and you will be presented with a listing of all the moduels in `/usr/share/recon-ng/modules/`:
 
 {title="recon-ng modules", linenos=off, lang=bash}
     Discovery
@@ -690,12 +738,12 @@ Then type `show modules` and you will be presented with a listing of all the mod
 
 As recon-ng uses workspaces, you can keep all your specific assignment data in its own workspace. Data is persisted to the file system `/user/.recon-ng/workspaces/<your new workspace name>/` as it's gathered. You can exit and restart recon-ng anytime without loosing the data you have already gathered.
 
-{title="", linenos=off, lang=bash}
+{linenos=off, lang=bash}
     workspaces add <your new workspace name>
 
 Usually before you `use` -> `run` modules, you will want to `add` initial records. The sort of records you may want to add can be seen by typing `show`.
 
-{title="", linenos=off, lang=bash}
+{linenos=off, lang=bash}
     add domains <a target domain>
     add companies
     # Now you are prompted for some details like name and description
@@ -704,33 +752,33 @@ To see what records you have already `add`ed, type `show [item]` (where `item` i
 
 To delete an item you have added: `del [item] [rowid]`, for example:
 
-{title="", linenos=off, lang=bash}
+{linenos=off, lang=bash}
     del domains 1 # To remove the first record 
 
 You can also query the workspace database with the `query` command. Just type it and you will get some help and be running in no time. Many of the commands can be performed using recon-ng commands or by using the `query` command and building up SQL queries.
 
 To use a specific module:
 
-{title="", linenos=off, lang=bash}
+{linenos=off, lang=bash}
     use <one of the modules listed from show modules command>
 
 To find out what options if any you need to set for your chosen module, type:
 
-{title="", linenos=off, lang=bash}
+{linenos=off, lang=bash}
     set
     # This will print the Names of the options which you need to set if not already set and if it is a Required field, Current Value and Description.
     # The Current Value should be the second argument you provide to set.
 
 If you need more information about the current module you have `use`ed, type:
 
-{title="", linenos=off, lang=bash}
+{linenos=off, lang=bash}
     show info
 
 You will be notified when you attempt to `run` if you need an API key. Details on where to find these are on the [recon-ng wiki](https://bitbucket.org/LaNMaSteR53/recon-ng/wiki/Usage%20Guide#!acquiring-api-keys).
 
 Before you add any social media API keys, you will want to create throwaway social media accounts, because many of the social media sites you will perform recon on will show the visiting user. You want that visiting user to be your throwaway account.
 
-{title="", linenos=off, lang=bash}
+{linenos=off, lang=bash}
     # To show your currently installed API keys:
     keys list
     # To add an API key:
@@ -738,7 +786,7 @@ Before you add any social media API keys, you will want to create throwaway soci
 
 Once you are ready to `run` the module you have chosen with the `use` command, just type `run`. All the information will be gathered into the database which you can query or create reports from. Between each new module you `use` and `run` you can view what was found simply by watching the screen or:
 
-{title="", linenos=off, lang=bash}
+{linenos=off, lang=bash}
     query SELECT * FROM [any of the tables listed with the show command]
     # For example:
     query SELECT * FROM contacts
@@ -746,7 +794,7 @@ Once you are ready to `run` the module you have chosen with the `use` command, j
 
 or
 
-{title="", linenos=off, lang=bash}
+{linenos=off, lang=bash}
     use reporting/html
     set CREATOR <you or your company>
     set CUSTOMER <your client/target>
@@ -754,9 +802,9 @@ or
     # Now you will be told where your report lives.
     # It should be in the workspace you created which you can access at any time.
 
-The report types you can use can be seen by:
+The report types you can use can be seen by typing:
 
-{title="", linenos=off, lang=bash}
+{linenos=off, lang=bash}
     show modules reporting
     # These include html, json, csv, xml and others
 
@@ -812,6 +860,8 @@ Finding details on companies: [https://www.business.govt.nz/companies/](https://
 
 ##### Password Profiling
 
+&nbsp;
+
 Is where an attacker will start to collate information and often feed it into a tool or specific set of tools, or if they have lots of time which doesn't really happen, perform the same process manually. I find that the tools which have well thought out algorithms are the quickest and best way to create a short list of probable passwords to later attempt to access accounts via brute force attack
 
 I discuss this further in the [People](#people-identify-risks-weak-password-strategies) chapter.
@@ -840,7 +890,7 @@ _Todo_
 
 ### Exploitation
 
-During this stage, thinking about and recording countermeasures for the vulnerabilities you are able to exploit successfully is just as important as finding and recording the exploited vulnerabilities.
+During this stage, thinking about and recording countermeasures for the vulnerabilities you are able to exploit successfully is just as important as finding and recording the exploited vulnerabilities. That is why each of the following chapters contain the Countermeasures sections.
 
 Beat your own systems up and watch logs. Get familiar with signatures of different tools and attacks, then you will know when you are actually under attack. You can take the same concept with active and semi-active reconnaissance. This way, you will be able to pre-empt your attackers exploitation.
 
@@ -848,10 +898,10 @@ We will go through the actual exploitation that an attacker or penetration teste
 
 _Todo_
 
-Discuss isolating (potential) malware:
-firejail
-https://threatpost.com/firefox-37-to-include-new-onecrl-certificate-blocklist/111411/
-http://sourceforge.net/projects/firejail/
+Discuss isolating (potential) malware:  
+firejail  
+https://threatpost.com/firefox-37-to-include-new-onecrl-certificate-blocklist/111411/  
+http://sourceforge.net/projects/firejail/  
 http://linuxmint.tumblr.com/post/128281378277/firejail
 
 linux containers

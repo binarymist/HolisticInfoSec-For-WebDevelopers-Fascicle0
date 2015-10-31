@@ -78,10 +78,9 @@ and the [Intel Threat Agent Library](http://www.sbs.ox.ac.uk/cybersecurity-capac
 ![](images/BobTheBuilder.jpg)
  <!---This is where the images live: https://raw.githubusercontent.com/wiki/binarymist/HolisticInfoSec-For-WebDevelopers/BinaryMist-Approach-To-Threat-Modelling-Assets/BobTheBuilder.jpg-->
 
-Keep your eye on the vulnerability advisories as that is part of what an attacker or penetration tester will use to [formulate their exploits](#process-and-practises-penetration-testing-vulnerability-searching) for you:
+Keep your eye on the vulnerability advisories, as that is part of what an attacker or penetration tester will use to [formulate their exploits](#process-and-practises-penetration-testing-vulnerability-searching) for you:
 
 {#vulnerability-advisories}
-
 * [Exploit Database](https://github.com/offensive-security/exploit-database) from Offensive Security
   * [Web Front-end](https://www.exploit-db.com/)
   * CLI (searchsploit) in Kali Linux

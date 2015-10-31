@@ -225,7 +225,7 @@ This provides lots of jucy information for an attacker to take into the [Vulnera
 
 #### NFS
 
-If the `mountd` daemon is listed in the output of the above `rpcinfo` command, showmount -e` command will be useful for listing the NFS server's list of exports.
+If the `mountd` daemon is listed in the output of the above `rpcinfo` command, `showmount -e` command will be useful for listing the NFS server's list of exports.
 
 {title="showmount", linenos=off, lang=bash}
     showmount -e <target host>
@@ -244,7 +244,7 @@ NFS is one of those protocols that you need to have some understanding on in ord
     service rpcbind start
     mount -t nfs <target host>:/ /mnt
 
-All going well for the attacker, they will now have your VPS's `/` directory mounted to their /mnt directory. If you haven't setup NFS properly, they'll have full access to your entire file system.
+All going well for the attacker, they will now have your VPS's `/` directory mounted to their `/mnt` directory. If you have not setup NFS properly, they will have full access to your entire file system.
 
 #### SSH
 
@@ -563,6 +563,10 @@ _Todo_
 
 _Todo_
 
+#### SSH
+
+_Todo_
+
 ### Schedule Backups
 
 _Todo_
@@ -638,6 +642,10 @@ _Todo_
 _Todo_
 
 #### NFS
+
+_Todo_
+
+#### SSH
 
 _Todo_
 
