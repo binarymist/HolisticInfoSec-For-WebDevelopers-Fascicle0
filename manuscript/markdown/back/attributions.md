@@ -18,6 +18,12 @@
 
 ## [Process](#process)
 
+
+
+
+
+
+
 **The fact that a WAF is in place** is often given away by simply inspecting the responses from the server side  
 [https://pentestlab.wordpress.com/2013/01/13/detecting-web-application-firewalls/](https://pentestlab.wordpress.com/2013/01/13/detecting-web-application-firewalls/)
 
@@ -37,7 +43,8 @@ http-waf-fingerprint: [https://nmap.org/nsedoc/scripts/http-waf-fingerprint.html
 **/usr/share/dirbuster/wordlists/directories.jbrofuzz is not great**, but it is not bad either  
 [http://null-byte.wonderhowto.com/how-to/hack-like-pro-abusing-dns-for-reconnaissance-0157448/](http://null-byte.wonderhowto.com/how-to/hack-like-pro-abusing-dns-for-reconnaissance-0157448/)
 
-
+**theHarvester** is a tool for gathering e-mail acconts, subdomain names, virtual hosts, open ports/ banners, and employee names from different public sources (search engines, pgp key servers)  
+[https://github.com/laramies/theHarvester](https://github.com/laramies/theHarvester)
 
 
 

@@ -2,30 +2,33 @@
 
 In this chapter I am going to detail a common work-flow of a penetration tester followed with some tried and tested practises to augment your agile development work-flow.
 
-Coming at the security problem from a penetration testers point of view (read team) can be quite different than coming at it from a software developers point of view (blue team (if you are aware)).
+Coming at the security problem from a penetration testers point of view (red team) can be quite different than coming at it from a software developers point of view (blue team (if you are aware)).
 
 * The penetration tester is trying to find all the faults in your system. This is not limited to the technology aspect either, as we address throughout this book.
 * As a web developer, you are more focussed on delivering a solution that makes a problem less of a problem. Often not thinking so much about what could go wrong, but more focused on how to make it work.
 
-In saying that, the two disciplines can work in harmony together. There is a real need for improving most software developers security related awareness, skills and knowledge, and as this book is focussed on the web developer, it is my intention to show you as a web developer, how to take the lessons learnt from the penetration testers perspective and apply it to your own work and life. That is right, security needs to be part of who you are. I have the advantage of working in both disciplines and also in some very successful Scrum teams often as Scrum Master. This makes it relatively easy to empathise to both sides and pull the best from both sides, then apply it to the other side. Thus attempting to bring both in to harmony.
+In saying that, the two disciplines can work in harmony together. There is a real need for improving most software developers security related awareness, skills and knowledge, and as this book is focussed on the web developer, it is my intention to show you as a web developer, how to take the lessons learnt from the penetration testers perspective and apply some of them to your own work and life. That is right, security needs to be part of who you are. I have the advantage of working in both disciplines and also in some very successful Scrum teams often as Scrum Master. This makes it relatively easy to empathise to both sides and pull the best from both sides, then apply it to the other side. Thus attempting to bring both in to harmony.
 
 ## Penetration Testing {#process-and-practises-penetration-testing}
 
-This is the process and the steps commonly taken by a penetration tester.
+The following is the process and the steps commonly taken by a penetration tester.
 
 ### Reconnaissance {#process-and-practises-penetration-testing-reconnaissance}
 
 This is the act of information gathering. The quieter you can do this, the less likely you will be to raise suspicions or raise your clients defences.  
-Here we want to gather as much information that will be potentially useful for taking into the following stages. Where we start to obtain more information about services & other software being used & their versions. Moving from passive to more active techniques. We need to learn as much as possible about the people involved within, related to and how they are related to the target organisation.  
+Here we want to gather as much information that will be potentially useful for taking into the following stages. Where we start to obtain more information about services and other software being used and their versions. Moving from passive to more active techniques. We need to learn as much as possible about the people involved within, related to and how they are related to the target organisation.  
 This way we will be able to create effective attack strategies including non technical aspects such as physical security and pretexts for the people we want to exploit.
 
-#### The Forms it Takes
+#### Reconnaissance Forms
 
-Information gathering can be done in such a way that the target doesn't know you are doing it (passive) through to where the target should absolutely know you are doing it (active), but all to often the target still does not notice due to insufficient logging, monitoring, alerting (as mentioned in several of the following chapters) and someone actually taking notice as discussed in the People chapter around engagement.
+Information gathering can be done in such a way that the target does not know you are doing it (passive) through to where the target should absolutely know you are doing it (active), but all to often the target still does not notice due to insufficient logging, monitoring, alerting (as discussed in several of the following chapters) and someone actually taking notice as discussed in the People chapter around engagement.
 
 #### Passive
 
-This is when the information gathering can not be detected by the target. Information is gathered indirectly from the target. Usually from sources that have had direct relationship with the target. Social media web sites, 
+This is when the information gathering can not be detected by the target. Information is gathered indirectly from the target. Often from:
+
+* Sources that have had direct relationship with the target
+* Social media web sites
 
 The pen tester or attacker can not directly probe the target. They must use third party information. Sometimes this will be out of date, so confirmation needs to be sought. This is usually not to difficult, but it takes more time than if the passive constraint was lifted and the pen tester could probe directly.
 
@@ -42,13 +45,20 @@ Here we interact with the target directly, engaging in activities like:
 * Snooping physical premises
 * Port scanning the entire range `nmap -p- <target>` and some of the aggressive nmap scanning modes shown below
 * Spidering public facing resources. Directories and files, often public without the administrators realising it. If they ran a spidering tool against their servers they would see all the publicly accessible resources.
-* Banner grabbing and probing
+* Banner grabbing and probing, which we address below under the [Service Fingerprinting](#process-and-practises-penetration-testing-reconnaissance-service-fingerprinting) section.
 
 ##### Netcat
 
 &nbsp;
 
-No where near as configurable as a dedicated port scanner, but still scans ports is Netcat. Netcat is a network Swiss army knife. It can be used to host a web page, send files, poking at things to see what happens and so many other uses. Lets look at some uses.
+No where near as configurable as a dedicated port scanner, but still scans ports is Netcat. Netcat is a network Swiss army knife. It can be used to:
+
+* Host a web page
+* Send files
+* Poke at things to see what happens
+* So many other uses
+
+Lets look at some uses.
 
 {linenos=off, lang=bash}
     # -z is the argument to instruct for a port scan.
@@ -202,7 +212,7 @@ An attacker will often attempt to conceal their source IP address during an NMap
 
 &nbsp;
 
-What this does is make it appear to the target that the scans are coming from all the decoy hosts. You can optionally use ME as one of the decoys to represent your/the attackers address. Putting ME in the sixth position or later will will cause some common port scan detectors such as Scanlogd to not show your IP address at all. You can also use `RND` to generate a random non-reserved IP address. For more details check the man page.
+What this does is make it appear to the target that the scans are coming from all the decoy hosts. You can optionally use ME as one of the decoys to represent your/the attackers address. Putting ME in the sixth position or later will cause some common port scan detectors such as Scanlogd to not show your IP address at all. You can also use `RND` to generate a random non-reserved IP address. For more details check the man page.
 
 You probably want to make sure that the hosts you use as fakes/decoys are actually up otherwise you may `SYN` flood your target(s). There will be no `RST` flag sent to the target being scanned from the decoy thus keeping the connection open. As nmap continues to send more requests to the target with the decoy IP address as the source, the target will maintain a growing list of open connections
 
@@ -212,7 +222,7 @@ With the decoy actually being up and receiving the <-`SYN` `ACK`-> it responds w
 
 It is also kind of obvious as to which IP address the attack is coming from if the decoy hosts are not actually up.
 
-Useing too many decoys will slow your scan down and possibly make the results less accurate. Some ISPs may filter out your spoofed packets.
+Using too many decoys will slow your scan down and possibly make the results less accurate. Some ISPs may filter out your spoofed packets.
 
 {linenos=off, lang=bash}
     # Make sure your decoys are up unless you want to DOS your target.
@@ -222,12 +232,13 @@ Useing too many decoys will slow your scan down and possibly make the results le
 
 &nbsp;
 
-There are a few things you need to know in order to use this and be able to reason about what is going to happen. This is a side-channel attack which exploits predictable IP fragmentation ID sequence generation on the zombie (fake) host to glean information about the open ports on the target IDS systems will display the scan as coming from the zombie machine you specify (which must be up and meet certain criteria). Check the man page.
+There are a few things you need to know in order to use the idle scan and be able to reason about what is going to happen. This is a side-channel attack which exploits predictable IP fragmentation ID sequence generation on the zombie (decoy) host to glean information about the open ports on the target. Intrusion Detection Systems (IDSs) will display the scan as coming from the zombie machine you specify (which must be up and meet certain criteria). Check the man page for further details.
 
 {linenos=off, lang=bash}
+    # 1.1.1.1:1234 is the IP address and port of the decoy machine.
     nmap -sI 1.1.1.1:1234 <target>
 
-#### Service Fingerprinting
+#### Service Fingerprinting {#process-and-practises-penetration-testing-reconnaissance-service-fingerprinting}
 
 Adding to what we've just seen above, the simplest way to attempt to deduce the details of the service running bound to a particular port is to just see what banner is returned, or for HTTP, the `Server` header field.
 
@@ -368,7 +379,7 @@ Now if we use a non-existent protocol:
     nc <apache 2.2.3 server> 80
     GET / CATSFORDINNER/1.0
 
-Now we see Apache just can not get enough cats for dinner.
+Now we see Apache is `200 OK` happy to have cats for dinner.
 
 {title="Response", linenos=off, lang=bash}
     HTTP/1.1 200 OK
@@ -386,7 +397,7 @@ Now we see Apache just can not get enough cats for dinner.
 
 Let us look at SSH.
 
-Using nmaps service detection `-sV` option has the smarts to work most of this out because nmap uses service specific probes. So relying on higher level tools are often quicker and more effective as the manual work has already been done and backed into the tooling.
+Using nmaps service detection `-sV` option has the smarts to work most of this out because nmap uses service specific probes. So relying on higher level tools are often quicker and more effective as the manual work has already been done and baked into the tooling.
 
 {linenos=off, lang=bash}
     nmap -sV -p 22 <target>
@@ -442,7 +453,7 @@ To view all of the currently available local nmap scripts `locate *.nse` will gi
 Will yield the following two scripts which are very useful:
 
 1. `http-waf-detect.nse`  
-Attempts to determine whether the web server is protected by a IDS, IPS or WAF
+Attempts to determine whether the web server is protected by an IDS, IPS or WAF
 2. `http-waf-fingerprint.nse`  
 Attempts to discover the presence of a WAF, its type and version.
 
@@ -475,7 +486,7 @@ To perform a reverse lookup on an IP address:
     # by default, dig will perform a lookup for an A record
     dig <domain you are wanting info on> mx
 
-There are many other options you can use with dig, the output is clear and informative. There is also host and the deprecated nslookup which generally provides less information and uses its own internal libraries as opposed to the OS resolver libraries that dig uses.
+There are many other options you can use with dig, the output is clear and informative. There is also the programmes "host" and the deprecated "nslookup" which generally provides less information and uses its own internal libraries as opposed to the OS resolver libraries that dig uses.
 
 ##### dnsenum
 
@@ -495,7 +506,7 @@ Recon-ng as discussed below also has some in `/usr/share/recon-ng/data/` that it
     # Be patient, it can take some time if you use a large wordlist.
     dnsenum <target domain> -f <your chosen wordlist>
     # We swapped the target domain for binarymist.net
-    # and your chosen wordlist for the directories.jbrofuzz
+    # and your chosen wordlist for the directories.jbrofuzz mentioned above.
     # dnsenum can also recurse on all the subdomains with the -r option
 
 This will provide the same results as a simple `dnsenum <target domain>` and then start the bruteforce which lists the IP addresses with the domains and record types
@@ -571,7 +582,7 @@ The sources used are:
 * twitter accounts related to specific domain (uses google search)
 * shodan (for internet connected devices). Their website states they search The Web, Refrigerators, Webcams, Power Plants, IoT, Buildings. To use, you need to register and put your API key in discovery/shodansearch.py
 
-Both passive & active options available.
+Both passive and active options available.
 
 #### Discover-scripts
 
@@ -579,7 +590,7 @@ Is an excellent Open Source Intelligence Tool (OSINT).
 
 ![](images/discover.png)
 
-This is a collection of shell scripts to aggregate Kali Linux tools & automate various pentesting tasks. Both passive & active options which allow you to dig up a lot of dirt on your target long before you start trying to penetrate them. I have found domain and Person to be very useful.
+Discover is a collection of shell scripts to aggregate Kali Linux tools & automate various penetration testing tasks. Both passive and active options which allow you to dig up a lot of dirt on your target long before you start trying to penetrate them. I have found domain and Person to be very useful.
 
 To run, within Kali Linux you just need to run the `/opt/discover/discover.sh` script. This is one of the additional tools we [added](#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-discover-scripts) to Kali.
 
@@ -606,7 +617,7 @@ Recon -> Domain -> Active combines:
 * traceroute
 * Whatweb
 
-So rather than getting familiar with all the recon tools at once, you get the benefit of many tools in one. You do not get quite the flexibility of using the tools by themselves though, but as time is often the constraining factor, discover is a good choice.
+So rather than getting familiar with all the recon tools at once, you get the benefit of many tools in one. You do not get quite the flexibility of using the tools by themselves though, but as time is often the constraining factor, discover can be a good trade-off.
 
 #### recon-ng {#process-and-practises-penetration-testing-reconnaissance-recon-ng}
 
@@ -615,7 +626,7 @@ Another tool in a similar vein to discover-scripts. Recon-ng has a similar feel 
 Some of the sort of information you may get is:
 
 1. Additional companies
-2. Hosts you didn't know existed with their IP addresses, domain names, countries of origin, region, latitude, longitude and the module used to find the information.
+2. Hosts you did not know existed with their IP addresses, domain names, countries of origin, region, latitude, longitude and the module used to find the information.
 3. Contacts, first and last names, email addresses, pgp key associations
 4. Vulnerabilities, credentials
 5. So many more.
@@ -856,8 +867,6 @@ The commands may seem a bit heavy to start with, but they're very intuitive. Spe
 %% In most cases the transforms used by the machines were not found. There was not a lot of information anywhere around how to include them. Maybe the community edition that I was using just does not include most of the transforms, which made the tool redundant for me. There were also far fewer results than using the likes of [recon-ng](#process-and-practises-penetration-testing-reconnaissance-recon-ng) for the same target.
 
 #### Password Profiling
-
-&nbsp;
 
 Is where an attacker will start to collate information and often feed it into a tool or specific set of tools, or if they have lots of time which doesn't really happen, perform the same process manually. I find that the tools which have well thought out algorithms are the quickest and best way to create a short list of probable passwords to later attempt to access accounts via brute force attack
 
