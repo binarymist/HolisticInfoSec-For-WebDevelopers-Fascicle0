@@ -973,7 +973,7 @@ _Todo_
 
 _Todo_
 
-### TLS Downgrade {#network-risks-that-solution-causes-tls-downgrade}
+### TLS Downgrade
 
 _Todo_
 

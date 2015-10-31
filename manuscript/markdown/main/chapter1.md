@@ -2,6 +2,8 @@
 
 ![](images/30000View.gif)
 
+First of all, why? Why do we need to start so high? Because Developers spend most of their lives focussing on code and sometimes on architectural concepts and patterns. Software Developers rarely focus on anything higher than this. This has the affect of causing blind spots. The reason we start so high and encourage the developer come back to this level every so often is to recalibrate that they are actually creating the right thing and that their priorities are correctly aligned with the needs of their business, not even necessarily the business's wants.
+
 This modelling process should be performed by a collection of the following people:
 
 1. Deeply technical (software expert (developer/engineer)). I specifically do not mention tester(s) here, as testing is the job of the developer. The developer is responsible for delivering high quality working code every Sprint.
