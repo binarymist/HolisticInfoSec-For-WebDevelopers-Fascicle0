@@ -36,6 +36,9 @@ Man page is very good [http://linux.die.net/man/1/nmap](http://linux.die.net/man
 
 **The Hacker Playbook 2** has a good example of how to use recon-ng
 
+**Useful New Zealand Web Resources** for reconnaissance  
+Finding details on people: [http://searchenginez.com/findpeople_newzealand.html](http://searchenginez.com/findpeople_newzealand.html)  
+Finding details on companies: [https://www.business.govt.nz/companies/](https://www.business.govt.nz/companies/)
 
 ## [People](#people)
 

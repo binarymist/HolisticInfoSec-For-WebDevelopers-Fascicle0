@@ -419,7 +419,7 @@ Not the information an attacker is looking for.
     Connection to <target> 22 port [tcp/*] succeeded!
     SSH-2.0-OpenSSH_6.7p1 Debian-3
 
-And again if the system administrator had setup the hosts files like above:
+And again if the system administrator had set-up the hosts files like mentioned above, an attacker would get:
 
 {title="Results", linenos=off, lang=bash}
     DNS fwd/rev mismatch: <target> != <target.domain>
@@ -494,6 +494,8 @@ Recon-ng as discussed below also has some in `/usr/share/recon-ng/data/` that it
     # This is a noisy command, but it is still passive. The target is not being touched.
     # Be patient, it can take some time if you use a large wordlist.
     dnsenum <target domain> -f <your chosen wordlist>
+    # We swapped the target domain for binarymist.net
+    # and your chosen wordlist for the directories.jbrofuzz
     # dnsenum can also recurse on all the subdomains with the -r option
 
 This will provide the same results as a simple `dnsenum <target domain>` and then start the bruteforce which lists the IP addresses with the domains and record types
@@ -766,7 +768,8 @@ To find out what options if any you need to set for your chosen module, type:
 
 {linenos=off, lang=bash}
     set
-    # This will print the Names of the options which you need to set if not already set and if it is a Required field, Current Value and Description.
+    # This will print the Names of the options which you need to set if not
+    # already set and if it is a Required field, Current Value and Description.
     # The Current Value should be the second argument you provide to set.
 
 If you need more information about the current module you have `use`ed, type:
@@ -812,12 +815,6 @@ The report types you can use can be seen by typing:
 
 The commands may seem a bit heavy to start with, but they're very intuitive. Spend some time with recon-ng and it will end up being one of the first recon tools you turn to.
 
-#### Useful New Zealand Web Resources
-
-Finding details on people: [http://searchenginez.com/findpeople_newzealand.html](http://searchenginez.com/findpeople_newzealand.html)
-
-Finding details on companies: [https://www.business.govt.nz/companies/](https://www.business.govt.nz/companies/)
-
 %% #### Maltego
 
 %% I had high hopes for this tool, it did not deliver.
@@ -858,7 +855,7 @@ Finding details on companies: [https://www.business.govt.nz/companies/](https://
 
 %% In most cases the transforms used by the machines were not found. There was not a lot of information anywhere around how to include them. Maybe the community edition that I was using just does not include most of the transforms, which made the tool redundant for me. There were also far fewer results than using the likes of [recon-ng](#process-and-practises-penetration-testing-reconnaissance-recon-ng) for the same target.
 
-##### Password Profiling
+#### Password Profiling
 
 &nbsp;
 
