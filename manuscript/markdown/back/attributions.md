@@ -18,6 +18,41 @@
 
 ## [Process](#process)
 
+**The fact that a WAF is in place** is often given away by simply inspecting the responses from the server side  
+[https://pentestlab.wordpress.com/2013/01/13/detecting-web-application-firewalls/](https://pentestlab.wordpress.com/2013/01/13/detecting-web-application-firewalls/)
+
+**To view all of the currently available local nmap scripts**  
+[http://cyberpedia.in/nmap-scripting-engine-scanning-in-kali-linux/](http://cyberpedia.in/nmap-scripting-engine-scanning-in-kali-linux/)
+
+**NMap has a couple of good scripts out of the box** for WAF detection  
+http-waf-detect: [https://nmap.org/nsedoc/scripts/http-waf-detect.html](https://nmap.org/nsedoc/scripts/http-waf-detect.html)  
+http-waf-fingerprint: [https://nmap.org/nsedoc/scripts/http-waf-fingerprint.html](https://nmap.org/nsedoc/scripts/http-waf-fingerprint.html)
+
+**WAFW00F is also an excellent tool**  
+[https://github.com/sandrogauci/wafw00f](https://github.com/sandrogauci/wafw00f)
+
+**nslookup** which generally provides less information and uses its own internal libraries as opposed to the OS resolver libraries that dig uses.  
+[http://unix.stackexchange.com/questions/93808/dig-vs-nslookup](http://unix.stackexchange.com/questions/93808/dig-vs-nslookup)
+
+**/usr/share/dirbuster/wordlists/directories.jbrofuzz is not great**, but it is not bad either  
+[http://null-byte.wonderhowto.com/how-to/hack-like-pro-abusing-dns-for-reconnaissance-0157448/](http://null-byte.wonderhowto.com/how-to/hack-like-pro-abusing-dns-for-reconnaissance-0157448/)
+
+
+
+
+
+**Microsoft bing virtual hosts** search feature  
+"Penetration Tester's Open Source Toolkit" book
+
+
+
+**If you look at the public statistics** on businesses loosing value due to being compromised regularly, the figures are staggering  
+[http://www.meetup.com/OWASP-New-Zealand-Chapter-Christchurch/events/223462991/](http://www.meetup.com/OWASP-New-Zealand-Chapter-Christchurch/events/223462991/) 
+
+**Cost of Change** curve adapted from Scott W. Ambler's article on Examining the Agile Cost of Change Curve, which I've used in many presentations and workshops.  
+[http://www.agilemodeling.com/essays/costOfChange.htm](http://www.agilemodeling.com/essays/costOfChange.htm)
+
+
 
 
 ## [Physical](#physical)
@@ -166,8 +201,6 @@ and also the specification
 [https://www.grc.com/sn/sn-453.htm](https://www.grc.com/sn/sn-453.htm)
 
 ## [Web Applications](#web-applications)
-
-**Cost of Change** curve adapted from Scott W. Ambler's article on [Examining the Agile Cost of Change Curve](http://www.agilemodeling.com/essays/costOfChange.htm), which I've used in many presentations and workshops.
 
 **Before the breach**, the company boasted about airtight data security but ironically, still proudly displays a graphic with the phrase “trusted security award” on its homepage.
 [Dark Reading](http://www.darkreading.com/operations/what-ashley-madison-can-teach-the-rest-of-us-about-data-security-/a/d-id/1322129)

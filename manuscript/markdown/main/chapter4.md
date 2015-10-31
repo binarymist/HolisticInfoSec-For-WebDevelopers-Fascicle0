@@ -1,44 +1,840 @@
 # Process and Practises {#process-and-practises}
 
-_Todo_ Similar process to that discussed in https://speakerdeck.com/binarymist/0wn1ng-the-web-at-www-dot-wdcnz-dot-com
+In this chapter I am going to detail a common work-flow of a penetration tester followed with some tried and tested practises to augment your agile development work-flow.
 
-%% This chapter needs to be about the process of carrying out penetration testing.
-%% From the pentesters point of view
-%%    and
-%% From the web developers point of view
-
-%% This should probably follow a process similar to the WDCNZ talk.
-
-
-Coming at the security problem from a penetration testers point of view can be quite different than coming at it from a software developers point of view.
+Coming at the security problem from a penetration testers point of view (read team) can be quite different than coming at it from a software developers point of view (blue team (if you are aware)).
 
 * The penetration tester is trying to find all the faults in your system. This is not limited to the technology aspect either, as we address throughout this book.
-* As the web developer, you are more focussed on delivering a solution that makes a problem less of a problem. Often not thinking so much about what could go wrong, but more focused on how to make it work.
+* As a web developer, you are more focussed on delivering a solution that makes a problem less of a problem. Often not thinking so much about what could go wrong, but more focused on how to make it work.
 
-In saying that, the two disciplines can work in harmony together. There is a real need for improving most software developers security related awareness, skills and knowledge, and as this book is focussed on the web developer, it is my intention to show you as a web developer, how to take the lessons learnt from the penetration testers perspective and apply it to your own work and life. I have the advantage of working in both disciplines and also in some very successful Scrum teams often as Scrum Master. This makes it relatively easy to empathise to both sides and pull the best from both sides, then apply it to the other side.
+In saying that, the two disciplines can work in harmony together. There is a real need for improving most software developers security related awareness, skills and knowledge, and as this book is focussed on the web developer, it is my intention to show you as a web developer, how to take the lessons learnt from the penetration testers perspective and apply it to your own work and life. That is right, security needs to be part of who you are. I have the advantage of working in both disciplines and also in some very successful Scrum teams often as Scrum Master. This makes it relatively easy to empathise to both sides and pull the best from both sides, then apply it to the other side. Thus attempting to bring both in to harmony.
 
-In this chapter I am going to detail a common work-flow of a penetration tester. Then apply the relevant parts for a web developer to a work-flow for you.
+## Penetration Testing {#process-and-practises-penetration-testing}
 
-## Penetration Testing
+This is the process and the steps commonly taken by a penetration tester.
+
+### Reconnaissance {#process-and-practises-penetration-testing-reconnaissance}
+
+This is the act of information gathering. The quieter you can do this, the less likely you will be to raise suspicions or raise your clients defenses.
+Here we want to gather as much information that will be potentially useful for taking into the following stages. Where we start to obtain more information about services & other software being used & their versions. Moving from passive to more active techniques. We need to learn as much as possible about the people involved within, related to and how they are related to the target organisation.  
+This way we will be able to create effective attack strategies including non technical aspects such as physical security and pretexts for the people we want to exploit.
+
+#### The Forms it Takes
+
+Information gathering can be done in such a way that the target doesn't know you are doing it (passive) through to where the target should absolutely know you are doing it (active), but all to often the target still does not notice due to insufficient logging, monitoring, alerting (as mentioned in several of the following chapters) and someone actually taking notice as discussed in the People chapter around engagement.
+
+#### Passive
+
+This is when the information gathering can not be detected by the target. Information is gathered indirectly from the target. Usually from sources that have had direct relationship with the target. Social media web sites, 
+
+The pen tester or attacker can not directly probe the target. They must use third party information. Sometimes this will be out of date, so confirmation needs to be sought. This is usually not to difficult, but it takes more time than if the passive constraint was lifted and the pen tester could probe directly.
+
+If you think back to the diagram in the 300,00' view chapter under [Identify Risks](#starting-with-the-30000-foot-view-identify-risks-likelihood-and-impact), where you have "Your Organisation" and the indirect relationships to the "Competitor", you'll see that your competitor or attacker has what is known as these passive or third party relationships with you via your bank, accountants, domain and/or technical consultants, professional services, telcos, ISP and any other number of intermediaries like: social media, whois, DNS (and reverse) lookups and the ocean of information floating around the internet and even the physical cities which you can see if you are observant. Once you have the names of the technology workers at the target organisation, you can search technology specific forums to see what sort of questions they are asking or possibly blog posting on.
+
+#### Semi-Active
+
+Is gathering information directly from the target, but in a manner that looks non suspicious, as if it was any casual browser, passer by or just normal internet traffic. The `nmap -sV` example below almost fits into this form.
+
+#### Active
+
+Here we interact with the target directly, engaging in activities like:
+* Snooping physical premises
+* Port scanning the entire range `nmap -p- <target>` and some of the aggressive nmap scanning modes shown below
+* Spidering public facing resources. Directories and files, often public without the administrators realising it. If they ran a spidering tool against their servers they would see all the publicly accessible resources.
+* Banner grabbing and probing
+
+##### Netcat
+
+&nbsp;
+
+No where near as configurable as a dedicated port scanner, but still scans ports is Netcat. Netcat is a network swiss army knife. It can be used to host a web page, send files, poking at things to see what happens and so many other uses. Lets look at some uses.
+
+{title="", linenos=off, lang=bash}
+    # -z is the argument to instruct for a port scan.
+    # 1-1000 is the port range
+    # -r randomises the order of port scans to make it a little less obvious
+    # -w 1 instructs nc to wait 1 second for a response to each port.
+    nc -v -r -w 1 -z <target> 1-1000
+
+    # This won't conceal the attackers IP address.
+    # For example: sshd logs will show a failed attempt from specific IP address.
+    # This is kind of a blunt tool for port scanning.
+
+##### NMap
+
+&nbsp;
+
+This is an example of using nmap against a target with a SSH daemon and web server running...
+
+As you can see with using the aggressive option `-A` the pen tester makes a lot of noise and if the logs are being casually inspected by a system administrator, the chance of noticing the probes with `nmap` written all over them is very likely.
+
+{title="nmap command", linenos=off, lang=bash}
+    # Attempt to detect target OS and services running on it.
+    nmap -A <target>
+
+{title="nmap result", linenos=off, lang=bash}
+    nmap -A <target>
+    
+    Nmap scan report for <target> (<target ip>)
+    Host is up (0.0014s latency).
+    rDNS record for <target ip>: <target>
+    Not shown: 997 closed ports
+    PORT     STATE    SERVICE    VERSION
+    23/tcp   filtered telnet
+    22/tcp  open     tcpwrapped
+    2000/tcp open     http       Node.js (Express middleware)
+    |_http-title: title
+    No exact OS matches for host (If you know what OS is running on it, see http://nmap.org/submit/ ).
+    TCP/IP fingerprint:
+    # Some more info that isn't really helpful
+    
+    Network Distance: 2 hops
+    
+    TRACEROUTE (using port 139/tcp)
+    HOP RTT     ADDRESS
+    1   2.58 ms <target router> (<target router ip>)
+    2   1.79 ms <target> (<target ip>)
+    
+    OS and Service detection performed. Please report any incorrect results at http://nmap.org/submit/ .
+    Nmap done: 1 IP address (1 host up) scanned in 35.18 seconds
+
+{title="target system logs", linenos=off, lang=bash}
+    <time> <target> sshd:  refused connect from <kali ip> (<kali ip>)
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "OPTIONS / HTTP/1.1" 200 8 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "GET / HTTP/1.1" 200 56328 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "OPTIONS / HTTP/1.1" 200 8 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "GET /master.jsp HTTP/1.1" 404 23 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "GET /flumemaster.jsp HTTP/1.1" 404 28 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "GET /tasktracker.jsp HTTP/1.1" 404 28 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "GET /dfshealth.jsp HTTP/1.1" 404 26 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "GET /jobtracker.jsp HTTP/1.1" 404 27 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "GET /robots.txt HTTP/1.1" 404 23 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "GET /status.jsp HTTP/1.1" 404 23 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "GET /rs-status HTTP/1.1" 404 22 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "GET /.git/HEAD HTTP/1.1" 404 22 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "GET /browseDirectory.jsp HTTP/1.1" 404 32 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "OPTIONS / HTTP/1.1" 200 8 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "OPTIONS / HTTP/1.1" 200 8 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "OPTIONS / HTTP/1.1" 200 8 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "OPTIONS / HTTP/1.1" 200 8 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "OPTIONS / HTTP/1.1" 200 8 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "OPTIONS / HTTP/1.1" 200 8 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "OPTIONS / HTTP/1.1" 200 8 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - [<time>] "OPTIONS / HTTP/1.1" 200 8 "-" "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+    <time> <target> sshd:  refused connect from <kali ip> (<kali ip>)
+
+Now using the service detection option `-sV` the results provide almost as much information. Even with the intensity maxed out, the pen tester makes very little noise and if the logs are being even closely inspected, the chance of missing these probes is likely. The only part that really stands out at all is the `sshd` auth request failure. As there are only two of these lines, it's likely that a system administrator wouldn't think that much of it. Without the `sshd` entries, this would fit into the Semi-Active form mentioned above.
+
+{title="nmap command", linenos=off, lang=bash}
+    nmap -sV --version-intensity 9 <target>
+
+{title="nmap result", linenos=off, lang=bash}
+    Nmap scan report for <target> (<target ip>)
+    Host is up (0.0061s latency).
+    rDNS record for <target ip>: <target>
+    Not shown: 997 closed ports
+    PORT     STATE    SERVICE    VERSION
+    23/tcp   filtered telnet
+    22/tcp  open     tcpwrapped
+    2000/tcp open     http       Node.js (Express middleware)
+    
+    Service detection performed. Please report any incorrect results at http://nmap.org/submit/ .
+    Nmap done: 1 IP address (1 host up) scanned in 17.63 seconds
+
+{title="target system logs", linenos=off, lang=bash}
+    <time> <target> sshd:  refused connect from <kali ip> (<kali ip>)
+    <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - <time> "GET / HTTP/1.0" 200 56328 "-" "-"
+    <time> <target> sshd:  refused connect from <kali ip> (<kali ip>)
+
+NMap and the scripting engine are a very powerful tool-set for gathering information. From passive to active. There are many scripts available and they are easy to work out what each is for by using the `--script-help` option.
+
+#### Concealing NMap Source IP Address
+
+An attacker will often attempt to conceal their source IP address during an NMap port scan with the likes of:
+
+##### Decoy host `-D`
+
+&nbsp;
+
+What this does is make it appear to the target that the scans are coming from all the decoy hosts. You can optionally use ME as one of the decoys to represent your/the attackers address. Putting ME in the sixth position or later will will cause some common port scan detectors such as Scanlogd to not show your IP address at all. You can also use RND to generate a random non-reserved IP address. For more details check the man page.
+
+You probably want to make sure that the hosts you use as fakes/decoys are actually up otherwise you may `SYN` flood your target(s). There will be no RST flag sent to the target being scanned from the decoy thus keeping the connection open. As nmap continues to send more requests to the target with the decoy IP address as the source, the target will maintain a growing list of open connections
+
+A> The RST (TCP reset) flag used to be sent indicating that a session be terminated due to problems. In recent years the RST flag has been used to terminate sessions instead of FIN-> <-ACK <-FIN ACK-> basically because it is faster and releases stack resources immediately.
+
+With the decoy actually being up and receiving the <-SYN ACK-> it responds with the TCP reset and the target knows the connecting is finished and releases its resources.
+
+It is also kind of obvious as to which IP address the attack is coming from if the decoy hosts are not actually up.
+
+Use too many decoys will slow your scan down and possibly make the results less accurate. Some ISPs may filter out your spoofed packets.
+
+{title="", linenos=off, lang=bash}
+    # Make sure your decoys are up unless you want to DOS your target.
+    nmap -D <decoyip1>,<decoyip2>,<decoyip3>,<decoyip4>,<decoyip5>,ME <target>
+
+##### Idle scan `-sI`
+
+&nbsp;
+
+There are a few things you need to know in order to use this and be able to reason about what is going to happen. This is a side-channel attack which exploits predictable IP fragmentation ID sequence generation on the zombie (fake) host to glean information about the open ports on the target IDS systems will display the scan as coming from the zombie machine you specify (which must be up and meet certain criteria). Check the man page.
+
+{title="", linenos=off, lang=bash}
+    nmap -sI 1.1.1.1:1234 <target>
+
+#### Service Fingerprinting
+
+Adding to what we've just seen above, the simplest way to attempt to deduce the details of the service running bound to a particular port is to just see what banner is returned, or for HTTP, the `Server` header field.
+
+##### Depending on the Server field
+
+&nbsp;
+
+{title="Request", linenos=off, lang=bash}
+    # Run netcat against your targets web server
+    nc <target> 80
+    # Now you need to issue the request.
+    HEAD / HTTP/1.1
+    # You will probably need to hit the enter key twice.
+
+Now if the target is running Apache 2.2.3, then you may see something like the following:
+
+{title="Response", linenos=off, lang=bash}
+    HTTP/1.1 400 Bad Request
+    Date: Thu, 29 Oct 2015 04:44:09 GMT
+    Server: Apache/2.2.3 (CentOS)
+    Connection: close
+    Content-Type: text/html; charset=iso-8859-1
+
+You can not rely on the Server field though. It could be obfuscated:
+
+{title="Response", linenos=off, lang=bash}
+    403 HTTP/1.1 Forbidden
+    Date: Thu, 29 Oct 2015 04:44:09 GMT
+    Server: Unknown-Webserver/1.0
+    Connection: close
+    Content-Type: text/html; charset=iso-8859-1
+
+Or if your target is running an Express server, you will probably see something like:
+
+{title="Response", linenos=off, lang=bash}
+    HTTP/1.1 200 OK
+    X-Powered-By: Express
+    Content-Type: text/html; charset=utf-8
+    Content-Length: 56328
+    ETag: W/"dc08-0R4KyLlbTHepNS8qdLYCyQ"
+    Date: Thu, 29 Oct 2015 04:31:20 GMT
+    Connection: keep-alive
+
+##### Ordering of Header Fields
+
+&nbsp;
+
+Every web server has its own specific ordering of header fields. This is usually more reliable at deducing the server type.
+
+##### Malformed Requests
+
+&nbsp;
+
+Now if we try some malformed requests:
+
+{title="Request", linenos=off, lang=bash}
+    nc <experss 4.0 server> 80
+    GET / HTTP/1.1
+
+{title="Response", linenos=off, lang=bash}
+    HTTP/1.1 200 OK
+    X-Powered-By: Express
+    Content-Type: text/html; charset=utf-8
+    Content-Length: 56328
+    ETag: W/"dc08-0R4KyLlbTHepNS8qdLYCyQ"
+    Date: Thu, 29 Oct 2015 05:03:46 GMT
+    Connection: keep-alive
+    
+    # We get the page markup here.
+
+{title="Request", linenos=off, lang=bash}
+    nc <experss 4.0 server> 80
+    GET / HTTP/1.0
+
+{title="Response", linenos=off, lang=bash}
+    HTTP/1.1 200 OK
+    X-Powered-By: Express
+    Content-Type: text/html; charset=utf-8
+    Content-Length: 56328
+    ETag: W/"dc08-0R4KyLlbTHepNS8qdLYCyQ"
+    Date: Thu, 29 Oct 2015 05:04:20 GMT
+    Connection: close
+    
+    # We get the page markup here.
+
+&nbsp;
+
+{title="Request", linenos=off, lang=bash}
+    nc <apache 2.2.3 server> 80
+    GET / HTTP/1.1
+
+{title="Response", linenos=off, lang=bash}
+    HTTP/1.1 400 Bad Request
+    Date: Thu, 29 Oct 2015 05:01:51 GMT
+    Server: Apache/2.2.3 (CentOS)
+    Content-Length: 226
+    Connection: close
+    Content-Type: text/html; charset=iso-8859-1
+    
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html><head>
+    <title>400 Bad Request</title>
+    </head><body>
+    <h1>Bad Request</h1>
+    <p>Your browser sent a request that this server could not understand.<br />
+    </p>
+    </body></html>
+
+{title="Request", linenos=off, lang=bash}
+    nc <apache 2.2.3 server> 80
+    GET / HTTP/1.0
+
+{title="Response", linenos=off, lang=bash}
+    HTTP/1.1 200 OK
+    Date: Thu, 29 Oct 2015 05:02:03 GMT
+    Server: Apache/2.2.3 (CentOS)
+    Accept-Ranges: bytes
+    Connection: close
+    Content-Type: text/html; charset=UTF-8
+    
+    No Host: header seen.
+
+Interesting isn't it? Every server type answers in a different way.
+
+##### Non-existent protocol
+
+&nbsp;
+
+Now if we use a non-existent protocol:
+
+{title="Request", linenos=off, lang=bash}
+    nc <express 4.0 server> 80
+    GET / CATSFORDINNER/1.0
+    # Express ignores cats for dinner. No response
+
+
+{title="Request", linenos=off, lang=bash}
+    nc <apache 2.2.3 server> 80
+    GET / CATSFORDINNER/1.0
+
+Now we see Apache just can not get enough cats for dinner.
+
+{title="Response", linenos=off, lang=bash}
+    HTTP/1.1 200 OK
+    Date: Thu, 29 Oct 2015 05:12:51 GMT
+    Server: Apache/2.2.3 (CentOS)
+    Accept-Ranges: bytes
+    Connection: close
+    Content-Type: text/html; charset=UTF-8
+    
+    No Host: header seen.
+
+##### Other Services
+
+&nbsp;
+
+Let us look at SSH.
+
+Using nmaps service detection `-sV` option has the smarts to work most of this out because nmap uses service specific probes. So relying on higher level tools are often quicker and more effective as the manual work has already been done and backed into the tooling.
+
+{title="", linenos=off, lang=bash}
+    nmap -sV -p 22 <target>
+
+{title="Results", linenos=off, lang=bash}
+    Starting Nmap 6.40 ( http://nmap.org ) at 2015-10-29 19:46 NZDT
+    Nmap scan report for <target> (<target ip>)
+    Host is up (0.00049s latency).
+    rDNS record for <target ip>: <target.domain>
+    PORT    STATE SERVICE VERSION
+    22/tcp open  ssh     OpenSSH 6.7p1 Debian 3 (protocol 2.0)
+    Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Now if the system administrator had of modified the `/etc/hosts.deny` to be `ALL: ALL` and the `/etc/hosts.allow` to only include the machines intended to access the ssh daemon, then the attacker would see the following instead:
+
+{title="Results", linenos=off, lang=bash}
+    Starting Nmap 6.47 ( http://nmap.org ) at 2015-10-29 19:59 NZDT
+    Nmap scan report for <target> (<target ip>)
+    Host is up (0.0021s latency).
+    rDNS record for <target ip>: <target.domain>
+    PORT    STATE SERVICE    VERSION
+    22/tcp open  tcpwrapped
+
+{title="", linenos=off, lang=bash}
+    nc -v <target> 22
+
+{title="Results", linenos=off, lang=bash}
+    Connection to <target> 22 port [tcp/*] succeeded!
+    SSH-2.0-OpenSSH_6.7p1 Debian-3
+
+And again if the system administrator had setup the hosts files like above:
+
+{title="Results", linenos=off, lang=bash}
+    DNS fwd/rev mismatch: <target> != <target.domain>
+    <target> [<target ip>] 22 (?) open
+
+We also discuss risks and countermeasures around SSH in the VPS chapter.
+
+#### Web Application Firewall (WAF) Fingerprinting
+
+The fact that a WAF is in place is often given away by simply inspecting the responses from the server side. a WAF may add a cookie, with a little searching you may discover what the WAF is from its cookie. Likewise with inspecting the HTTP headers, there are often giveaways. A session timing out very quickly. That can be seen when you telnet or netcat to a web application, but don't issue a request quickly enough.
+
+##### NMap
+
+has a couple of good scripts out of the box for WAF detection.
+
+To view all of the currently available local nmap scripts `locate *.nse` will give you the full listing. To narrow down the listing to what we are actually looking for in this case:
+
+`nmap --script-help "http-waf*"`
+
+Will yield the following two scripts which are very useful:
+
+1. `http-waf-detect.nse`  
+Attempts to determine whether the web server is protected by a IDS, IPS or WAF
+2. `http-waf-fingerprint.nse`  
+Attempts to discover the presence of a WAF, its type and version.
+
+##### [WAFW00F](https://github.com/sandrogauci/wafw00f)
+
+is also an excellent tool included in Kali Linux. WAFW00F or `wafw00f` tests for a large number of known WAFs (26 last time I looked). Running is pretty much self explanatory. Just run it against the target host.
+
+"_Sends a normal HTTP request and analyses the response; this identifies a number of WAF solutions_  
+_If that is not successful, it sends a number of (potentially malicious) HTTP requests and uses simple logic to deduce which WAF it is_  
+_If that is also not successful, it analyses the responses previously returned and uses another simple algorithm to guess if a WAF or security solution is actively responding to our attacks_"
+
+#### DNS
+
+##### Domain Information Groper (dig) 
+
+&nbsp;
+
+To perform DNS lookup:
+
+{title="dig", linenos=off, lang=bash}
+    dig <domain you are wanting info on>
+
+To perform a reverse looking on an IP address:
+
+{title="dig reverse lookup", linenos=off, lang=bash}
+    dig -x <ip address>
+
+{title="dig for email servers", linenos=off, lang=bash}
+    # mx (email servers) is the type of record to look for.
+    # by default, dig will perform a lookup for an A record
+    dig <domain you are wanting info on> mx
+
+There are many other options you can use with dig, the output is clear and informative. There is also host and the deprecated nslookup which generally provides less information and uses its own internal libraries as opposed to the OS resolver libraries that dig uses.
+
+##### dnsenum
+
+Will do everything dig can do plus more.
+There is no man page for dnsenum. Simply run dnsenum and you will be presented with its help.
+
+In order to find all subdomains associated with the target domain, you can use a wordlist. A good collection can be found in Kali Linux by simply issuing the following command:
+
+{title="", linenos=off, lang=bash}
+    locate wordlist
+
+Recon-ng as discussed below also has some in `/usr/share/recon-ng/data/` that it uses for similar tasks. Choose your wordlist then apply it to dnsenum. The results found will only be as good as your wordlist. So choose wisely.  
+`/usr/share/dirbuster/wordlists/directories.jbrofuzz` is not great, but it is not bad either
+
+{title="", linenos=off, lang=bash}
+    # This is a noisy command, but it is still passive. The target is not being touched.
+    # Be patient, it can take some time if you use a large wordlist.
+    dnsenum <target domain> -f <your chosen wordlist>
+    # dnsenum can also recurse on all the subdomains with the -r option
+
+This will provide the same results as a simple `dnsenum <target domain>` and then start the bruteforce which lists the IP addresses with the domains and record types
+
+{title="", linenos=off, lang=bash}
+    binarymist.net.             3174    IN   A       202.46.170.8
+    binarymist.net.             3174    IN   A       202.46.170.8
+    binarymist.net.             3174    IN   A       202.46.170.8
+    blog.binarymist.net.        3600    IN   CNAME   binarymist.wordpress.com.
+    binarymist.wordpress.com.   14400   IN   CNAME   lb.wordpress.com.
+    lb.wordpress.com.           225     IN   A       192.0.78.13
+    lb.wordpress.com.           225     IN   A       192.0.78.12
+    Blog.binarymist.net.        3600    IN   CNAME   binarymist.wordpress.com.
+    binarymist.wordpress.com.   14400   IN   CNAME   lb.wordpress.com.
+    lb.wordpress.com.           225     IN   A       192.0.78.12
+    lb.wordpress.com.           225     IN   A       192.0.78.13
+    CODE.binarymist.net.        3600    IN   CNAME   bitbucket.org.
+    bitbucket.org.              65798   IN   A       131.103.20.167
+    bitbucket.org.              65798   IN   A       131.103.20.168
+    code.binarymist.net.        3600    IN   CNAME   bitbucket.org.
+    bitbucket.org.              65798   IN   A       131.103.20.168
+    bitbucket.org.              65798   IN   A       131.103.20.167
+    Code.binarymist.net.        3600    IN   CNAME   bitbucket.org.
+    bitbucket.org.              65798   IN   A       131.103.20.167
+    bitbucket.org.              65798   IN   A       131.103.20.168
+    dashboard.binarymist.net.   3600    IN   A       202.46.170.7
+    Dashboard.binarymist.net.   3600    IN   A       202.46.170.7
+    www.binarymist.net.         3600    IN   A       202.46.170.8
+    WWW.binarymist.net.         3600    IN   A       202.46.170.8
+    Www.binarymist.net.         3600    IN   A       202.46.170.8
+
+##### dnsrecon
+
+Is another similar tool to dnsenum with a few different options. It is usually helpful to try several similar tools for the same or similar exercise as you will get different results and it is good not to depend on any single tool for a specific task. Do not become tool dependent.
+
+`dnsrecon -d <target domain>`  
+There are many other options. Simply run the tool with no arguments to get its help.
+
+&nbsp;
+
+A> The following three (I like to call multi-tools) tools I've found to be really useful and use before and during just about every penetration testing assignment.
+
+#### theHarvester
+
+Is an Open Source Intelligence Tool (OSINT)
+
+Can be used via discover-scripts.
+
+"_theHarvester is a tool for gathering e-mail accounts, subdomain names, virtual hosts, open ports/ banners, and employee names from different public sources (search engines, pgp key servers)._"
+
+Also useful for finding out what an attacker can find out about you, your organisation or your client.
+
+Installed [out of the box](http://tools.kali.org/information-gathering/theharvester) on Kali Linux.
+
+If not run from discover-scripts:  
+within Kali Linux you can go through the menus: Information Gathering -> OSINT Analysis -> theharvester  
+or  
+just [Alt]+[F2] theharvester
+
+The sources used are:
+
+* google search engine
+* googleCSE custom search engine. A custom search engine needs to be [created](https://cse.google.co.nz/cse/), then add your API key and CSE id to discovery/googleCSE.py
+* google profiles specific
+* googleplus: finds users that work in target organisation (uses google search)
+* baidu search engine
+* yahoo search engine
+* bing search engine
+* bingapi (API key needs to be added to the discovery/bingsearch.py file)
+* -vhost: This is the Microsoft bing virtual hosts search feature. The idea is that you provide an IP address of a web server using the `ip:` operator and the search engine enumerates all of the host names it has in its database
+* pgp.rediris.es
+* linkedin via specific google search
+* twitter accounts related to specific domain (uses google search)
+* shodan (for internet connected devices). Their website states they search The Web, Refrigerators, Webcams, Power Plants, IoT, Buildings. To use, you need to register and put your API key in discovery/shodansearch.py
+
+Both passive & active options available.
+
+#### Discover-scripts
+
+Is an excellent Open Source Intelligence Tool (OSINT).
+
+![](images/discover.png)
+
+This is a collection of shell scripts to aggregate Kali Linux tools & automate various pentesting tasks. Both passive & active options which allow you to dig up a lot of dirt on your target long before you start trying to penetrate them. I have found domain and Person to be very useful.
+
+To run, within Kali Linux you just need to run the `/opt/discover/discover.sh` script. This is one of the additional tools we [added](#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-discover-scripts) to Kali.
+
+For example
+Recon -> Domain -> Passive combines:
+
+* goofile
+* goog-mail
+* goohost
+* theHarvester
+* Metasploit
+* dnsrecon
+* URLCrazy
+* Whois
+* and multiple websites.
+
+Recon -> Domain -> Active combines:
+
+* Nmap
+* dnsrecon
+* Fierce
+* lbd
+* Wafw00f
+* traceroute
+* Whatweb
+
+So rather than getting familiar with all the recon tools at once, you get the benefit of many tools in one. You do not get quite the flexibility of using the tools by themselves though, but as time is often the constraining factor, discover is a good choice.
+
+#### recon-ng {#process-and-practises-penetration-testing-reconnaissance-recon-ng}
+
+Another tool in a similar vein to discover-scripts. Recon-ng has a similar feel to metasploit, but for web based reconnaissance. If you are familiar with the metasploit framework, you will notice most of the options are very similar. Recon-ng has a modular framework, allowing anyone that can write some Python to contribute to the collection of modules. This is a very powerful and easy to use recon tool.
+
+Some of the sort of information you may get is:
+
+1. Additional companies
+2. Hosts you didn't know existed with their IP addresses, domain names, countries of origin, region, latitude, longitude and the module used to find the information.
+3. Contacts, first and last names, email addresses, pgp key associations
+4. Vulnerabilities, credentials
+5. So many more.
+
+It depends on which moduels you use as to what information you receive.
+
+When you run recon-ng with no arguments, you will be presented with the titles of the collections of the included modules and you'll be dropped at a recon-ng prompt showing the current workspace you are in. It looks like:
+
+{title="", linenos=off, lang=bash}
+    [recon-ng][default] > 
+
+Type `help` and you will be presented with the recon-ng commands.
+
+Prepend any of the commands with help or simply type the command by itself if you want to know more about the specific command.
+
+For example type `show` and you will be presented with:
+
+{title="", linenos=off, lang=bash}
+    Shows various framework items
+    
+    Usage: show [banner|companies|contacts|credentials|dashboard|domains|hosts|leaks|locations|modules|netblocks|options|ports|profiles|pushpins|schema|vulnerabilities]
+
+The above outputs are actually table names that contain data you add (discussed soon).
+
+Then type `show modules` and you will be presented with a listing of all the moduels in `/usr/share/recon-ng/modules/`. When I last looked they were:
+
+{title="recon-ng modules", linenos=off, lang=bash}
+    Discovery
+    ---------
+      discovery/info_disclosure/cache_snoop
+      discovery/info_disclosure/interesting_files
+  
+    Exploitation
+    ------------
+      exploitation/injection/command_injector
+      exploitation/injection/xpath_bruter
+  
+    Import
+    ------
+      import/csv_file
+      import/list
+  
+    Recon
+    -----
+      recon/companies-contacts/facebook
+      recon/companies-contacts/jigsaw/point_usage
+      recon/companies-contacts/jigsaw/purchase_contact
+      recon/companies-contacts/jigsaw/search_contacts
+      recon/companies-contacts/linkedin_auth
+      recon/companies-contacts/linkedin_crawl
+      recon/companies-multi/whois_miner
+      recon/contacts-contacts/mailtester
+      recon/contacts-contacts/mangle
+      recon/contacts-contacts/unmangle
+      recon/contacts-credentials/hibp_breach
+      recon/contacts-credentials/hibp_paste
+      recon/contacts-credentials/pwnedlist
+      recon/contacts-domains/migrate_contacts
+      recon/contacts-profiles/fullcontact
+      recon/credentials-credentials/adobe
+      recon/credentials-credentials/bozocrack
+      recon/credentials-credentials/hashes_org
+      recon/credentials-credentials/leakdb
+      recon/domains-contacts/pgp_search
+      recon/domains-contacts/salesmaple
+      recon/domains-contacts/whois_pocs
+      recon/domains-credentials/pwnedlist/account_creds
+      recon/domains-credentials/pwnedlist/api_usage
+      recon/domains-credentials/pwnedlist/domain_creds
+      recon/domains-credentials/pwnedlist/domain_ispwned
+      recon/domains-credentials/pwnedlist/leak_lookup
+      recon/domains-credentials/pwnedlist/leaks_dump
+      recon/domains-domains/brute_suffix
+      recon/domains-hosts/baidu_site
+      recon/domains-hosts/bing_domain_api
+      recon/domains-hosts/bing_domain_web
+      recon/domains-hosts/brute_hosts
+      recon/domains-hosts/builtwith
+      recon/domains-hosts/google_site_api
+      recon/domains-hosts/google_site_web
+      recon/domains-hosts/netcraft
+      recon/domains-hosts/shodan_hostname
+      recon/domains-hosts/ssl_san
+      recon/domains-hosts/vpnhunter
+      recon/domains-hosts/yahoo_domain
+      recon/domains-vulnerabilities/punkspider
+      recon/domains-vulnerabilities/xssed
+      recon/domains-vulnerabilities/xssposed
+      recon/hosts-domains/migrate_hosts
+      recon/hosts-hosts/bing_ip
+      recon/hosts-hosts/ip_neighbor
+      recon/hosts-hosts/ipinfodb
+      recon/hosts-hosts/resolve
+      recon/hosts-hosts/reverse_resolve
+      recon/locations-locations/geocode
+      recon/locations-locations/reverse_geocode
+      recon/locations-pushpins/flickr
+      recon/locations-pushpins/instagram
+      recon/locations-pushpins/picasa
+      recon/locations-pushpins/shodan
+      recon/locations-pushpins/twitter
+      recon/locations-pushpins/youtube
+      recon/netblocks-companies/whois_orgs
+      recon/netblocks-hosts/reverse_resolve
+      recon/netblocks-hosts/shodan_net
+      recon/netblocks-ports/census_2012
+      recon/ports-hosts/migrate_ports
+      recon/profiles-contacts/dev_diver
+      recon/profiles-profiles/namechk
+      recon/profiles-profiles/profiler
+      recon/profiles-profiles/twitter
+  
+    Reporting
+    ---------
+      reporting/csv
+      reporting/html
+      reporting/json
+      reporting/list
+      reporting/pushpin
+      reporting/xlsx
+      reporting/xml
+
+As recon-ng uses workspaces, you can keep all your specific assignment data in its own workspace. Data is persisted to the file system `/user/.recon-ng/workspaces/<your new workspace name>/` as it's gathered. You can exit and restart recon-ng anytime without loosing the data you have already gathered.
+
+{title="", linenos=off, lang=bash}
+    workspaces add <your new workspace name>
+
+Usually before you `use` -> `run` modules, you will want to `add` initial records. The sort of records you may want to add can be seen by typing `show`.
+
+{title="", linenos=off, lang=bash}
+    add domains <a target domain>
+    add companies
+    # Now you are prompted for some details like name and description
+
+To see what records you have already `add`ed, type `show [item]` (where `item` is actually a table name listed from the output of the `show` command). For example: `show domains` or `show companies`
+
+To delete an item you have added: `del [item] [rowid]`, for example:
+
+{title="", linenos=off, lang=bash}
+    del domains 1 # To remove the first record 
+
+You can also query the workspace database with the `query` command. Just type it and you will get some help and be running in no time. Many of the commands can be performed using recon-ng commands or by using the `query` command and building up SQL queries.
+
+To use a specific module:
+
+{title="", linenos=off, lang=bash}
+    use <one of the modules listed from show modules command>
+
+To find out what options if any you need to set for your chosen module, type:
+
+{title="", linenos=off, lang=bash}
+    set
+    # This will print the Names of the options which you need to set if not already set and if it is a Required field, Current Value and Description.
+    # The Current Value should be the second argument you provide to set.
+
+If you need more information about the current module you have `use`ed, type:
+
+{title="", linenos=off, lang=bash}
+    show info
+
+You will be notified when you attempt to `run` if you need an API key. Details on where to find these are on the [recon-ng wiki](https://bitbucket.org/LaNMaSteR53/recon-ng/wiki/Usage%20Guide#!acquiring-api-keys).
+
+Before you add any social media API keys, you will want to create throwaway social media accounts, because many of the social media sites you will perform recon on will show the visiting user. You want that visiting user to be your throwaway account.
+
+{title="", linenos=off, lang=bash}
+    # To show your currently installed API keys:
+    keys list
+    # To add an API key:
+    keys add [specific_key_listed_from_previous_command] <yourkey>
+
+Once you are ready to `run` the module you have chosen with the `use` command, just type `run`. All the information will be gathered into the database which you can query or create reports from. Between each new module you `use` and `run` you can view what was found simply by watching the screen or:
+
+{title="", linenos=off, lang=bash}
+    query SELECT * FROM [any of the tables listed with the show command]
+    # For example:
+    query SELECT * FROM contacts
+    query SELECT * FROM hosts
+
+or
+
+{title="", linenos=off, lang=bash}
+    use reporting/html
+    set CREATOR <you or your company>
+    set CUSTOMER <your client/target>
+    run
+    # Now you will be told where your report lives.
+    # It should be in the workspace you created which you can access at any time.
+
+The report types you can use can be seen by:
+
+{title="", linenos=off, lang=bash}
+    show modules reporting
+    # These include html, json, csv, xml and others
+
+`exit` to quit out of recon-ng. Any data gathered will be retained.
+
+The commands may seem a bit heavy to start with, but they're very intuitive. Spend some time with recon-ng and it will end up being one of the first recon tools you turn to.
+
+#### Useful New Zealand Web Resources
+
+Finding details on people: [http://searchenginez.com/findpeople_newzealand.html](http://searchenginez.com/findpeople_newzealand.html)
+
+Finding details on companies: [https://www.business.govt.nz/companies/](https://www.business.govt.nz/companies/)
+
+%% #### Maltego
+
+%% I had high hopes for this tool, it did not deliver.
+
+%% Is an Open Source Intelligence (OSINT) and forensics tool from Paterva. The core purpose of Maltego is to determine and map the relationships between:
+
+%% * People
+%% * Groups of people (social networks)
+%% * Organisations
+%% * Websites
+%% * Internet infrastructure:
+%%   * Domains
+%%   * DNS names
+%%   * Netblocks and their IP addresses
+%% * Phrases
+%% * Affiliations
+%% * Documents and files
+
+%% and provide visualisations of these relationships in a graphical formate for analysing the links and data mining. Maltego does this with its library of what it calls transforms. Aggregating freely available information from the internet and providing visibility to the usually hidden pieces via visible linkages up to three or four degrees of separation away.
+
+%% **Editions**
+
+%% * Community (free)(which Kali Linux happens to come with)  
+%% Maximum of 12 results per scan  
+%% Can not paste > 50 entities at once  
+%% Runs a bit slower than the commercial edition because communications between client and server is not compressed. It is also not encrypted.
+%% API keys expire every couple of days having to be activated again
+%% * Commercial  
+%% US$760 + US$320 per year there after if you want to renew.  
+%% There are bulk discounts.  
+
+%% To run, within Kali Linux you can go through the menus: Information Gathering -> OSINT Analysis -> maltego  
+%% or  
+%% just [Alt]+[F2] maltego
+
+%% You have to setup an account with Paterva and log in via the client (the GUI).
+%% Then You're given the options of which machine to run. Machines are basically what type of fingerprinting you want to run against the target.
+
+%% In most cases the transforms used by the machines were not found. There was not a lot of information anywhere around how to include them. Maybe the community edition that I was using just does not include most of the transforms, which made the tool redundant for me. There were also far fewer results than using the likes of [recon-ng](#process-and-practises-penetration-testing-reconnaissance-recon-ng) for the same target.
+
+##### Password Profiling
+
+Is where an attacker will start to collate information and often feed it into a tool or specific set of tools, or if they have lots of time which doesn't really happen, perform the same process manually. I find that the tools which have well thought out algorithms are the quickest and best way to create a short list of probable passwords to later attempt to access accounts via brute force attack
+
+I discuss this further in the [People](#people-identify-risks-weak-password-strategies) chapter.
+
+### Vulnerability Scanning / Discovery
 
 _Todo_
 
-### Reconnaissance
+Create headings for the best tools.
+Complete one of the tool sections so it can be used in workshop.
 
 _Todo_
 
-### Vulnerability Scanning
+### Vulnerability Searching {#process-and-practises-penetration-testing-vulnerability-searching}
 
 _Todo_
 
-### Vulnerability Searching
+Discuss how to find exploits from vulnerability scanning step.
 
-_Todo_ This is actually in chapter 1 under bob the builder. Remove from here and add.
+_Todo_
 
-   Offensive Security's Exploit Database https://www.exploit-db.com/
-      and their searchsploit tool: https://github.com/offensive-security/exploit-database/blob/master/searchsploit
-   Security Fucus www.securityfocus.com/bid
-   Querying Metasploit
+The vulnerability advisories were mentioned in the [30,000 View](#vulnerability-advisories) chapter.
+
 
 _Todo_
 
@@ -46,15 +842,44 @@ _Todo_
 
 During this stage, thinking about and recording countermeasures for the vulnerabilities you are able to exploit successfully is just as important as finding and recording the exploited vulnerabilities.
 
+Beat your own systems up and watch logs. Get familiar with signatures of different tools and attacks, then you will know when you are actually under attack. You can take the same concept with active and semi-active reconnaissance. This way, you will be able to pre-empt your attackers exploitation.
+
+We will go through the actual exploitation that an attacker or penetration tester would carry out in the following chapters Identify Risks sections.
+
 _Todo_
+
+Discuss isolating (potential) malware:
+firejail
+https://threatpost.com/firefox-37-to-include-new-onecrl-certificate-blocklist/111411/
+http://sourceforge.net/projects/firejail/
+http://linuxmint.tumblr.com/post/128281378277/firejail
+
+linux containers
+
+
+docker
+
+
+What else?
 
 ### Documenting and Reporting
 
+Just because this section is last in the Penetration Testing section, does not mean it is carried out last. A penetration tester or even an attacker will be recording information throughout the entire engagement. Especially during the Reconnaissance stage.
+
+#### Dradis
+
+%% "The Social Engineer's Playbook" pg 81
+
 _Todo_
+
+Discuss what Dradis provides and how it helps.
 
 ## Agile Development and Practices
 
-A> Taking Back the Security Focus
+A> Taking Back the Security Focus... but why?  
+A> Because as technologists we are hired to create business value and reduce business costs. If you look at the [public statistics](http://www.meetup.com/OWASP-New-Zealand-Chapter-Christchurch/events/223462991/) on businesses loosing value due to being compromised regularly, the figures are staggering and they are growing exponentially due to the popularity of cyber-crime. That's why we care.
+
+
 
 If I can encourage even one developer within each team to lead the charge on taking back the responsibility of creating solutions that will withstand the types of attacks that are being launched against our physical locations, people, infrastructure, products and way of life on a regular basis today, I think we may be able to move forward and make our industry a better place, a place we want to be part of. 
 

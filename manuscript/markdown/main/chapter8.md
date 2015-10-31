@@ -77,6 +77,12 @@ I have been around many administrative people that do not understand how much co
 
 A very profitable tactic is for an adversary to in one shape or form acquire a staff member of a target organisation, perhaps a competing organisation. Depending on how long the staff member has worked for the target will depend how much of a gold mine they are. Why bother doing something illegal when you can just offer the staff member a better deal than they are currently getting?
 
+### Weak Password Strategies {#people-identify-risks-weak-password-strategies}
+
+_Todo_
+
+Pull from my talk at toastmasters: http://blog.binarymist.net/presentations-publications/#passwords-101
+
 ### Phone Calls {#people-identify-risks-phone-calls}
 ![](images/ThreatTags/average-common-average-severe.png)
 
@@ -300,6 +306,12 @@ meet.
 
 A lot of combating snatching of staff comes down to the countermeasures of [Morale, Productivity and Engagement Killers](#people-countermeasures-morale-productivity-and-engagement-killers).
 
+### Weak Password Strategies
+
+_Todo_
+
+Pull from toastmasters talk and pg 292 of Social Engineering: The Art Of Human Hacking "Password Profilers" and my notes taken.
+
 #### Exit Interviews
 
 _Todo_
@@ -412,6 +424,10 @@ _Todo_
 
 _Todo_
 
+### Weak Password Strategies
+
+_Todo_
+
 ### Phone Calls
 
 _Todo_
@@ -493,6 +509,10 @@ _Todo_
 _Todo_
 
 #### Exit Interviews
+
+_Todo_
+
+### Weak Password Strategies
 
 _Todo_
 

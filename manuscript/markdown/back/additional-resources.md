@@ -15,6 +15,28 @@
 4. [Loading and unloading](http://docs.oracle.com/cd/E37670_01/E41138/html/ch06s03.html) Linux Kernel Modules
 5. Kernel Module [Blacklisting](https://wiki.debian.org/KernelModuleBlacklisting)
 
+## [Process](#process)
+
+**Useful Intelligence Gathering** resource  
+[http://www.pentest-standard.org/index.php/Intelligence_Gathering](http://www.pentest-standard.org/index.php/Intelligence_Gathering)
+
+**NMap Idle Scan and Decoy Host**
+
+[http://opensourceforu.efytimes.com/2010/08/nmap-basics/](http://opensourceforu.efytimes.com/2010/08/nmap-basics/)
+
+Idle Scan docs [https://nmap.org/book/idlescan.html](https://nmap.org/book/idlescan.html)
+
+Man page is very good [http://linux.die.net/man/1/nmap](http://linux.die.net/man/1/nmap)
+
+**NMap Script Categories**  
+[https://nmap.org/nsedoc/categories/default.html](https://nmap.org/nsedoc/categories/default.html)
+
+**NMap Scripting Engine**  
+[https://nmap.org/book/nse-usage.html](https://nmap.org/book/nse-usage.html)
+
+**The Hacker Playbook 2** has a good example of how to use recon-ng
+
+
 ## [People](#people)
 
 **Morale, Productivity and Engagement Killers**: An excellent resource around motivation can be found in Chapter 11 of Steve McConnell's excellent "Rapid Development" book.

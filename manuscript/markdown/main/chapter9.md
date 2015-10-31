@@ -180,10 +180,78 @@ G> From here on in, the [video](https://www.youtube.com/watch?v=1EvwwYiMrV4) dem
 
 _Todo_: [Take this further](https://github.com/binarymist/HolisticInfoSec-For-WebDevelopers/issues/1)
 
+### Unnecessary/Vulnerable Services
+
+Probe the portmapper on target host where target host is an IP address or a host name:
+
+%% http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#rpc-portmapper
+
+The rpcinfo command with `-p` will list all registered RPC programs. Many RPC programs are vulnerable to a collection of attacks. 
+
+{title="rpcinfo", linenos=off, lang=bash}
+    rpcinfo -p <target host> 
+
+{title="rpcinfo results", linenos=off, lang=bash}
+    program vers proto   port  service
+    100000    4   tcp    111  portmapper
+    100000    3   tcp    111  portmapper
+    100000    2   tcp    111  portmapper
+    100000    4   udp    111  portmapper
+    100000    3   udp    111  portmapper
+    100000    2   udp    111  portmapper
+    100000    4     7    111  portmapper
+    100000    3     7    111  portmapper
+    100000    2     7    111  portmapper
+    100005    1   udp    649  mountd
+    100003    2   udp   2049  nfs
+    100005    3   udp    649  mountd
+    100003    3   udp   2049  nfs
+    100024    1   udp    600  status
+    100005    1   tcp    649  mountd
+    100024    1   tcp    868  status
+    100005    3   tcp    649  mountd
+    100003    2   tcp   2049  nfs
+    100003    3   tcp   2049  nfs
+    100021    0   udp    679  nlockmgr
+    100021    0   tcp    875  nlockmgr
+    100021    1   udp    679  nlockmgr
+    100021    1   tcp    875  nlockmgr
+    100021    3   udp    679  nlockmgr
+    100021    3   tcp    875  nlockmgr
+    100021    4   udp    679  nlockmgr
+    100021    4   tcp    875  nlockmgr
+
+This provides lots of jucy information for an attacker to take into the [Vulnerability Searching](#process-and-practises-penetration-testing-vulnerability-searching) stage discussed in the Process and Practises chapter.
+
+#### NFS
+
+If the `mountd` daemon is listed in the output of the above `rpcinfo` command, showmount -e` command will be useful for listing the NFS server's list of exports.
+
+{title="showmount", linenos=off, lang=bash}
+    showmount -e <target host>
+
+{title="showmount results", linenos=off, lang=bash}
+    Export list for <target hsot>:
+    / (anonymous) # If you're lucky as an attacker, anonymous means anyone can mount.
+
+NFS is one of those protocols that you need to have some understanding on in order to acheive a level of security sufficient for your target environment.
+
+{title="mount nfs export", linenos=off, lang=bash}
+    # Make sure local rpcbind service is running:
+    service rpcbind status
+    # Should yield [ ok ] rpcbind is running.
+    # If not:
+    service rpcbind start
+    mount -t nfs <target host>:/ /mnt
+
+All going well for the attacker, they will now have your VPS's `/` directory mounted to their /mnt directory. If you haven't setup NFS properly, they'll have full access to your entire file system.
+
+#### SSH
+
+You may remember we did some fingerprinting of the SSH daemon in the Processes and Practises chapter in the [Reconnaissance](#process-and-practises-penetration-testing-reconnaissance) section
 
 
-
-
+_Todo_
 
 
 
@@ -360,15 +428,6 @@ Make sure passwords are encrypted with an algorithm that will stand up to the ty
 
 There are a handful of files to check & modify for [disabling root logins](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#disable-remote-root-logins).
 
-### [Harden SSH](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#ssh)
-![](images/ThreatTags/PreventionVERYEASY.png)
-
-There are a bunch of things you can do to minimise SSH being used as an attack vector.  
-Use Key-pairs, Long pass-phrases. Appropriate changes to `sshd_config` file.  
-AllowUsers.  
-Specify Host(s).  
-Consider non default port below 1025 that only root can bind to in order to stop the sshd being swapped.
-
 ### [Disable Boot Options](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#disable-boot-options)
 ![](images/ThreatTags/PreventionVERYEASY.png)
 
@@ -378,6 +437,25 @@ Just another attack vector that should be removed
 ![](images/ThreatTags/PreventionEASY.png)
 
 There are often a few services you can [disable](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#disable-services-we-dont-need) even on a bare bones Debian install and some that are just easier to [remove](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#remove-services). Then go through the process of [hardening](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#secure-services) what is left. Make sure you test before and after each service you attack. Watch the port being open/closed, etc.
+
+#### NFS
+
+Your distribution of Linux or what ever is installed on your VPS may not have portmap running, if it does, you may not need it. Either way, a simple option is to just not have it running.
+
+_Todo_ detail configuring NFS if NFS is required
+
+%% http://www.tldp.org/HOWTO/NFS-HOWTO/security.html
+
+#### [SSH](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#ssh)
+![](images/ThreatTags/PreventionVERYEASY.png)
+
+There are a bunch of things you can do to minimise SSH being used as an attack vector.  
+Use Key-pairs, Long pass-phrases. Appropriate changes to `sshd_config` file.  
+AllowUsers.  
+Specify Host(s).  
+Consider non default port below 1025 that only root can bind to in order to stop the sshd being swapped.
+
+We also covered `/etc/hosts.deny` and the `/etc/hosts.allow` files in the Processes and Practises chapter in the [Reconnaissance](#process-and-practises-penetration-testing-reconnaissance) section
 
 ### [Schedule Backups](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#scheduled-backups)
 ![](images/ThreatTags/PreventionEASY.png)
@@ -481,6 +559,10 @@ _Todo_
 
 _Todo_
 
+#### NFS
+
+_Todo_
+
 ### Schedule Backups
 
 _Todo_
@@ -552,6 +634,10 @@ _Todo_
 _Todo_
 
 ### Disable, Remove Services. Harden what's left
+
+_Todo_
+
+#### NFS
 
 _Todo_
 

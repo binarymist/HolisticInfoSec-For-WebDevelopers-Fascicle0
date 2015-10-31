@@ -78,7 +78,9 @@ and the [Intel Threat Agent Library](http://www.sbs.ox.ac.uk/cybersecurity-capac
 ![](images/BobTheBuilder.jpg)
  <!---This is where the images live: https://raw.githubusercontent.com/wiki/binarymist/HolisticInfoSec-For-WebDevelopers/BinaryMist-Approach-To-Threat-Modelling-Assets/BobTheBuilder.jpg-->
 
-Keep your eye on the vulnerability advisories:
+Keep your eye on the vulnerability advisories as that is part of what an attacker or penetration tester will use to [formulate their exploits](#process-and-practises-penetration-testing-vulnerability-searching) for you:
+
+{#vulnerability-advisories}
 
 * [Exploit Database](https://github.com/offensive-security/exploit-database) from Offensive Security
   * [Web Front-end](https://www.exploit-db.com/)
@@ -92,6 +94,8 @@ Keep your eye on the vulnerability advisories:
 * [OWASP Countermeasure Identification](https://www.owasp.org/index.php/Application_Threat_Modeling#Countermeasure_Identification)
 * [MS STRIDE provides countermeasures to identified threats](https://msdn.microsoft.com/en-us/library/ff648641.aspx#c02618429_005)
 * [MS Threats and Countermeasures](https://msdn.microsoft.com/en-us/library/ff648641.aspx)
+
+What you decide to fix first will be determined by the highest scoring risks. You need to order these once discovered.
 
 ## 4. SSM Risks that Solution Causes {#starting-with-the-30000-foot-view-risks-that-solution-causes}
 

@@ -600,7 +600,7 @@ Welcome to [HSTS Preload](#network-countermeasures-tls-downgrade-hsts-preload)
 * Easy Reading: [OWASP](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security)
 * [IETF specification](https://tools.ietf.org/html/draft-ietf-websec-strict-transport-sec-14). Most browsers currently have support. IE < 12 does not. 12 is [expected to](http://blogs.msdn.com/b/ie/archive/2015/02/16/http-strict-transport-security-comes-to-internet-explorer.aspx).
 
-[Online Certificate Status Protocol (OCSP)](https://github.com/binarymist/HolisticInfoSec-For-WebDevelopers/wiki/CertificateRevocation#initiative-2-online-certificate-status-protocol-ocsp) is very similar to HSTS, but at the X.509 certificate level.
+[Online Certificate Status Protocol (OCSP)](#network-countermeasures-tls-downgrade-certificate-revocation-evolution-ocsp) is very similar to HSTS, but at the X.509 certificate level.
 
 #### HTTP Strict Transport Security (HSTS) Preload {#network-countermeasures-tls-downgrade-hsts-preload}
 ![](images/ThreatTags/PreventionEASY.png)
@@ -609,7 +609,7 @@ This includes a list that browsers have with any domains that have been submitte
 
 In order to have your domain added to the browsers preload list, submit it [here](https://hstspreload.appspot.com/).
 
-[OCSP Must-Staple](https://github.com/binarymist/HolisticInfoSec-For-WebDevelopers/wiki/CertificateRevocation#initiative-4-fix-to-the-ocsp-stapling-problem) is very similar to HSTS Preload, but at the X.509 certificate level.
+[OCSP Must-Staple](#network-countermeasures-tls-downgrade-certificate-revocation-evolution-fix-to-ocsp) is very similar to HSTS Preload, but at the X.509 certificate level.
 
 #### X.509 Certificate Revocation Evolution
 
@@ -666,7 +666,7 @@ This wasn't such a big deal in the early days of the internet when there were so
 
 Conscientious CA's segment their CRLs, so that when you make a request to the CRL distribution point you get back a small list of serial numbers for revoked certificates.
 
-##### Initiative 2: Online Certificate Status Protocol (OCSP)
+##### Initiative 2: Online Certificate Status Protocol (OCSP) {#network-countermeasures-tls-downgrade-certificate-revocation-evolution-ocsp}
 
 &nbsp;
 
@@ -728,7 +728,7 @@ The following websites will tell you if a website supports OCSP, CRL, OCSP stapl
 
 The client doesn't know whether the web server supports OCSP stapling or not. When the client asks if it does, the legitimate web server may support stapling, but the fraudulent web site that the client may be dealing with just says "no I don't support stapling". So the browser falls back to using OCSP or CRL.
 
-##### Initiative 4: Fix to the OCSP Stapling Problem
+##### Initiative 4: Fix to the OCSP Stapling Problem {#network-countermeasures-tls-downgrade-certificate-revocation-evolution-fix-to-ocsp}
 
 &nbsp;
 
