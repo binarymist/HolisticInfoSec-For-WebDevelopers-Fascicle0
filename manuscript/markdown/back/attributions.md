@@ -4,6 +4,11 @@
 
 ## [The 30,000' View](#starting-with-the-30000-foot-view)
 
+### Rating of Threats
+
+**Based on the MicroSoft 6. Rate the Threats**  
+[https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_011](https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_011)
+
 **Vulnerability advisories**  
 [kitploit.com](http://www.kitploit.com/) did a small [explanation](http://www.kitploit.com/2015/06/the-exploit-database-git-repository.html) of using the [Exploit Database](https://www.exploit-db.com/) from [Offensive Security](https://www.offensive-security.com/)
 

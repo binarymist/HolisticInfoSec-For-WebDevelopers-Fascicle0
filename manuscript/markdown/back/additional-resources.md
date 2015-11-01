@@ -3,6 +3,16 @@
 * [MS Security Development Lifecycle](http://www.microsoft.com/en-us/SDL/process/design.aspx) is actually pretty good.
 * Although not specifically referred to in this model, the [Building Security In Maturity Model (BSIMM)](https://www.bsimm.com/online/) resources are very helpful. They don't really tell you how to implement secure software, but they do provide scales to measure the maturity of your development processes on many dimensions.
 
+## [Starting with the 30,000' View](#starting-with-the-30000-foot-view)
+
+### Rating of Threats
+
+**OWASP Threat Analysis**  
+[https://www.owasp.org/index.php/Application_Threat_Modeling#Threat_Analysis](https://www.owasp.org/index.php/Application_Threat_Modeling#Threat_Analysis)
+
+**OWASP Ranking of Threats**  
+[https://www.owasp.org/index.php/Application_Threat_Modeling#Ranking_of_Threats](https://www.owasp.org/index.php/Application_Threat_Modeling#Ranking_of_Threats)
+
 ## [Tooling Setup](#tooling-setup)
 
 [**Kali Linux package version tracking**](http://tools.kali.org/version-tracking) is useful for seeing what versions of tools are currently in the distribution.

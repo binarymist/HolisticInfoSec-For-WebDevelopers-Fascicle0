@@ -41,3 +41,5 @@ W> This is a Warning.
 
 T> This is a Tip.
 
+I> This is extra information.
+

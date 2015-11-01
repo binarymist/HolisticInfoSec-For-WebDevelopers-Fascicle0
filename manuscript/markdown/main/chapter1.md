@@ -18,7 +18,7 @@ Now you might be thinking that this team looks very familiar. Well that is proba
 
 "_Scrum Teams are self-organizing and **cross-functional**. Self-organizing teams choose how best to accomplish their work, rather than being directed by others outside the team. Cross-functional teams have **all competencies needed to accomplish the work** without depending on others not part of the team. The team model in Scrum is designed to optimize flexibility, creativity, and productivity._"
 
-> Scrum Guide
+> [Scrum Guide](http://www.scrumguides.org/scrum-guide.html)
 
 Having this process performed by a team brings out the best in everyone. There are of course times when it is more effective to break out and work alone for a period of time.
 
@@ -49,6 +49,7 @@ Here are some that may or may not apply to your domain:
 Now if you relate the potential loses with information security vectors, you will come up with a target list we can take into the next stages.
 
 ## 2. SSM Identify Risks {#starting-with-the-30000-foot-view-identify-risks}
+
 * [MS 2. Create an Architecture Overview](https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_007)
 * [MS 3. Decompose the Application](https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_008)
 * [MS 4. Identify the Threats](https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_009)
@@ -56,34 +57,57 @@ Now if you relate the potential loses with information security vectors, you wil
 * [OWASP External Dependencies](https://www.owasp.org/index.php/Application_Threat_Modeling#External_Dependencies)
 * [OWASP Entry Points](https://www.owasp.org/index.php/Application_Threat_Modeling#Entry_Points)
 
-  I also like to abstract things a bit here and think about some of the entities that could be risky to the target business.
+This is where we abstract things a bit and think about some of the entities that could be risky to the target business.
 
-  {#starting-with-the-30000-foot-view-identify-risks-threat-agents}
-  ![](images/ThreatAgents.png)
+{#starting-with-the-30000-foot-view-identify-risks-threat-agents}
+![](images/ThreatAgents.png)
 
-  Then think about some of the relationships the target business depends on...  
-  How they could be leaking IP.
+Then think about some of the relationships the target business depends on and how they could be leaking IP.
 
-  {#starting-with-the-30000-foot-view-identify-risks-likelihood-and-impact}
-  ![](images/LikelihoodAndImpact.gif)
+{#starting-with-the-30000-foot-view-identify-risks-likelihood-and-impact}
+![](images/LikelihoodAndImpact.gif)
 
 {#ms-5-document-the-threats}
-* [MS 5. Document the Threats](https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_010)
-* [OWASP Risk Rating Methodology](https://www.owasp.org/index.php/OWASP_Risk_Rating_Methodology) Used in my talk ["Does Your Cloud Solution Look Like a Mushroom"](https://speakerdeck.com/binarymist/does-your-cloud-solution-look-like-a-mushroom) on slides
-  * Likelihood "Threat Agent Factors"
-  * Likelihood "Vulnerability Factors"
-  * Impact    "Technical Factors"
-  * Impact    "Business Factors"  
+[MS 5. Document the Threats](https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_010)
+
+[OWASP Risk Rating Methodology](https://www.owasp.org/index.php/OWASP_Risk_Rating_Methodology) is also useful here
+
+* Likelihood "Threat Agent Factors"
+  * How likely are particular exploits to be carried out?
+  * How technically skilled is each group of threat agents?
+  * How motivated is this group of threat agents to find and exploit this vulnerability?
+  * What resources and opportunities are required for this group of threat agents to find and exploit this vulnerability?
+  * What sort of access can they acquire?
+  * How large is this group of threat agents?
+* Likelihood "Vulnerability Factors"
+  * How easy is it for this group of threat agents to discover this vulnerability?
+  * How easy is it for this group of threat agents to actually exploit this vulnerability?
+  * How well known is this vulnerability to this group of threat agents?
+  * How likely is an exploit to be detected?
+* Impact    "Technical Factors"
+  * What's the impact likely to be if a particular exploit is executed
+  * How much data could be disclosed and how sensitive is it?
+  * How much data could be corrupted and how damaged is it?
+  * Which services could be lost, how vital are they and how long could they be down for?
+  * Would you be able to trace the threat agents actions to an individual?
+* Impact    "Business Factors"
+  * What would the financial damage be to any given exploit?
+  * Would the exploit result in reputation damage that could harm your business?
+  * How much exposure does non-compliance introduce?
+  * How much personally identifiable information could be disclosed?
 
 {#intel-threat-agent-library}
 and the [Intel Threat Agent Library](http://www.sbs.ox.ac.uk/cybersecurity-capacity/system/files/Intel%20-%20Threat%20Agent%20Library%20Helps%20Identify%20Information%20Security%20Risks.pdf)
 
-{#ms-6-rate-the-threats}
-* [OWASP Threat Analysis](https://www.owasp.org/index.php/Application_Threat_Modeling#Threat_Analysis)
-* [OWASP Ranking of Threats](https://www.owasp.org/index.php/Application_Threat_Modeling#Ranking_of_Threats)
-* [MS 6. Rate the Threats](https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_011)  Used in my talk ["Does Your Cloud Solution Look Like a Mushroom"](https://speakerdeck.com/binarymist/does-your-cloud-solution-look-like-a-mushroom) on slide
-  * Risk = Likelihood * Impact
-* Just as you would with any development features, create Product Backlog Items (PBIs) and order based on highest scoring risks.
+### Rating of Threats {#ms-6-rate-the-threats}
+
+So how do we rate the threats we've just discovered? With a simple formula
+
+Based on the [MicroSoft 6. Rate the Threats](https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_011)
+
+I> Risk = Likelihood * Impact
+
+Record the risks you have identified and rank as per above formula.
 
 Keep your eye on the vulnerability advisories, as that is part of what an attacker or penetration tester will use to [formulate their exploits](#process-and-practises-penetration-testing-vulnerability-searching) for you:
 
@@ -101,7 +125,15 @@ Keep your eye on the vulnerability advisories, as that is part of what an attack
 ![](images/BobTheBuilder.jpg)
  <!---This is where the images live: https://raw.githubusercontent.com/wiki/binarymist/HolisticInfoSec-For-WebDevelopers/BinaryMist-Approach-To-Threat-Modelling-Assets/BobTheBuilder.jpg-->
 
-What you decide to fix first will be determined by the highest scoring risks. You need to order these once discovered.
+This is where you work through collaboratively creating countermeasure Product Backlog Items (PBIs). Countermeasure PBIs are like any other PBI. PBI qualities:
+
+* Estimable
+* Independent
+* Testable
+* Should promote collaboration
+* Must fit within a Sprint by the time they are properly groomed
+ 
+Your countermeasure PBIs also need to reference the risk they were created due to, thus providing context and urgency information. The PBIs need to be integrated into the Product Backlog, ordered based on the risk ratings. This way what you decide to fix first will be determined by the highest scoring risks.
 
 * [OWASP Countermeasure Identification](https://www.owasp.org/index.php/Application_Threat_Modeling#Countermeasure_Identification)
 * [MS STRIDE provides countermeasures to identified threats](https://msdn.microsoft.com/en-us/library/ff648641.aspx#c02618429_005)
@@ -109,12 +141,14 @@ What you decide to fix first will be determined by the highest scoring risks. Yo
 
 ## 4. SSM Risks that Solution Causes {#starting-with-the-30000-foot-view-risks-that-solution-causes}
 
-This is really dependent on the solution(s) you discover.
+This is really dependent on the solution(s) you discover. Often there will be new risks that the mitigation techniques introduce. We will work through many possibilities in the following chapters.
 
 * Make sure before you test that you have written permission for all the areas that you are about to test, documenting what could possibly go wrong.
 * Make sure you have backups and that they work.
 * Complacency?
 * Spending too much on technological solutions and ignoring the fact that the person on the front desk can easily be tricked to reveal information an attacker needs or lower the defences of a computer system. See the section on [People](#people).
+
+As we work through the following chapters we will discuss many more hypothetical risks that proposed countermeasures may cause.
 
 ## 5. SSM Costs and Trade-offs {#starting-with-the-30000-foot-view-costs-and-trade-offs}
 I am not here to do the work for you, but rather to help you do it.
@@ -123,6 +157,6 @@ I am not here to do the work for you, but rather to help you do it.
 
 This is really dependent on the solution(s) you discover.
 
-Counter-Measures costs - vs - Breach Costs
+Think in terms of Counter-Measure costs - vs - Breach Costs and weigh them up against each other.
 
 
