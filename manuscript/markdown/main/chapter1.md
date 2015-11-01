@@ -4,13 +4,21 @@
 
 First of all, why? Why do we need to start so high? Because Developers spend most of their lives focussing on code and sometimes on architectural concepts and patterns. Software Developers rarely focus on anything higher than this. This has the affect of causing blind spots. The reason we start so high and encourage the developer come back to this level every so often is to recalibrate that they are actually creating the right thing and that their priorities are correctly aligned with the needs of their business, not even necessarily the business's wants.
 
+Stepping back allows your peripheral vision to kick in.
+
 This modelling process should be performed by a collection of the following people:
 
 1. Deeply technical (software expert (developer/engineer)). I specifically do not mention tester(s) here, as testing is the job of the developer. The developer is responsible for delivering high quality working code every Sprint.
 2. Network expert(s)
 3. Domain expert(s) 
 4. The person solely responsible for the project or product being delivered
-5. Person(s) with security specialisations in the areas involved in the finished product. Remember you need to step back in order for your peripheral vision to kick in.
+5. Person(s) with security specialisations in the areas involved in the finished product.
+
+Now you might be thinking that this team looks very familiar. Well that is probably because it is. It looks very much like a Scrum Team.
+
+"_Scrum Teams are self-organizing and **cross-functional**. Self-organizing teams choose how best to accomplish their work, rather than being directed by others outside the team. Cross-functional teams have **all competencies needed to accomplish the work** without depending on others not part of the team. The team model in Scrum is designed to optimize flexibility, creativity, and productivity._"
+
+> Scrum Guide
 
 Having this process performed by a team brings out the best in everyone. There are of course times when it is more effective to break out and work alone for a period of time.
 
@@ -77,9 +85,6 @@ and the [Intel Threat Agent Library](http://www.sbs.ox.ac.uk/cybersecurity-capac
   * Risk = Likelihood * Impact
 * Just as you would with any development features, create Product Backlog Items (PBIs) and order based on highest scoring risks.
 
-![](images/BobTheBuilder.jpg)
- <!---This is where the images live: https://raw.githubusercontent.com/wiki/binarymist/HolisticInfoSec-For-WebDevelopers/BinaryMist-Approach-To-Threat-Modelling-Assets/BobTheBuilder.jpg-->
-
 Keep your eye on the vulnerability advisories, as that is part of what an attacker or penetration tester will use to [formulate their exploits](#process-and-practises-penetration-testing-vulnerability-searching) for you:
 
 {#vulnerability-advisories}
@@ -92,11 +97,15 @@ Keep your eye on the vulnerability advisories, as that is part of what an attack
 * [National Vulnerability Database](https://web.nvd.nist.gov/view/vuln/search)
 
 ## 3. SSM Countermeasures {#starting-with-the-30000-foot-view-countermeasures}
+
+![](images/BobTheBuilder.jpg)
+ <!---This is where the images live: https://raw.githubusercontent.com/wiki/binarymist/HolisticInfoSec-For-WebDevelopers/BinaryMist-Approach-To-Threat-Modelling-Assets/BobTheBuilder.jpg-->
+
+What you decide to fix first will be determined by the highest scoring risks. You need to order these once discovered.
+
 * [OWASP Countermeasure Identification](https://www.owasp.org/index.php/Application_Threat_Modeling#Countermeasure_Identification)
 * [MS STRIDE provides countermeasures to identified threats](https://msdn.microsoft.com/en-us/library/ff648641.aspx#c02618429_005)
 * [MS Threats and Countermeasures](https://msdn.microsoft.com/en-us/library/ff648641.aspx)
-
-What you decide to fix first will be determined by the highest scoring risks. You need to order these once discovered.
 
 ## 4. SSM Risks that Solution Causes {#starting-with-the-30000-foot-view-risks-that-solution-causes}
 
