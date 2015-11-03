@@ -49,6 +49,8 @@ The following are some of the different types of network spoofing
 
 Setting the IP address in your header to the victims IP address.
 
+Remember we did something similar to this under the [Reconnaissance](#process-and-practises-penetration-testing-reconnaissance-concealing-nmap-source-ip-address) section from the Process and Practises chapter with nmap decoy host `-D` and idle scan `-sI`.
+
 This is where a sending node will spoof its public IP address (not actually change its IP address) (by forging the header) to look like someone else's. When the message is received and a reply crafted, the entity creating the reply will look up its ARP table and send the reply to the impersonated entity because the MAC address is still associated with the IP address of the message it received. This sort of play is commonly used in Denial of Service (DoS) attacks, because the attacker does not need or want the response.
 
 In a Distributed DoS (D-DoS) Often the attacker will impersonate the target (often a router or some server it want to be brought to its knees) and broadcast messages. The nodes that receive these messages consult their ARP tables looking up the spoofed IP address and find the targets associated MAC address and reply to it. This way the replies will be sourced from many nodes. Thus swamping the targets network interface.  
@@ -355,10 +357,6 @@ https://www.owasp.org/index.php/Top_10_2013-A9-Using_Components_with_Known_Vulne
 
 _Todo_ Discuss the huge attack surface discussed briefly in the [Physical](#physical-identify-risks-wifi) chapter.
 
-
-### Lack of Offensiveness
-
-_Todo_
 
 ## 3. SSM Countermeasures
 
@@ -777,16 +775,6 @@ _Todo_
 https://www.owasp.org/index.php/Top_10_2013-A9-Using_Components_with_Known_Vulnerabilities
 Patch your systems
 
-### Lack of Offensiveness
-
-_Todo_
-
-#### Vulnerability Scanners
-
-For infrastructure scanning use OpenVAS which is a free fork from Nessus after the tool went proprietary in 2005. I wrote about it [here](http://blog.binarymist.net/2014/03/29/up-and-running-with-kali-linux-and-friends/#vulnerability-scanners).
-
-_Todo_ document others.
-
 ## 4. SSM Risks that Solution Causes
 
 ### Fortress Mentality
@@ -896,14 +884,6 @@ _Todo_
 
 _Todo_
 
-### Lack of Offensiveness
-
-_Todo_
-
-#### Vulnerability Scanners
-
-_Todo_
-
 ## 5. SSM Costs and Trade-offs
 
 ### Fortress Mentality
@@ -1005,10 +985,3 @@ _Todo_
 
 _Todo_
 
-### Lack of Offensiveness
-
-_Todo_
-
-#### Vulnerability Scanners
-
-_Todo_

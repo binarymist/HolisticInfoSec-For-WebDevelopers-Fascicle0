@@ -204,7 +204,7 @@ Now using the service detection option `-sV` the results provide almost as much 
 
 NMap and the scripting engine are a very powerful tool-set for gathering information. From passive to active. There are many scripts available and they are easy to work out what each is for by using the `--script-help` option.
 
-#### Concealing NMap Source IP Address
+#### Concealing NMap Source IP Address {#process-and-practises-penetration-testing-reconnaissance-concealing-nmap-source-ip-address}
 
 An attacker will often attempt to conceal their source IP address during an NMap port scan with the likes of:
 
@@ -391,7 +391,7 @@ Now we see Apache is `200 OK` happy to have cats for dinner.
     
     No Host: header seen.
 
-##### Other Services
+##### Other Services {#process-and-practises-penetration-testing-reconnaissance-service-fingerprinting-other-services}
 
 &nbsp;
 
@@ -874,25 +874,89 @@ I discuss this further in the [People](#people-identify-risks-weak-password-stra
 
 ### Vulnerability Scanning / Discovery
 
-_Todo_
+This is where an attacker directs their attention to obtaining (scanning for) weaknesses of their target. Weaknesses that they think they may be able to find exploits for in the next step. Of course these steps often overlap. The attacker may already have some exploits in mind that they think may work against the target, but they need to come back to this step to verify that there is actually a matching exploitable weakness.
 
-Create headings for the best tools.
-Complete one of the tool sections so it can be used in workshop.
+A lot of the work the attacker does in the reconnaissance stage will reveal not only all sorts of useful information but vulnerabilities as well.
 
-_Todo_
+I'm not going to spend much time in this section looking for vulnerabilities, as we do this throughout the book, especially in the Identify Risks sections in most chapters. I will list a handful of tools though that I find very useful in this stage.
+
+#### NMap
+
+Along with its scripts and ability to extend provides a very powerful and easy to use tool for locating potential vulnerabilities. There are many good and easy to find resources around nmap, some of which we have already covered and others through the rest of the book.
+
+#### Metasploit
+
+msfconsole has many modules out of the box for poking and prodding at things (scanning for vulnerabilities). Once you have started the msfconsole dependencies, `postgresql` and `metasploit`, start `msfconsole`. Show the modules available:
+
+{title="using modules", linenos=off, lang=bash}
+    show auxiliary
+    # Will list all the auxiliary modules available.
+    # which include many scanners.
+
+    # Once you decide which one you want to use or look at:
+    use [yourchosenmodule] # For example:
+    use auxiliary/scanner/ssh/ssh_version
+
+    # Show all available options with:
+    show options
+
+    # Set any mandatory or optional options with:
+    set [theoption] # For example:
+    set RHOSTS 203.97.26.48
+    # Alternative target port?
+    set RPORT 20
+
+    # Lets run it:
+    run
+
+Now as mentioned in the [Service Fingerprinting](#process-and-practises-penetration-testing-reconnaissance-service-fingerprinting-other-services) section of the Process and Practises chapter, if the `/etc/hosts.deny` `/etc/hosts.allow` is set-up correctly, then you are not going to get much from this scan, if they are not set-up correctly, you'll get back what you were looking for.
+
+&nbsp;
+
+I also wrote about a few other vulnerability scanners on my [blog](http://blog.binarymist.net/2014/03/29/up-and-running-with-kali-linux-and-friends/#vulnerability-scanners) such as:
+
+* OpenVAS
+* OWASP ZAP, which we use in a few places in this book. ZAP is also an HTTP intercepting proxy with plenty of great built in features and is of course free and open source.
+* SkipFish
+* Web Application Attack and Audit Framework (w3af)
+* Nikto
+
+There are also many scanning tools installed out of the box in Kali Linux.
+
+Worth keeping in mind, is that most of this scanning makes quite a bit of noise and has the potential for being noticed very easily if people are watching logs, a good suite of event notifications are set-up, IDSs are up to date and running.
 
 ### Vulnerability Searching {#process-and-practises-penetration-testing-vulnerability-searching}
 
-_Todo_
+The vulnerability advisories were mentioned in the [30,000 View](#vulnerability-advisories) chapter. I cover some here in a little detail.
 
-Discuss how to find exploits from vulnerability scanning step.
+We should now have a good idea of some of the targets weaknesses. It is time to find some exploits.
 
-_Todo_
+#### Security Focus BugTraq
 
-The vulnerability advisories were mentioned in the [30,000 View](#vulnerability-advisories) chapter.
+Continues to be an excellent source of exploits based on known vulnerabilities and also vulnerabilities themselves. You can search by vendor or CVE.
 
+![](images/SecurityFocusBugTraq.png)
 
-_Todo_
+#### Exploit Database
+
+Which can be found at [github](https://github.com/offensive-security/exploit-database). This is from Offensive Security, the creators of Kali Linux. Which has a very easy to use web front-end
+
+![](images/ExploitDd.png)
+
+Linked from the Exploit Database is the Google Hacking Database which is very useful for finding devious goodies on the inter-webs.
+
+and a CLI: searchsploit found in Kali Linux.  
+Menu: Exploitation Tools -> Exploit Database -> searchsploit  
+Or run from the command line: `searchsploit <search phrase>`
+
+#### Metasploit
+
+To find an exploit or any other type of module easily. Once you have `msfconsole` running:
+
+{title="search for modules to exploit nodejs", linenos=off, lang=bash}
+    search nodejs
+    # Provided 21 modules targeting NodeJS.
+    # 10 of which are exploits, 8 are payloads.
 
 ### Exploitation
 

@@ -4,30 +4,34 @@
 
 See [VPS](#vps), as it has a lot of similarities due to the fact that in many cases your VPS may be on someone else's hardware and in their control.
 
-%% Using cloud services can be a good thing especially for smaller businesses and start ups, but before the decission is made as to whether to use an external cloud provider or whether to use or create your own, there are some very important considerations to be made.
+Using cloud services can be a good thing especially for smaller businesses and start ups, but before the decision is made as to whether to use an external cloud provider or whether to use or create your own, there are some very important considerations to be made.
 
-%% Using IaaS and even more so PaaS can provide great productivity gains, but everything comes at a cost. You don't get productivity gains for free. You will be sacrificing something and usually that something is at least security. You no longer have control of your data.
+Using IaaS and even more so PaaS can provide great productivity gains, but everything comes at a cost. You don't get productivity gains for free. You will be sacrificing something and usually that something is at least security. You no longer have control of your data.
 
-%% If you decide to use an external cloud provider, you need to be aware that what ever goes into the cloud is almost completly out of your control and you can not pull it back once it has been released, as you have no idea whether the existing data is really removed from the cloud.
+If you decide to use an external cloud provider, you need to be aware that what ever goes into the cloud is almost completely out of your control and you can not pull it back once it has been released, as you have no idea whether the existing data is really removed from the cloud.
 
 %% http://stackoverflow.com/questions/9802259/why-do-people-use-heroku-when-aws-is-present-whats-distinguishing-about-heroku
 
-%% If you deal with sensitive customer data, then you have an ethical and legal responsibility for it. If you are putting sensitive data in the cloud then you could very well be being irresponsible with your responsibility.
+If you deal with sensitive customer data, then you have an ethical and legal responsibility for it. If you are putting sensitive data in the cloud then you could very well be being irresponsible with your responsibility.
 
-%% 
+If you are a start up, just be aware that the speed you have initially with a PaaS will not continue as your product moves from Proof of Concept to something that customers start to use if you decide to be more careful about customers and your own IP by bringing it in-house or entrusting it to a provider that takes security seriously rather than just saying they do.
+
+%% Work through my "Does Your Cloud Solution Look Like a Mushroom?"
 
 ## 1. SSM Asset Identification
 Take results from [higher level Asset Identification](#asset-identification). Remove any that are not applicable. Add any newly discovered.
 
 _Todo_
 
-Flesh this out. Pull from research project that the following was based on:
 
-https://speakerdeck.com/binarymist/does-your-cloud-solution-look-like-a-mushroom
+We are blindly trusting huge amounts of IP to CSPs. In fact, I have worked for clients that insist on putting everything in the cloud. Some have even said that they are not concerned with security. The problem is, they do not understand what is at risk. They may wonder why their competitor beats them to market as their progress and plans are intercepted. The best book I have read to date that reveals the problem with this blind yielding of everything is Bruce Schneier Data and Goliath. This is a very eye opening canon of what we are doing and what its result is going to be.
+
+
+
 
 ## 2. SSM Identify Risks {#cloud-identify-risks}
 
-Go through same process as we did at the [top level](#identify-risks), but for your VPS(s).
+Some of the thinking around the process we went through at the [top level](#identify-risks) may be helpful. The biggest risk when it comes to the cloud is loss of visibility and control. It is similar to the network chapter, but without the control you have over it.
 
 ### Questions to Ask Your CSP {#cloud-identify-risks-questions-to-ask-your-csp}
 

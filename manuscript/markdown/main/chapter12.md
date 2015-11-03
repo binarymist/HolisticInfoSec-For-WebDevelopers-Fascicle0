@@ -320,6 +320,8 @@ _Todo_
 
 _Todo_
 
+Your application should be actively defending itself.
+
 ## 3. SSM Countermeasures
 
 * [MS Application Threats and Countermeasures](https://msdn.microsoft.com/en-us/library/ff648641.aspx#c02618429_008)

@@ -51,12 +51,11 @@ http-waf-fingerprint: [https://nmap.org/nsedoc/scripts/http-waf-fingerprint.html
 **theHarvester** is a tool for gathering e-mail acconts, subdomain names, virtual hosts, open ports/ banners, and employee names from different public sources (search engines, pgp key servers)  
 [https://github.com/laramies/theHarvester](https://github.com/laramies/theHarvester)
 
-
-
 **Microsoft bing virtual hosts** search feature  
 "Penetration Tester's Open Source Toolkit" book
 
-
+**I also wrote about a few other vulnerability scanners on my blog**  
+[http://blog.binarymist.net/2014/03/29/up-and-running-with-kali-linux-and-friends/#vulnerability-scanners](http://blog.binarymist.net/2014/03/29/up-and-running-with-kali-linux-and-friends/#vulnerability-scanners)
 
 **If you look at the public statistics** on businesses loosing value due to being compromised regularly, the figures are staggering  
 [http://www.meetup.com/OWASP-New-Zealand-Chapter-Christchurch/events/223462991/](http://www.meetup.com/OWASP-New-Zealand-Chapter-Christchurch/events/223462991/) 

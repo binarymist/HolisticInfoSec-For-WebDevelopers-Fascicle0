@@ -101,8 +101,7 @@ and the [Intel Threat Agent Library](http://www.sbs.ox.ac.uk/cybersecurity-capac
 
 ### Rating of Threats {#ms-6-rate-the-threats}
 
-So how do we rate the threats we've just discovered? With a simple formula
-
+So how do we rate the threats we have just discovered? With a simple formula
 Based on the [MicroSoft 6. Rate the Threats](https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_011)
 
 I> Risk = Likelihood * Impact
