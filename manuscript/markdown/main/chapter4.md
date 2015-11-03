@@ -956,7 +956,7 @@ To find an exploit or any other type of module easily. Once you have `msfconsole
 {title="search for modules to exploit nodejs", linenos=off, lang=bash}
     search nodejs
     # Provided 21 modules targeting NodeJS.
-    # 10 of which are exploits, 8 are payloads.
+    # 10 of which were exploits, 8 were payloads.
 
 ### Exploitation
 
@@ -1009,16 +1009,9 @@ The 10,000' View should be carried out each Sprint for each PBI as it is pulled 
 
 It is not my intention to encourage you to think about nothing but security (in this book at least), because then you would not deliver a product, but rather for it to become part of who you are, so as part of your normal work-flow the security consciousness and habits you build will be firmly entrenched. Thus your deliverables will be no longer at the bottom of the tree where your attackers will pick from first.
 
-
-_Todo_
-
-Create hypothetical process that augments an agile workflow. Many of these concepts will come from the Web Applications chapter with pieces from the other chapters. Lean heavily on my own experience here of what has and has not worked well in the past and where I see things going.
+I've compiled a collection of some of the most powerful practises at lifting quality with the least money spent. Use these to augment your agile work-flow. 
 
 &nbsp;
-
-
-
-
 
 A> Let us look at some of the practices we can use as developers to lift the level of security within our software and how we can integrate them into our Scrum process framework.
 
@@ -1032,6 +1025,32 @@ So, we do not really separate the discipline of architecture from a software dev
 Another defining factor that sets the architect apart is their ability to translate effectively between the most technical people on a project and the least technical. I like to think of them as the people that spend a lot of time riding the elevator of a high rise building. Most technical people toward the bottom of the building and least technical people at the top. The architect spends time on each level taking what he/she has learnt from all the other levels, then translating and applying it to the specific level.
 
 &nbsp;
+
+### Cheapest Place to Deal with Defect
+
+There has been many studies around the costs of finding and fixing defects early as opposed to cowboy coding, planning to fix defects once the product is delivered, or not planning at all.
+
+The following table shows the average cost of fixing defects based on when they were intrduced vs when they are detected. Putting the practises in the right order can reduce costs by up to 100 times.
+
+![](images/AverageCostOfFixingDefects.png)
+
+Steve McConnel goes on to say: The data in the above table "_shows that, for example, an architecture defect that costs $1000 to fix when the architecture is being created can cost $15,000 to fix during system test._" The below figure illustrates the same phenomenon.
+
+![](images/AverageCostOfFixingDefectsDiagram.png)
+
+"_The cost to fix a defect rises dramatically as the time from when it’s introduced to when it’s detected increases. This remains true whether the project is highly sequential (doing 100 percent of requirements and design up front) or highly iterative (doing 5 percent of requirements and design up front)._"
+
+> Code Complete - Steven C. McConnel
+
+### Evil Test Conditions
+
+Many will be familiar with the test condition workshop that is often used within a Scrum Team immediately before the people pulling a PBI into work in progress (WIP) start work on it. I'm not going to go into the exercise here, as it is non security related and I have already discussed the test condition workshop many times [on-line](http://blog.binarymist.net/2012/03/24/how-to-optimise-your-testing-effort/#planningTheTestEffort). I am going to provide a slight bent on the exercise though. Just as you would create the usual test conditions:
+
+![](images/TestCondition.png)
+
+Also consider creating evil test conditions. Often developers do not have the mind set for this, that is why we need that "person(s) with security specialisations" within the team, as discussed right at the beginning of the 30,000' View chapter.
+
+![](images/TestConditionEvil.png)
 
 ### Security Test-Driven Development (STDD) {#process-agile-development-and-practices-security-test-driven-development}
 

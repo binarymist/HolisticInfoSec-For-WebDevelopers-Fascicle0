@@ -60,6 +60,9 @@ http-waf-fingerprint: [https://nmap.org/nsedoc/scripts/http-waf-fingerprint.html
 **If you look at the public statistics** on businesses loosing value due to being compromised regularly, the figures are staggering  
 [http://www.meetup.com/OWASP-New-Zealand-Chapter-Christchurch/events/223462991/](http://www.meetup.com/OWASP-New-Zealand-Chapter-Christchurch/events/223462991/) 
 
+**I have already discussed the test condition workshop** many times on-line  
+[http://blog.binarymist.net/2012/03/24/how-to-optimise-your-testing-effort/#planningTheTestEffort](http://blog.binarymist.net/2012/03/24/how-to-optimise-your-testing-effort/#planningTheTestEffort)
+
 **Cost of Change** curve adapted from Scott W. Ambler's article on Examining the Agile Cost of Change Curve, which I've used in many presentations and workshops.  
 [http://www.agilemodeling.com/essays/costOfChange.htm](http://www.agilemodeling.com/essays/costOfChange.htm)
 
