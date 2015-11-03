@@ -1038,13 +1038,13 @@ Steve McConnel goes on to say: The data in the above table "_shows that, for exa
 
 ![](images/AverageCostOfFixingDefectsDiagram.png)
 
-"_The cost to fix a defect rises dramatically as the time from when it’s introduced to when it’s detected increases. This remains true whether the project is highly sequential (doing 100 percent of requirements and design up front) or highly iterative (doing 5 percent of requirements and design up front)._"
+"_The cost to fix a defect rises dramatically as the time from when it's introduced to when it's detected increases. This remains true whether the project is highly sequential (doing 100 percent of requirements and design up front) or highly iterative (doing 5 percent of requirements and design up front)._"
 
 > Code Complete - Steven C. McConnel
 
 ### Evil Test Conditions
 
-Many will be familiar with the test condition workshop that is often used within a Scrum Team immediately before the people pulling a PBI into work in progress (WIP) start work on it. I'm not going to go into the exercise here, as it is non security related and I have already discussed the test condition workshop many times [on-line](http://blog.binarymist.net/2012/03/24/how-to-optimise-your-testing-effort/#planningTheTestEffort). I am going to provide a slight bent on the exercise though. Just as you would create the usual test conditions:
+Many will be familiar with the test condition workshop that is often used within a Scrum Team immediately before the developers pulling a PBI into work in progress (WIP) start work on it. I'm not going to go into the exercise here, as it is non security related and I have already discussed the test condition workshop many times [on-line](http://blog.binarymist.net/2012/03/24/how-to-optimise-your-testing-effort/#planningTheTestEffort). I am going to provide a slight bent on the exercise though. Just as you would create the usual test conditions:
 
 ![](images/TestCondition.png)
 
