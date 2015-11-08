@@ -58,6 +58,42 @@ Finding details on companies: [https://www.business.govt.nz/companies/](https://
 
 [**Social Engineer**](http://www.social-engineer.org/) website has a plethora of excellent resources.
 
+**Creating a Custom Wordlist** with Crunch  
+[http://null-byte.wonderhowto.com/how-to/hack-like-pro-crack-passwords-part-4-creating-custom-wordlist-with-crunch-0156817/](http://null-byte.wonderhowto.com/how-to/hack-like-pro-crack-passwords-part-4-creating-custom-wordlist-with-crunch-0156817/)
+
+**Creating wordlists with crunch** v3.0  
+[http://adaywithtape.blogspot.co.nz/2011/05/creating-wordlists-with-crunch-v30.html](http://adaywithtape.blogspot.co.nz/2011/05/creating-wordlists-with-crunch-v30.html)
+
+**How to Use CUPP to Generate Password Lists**  
+[http://null-byte.wonderhowto.com/how-to/use-cupp-generate-password-lists-0162625/](http://null-byte.wonderhowto.com/how-to/use-cupp-generate-password-lists-0162625/)
+
+**Creating a Custom Wordlist with CeWL**  
+[http://null-byte.wonderhowto.com/how-to/hack-like-pro-crack-passwords-part-5-creating-custom-wordlist-with-cewl-0158855/](http://null-byte.wonderhowto.com/how-to/hack-like-pro-crack-passwords-part-5-creating-custom-wordlist-with-cewl-0158855/)
+
+**Target specific automated dictionary generation** with WordHound  
+[http://www.irongeek.com/i.php?page=videos/passwordscon2014/target-specific-automated-dictionary-generation-matt-marx](http://www.irongeek.com/i.php?page=videos/passwordscon2014/target-specific-automated-dictionary-generation-matt-marx)
+
+**WordHound souce code**  
+[https://bitbucket.org/mattinfosec/wordhound.git](https://bitbucket.org/mattinfosec/wordhound.git)
+
+**Hydra source**  
+[https://github.com/vanhauser-thc/thc-hydra](https://github.com/vanhauser-thc/thc-hydra)
+
+
+**Medusa documentation**
+
+* The man page
+* [http://foofus.net/goons/jmk/medusa/medusa.html](http://foofus.net/goons/jmk/medusa/medusa.html)
+* [https://www.aldeid.com/wiki/Medusa](https://www.aldeid.com/wiki/Medusa)
+
+
+
+
+
+
+**SMSspoofing** information  
+[http://www.smsspoofing.com/](http://www.smsspoofing.com/)
+
 The following books have been influential for me and the content from the People chapter should reflect that. They are very insightful and well worth the investment.
 
 * The Social Engineers Playbook: A Practical Guide to Pretexting by Jeremiah Talamantes
@@ -153,6 +189,15 @@ The following books have been influential for me and the content from the People
 **bcrypt brute-forcing** becoming feasible with well ordered rainbow tables  
 [http://www.openwall.com/presentations/Passwords13-Energy-Efficient-Cracking/Passwords13-Energy-Efficient-Cracking.pdf](http://www.openwall.com/presentations/Passwords13-Energy-Efficient-Cracking/Passwords13-Energy-Efficient-Cracking.pdf)  
 [https://www.usenix.org/system/files/conference/woot14/woot14-malvoni.pdf](https://www.usenix.org/system/files/conference/woot14/woot14-malvoni.pdf)
+
+
+**Password Cracking Strategy**  
+[http://null-byte.wonderhowto.com/how-to/hack-like-pro-crack-passwords-part-2-cracking-strategy-0156491/](http://null-byte.wonderhowto.com/how-to/hack-like-pro-crack-passwords-part-2-cracking-strategy-0156491/)
+
+
+
+
+
 
 [**Justin Searls talk**](http://blog.testdouble.com/posts/2014-12-02-the-social-coding-contract.html) on consuming all the open source.
 

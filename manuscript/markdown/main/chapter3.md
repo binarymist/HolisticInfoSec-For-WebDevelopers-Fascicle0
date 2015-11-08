@@ -200,7 +200,7 @@ As I spend most of my life in a terminal, I want a good one. I've found Terminat
 
 A set of shell scripts tied together in a CUI to aggregate Kali Linux information gathering tools & automate various pentesting tasks. Both passive and active options allowing you to dig up a lot of dirt on your target long before you start trying to penetrate them. So rather than getting familiar with all the recon tools, you can just get familiar with Discover Scripts.
 
-1. `cd /opt`
+1. `cd /opt/`
 2. `git clone http://github.com/leebaird/discover.git`
 3. `cd discover`
 4. `./setup.sh`
@@ -211,7 +211,7 @@ To install:
 
 1. 
     {line-numbers=off}
-       cd /opt
+       cd /opt/
 2. 
     {line-numbers=off}
        git clone https://github.com/pentestgeek/smbexec/smbexec.git
@@ -247,7 +247,7 @@ To install:
 
 1. 
     {line-numbers=off}
-       cd /opt
+       cd /opt/
 2. 
     {line-numbers=off}
        git clone https://github.com/Veil-Framework/Veil.git
@@ -271,11 +271,22 @@ To install:
 
 1. `mkdir ~/Desktop/password_list`
 2. Download password lists:
-  * Web Search for "crackstation-human-only.txt.gz"
+  * [Rockyou](http://downloads.skullsecurity.org/passwords/rockyou.txt.bz2)
+  * Web Search for "[crackstation-human-only.txt.gz](https://crackstation.net/buy-crackstation-wordlist-password-cracking-dictionary.htm)"
+  * [m3g9tr0n_Passwords_WordList_CLEANED](http://blog.thireus.com/cracking-story-how-i-cracked-over-122-million-sha1-and-md5-hashed-passwords)
   * Take your pick of:
     1. https://downloads.skullsecurity.org/passwords/
     2. http://download.g0tmi1k.com/wordlists/large/
 3. Decompress any that need it.
+
+Also if you: `locate wordlists` you will find many already exist in Kali Linux.
+
+#### Common User Passwords Profiler (cupp) {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-cupp}
+
+Easy to use password profiling tool.
+
+1. `cd /opt/`
+2. `git clone https://github.com/Mebus/cupp.git`
 
 #### Peepingtom {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-peepingtom}
 
@@ -298,7 +309,7 @@ https://github.com/hdm/scan-tools/blob/master/nse/banner-plus.nse
 
 PowerShell scripts for post exploitation.
 
-1. `cd /opt`
+1. `cd /opt/`
 2. `git clone http://github.com/mattifestation/PowerSploit.git`
 3. `cd PowerSploit`
 4. `wget http://raw.github.com/obscuresec/random/master/StartListener.py`
@@ -308,7 +319,7 @@ PowerShell scripts for post exploitation.
 
 Used to bypass UAC at post exploitation, allowing us to get the system account.
 
-1. `cd /opt`
+1. `cd /opt/`
 2. `wget http://www.secmaniac.com/files/bypassuac.zip`
 3. `unzip bypassuac.zip`
 4. `cp bypassuac/bypassuac.rb /opt/metasploit/apps/pro/msf3/scripts/meterpreter/`
@@ -318,7 +329,7 @@ Used to bypass UAC at post exploitation, allowing us to get the system account.
 
 Collection of multiple types of lists used during security assessments.
 
-1. `cd /opt`
+1. `cd /opt/`
 2. `git clone http://github.com/danielmiessler/SecLists.git`
 
 #### Chromium {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-chromium}
@@ -388,7 +399,13 @@ Simple and often useful for running a quick vulnerability assessment. Open sourc
 
 Simple and often useful for running a quick vulnerability assessment. Open source software (GPLv3) from Security Compass Labs. XSS Me is also a component of the Exploit-Me suite. This tool’s behaviour is very similar to SQL Inject Me (follows the Principle of Least Astonishment (POLA)) which makes using the tools very easy. Both these add-ons have next to no learning curve. The level of entry is very low and I think are exactly what web developers that make excuses for not testing their own security need. The other thing is that it helps developers understand how these attacks can be carried out. XSS Me currently only tests for reflected XSS. It doesn’t attempt to compromise the security of the target system. Both XSS Me and SQL Inject Me are reconnaissance tools, where the information is the vulnerabilities found. XSS Me doesn’t support stored XSS or user supplied data from sources such as cookies, links, or HTTP headers. How effective XSS Me is in finding vulnerabilities is also determined by the list of attack strings the tool has available. Out of the box the list of XSS attack strings are derived from RSnakes collection which were donated to OWASP who now maintains it as one of their [cheat-sheets](https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet).. Multiple encodings are not yet supported, but are planned for the future. You can help to keep the collection up to date by submitting new attack strings.
 
-##### Tamper Data
+##### [Tamper Data](https://addons.mozilla.org/en-US/firefox/addon/tamper-data/)
+
+Is a light weight HTTP intercepting proxy as an Iceweasel add-on which allows you to view and modify headers and post parameters. Once you add it to your browser, open it up and add a new proxy. We will use this one for Burpsuite later.
+
+Proxy Name: Burp 8080 # or what ever you like.
+Host or IP Address: 127.0.0.1
+Port: 8080
 
 ##### User Agent Switcher
 

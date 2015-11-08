@@ -24,7 +24,7 @@ Take results from [higher level Asset Identification](#asset-identification). Re
 _Todo_
 
 
-We are blindly trusting huge amounts of IP to CSPs. In fact, I have worked for clients that insist on putting everything in the cloud. Some have even said that they are not concerned with security. The problem is, they do not understand what is at risk. They may wonder why their competitor beats them to market as their progress and plans are intercepted. The best book I have read to date that reveals the problem with this blind yielding of everything is Bruce Schneier Data and Goliath. This is a very eye opening canon of what we are doing and what its result is going to be.
+We are blindly trusting huge amounts of IP to CSPs. In fact, I have worked for clients that insist on putting everything in the cloud. Some have even said that they are not concerned with security. The problem is, they do not understand what is at risk. They may wonder why their competitor beats them to market as their progress and plans are intercepted. The best book I have read to date that reveals the problem with this blind yielding of everything is Bruce Schneier Data and Goliath. This is a very eye opening canon of what we are doing and what its result are going to be.
 
 
 

@@ -140,12 +140,31 @@ Bruce Schneier: Data and Goliath: Introduction: USA National Security Agency (NS
 
 **Gerald Weinberg's rule** that 20% of our time is lost every time we perform a context switch. This is from "Quality Software Management: Systems Thinking" by Gerald Weinberg.
 
+**WyD** Another password profiling tool that "_extracts words/strings from supplied files and directories. It parses files according to the file-types and extracts the useful information, e.g. song titles, authors and so on from mp3's or descriptions and titles from images._"  
+"_It supports the following filetypes: plain, html, php, doc, ppt, mp3, pdf, jpeg, odp/ods/odp and extracting raw strings._"  
+[http://www.remote-exploit.org/articles/misc_research__amp_code/index.html](http://www.remote-exploit.org/articles/misc_research__amp_code/index.html)
+
+"**_CeWL is a ruby app which spiders a given url** to a specified depth, optionally following external links, and returns a list of words which can then be used for password crackers_"  
+[https://digi.ninja/projects/cewl.php](https://digi.ninja/projects/cewl.php)
+
+
+**Hydra** has many other options, plenty of good documentation out there.  
+[http://null-byte.wonderhowto.com/how-to/hack-like-pro-crack-online-web-form-passwords-with-thc-hydra-burp-suite-0160643/](http://null-byte.wonderhowto.com/how-to/hack-like-pro-crack-online-web-form-passwords-with-thc-hydra-burp-suite-0160643/)
+
+
+
+**You can DIY** with the likes of Asterisk  
+[http://www.social-engineer.org/wiki/archives/CallerIDspoofing/CallerID-SpoofingWithAsterisk.html](http://www.social-engineer.org/wiki/archives/CallerIDspoofing/CallerID-SpoofingWithAsterisk.html)
+
 **The Multi-Tasking Myth** by Jeff Atwood:  
 [http://blog.codinghorror.com/the-multi-tasking-myth/](http://blog.codinghorror.com/the-multi-tasking-myth/)
 
 **What you need to do** is be aware of how much productivity is killed with each switch. Then do everything in your power to make sure your Development Team is sheltered from as much as possible. [How to Increase Software Developer Productivity](http://blog.binarymist.net/2013/03/02/how-to-increase-software-developer-productivity/#context-switching) by Kim Carter.
 
 **The trick here** is that when you manage programmers, specifically, task switches take a really, really, really long time. [Human Task Switches Considered Harmful](http://www.joelonsoftware.com/articles/fog0000000022.html).
+
+**Get yourself a OneRNG** for generating true randomness  
+[http://onerng.info/](http://onerng.info/)
 
 ## [Cloud](#cloud)
 
@@ -215,6 +234,9 @@ and also the specification
 [https://www.grc.com/sn/sn-453.htm](https://www.grc.com/sn/sn-453.htm)
 
 ## [Web Applications](#web-applications)
+
+**The New Zealand Intelligence Service** recently told Prime Minister John Key that this was one of the 6 top threats facing New Zealand. "_Cyber attack or loss of information and data, which poses financial and reputational risks._"  
+[(http://www.stuff.co.nz/national/politics/73704551/homegrown-threats-more-serious-says-spy-boss-rebecca-kitteridge)](http://www.stuff.co.nz/national/politics/73704551/homegrown-threats-more-serious-says-spy-boss-rebecca-kitteridge)
 
 **Before the breach**, the company boasted about airtight data security but ironically, still proudly displays a graphic with the phrase “trusted security award” on its homepage.
 [Dark Reading](http://www.darkreading.com/operations/what-ashley-madison-can-teach-the-rest-of-us-about-data-security-/a/d-id/1322129)

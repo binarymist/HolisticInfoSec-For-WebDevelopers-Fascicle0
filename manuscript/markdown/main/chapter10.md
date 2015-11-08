@@ -343,6 +343,11 @@ _Todo_
 
 _Todo_ Discuss and detail some wireless exploits. Specifically at least some of the WPS vectors discussed in the Physical chapter. Plus hopefully some more.
 
+%% Crunch generates every possible combination of characters you tell it too
+%% https://forums.kali.org/showthread.php?18261-Cracking-WPA-key-with-crunch-aircrack-(almost-fullproof-but-how-speed-things-up)
+%% http://adaywithtape.blogspot.co.nz/2011/05/creating-wordlists-with-crunch-v30.html
+%% http://null-byte.wonderhowto.com/how-to/hack-like-pro-crack-passwords-part-4-creating-custom-wordlist-with-crunch-0156817/
+
 ### Using Components with Known Vulnerabilities
 
 _Todo_
@@ -374,6 +379,13 @@ _Todo_
 
 ### Lack of Visibility
 
+_Todo_ Add Security Onion Linux distro as a IDS, Network Security Monitoring (NSM) & log management
+
+%% http://www.kitploit.com/2015/11/security-onion-linux-distro-for.html
+%% http://blog.securityonion.net/p/securityonion.html
+%% http://www.sans.org/reading-room/whitepapers/detection/logging-monitoring-detect-network-intrusions-compliance-violations-environment-33985
+%% http://www.unixmen.com/security-onion-linux-distro-ids-nsm-log-management/
+
 #### Network Intrusion Detection Systems (NIDS)
 Similar to [HIDS](#host-intrusion-detection-systems-hids) but acting as a network spy with its network interface (NIC) in promiscuous mode, capturing all traffic crossing the specific network segment that the NIDS is on.
 
@@ -388,12 +400,6 @@ Quotes from the excellent [Survey of Current Network Intrusion Detection Techniq
 Some NIDS go further to not only detect but prevent. They are known as Network Intrusion Prevention Systems NIPS.
 
 It is a good idea to have both Host and Network IDS/IPS in place at a minimum. I personally like to have more than one tool doing the same job but with different areas of strength covering the weaker areas of its sibling. An example of this is with HIDS. Having one HIDS on the system it is protecting and another somewhere else on the network, or even on another network completely, looking into the host and performing its checks. This makes discoverability difficult for an attacker.
-
-_Todo_ Add Security Onion Linux distro as a IDS, Network Security Monitoring (NSM) & log management
-
-%% http://blog.securityonion.net/p/securityonion.html
-%% http://www.sans.org/reading-room/whitepapers/detection/logging-monitoring-detect-network-intrusions-compliance-violations-environment-33985
-%% http://www.unixmen.com/security-onion-linux-distro-ids-nsm-log-management/
 
 #### Insufficient Logging
 
