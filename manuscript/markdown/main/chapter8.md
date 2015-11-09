@@ -78,6 +78,7 @@ I have been around many administrative people that do not understand how much co
 A very profitable tactic is for an adversary to in one shape or form acquire a staff member of a target organisation, perhaps a competing organisation. Depending on how long the staff member has worked for the target will depend how much of a gold mine they are. Why bother doing something illegal when you can just offer the staff member a better deal than they are currently getting?
 
 ### Weak Password Strategies {#people-identify-risks-weak-password-strategies}
+![](images/ThreatTags/easy-widespread-average-severe.png)
 
 #### Password Profiling
 
@@ -216,7 +217,7 @@ The following brute force attempts were against the Dam Vulnerable Web App (DVWA
 When it comes to brute forcing web applications, I noticed the failed attempts always took longer than the successful ones (when I told the tool to use a specific search phrase for failure) due to the fact that the failure text you tell the tool to look for is found sometime before the tool has read everything in the response, as it would with a successful response.
 
 Because there are so many web servers and web applications and they all do their login procedure differently. What I found that seemed to be the best way was to use an HTTP intercepting proxy (Iceweasel Tamper Data plug-in or better Burpsuite) and try several incorrect passwords and inspect the responses of each. Then try a known correct user and password and inspect the response. Now you just use the differing factor.  
-Often there are several requests that occur before a successful log in (a POST followed by a GET in the case of DVWA) and I was wondering how the brute forcing tool would know how to combine the requests and responses of an unsuccessful and/or successful login attempt. The answer is, they don't. What I found though, was that there is usually a difference in the first response of the incorrect passwords to the first response of the correct password. For example, the incorrect responses may redirect the user back to the login.php page where as the correct response may redirect the user to an index.php page or similar. In this situation, you instruct the tool that a `login.php` means unsuccessful attempt and it will go looking for that string.
+Often there are several requests that occur before a successful log in (a `POST` followed by a `GET` in the case of DVWA) and I was wondering how the brute forcing tool would know how to combine the requests and responses of an unsuccessful and/or successful login attempt. The answer is, they don't. What I found though, was that there is usually a difference in the first response of the incorrect passwords to the first response of the correct password. For example, the incorrect responses may redirect the user back to the login.php page where as the correct response may redirect the user to an index.php page or similar. In this situation, you instruct the tool that a `login.php` means unsuccessful attempt and it will go looking for that string.
 
 Often with HTTP brute forcing you will have to slow the requests down. Most tools provide options for that.
 
@@ -260,7 +261,7 @@ G> ## The Play
 G>
 G> Using an HTTP intercepting proxy as I mentioned above, lets use Burpsuite and our FoxyProxy. Once you have the DVWA running or another website you want to attempt to brute force, browse to the login page. Then turn the "Burp 8080" proxy on. Start burpsuite and make sure it is listening on port `8080` (or what ever your browsers proxy is going to send to). I added the correct `username` but false `password` values to the `username` and `password` fields and submit, although you can add any values.
 G>
-G> Now in Burpsuites Proxy tab -> HTTP history tab, right click on the (POST) request and select Send to Intruder. Now go to the Intruder tab and in the Positions tab, you can keep the Attack type: "[Sniper](https://portswigger.net/burp/help/intruder_positions.html)" because we are only using one wordlist. If we were using a wordlist for usernames and a different one for passwords, we would probably want to use "Cluster bomb".
+G> Now in Burpsuites Proxy tab -> HTTP history tab, right click on the (`POST`) request and select Send to Intruder. Now go to the Intruder tab and in the Positions tab, you can keep the Attack type: "[Sniper](https://portswigger.net/burp/help/intruder_positions.html)" because we are only using one wordlist. If we were using a wordlist for usernames and a different one for passwords, we would probably want to use "Cluster bomb".
 G>
 Now clear all the highlighted fields apart from the `password` value. Now we go to the Payloads tab. Keep the Payload set to 1 and Payload type set to [Simple list](https://portswigger.net/burp/help/intruder_payloads_types.html).
 G>
@@ -383,7 +384,7 @@ Choose your module and get more information on it:
                          Valid methods are GET and POST. \
                          The actual form data to be submitted should also be defined here. \
                          Specifically, the fields: username and password. \
-                         The username field must be the first, followed by the password field. \
+                         The username field must be the first, followed by the password field.
                          Default: "post?username=&password="
     
 
@@ -559,7 +560,7 @@ T>
 T> SET provides the ability to craft emails with spoofed from address. You just need to install and configure sendmail.  
 T> As you can see below, SET also has a few other options for helping an attacker craft spear-phishing attacks.
 
-{linenos=off, lang=text}
+{lang=text}
     
                           ..:::::::::..
                       ..:::aad8888888baa:::..
