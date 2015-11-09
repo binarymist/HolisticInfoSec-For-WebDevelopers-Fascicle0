@@ -157,8 +157,8 @@ There are a number of other options to customise the output.
     
     
     > Do you want to add some key words about the victim? Y/[N]: y
-    > Please enter the words, separated by comma. [i.e. hacker,juice,black] spaces will be removed:
-    can we fix it,yes we can
+    > Please enter the words, separated by comma. [i.e. hacker,juice,black] spaces will be \
+    removed: can we fix it,yes we can
     > Do you want to add special chars at the end of words? Y/[N]: y
     > Do you want to add some random numbers at the end of words? Y/[N]n
     > Leet mode? (i.e. leet = 1337) Y/[N]: n
@@ -274,7 +274,8 @@ G> {linenos=off, lang=bash}
 G>     username=admin&password=whatever&Login=Login
 G> 
 G> From that we build our command. `^USER^` instructs hydra to use the login (`-l`) text or path to file if the upper case `-L` is used. `^PASS^` instructs hydra to use the password wordlist we provide it with with the `-P` option.
-G>
+
+{icon=bomb}
 G> So here we go:
 G> 
 G> {linenos=off, lang=bash}
@@ -313,7 +314,8 @@ Instead of telling hydra what to look for in a failed attempt (`Login=Login:logi
 `string we expect for success` is hypothetical:
 
 {linenos=off, lang=bash}
-    hydra -l admin -P /path/and/wordlist.txt 192.168.90.60 http-form-post "/dvwa/login.php:username=^USER^&password=^PASS^&S=string we expect for success" -V
+    hydra -l admin -P /path/and/wordlist.txt 192.168.90.60 http-form-post \
+    "/dvwa/login.php:username=^USER^&password=^PASS^&S=string we expect for success" -V
 
 Hydra has many other options. Plenty of good [documentation](http://null-byte.wonderhowto.com/how-to/hack-like-pro-crack-online-web-form-passwords-with-thc-hydra-burp-suite-0160643/) out there along with a decent man page.
 
@@ -350,7 +352,8 @@ To list the supported modules:
       + rlogin.mod : Brute force module for RLOGIN sessions : version 2.0
       + rsh.mod : Brute force module for RSH sessions : version 2.0
       + smbnt.mod : Brute force module for SMB (LM/NTLM/LMv2/NTLMv2) sessions : version 2.0
-      + smtp-vrfy.mod : Brute force module for enumerating accounts via SMTP     VRFY : version 2.0
+      + smtp-vrfy.mod : Brute force module for enumerating accounts via SMTP \
+      VRFY : version 2.0
       + smtp.mod : Brute force module for SMTP Authentication with TLS : version 2.0
       + snmp.mod : Brute force module for SNMP Community Strings : version 2.0
       + ssh.mod : Brute force module for SSH v2 sessions : version 2.0
@@ -373,7 +376,8 @@ Choose your module and get more information on it:
       USER-AGENT:?       User-agent value. Default: "I'm not Mozilla, I'm Ming Mong".
       FORM:?             Target form to request. Default: "/"
       DENY-SIGNAL:?      Authentication failure message. Attempt flagged as
-                         successful if text is not present in server response. Default: "Login incorrect"
+                         successful if text is not present in server response. \
+                         Default: "Login incorrect"
       FORM-DATA:<METHOD>?<FIELDS>
                          Methods and fields to send to web service. \
                          Valid methods are GET and POST. \
@@ -393,9 +397,10 @@ Against the DVWA in the OWASPBWA suite, I used the following command:
 {title="output", linenos=off, lang=bash}
     Medusa v2.0 [http://www.foofus.net] (C) JoMo-Kun / Foofus Networks <jmk@foofus.net>
 
-    ERROR: The answer was NOT successfully received, understood, and accepted while trying admin cats: error code  302
-    ACCOUNT CHECK: [web-form] Host: 192.168.90.60 (1 of 1, 0 complete) User: admin (1 of 1, 0 complete) Password: cats (1 of 4 complete)
-
+    ERROR: The answer was NOT successfully received, understood, and accepted while trying \
+    admin cats: error code  302
+    ACCOUNT CHECK: [web-form] Host: 192.168.90.60 (1 of 1, 0 complete) \
+    User: admin (1 of 1, 0 complete) Password: cats (1 of 4 complete)
 
 I also tried with just the correct password. The issue was that Medusa was not handling the redirects properly, so you end up with a `HTTP 302`
 
@@ -405,7 +410,7 @@ I also tried with just the correct password. The issue was that Medusa was not h
 
 I think the following may have suffered from the redirect problem also. Since then I found a [few changes](http://seclists.org/nmap-dev/2014/q3/479) to this script which may have fixed it, although I have not re-tested. The following command just took too long to complete. It may have got confused with the redirect. I am not sure.
 
-{linenos=off, lang=bash}
+{linenos=off, lang=text}
     nmap 192.168.90.60 -p80 --script=http-form-brute --script-args \
     'path="/dvwa/login.php", \
     method="post", \
@@ -554,7 +559,7 @@ T>
 T> SET provides the ability to craft emails with spoofed from address. You just need to install and configure sendmail.  
 T> As you can see below, SET also has a few other options for helping an attacker craft spear-phishing attacks.
 
-{linenos=off, lang=bash}
+{linenos=off, lang=text}
     
                           ..:::::::::..
                       ..:::aad8888888baa:::..
@@ -577,7 +582,6 @@ T> As you can see below, SET also has a few other options for helping an attacke
                   `::::::88::88:::::::88::::::'
                      ``:::::::::::::::::::''
                           ``:::::::::''
-    
     
     [---]        The Social-Engineer Toolkit (SET)         [---]
     [---]        Created by: David Kennedy (ReL1K)         [---]

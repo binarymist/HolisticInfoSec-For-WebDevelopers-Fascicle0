@@ -404,8 +404,8 @@ Simple and often useful for running a quick vulnerability assessment. Open sourc
 Is a light weight HTTP intercepting proxy as an Iceweasel add-on which allows you to view and modify headers and post parameters. Once you add it to your browser, open it up and add a new proxy. We will use this one for Burpsuite later.
 
 Proxy Name: Burp 8080 # or what ever you like.  
-Host or IP Address: 127.0.0.1  
-Port: 8080
+Host or IP Address: `127.0.0.1`  
+Port: `8080`
 
 ##### User Agent Switcher
 
