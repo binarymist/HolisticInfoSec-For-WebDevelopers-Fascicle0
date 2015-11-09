@@ -379,7 +379,7 @@ _Todo_
 
 ### Lack of Visibility
 
-_Todo_ Add Security Onion Linux distro as a IDS, Network Security Monitoring (NSM) & log management
+_Todo_ Add Security Onion Linux distro as an IDS, Network Security Monitoring (NSM) and log management.
 
 %% http://www.kitploit.com/2015/11/security-onion-linux-distro-for.html
 %% http://blog.securityonion.net/p/securityonion.html

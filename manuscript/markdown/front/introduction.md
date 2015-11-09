@@ -33,7 +33,7 @@ Impact: [SEVERE|MODERATE|LOW]
 Then for the countermeasures again following OWASP's lead:  
 Prevention: [DIFFICULT|AVERAGE|EASY|VERY EASY].
 
-Where ever you see the following fiddling devil. It means it's hands on attack demo time:
+Where ever you see the following fiddling devil. It means it's hands on attack sequence time:
 
 ![](images/HandsOnHack.png)
 

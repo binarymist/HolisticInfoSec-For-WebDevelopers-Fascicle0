@@ -263,13 +263,13 @@ People submitting genuinely innocent input. If a person is prepared to fill out 
 * Passwords and/or their hashes travelling over the network. Also see the [Wire Inspecting](#network-identify-risks-wire-inspecting) section in the [Network](#network) chapter.
 
 #### Data-store Compromise
-![](images/ThreatTags/difficult-common-widespread-moderate.png)
+![](images/ThreatTags/difficult-widespread-average-moderate.png)
 
 The reason I've tagged this as moderate is because if you take the countermeasures, it doesn't have to be a disaster.
 
 The New Zealand Intelligence Service recently [told](http://www.stuff.co.nz/national/politics/73704551/homegrown-threats-more-serious-says-spy-boss-rebecca-kitteridge) Prime Minister John Key that this was one of the 6 top threats facing New Zealand. "_Cyber attack or loss of information and data, which poses financial and reputational risks._"
 
-There are many examples of data-store compromise happening on a daily basis. If organisations took the advice I outline in the countermeasures section the millions of users would not have their identifies stolen. Sadly the advice is rarely followed. The Ashley Madison debacle is a good example. Ashley Madison's entire business relied on its commitment to keep its clients (37 million of them) data secret, provide discretion and anonymity. 
+There are many examples of data-store compromise happening on a daily basis. If organisations took the advice I outline in the countermeasures section the millions of users would not have their identifies stolen. Sadly the advice is rarely followed. The Ashley Madison debacle is a good example. Ashley Madisons entire business relied on its commitment to keep its clients (37 million of them) data secret, provide discretion and anonymity. 
 
 "_Before the breach, the company boasted about airtight data security but ironically, still proudly displays a graphic with the phrase “trusted security award” on its homepage_"
 
@@ -295,26 +295,28 @@ _Todo_
 
 _Todo_
 
-#### Cracking
+#### Cracking {#web-applications-identify-risks-management-of-application-secrets-cracking}
 
 _Todo_
 
 Remember we covered Password Profiling in the People chapter where we essentially made good guesses around the end users passwords. Here we already have the password hashes. We just need to find the source passwords that created the hashes.
 
-When an attacker acquires a data-store or domain controller dump of hashed passwords, they need to crack the hashes in order to get the passwords. How this works is the attacker will find or create a suitable password list of possibly passwords. The tool used will attempt to create a hash of each of these words based on the hashing algorithm used on the dump of hashes. Then compare each dumped hash with the hashes just created. When a match is found, we know that the word in our wordlist used to create the hash that matches the dumped hash is in fact a legitimate password.
+When an attacker acquires a data-store or domain controller dump of hashed passwords, they need to crack the hashes in order to get the passwords. How this works is the attacker will find or create a suitable password list of possible passwords. The tool used will attempt to create a hash of each of these words based on the hashing algorithm used on the dump of hashes. Then compare each dumped hash with the hashes just created. When a match is found, we know that the word in our wordlist used to create the hash that matches the dumped hash is in fact a legitimate password.
 
 The wordlist needs to be as small as possible obviously and should ideally not contain words that are unlikely to have matching hashes in the hash dump obtained.
 
 
 %% See section in TheHackerPlaybook2 on Password Cracking
-oclHashcat
-John the Ripper (JtR)
+oclHashcat  
+John the Ripper (JtR)  
 Cain and Abel (windows)
 
 
+_Todo_
 
 
 Resources:
+
 * DVWA? toastmasters example?
 * TheHackerPlaybook2 - Special Teams - Password Cracking
 * Owning the web presentation near the end

@@ -85,9 +85,9 @@ There are plenty of large password wordlists around. I discussed a handful of th
 
 If running any of the following tools produce a list with your password in it, I strongly suggest you review the [Countermeasures](#people-countermeasures-weak-password-strategies) section to learn what a good password is.
 
-A> wordlist generators are used to create short more precise and targeted wordlists. It's important here to understand organisational password policies etc and constrain the tool that you use to produce a wordlist to honour any password policies in place in the target organisation.
+A> Wordlist generators are used to create short more precise and targeted wordlists. It's important here to understand organisational password policies etc and constrain the tool that you use to produce a wordlist to honour any password policies in place in the target organisation. Otherwise the tool will end up producing passwords not relevant to the target.
 
-##### [crunch](http://tools.kali.org/password-attacks/crunch) {#people-identify-risks-weak-password-strategies-password-profiling-crunch}
+##### [Crunch](http://tools.kali.org/password-attacks/crunch) {#people-identify-risks-weak-password-strategies-password-profiling-crunch}
 
 &nbsp;
 
@@ -99,9 +99,10 @@ The `@` wildcard can be used to represent lowercase characters in the pattern yo
 
 A minimum and maximum length has to be specified. If your minimum and maximum do not match the length of your optional pattern exactly, crunch will provide direction as to what it expects.
 
-If you don't provide the output `-o </location/of/crunch/output>` option, output will go to screen. When you run crunch it also informs you of the size of the output in MB, GB, TB and PB. Crunch will also print out many lines it is going to write.
+If you do not provide the output `-o </location/of/crunch/output>` option, output will go to screen. When you run crunch it also informs you of the size of the output in MB, GB, TB and PB. Crunch will also print out how many lines it is going to write as it starts. Great for avoiding personal DOS of your file system.
 
-To run crunch simply run from the menu in Kali Linux: Password Attacks -> Offline Attacks -> crunch  
+To run crunch, simply run from the menu in Kali Linux:  
+Password Attacks -> Offline Attacks -> crunch  
 or from the terminal:
 
 {linenos=off, lang=bash}
@@ -115,13 +116,13 @@ or from the terminal:
     # The man file has lots of examples also, so just:
     man crunch
 
-##### Common User Passwords Profiler (cupp) {#people-identify-risks-weak-password-strategies-password-profiling-cupp}
+##### Common User Passwords Profiler (CUPP) {#people-identify-risks-weak-password-strategies-password-profiling-cupp}
 
 &nbsp;
 
-Created by Muris Kurgas AKA j0rgan. This tool is easy to use and can be used in an interactive style `-i` where it interviews the person running it before it runs. We installed this in the [Tooling Setup](#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-cupp) chapter.
+Created by Muris Kurgas AKA j0rgan. This tool is easy to use and can be used in an interactive style `-i` where it interviews the person running it before it goes ahead and creates the wordlist output. We installed this in the [Tooling Setup](#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-cupp) chapter.
 
-Once you have git cloned it, check the source confirming what you are about to run. Then run it. I like to use the interactive mode `-i`. run it with no arguments to see the help screen.
+Once you have git cloned it, as always check the source confirming what you are about to run. Then run it. I like to use the interactive mode `-i`. run it with no arguments to see the help screen.
 
 Also have a look through the config file prior to running and change any settings you want to fine tune. It is all pretty straight forward.
 
@@ -129,7 +130,7 @@ Under the `[leet]` section you can remove any characters to look like something 
 
 There are a number of other options to customise the output.
 
-{linenos=off, lang=bash}
+{linenos=off, lang=text}
     ./cupp.py -i
 
     [+] Insert the informations about the victim to make a dictionary
@@ -156,7 +157,7 @@ There are a number of other options to customise the output.
     
     
     > Do you want to add some key words about the victim? Y/[N]: y
-    > Please enter the words, separated by comma. [i.e. hacker,juice,black] spaces     will be removed:
+    > Please enter the words, separated by comma. [i.e. hacker,juice,black] spaces will be removed:
     can we fix it,yes we can
     > Do you want to add special chars at the end of words? Y/[N]: y
     > Do you want to add some random numbers at the end of words? Y/[N]n
@@ -196,6 +197,7 @@ The general usage is (from the terminal) like:
     # -w <ouput file path>
     # -m <minimum word length to record>
     cewl -d 5 -m 3 -w ~/cewl-wordlist.txt <target url>
+    # If you go deep, it can take a very long time.
 
 Now what you can do with the wordlist produced is augment it with the likes of [crunch](#people-identify-risks-weak-password-strategies-password-profiling-crunch) to add some extra characters that people often add or even [cupp](#people-identify-risks-weak-password-strategies-password-profiling-cupp) to make the passwords a bit more personal.
 
@@ -209,14 +211,14 @@ I discovered this tool in the Hacker Playbook 2. It looks like Kim had some trou
 
 #### Brute Forcing
 
-The following brute force attempts were against the Dam Vulnerable Web App (DVWA) in the OWASPBWA suite running at IP 192.168.96.60.
+The following brute force attempts were against the Dam Vulnerable Web App (DVWA) in the OWASPBWA suite running at IP `192.168.90.60`.
 
-When it comes to brute forcing web applications, I noticed the failed attempts always took longer than the successful ones (when I told the tool to use a specific search phrase for failure) due to the fact that the failure text you told the tool to look for is found sometime before the tool has read everything in the response, as it would with a successful response.
+When it comes to brute forcing web applications, I noticed the failed attempts always took longer than the successful ones (when I told the tool to use a specific search phrase for failure) due to the fact that the failure text you tell the tool to look for is found sometime before the tool has read everything in the response, as it would with a successful response.
 
 Because there are so many web servers and web applications and they all do their login procedure differently. What I found that seemed to be the best way was to use an HTTP intercepting proxy (Iceweasel Tamper Data plug-in or better Burpsuite) and try several incorrect passwords and inspect the responses of each. Then try a known correct user and password and inspect the response. Now you just use the differing factor.  
 Often there are several requests that occur before a successful log in (a POST followed by a GET in the case of DVWA) and I was wondering how the brute forcing tool would know how to combine the requests and responses of an unsuccessful and/or successful login attempt. The answer is, they don't. What I found though, was that there is usually a difference in the first response of the incorrect passwords to the first response of the correct password. For example, the incorrect responses may redirect the user back to the login.php page where as the correct response may redirect the user to an index.php page or similar. In this situation, you instruct the tool that a `login.php` means unsuccessful attempt and it will go looking for that string.
 
-Often with HTTP brute forcing you will have to slow the requests down. Most tools provide arguments for that.
+Often with HTTP brute forcing you will have to slow the requests down. Most tools provide options for that.
 
 ##### Hydra
 
@@ -224,67 +226,79 @@ Often with HTTP brute forcing you will have to slow the requests down. Most tool
 
 Seems like the most [mature](https://www.thc.org/thc-hydra/network_password_cracker_comparison.html) of the brute force specific tools.
 
-To run hydra simply run from the menu in Kali Linux: Password Attacks -> Online Attacks -> hydra  
+To run hydra simply run from the menu in Kali Linux:  
+Password Attacks -> Online Attacks -> hydra  
 or from the terminal.
 
 {title="SSH", linenos=off, lang=bash}
     hydra -l <username> -P <password or wordlist> <target> <protocol>
     # For example SSH if your SSH port is the default:
     hydra -l root -P /path/and/wordlist.txt 192.168.90.60 ssh
-    # Otherwise specify the port with -s. May as well add some verbosity while we are at it with -v.
+    # Otherwise specify the port with -s.
+    # May as well add some verbosity while we are at it with -v.
     # Also -L for a username wordlist file if you want to try many usernames.
     # Lower case -p for password typed in directly.
     hydra -s 20 -v -l root -p /path/and/wordlist.txt 192.168.90.60 ssh
     # -l can also be used with a file of usernames.
 
-When it comes to using hydra against web forms, if you can, once you have the command set and ready to run, it is usually best to test it against the web site with a known good login to make sure hydra handles the success correctly and the failures correctly.
+![](images/HandsOnHack.png)
 
-You will need:
+I> ## Web Forms
+I>
+I> When it comes to using hydra against web forms, if you can, once you have the command set and ready to run, it is usually best to test it against the web site with a known good login to make sure hydra handles the success correctly and the failures correctly.
+I>
+I> You will need:
+I> 
+I> * IP address or host name
+I> * Type of form. Listed in the man page.
+I> * The name of the field that takes the username
+I> * The name of the field that takes the password
+I> * Failure message for a failed attempt. The only place you need to look is the response of the first request (It seems that any string in the response can be used, even if it is a redirect back to `login.php`, any header value, body value, or even header name) or success message (or cookie or what ever the web site uses to inform of success).
 
-* IP address or host name
-* Type of form. Listed in the man page.
-* The name of the field that takes the username
-* The name of the field that takes the password
-* Failure message for a failed attempt. The only place you need to look is the response of the first request (It seems that any string in the response can be used, even if it is a redirect back to `login.php`, any header value, body value, or even header name) or success message (or cookie or what ever the web site uses to inform of success).
-
-Using an HTTP intercepting proxy as I mentioned above, lets use Burpsuite and our FoxyProxy. Once you have the DVWA running or another website you want to attempt to brute force, browse to the login page. Then turn the Burp 8080 proxy on. Start burpsuite and make sure it is listening on port 8080 (or what ever your browsers proxy is going to send to). I added the correct username but false password values to the Username and Password fields and submit, although you can add any values.
-
-Now in Burpsuites Proxy tab -> HTTP history tab, right click on the (POST) request and select Send to Intruder. Now go to the Intruder tab and in the Positions tab, you can keep the Attack type: "[Sniper](https://portswigger.net/burp/help/intruder_positions.html)" because we are only using one wordlist. If we user using a wordlist for usernames and a different one for passwords, we would probably want to use "Cluster bomb".
-
-Now clear all the highlighted fields apart from the password value. Now we go to the Payloads tab, keep the Payload set to 1 and Payload type set to [Simple list](https://portswigger.net/burp/help/intruder_payloads_types.html)
-
-Now I just added dogs, cats, admins, admin. The last being the correct password. You don't need FoxyProxy on anymore either. Go into the Intruder menu up the top -> Start attack. You will now get a pop up window with the results of the passwords you added. Now with the Response tab and Raw tab selected, start at the top of the requests and just arrow down through them, inspecting the differences as you go. You should see that the last one, that's the admin password has one changed value from the other responses. It will have a Location header with value of "index.php" rather than "login.php" that all the failed responses contain. That is our difference that we use to feed to our brute forcing tool so that it knows when we have a successful login, even though in theory the login process isn't yet complete as we haven't issued the follow up GET request, but it does not matter, as we know we would not have been given a "index.php" if we were not authorised.
-
-Now every web application will do something a bit different. You just need to look for the difference in response from a bad password to a good one and use that to feed to your brute forcing tool.
-
-Now we know that our request body looks like the following:
-
-{linenos=off, lang=bash}
-    username=admin&password=whatever&Login=Login
-
-From that we build our command. `^USER^` instructs hydra to use the login (`-l`) text or path to file if the upper case `-L` is used. `^PASS^` instructs hydra to use the password wordlist we provide it with with the `-P` option.
-
-So here we go:
-
-{linenos=off, lang=bash}
-    # First up, lets look at what is in our word list for our initial test.
-    cat /root/wordlist-to-throw-at-dvwa
-    dogs
-    cats
-    admins
-    admin # Correct password.
-
-    # Now lets run our brute force.
-
-    hydra -l admin -P /path/and/wordlist.txt 192.168.90.60 http-form-post "/dvwa/login.php:username=^USER^&password=^PASS^&Login=Login:login.php" -V
-    # Can write attempts to a file with -o <file path>.
-    # -v is less verbose
+{icon=bomb}
+G> ## The Play
+G>
+G> Using an HTTP intercepting proxy as I mentioned above, lets use Burpsuite and our FoxyProxy. Once you have the DVWA running or another website you want to attempt to brute force, browse to the login page. Then turn the "Burp 8080" proxy on. Start burpsuite and make sure it is listening on port `8080` (or what ever your browsers proxy is going to send to). I added the correct `username` but false `password` values to the `username` and `password` fields and submit, although you can add any values.
+G>
+G> Now in Burpsuites Proxy tab -> HTTP history tab, right click on the (POST) request and select Send to Intruder. Now go to the Intruder tab and in the Positions tab, you can keep the Attack type: "[Sniper](https://portswigger.net/burp/help/intruder_positions.html)" because we are only using one wordlist. If we were using a wordlist for usernames and a different one for passwords, we would probably want to use "Cluster bomb".
+G>
+Now clear all the highlighted fields apart from the `password` value. Now we go to the Payloads tab. Keep the Payload set to 1 and Payload type set to [Simple list](https://portswigger.net/burp/help/intruder_payloads_types.html).
+G>
+G> Now I just added `dogs`, `cats`, `admins`, `admin`. The last being the correct password. You don't need FoxyProxy on anymore either. Go into the Intruder menu up the top -> Start attack. You will now get a pop up window with the results of the passwords you added. Now with the Response tab and Raw tab selected, start at the top of the requests and just arrow down through them, inspecting the differences as you go. You should see that the last one, that's the `admin` password has one changed value from the other responses. It will have a `Location` header with value of `index.php` rather than `login.php` that all the failed responses contain. That is our difference that we use to feed to our brute forcing tool so that it knows when we have a successful login, even though in theory the login process isn't yet complete as we have not issued the follow up `GET` request, but it does not matter, as we know we would not have been given a `index.php` if we were not authorised.
+G>
+G> Now every web application will do something a bit different. You just need to look for the difference in response from a bad password to a good one and use that to feed to your brute forcing tool.
+G>
+G> Now we know that our request body looks like the following:
+G> 
+G> {linenos=off, lang=bash}
+G>     username=admin&password=whatever&Login=Login
+G> 
+G> From that we build our command. `^USER^` instructs hydra to use the login (`-l`) text or path to file if the upper case `-L` is used. `^PASS^` instructs hydra to use the password wordlist we provide it with with the `-P` option.
+G>
+G> So here we go:
+G> 
+G> {linenos=off, lang=bash}
+G>     # First up, lets look at what is in our word list for our initial test.
+G>     cat /root/wordlist-to-throw-at-dvwa
+G>     dogs
+G>     cats
+G>     admins
+G>     admin # Correct password.
+G> 
+G>     # Now lets run our brute force.
+G> 
+G>     hydra -l admin -P /path/and/wordlist.txt 192.168.90.60 http-form-post \
+G>     "/dvwa/login.php:username=^USER^&password=^PASS^&Login=Login:login.php" -V
+G>     # Can write attempts to a file with -o <file path>.
+G>     # -v is less verbose
 
 {title="output", linenos=off, lang=bash}
-    Hydra v8.1 (c) 2014 by van Hauser/THC - Please do not use in military or secret service organizations, or for illegal purposes.
+    Hydra v8.1 (c) 2014 by van Hauser/THC - Please do not use in military or secret service \
+    organizations, or for illegal purposes.
     
     Hydra (http://www.thc.org/thc-hydra) starting at 2015-11-07 23:23:03
-    [DATA] max 4 tasks per 1 server, overall 64 tasks, 4 login tries (l:1/p:4), ~0 tries per task
+    [DATA] max 4 tasks per 1 server, overall 64 tasks, \
+    4 login tries (l:1/p:4), ~0 tries per task
     [DATA] attacking service http-post-form on port 80
     [ATTEMPT] target 192.168.90.60 - login "admin" - pass "dogs" - 1 of 4 [child 0]
     [ATTEMPT] target 192.168.90.60 - login "admin" - pass "cats" - 2 of 4 [child 1]
@@ -295,12 +309,13 @@ So here we go:
     Hydra (http://www.thc.org/thc-hydra) finished at 2015-11-07 23:23:03
 
 A few things to note here.  
-Instead of telling hydra what to look for in a failed attempt (`Login=Login:login.php` in our case) we can tell hydra what to look for in a successful attempt with something like the following. `string we expect for success` is hypothetical:
+Instead of telling hydra what to look for in a failed attempt (`Login=Login:login.php` in our case) we can tell hydra what to look for in a successful attempt with something like the following.  
+`string we expect for success` is hypothetical:
 
 {linenos=off, lang=bash}
     hydra -l admin -P /path/and/wordlist.txt 192.168.90.60 http-form-post "/dvwa/login.php:username=^USER^&password=^PASS^&S=string we expect for success" -V
 
-Hydra has many other options, plenty of good [documentation](http://null-byte.wonderhowto.com/how-to/hack-like-pro-crack-online-web-form-passwords-with-thc-hydra-burp-suite-0160643/) out there along with a decent man page.
+Hydra has many other options. Plenty of good [documentation](http://null-byte.wonderhowto.com/how-to/hack-like-pro-crack-online-web-form-passwords-with-thc-hydra-burp-suite-0160643/) out there along with a decent man page.
 
 ##### Medusa
 
@@ -334,14 +349,14 @@ To list the supported modules:
       + rexec.mod : Brute force module for REXEC sessions : version 2.0
       + rlogin.mod : Brute force module for RLOGIN sessions : version 2.0
       + rsh.mod : Brute force module for RSH sessions : version 2.0
-      + smbnt.mod : Brute force module for SMB (LM/NTLM/LMv2/NTLMv2) sessions :     version 2.0
+      + smbnt.mod : Brute force module for SMB (LM/NTLM/LMv2/NTLMv2) sessions : version 2.0
       + smtp-vrfy.mod : Brute force module for enumerating accounts via SMTP     VRFY : version 2.0
-      + smtp.mod : Brute force module for SMTP Authentication with TLS : version     2.0
+      + smtp.mod : Brute force module for SMTP Authentication with TLS : version 2.0
       + snmp.mod : Brute force module for SNMP Community Strings : version 2.0
       + ssh.mod : Brute force module for SSH v2 sessions : version 2.0
       + svn.mod : Brute force module for Subversion sessions : version 2.0
       + telnet.mod : Brute force module for telnet sessions : version 2.0
-      + vmauthd.mod : Brute force module for the VMware Authentication Daemon :     version 2.0
+      + vmauthd.mod : Brute force module for the VMware Authentication Daemon : version 2.0
       + vnc.mod : Brute force module for VNC sessions : version 2.0
       + web-form.mod : Brute force module for web forms : version 2.0
       + wrapper.mod : Generic Wrapper Module : version 2.0    
@@ -352,17 +367,19 @@ Choose your module and get more information on it:
     medusa -M web-form -q
 
 {title="output", linenos=off, lang=bash}
-    web-form.mod (2.0) Luciano Bello <luciano@linux.org.ar> :: Brute force module     for web forms
+    web-form.mod (2.0) Luciano Bello <luciano@linux.org.ar> :: Brute force module for web forms
     
     Available module options:
-      USER-AGENT:?       User-agent value. Default: "I'm not Mozilla, I'm Ming     Mong".
+      USER-AGENT:?       User-agent value. Default: "I'm not Mozilla, I'm Ming Mong".
       FORM:?             Target form to request. Default: "/"
-      DENY-SIGNAL:?      Authentication failure message. Attempt flagged as successful if text is not present in
-                         server response. Default: "Login incorrect"
+      DENY-SIGNAL:?      Authentication failure message. Attempt flagged as
+                         successful if text is not present in server response. Default: "Login incorrect"
       FORM-DATA:<METHOD>?<FIELDS>
-                         Methods and fields to send to web service. Valid methods are GET and POST. The actual form
-                         data to be submitted should also be defined here. Specifically, the fields: username and
-                         password. The username field must be the first, followed     by the password field.
+                         Methods and fields to send to web service. \
+                         Valid methods are GET and POST. \
+                         The actual form data to be submitted should also be defined here. \
+                         Specifically, the fields: username and password. \
+                         The username field must be the first, followed by the password field. \
                          Default: "post?username=&password="
     
 
@@ -386,13 +403,18 @@ I also tried with just the correct password. The issue was that Medusa was not h
 
 &nbsp;
 
-I think the following may have suffered from the redirect problem also. Since then I found a [few changes](http://seclists.org/nmap-dev/2014/q3/479) to this script which may have fixed it although I have not re-tested. The following command just took too long to complete. It may have got confused with the redirect. I am not sure.
+I think the following may have suffered from the redirect problem also. Since then I found a [few changes](http://seclists.org/nmap-dev/2014/q3/479) to this script which may have fixed it, although I have not re-tested. The following command just took too long to complete. It may have got confused with the redirect. I am not sure.
 
 {linenos=off, lang=bash}
-    nmap 192.168.90.60 -p80 --script=http-form-brute --script-args 'path="/dvwa/login.php", method="post", hostname="192.168.90.60", onfailure="login.php", passvar=admin, uservar=admin' -vvv -d
+    nmap 192.168.90.60 -p80 --script=http-form-brute --script-args \
+    'path="/dvwa/login.php", \
+    method="post", \
+    hostname="192.168.90.60", \
+    onfailure="login.php", \
+    passvar=admin, \
+    uservar=admin' -vvv -d
 
-
-I address the compromise of password hashes in the Web Applications chapter under "Management of Application Secrets"
+I address the compromise of password hashes in the Web Applications chapter under [Management of Application Secrets](#web-applications-identify-risks-management-of-application-secrets-cracking).
 
 ### Phone Calls {#people-identify-risks-phone-calls}
 ![](images/ThreatTags/average-common-average-severe.png)
@@ -417,11 +439,11 @@ Some are free some are paid for. The SMS providers offering spoofing capabilitie
 
 Or you can [DIY](http://www.social-engineer.org/wiki/archives/CallerIDspoofing/CallerID-SpoofingWithAsterisk.html) with the likes of [Asterisk](http://www.asterisk.org/get-started), an open source framework providing all the tools anyone would need to spoof caller Ids and much more. You will need a VoIP service provider, but you control everything else and all of the information about your targets is in your hands alone.
 
-If you are planning a phone call, you are going to have to have a pretty solid idea of who your pretext is and as much as possible about them in order to make your pretext believable. This is where you really draw from the reconnaissance as seen in the Processes and Practises chapter. It is a good idea to script out the points you (social engineer) want to cover in your phone call. Rehearse the points many times so that they become very natural sounding. The more you practise, the easier it will be when you have to deviate from your points and come back to them. There is no substitute for having as much information as possible on the target and have rehearsed the call many times.
+If you are planning a phone call, you are going to have to have a pretty solid idea of who your pretext is and know as much as possible about them in order to make your pretext believable. This is where you really draw from the reconnaissance as seen in the [Processes and Practises](#process-and-practises-penetration-testing-reconnaissance) chapter. It is a good idea to script out the points you (social engineer) want to cover in your phone call. Rehearse the points many times so that they become very natural sounding. The more you practise, the easier it will be when you have to deviate (the target will often throw curve balls at you) from your points and come back to them. There is no substitute for having as much information as possible on the target and have rehearsed the call many times.
 
 SMS spoofing can also be very useful. Most services can not handle return messages though, unless the attacker has physical access to a phone that would contact the targets phone (as with [flexispy](http://blog.flexispy.com/spoof-sms-powerful-secret-weapon-shouldve-using/)) and can install software on the initiating phone which the attacker can control.
 
-SMS spoofing was [removed](https://github.com/trustedsec/social-engineer-toolkit/blob/master/readme/CHANGES#L279) from the social engineering toolkit in version 6.0 due to lack of maintenance. I think mainly because it is getting harder to successfully do due to the telecommunication providers clamping down.
+SMS spoofing was [removed](https://github.com/trustedsec/social-engineer-toolkit/blob/master/readme/CHANGES#L285) from the social engineering toolkit in version 6.0 due to lack of maintenance. I think mainly because it is getting harder to successfully do due to the telecommunication providers clamping down.
 
 ### Favour for a Favour {#people-identify-risks-favour-for-a-favour}
 ![](images/ThreatTags/easy-common-average-severe.png)
@@ -532,9 +554,31 @@ T>
 T> SET provides the ability to craft emails with spoofed from address. You just need to install and configure sendmail.  
 T> As you can see below, SET also has a few other options for helping an attacker craft spear-phishing attacks.
 
-![](images/SetHead.png)
-
 {linenos=off, lang=bash}
+    
+                          ..:::::::::..
+                      ..:::aad8888888baa:::..
+                  .::::d:?88888888888?::8b::::.
+                .:::d8888:?88888888??a888888b:::.
+              .:::d8888888a8888888aa8888888888b:::.
+             ::::dP::::::::88888888888::::::::Yb::::
+            ::::dP:::::::::Y888888888P:::::::::Yb::::
+           ::::d8:::::::::::Y8888888P:::::::::::8b::::
+          .::::88::::::::::::Y88888P::::::::::::88::::.
+          :::::Y8baaaaaaaaaa88P:T:Y88aaaaaaaaaad8P:::::
+          :::::::Y88888888888P::|::Y88888888888P:::::::
+          ::::::::::::::::888:::|:::888::::::::::::::::
+          `:::::::::::::::8888888888888b::::::::::::::'
+           :::::::::::::::88888888888888::::::::::::::
+            :::::::::::::d88888888888888:::::::::::::
+             ::::::::::::88::88::88:::88::::::::::::
+              `::::::::::88::88::88:::88::::::::::'
+                `::::::::88::88::P::::88::::::::'
+                  `::::::88::88:::::::88::::::'
+                     ``:::::::::::::::::::''
+                          ``:::::::::''
+    
+    
     [---]        The Social-Engineer Toolkit (SET)         [---]
     [---]        Created by: David Kennedy (ReL1K)         [---]
     [---]                  Version: 6.3                    [---]
@@ -692,9 +736,9 @@ _Todo_
 
 Defeating compromise is actually very simple, but few follow the guidelines. Everyone else is being exploited now or later, whether they are aware of it or not.
 
-* Good password should be long enough and complex enough that you are unable to remember it
+* Good passwords should be long and complex enough that you are unable to remember them
 * Mix of random or at worst pseudorandom alphanumeric, upper/lower case, special characters. Get yourself a [OneRNG](http://onerng.info/) for generating true randomness.
-* Swapping characters with numbers and special characters do not really making compromise much harder
+* Swapping characters with numbers and special characters do not really make compromise much harder
 * Unique for every account
 * Use password database (ideally multi factor authentication) that generates passwords for you based on criteria you set. This way the profiling attacks mentioned are going to have a tough time brute forcing your accounts. It is such simple and easy to implement advice, but still so many are failing to take heed.
 
@@ -714,7 +758,7 @@ Developing simple scripts or process flow charts for employees to check when rec
 
 Do not rely on caller Id. It is untrusted. I am not aware of any way to successfully [detect](http://www.cse.sc.edu/~mustafah/download/cid_USC_CSE_TR-2013-001.pdf) caller Id spoofing before the call is answered.
 
-With SMS, the first line of detection is to respond to the number that was spoofed confirming any information in the initial message. This will rule out many services. Failing that, confirmation by calling the sender and recognising their voice will go a long way. Next line of defence would be to contact them via some other means, email or face to face is always going to be the best. Work you way through the list of communication techniques from the [Email](#people-countermeasures-morale-productivity-and-engagement-killers-email) section above.
+With SMS, the first line of detection is to respond to the number that was spoofed confirming any information in the initial message. This will rule out many services. Failing that, confirmation by calling the sender and recognising their voice, will go a long way. Next line of defence would be to contact them via some other means, email, or face to face is always going to be the best. Work you way through the list of communication techniques from the [Email](#people-countermeasures-morale-productivity-and-engagement-killers-email) section above.
 
 ### Favour for a Favour {#people-countermeasures-favour-for-a-favour}
 ![](images/ThreatTags/PreventionAVERAGE.png)

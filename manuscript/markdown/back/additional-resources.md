@@ -76,8 +76,9 @@ Finding details on companies: [https://www.business.govt.nz/companies/](https://
 **WordHound souce code**  
 [https://bitbucket.org/mattinfosec/wordhound.git](https://bitbucket.org/mattinfosec/wordhound.git)
 
-**Hydra source**  
+**Hydra source code**  
 [https://github.com/vanhauser-thc/thc-hydra](https://github.com/vanhauser-thc/thc-hydra)
+
 
 
 **Medusa documentation**
