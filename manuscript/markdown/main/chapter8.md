@@ -560,81 +560,81 @@ T>
 T> SET provides the ability to craft emails with spoofed from address. You just need to install and configure sendmail.  
 T> As you can see below, SET also has a few other options for helping an attacker craft spear-phishing attacks.
 
-{lang=text}
+~~~~~~~~
+                      ..:::::::::..
+                  ..:::aad8888888baa:::..
+              .::::d:?88888888888?::8b::::.
+            .:::d8888:?88888888??a888888b:::.
+          .:::d8888888a8888888aa8888888888b:::.
+         ::::dP::::::::88888888888::::::::Yb::::
+        ::::dP:::::::::Y888888888P:::::::::Yb::::
+       ::::d8:::::::::::Y8888888P:::::::::::8b::::
+      .::::88::::::::::::Y88888P::::::::::::88::::.
+      :::::Y8baaaaaaaaaa88P:T:Y88aaaaaaaaaad8P:::::
+      :::::::Y88888888888P::|::Y88888888888P:::::::
+      ::::::::::::::::888:::|:::888::::::::::::::::
+      `:::::::::::::::8888888888888b::::::::::::::'
+       :::::::::::::::88888888888888::::::::::::::
+        :::::::::::::d88888888888888:::::::::::::
+         ::::::::::::88::88::88:::88::::::::::::
+          `::::::::::88::88::88:::88::::::::::'
+            `::::::::88::88::P::::88::::::::'
+              `::::::88::88:::::::88::::::'
+                 ``:::::::::::::::::::''
+                      ``:::::::::''
+
+[---]        The Social-Engineer Toolkit (SET)         [---]
+[---]        Created by: David Kennedy (ReL1K)         [---]
+[---]                  Version: 6.3                    [---]
+[---]              Codename: '#HugLife'                [---]
+[---]        Follow us on Twitter: @TrustedSec         [---]
+[---]        Follow me on Twitter: @HackingDave        [---]
+[---]       Homepage: https://www.trustedsec.com       [---]
+
+        Welcome to the Social-Engineer Toolkit (SET). 
+         The one stop shop for all of your SE needs.
+
+     Join us on irc.freenode.net in channel #setoolkit
+
+   The Social-Engineer Toolkit is a product of TrustedSec.
+
+             Visit: https://www.trustedsec.com
+
+ Select from the menu:
+
+   1) Spear-Phishing Attack Vectors
+   2) Website Attack Vectors
+   3) Infectious Media Generator
+   4) Create a Payload and Listener
+   5) Mass Mailer Attack
+   6) Arduino-Based Attack Vector
+   7) Wireless Access Point Attack Vector
+   8) QRCode Generator Attack Vector
+   9) Powershell Attack Vectors
+  10) Third Party Modules
+
+  99) Return back to the main menu.
+
+set> 1
+
+The Spearphishing module allows you to specially craft email messages and send
+them to a large (or small) number of people with attached fileformat malicious
+payloads. If you want to spoof your email address, be sure "Sendmail" is in-
+stalled (apt-get install sendmail) and change the config/set_config SENDMAIL=OFF
+flag to SENDMAIL=ON.
+
+There are two options, one is getting your feet wet and letting SET do
+everything for you (option 1), the second is to create your own FileFormat
+payload and use it in your own attack. Either way, good luck and enjoy!
+
+   1) Perform a Mass Email Attack
+   2) Create a FileFormat Payload
+   3) Create a Social-Engineering Template
+
+   99) Return to Main Menu
     
-                          ..:::::::::..
-                      ..:::aad8888888baa:::..
-                  .::::d:?88888888888?::8b::::.
-                .:::d8888:?88888888??a888888b:::.
-              .:::d8888888a8888888aa8888888888b:::.
-             ::::dP::::::::88888888888::::::::Yb::::
-            ::::dP:::::::::Y888888888P:::::::::Yb::::
-           ::::d8:::::::::::Y8888888P:::::::::::8b::::
-          .::::88::::::::::::Y88888P::::::::::::88::::.
-          :::::Y8baaaaaaaaaa88P:T:Y88aaaaaaaaaad8P:::::
-          :::::::Y88888888888P::|::Y88888888888P:::::::
-          ::::::::::::::::888:::|:::888::::::::::::::::
-          `:::::::::::::::8888888888888b::::::::::::::'
-           :::::::::::::::88888888888888::::::::::::::
-            :::::::::::::d88888888888888:::::::::::::
-             ::::::::::::88::88::88:::88::::::::::::
-              `::::::::::88::88::88:::88::::::::::'
-                `::::::::88::88::P::::88::::::::'
-                  `::::::88::88:::::::88::::::'
-                     ``:::::::::::::::::::''
-                          ``:::::::::''
-    
-    [---]        The Social-Engineer Toolkit (SET)         [---]
-    [---]        Created by: David Kennedy (ReL1K)         [---]
-    [---]                  Version: 6.3                    [---]
-    [---]              Codename: '#HugLife'                [---]
-    [---]        Follow us on Twitter: @TrustedSec         [---]
-    [---]        Follow me on Twitter: @HackingDave        [---]
-    [---]       Homepage: https://www.trustedsec.com       [---]
-    
-            Welcome to the Social-Engineer Toolkit (SET). 
-             The one stop shop for all of your SE needs.
-    
-         Join us on irc.freenode.net in channel #setoolkit
-    
-       The Social-Engineer Toolkit is a product of TrustedSec.
-    
-                 Visit: https://www.trustedsec.com
-    
-     Select from the menu:
-    
-       1) Spear-Phishing Attack Vectors
-       2) Website Attack Vectors
-       3) Infectious Media Generator
-       4) Create a Payload and Listener
-       5) Mass Mailer Attack
-       6) Arduino-Based Attack Vector
-       7) Wireless Access Point Attack Vector
-       8) QRCode Generator Attack Vector
-       9) Powershell Attack Vectors
-      10) Third Party Modules
-    
-      99) Return back to the main menu.
-    
-    set> 1
-    
-     The Spearphishing module allows you to specially craft email messages and send
-     them to a large (or small) number of people with attached fileformat malicious
-     payloads. If you want to spoof your email address, be sure "Sendmail" is in-
-     stalled (apt-get install sendmail) and change the config/set_config SENDMAIL=OFF
-     flag to SENDMAIL=ON.
-    
-     There are two options, one is getting your feet wet and letting SET do
-     everything for you (option 1), the second is to create your own FileFormat
-     payload and use it in your own attack. Either way, good luck and enjoy!
-    
-       1) Perform a Mass Email Attack
-       2) Create a FileFormat Payload
-       3) Create a Social-Engineering Template
-    
-      99) Return to Main Menu
-    
-    set:phishing>
+set:phishing>
+~~~~~~~~
 
 ### Infectious Media {#people-identify-risks-infectious-media}
 
