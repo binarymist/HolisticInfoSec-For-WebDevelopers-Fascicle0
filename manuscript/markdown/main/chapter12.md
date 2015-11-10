@@ -213,7 +213,7 @@ _Todo_
 
 ![](images/HandsOnHack.png)
 
- One of the simplest and quickest vulnerabilities to fix, yet it is still top of the hit lists. Lets hammer this home some more.
+ One of the simplest and quickest vulnerabilities to fix, yet it is still top of the hit lists. I am going to hammer this home some more.
 
 I> ## Synopsis
 I>
@@ -227,7 +227,8 @@ G>
 G> In your Kali Linux box, run owasp-zap.  
 G> If chromium is not already running, run it and setup foxyproxy for chrome using the burp proxy we set-up in the [Tooling Setup](#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-chromium-extensions-foxyproxy-standard) chapter. Zap is now recording your browsing.
 G>
-G> Once you have started the VM and browsed to it, select the DVWA and log in as user: "user", password "user". Make sure the Security Level is set to low.
+G> Once you have started the VM and browsed to it, select the DVWA and log in as  
+G> user: "user", password "user". Make sure the Security Level is set to low.
 G>
 G> Navigate to the SQL Injecton page and enter `1` in the input box.
 G>
@@ -236,9 +237,9 @@ G>
 G> When the scan is finished: go to the Alerts tab -> Select SQL Injection -> look at the request and response.  
 G> See Zap used a union query, but response said "The used SELECT statements have a different number of columns". Which means if we use the correct number of columns we will have success.  
 G>
-G> In Request tab select input parameter -> right click and select Fuzz -> Payloads -> Add -> Select File Fuzzers from "Type" dropdown. jbrofuzz->SQL Injection->SQL Injection -> Add -> OK -> Start Fuzzer
+G> In Request tab, select input parameter -> right click and select Fuzz -> Payloads -> Add -> Select File Fuzzers from "Type" dropdown. jbrofuzz->SQL Injection->SQL Injection -> Add -> OK -> Start Fuzzer
 G>
-G> Notice the `x' or full_name like '%bob%`
+G> Notice the `x' or full_name like '%bob%` in the Fuzzer tab.
 G>
 G> Then try the following in dvwa input:
 G>
@@ -255,9 +256,11 @@ G> Search stackoverflow, github, etc for tidbits. Also [gitrob](https://github.c
 G> As we try different things, we learn more about naming conventions.
 G>
 G> `x' or user like '%`               # This works  
+
+{icon=bomb}
 G>
 G> I thought the query on the server looked something like this:
-`select ID, first_name, last_name from users where ID = ''`
+G> `select ID, first_name, last_name from users where ID = ''`
 G>
 G> Time to work out what the table name is.
 G>
@@ -266,7 +269,7 @@ G> `select ID, first_name, last_name from users where ID = '1' union select ID, 
 G> Injected query:  
 G> `1' union select ID, first_name, last_name from users where first_name like '%`  
 G> Output: Unknown column 'ID'  
-G> Lets fix that  
+G> Lets fix that:  
 G> `1' union select user_id, first_name, last_name from users where first_name like '%`  
 G> Output: The used SELECT statements have a different number of columns.  
 G> This told me that the query on the server was slightly different to what I thought. My revised guess of the full query:  
@@ -302,7 +305,7 @@ G> Now we have our admin password and user.
 There are two main problems here.
 
 1. SQL Injection
-2. Poor decisions around sensitive data protection. We discuss this in depth further on in this chapter in the [Data-store Compromise](#web-applications-identify-risks-management-of-application-secrets-data-store-compromise) section and even more so the [Countermeasures](#web-applications-countermeasures-data-store-compromise) of. Please do not follow this example of a lack of well salted and quality strong key derivation functions (KDFs) used on all of the sensitive data.
+2. Poor decisions around sensitive data protection. We discuss this in depth further on in this chapter in the [Data-store Compromise](#web-applications-identify-risks-management-of-application-secrets-data-store-compromise) section and even more so the [Countermeasures](#web-applications-countermeasures-data-store-compromise) of. Do not follow this example of a lack of well salted and quality strong key derivation functions (KDFs) used on all of the sensitive data in your own projects.
 
 #### Command Injection {#web-applications-identify-risks-command-injection}
 
@@ -2510,7 +2513,7 @@ There are a few options here:
 * Use prepared statements and/or parameterised queries
 * Consider using Stored Procedures
 * Read up on the [OWASP SQLi Prevention Cheat Sheet](https://www.owasp.org/index.php/SQL_Injection_Prevention_Cheat_Sheet)
-* And even before any of these points above, make sure you have the generic input [Validation, Filtering and Sanitisation](#web-applications-countermeasures-lack-of-input-validation-filtering-and-sanitisation-generic) that we have already discussed covered, so all user input is validated, filtered and sanitised both client and server side before it gets anywhere near your queries.
+* And even before any of these points above, make sure you have the generic input [Validation, Filtering and Sanitisation](#web-applications-countermeasures-lack-of-input-validation-filtering-and-sanitisation-generic) that we have already discussed covered, so all user input is validated, filtered and sanitised, both client and server side, before it gets anywhere near your queries.
 
 There are plenty of easy to find and understand resources on the inter-webs around SQLi mitigations and the countermeasures are generally very easy to implement. So now you have no excuse.
 
