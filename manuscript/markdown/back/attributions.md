@@ -235,11 +235,15 @@ and also the specification
 
 ## [Web Applications](#web-applications)
 
+**OWASP has the RSnake donated** seminal XSS cheat sheet  
+[https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet](https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet) which has many tests you can use to check your vulnerability stance to XSS exploitation.
+
+**XSS attack**  
+Good resource on what XSS actually is:  
+[https://www.owasp.org/index.php/XSS](https://www.owasp.org/index.php/XSS)
+
 **Dam Vulnerable Web Application (DVWA)** from the OWASP Broken Web Applications VM  
 [http://sourceforge.net/projects/owaspbwa/files/](http://sourceforge.net/projects/owaspbwa/files/)
-
-
-
 
 **The New Zealand Intelligence Service** recently told Prime Minister John Key that this was one of the 6 top threats facing New Zealand. "_Cyber attack or loss of information and data, which poses financial and reputational risks._"  
 [http://www.stuff.co.nz/national/politics/73704551/homegrown-threats-more-serious-says-spy-boss-rebecca-kitteridge](http://www.stuff.co.nz/national/politics/73704551/homegrown-threats-more-serious-says-spy-boss-rebecca-kitteridge)

@@ -994,7 +994,7 @@ _Todo_
 
 Discuss what Dradis provides and how it helps.
 
-## Agile Development and Practices
+## Agile Development and Practices {#process-and-practises-agile-development-and-practices}
 
 A> Taking Back the Security Focus... but why?  
 A> Because as technologists we are hired to create business value and reduce business costs. If you look at the [public statistics](http://www.meetup.com/OWASP-New-Zealand-Chapter-Christchurch/events/223462991/) on businesses loosing value due to being compromised regularly, the figures are staggering and they are growing exponentially due to the popularity of cyber-crime. That's why we care.
@@ -1042,7 +1042,7 @@ Steve McConnel goes on to say: The data in the above table "_shows that, for exa
 
 > Code Complete - Steven C. McConnel
 
-### Evil Test Conditions
+### Evil Test Conditions {#process-and-practises-agile-development-and-practices-evil-test-conditions}
 
 Many will be familiar with the test condition workshop that is often used within a Scrum Team immediately before the developers pulling a PBI into work in progress (WIP) start work on it. I'm not going to go into the exercise here, as it is non security related and I have already discussed the test condition workshop many times [on-line](http://blog.binarymist.net/2012/03/24/how-to-optimise-your-testing-effort/#planningTheTestEffort). I am going to provide a slight bent on the exercise though. Just as you would create the usual test conditions:
 

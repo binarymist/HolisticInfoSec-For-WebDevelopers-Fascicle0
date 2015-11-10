@@ -97,6 +97,8 @@ Below are a few techniques widely accepted that we need to use on any untrusted 
 
 ##### What is Validation: {#web-applications-identify-risks-lack-of-input-validation-filtering-and-sanitisation-generic-what-is-validation}
 
+&nbsp;
+
 Decide what input is valid by way of a white list (list of input characters that are allowed to be received). Often each input field will have a different white list. Validation is binary, the data is either allowed to be received or not allowed. If it is not allowed, then it is rejected. This is usually not to complicated to work out what is good, what is not and thus rejected. There are a few strategies to use for white listing, such as the actual collection of characters or using regular expressions.
 
 There are other criteria that you can validate against as well, such as:
@@ -125,9 +127,13 @@ There are other criteria that you can validate against as well, such as:
 
 ##### What is Filtering:
 
-When some data can pass through (be received) and some is captured by the filter element (thou shalt not pass).
+&nbsp;
+
+When some data can pass through (be received) and some is captured by the filter element (thou shalt not pass). OWASP has the RSnake donated seminal [XSS cheat sheet](https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet) which has many tests you can use to check your vulnerability stance to XSS exploitation. This is highly recommended.
 
 ##### What is Sanitisation:
+
+&nbsp;
 
 Sanitisation of input data is where the input data whether it is in your white list or not is accepted and transformed into a medium that is no longer dangerous. Now it will probably go through validation first. The reason you sanitise character signatures (may be more than single characters, character combinations) not in your white list is a defence in depth strategy. The white list may change in the future due to a change in business requirements and the developer may forget to revise the sanitisation routines. Always think of any security measure as standing on its own when you create it, but standing alongside many other security measures once done.
 
@@ -141,16 +147,19 @@ _Todo_
 #### Cross-Site Scripting (XSS) {#web-applications-identify-risks-cross-site-scripting}
 ![](images/ThreatTags/average-verywidespread-easy-moderate.png)
 
-&nbsp;
+The following hand on hack demonstrates what a XSS attack is and provides a little insight into some of the damages that it can cause.
 
-_Todo_ [Discuss intricacies of XSS](https://github.com/binarymist/HolisticInfoSec-For-WebDevelopers/issues/4)
+A XSS attack is one in which untrusted data enters a web application usually through a web request and is not stopped by validation, filtering or sanitisation. The data is then at some point sent to someone using the same web application without being validated, filtered or sanitised.  
+The data in question is executed by the browser, usually JavaScript, HTML or Flash. What the code does is up to the creativity of the initiator.
 
-&nbsp;
+The main two different types of XSS are Stored/Persistent or Type I and Reflected/Non-Persistent or Type II.  
+Stored attacks are where the injected code is sent to the server and stored in a medium that the web application uses to retrieve it again to send to another user.  
+Reflected attacks use the web application in question as a proxy. When a user makes a request, the injected code travels from another medium through the web application (hence the reflecting) and to the end user. From the browsers perspective, the injected code came form the web application that the user made a request to.
 
 {#wdcnz-demo-1}
 ![](images/HandsOnHack.png)
 
-The following attack was the first one of five that I demonstrated at WDCNZ in 2015. The attack after this one was a credential harvest based on a spoofed website that hypothetically was fetched due to a spear phishing attack. That particular attack can be found in chapter 8 People, under [Spear Phishing](#people-identify-risks-spear-phishing). 
+The following attack was the first one of five that I demonstrated at WDCNZ in 2015. The attack after this one was a credential harvest based on a spoofed website that hypothetically was fetched due to a spear phishing attack. That particular attack can be found in the People chapter under [Spear Phishing](#people-identify-risks-spear-phishing).
 
 Theoretically in order to get to the point where you carry out this attack, you would have already been through several stages first. If you are carrying out a penetration testing engagement, it is likely you would have been through the following:
 
@@ -933,7 +942,7 @@ Research:
 
 Attempt to use well tested, battle hardened language specific libraries that know how to validate, filter and sanitise.
 
-Create enough evil test conditions to verify that:
+Create enough [evil test conditions](#process-and-practises-agile-development-and-practices-evil-test-conditions) to verify that:
 
 * Only white listed characters can be received (both client and server side)
 * Your filtering routines are doing as expected with valid and non valid input (both client and server side)
@@ -2500,9 +2509,7 @@ _Todo_
 
 #### Cross-Site Scripting (XSS) {#web-applications-countermeasures-cross-site-scripting}
 
-_Todo_: [Take this further](https://github.com/binarymist/HolisticInfoSec-For-WebDevelopers/issues/4)
-
-%% https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet
+This is a place holder section. The countermeasures are covered in the [Lack of Input Validation, Filtering and Sanitisation](#web-applications-countermeasures-lack-of-input-validation-filtering-and-sanitisation) section.
 
 #### Cross-Site Request Forgery (CSRF)
 
