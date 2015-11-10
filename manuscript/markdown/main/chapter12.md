@@ -247,7 +247,7 @@ G> `x' OR full_name LIKE '%bob%`
 G> Output: Tells us we are in a where clause and I had an unknown column name.  
 G> Thanks MySQL error reporting!
 G>
-G> Try the following queries:
+G> Try the following queries:  
 G> `x' OR first_name LIKE '%bob%`     # This works  
 G> `x' OR last_name LIKE '%smith%`    # This works  
 G> `x' OR first_name LIKE '%`         # And as expected, we get what we think are all users.
@@ -261,7 +261,7 @@ G> `x' OR user LIKE '%`               # This works
 
 {icon=bomb}
 G>
-G> I thought the query on the server looked something like this:
+G> I thought the query on the server looked something like this:  
 G> `SELECT ID, first_name, last_name FROM users WHERE ID = ''`
 G>
 G> Time to work out what the table name is.
