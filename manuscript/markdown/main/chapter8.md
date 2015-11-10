@@ -221,7 +221,7 @@ Often there are several requests that occur before a successful log in (a `POST`
 
 Often with HTTP brute forcing you will have to slow the requests down. Most tools provide options for that.
 
-##### Hydra
+##### Hydra {#people-identify-risks-weak-password-strategies-brute-forcing-hydra}
 
 &nbsp;
 

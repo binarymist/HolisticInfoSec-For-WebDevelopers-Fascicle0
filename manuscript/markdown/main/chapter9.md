@@ -233,6 +233,9 @@ If the `mountd` daemon is listed in the output of the above `rpcinfo` command, `
 {title="showmount results", linenos=off, lang=bash}
     Export list for <target hsot>:
     / (anonymous) # If you're lucky as an attacker, anonymous means anyone can mount.
+    / * # means all can mount the exported root directory.
+    # Probably because the hosts.allow has ALL:ALL and hosts.deny is blank.
+    # Which means all hosts from all domains are permitted access.
 
 NFS is one of those protocols that you need to have some understanding on in order to acheive a level of security sufficient for your target environment.
 
@@ -441,6 +444,12 @@ There are often a few services you can [disable](http://blog.binarymist.net/2014
 #### NFS
 
 Your distribution of Linux or what ever is installed on your VPS may not have portmap running, if it does, you may not need it. Either way, a simple option is to just not have it running.
+
+If you do need portmap and NFS running, the usual files that will need some configuration will be:
+
+* `/etc/exports`
+* `/etc/hosts.allow`
+* `/etc/hosts.deny`
 
 _Todo_ detail configuring NFS if NFS is required
 

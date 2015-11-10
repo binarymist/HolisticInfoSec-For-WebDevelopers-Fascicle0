@@ -349,6 +349,12 @@ Really reduces friction with web proxy interception. FoxyProxy is a very handy a
 
 Firefox is a little easier, but neither browsers allow you to build up lists of proxies and then switch them in mid flight. FoxyProxy provides a menu button, so with two clicks you can disable the add-on completely to revert to your previous settings, or select any or your predefined proxies. This is a real time saver.
 
+Once you add it to your browser, open it up and add a new proxy. We will use this one for Burpsuite later.
+
+Proxy Name: Burp 8080 # or what ever you like.  
+Host or IP Address: `127.0.0.1`  
+Port: `8080`
+
 ##### Cookies
 
 ##### EditThisCookie
@@ -401,11 +407,7 @@ Simple and often useful for running a quick vulnerability assessment. Open sourc
 
 ##### [Tamper Data](https://addons.mozilla.org/en-US/firefox/addon/tamper-data/)
 
-Is a light weight HTTP intercepting proxy as an Iceweasel add-on which allows you to view and modify headers and post parameters. Once you add it to your browser, open it up and add a new proxy. We will use this one for Burpsuite later.
-
-Proxy Name: Burp 8080 # or what ever you like.  
-Host or IP Address: `127.0.0.1`  
-Port: `8080`
+Is a light weight HTTP intercepting proxy as an Iceweasel add-on which allows you to view and modify headers and post parameters.
 
 ##### User Agent Switcher
 
