@@ -95,7 +95,7 @@ If you parse, render or execute data that you can not trust, that is data accept
 
 Below are a few techniques widely accepted that we need to use on any untrusted data before it makes its travels through your system to be stored or hydrated.
 
-##### What is Validation: {#web-applications-identify-risks-lack-of-input-validation-filtering-and-sanitisation-generic-what-is-validation}
+##### What is Validation {#web-applications-identify-risks-lack-of-input-validation-filtering-and-sanitisation-generic-what-is-validation}
 
 &nbsp;
 
@@ -125,13 +125,13 @@ There are other criteria that you can validate against as well, such as:
     is(/^[a-zA-Z ']+$/)
     // There is no sanitisation here.
 
-##### What is Filtering:
+##### What is Filtering
 
 &nbsp;
 
 When some data can pass through (be received) and some is captured by the filter element (thou shalt not pass). OWASP has the RSnake donated seminal [XSS cheat sheet](https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet) which has many tests you can use to check your vulnerability stance to XSS exploitation. This is highly recommended.
 
-##### What is Sanitisation:
+##### What is Sanitisation
 
 &nbsp;
 
@@ -147,7 +147,7 @@ _Todo_
 #### Cross-Site Scripting (XSS) {#web-applications-identify-risks-cross-site-scripting}
 ![](images/ThreatTags/average-verywidespread-easy-moderate.png)
 
-The following hand on hack demonstrates what a XSS attack is and provides a little insight into some of the damages that it can cause.
+The following hands on hack demonstrates what a XSS attack is and provides a little insight into some of the damages that it can cause.
 
 A XSS attack is one in which untrusted data enters a web application usually through a web request and is not stopped by validation, filtering or sanitisation. The data is then at some point sent to someone using the same web application without being validated, filtered or sanitised.  
 The data in question is executed by the browser, usually JavaScript, HTML or Flash. What the code does is up to the creativity of the initiator.

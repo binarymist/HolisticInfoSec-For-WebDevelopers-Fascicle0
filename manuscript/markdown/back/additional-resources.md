@@ -50,6 +50,13 @@ Man page is very good [http://linux.die.net/man/1/nmap](http://linux.die.net/man
 Finding details on people: [http://searchenginez.com/findpeople_newzealand.html](http://searchenginez.com/findpeople_newzealand.html)  
 Finding details on companies: [https://www.business.govt.nz/companies/](https://www.business.govt.nz/companies/)
 
+[**Essentials for Creating and Maintaining a High Performance Development Team**](http://blog.binarymist.net/2014/01/25/essentials-for-creating-and-maintaining-a-high-performance-development-team/)
+
+[**How to Increase Software Developer Productivity**](https://speakerdeck.com/binarymist/how-to-increase-software-developer-productivity)
+
+**Pair Programming Metrics** from Fog Creek  
+[http://discuss.fogcreek.com/joelonsoftware1/default.asp?cmd=show&ixPost=33575](http://discuss.fogcreek.com/joelonsoftware1/default.asp?cmd=show&ixPost=33575)
+
 ## [People](#people)
 
 **Morale, Productivity and Engagement Killers**: An excellent resource around motivation can be found in Chapter 11 of Steve McConnell's excellent "Rapid Development" book.
@@ -111,12 +118,8 @@ The following books have been influential for me and the content from the People
 
 ## [Web Applications](#web-applications)
 
-[**Essentials for Creating and Maintaining a High Performance Development Team**](http://blog.binarymist.net/2014/01/25/essentials-for-creating-and-maintaining-a-high-performance-development-team/)
-
-[**How to Increase Software Developer Productivity**](https://speakerdeck.com/binarymist/how-to-increase-software-developer-productivity)
-
-**Pair Programming Metrics** from Fog Creek  
-[http://discuss.fogcreek.com/joelonsoftware1/default.asp?cmd=show&ixPost=33575](http://discuss.fogcreek.com/joelonsoftware1/default.asp?cmd=show&ixPost=33575)
+**Hashcat rules based** attack  
+[http://hashcat.net/wiki/doku.php?id=rule_based_attack](http://hashcat.net/wiki/doku.php?id=rule_based_attack)
 
 **Details that helped setup NodeJS logging**:  
 [https://gist.github.com/rtgibbons/7354879](https://gist.github.com/rtgibbons/7354879)  
@@ -135,7 +138,7 @@ The following books have been influential for me and the content from the People
 **Monit is an excellent tool** for the dark cockpit approach:  
 [http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#monit](http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#monit)
 
-**I have personally had excellent success** with Monit:  
+**Experience with Monit**:  
 [http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#getting-started-with-monit](http://blog.binarymist.net/2015/06/27/keeping-your-nodejs-web-app-running-on-production-linux/#getting-started-with-monit)
 
 **statsd source code**:  
