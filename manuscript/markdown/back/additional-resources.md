@@ -50,9 +50,11 @@ Man page is very good [http://linux.die.net/man/1/nmap](http://linux.die.net/man
 Finding details on people: [http://searchenginez.com/findpeople_newzealand.html](http://searchenginez.com/findpeople_newzealand.html)  
 Finding details on companies: [https://www.business.govt.nz/companies/](https://www.business.govt.nz/companies/)
 
-[**Essentials for Creating and Maintaining a High Performance Development Team**](http://blog.binarymist.net/2014/01/25/essentials-for-creating-and-maintaining-a-high-performance-development-team/)
+**Essentials for Creating and Maintaining a High Performance Development Team**  
+[http://blog.binarymist.net/2014/01/25/essentials-for-creating-and-maintaining-a-high-performance-development-team/](http://blog.binarymist.net/2014/01/25/essentials-for-creating-and-maintaining-a-high-performance-development-team/)
 
-[**How to Increase Software Developer Productivity**](https://speakerdeck.com/binarymist/how-to-increase-software-developer-productivity)
+**How to Increase Software Developer Productivity**  
+[https://speakerdeck.com/binarymist/how-to-increase-software-developer-productivity](https://speakerdeck.com/binarymist/how-to-increase-software-developer-productivity)
 
 **Pair Programming Metrics** from Fog Creek  
 [http://discuss.fogcreek.com/joelonsoftware1/default.asp?cmd=show&ixPost=33575](http://discuss.fogcreek.com/joelonsoftware1/default.asp?cmd=show&ixPost=33575)

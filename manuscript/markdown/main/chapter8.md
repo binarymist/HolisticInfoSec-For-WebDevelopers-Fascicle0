@@ -655,7 +655,7 @@ _Todo_
 The main Duckyscript Encoder which is a Java application that converts the ducky script files into hex code, so you can load them on your micro SD card, insert the card into the ducky and social engineer your ducky into your targets computer, can be downloaded from the hak5darren github accounts USB-Rubber-Ducky repository [Downloads page](https://github.com/hak5darren/USB-Rubber-Ducky/wiki/Downloads) on the wiki.
 
 The source code for the encoder and firmware are in the same repository although the official encoder only supports US keyboards.  
-If you need additional keyboard support use the duckencoder from the midnitesnake github accounts usb-rubber-ducky repository [Downloads page](https://github.com/midnitesnake/usb-rubber-ducky/wiki/Downloads) on the wiki.
+If you need additional keyboard support you are going to have to use the encoder.jar from the midnitesnake github accounts usb-rubber-ducky repository [Encoder folder](https://github.com/midnitesnake/USB-Rubber-Ducky/tree/master/Encoder).
 
 If and when you need to re-flash ducky, you can find the directions in the same wiki under the [Flashing-ducky](https://github.com/hak5darren/USB-Rubber-Ducky/wiki/Flashing-ducky) page
 
@@ -675,7 +675,7 @@ My ducky script looked like the following:
     STRING Hello World!!!
     ENTER
 
-Encoded with the official encoder and then decoded with the midnitesnake decoder I got the following which had a different hex:
+Encoded with the official encoder and then decoded with the midnitesnake decoder I got the following which had a different hex value on the first line of the output:
 
 {linenos=off}
     ./ducky-decode.pl -f inject.bin
@@ -718,11 +718,11 @@ Encoded with the online encoder or the midnitesnake encoder and then decoded wit
 Before we go any further, the community provided source and artefacts seem to work better (from an attackers perspective).  
 This is how I set-up my work-flow:
 
-I didn't use a Kali Linux VM for this, because it is just easier to use a physical machine, so on my Mint machine, I:
+I didn't use a Kali Linux VM for this, because it is just easier to use a physical machine when you are inserting and removing USB holders continuously, so on my Mint machine, I:
 
 1. `cd /opt && mkdir usb-rubber-ducky && cd usb-rubber-ducky`
 2. `wget https://github.com/midnitesnake/USB-Rubber-Ducky/raw/master/Decode/ducky-decode.pl`
-3. Make it executible: `chmod u+x ducky-decode.pl`
+3. Make it executable: `chmod u+x ducky-decode.pl`
 4. `wget https://github.com/midnitesnake/USB-Rubber-Ducky/raw/master/Encoder/encoder.jar`
 5. Now put the supplied micro SD card into the USB holder and plug it into an empty USB port. Now we are ready to fill it with a payload.
 
@@ -732,7 +732,7 @@ My workflow went like this:
 2. In another terminal pane in the directory `/opt/usb-rubber-ducky/` I would run `java -jar encoder.jar` and this provides the options you need to create your payload. So you can run `java -jar encoder.jar -i inject.txt -o /media/<you>/<name of micro SD card>/inject.bin`.
 3. Pull your USB holder out and put the card into the ducky. Now it is set for someone to plug it into their USB port and have the payload run.
 
-Using ducky script and the existing community provided payloads as examples, the imagination is the only real limiting factor of what you can easily do with the USB Rubber Ducky.
+Using ducky script and the existing community provided payloads as examples, the imagination is the only real limiting factor of what you can easily do with the USB Rubber Ducky. Just make sure when you are testing your malware that you do it in a lab environment before the targets environment.
 
 
 
