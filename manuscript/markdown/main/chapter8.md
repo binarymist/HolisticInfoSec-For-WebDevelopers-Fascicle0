@@ -484,7 +484,7 @@ Effective ways at getting into a work premises.
 
 1. Mingle in with a crowd of people returning from a lunch break. Be prepared to drop some names of people that work there but are not in the current group. Yes, that means you have to do your home work and know their faces. You will get through the locked front door 99% of the time.
 2. Wait in the car park until you see someone close to the front door (inside or outside) and carry a large heavy **looking** box toward the door. 99% of the time, they will open the door for you. Just make sure you have thought about all possible questions that may get fired at you and have well researched answers ready to respond with.
-3. Even before you get to the building itself, often premises will have gates that open by remote control or card. If an attacker is close enough to someone already entering the premises, they will get through at the same time. Now obviously this needs to be as inconspicuous as possible. Like park close enough but not too close as to be recognised as pulling out from an external car park to tailgate the way in. Also early mornings are best for this, as staff are often still half asleep when they turn up to work. Picking your target to follow in is where you will use the OSINT you have gathered during the reconnaissance phase. Choose someone that likely doesn't get a lot of sleep. Maybe a late night coder, hacker, gamer, or someone that has a new born baby and doesn't get much sleep.
+3. Even before you get to the building itself, often premises will have gates that open by remote control or card. If an attacker is close enough to someone already entering the premises, they will get through at the same time. Now obviously this needs to be as inconspicuous as possible. Like park close enough but not too close as to be recognised as pulling out from an external car park to tailgate the way in. Also early mornings are best for this, as staff are often still half asleep when they turn up to work. Picking your target to follow in is where you will use the OSINT you have gathered during the reconnaissance phase. An attacker will choose someone that likely doesn't get a lot of sleep. Maybe a late night coder, hacker, gamer, or someone that has a new born baby and doesn't get much sleep.
 
 ### Phishing {#people-identify-risks-phishing}
 ![](images/ThreatTags/average-widespread-easy-moderate.png)
@@ -645,18 +645,18 @@ T> As you can see below, SET also has a few other options for helping an attacke
 
 Infectious media is generally thought about as a tool used by:
 
-1. Social engineers. Handing out or leaving lying around somewhere where the target will notice and their curiosity will drive them to insert the media themselves, thus doing a large part of the attackers job for them. As always social engineers leverage the human targets weaknesses against the target to carry out the attackers bidding. 
+1. Social engineers. Handing out or leaving lying around somewhere where the target will notice and their curiosity will drive them to insert the media themselves, thus doing a large part of the attackers job for them. As always, social engineers leverage the human targets weaknesses against the target to carry out the attackers bidding. 
 2. An attacker with physical access. The payload can be used to do pretty much anything. Often used when it is easier to insert directly into a computer than remotely deploying a payload. For example an attacker can masquerade as a service person, contractor, or what ever looks legitimate enough to get them physical access. Often only a few seconds are required to insert the media, deposit and/or run a payload, or vacuum up some target data, pull the media out and be off.
 
 #### [Social Engineering Toolkit (Set)](http://www.social-engineer.org/framework/se-tools/computer-based/social-engineer-toolkit-set/)
 
-Has an Infectious Media Generator allowing the person running Set to create a Metasploit based payload with an autorun.inf file that once put onto the USB stick or optical media, will run the chosen payload automatically on insertion.
+Set has an Infectious Media Generator allowing the person running Set to create a Metasploit based payload with an autorun.inf file that once put onto the USB stick or optical media, will run the chosen payload automatically on insertion.
 
 Quite a few file formats are supported to cloak the payload, like PDF, Word documents and many others. Pretty much any type of payload an attacker can dream up can be used.
 
 ##### [Teensy USB HID](https://www.pjrc.com/teensy/)
 
-The Teensy USB device as a [penetration testing device](http://www.irongeek.com/i.php?page=security/programmable-hid-usb-keystroke-dongle) overcomes running payloads on the target machine the same way a keyboard or Rubber Ducky would. Because it is a Human Interface Device (HID) it is trusted by most OSs. The Teensy has similar specs to the Rubber Ducky but is about half the price. It is just a development board though, that has to be programmed via an Arduino. Set provides the reverse shells, listeners and a good selection of exploits out of the box. Metasploit is at your disposal as usual with Set and attack vectors such as PowerShell, wscript and others are available.
+The Teensy USB device as a [penetration testing device](http://www.irongeek.com/i.php?page=security/programmable-hid-usb-keystroke-dongle) overcomes running payloads on the target machine the same way a keyboard or Rubber Ducky would. Because it is a Human Interface Device (HID) it is trusted by most OSs. It can be conceiled in any type of USB hardware. That alone creates a huge vector for exploitation. The Teensy has similar specifications to the Rubber Ducky but is about half the price. It is just a development board though, that has to be programmed via an Arduino. Set provides the reverse shells, listeners and a good selection of exploits out of the box. Metasploit is at your disposal as usual with Set and attack vectors such as PowerShell, wscript and others are available.
 
 #### [USB Rubber Ducky](http://usbrubberducky.com/)
 
@@ -746,7 +746,7 @@ My workflow went like this:
 2. In another terminal pane in the directory `/opt/usb-rubber-ducky/` I would run `java -jar encoder.jar` and this provides the options you need to create your payload. So you can run `java -jar encoder.jar -i inject.txt -o /media/<you>/<name of micro SD card>/inject.bin`.
 3. Pull your USB holder out and put the card into the ducky. Now it is set for someone to plug it into their USB port and have the payload run.
 
-Using ducky script and the existing community provided payloads as examples, the imagination is the only real limiting factor of what you can easily do with the USB Rubber Ducky. For example:
+Using ducky script and the existing community provided payloads as examples, the imagination is the only real limiting factor of what you can easily do with the USB Rubber Ducky, or any infectious media for that matter. For example:
 
 * [Extracting passwords and hashes from memory](https://hak5.org/episodes/hak5-1503) without Anti-Virus detecting it
 * Reverse shells
@@ -918,19 +918,20 @@ Test the following:
 * Will a target visit a website based on a link passed to them and enter either personal or business related information?
 
 ### Infectious Media
+![](images/ThreatTags/PreventionAVERAGE.png)
 
 This is very simple, but hard to implement. Lets look at the two delivery mechanisms discussed in the Identify Risks section:
 
-1. Social engineers. Handing out or leaving lying around somewhere where the target will notice and their curiosity will drive them to insert the media themselves.
-
-Curiosity in humans is a strong force and when used by an attacker against a target a very effective one. This is hard to train people to resist a natural instinct, but if you think back to cases as a child where you would do something out of curiosity and the result was pain? Pain is an undeniably effective medium for learning. Until you have actually been bitten, as humans we are likely to keep doing what ever it is that we think will satisfy our curiosity.
-
-Some organisations resort to disabling physical ports on their machines. While this is a somewhat effective measure, it can also play a part in crippling productivity in an organisation.
-
-Treating your workers well as discussed in the [Morale, Productivity and Engagement Killers](#people-countermeasures-morale-productivity-and-engagement-killers) section helps on top of training, but again you will be fighting this invisible force of curiosity. It is worth actually carrying out tests on your workers at seemingly random intervals and measuring the success of the results and then discussing them with the employee that have failed or passed the test. Provide positive reinforcement to those that do not succumb to the attack. Possibly even publicly within the organisation. Provide constructive criticism and additional training to those that do succumb to the attack.
-
-2. An attacker with physical access.
-
+1. Social engineers. Handing out or leaving lying around somewhere where the target will notice and their curiosity will drive them to insert the media themselves.  
+  
+Curiosity in humans is a strong force and when used by an attacker against a target a very effective one. It is hard to train people to resist a natural instinct, but if you think back to cases as a child where you would do something out of curiosity and the result was pain? Pain is an undeniably effective medium for learning. Until you have actually been bitten, as humans we are likely to keep doing what ever it is that we think will satisfy our curiosity.  
+  
+Some organisations resort to disabling physical ports on their machines. While this is a somewhat effective measure, it can also play a part in crippling productivity in an organisation.  
+  
+Treating your workers well as discussed in the [Morale, Productivity and Engagement Killers](#people-countermeasures-morale-productivity-and-engagement-killers) section helps on top of training, but again you will be fighting this invisible force of curiosity. It is worth actually carrying out tests on your workers at seemingly random intervals and measuring the success of the results and then discussing them with the employee that has failed or passed the test. Provide positive reinforcement to those that do not succumb to the attack. Possibly even publicly within the organisation, which will also help others learn. These concerns are made smaller by talking about them. Provide constructive criticism and additional training to those that do succumb to the attack.
+  
+2. An attacker with physical access.  
+  
 Staff need to be aware of who is permitted to be in the premises at any given time. Staff need to be empowered to feel free and be engaged enough to ask anyone they do not recognise who they are, what they are doing and obtain identification and even confirm with the person that authorised them to be there. In other words, being engaged, educated, alert and empowered.  
 Remember people are both our strongest and weakest links. We can use technology to help, but people will always find a way around technology and only other people will be able to stop them.
 

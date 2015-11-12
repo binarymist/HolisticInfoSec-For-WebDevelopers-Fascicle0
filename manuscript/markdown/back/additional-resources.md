@@ -129,7 +129,7 @@ Finding details on companies: [https://www.business.govt.nz/companies/](https://
 Moving to github  
 [https://github.com/skysploit/simple-ducky](https://github.com/skysploit/simple-ducky)
 
-Social Engineering Toolit website under Teensy USB HID Attack Vector has good information on using this device as a penetration testing tool  
+**Social Engineering Toolkit** website, under Teensy USB HID Attack Vector has good information on using this device as a penetration testing tool  
 [http://www.social-engineer.org/framework/se-tools/computer-based/social-engineer-toolkit-set/](http://www.social-engineer.org/framework/se-tools/computer-based/social-engineer-toolkit-set/)
 
 The following books have been influential for me and the content from the People chapter should reflect that. They are very insightful and well worth the investment.
