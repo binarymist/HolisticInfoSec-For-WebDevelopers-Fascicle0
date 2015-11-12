@@ -88,21 +88,49 @@ Finding details on companies: [https://www.business.govt.nz/companies/](https://
 **Hydra source code**  
 [https://github.com/vanhauser-thc/thc-hydra](https://github.com/vanhauser-thc/thc-hydra)
 
-
-
 **Medusa documentation**
 
 * The man page
 * [http://foofus.net/goons/jmk/medusa/medusa.html](http://foofus.net/goons/jmk/medusa/medusa.html)
 * [https://www.aldeid.com/wiki/Medusa](https://www.aldeid.com/wiki/Medusa)
 
-
-
-
-
-
 **SMSspoofing** information  
 [http://www.smsspoofing.com/](http://www.smsspoofing.com/)
+
+**USB Rubber Ducky Home**  
+[http://usbrubberducky.com/](http://usbrubberducky.com/)
+
+**Rubber Ducky** resources  
+[http://usbrubberducky.com/#!resources.md](http://usbrubberducky.com/#!resources.md)
+
+**Rubber Ducky** on github  
+[https://github.com/hak5darren/USB-Rubber-Ducky/wiki](https://github.com/hak5darren/USB-Rubber-Ducky/wiki)
+
+**Rubber Ducky** manual  
+[https://docs.google.com/viewer?url=https%3A%2F%2Fducky-decode.googlecode.com%2Ffiles%2FThe%2520USB%2520Rubber%2520Ducky%2520Draft.doc](https://docs.google.com/viewer?url=https%3A%2F%2Fducky-decode.googlecode.com%2Ffiles%2FThe%2520USB%2520Rubber%2520Ducky%2520Draft.doc)
+
+**Rubber Ducky** tutorials  
+[https://github.com/hak5darren/USB-Rubber-Ducky/wiki/Tutorials](https://github.com/hak5darren/USB-Rubber-Ducky/wiki/Tutorials)
+
+**Ducky on hak5darren**  
+[https://github.com/hak5darren/USB-Rubber-Ducky/](https://github.com/hak5darren/USB-Rubber-Ducky/)
+
+**Ducky on midnitesnake**  
+[https://github.com/midnitesnake/USB-Rubber-Ducky/](https://github.com/midnitesnake/USB-Rubber-Ducky/)
+
+**Online ducky toolkit**  
+[http://ducktoolkit-411.rhcloud.com/Home.jsp](http://ducktoolkit-411.rhcloud.com/Home.jsp)
+
+**Comunity payloads for ducky**  
+[https://github.com/hak5darren/USB-Rubber-Ducky/wiki/Payloads](https://github.com/hak5darren/USB-Rubber-Ducky/wiki/Payloads)
+
+**Simple-Ducky** on google code  
+[https://code.google.com/p/simple-ducky-payload-generator/](https://code.google.com/p/simple-ducky-payload-generator/)  
+Moving to github  
+[https://github.com/skysploit/simple-ducky](https://github.com/skysploit/simple-ducky)
+
+Social Engineering Toolit website under Teensy USB HID Attack Vector has good information on using this device as a penetration testing tool  
+[http://www.social-engineer.org/framework/se-tools/computer-based/social-engineer-toolkit-set/](http://www.social-engineer.org/framework/se-tools/computer-based/social-engineer-toolkit-set/)
 
 The following books have been influential for me and the content from the People chapter should reflect that. They are very insightful and well worth the investment.
 

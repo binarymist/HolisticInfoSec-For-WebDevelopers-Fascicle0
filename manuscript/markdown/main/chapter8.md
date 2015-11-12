@@ -477,18 +477,19 @@ An excellent way of gaining additional trust is to fix the problem that does not
 
 Grab your self a cleaners uniform and you have got access to just about everything within an organisation. It really is that simple. Often when my wife was doing commercial cleaning and she walked into a room at 20:00 - 21:00 with a few developers left working away. They would sometimes be surprised because they had not been told that the cleaners were coming, let-a-lone, who they were. The response would usually go something like "Oh, it is just the cleaners". Why? Because they had their free pass... a cleaners uniform, maybe a broom or vacuum cleaner or mop.
 
-### Come On In Sir {#people-identify-risks-come-on-in-sir}
+### Tailgating {#people-identify-risks-tailgating}
 ![](images/ThreatTags/easy-common-easy-severe.png)
 
-Two effective ways at getting into a work premises.
+Effective ways at getting into a work premises.
 
 1. Mingle in with a crowd of people returning from a lunch break. Be prepared to drop some names of people that work there but are not in the current group. Yes, that means you have to do your home work and know their faces. You will get through the locked front door 99% of the time.
 2. Wait in the car park until you see someone close to the front door (inside or outside) and carry a large heavy **looking** box toward the door. 99% of the time, they will open the door for you. Just make sure you have thought about all possible questions that may get fired at you and have well researched answers ready to respond with.
+3. Even before you get to the building itself, often premises will have gates that open by remote control or card. If an attacker is close enough to someone already entering the premises, they will get through at the same time. Now obviously this needs to be as inconspicuous as possible. Like park close enough but not too close as to be recognised as pulling out from an external car park to tailgate the way in. Also early mornings are best for this, as staff are often still half asleep when they turn up to work. Picking your target to follow in is where you will use the OSINT you have gathered during the reconnaissance phase. Choose someone that likely doesn't get a lot of sleep. Maybe a late night coder, hacker, gamer, or someone that has a new born baby and doesn't get much sleep.
 
 ### Phishing {#people-identify-risks-phishing}
 ![](images/ThreatTags/average-widespread-easy-moderate.png)
 
-Emails being sent out with payloads veiled with enticing email subjects, file names, etc. in the form of web links and files that when executed deliver a malicious payload. Also check out the [Infectious Media](#people-identify-infectious-media) section in this chapter. Casting a wide net in the hope that a number of the receivers will fall for the scam. This attack takes advantage of the large number of receivers that will potentially fall for the scam. Generally the percentage of victims will be much lower than if it was a spear phishing attack, because the email will be more general in the attempt to reach less specific targets.  
+Emails being sent out with payloads veiled with enticing email subjects, file names, etc. in the form of web links and files that when executed deliver a malicious payload. Also check out the [Infectious Media](#people-identify-risks-infectious-media) section in this chapter. Casting a wide net in the hope that a number of the receivers will fall for the scam. This attack takes advantage of the large number of receivers that will potentially fall for the scam. Generally the percentage of victims will be much lower than if it was a spear phishing attack, because the email will be more general in the attempt to reach less specific targets.  
 Like large commercial fishing enterprises, this type of attack is very common and being executed on large scale in many instances at a time.  
 This type of attack is also usually a lot easier to detect, because the attackers have to be more general in their approach and they rely less on detailed information gathering of their victims when crafting the attack than if it was more targeted.  
 The outcome on average is also usually less dramatic. Yes the odd victim will be fooled. This type of attack is a numbers game. For example 100 people may be fooled when a 50'000 email campaign is crafted and sent.
@@ -499,6 +500,11 @@ SET can use sendmail, gmail or your own open-mail relay out of the box to perfor
 
 ### Spear Phishing {#people-identify-risks-spear-phishing}
 ![](images/ThreatTags/easy-common-average-severe.png)
+
+_Todo_ Discuss what targets are likely to click on.
+
+%% Book: Social Engineering The Art Of Human Hacking
+%%   Pg 50 has good info about what people are likely to click on.-->
 
 This type of attack is targeted toward a smaller number of receivers generally with more specifically tailored scams. In order to pull a successful attack off, that is one that has a high catch rate and where no receivers actually raise alarm bells with managers, scrupulous reconnaissance needs to be carried out on your target(s).
 
@@ -637,20 +643,24 @@ T> As you can see below, SET also has a few other options for helping an attacke
 
 ### Infectious Media {#people-identify-risks-infectious-media}
 
-_Todo_
+Infectious media is generally thought about as a tool used by:
 
-%% Resources:
+1. Social engineers. Handing out or leaving lying around somewhere where the target will notice and their curiosity will drive them to insert the media themselves, thus doing a large part of the attackers job for them. As always social engineers leverage the human targets weaknesses against the target to carry out the attackers bidding. 
+2. An attacker with physical access. The payload can be used to do pretty much anything. Often used when it is easier to insert directly into a computer than remotely deploying a payload. For example an attacker can masquerade as a service person, contractor, or what ever looks legitimate enough to get them physical access. Often only a few seconds are required to insert the media, deposit and/or run a payload, or vacuum up some target data, pull the media out and be off.
 
-%% http://www.social-engineer.org/framework/se-tools/computer-based/social-engineer-toolkit-set/
+#### [Social Engineering Toolkit (Set)](http://www.social-engineer.org/framework/se-tools/computer-based/social-engineer-toolkit-set/)
 
-%% Book: Social Engineering The Art Of Human Hacking
-%%   Pg 50 has good info about what people are likely to click on.-->
+Has an Infectious Media Generator allowing the person running Set to create a Metasploit based payload with an autorun.inf file that once put onto the USB stick or optical media, will run the chosen payload automatically on insertion.
 
-%% Demo USB RUBBER DUCKY
+Quite a few file formats are supported to cloak the payload, like PDF, Word documents and many others. Pretty much any type of payload an attacker can dream up can be used.
 
+##### [Teensy USB HID](https://www.pjrc.com/teensy/)
 
+The Teensy USB device as a [penetration testing device](http://www.irongeek.com/i.php?page=security/programmable-hid-usb-keystroke-dongle) overcomes running payloads on the target machine the same way a keyboard or Rubber Ducky would. Because it is a Human Interface Device (HID) it is trusted by most OSs. The Teensy has similar specs to the Rubber Ducky but is about half the price. It is just a development board though, that has to be programmed via an Arduino. Set provides the reverse shells, listeners and a good selection of exploits out of the box. Metasploit is at your disposal as usual with Set and attack vectors such as PowerShell, wscript and others are available.
 
+#### [USB Rubber Ducky](http://usbrubberducky.com/)
 
+The USB standard has a HID specification, which means any USB device that says it is a keyboard will be automatically accepted by most OSs. 
 
 The main Duckyscript Encoder which is a Java application that converts the ducky script files into hex code, so you can load them on your micro SD card, insert the card into the ducky and social engineer your ducky into your targets computer, can be downloaded from the hak5darren github accounts USB-Rubber-Ducky repository [Downloads page](https://github.com/hak5darren/USB-Rubber-Ducky/wiki/Downloads) on the wiki.
 
@@ -663,7 +673,7 @@ What I found was that the [official encoder](https://github.com/hak5darren/USB-R
 
 My ducky script looked like the following:
 
-{linenos=off}
+{title="Hello World ducky script", linenos=off}
     DELAY 3000
     ALT F2
     DELAY 200
@@ -677,8 +687,10 @@ My ducky script looked like the following:
 
 Encoded with the official encoder and then decoded with the midnitesnake decoder I got the following which had a different hex value on the first line of the output:
 
-{linenos=off}
+{title="decode", linenos=off}
     ./ducky-decode.pl -f inject.bin
+
+{title="result", linenos=off}
     00ff 003c b32e 
     DELAY 200
      p l u m a 
@@ -697,8 +709,10 @@ Encoded with the official encoder and then decoded with the midnitesnake decoder
 
 Encoded with the online encoder or the midnitesnake encoder and then decoded with the midnitesnake decoder I got:
 
-{linenos=off}
+{title="decode", linenos=off}
     ./ducky-decode.pl -f inject.bin
+
+{title="Result", linenos=off}
     00ff 003c b340 
     DELAY 200
      p l u m a 
@@ -732,9 +746,14 @@ My workflow went like this:
 2. In another terminal pane in the directory `/opt/usb-rubber-ducky/` I would run `java -jar encoder.jar` and this provides the options you need to create your payload. So you can run `java -jar encoder.jar -i inject.txt -o /media/<you>/<name of micro SD card>/inject.bin`.
 3. Pull your USB holder out and put the card into the ducky. Now it is set for someone to plug it into their USB port and have the payload run.
 
-Using ducky script and the existing community provided payloads as examples, the imagination is the only real limiting factor of what you can easily do with the USB Rubber Ducky. Just make sure when you are testing your malware that you do it in a lab environment before the targets environment.
+Using ducky script and the existing community provided payloads as examples, the imagination is the only real limiting factor of what you can easily do with the USB Rubber Ducky. For example:
 
+* [Extracting passwords and hashes from memory](https://hak5.org/episodes/hak5-1503) without Anti-Virus detecting it
+* Reverse shells
+* [Android attacks](https://hak5.org/episodes/hak5-1216)
+* Basically any payload you can dream up
 
+Just make sure when you are testing your malware that you do it in a lab environment before the targets environment.
 
 ## 3. SSM Countermeasures
 
@@ -874,7 +893,7 @@ Many of the social engineering attacks put a focus on a problem that does not ex
 2. Train your workers
 3. Test them. Send some random in without telling your workers and see what happens. Adjust your training to suite
 
-### Come On In Sir {#people-countermeasures-come-on-in-sir}
+### Tailgating {#people-countermeasures-tailgating}
 ![](images/ThreatTags/PreventionAVERAGE.png)
 
 &nbsp;
@@ -900,7 +919,20 @@ Test the following:
 
 ### Infectious Media
 
-_Todo_
+This is very simple, but hard to implement. Lets look at the two delivery mechanisms discussed in the Identify Risks section:
+
+1. Social engineers. Handing out or leaving lying around somewhere where the target will notice and their curiosity will drive them to insert the media themselves.
+
+Curiosity in humans is a strong force and when used by an attacker against a target a very effective one. This is hard to train people to resist a natural instinct, but if you think back to cases as a child where you would do something out of curiosity and the result was pain? Pain is an undeniably effective medium for learning. Until you have actually been bitten, as humans we are likely to keep doing what ever it is that we think will satisfy our curiosity.
+
+Some organisations resort to disabling physical ports on their machines. While this is a somewhat effective measure, it can also play a part in crippling productivity in an organisation.
+
+Treating your workers well as discussed in the [Morale, Productivity and Engagement Killers](#people-countermeasures-morale-productivity-and-engagement-killers) section helps on top of training, but again you will be fighting this invisible force of curiosity. It is worth actually carrying out tests on your workers at seemingly random intervals and measuring the success of the results and then discussing them with the employee that have failed or passed the test. Provide positive reinforcement to those that do not succumb to the attack. Possibly even publicly within the organisation. Provide constructive criticism and additional training to those that do succumb to the attack.
+
+2. An attacker with physical access.
+
+Staff need to be aware of who is permitted to be in the premises at any given time. Staff need to be empowered to feel free and be engaged enough to ask anyone they do not recognise who they are, what they are doing and obtain identification and even confirm with the person that authorised them to be there. In other words, being engaged, educated, alert and empowered.  
+Remember people are both our strongest and weakest links. We can use technology to help, but people will always find a way around technology and only other people will be able to stop them.
 
 ## 4. SSM Risks that Solution Causes
 Often the modern thinking is that we can replace flawed people with technology. People are resilient and dynamic. They can spot a threat they have never seen before and defend against it. Computers can only defend against what they have been programmed to defend against. Technological defences are brittle. It is the role of technology to support humans to make good decisions.
@@ -977,7 +1009,7 @@ _Todo_
 
 _Todo_
 
-### Come On In Sir
+### Tailgating
 
 _Todo_
 
@@ -1065,7 +1097,7 @@ _Todo_
 
 _Todo_
 
-### Come On In Sir
+### Tailgating
 
 _Todo_
 
