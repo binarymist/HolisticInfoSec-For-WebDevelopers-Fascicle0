@@ -645,8 +645,8 @@ T> As you can see below, SET also has a few other options for helping an attacke
 
 Infectious media is generally thought about as a tool used by:
 
-1. Social engineers. Handing out or leaving lying around somewhere where the target will notice and their curiosity will drive them to insert the media themselves, thus doing a large part of the attackers job for them. As always, social engineers leverage the human targets weaknesses against the target to carry out the attackers bidding. 
-2. An attacker with physical access. The payload can be used to do pretty much anything. Often used when it is easier to insert directly into a computer than remotely deploying a payload. For example an attacker can masquerade as a service person, contractor, or what ever looks legitimate enough to get them physical access. Often only a few seconds are required to insert the media, deposit and/or run a payload, or vacuum up some target data, pull the media out and be off.
+1. **Social engineers**. Handing out or leaving lying around somewhere where the target will notice and their curiosity will drive them to insert the media themselves, thus doing a large part of the attackers job for them. As always, social engineers leverage the human targets weaknesses against the target to carry out the attackers bidding. 
+2. **An attacker with physical access**. The payload can be used to do pretty much anything. Often used when it is easier to insert directly into a computer than remotely deploying a payload. For example an attacker can masquerade as a service person, contractor, or what ever looks legitimate enough to get them physical access. Often only a few seconds are required to insert the media, deposit and/or run a payload, or vacuum up some target data, pull the media out and be off.
 
 #### [Social Engineering Toolkit (Set)](http://www.social-engineer.org/framework/se-tools/computer-based/social-engineer-toolkit-set/)
 
@@ -922,16 +922,18 @@ Test the following:
 
 This is very simple, but hard to implement. Lets look at the two delivery mechanisms discussed in the Identify Risks section:
 
-1. Social engineers. Handing out or leaving lying around somewhere where the target will notice and their curiosity will drive them to insert the media themselves.  
-  
-Curiosity in humans is a strong force and when used by an attacker against a target a very effective one. It is hard to train people to resist a natural instinct, but if you think back to cases as a child where you would do something out of curiosity and the result was pain? Pain is an undeniably effective medium for learning. Until you have actually been bitten, as humans we are likely to keep doing what ever it is that we think will satisfy our curiosity.  
-  
-Some organisations resort to disabling physical ports on their machines. While this is a somewhat effective measure, it can also play a part in crippling productivity in an organisation.  
-  
+#### Social engineers
+
+Handing out or leaving lying around somewhere where the target will notice and their curiosity will drive them to insert the media themselves.
+
+Curiosity in humans is a strong force and when used by an attacker against a target a very effective one. It is hard to train people to resist a natural instinct, but if you think back to cases as a child where you would do something out of curiosity and the result was pain? Pain is an undeniably effective medium for learning. Until you have actually been bitten, as humans we are likely to keep doing what ever it is that we think will satisfy our curiosity.
+
+Some organisations resort to disabling physical ports on their machines. While this is a somewhat effective measure, it can also play a part in crippling productivity in an organisation.
+
 Treating your workers well as discussed in the [Morale, Productivity and Engagement Killers](#people-countermeasures-morale-productivity-and-engagement-killers) section helps on top of training, but again you will be fighting this invisible force of curiosity. It is worth actually carrying out tests on your workers at seemingly random intervals and measuring the success of the results and then discussing them with the employee that has failed or passed the test. Provide positive reinforcement to those that do not succumb to the attack. Possibly even publicly within the organisation, which will also help others learn. These concerns are made smaller by talking about them. Provide constructive criticism and additional training to those that do succumb to the attack.
-  
-2. An attacker with physical access.  
-  
+
+#### An attacker with physical access.
+
 Staff need to be aware of who is permitted to be in the premises at any given time. Staff need to be empowered to feel free and be engaged enough to ask anyone they do not recognise who they are, what they are doing and obtain identification and even confirm with the person that authorised them to be there. In other words, being engaged, educated, alert and empowered.  
 Remember people are both our strongest and weakest links. We can use technology to help, but people will always find a way around technology and only other people will be able to stop them.
 
