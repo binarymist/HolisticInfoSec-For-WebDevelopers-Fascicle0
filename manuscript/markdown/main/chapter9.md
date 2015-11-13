@@ -458,13 +458,19 @@ _Todo_ detail configuring NFS if NFS is required
 #### [SSH](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#ssh)
 ![](images/ThreatTags/PreventionVERYEASY.png)
 
+We covered fingerprinting of SSH in the Processes and Practises chapter under the [Reconnaissance](#process-and-practises-penetration-testing-reconnaissance) section. Here we will discuss what you can do to harden SSH.
+
+_Todo_
+
 There are a bunch of things you can do to minimise SSH being used as an attack vector.  
 Use Key-pairs, Long pass-phrases. Appropriate changes to `sshd_config` file.  
 AllowUsers.  
 Specify Host(s).  
 Consider non default port below 1025 that only root can bind to in order to stop the sshd being swapped.
 
-We also covered `/etc/hosts.deny` and the `/etc/hosts.allow` files in the Processes and Practises chapter in the [Reconnaissance](#process-and-practises-penetration-testing-reconnaissance) section
+_Todo_
+
+Cover `/etc/hosts.deny`, `/etc/hosts.allow` files in the 
 
 ### [Schedule Backups](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#scheduled-backups)
 ![](images/ThreatTags/PreventionEASY.png)

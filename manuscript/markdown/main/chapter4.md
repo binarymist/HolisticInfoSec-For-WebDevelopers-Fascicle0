@@ -56,6 +56,7 @@ No where near as configurable as a dedicated port scanner, but still scans ports
 * Host a web page
 * Send files
 * Poke at things to see what happens
+* Listen for a reverse shell: `nc -l <listening port>`
 * So many other uses
 
 Lets look at some uses.
@@ -75,17 +76,17 @@ Lets look at some uses.
 
 &nbsp;
 
-This is an example of using nmap against a target with a SSH daemon and web server running...
+**Hardened Web Server**
+
+This is an example of using nmap against a hardened target with a SSH daemon and web server running...
 
 As you can see with using the aggressive option `-A` the pen tester makes a lot of noise and if the logs are being casually inspected by a system administrator, the chance of noticing the probes with `nmap` written all over them is very likely.
 
 {title="nmap command", linenos=off, lang=bash}
-    # Attempt to detect target OS and services running on it.
+    # Attempt to detect hardened target OS and services running on it.
     nmap -A <target>
 
 {title="nmap result", linenos=off, lang=bash}
-    nmap -A <target>
-    
     Nmap scan report for <target> (<target ip>)
     Host is up (0.0014s latency).
     rDNS record for <target ip>: <target>
@@ -202,6 +203,181 @@ Now using the service detection option `-sV` the results provide almost as much 
        <time> "GET / HTTP/1.0" 200 56328 "-" "-"
     <time> <target> sshd:  refused connect from <kali ip> (<kali ip>)
 
+**Metasploitable 2**
+
+This is an example of using nmap against an un-hardened target. I discuss in later chapters how to go about the hardening process. I have also provided a lot of information around hardening servers on my [blog](http://blog.binarymist.net/).
+
+{title="nmap command", linenos=off, lang=bash}
+    # Attempt to detect un-hardened target OS and services running on it.
+    nmap -A <target>
+
+{title="nmap result", linenos=off, lang=bash}
+    Starting Nmap 6.47 ( http://nmap.org ) at 2015-11-12 20:17 NZDT
+    Nmap scan report for <target>
+    Host is up (0.00067s latency).
+    Not shown: 977 closed ports
+    PORT     STATE SERVICE     VERSION
+    21/tcp   open  ftp         vsftpd 2.3.4
+    |_ftp-anon: Anonymous FTP login allowed (FTP code 230)
+    22/tcp   open  ssh         OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)
+    | ssh-hostkey: 
+    |   1024 60:0f:cf:e1:c0:5f:6a:74:d6:90:24:fa:c4:d5:6c:cd (DSA)
+    |_  2048 56:56:24:0f:21:1d:de:a7:2b:ae:61:b1:24:3d:e8:f3 (RSA)
+    23/tcp   open  telnet      Linux telnetd
+    25/tcp   open  smtp        Postfix smtpd
+    |_smtp-commands: metasploitable.localdomain, PIPELINING, SIZE 10240000, VRFY, ETRN, STARTTLS, ENHANCEDSTATUSCODES, 8BITMIME, DSN, 
+    | ssl-cert: Subject: commonName=ubuntu804-base.localdomain/organizationName=OCOSA/stateOrProvinceName=There is no such thing outside US/countryName=XX
+    | Not valid before: 2010-03-17T13:07:45+00:00
+    |_Not valid after:  2010-04-16T14:07:45+00:00
+    |_ssl-date: 2015-11-12T07:17:50+00:00; -2s from local time.
+    53/tcp   open  domain      ISC BIND 9.4.2
+    | dns-nsid: 
+    |_  bind.version: 9.4.2
+    80/tcp   open  http        Apache httpd 2.2.8 ((Ubuntu) DAV/2)
+    |_http-methods: No Allow or Public header in OPTIONS response (status code 200)
+    |_http-title: Metasploitable2 - Linux
+    111/tcp  open  rpcbind     2 (RPC #100000)
+    | rpcinfo: 
+    |   program version   port/proto  service
+    |   100000  2            111/tcp  rpcbind
+    |   100000  2            111/udp  rpcbind
+    |   100003  2,3,4       2049/tcp  nfs
+    |   100003  2,3,4       2049/udp  nfs
+    |   100005  1,2,3      37486/udp  mountd
+    |   100005  1,2,3      52274/tcp  mountd
+    |   100021  1,3,4      48376/tcp  nlockmgr
+    |   100021  1,3,4      53826/udp  nlockmgr
+    |   100024  1          36762/tcp  status
+    |_  100024  1          45387/udp  status
+    139/tcp  open  netbios-ssn Samba smbd 3.X (workgroup: WORKGROUP)
+    445/tcp  open  netbios-ssn Samba smbd 3.X (workgroup: WORKGROUP)
+    512/tcp  open  exec        netkit-rsh rexecd
+    513/tcp  open  login?
+    514/tcp  open  shell?
+    1099/tcp open  java-rmi    Java RMI Registry
+    1524/tcp open  shell       Metasploitable root shell
+    2049/tcp open  nfs         2-4 (RPC #100003)
+    | rpcinfo: 
+    |   program version   port/proto  service
+    |   100000  2            111/tcp  rpcbind
+    |   100000  2            111/udp  rpcbind
+    |   100003  2,3,4       2049/tcp  nfs
+    |   100003  2,3,4       2049/udp  nfs
+    |   100005  1,2,3      37486/udp  mountd
+    |   100005  1,2,3      52274/tcp  mountd
+    |   100021  1,3,4      48376/tcp  nlockmgr
+    |   100021  1,3,4      53826/udp  nlockmgr
+    |   100024  1          36762/tcp  status
+    |_  100024  1          45387/udp  status
+    2121/tcp open  ftp         ProFTPD 1.3.1
+    3306/tcp open  mysql       MySQL 5.0.51a-3ubuntu5
+    | mysql-info: 
+    |   Protocol: 53
+    |   Version: .0.51a-3ubuntu5
+    |   Thread ID: 24
+    |   Capabilities flags: 43564
+    |   Some Capabilities: SupportsTransactions, Support41Auth, LongColumnFlag, SwitchToSSLAfterHandshake, Speaks41ProtocolNew, ConnectWithDatabase, SupportsCompression
+    |   Status: Autocommit
+    |_  Salt: mA;F+EZtW9V%ST-!]1{;
+    5432/tcp open  postgresql  PostgreSQL DB 8.3.0 - 8.3.7
+    5900/tcp open  vnc         VNC (protocol 3.3)
+    | vnc-info: 
+    |   Protocol version: 3.3
+    |   Security types: 
+    |_    Unknown security type (33554432)
+    6000/tcp open  X11         (access denied)
+    6667/tcp open  irc         Unreal ircd
+    | irc-info: 
+    |   server: irc.Metasploitable.LAN
+    |   version: Unreal3.2.8.1. irc.Metasploitable.LAN 
+    |   servers: 1
+    |   users: 1
+    |   lservers: 0
+    |   lusers: 1
+    |   uptime: 0 days, 2:03:56
+    |   source host: 3C9CF97E.97684684.FFFA6D49.IP
+    |_  source ident: nmap
+    8009/tcp open  ajp13       Apache Jserv (Protocol v1.3)
+    |_ajp-methods: Failed to get a valid response for the OPTION request
+    8180/tcp open  http        Apache Tomcat/Coyote JSP engine 1.1
+    |_http-favicon: Apache Tomcat
+    |_http-methods: No Allow or Public header in OPTIONS response (status code 200)
+    |_http-title: Apache Tomcat/5.5
+    1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at http://www.insecure.org/cgi-bin/servicefp-submit.cgi :
+    SF-Port514-TCP:V=6.47%I=7%D=11/12%Time=56443D13%P=x86_64-unknown-linux-gnu
+    SF:%r(NULL,33,"\x01getnameinfo:\x20Temporary\x20failure\x20in\x20name\x20r
+    SF:esolution\n");
+    MAC Address: 08:00:27:24:2B:3F (Cadmus Computer Systems)
+    Device type: general purpose
+    Running: Linux 2.6.X
+    OS CPE: cpe:/o:linux:linux_kernel:2.6
+    OS details: Linux 2.6.9 - 2.6.33
+    Network Distance: 1 hop
+    Service Info: Hosts:  metasploitable.localdomain, localhost, irc.Metasploitable.LAN; OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+    
+    Host script results:
+    |_nbstat: NetBIOS name: METASPLOITABLE, NetBIOS user: <unknown>, NetBIOS MAC: <unknown> (unknown)
+    | smb-os-discovery: 
+    |   OS: Unix (Samba 3.0.20-Debian)
+    |   NetBIOS computer name: 
+    |   Workgroup: WORKGROUP
+    |_  System time: 2015-11-12T02:17:49-05:00
+    
+    TRACEROUTE
+    HOP RTT     ADDRESS
+    1   0.67 ms <target>
+    
+    OS and Service detection performed. Please report any incorrect results at http://nmap.org/submit/ .
+    Nmap done: 1 IP address (1 host up) scanned in 44.27 seconds
+
+Now using the service detection option `-sV` on the un-hardened metasploitable 2, we get no where near the verbosity as with `-A` but still get a lot.
+
+{title="nmap command", linenos=off, lang=bash}
+    nmap -sV --version-intensity 9 <target>
+
+{title="nmap result", linenos=off, lang=bash}
+    Starting Nmap 6.47 ( http://nmap.org ) at 2015-11-12 19:38 NZDT
+    Nmap scan report for <target>
+    Host is up (0.000085s latency).
+    Not shown: 977 closed ports
+    PORT     STATE SERVICE     VERSION
+    21/tcp   open  ftp         vsftpd 2.3.4
+    22/tcp   open  ssh         OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)
+    23/tcp   open  telnet      Linux telnetd
+    25/tcp   open  smtp        Postfix smtpd
+    53/tcp   open  domain      ISC BIND 9.4.2
+    80/tcp   open  http        Apache httpd 2.2.8 ((Ubuntu) DAV/2)
+    111/tcp  open  rpcbind     2 (RPC #100000)
+    139/tcp  open  netbios-ssn Samba smbd 3.X (workgroup: WORKGROUP)
+    445/tcp  open  netbios-ssn Samba smbd 3.X (workgroup: WORKGROUP)
+    512/tcp  open  exec        netkit-rsh rexecd
+    513/tcp  open  login?
+    514/tcp  open  shell?
+    1099/tcp open  rmiregistry GNU Classpath grmiregistry
+    1524/tcp open  shell       Metasploitable root shell
+    2049/tcp open  nfs         2-4 (RPC #100003)
+    2121/tcp open  ftp         ProFTPD 1.3.1
+    3306/tcp open  mysql       MySQL 5.0.51a-3ubuntu5
+    5432/tcp open  postgresql  PostgreSQL DB 8.3.0 - 8.3.7
+    5900/tcp open  vnc         VNC (protocol 3.3)
+    6000/tcp open  X11         (access denied)
+    6667/tcp open  irc         Unreal ircd
+    8009/tcp open  ajp13       Apache Jserv (Protocol v1.3)
+    8180/tcp open  http        Apache Tomcat/Coyote JSP engine 1.1
+    1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at http://www.insecure.org/cgi-bin/servicefp-submit.cgi :
+    SF-Port514-TCP:V=6.47%I=9%D=11/12%Time=564433FA%P=x86_64-unknown-linux-gnu
+    SF:%r(NULL,33,"\x01getnameinfo:\x20Temporary\x20failure\x20in\x20name\x20r
+    SF:esolution\n");
+    MAC Address: 08:00:27:24:2B:3F (Cadmus Computer Systems)
+    Service Info: Hosts:  metasploitable.localdomain, localhost, irc.Metasploitable.LAN; OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+    
+    Service detection performed. Please report any incorrect results at http://nmap.org/submit/ .
+    Nmap done: 1 IP address (1 host up) scanned in 11.47 seconds
+
+&nbsp;
+
+As you can see, unless you put a lot of work into hardening a system, it will be blurting a lot of information out, which is excellent news for attackers. Most of the WWW web servers produce information about themselves that look like something between these two systems.
+
 NMap and the scripting engine are a very powerful tool-set for gathering information. From passive to active. There are many scripts available and they are easy to work out what each is for by using the `--script-help` option.
 
 #### Concealing NMap Source IP Address {#process-and-practises-penetration-testing-reconnaissance-concealing-nmap-source-ip-address}
@@ -232,7 +408,7 @@ Using too many decoys will slow your scan down and possibly make the results les
 
 &nbsp;
 
-There are a few things you need to know in order to use the idle scan and be able to reason about what is going to happen. This is a side-channel attack which exploits predictable IP fragmentation ID sequence generation on the zombie (decoy) host to glean information about the open ports on the target. Intrusion Detection Systems (IDSs) will display the scan as coming from the zombie machine you specify (which must be up and meet certain criteria). Check the man page for further details.
+There are a few things you need to know in order to use the idle scan and be able to reason about what is going to happen. This is a side-channel attack which exploits predictable IP fragmentation ID sequence generation on the zombie (decoy) host to glean information about the open ports on the target. This is a really clever yet simple technique. Intrusion Detection Systems (IDSs) will display the scan as coming from the zombie machine you specify (which must be up and meet certain criteria). Check the [Additional Resources](#additional-resources-process) chapter for further details.
 
 {linenos=off, lang=bash}
     # 1.1.1.1:1234 is the IP address and port of the decoy machine.
@@ -241,6 +417,8 @@ There are a few things you need to know in order to use the idle scan and be abl
 #### Service Fingerprinting {#process-and-practises-penetration-testing-reconnaissance-service-fingerprinting}
 
 Adding to what we've just seen above, the simplest way to attempt to deduce the details of the service running bound to a particular port is to just see what banner is returned, or for HTTP, the `Server` header field.
+
+Also feel free to try the same requests against the likes of the Metasploitable 2 VM. Its legitimate HTTP protocol is 1.0
 
 ##### Depending on the Server field
 
@@ -292,9 +470,10 @@ Every web server has its own specific ordering of header fields. This is usually
 
 &nbsp;
 
-Now if we try some malformed requests:
+Now if we try some malformed requests or requests of non existent resources:
 
-{title="Request", linenos=off, lang=bash}
+{title="Request (not malformed)", linenos=off, lang=bash}
+    # Express is using HTTP 1.1
     nc <experss 4.0 server> 80
     GET / HTTP/1.1
 
@@ -309,9 +488,11 @@ Now if we try some malformed requests:
     
     # We get the page markup here.
 
-{title="Request", linenos=off, lang=bash}
+{title="Request (malformed)", linenos=off, lang=bash}
     nc <experss 4.0 server> 80
-    GET / HTTP/1.0
+    GET / HTTP/3.0
+
+We get a closed connection, but we still get the resource if there is one
 
 {title="Response", linenos=off, lang=bash}
     HTTP/1.1 200 OK
@@ -326,7 +507,23 @@ Now if we try some malformed requests:
 
 &nbsp;
 
-{title="Request", linenos=off, lang=bash}
+Now we try an Apache server. Different versions have different behaviour also.
+
+{title="Request (not malformed)", linenos=off, lang=bash}
+    nc <apache 2.2.3 server> 80
+    GET / HTTP/1.0
+
+{title="Response", linenos=off, lang=bash}
+    HTTP/1.1 200 OK
+    Date: Thu, 29 Oct 2015 05:02:03 GMT
+    Server: Apache/2.2.3 (CentOS)
+    Accept-Ranges: bytes
+    Connection: close
+    Content-Type: text/html; charset=UTF-8
+    
+    No Host: header seen.
+
+{title="Request (malformed)", linenos=off, lang=bash}
     nc <apache 2.2.3 server> 80
     GET / HTTP/1.1
 
@@ -347,20 +544,6 @@ Now if we try some malformed requests:
     </p>
     </body></html>
 
-{title="Request", linenos=off, lang=bash}
-    nc <apache 2.2.3 server> 80
-    GET / HTTP/1.0
-
-{title="Response", linenos=off, lang=bash}
-    HTTP/1.1 200 OK
-    Date: Thu, 29 Oct 2015 05:02:03 GMT
-    Server: Apache/2.2.3 (CentOS)
-    Accept-Ranges: bytes
-    Connection: close
-    Content-Type: text/html; charset=UTF-8
-    
-    No Host: header seen.
-
 Interesting isn't it? Every server type answers in a different way.
 
 ##### Non-existent protocol
@@ -371,7 +554,7 @@ Now if we use a non-existent protocol:
 
 {title="Request", linenos=off, lang=bash}
     nc <express 4.0 server> 80
-    GET / CATSFORDINNER/1.0
+    GET / CATSFORDINNER/1.1
     # Express ignores cats for dinner. No response
 
 
@@ -411,17 +594,7 @@ Using nmaps service detection `-sV` option has the smarts to work most of this o
     22/tcp open  ssh     OpenSSH 6.7p1 Debian 3 (protocol 2.0)
     Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
-Now if the system administrator had of modified the `/etc/hosts.deny` to be `ALL: ALL` and the `/etc/hosts.allow` to only include the machines intended to access the ssh daemon, then the attacker would see the following instead:
-
-{title="Results", linenos=off, lang=bash}
-    Starting Nmap 6.47 ( http://nmap.org ) at 2015-10-29 19:59 NZDT
-    Nmap scan report for <target> (<target ip>)
-    Host is up (0.0021s latency).
-    rDNS record for <target ip>: <target.domain>
-    PORT    STATE SERVICE    VERSION
-    22/tcp open  tcpwrapped
-
-Not the information an attacker is looking for.
+Most of the time identifying banners are part of the binary. If you want to get ride of them, you will need to modify the source and recompile. Doing this will not stop service identification though. With SSH as with most other services, the version info is baked into the protocol.
 
 {linenos=off, lang=bash}
     nc -v <target> 22
@@ -430,13 +603,7 @@ Not the information an attacker is looking for.
     Connection to <target> 22 port [tcp/*] succeeded!
     SSH-2.0-OpenSSH_6.7p1 Debian-3
 
-And again if the system administrator had set-up the hosts files like mentioned above, an attacker would get:
-
-{title="Results", linenos=off, lang=bash}
-    DNS fwd/rev mismatch: <target> != <target.domain>
-    <target> [<target ip>] 22 (?) open
-
-Again not the information an attacker is looking for. We also discuss risks and countermeasures around SSH in the VPS chapter.
+In the VPS chapter we discuss further risks We also discuss risks, countermeasures and hardening of the SSH daemon in the VPS chapter.
 
 #### Web Application Firewall (WAF) Fingerprinting
 
@@ -446,7 +613,11 @@ The fact that a WAF is in place is often given away by simply inspecting the res
 
 has a couple of good scripts out of the box for WAF detection.
 
-To view all of the currently available local nmap scripts `locate *.nse` will give you the full listing. To narrow down the listing to what we are actually looking for in this case:
+To view all of the currently available local nmap scripts:
+
+`locate *.nse`
+
+will give you the full listing. To narrow down the listing to what we are actually looking for in this case:
 
 `nmap --script-help "http-waf*"`
 
@@ -456,6 +627,9 @@ Will yield the following two scripts which are very useful:
 Attempts to determine whether the web server is protected by an IDS, IPS or WAF
 2. `http-waf-fingerprint.nse`  
 Attempts to discover the presence of a WAF, its type and version.
+
+{title="Run both scripts", linenos=off}
+    nmap -p80 --script "http-waf-*" <target>
 
 ##### [WAFW00F](https://github.com/sandrogauci/wafw00f)
 
@@ -638,7 +812,11 @@ When you run recon-ng with no arguments, you will be presented with the titles o
 {linenos=off, lang=bash}
     [recon-ng][default] > 
 
-Type `help` and you will be presented with the recon-ng commands.
+Type:
+
+`help`
+
+and you will be presented with the recon-ng commands.
 
 Prepend any of the commands with help or simply type the command by itself if you want to know more about the specific command.
 
@@ -651,7 +829,11 @@ For example type `show` and you will be presented with:
 
 The above outputs are actually table names that contain data you add (discussed soon).
 
-Then type `show modules` and you will be presented with a listing of all the moduels in `/usr/share/recon-ng/modules/`:
+Then type:
+
+`show modules`
+
+and you will be presented with a listing of all the modules in `/usr/share/recon-ng/modules/`:
 
 {title="recon-ng modules", linenos=off, lang=bash}
     Discovery
@@ -749,12 +931,19 @@ Then type `show modules` and you will be presented with a listing of all the mod
       reporting/xlsx
       reporting/xml
 
-As recon-ng uses workspaces, you can keep all your specific assignment data in its own workspace. Data is persisted to the file system `/user/.recon-ng/workspaces/<your new workspace name>/` as it's gathered. You can exit and restart recon-ng anytime without loosing the data you have already gathered.
+A> As recon-ng uses workspaces, you can keep all your specific assignment data in its own workspace.
+
+Data is persisted to the file system `/user/.recon-ng/workspaces/<your new workspace name>/` as it's gathered. You can exit and restart recon-ng anytime without loosing the data you have already gathered. So lets see which workspaces we already have.
 
 {linenos=off, lang=bash}
+    # Typing workspaces alone tells us which arguments workspaces expects.
+    workspaces list
+    # Should show us that we only have the default workspace.
     workspaces add <your new workspace name>
 
-Usually before you `use` -> `run` modules, you will want to `add` initial records. The sort of records you may want to add can be seen by typing `show`.
+Usually before you `use` then `run` each desired module, you will want to `add` initial records. The sort of records you may want to add can be seen by typing:
+
+`show`
 
 {linenos=off, lang=bash}
     add domains <a target domain>
@@ -798,7 +987,7 @@ Before you add any social media API keys, you will want to create throwaway soci
     # To add an API key:
     keys add [specific_key_listed_from_previous_command] <yourkey>
 
-Once you are ready to `run` the module you have chosen with the `use` command, just type `run`. All the information will be gathered into the database which you can query or create reports from. Between each new module you `use` and `run` you can view what was found simply by watching the screen or:
+Once you are ready to `run` the module you have chosen with the `use` command, just type `run`. All the information will be gathered into the workspace specific database which you can query or create reports from. Between each new module you `use` and `run` you can view what was found simply by watching the screen or:
 
 {linenos=off, lang=bash}
     query SELECT * FROM [any of the tables listed with the show command]
@@ -909,9 +1098,6 @@ msfconsole has many modules out of the box for poking and prodding at things (sc
     # Lets run it:
     run
 
-Now as mentioned in the [Service Fingerprinting](#process-and-practises-penetration-testing-reconnaissance-service-fingerprinting-other-services) section of the Process and Practises chapter, if the `/etc/hosts.deny` `/etc/hosts.allow` is set-up correctly, then you are not going to get much from this scan, if they are not set-up correctly, you'll get back what you were looking for.
-
-&nbsp;
 
 I also wrote about a few other vulnerability scanners on my [blog](http://blog.binarymist.net/2014/03/29/up-and-running-with-kali-linux-and-friends/#vulnerability-scanners) such as:
 
