@@ -25,7 +25,8 @@
 4. [Loading and unloading](http://docs.oracle.com/cd/E37670_01/E41138/html/ch06s03.html) Linux Kernel Modules
 5. Kernel Module [Blacklisting](https://wiki.debian.org/KernelModuleBlacklisting)
 
-## [Process](#process) {#additional-resources-process}
+{#additional-resources-process}
+## [Process](#process-and-practises)
 
 **Useful Intelligence Gathering** resource  
 [http://www.pentest-standard.org/index.php/Intelligence_Gathering](http://www.pentest-standard.org/index.php/Intelligence_Gathering)

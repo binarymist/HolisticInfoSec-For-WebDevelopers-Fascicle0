@@ -458,7 +458,7 @@ _Todo_ detail configuring NFS if NFS is required
 #### [SSH](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#ssh)
 ![](images/ThreatTags/PreventionVERYEASY.png)
 
-We covered fingerprinting of SSH in the Processes and Practises chapter under the [Reconnaissance](#process-and-practises-penetration-testing-reconnaissance) section. Here we will discuss what you can do to harden SSH.
+We covered fingerprinting of SSH in the Processes and Practises chapter under the [Reconnaissance](#process-and-practises-penetration-testing-reconnaissance-service-fingerprinting-other-services) section. Here we will discuss what you can do to harden SSH.
 
 _Todo_
 
@@ -470,7 +470,7 @@ Consider non default port below 1025 that only root can bind to in order to stop
 
 _Todo_
 
-Cover `/etc/hosts.deny`, `/etc/hosts.allow` files in the 
+Cover `/etc/hosts.deny`, `/etc/hosts.allow`
 
 ### [Schedule Backups](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#scheduled-backups)
 ![](images/ThreatTags/PreventionEASY.png)

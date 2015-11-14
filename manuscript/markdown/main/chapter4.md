@@ -61,7 +61,7 @@ No where near as configurable as a dedicated port scanner, but still scans ports
 
 Lets look at some uses.
 
-{linenos=off, lang=bash}
+{linenos=off}
     # -z is the argument to instruct for a port scan.
     # 1-1000 is the port range
     # -r randomises the order of port scans to make it a little less obvious
@@ -82,11 +82,11 @@ This is an example of using nmap against a hardened target with a SSH daemon and
 
 As you can see with using the aggressive option `-A` the pen tester makes a lot of noise and if the logs are being casually inspected by a system administrator, the chance of noticing the probes with `nmap` written all over them is very likely.
 
-{title="nmap command", linenos=off, lang=bash}
+{title="nmap command", linenos=off}
     # Attempt to detect hardened target OS and services running on it.
     nmap -A <target>
 
-{title="nmap result", linenos=off, lang=bash}
+{title="nmap result", linenos=off}
     Nmap scan report for <target> (<target ip>)
     Host is up (0.0014s latency).
     rDNS record for <target ip>: <target>
@@ -112,7 +112,7 @@ As you can see with using the aggressive option `-A` the pen tester makes a lot 
     Please report any incorrect results at http://nmap.org/submit/ .
     Nmap done: 1 IP address (1 host up) scanned in 35.18 seconds
 
-{title="target system logs", linenos=off, lang=bash}
+{title="target system logs", linenos=off}
     <time> <target> sshd:  refused connect from <kali ip> (<kali ip>)
        <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - 
        [<time>] "OPTIONS / HTTP/1.1" 200 8 "-" 
@@ -181,10 +181,10 @@ As you can see with using the aggressive option `-A` the pen tester makes a lot 
 
 Now using the service detection option `-sV` the results provide almost as much information. Even with the intensity maxed out, the pen tester makes very little noise and if the logs are being even closely inspected, the chance of missing these probes is likely. The only part that really stands out at all is the `sshd` auth request failure. As there are only two of these lines, it's likely that a system administrator wouldn't think that much of it. Without the `sshd` entries, this would fit into the Semi-Active form mentioned above.
 
-{title="nmap command", linenos=off, lang=bash}
+{title="nmap command", linenos=off}
     nmap -sV --version-intensity 9 <target>
 
-{title="nmap result", linenos=off, lang=bash}
+{title="nmap result", linenos=off}
     Nmap scan report for <target> (<target ip>)
     Host is up (0.0061s latency).
     rDNS record for <target ip>: <target>
@@ -197,7 +197,7 @@ Now using the service detection option `-sV` the results provide almost as much 
     Service detection performed. Please report any incorrect results at http://nmap.org/submit/
     Nmap done: 1 IP address (1 host up) scanned in 17.63 seconds
 
-{title="target system logs", linenos=off, lang=bash}
+{title="target system logs", linenos=off}
     <time> <target> sshd:  refused connect from <kali ip> (<kali ip>)
     <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - 
        <time> "GET / HTTP/1.0" 200 56328 "-" "-"
@@ -207,11 +207,11 @@ Now using the service detection option `-sV` the results provide almost as much 
 
 This is an example of using nmap against an un-hardened target. I discuss in later chapters how to go about the hardening process. I have also provided a lot of information around hardening servers on my [blog](http://blog.binarymist.net/).
 
-{title="nmap command", linenos=off, lang=bash}
+{title="nmap command", linenos=off}
     # Attempt to detect un-hardened target OS and services running on it.
     nmap -A <target>
 
-{title="nmap result", linenos=off, lang=bash}
+{title="nmap result", linenos=off}
     Starting Nmap 6.47 ( http://nmap.org ) at 2015-11-12 20:17 NZDT
     Nmap scan report for <target>
     Host is up (0.00067s latency).
@@ -332,10 +332,10 @@ This is an example of using nmap against an un-hardened target. I discuss in lat
 
 Now using the service detection option `-sV` on the un-hardened metasploitable 2, we get no where near the verbosity as with `-A` but still get a lot.
 
-{title="nmap command", linenos=off, lang=bash}
+{title="nmap command", linenos=off}
     nmap -sV --version-intensity 9 <target>
 
-{title="nmap result", linenos=off, lang=bash}
+{title="nmap result", linenos=off}
     Starting Nmap 6.47 ( http://nmap.org ) at 2015-11-12 19:38 NZDT
     Nmap scan report for <target>
     Host is up (0.000085s latency).
@@ -376,7 +376,7 @@ Now using the service detection option `-sV` on the un-hardened metasploitable 2
 
 &nbsp;
 
-As you can see, unless you put a lot of work into hardening a system, it will be blurting a lot of information out, which is excellent news for attackers. Most of the WWW web servers produce information about themselves that look like something between these two systems.
+As you can see, unless you put a lot of work into hardening a system, it will be blurting out a lot of information, which is excellent news for attackers. Most of the WWW web servers produce information about themselves that look like something between these two systems.
 
 NMap and the scripting engine are a very powerful tool-set for gathering information. From passive to active. There are many scripts available and they are easy to work out what each is for by using the `--script-help` option.
 
@@ -400,7 +400,7 @@ It is also kind of obvious as to which IP address the attack is coming from if t
 
 Using too many decoys will slow your scan down and possibly make the results less accurate. Some ISPs may filter out your spoofed packets.
 
-{linenos=off, lang=bash}
+{linenos=off}
     # Make sure your decoys are up unless you want to DOS your target.
     nmap -D <decoyip1>,<decoyip2>,<decoyip3>,<decoyip4>,<decoyip5>,ME <target>
 
@@ -410,7 +410,7 @@ Using too many decoys will slow your scan down and possibly make the results les
 
 There are a few things you need to know in order to use the idle scan and be able to reason about what is going to happen. This is a side-channel attack which exploits predictable IP fragmentation ID sequence generation on the zombie (decoy) host to glean information about the open ports on the target. This is a really clever yet simple technique. Intrusion Detection Systems (IDSs) will display the scan as coming from the zombie machine you specify (which must be up and meet certain criteria). Check the [Additional Resources](#additional-resources-process) chapter for further details.
 
-{linenos=off, lang=bash}
+{linenos=off}
     # 1.1.1.1:1234 is the IP address and port of the decoy machine.
     nmap -sI 1.1.1.1:1234 <target>
 
@@ -424,7 +424,7 @@ Also feel free to try the same requests against the likes of the Metasploitable 
 
 &nbsp;
 
-{title="Request", linenos=off, lang=bash}
+{title="Request", linenos=off}
     # Run netcat against your targets web server
     nc <target> 80
     # Now you need to issue the request.
@@ -433,7 +433,7 @@ Also feel free to try the same requests against the likes of the Metasploitable 
 
 Now if the target is running Apache 2.2.3, then you may see something like the following:
 
-{title="Response", linenos=off, lang=bash}
+{title="Response", linenos=off}
     HTTP/1.1 400 Bad Request
     Date: Thu, 29 Oct 2015 04:44:09 GMT
     Server: Apache/2.2.3 (CentOS)
@@ -442,7 +442,7 @@ Now if the target is running Apache 2.2.3, then you may see something like the f
 
 You can not rely on the Server field though. It could be obfuscated:
 
-{title="Response", linenos=off, lang=bash}
+{title="Response", linenos=off}
     403 HTTP/1.1 Forbidden
     Date: Thu, 29 Oct 2015 04:44:09 GMT
     Server: Unknown-Webserver/1.0
@@ -451,7 +451,7 @@ You can not rely on the Server field though. It could be obfuscated:
 
 Or if your target is running an Express server, you will probably see something like:
 
-{title="Response", linenos=off, lang=bash}
+{title="Response", linenos=off}
     HTTP/1.1 200 OK
     X-Powered-By: Express
     Content-Type: text/html; charset=utf-8
@@ -472,12 +472,12 @@ Every web server has its own specific ordering of header fields. This is usually
 
 Now if we try some malformed requests or requests of non existent resources:
 
-{title="Request (not malformed)", linenos=off, lang=bash}
+{title="Request (not malformed)", linenos=off}
     # Express is using HTTP 1.1
     nc <experss 4.0 server> 80
     GET / HTTP/1.1
 
-{title="Response", linenos=off, lang=bash}
+{title="Response", linenos=off}
     HTTP/1.1 200 OK
     X-Powered-By: Express
     Content-Type: text/html; charset=utf-8
@@ -488,13 +488,13 @@ Now if we try some malformed requests or requests of non existent resources:
     
     # We get the page markup here.
 
-{title="Request (malformed)", linenos=off, lang=bash}
+{title="Request (malformed)", linenos=off}
     nc <experss 4.0 server> 80
     GET / HTTP/3.0
 
 We get a closed connection, but we still get the resource if there is one
 
-{title="Response", linenos=off, lang=bash}
+{title="Response", linenos=off}
     HTTP/1.1 200 OK
     X-Powered-By: Express
     Content-Type: text/html; charset=utf-8
@@ -509,11 +509,11 @@ We get a closed connection, but we still get the resource if there is one
 
 Now we try an Apache server. Different versions have different behaviour also.
 
-{title="Request (not malformed)", linenos=off, lang=bash}
+{title="Request (not malformed)", linenos=off}
     nc <apache 2.2.3 server> 80
     GET / HTTP/1.0
 
-{title="Response", linenos=off, lang=bash}
+{title="Response", linenos=off}
     HTTP/1.1 200 OK
     Date: Thu, 29 Oct 2015 05:02:03 GMT
     Server: Apache/2.2.3 (CentOS)
@@ -523,11 +523,11 @@ Now we try an Apache server. Different versions have different behaviour also.
     
     No Host: header seen.
 
-{title="Request (malformed)", linenos=off, lang=bash}
+{title="Request (malformed)", linenos=off}
     nc <apache 2.2.3 server> 80
     GET / HTTP/1.1
 
-{title="Response", linenos=off, lang=bash}
+{title="Response", linenos=off}
     HTTP/1.1 400 Bad Request
     Date: Thu, 29 Oct 2015 05:01:51 GMT
     Server: Apache/2.2.3 (CentOS)
@@ -552,19 +552,19 @@ Interesting isn't it? Every server type answers in a different way.
 
 Now if we use a non-existent protocol:
 
-{title="Request", linenos=off, lang=bash}
+{title="Request", linenos=off}
     nc <express 4.0 server> 80
     GET / CATSFORDINNER/1.1
     # Express ignores cats for dinner. No response
 
 
-{title="Request", linenos=off, lang=bash}
+{title="Request", linenos=off}
     nc <apache 2.2.3 server> 80
     GET / CATSFORDINNER/1.0
 
 Now we see Apache is `200 OK` happy to have cats for dinner.
 
-{title="Response", linenos=off, lang=bash}
+{title="Response", linenos=off}
     HTTP/1.1 200 OK
     Date: Thu, 29 Oct 2015 05:12:51 GMT
     Server: Apache/2.2.3 (CentOS)
@@ -582,10 +582,10 @@ Let us look at SSH.
 
 Using nmaps service detection `-sV` option has the smarts to work most of this out because nmap uses service specific probes. So relying on higher level tools are often quicker and more effective as the manual work has already been done and baked into the tooling.
 
-{linenos=off, lang=bash}
+{linenos=off}
     nmap -sV -p 22 <target>
 
-{title="Results", linenos=off, lang=bash}
+{title="Results", linenos=off}
     Starting Nmap 6.40 ( http://nmap.org ) at 2015-10-29 19:46 NZDT
     Nmap scan report for <target> (<target ip>)
     Host is up (0.00049s latency).
@@ -594,16 +594,16 @@ Using nmaps service detection `-sV` option has the smarts to work most of this o
     22/tcp open  ssh     OpenSSH 6.7p1 Debian 3 (protocol 2.0)
     Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
-Most of the time identifying banners are part of the binary. If you want to get ride of them, you will need to modify the source and recompile. Doing this will not stop service identification though. With SSH as with most other services, the version info is baked into the protocol.
+Most of the time identifying banners are part of the binary. If you want to get rid of them, you will need to modify the source and recompile. Doing this will not stop service identification though. With SSH as with most other services, the version info is baked into the protocol.
 
-{linenos=off, lang=bash}
+{linenos=off}
     nc -v <target> 22
 
-{title="Results", linenos=off, lang=bash}
+{title="Results", linenos=off}
     Connection to <target> 22 port [tcp/*] succeeded!
     SSH-2.0-OpenSSH_6.7p1 Debian-3
 
-In the VPS chapter we discuss further risks We also discuss risks, countermeasures and hardening of the SSH daemon in the VPS chapter.
+In the VPS chapter we discuss further risks, countermeasures and hardening of the SSH daemon.
 
 #### Web Application Firewall (WAF) Fingerprinting
 
@@ -615,11 +615,13 @@ has a couple of good scripts out of the box for WAF detection.
 
 To view all of the currently available local nmap scripts:
 
-`locate *.nse`
+{linenos=off}
+    locate *.nse
 
 will give you the full listing. To narrow down the listing to what we are actually looking for in this case:
 
-`nmap --script-help "http-waf*"`
+{linenos=off}
+    nmap --script-help "http-waf*"
 
 Will yield the following two scripts which are very useful:
 
@@ -647,15 +649,15 @@ _If that is also not successful, it analyses the responses previously returned a
 
 To perform DNS lookup:
 
-{title="dig", linenos=off, lang=bash}
+{title="dig", linenos=off}
     dig <domain you are wanting info on>
 
 To perform a reverse lookup on an IP address:
 
-{title="dig reverse lookup", linenos=off, lang=bash}
+{title="dig reverse lookup", linenos=off}
     dig -x <ip address>
 
-{title="dig for email servers", linenos=off, lang=bash}
+{title="dig for email servers", linenos=off}
     # mx (email servers) is the type of record to look for.
     # by default, dig will perform a lookup for an A record
     dig <domain you are wanting info on> mx
@@ -669,13 +671,13 @@ There is no man page for dnsenum. Simply run dnsenum and you will be presented w
 
 In order to find all subdomains associated with the target domain, you can use a wordlist. A good collection can be found in Kali Linux by simply issuing the following command:
 
-{linenos=off, lang=bash}
+{linenos=off}
     locate wordlist
 
 Recon-ng as discussed below also has some in `/usr/share/recon-ng/data/` that it uses for similar tasks. Choose your wordlist then apply it to dnsenum. The results found will only be as good as your wordlist. So choose wisely.  
 `/usr/share/dirbuster/wordlists/directories.jbrofuzz` is not great, but it is not bad either
 
-{linenos=off, lang=bash}
+{linenos=off}
     # This is a noisy command, but it is still passive. The target is not being touched.
     # Be patient, it can take some time if you use a large wordlist.
     dnsenum <target domain> -f <your chosen wordlist>
@@ -685,7 +687,7 @@ Recon-ng as discussed below also has some in `/usr/share/recon-ng/data/` that it
 
 This will provide the same results as a simple `dnsenum <target domain>` and then start the bruteforce which lists the IP addresses with the domains and record types
 
-{linenos=off, lang=bash}
+{linenos=off}
     binarymist.net.             3174    IN   A       202.46.170.8
     binarymist.net.             3174    IN   A       202.46.170.8
     binarymist.net.             3174    IN   A       202.46.170.8
@@ -716,7 +718,9 @@ This will provide the same results as a simple `dnsenum <target domain>` and the
 
 Is another similar tool to dnsenum with a few different options. It is usually helpful to try several similar tools for the same or similar exercise as you will get different results and it is good not to depend on any single tool for a specific task. Do not become tool dependent.
 
-`dnsrecon -d <target domain>`  
+{linenos=off}
+    dnsrecon -d <target domain>
+
 There are many other options. Simply run the tool with no arguments to get its help.
 
 &nbsp;
@@ -809,12 +813,13 @@ It depends on which moduels you use as to what information you receive.
 
 When you run recon-ng with no arguments, you will be presented with the titles of the collections of the included modules and you'll be dropped at a recon-ng prompt showing the current workspace you are in. It looks like:
 
-{linenos=off, lang=bash}
+{linenos=off}
     [recon-ng][default] > 
 
 Type:
 
-`help`
+{linenos=off}
+    help
 
 and you will be presented with the recon-ng commands.
 
@@ -822,7 +827,7 @@ Prepend any of the commands with help or simply type the command by itself if yo
 
 For example type `show` and you will be presented with:
 
-{linenos=off, lang=bash}
+{linenos=off}
     Shows various framework items
     
     Usage: show [banner|companies|contacts|credentials|dashboard|domains|hosts|leaks|locations|modules|netblocks|options|ports|profiles|pushpins|schema|vulnerabilities]
@@ -831,11 +836,12 @@ The above outputs are actually table names that contain data you add (discussed 
 
 Then type:
 
-`show modules`
+{linenos=off}
+    show modules
 
 and you will be presented with a listing of all the modules in `/usr/share/recon-ng/modules/`:
 
-{title="recon-ng modules", linenos=off, lang=bash}
+{title="recon-ng modules", linenos=off}
     Discovery
     ---------
       discovery/info_disclosure/cache_snoop
@@ -935,7 +941,7 @@ A> As recon-ng uses workspaces, you can keep all your specific assignment data i
 
 Data is persisted to the file system `/user/.recon-ng/workspaces/<your new workspace name>/` as it's gathered. You can exit and restart recon-ng anytime without loosing the data you have already gathered. So lets see which workspaces we already have.
 
-{linenos=off, lang=bash}
+{linenos=off}
     # Typing workspaces alone tells us which arguments workspaces expects.
     workspaces list
     # Should show us that we only have the default workspace.
@@ -943,9 +949,10 @@ Data is persisted to the file system `/user/.recon-ng/workspaces/<your new works
 
 Usually before you `use` then `run` each desired module, you will want to `add` initial records. The sort of records you may want to add can be seen by typing:
 
-`show`
+{linenos=off}
+    show
 
-{linenos=off, lang=bash}
+{linenos=off}
     add domains <a target domain>
     add companies
     # Now you are prompted for some details like name and description
@@ -954,19 +961,19 @@ To see what records you have already `add`ed, type `show [item]` (where `item` i
 
 To delete an item you have added: `del [item] [rowid]`, for example:
 
-{linenos=off, lang=bash}
+{linenos=off}
     del domains 1 # To remove the first record 
 
 You can also query the workspace database with the `query` command. Just type it and you will get some help and be running in no time. Many of the commands can be performed using recon-ng commands or by using the `query` command and building up SQL queries.
 
 To use a specific module:
 
-{linenos=off, lang=bash}
+{linenos=off}
     use <one of the modules listed from show modules command>
 
 To find out what options if any you need to set for your chosen module, type:
 
-{linenos=off, lang=bash}
+{linenos=off}
     set
     # This will print the Names of the options which you need to set if not
     # already set and if it is a Required field, Current Value and Description.
@@ -974,14 +981,14 @@ To find out what options if any you need to set for your chosen module, type:
 
 If you need more information about the current module you have `use`ed, type:
 
-{linenos=off, lang=bash}
+{linenos=off}
     show info
 
 You will be notified when you attempt to `run` if you need an API key. Details on where to find these are on the [recon-ng wiki](https://bitbucket.org/LaNMaSteR53/recon-ng/wiki/Usage%20Guide#!acquiring-api-keys).
 
 Before you add any social media API keys, you will want to create throwaway social media accounts, because many of the social media sites you will perform recon on will show the visiting user. You want that visiting user to be your throwaway account.
 
-{linenos=off, lang=bash}
+{linenos=off}
     # To show your currently installed API keys:
     keys list
     # To add an API key:
@@ -989,7 +996,7 @@ Before you add any social media API keys, you will want to create throwaway soci
 
 Once you are ready to `run` the module you have chosen with the `use` command, just type `run`. All the information will be gathered into the workspace specific database which you can query or create reports from. Between each new module you `use` and `run` you can view what was found simply by watching the screen or:
 
-{linenos=off, lang=bash}
+{linenos=off}
     query SELECT * FROM [any of the tables listed with the show command]
     # For example:
     query SELECT * FROM contacts
@@ -997,7 +1004,7 @@ Once you are ready to `run` the module you have chosen with the `use` command, j
 
 or
 
-{linenos=off, lang=bash}
+{linenos=off}
     use reporting/html
     set CREATOR <you or your company>
     set CUSTOMER <your client/target>
@@ -1007,7 +1014,7 @@ or
 
 The report types you can use can be seen by typing:
 
-{linenos=off, lang=bash}
+{linenos=off}
     show modules reporting
     # These include html, json, csv, xml and others
 
@@ -1077,7 +1084,7 @@ Along with its scripts and ability to extend provides a very powerful and easy t
 
 msfconsole has many modules out of the box for poking and prodding at things (scanning for vulnerabilities). Once you have started the msfconsole dependencies, `postgresql` and `metasploit`, start `msfconsole`. Show the modules available:
 
-{title="using modules", linenos=off, lang=bash}
+{title="using modules", linenos=off}
     show auxiliary
     # Will list all the auxiliary modules available.
     # which include many scanners.
@@ -1139,7 +1146,7 @@ Or run from the command line: `searchsploit <search phrase>`
 
 To find an exploit or any other type of module easily. Once you have `msfconsole` running:
 
-{title="search for modules to exploit nodejs", linenos=off, lang=bash}
+{title="search for modules to exploit nodejs", linenos=off}
     search nodejs
     # Provided 21 modules targeting NodeJS.
     # 10 of which were exploits, 8 were payloads.
@@ -1267,7 +1274,7 @@ There are three aspects I would like to focus on here. You can simply continue t
 
     You can then access the API like this:
     
-    {linenos=off,lang=bash}
+    {linenos=off}
        curl http://localhost:8080 # Providing ZAP is listening on port 8080
 
   
