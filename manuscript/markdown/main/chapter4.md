@@ -433,7 +433,7 @@ Also feel free to try the same requests against the likes of the Metasploitable 
 
 Now if the target is running Apache 2.2.3, then you may see something like the following:
 
-{title="Response", linenos=off, lang=HTTP}
+{title="Response", linenos=off}
     HTTP/1.1 400 Bad Request
     Date: Thu, 29 Oct 2015 04:44:09 GMT
     Server: Apache/2.2.3 (CentOS)
@@ -442,7 +442,7 @@ Now if the target is running Apache 2.2.3, then you may see something like the f
 
 You can not rely on the Server field though. It could be obfuscated:
 
-{title="Response", linenos=off, lang=HTTP}
+{title="Response", linenos=off}
     403 HTTP/1.1 Forbidden
     Date: Thu, 29 Oct 2015 04:44:09 GMT
     Server: Unknown-Webserver/1.0
@@ -451,7 +451,7 @@ You can not rely on the Server field though. It could be obfuscated:
 
 Or if your target is running an Express server, you will probably see something like:
 
-{title="Response", linenos=off, lang=HTTP}
+{title="Response", linenos=off}
     HTTP/1.1 200 OK
     X-Powered-By: Express
     Content-Type: text/html; charset=utf-8
@@ -472,7 +472,7 @@ Every web server has its own specific ordering of header fields. This is usually
 
 Now if we try some malformed requests or requests of non existent resources:
 
-{title="Request (not malformed)", linenos=off, lang=HTTP}
+{title="Request (not malformed)", linenos=off}
     # Express is using HTTP 1.1
     nc <experss 4.0 server> 80
     GET / HTTP/1.1
@@ -488,13 +488,13 @@ Now if we try some malformed requests or requests of non existent resources:
     
     # We get the page markup here.
 
-{title="Request (malformed)", linenos=off, lang=HTTP}
+{title="Request (malformed)", linenos=off}
     nc <experss 4.0 server> 80
     GET / HTTP/3.0
 
 We get a closed connection, but we still get the resource if there is one
 
-{title="Response", linenos=off, lang=HTTP}
+{title="Response", linenos=off}
     HTTP/1.1 200 OK
     X-Powered-By: Express
     Content-Type: text/html; charset=utf-8
@@ -509,11 +509,11 @@ We get a closed connection, but we still get the resource if there is one
 
 Now we try an Apache server. Different versions have different behaviour also.
 
-{title="Request (not malformed)", linenos=off, lang=Bash}
+{title="Request (not malformed)", linenos=off}
     nc <apache 2.2.3 server> 80
     GET / HTTP/1.0
 
-{title="Response", linenos=off, lang=HTTP}
+{title="Response", linenos=off}
     HTTP/1.1 200 OK
     Date: Thu, 29 Oct 2015 05:02:03 GMT
     Server: Apache/2.2.3 (CentOS)
@@ -552,19 +552,19 @@ Interesting isn't it? Every server type answers in a different way.
 
 Now if we use a non-existent protocol:
 
-{title="Request", linenos=off, lang=HTTP}
+{title="Request", linenos=off}
     nc <express 4.0 server> 80
     GET / CATSFORDINNER/1.1
     # Express ignores cats for dinner. No response
 
 
-{title="Request", linenos=off, lang=HTTP}
+{title="Request", linenos=off}
     nc <apache 2.2.3 server> 80
     GET / CATSFORDINNER/1.0
 
 Now we see Apache is `200 OK` happy to have cats for dinner.
 
-{title="Response", linenos=off, lang=HTTP}
+{title="Response", linenos=off}
     HTTP/1.1 200 OK
     Date: Thu, 29 Oct 2015 05:12:51 GMT
     Server: Apache/2.2.3 (CentOS)
@@ -649,15 +649,15 @@ _If that is also not successful, it analyses the responses previously returned a
 
 To perform DNS lookup:
 
-{title="dig", linenos=off}
+{title="dig", linenos=off, lang=Bash}
     dig <domain you are wanting info on>
 
 To perform a reverse lookup on an IP address:
 
-{title="dig reverse lookup", linenos=off}
+{title="dig reverse lookup", linenos=off, lang=Bash}
     dig -x <ip address>
 
-{title="dig for email servers", linenos=off}
+{title="dig for email servers", linenos=off, lang=Bash}
     # mx (email servers) is the type of record to look for.
     # by default, dig will perform a lookup for an A record
     dig <domain you are wanting info on> mx
@@ -677,7 +677,7 @@ In order to find all subdomains associated with the target domain, you can use a
 Recon-ng as discussed below also has some in `/usr/share/recon-ng/data/` that it uses for similar tasks. Choose your wordlist then apply it to dnsenum. The results found will only be as good as your wordlist. So choose wisely.  
 `/usr/share/dirbuster/wordlists/directories.jbrofuzz` is not great, but it is not bad either
 
-{linenos=off}
+{linenos=off, lang=Bash}
     # This is a noisy command, but it is still passive. The target is not being touched.
     # Be patient, it can take some time if you use a large wordlist.
     dnsenum <target domain> -f <your chosen wordlist>
@@ -941,7 +941,7 @@ A> As recon-ng uses workspaces, you can keep all your specific assignment data i
 
 Data is persisted to the file system `/user/.recon-ng/workspaces/<your new workspace name>/` as it's gathered. You can exit and restart recon-ng anytime without loosing the data you have already gathered. So lets see which workspaces we already have.
 
-{linenos=off}
+{linenos=off, lang=Bash}
     # Typing workspaces alone tells us which arguments workspaces expects.
     workspaces list
     # Should show us that we only have the default workspace.
@@ -949,10 +949,10 @@ Data is persisted to the file system `/user/.recon-ng/workspaces/<your new works
 
 Usually before you `use` then `run` each desired module, you will want to `add` initial records. The sort of records you may want to add can be seen by typing:
 
-{linenos=off}
+{linenos=off, lang=Bash}
     show
 
-{linenos=off}
+{linenos=off, lang=Bash}
     add domains <a target domain>
     add companies
     # Now you are prompted for some details like name and description
@@ -968,12 +968,12 @@ You can also query the workspace database with the `query` command. Just type it
 
 To use a specific module:
 
-{linenos=off}
+{linenos=off, lang=Bash}
     use <one of the modules listed from show modules command>
 
 To find out what options if any you need to set for your chosen module, type:
 
-{linenos=off}
+{linenos=off, lang=Bash}
     set
     # This will print the Names of the options which you need to set if not
     # already set and if it is a Required field, Current Value and Description.
@@ -996,7 +996,7 @@ Before you add any social media API keys, you will want to create throwaway soci
 
 Once you are ready to `run` the module you have chosen with the `use` command, just type `run`. All the information will be gathered into the workspace specific database which you can query or create reports from. Between each new module you `use` and `run` you can view what was found simply by watching the screen or:
 
-{linenos=off}
+{linenos=off, lang=Bash}
     query SELECT * FROM [any of the tables listed with the show command]
     # For example:
     query SELECT * FROM contacts
@@ -1004,7 +1004,7 @@ Once you are ready to `run` the module you have chosen with the `use` command, j
 
 or
 
-{linenos=off}
+{linenos=off, lang=Bash}
     use reporting/html
     set CREATOR <you or your company>
     set CUSTOMER <your client/target>
@@ -1014,7 +1014,7 @@ or
 
 The report types you can use can be seen by typing:
 
-{linenos=off}
+{linenos=off, lang=Bash}
     show modules reporting
     # These include html, json, csv, xml and others
 
@@ -1219,11 +1219,11 @@ Another defining factor that sets the architect apart is their ability to transl
 
 &nbsp;
 
-### Cheapest Place to Deal with Defect
+### Cheapest Place to Deal with Defects
 
 There has been many studies around the costs of finding and fixing defects early as opposed to cowboy coding, planning to fix defects once the product is delivered, or not planning at all.
 
-The following table shows the average cost of fixing defects based on when they were intrduced vs when they are detected. Putting the practises in the right order can reduce costs by up to 100 times.
+The following table shows the average cost of fixing defects based on when they were introduced vs when they are detected. Putting the practises in the right order can reduce costs by up to 100 times.
 
 ![](images/AverageCostOfFixingDefects.png)
 
@@ -1245,78 +1245,199 @@ Also consider creating evil test conditions. Often developers do not have the mi
 
 ![](images/TestConditionEvil.png)
 
-### Security Test-Driven Development (STDD) {#process-agile-development-and-practices-security-test-driven-development}
+### Security Focussed TDD
+
+Once you have your evil test conditions defined, as usual once your normal test conditions are ready, you start the TDD cycling, but now augmenting those usual test conditions with the evil ones.
 
 ![](images/red_green_refactor.jpg)
 
-There are three aspects I would like to focus on here. You can simply continue to use your existing automated test suites and frameworks. All you have to do is:
-
-1. Add a **security focused test API** into the mix of your existing automated acceptance test suites.  
- Your chosen (language specific) BDD framework of choice, putting legs to your test conditions with automatable "[Given, When, Thens](http://blog.binarymist.net/2012/03/24/how-to-optimise-your-testing-effort/#planningTheTestEffort)".
-2. If you are using NodeJS and have not already got your tests running as part of a CI build or pre-commit hook, check out the Consuming Free and Open Source [Tooling](#web-applications-countermeasures-consuming-free-and-open-source-tooling) section for some info on how to set this up
-3. Add **security focused BDD/TDD/ATDD** tests.
- This is the same amount of work as any other automated TDD, but it has the huge benefit of bringing the finding of security faults from where it is very expensive to fix:  
+Adding **security focused TDD/BDD/ATDD** tests. This is the same amount of work as any other developer test driven development, but it has the same huge benefit of bringing the finding of not just faults, but security faults, from where it is very expensive to fix:  
 
     ![](images/CostOfChange.png)  
 
-    to where it is the cheapest possible place to fix:
+    to where it is the cheapest possible place to fix. Putting legs to your test conditions with automatable security focussed "[Given, When, Thens](http://blog.binarymist.net/2012/03/24/how-to-optimise-your-testing-effort/#planningTheTestEffort)":
 
     ![](images/CostOfChange-WithSTDD.png)  
 
-&nbsp;
+Now instead of the business waiting until go-live before contracting the experts to beat up your system, then telling you **your security sucks**, we take a proactive approach (as the self managing team that we are) and move a lot of the effort traditionally performed at go-live **up front**, where you yourself as the developer can test and fix. Thus saving embarrassment and the business a lot of money. This is what being a professional developer is all about.
 
-1. Continuing No. 1 from above: [OWASP ZAP](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project) (which also comes [pre-installed on Kali Linux](http://blog.binarymist.net/2014/03/29/up-and-running-with-kali-linux-and-friends/#zap) ) is a particularly useful tool for SBDD and regression testing. Because it not only provides a manual tool similar to the likes of Burp Suite + with many other features. ZAP also has the ability to run as a HTTP proxy:
-    1. You can run ZAP manually then through the menu Tools -> Options... -> API turn the HTTP API on
-    2. Run ZAP from the command line using the -daemon flag
-    
-        {linenos=off}
-            owasp-zap --daemon
-
-      If you need to access the Zap API from another machine, then you can simply change the Local proxy address to the hosts IP address rather than the loop-back of localhost. This setting can be found in the Gui menu Tools -> Options -> Local proxy. Or in the following section of the `~/.ZAP/config.xml` file (handy if you are running headless). Line 2 and/or 3.  
-
-        {title="~/.ZAP/config.xml", linenos=on}
-            <proxy>
-               <ip>192.168.56.20</ip>
-               <port>8080</port>
-               <reverseProxy>
-                  <use>0</use>
-                  <ip>localhost</ip>
-                  <httpPort>80</httpPort>
-                  <httpsPort>443</httpsPort>
-               </reverseProxy>
-            </proxy>
-
-    You can then access the API like this:
-    
-    {linenos=off}
-       curl http://localhost:8080 # Providing ZAP is listening on port 8080
-
-  
-    This allows us to within our Behavioural, Acceptance tests, send requests programmatically directly to the ZAP HTTP API to do what ever we could do manually with the tool against the System Under Test (SUT).
- You can of course use Selenium 2 (WebDriver) also to drive browser tests and in parallel. I discussed this in ["Automating Specification by Example"](http://blog.binarymist.net/2014/02/22/automating-specification-by-example-for-net/#scope).
-
-    The ZAP API can be accessed directly or by any of the following client implementations:
-
-    * Node.JS (by way of [zaproxy](https://www.npmjs.com/package/zaproxy))
-    * Python
-    * PHP
-    * Ruby
-    * .Net [write-up](http://www.codeproject.com/Articles/708129/Automated-penetration-testing-in-the-Microsoft-sta) on codeproject and the [source](https://github.com/gustavorhm/ZapPenTester) (ZapPenTester) on the github gustavorhm account. It is easy to see how the API is started and used from the [Zap.cs](https://github.com/gustavorhm/ZapPenTester/blob/master/ZAPPenTester/Zap.cs) file.  
- There is also the [OWASP Secure TDD Project](https://www.owasp.org/index.php/OWASP_Secure_TDD_Project). A .Net solution. This project appears to either be abandoned or just very low activity. Feel free to offer to help though if you are a .Net developer. I am not sure I agree with one of the opening statements: "they need to cover all tests prior development". The approach that I would take would be to write some specification (test), execute it, (red) -> Write the smallest amount of code possible to make it pass (green) -> Add to the specification (test)(refactor). As you can see that is your red->green->refactor loop, with the smallest amount possible for each iteration.
-    * Java. A couple of client projects useful for seeing how to use the ZAP API: [zap-webdriver](https://github.com/continuumsecurity/zap-webdriver), [bdd-security](https://github.com/continuumsecurity/bdd-security)
-
-    For getting started with OWASP ZAPs API check the:
-
-    * [regression testing](https://github.com/zaproxy/zaproxy/wiki/SecRegTests) page of the zaproxy wiki on github.
-    * [API details](https://github.com/zaproxy/zaproxy/wiki/ApiDetails) page of the zaproxy wiki on github.
-
-2. Continuing No. 2 from above: This is adding another aspect to your existing TDD/BDD thought process. Instead of the business waiting until go-live before contracting the experts to beat up your system. Then tell you **your security sucks**. We take a proactive approach and move a lot of the effort traditionally performed at go-live **up front**, where you yourself as the developer can test and fix. Thus saving embarrassment and the business a lot of money.  
-BSIMM has some good [guidance on security testing](https://www.bsimm.com/online/ssdl/st/)
-
-What is so good about STDD and SBDD, is that it roles up Specifications, Design, Implementation and Verification all into one process. Thus working toward delivering each increment that is truly ["Done"](http://blog.binarymist.net/2013/03/02/how-to-increase-software-developer-productivity/#definitionOfDone). Driving development with tests is not about testing right? It is about creating code that is testable. Testable code is inherently well designed and gives us the ability to reason about the state at any given time.  
+What is so good about STDD and SBDD, is that it roles up Specifications, Design, Implementation and Verification all into one process. Thus working toward delivering each increment that is truly ["Done"](http://blog.binarymist.net/2013/03/02/how-to-increase-software-developer-productivity/#definitionOfDone). Driving development with tests is not about testing! It is about creating code that is testable. Testable code is inherently well designed and gives us the ability to reason about the state at any given time.  
 OpenSSL Heartbleed and Apples Goto Fail could have been prevented if (S)TDD was used. Check out Mike Bland's [excellent study and POC](http://martinfowler.com/articles/testing-culture.html).
 
+BSIMM has some good [guidance on security testing](https://www.bsimm.com/online/ssdl/st/) also.
+
 <!--- Other Resources: http://www.continuumsecurity.net/services.html#testing -->
+
+### Security Regression Testing {#process-agile-development-and-practices-security-regression-testing}
+
+If you are using NodeJS and have not already got your tests running as part of a CI build or pre-commit hook, check out the Consuming Free and Open Source [Tooling](#web-applications-countermeasures-consuming-free-and-open-source-tooling) section for some info on how to set this up.
+
+Now as I see it, this is one of the biggest wins you can take for minimum expenditure. You can simply continue to use your existing automated test suites and frameworks. All you have to do is add a **security focused test API** into the mix. You can continue to use Your chosen (language specific) TDD/BDD framework of choice. Just proxy your existing tests through the security API. Then simply tell the API to attack your application, targeting all the known vulnerabilities that the API knows about. The API now understands your applications external facing structure due to the fact that it has proxied all your requests and responses. The security API already exists. All you have to do is use it.
+
+I created a proof of concept (POC) using the existing NodeGoat purposely vulnerable web application written in NodeJS and used the RESTful API of OWASP Zap to proxy the selenium tests, then launch it's own tests. The "own tests" are already part of Zap. It's all done for you for free. We'll discuss soon how to setup the NodeGoat Web Application along with the Zap REST API.
+
+I demonstrate this to many of my clients and in my training classes.
+
+[OWASP ZAP](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project) (which also comes [pre-installed on Kali Linux](http://blog.binarymist.net/2014/03/29/up-and-running-with-kali-linux-and-friends/#zap) ) is a particularly useful tool for security regression testing. It not only provides a manual tool similar to the likes of Burp Suite + with many other features. ZAP also has a RESTful API with the ability to run as a HTTP proxy
+
+The ZAP API can be accessed directly or by any of the following client implementations:
+
+* Node.JS (by way of [zaproxy](https://www.npmjs.com/package/zaproxy)). You can see this all in my code.
+* Python
+* PHP
+* Ruby
+* .Net [write-up](http://www.codeproject.com/Articles/708129/Automated-penetration-testing-in-the-Microsoft-sta) on codeproject and the [source](https://github.com/gustavorhm/ZapPenTester) (ZapPenTester) on the github gustavorhm account. It is easy to see how the API is started and used from the [Zap.cs](https://github.com/gustavorhm/ZapPenTester/blob/master/ZAPPenTester/Zap.cs) file.  
+ There is also the [OWASP Secure TDD Project](https://www.owasp.org/index.php/OWASP_Secure_TDD_Project). A .Net solution. This project appears to either be abandoned or just very low activity. Feel free to offer to help though if you are a .Net developer.
+
+There are links to the API clients from the zaproxy wiki on [github](https://github.com/zaproxy/zaproxy/wiki/ApiDetails)
+
+#### Zap REST API Regression Testing NodeGoat
+
+My setup was done with fetching the NodeGoat source code onto a physical machine with Zap on a Kali Linux VirtualBox guest on the same physical machine.
+
+![Zapping NodeGoat](app/assets/images/Zap128x128.png)
+
+
+
+There are details on getting Zap running in a docker container on the [Zap wiki](https://github.com/zaproxy/zaproxy/wiki/Docker)
+
+
+##### NodeGoat running on your local machine
+
+&nbsp;
+
+In VirtualBox you will need a Host-only Network added. By default this will be called `vboxnet0` in your VirtualBox settings. an `ifconfig` on the host will reveal a new network interface called `vboxnet0`. This allows guests and host to communicate with each other without anyone outside of the host network interface being able to see the communications. In this example we set the Adapter IP address to `192.168.56.1`. That address will be assigned to your host as an additional network interface.
+
+With this step taken, you will also need to make sure the `hostName` property in the `config/env/all.js` is set to the same IP address, as this IP address is used in the regression test(s) to inform the selenium web driver where our NodeGoat is listening from. In addition to that, requests are proxied through the Zap API to this same address.
+
+In this example we enable the DHCP server on the Host-only Network by just checking the checkbox. The DHCP address will be `192.168.56.2`
+
+If you have a firewall running, You will need to allow TCP in on interface `vboxnet0`. From: `192.168.56.0/24` To: `192.168.56.1` on port `4000` (NodeGoat) and `35729` (LiveReload)
+
+##### Zap running on a local VirtualBox guest
+
+&nbsp;
+
+On the guest machine in the VirtualBox Network settings, set one of the Adapter tabs so that the network adapter is attached to Host-only Adapter. Once the networking is restarted on this guest, it will have a network interface bound to something like `192.168.56.20` (specified by the `192.168.56.0/24` range decided above when you setup the `vboxnet0` interface).
+
+The Zap local proxy will need to be bound to the same IP address and port that the guest Host-only adapter is bound to in order to have requests it receives sent via the Host-only adapter to the host that NodeGoat is listening on. `192.168.56.1` in this example. By default the Zap local proxy will be set to `127.0.0.1`. Change it to the VMs externally visible network interface. So you can set the Zap local proxy and port to `192.168.56.20` and `8080` for this example via the Zap GUI:  
+Tools -> Options -> Local proxy.  
+The other way to do it is via the `~/ZAP/config.xml` file in the following section:
+
+{linenos=off}
+    <proxy>
+       <ip>192.168.56.20</ip>
+       <port>8080</port>        
+    </proxy>
+
+
+Update the `zapHostName` and `zapPort` properties in file `config/env/test.js` to reflect the host name (or IP address) and port that the Zap API is listening on within your virtual guest. If you want to debug the security regression tests, add the same properties to the `config/env/development.js` file.
+
+Start Zap the usual way. Zap can and probably should be scripted to start automatically on each test or suite run, also reset the database so you have a known state if you are planning on using the API in your development team. Zap can be terminated via its API and is usually good practice to do so on each test or suite run. If you don't have a UI:
+
+{linenos=off, lang=Bash}
+    owasp-zap -daemon
+
+Now you should be able to browse the Zap API from either machine at `http://192.168.56.20:8080/`.
+
+##### Start the Security Regression test(s) from your local machine
+
+&nbsp;
+
+For each test run, this is the usual set of steps:
+
+{linenos=off, lang=Bash}
+    # In one terminal create clean state in datastore:
+    grunt db-reset
+    # Then start NodeGoat:
+    npm start
+
+{linenos=off, lang=Bash}
+    # In another terminal start the security regression test(s):
+    grunt testsecurity
+
+By default the XSS vulnerabilities exist in the `/profile` route. By running `grunt testsecurity`, the `test/security/profile-test.js` will be run and you should be informed of a failed test with the following output:
+
+{title="Zap Found Vulnerabilities", linenos=off, lang=Bash}
+    me@myBox in Source/NodeGoat git:(workshop) ✗  grunt testsecurity
+    Running "env:test" (env) task
+
+    Running "mochaTest:security" (mochaTest) task
+
+
+      profile regression test suite
+    Scan 0 is 26% complet with 10 alerts.
+    Scan 0 is 53% complet with 10 alerts.
+    Scan 0 is 100% complet with 10 alerts.
+    We are finishing scan 0. Please see the report for further details.
+    About to write report.
+    Scan 0 is 100% complet with 10 alerts.
+    Scan 0 is 100% complet with 10 alerts.
+    Writing report to Source/NodeGoat/test/security/report_2015-11-24-20-57.html
+
+    Search the generated report for "/profile" to see the 7 vulnerabilities that exceed the user defined threshhold of: 3
+        1) Should not exceed the decided threshold of vulnerabilities known to Zap
+
+
+      0 passing (28s)
+      1 failing
+
+      1) profile regression test suite Should not exceed the decided threshold of vulnerabilities known to Zap:
+         Uncaught AssertionError: expected '10' to be below or equal3
+          at Assertion.fail (node_modules/should/lib/assertion.js:180:17)
+          at Assertion.prop.value (node_modules/should/lib/assertion.js:65:17)
+          at onCompletion (test/security/profile-test.js:124:38)
+          at node_modules/async/lib/async.js:721:13
+          at node_modules/async/lib/async.js:52:16
+          at node_modules/async/lib/async.js:269:32
+          at node_modules/async/lib/async.js:44:16
+          at node_modules/async/lib/async.js:718:17
+          at node_modules/async/lib/async.js:167:37
+          at test/security/profile-test.js:268:41
+
+
+    Warning: Task "mochaTest:security" failed. Used --force, continuing.
+
+    Done, but with warnings.
+
+Once you:
+
+1. Fix the XSS vulnerabilities in the `/profile` route, explained in the NodeGoat [Tutorial Guide](http://nodegoat.herokuapp.com/tutorial/a3#source-code-example)
+2. Restart Zap
+3. Reset the datastore
+4. Restart NodeGoat
+5. Rerun the security regression test(s)
+
+You should be informed of a successful test with the following output:
+
+![Zapping NodeGoat](app/assets/images/SuccessfulSecurityProfileTest.png)
+
+{title="Fixed Vulnerabilities", linenos=off, lang=Bash}
+    me@myBox in Source/NodeGoat git:(workshop) ✗  grunt testsecurity
+    Running "env:test" (env) task
+    
+    Running "mochaTest:security" (mochaTest) task
+    
+    
+      profile regression test suite
+    Scan 0 is 26% complet with 3 alerts.
+    Scan 0 is 66% complet with 3 alerts.
+    Scan 0 is 100% complet with 3 alerts.
+    We are finishing scan 0. Please see the report for further details.
+    About to write report.
+    Scan 0 is 100% complet with 3 alerts.
+    Scan 0 is 100% complet with 3 alerts.
+    Writing report to Source/NodeGoat/test/security/report_2015-11-24-20-52.html
+    
+        ✓ Should not exceed the decided threshold of vulnerabilities known to Zap (21106ms)
+    
+    
+      1 passing (28s)
+    
+    
+    Done, without errors.
+
+
 
 &nbsp;
 

@@ -478,7 +478,7 @@ An excellent way of gaining additional trust is to fix the problem that does not
 Grab your self a cleaners uniform and you have got access to just about everything within an organisation. It really is that simple. Often when my wife was doing commercial cleaning and she walked into a room at 20:00 - 21:00 with a few developers left working away. They would sometimes be surprised because they had not been told that the cleaners were coming, let-a-lone, who they were. The response would usually go something like "Oh, it is just the cleaners". Why? Because they had their free pass... a cleaners uniform, maybe a broom or vacuum cleaner or mop.
 
 ### Tailgating {#people-identify-risks-tailgating}
-![](images/ThreatTags/easy-common-easy-severe.png)
+![](images/ThreatTags/easy-common-easy-moderate.png)
 
 Effective ways at getting into a work premises.
 
@@ -642,6 +642,7 @@ T> As you can see below, SET also has a few other options for helping an attacke
     set:phishing>
 
 ### Infectious Media {#people-identify-risks-infectious-media}
+![](images/ThreatTags/average-widespread-average-severe.png)
 
 Infectious media is generally thought about as a tool used by:
 

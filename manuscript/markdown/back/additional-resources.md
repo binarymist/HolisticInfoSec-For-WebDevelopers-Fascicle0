@@ -51,6 +51,12 @@ Man page is very good [http://linux.die.net/man/1/nmap](http://linux.die.net/man
 Finding details on people: [http://searchenginez.com/findpeople_newzealand.html](http://searchenginez.com/findpeople_newzealand.html)  
 Finding details on companies: [https://www.business.govt.nz/companies/](https://www.business.govt.nz/companies/)
 
+**OpenSSL Heartbleed and Apples Goto Fail** could have been prevented if (S)TDD was used. Check out Mike Bland's excellent study and POC  
+[http://martinfowler.com/articles/testing-culture.html](http://martinfowler.com/articles/testing-culture.html).
+
+**BSIMM has some good guidance on security testing**  
+[https://www.bsimm.com/online/ssdl/st/](https://www.bsimm.com/online/ssdl/st/)
+
 **Essentials for Creating and Maintaining a High Performance Development Team**  
 [http://blog.binarymist.net/2014/01/25/essentials-for-creating-and-maintaining-a-high-performance-development-team/](http://blog.binarymist.net/2014/01/25/essentials-for-creating-and-maintaining-a-high-performance-development-team/)
 

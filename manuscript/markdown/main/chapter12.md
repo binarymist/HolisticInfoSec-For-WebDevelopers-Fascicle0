@@ -299,10 +299,11 @@ G>
 G> So take your pick of the following three commands:  
 G> Create `./hashtocrack.txt` and put the hash(s) you want cracked in it. If you still have the wordlist we created in the [Brute Forcing](#people-identify-risks-weak-password-strategies-brute-forcing-hydra) section in the People chapter, just use it.  
 G> 1. `hashcat -m 0 ./hashtocrack.txt ./wordlist-to-throw-at-dvwa`  
-G>   `-m 0` means MD5 to hashcat.
+G>    `-m 0` means MD5 to hashcat.  
 G> 2. `[algorithm]` for next command in this case will be `MD5`  
-G>   `findmyhash [algorithm] -h <hash_value>`
-G> 3. `john --format=raw-MD5 /root/hashtocrack.txt wordlist-to-throw-at-dvwa --show`
+G>    `findmyhash [algorithm] -h <hash_value>`  
+G>    `findmyhash` is a cracker that queries online lists.  
+G> 3. `john --format=raw-MD5 /root/hashtocrack.txt wordlist-to-throw-at-dvwa --show`  
 G> This gives us the super secure password of "admin"
 G>
 G> In order to get login, we actually need the username. In this case they were the same, but for some other users they were not. So our last query.  
@@ -3140,7 +3141,7 @@ RetireJS has the following:
              "pre-commit": ["lint", "validate"]
           }
         
-      Keep in mind that `pre-commit` hooks can be very useful for all sorts of checking of things immediately before your code is committed. For example running security tests mentioned previously with the [OWASP ZAP API](#process-agile-development-and-practices-security-test-driven-development).
+      Keep in mind that `pre-commit` hooks can be very useful for all sorts of checking of things immediately before your code is committed. For example running security tests mentioned previously with the [OWASP ZAP API](#process-agile-development-and-practices-security-regression-testing).
 2. Chrome extension
 3. Firefox extension
 4. Grunt plugin
