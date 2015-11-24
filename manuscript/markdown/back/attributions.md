@@ -23,9 +23,6 @@
 
 ## [Process](#process-and-practises)
 
-**Every web server has its own specific ordering of header fields**  
-[https://www.owasp.org/index.php/Testing_for_Web_Application_Fingerprint_(OWASP-IG-004)](https://www.owasp.org/index.php/Testing_for_Web_Application_Fingerprint_%28OWASP-IG-004%29)
-
 **The fact that a WAF is in place** is often given away by simply inspecting the responses from the server side  
 [https://pentestlab.wordpress.com/2013/01/13/detecting-web-application-firewalls/](https://pentestlab.wordpress.com/2013/01/13/detecting-web-application-firewalls/)
 

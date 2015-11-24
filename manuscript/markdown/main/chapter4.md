@@ -61,7 +61,7 @@ No where near as configurable as a dedicated port scanner, but still scans ports
 
 Lets look at some uses.
 
-{linenos=off}
+{linenos=off, lang=Bash}
     # -z is the argument to instruct for a port scan.
     # 1-1000 is the port range
     # -r randomises the order of port scans to make it a little less obvious
@@ -82,11 +82,11 @@ This is an example of using nmap against a hardened target with a SSH daemon and
 
 As you can see with using the aggressive option `-A` the pen tester makes a lot of noise and if the logs are being casually inspected by a system administrator, the chance of noticing the probes with `nmap` written all over them is very likely.
 
-{title="nmap command", linenos=off}
+{title="nmap command", linenos=off, lang=Bash}
     # Attempt to detect hardened target OS and services running on it.
     nmap -A <target>
 
-{title="nmap result", linenos=off}
+{title="nmap result", linenos=off, lang=Bash}
     Nmap scan report for <target> (<target ip>)
     Host is up (0.0014s latency).
     rDNS record for <target ip>: <target>
@@ -181,7 +181,7 @@ As you can see with using the aggressive option `-A` the pen tester makes a lot 
 
 Now using the service detection option `-sV` the results provide almost as much information. Even with the intensity maxed out, the pen tester makes very little noise and if the logs are being even closely inspected, the chance of missing these probes is likely. The only part that really stands out at all is the `sshd` auth request failure. As there are only two of these lines, it's likely that a system administrator wouldn't think that much of it. Without the `sshd` entries, this would fit into the Semi-Active form mentioned above.
 
-{title="nmap command", linenos=off}
+{title="nmap command", linenos=off, lang=Bash}
     nmap -sV --version-intensity 9 <target>
 
 {title="nmap result", linenos=off}
@@ -207,7 +207,7 @@ Now using the service detection option `-sV` the results provide almost as much 
 
 This is an example of using nmap against an un-hardened target. I discuss in later chapters how to go about the hardening process. I have also provided a lot of information around hardening servers on my [blog](http://blog.binarymist.net/).
 
-{title="nmap command", linenos=off}
+{title="nmap command", linenos=off, lang=Bash}
     # Attempt to detect un-hardened target OS and services running on it.
     nmap -A <target>
 
@@ -400,7 +400,7 @@ It is also kind of obvious as to which IP address the attack is coming from if t
 
 Using too many decoys will slow your scan down and possibly make the results less accurate. Some ISPs may filter out your spoofed packets.
 
-{linenos=off}
+{linenos=off, lang=Bash}
     # Make sure your decoys are up unless you want to DOS your target.
     nmap -D <decoyip1>,<decoyip2>,<decoyip3>,<decoyip4>,<decoyip5>,ME <target>
 
@@ -410,7 +410,7 @@ Using too many decoys will slow your scan down and possibly make the results les
 
 There are a few things you need to know in order to use the idle scan and be able to reason about what is going to happen. This is a side-channel attack which exploits predictable IP fragmentation ID sequence generation on the zombie (decoy) host to glean information about the open ports on the target. This is a really clever yet simple technique. Intrusion Detection Systems (IDSs) will display the scan as coming from the zombie machine you specify (which must be up and meet certain criteria). Check the [Additional Resources](#additional-resources-process) chapter for further details.
 
-{linenos=off}
+{linenos=off, lang=Bash}
     # 1.1.1.1:1234 is the IP address and port of the decoy machine.
     nmap -sI 1.1.1.1:1234 <target>
 
@@ -424,7 +424,7 @@ Also feel free to try the same requests against the likes of the Metasploitable 
 
 &nbsp;
 
-{title="Request", linenos=off}
+{title="Request", linenos=off, lang=Bash}
     # Run netcat against your targets web server
     nc <target> 80
     # Now you need to issue the request.
@@ -433,7 +433,7 @@ Also feel free to try the same requests against the likes of the Metasploitable 
 
 Now if the target is running Apache 2.2.3, then you may see something like the following:
 
-{title="Response", linenos=off}
+{title="Response", linenos=off, lang=HTTP}
     HTTP/1.1 400 Bad Request
     Date: Thu, 29 Oct 2015 04:44:09 GMT
     Server: Apache/2.2.3 (CentOS)
@@ -442,7 +442,7 @@ Now if the target is running Apache 2.2.3, then you may see something like the f
 
 You can not rely on the Server field though. It could be obfuscated:
 
-{title="Response", linenos=off}
+{title="Response", linenos=off, lang=HTTP}
     403 HTTP/1.1 Forbidden
     Date: Thu, 29 Oct 2015 04:44:09 GMT
     Server: Unknown-Webserver/1.0
@@ -451,7 +451,7 @@ You can not rely on the Server field though. It could be obfuscated:
 
 Or if your target is running an Express server, you will probably see something like:
 
-{title="Response", linenos=off}
+{title="Response", linenos=off, lang=HTTP}
     HTTP/1.1 200 OK
     X-Powered-By: Express
     Content-Type: text/html; charset=utf-8
@@ -472,12 +472,12 @@ Every web server has its own specific ordering of header fields. This is usually
 
 Now if we try some malformed requests or requests of non existent resources:
 
-{title="Request (not malformed)", linenos=off}
+{title="Request (not malformed)", linenos=off, lang=HTTP}
     # Express is using HTTP 1.1
     nc <experss 4.0 server> 80
     GET / HTTP/1.1
 
-{title="Response", linenos=off}
+{title="Response", linenos=off, lang=HTTP}
     HTTP/1.1 200 OK
     X-Powered-By: Express
     Content-Type: text/html; charset=utf-8
@@ -488,13 +488,13 @@ Now if we try some malformed requests or requests of non existent resources:
     
     # We get the page markup here.
 
-{title="Request (malformed)", linenos=off}
+{title="Request (malformed)", linenos=off, lang=HTTP}
     nc <experss 4.0 server> 80
     GET / HTTP/3.0
 
 We get a closed connection, but we still get the resource if there is one
 
-{title="Response", linenos=off}
+{title="Response", linenos=off, lang=HTTP}
     HTTP/1.1 200 OK
     X-Powered-By: Express
     Content-Type: text/html; charset=utf-8
@@ -509,11 +509,11 @@ We get a closed connection, but we still get the resource if there is one
 
 Now we try an Apache server. Different versions have different behaviour also.
 
-{title="Request (not malformed)", linenos=off}
+{title="Request (not malformed)", linenos=off, lang=Bash}
     nc <apache 2.2.3 server> 80
     GET / HTTP/1.0
 
-{title="Response", linenos=off}
+{title="Response", linenos=off, lang=HTTP}
     HTTP/1.1 200 OK
     Date: Thu, 29 Oct 2015 05:02:03 GMT
     Server: Apache/2.2.3 (CentOS)
@@ -527,7 +527,7 @@ Now we try an Apache server. Different versions have different behaviour also.
     nc <apache 2.2.3 server> 80
     GET / HTTP/1.1
 
-{title="Response", linenos=off}
+{title="Response", linenos=off, lang=HTTP}
     HTTP/1.1 400 Bad Request
     Date: Thu, 29 Oct 2015 05:01:51 GMT
     Server: Apache/2.2.3 (CentOS)
@@ -552,19 +552,19 @@ Interesting isn't it? Every server type answers in a different way.
 
 Now if we use a non-existent protocol:
 
-{title="Request", linenos=off}
+{title="Request", linenos=off, lang=HTTP}
     nc <express 4.0 server> 80
     GET / CATSFORDINNER/1.1
     # Express ignores cats for dinner. No response
 
 
-{title="Request", linenos=off}
+{title="Request", linenos=off, lang=HTTP}
     nc <apache 2.2.3 server> 80
     GET / CATSFORDINNER/1.0
 
 Now we see Apache is `200 OK` happy to have cats for dinner.
 
-{title="Response", linenos=off}
+{title="Response", linenos=off, lang=HTTP}
     HTTP/1.1 200 OK
     Date: Thu, 29 Oct 2015 05:12:51 GMT
     Server: Apache/2.2.3 (CentOS)
@@ -813,7 +813,7 @@ It depends on which moduels you use as to what information you receive.
 
 When you run recon-ng with no arguments, you will be presented with the titles of the collections of the included modules and you'll be dropped at a recon-ng prompt showing the current workspace you are in. It looks like:
 
-{linenos=off}
+{linenos=off, lang=Bash}
     [recon-ng][default] > 
 
 Type:
@@ -961,7 +961,7 @@ To see what records you have already `add`ed, type `show [item]` (where `item` i
 
 To delete an item you have added: `del [item] [rowid]`, for example:
 
-{linenos=off}
+{linenos=off, lang=Bash}
     del domains 1 # To remove the first record 
 
 You can also query the workspace database with the `query` command. Just type it and you will get some help and be running in no time. Many of the commands can be performed using recon-ng commands or by using the `query` command and building up SQL queries.
@@ -988,7 +988,7 @@ You will be notified when you attempt to `run` if you need an API key. Details o
 
 Before you add any social media API keys, you will want to create throwaway social media accounts, because many of the social media sites you will perform recon on will show the visiting user. You want that visiting user to be your throwaway account.
 
-{linenos=off}
+{linenos=off, lang=Bash}
     # To show your currently installed API keys:
     keys list
     # To add an API key:
@@ -1084,7 +1084,7 @@ Along with its scripts and ability to extend provides a very powerful and easy t
 
 msfconsole has many modules out of the box for poking and prodding at things (scanning for vulnerabilities). Once you have started the msfconsole dependencies, `postgresql` and `metasploit`, start `msfconsole`. Show the modules available:
 
-{title="using modules", linenos=off}
+{title="using modules", linenos=off, lang=Bash}
     show auxiliary
     # Will list all the auxiliary modules available.
     # which include many scanners.
@@ -1270,7 +1270,21 @@ There are three aspects I would like to focus on here. You can simply continue t
     2. Run ZAP from the command line using the -daemon flag
     
         {linenos=off}
-            owasp-zap -daemon
+            owasp-zap --daemon
+
+      If you need to access the Zap API from another machine, then you can simply change the Local proxy address to the hosts IP address rather than the loop-back of localhost. This setting can be found in the Gui menu Tools -> Options -> Local proxy. Or in the following section of the `~/.ZAP/config.xml` file (handy if you are running headless). Line 2 and/or 3.  
+
+        {title="~/.ZAP/config.xml", linenos=on}
+            <proxy>
+               <ip>192.168.56.20</ip>
+               <port>8080</port>
+               <reverseProxy>
+                  <use>0</use>
+                  <ip>localhost</ip>
+                  <httpPort>80</httpPort>
+                  <httpsPort>443</httpsPort>
+               </reverseProxy>
+            </proxy>
 
     You can then access the API like this:
     
@@ -1287,14 +1301,14 @@ There are three aspects I would like to focus on here. You can simply continue t
     * Python
     * PHP
     * Ruby
-    * .Net [write-up](http://www.codeproject.com/Articles/708129/Automated-penetration-testing-in-the-Microsoft-sta), [source](https://github.com/gustavorhm/ZapPenTester). It is easy to see how the API is started and used [here](https://github.com/gustavorhm/ZapPenTester/blob/master/ZAPPenTester/Zap.cs).  
+    * .Net [write-up](http://www.codeproject.com/Articles/708129/Automated-penetration-testing-in-the-Microsoft-sta) on codeproject and the [source](https://github.com/gustavorhm/ZapPenTester) (ZapPenTester) on the github gustavorhm account. It is easy to see how the API is started and used from the [Zap.cs](https://github.com/gustavorhm/ZapPenTester/blob/master/ZAPPenTester/Zap.cs) file.  
  There is also the [OWASP Secure TDD Project](https://www.owasp.org/index.php/OWASP_Secure_TDD_Project). A .Net solution. This project appears to either be abandoned or just very low activity. Feel free to offer to help though if you are a .Net developer. I am not sure I agree with one of the opening statements: "they need to cover all tests prior development". The approach that I would take would be to write some specification (test), execute it, (red) -> Write the smallest amount of code possible to make it pass (green) -> Add to the specification (test)(refactor). As you can see that is your red->green->refactor loop, with the smallest amount possible for each iteration.
     * Java. A couple of client projects useful for seeing how to use the ZAP API: [zap-webdriver](https://github.com/continuumsecurity/zap-webdriver), [bdd-security](https://github.com/continuumsecurity/bdd-security)
 
     For getting started with OWASP ZAPs API check the:
 
-    * [regression testing](https://code.google.com/p/zaproxy/wiki/SecRegTests)
-    * [API details](https://code.google.com/p/zaproxy/wiki/ApiDetails)
+    * [regression testing](https://github.com/zaproxy/zaproxy/wiki/SecRegTests) page of the zaproxy wiki on github.
+    * [API details](https://github.com/zaproxy/zaproxy/wiki/ApiDetails) page of the zaproxy wiki on github.
 
 2. Continuing No. 2 from above: This is adding another aspect to your existing TDD/BDD thought process. Instead of the business waiting until go-live before contracting the experts to beat up your system. Then tell you **your security sucks**. We take a proactive approach and move a lot of the effort traditionally performed at go-live **up front**, where you yourself as the developer can test and fix. Thus saving embarrassment and the business a lot of money.  
 BSIMM has some good [guidance on security testing](https://www.bsimm.com/online/ssdl/st/)

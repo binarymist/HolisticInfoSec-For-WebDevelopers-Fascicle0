@@ -296,12 +296,13 @@ G> `1' UNION SELECT first_name, password FROM users WHERE first_name LIKE '%`
 G>
 G> Lets determine the hash type with hash-identifier. Just run it and throw the hash at it and it will tell you that it is most likely a simple MD5. which is a one-way hashing function with no Key derivation. So very quick to crack.
 G>
-G> So take your pick of the following two commands:  
+G> So take your pick of the following three commands:  
 G> Create `./hashtocrack.txt` and put the hash(s) you want cracked in it. If you still have the wordlist we created in the [Brute Forcing](#people-identify-risks-weak-password-strategies-brute-forcing-hydra) section in the People chapter, just use it.  
-G> `hashcat -m 0 ./hashtocrack.txt ./wordlist-to-throw-at-dvwa`  
-G> `[algorithm]` for next command in this case will be `MD5`  
-G> `findmyhash [algorithm] -h <hash_value>`  
-G> `-m 0` means MD5 to hashcat.  
+G> 1. `hashcat -m 0 ./hashtocrack.txt ./wordlist-to-throw-at-dvwa`  
+G>   `-m 0` means MD5 to hashcat.
+G> 2. `[algorithm]` for next command in this case will be `MD5`  
+G>   `findmyhash [algorithm] -h <hash_value>`
+G> 3. `john --format=raw-MD5 /root/hashtocrack.txt wordlist-to-throw-at-dvwa --show`
 G> This gives us the super secure password of "admin"
 G>
 G> In order to get login, we actually need the username. In this case they were the same, but for some other users they were not. So our last query.  
@@ -3071,6 +3072,8 @@ Similarly to [Doppelganger Domains](#network-identify-risks-doppelganger-domains
 Make sure you are typing the correct package name. Copy -> Pasting works.
 
 #### Tooling {#web-applications-countermeasures-consuming-free-and-open-source-tooling}
+
+_Todo_ Add nsp
 
 For **NodeJS developers**: Keep your eye on the [nodesecurity advisories](https://nodesecurity.io/advisories). Identified security issues can be posted to [NodeSecurity report](https://nodesecurity.io/report).
 
