@@ -1247,19 +1247,19 @@ Also consider creating evil test conditions. Often developers do not have the mi
 
 ### Security Focussed TDD
 
-Once you have your evil test conditions defined, as usual once your normal test conditions are ready, you start the TDD cycling, but now augmenting those usual test conditions with the evil ones.
+Once you have your evil test conditions defined, as usual once your normal test conditions are ready, you start the Test Driven Development (TDD) cycling, but now augmenting those usual test conditions with the evil ones.
 
 ![](images/red_green_refactor.jpg)
 
 Adding **security focused TDD/BDD/ATDD** tests. This is the same amount of work as any other developer test driven development, but it has the same huge benefit of bringing the finding of not just faults, but security faults, from where it is very expensive to fix:  
 
-    ![](images/CostOfChange.png)  
+![](images/CostOfChange.png)  
 
-    to where it is the cheapest possible place to fix. Putting legs to your test conditions with automatable security focussed "[Given, When, Thens](http://blog.binarymist.net/2012/03/24/how-to-optimise-your-testing-effort/#planningTheTestEffort)":
+to where it is the cheapest possible place to fix. Putting legs to your test conditions with automatable security focussed "[Given, When, Thens](http://blog.binarymist.net/2012/03/24/how-to-optimise-your-testing-effort/#planningTheTestEffort)":
 
-    ![](images/CostOfChange-WithSTDD.png)  
+![](images/CostOfChange-WithSTDD.png)  
 
-Now instead of the business waiting until go-live before contracting the experts to beat up your system, then telling you **your security sucks**, we take a proactive approach (as the self managing team that we are) and move a lot of the effort traditionally performed at go-live **up front**, where you yourself as the developer can test and fix. Thus saving embarrassment and the business a lot of money. This is what being a professional developer is all about.
+Now instead of the business waiting until go-live before contracting the experts to beat up your system, then telling you **your security sucks**, we take a proactive approach (as the self managing team that we are) and move a lot of the effort traditionally performed at go-live, to **up front**, where you yourself as the developer can test and fix. Thus saving embarrassment and the business a lot of money. This is what being a professional developer is all about. Taking the initiative and leading from the front.
 
 What is so good about STDD and SBDD, is that it roles up Specifications, Design, Implementation and Verification all into one process. Thus working toward delivering each increment that is truly ["Done"](http://blog.binarymist.net/2013/03/02/how-to-increase-software-developer-productivity/#definitionOfDone). Driving development with tests is not about testing! It is about creating code that is testable. Testable code is inherently well designed and gives us the ability to reason about the state at any given time.  
 OpenSSL Heartbleed and Apples Goto Fail could have been prevented if (S)TDD was used. Check out Mike Bland's [excellent study and POC](http://martinfowler.com/articles/testing-culture.html).
@@ -1274,51 +1274,44 @@ If you are using NodeJS and have not already got your tests running as part of a
 
 Now as I see it, this is one of the biggest wins you can take for minimum expenditure. You can simply continue to use your existing automated test suites and frameworks. All you have to do is add a **security focused test API** into the mix. You can continue to use Your chosen (language specific) TDD/BDD framework of choice. Just proxy your existing tests through the security API. Then simply tell the API to attack your application, targeting all the known vulnerabilities that the API knows about. The API now understands your applications external facing structure due to the fact that it has proxied all your requests and responses. The security API already exists. All you have to do is use it.
 
-I created a proof of concept (POC) using the existing NodeGoat purposely vulnerable web application written in NodeJS and used the RESTful API of OWASP Zap to proxy the selenium tests, then launch it's own tests. The "own tests" are already part of Zap. It's all done for you for free. We'll discuss soon how to setup the NodeGoat Web Application along with the Zap REST API.
+I created a [proof of concept (POC)](https://github.com/binarymist/NodeGoat#optional-security-regression-testing-with-zap-api) using the existing NodeGoat purposely vulnerable web application written in NodeJS and used the RESTful API of OWASP Zap to proxy the selenium tests, then launch it's own tests. The "own tests" are already part of Zap. It's all done for you for free. We'll discuss soon how to set-up the NodeGoat Web Application along with the Zap REST API.
 
 I demonstrate this to many of my clients and in my training classes.
 
-[OWASP ZAP](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project) (which also comes [pre-installed on Kali Linux](http://blog.binarymist.net/2014/03/29/up-and-running-with-kali-linux-and-friends/#zap) ) is a particularly useful tool for security regression testing. It not only provides a manual tool similar to the likes of Burp Suite + with many other features. ZAP also has a RESTful API with the ability to run as a HTTP proxy
+[OWASP ZAP](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project) (which also comes [pre-installed on Kali Linux](http://blog.binarymist.net/2014/03/29/up-and-running-with-kali-linux-and-friends/#zap) ) is a particularly useful tool for security regression testing. It not only provides a manual tool similar to the likes of Burp Suite + with many other features.
 
 The ZAP API can be accessed directly or by any of the following client implementations:
 
-* Node.JS (by way of [zaproxy](https://www.npmjs.com/package/zaproxy)). You can see this all in my code.
+* Node.JS (by way of [zaproxy](https://www.npmjs.com/package/zaproxy)). You can see this all in [my code](https://github.com/binarymist/NodeGoat/tree/master/test/security).
 * Python
 * PHP
 * Ruby
-* .Net [write-up](http://www.codeproject.com/Articles/708129/Automated-penetration-testing-in-the-Microsoft-sta) on codeproject and the [source](https://github.com/gustavorhm/ZapPenTester) (ZapPenTester) on the github gustavorhm account. It is easy to see how the API is started and used from the [Zap.cs](https://github.com/gustavorhm/ZapPenTester/blob/master/ZAPPenTester/Zap.cs) file.  
- There is also the [OWASP Secure TDD Project](https://www.owasp.org/index.php/OWASP_Secure_TDD_Project). A .Net solution. This project appears to either be abandoned or just very low activity. Feel free to offer to help though if you are a .Net developer.
+* .Net [write-up](http://www.codeproject.com/Articles/708129/Automated-penetration-testing-in-the-Microsoft-sta) on codeproject and the [source](https://github.com/gustavorhm/ZapPenTester) (ZapPenTester) on the github gustavorhm account. It is easy to see how the API is started and used from the [Zap.cs](https://github.com/gustavorhm/ZapPenTester/blob/master/ZAPPenTester/Zap.cs) file.
+
+There is also the [OWASP Secure TDD Project](https://www.owasp.org/index.php/OWASP_Secure_TDD_Project). A .Net solution. This project appears to either be abandoned or just very low activity. Feel free to offer to help though if you are a .Net developer.
 
 There are links to the API clients from the zaproxy wiki on [github](https://github.com/zaproxy/zaproxy/wiki/ApiDetails)
 
 #### Zap REST API Regression Testing NodeGoat
 
-My setup was done with fetching the NodeGoat source code onto a physical machine with Zap on a Kali Linux VirtualBox guest on the same physical machine.
+My set-up was done with fetching the NodeGoat source code onto a physical machine with Zap on a Kali Linux VirtualBox guest on the same physical machine.
 
-![Zapping NodeGoat](app/assets/images/Zap128x128.png)
-
-
-
-There are details on getting Zap running in a docker container on the [Zap wiki](https://github.com/zaproxy/zaproxy/wiki/Docker)
+There are also details on getting Zap running in a docker container on the [Zap wiki](https://github.com/zaproxy/zaproxy/wiki/Docker)
 
 
 ##### NodeGoat running on your local machine
-
-&nbsp;
 
 In VirtualBox you will need a Host-only Network added. By default this will be called `vboxnet0` in your VirtualBox settings. an `ifconfig` on the host will reveal a new network interface called `vboxnet0`. This allows guests and host to communicate with each other without anyone outside of the host network interface being able to see the communications. In this example we set the Adapter IP address to `192.168.56.1`. That address will be assigned to your host as an additional network interface.
 
 With this step taken, you will also need to make sure the `hostName` property in the `config/env/all.js` is set to the same IP address, as this IP address is used in the regression test(s) to inform the selenium web driver where our NodeGoat is listening from. In addition to that, requests are proxied through the Zap API to this same address.
 
-In this example we enable the DHCP server on the Host-only Network by just checking the checkbox. The DHCP address will be `192.168.56.2`
+In this example we enable the DHCP server on the Host-only Network by just checking the check-box. The DHCP address will be `192.168.56.2`
 
 If you have a firewall running, You will need to allow TCP in on interface `vboxnet0`. From: `192.168.56.0/24` To: `192.168.56.1` on port `4000` (NodeGoat) and `35729` (LiveReload)
 
 ##### Zap running on a local VirtualBox guest
 
-&nbsp;
-
-On the guest machine in the VirtualBox Network settings, set one of the Adapter tabs so that the network adapter is attached to Host-only Adapter. Once the networking is restarted on this guest, it will have a network interface bound to something like `192.168.56.20` (specified by the `192.168.56.0/24` range decided above when you setup the `vboxnet0` interface).
+On the guest machine in the VirtualBox Network settings, set one of the Adapter tabs so that the network adapter is attached to Host-only Adapter. Once the networking is restarted on this guest, it will have a network interface bound to something like `192.168.56.20` (specified by the `192.168.56.0/24` range decided above when you set-up the `vboxnet0` interface).
 
 The Zap local proxy will need to be bound to the same IP address and port that the guest Host-only adapter is bound to in order to have requests it receives sent via the Host-only adapter to the host that NodeGoat is listening on. `192.168.56.1` in this example. By default the Zap local proxy will be set to `127.0.0.1`. Change it to the VMs externally visible network interface. So you can set the Zap local proxy and port to `192.168.56.20` and `8080` for this example via the Zap GUI:  
 Tools -> Options -> Local proxy.  
@@ -1330,7 +1323,6 @@ The other way to do it is via the `~/ZAP/config.xml` file in the following secti
        <port>8080</port>        
     </proxy>
 
-
 Update the `zapHostName` and `zapPort` properties in file `config/env/test.js` to reflect the host name (or IP address) and port that the Zap API is listening on within your virtual guest. If you want to debug the security regression tests, add the same properties to the `config/env/development.js` file.
 
 Start Zap the usual way. Zap can and probably should be scripted to start automatically on each test or suite run, also reset the database so you have a known state if you are planning on using the API in your development team. Zap can be terminated via its API and is usually good practice to do so on each test or suite run. If you don't have a UI:
@@ -1341,8 +1333,6 @@ Start Zap the usual way. Zap can and probably should be scripted to start automa
 Now you should be able to browse the Zap API from either machine at `http://192.168.56.20:8080/`.
 
 ##### Start the Security Regression test(s) from your local machine
-
-&nbsp;
 
 For each test run, this is the usual set of steps:
 
@@ -1366,16 +1356,16 @@ By default the XSS vulnerabilities exist in the `/profile` route. By running `gr
 
 
       profile regression test suite
-    Scan 0 is 26% complet with 10 alerts.
-    Scan 0 is 53% complet with 10 alerts.
-    Scan 0 is 100% complet with 10 alerts.
+    Scan 0 is 26% complete with 10 alerts.
+    Scan 0 is 53% complete with 10 alerts.
+    Scan 0 is 100% complete with 10 alerts.
     We are finishing scan 0. Please see the report for further details.
     About to write report.
-    Scan 0 is 100% complet with 10 alerts.
-    Scan 0 is 100% complet with 10 alerts.
+    Scan 0 is 100% complete with 10 alerts.
+    Scan 0 is 100% complete with 10 alerts.
     Writing report to Source/NodeGoat/test/security/report_2015-11-24-20-57.html
 
-    Search the generated report for "/profile" to see the 7 vulnerabilities that exceed the user defined threshhold of: 3
+    Search the generated report for "/profile" to see the 7 vulnerabilities that exceed the user defined threshold of: 3
         1) Should not exceed the decided threshold of vulnerabilities known to Zap
 
 
@@ -1410,8 +1400,6 @@ Once you:
 
 You should be informed of a successful test with the following output:
 
-![Zapping NodeGoat](app/assets/images/SuccessfulSecurityProfileTest.png)
-
 {title="Fixed Vulnerabilities", linenos=off, lang=Bash}
     me@myBox in Source/NodeGoat git:(workshop) ✗  grunt testsecurity
     Running "env:test" (env) task
@@ -1420,13 +1408,13 @@ You should be informed of a successful test with the following output:
     
     
       profile regression test suite
-    Scan 0 is 26% complet with 3 alerts.
-    Scan 0 is 66% complet with 3 alerts.
-    Scan 0 is 100% complet with 3 alerts.
+    Scan 0 is 26% complete with 3 alerts.
+    Scan 0 is 66% complete with 3 alerts.
+    Scan 0 is 100% complete with 3 alerts.
     We are finishing scan 0. Please see the report for further details.
     About to write report.
-    Scan 0 is 100% complet with 3 alerts.
-    Scan 0 is 100% complet with 3 alerts.
+    Scan 0 is 100% complete with 3 alerts.
+    Scan 0 is 100% complete with 3 alerts.
     Writing report to Source/NodeGoat/test/security/report_2015-11-24-20-52.html
     
         ✓ Should not exceed the decided threshold of vulnerabilities known to Zap (21106ms)
@@ -1436,8 +1424,6 @@ You should be informed of a successful test with the following output:
     
     
     Done, without errors.
-
-
 
 &nbsp;
 
@@ -1465,8 +1451,6 @@ Remember I mentioned in the People chapter in the ["Top Developer Motivators in 
 ### Pair Programming
 
 Two pairs of eyes on the same code is proven to drastically reduce defects, and it does it at the cheapest possible place, as they are being created. Pair programming can be a very effective discipline, but not all the time and not for all people. There is a lot of resources on the topic. If you have not tried it, then you should, but it is probably counter productive to mandate that all the developers should do it all of the time. It is probably a good idea to encourage developers to pair on complex tasks. It is a tool, try it and use it wisely.
-
-&nbsp;
 
 ### Code Review
 

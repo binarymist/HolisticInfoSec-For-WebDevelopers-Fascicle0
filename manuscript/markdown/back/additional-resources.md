@@ -57,6 +57,9 @@ Finding details on companies: [https://www.business.govt.nz/companies/](https://
 **BSIMM has some good guidance on security testing**  
 [https://www.bsimm.com/online/ssdl/st/](https://www.bsimm.com/online/ssdl/st/)
 
+**NodeGoat Regression Testing with Zap**
+[https://github.com/binarymist/NodeGoat#optional-security-regression-testing-with-zap-api](https://github.com/binarymist/NodeGoat#optional-security-regression-testing-with-zap-api)
+
 **Essentials for Creating and Maintaining a High Performance Development Team**  
 [http://blog.binarymist.net/2014/01/25/essentials-for-creating-and-maintaining-a-high-performance-development-team/](http://blog.binarymist.net/2014/01/25/essentials-for-creating-and-maintaining-a-high-performance-development-team/)
 

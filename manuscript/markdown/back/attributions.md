@@ -60,7 +60,8 @@ http-waf-fingerprint: [https://nmap.org/nsedoc/scripts/http-waf-fingerprint.html
 **Cost of Change** curve adapted from Scott W. Ambler's article on Examining the Agile Cost of Change Curve, which I've used in many presentations and workshops.  
 [http://www.agilemodeling.com/essays/costOfChange.htm](http://www.agilemodeling.com/essays/costOfChange.htm)
 
-
+**NodeGoat** The purposly vulnerable NodeJS web application  
+[https://github.com/OWASP/NodeGoat](https://github.com/OWASP/NodeGoat)
 
 
 ## [Physical](#physical)
