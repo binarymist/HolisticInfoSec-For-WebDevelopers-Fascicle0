@@ -186,6 +186,45 @@ Bruce Schneier: Data and Goliath: Introduction: USA National Security Agency (NS
 **Doppelganger Domains** An old trick brought back to light by Peter Kim's [research](http://www.wired.com/2011/09/doppelganger-domains/) involving fortune 500 companies where they intercepted 20 GB of email from miss typed addresses.  
 Peter Kim discusses in "The Hacker PlayBook" about how he set-up SMTP and SSH doppelganger domains. This is an excellent book that I recommend reading.
 
+**HSTS**
+
+**Another Slide Deck from Francois Marier**. Also covering HTTP Strict Transport Security (HSTS) [https://speakerdeck.com/fmarier/integrity-protection-for-third-party-javascript](https://speakerdeck.com/fmarier/integrity-protection-for-third-party-javascript)
+
+**MDN easily digestible help** on using HSTS [https://developer.mozilla.org/en-US/docs/Web/Security/HTTP_strict_transport_security](https://developer.mozilla.org/en-US/docs/Web/Security/HTTP_strict_transport_security)
+
+**Easy Reading: OWASP** [https://www.owasp.org/index.php/HTTP_Strict_Transport_Security](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security)
+
+**IETF specification** [https://tools.ietf.org/html/draft-ietf-websec-strict-transport-sec-14](https://tools.ietf.org/html/draft-ietf-websec-strict-transport-sec-14)
+
+**Most browsers currently have support**. IE < 10 does not. 11 has back ported support for Windows 8.1 and 7 [https://blogs.windows.com/msedgedev/2015/06/09/http-strict-transport-security-comes-to-internet-explorer-11-on-windows-8-1-and-windows-7/](https://blogs.windows.com/msedgedev/2015/06/09/http-strict-transport-security-comes-to-internet-explorer-11-on-windows-8-1-and-windows-7/)
+
+**SSLStrip2 - dns2proxy attack demonstrated at BlackHat Asia in 2014 by LeonardoNve**
+
+**Stackoverflow question and answer**  
+[http://stackoverflow.com/questions/29320182/hsts-bypass-with-sslstrip-dns2proxy/29357170#29357170](http://stackoverflow.com/questions/29320182/hsts-bypass-with-sslstrip-dns2proxy/29357170#29357170)
+
+**Questions and definitive answers by Leonardo Nve**  
+[https://github.com/LeonardoNve/sslstrip2/issues/4](https://github.com/LeonardoNve/sslstrip2/issues/4)
+
+%% What Kevin used, but was against IE 8 https://cyberarms.wordpress.com/2014/10/16/mana-tutorial-the-intelligent-rogue-wi-fi-router/
+
+**Security stackexchange questions and answers**  
+[http://security.stackexchange.com/questions/91092/how-does-bypassing-hsts-with-sslstrip-work-exactly](http://security.stackexchange.com/questions/91092/how-does-bypassing-hsts-with-sslstrip-work-exactly)
+
+**Good write-up on how to compromise HSTS**  
+[https://jetcat.nl/blog/bypassing-http-strict-transport-security-hsts](https://jetcat.nl/blog/bypassing-http-strict-transport-security-hsts)
+
+%% http://null-byte.wonderhowto.com/how-to/defeating-hsts-and-bypassing-https-with-dns-server-changes-and-mitmf-0162322/
+%% http://jackktutorials.com/forums/showthread.php?pid=5972
+%% https://github.com/LeonardoNve/sslstrip2
+%% https://github.com/byt3bl33d3r/MITMf
+%% https://github.com/sensepost/mana
+%% https://github.com/byt3bl33d3r/sslstrip2
+%% 
+
+
+
+
 **All of the CAs now use intermediate certificates** to sign your certificate, so that they can keep their root certificate off line. Similar to what I did with GPG in my blog post  
 [http://blog.binarymist.net/2015/01/31/gnupg-key-pair-with-sub-keys/#master-key-pair-generation](http://blog.binarymist.net/2015/01/31/gnupg-key-pair-with-sub-keys/#master-key-pair-generation).
 

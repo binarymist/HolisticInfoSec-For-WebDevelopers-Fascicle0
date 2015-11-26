@@ -511,12 +511,7 @@ Use [key pair authentication](http://blog.binarymist.net/2010/04/06/a-few-steps-
 
 ### Wrongfully Trusting the Loading of Untrusted Web Resources {#network-countermeasures-wrongfully-trusting-the-loading-of-untrusted-web-resources}
 
-* White listing
-* Constrain to types where possible
-* Constrain max / min lengths.
-* Think in terms of [least privilege](#web-applications-countermeasures-management-of-application-secrets-least-privilege)
-
-[OWASP Top 10 A3 Cross Site Scripting (XSS)](https://www.owasp.org/index.php/Top_10_2013-A3-Cross-Site_Scripting_(XSS))
+Also consider the likes of [Consuming Free and Open Source](#web-applications-countermeasures-consuming-free-and-open-source) in the Web Applications chapter.
 
 #### Content Security Policy (CSP) {#network-countermeasures-wrongfully-trusting-the-loading-of-untrusted-web-resources-csp}
 ![](images/ThreatTags/PreventionEASY.png)
@@ -587,31 +582,35 @@ Tools such as openssl and the standard sha[256|512]sum programmes normally suppl
 #### HTTP Strict Transport Security (HSTS) {#network-countermeasures-tls-downgrade-hsts}
 ![](images/ThreatTags/PreventionEASY.png)
 
-Trust the browser to do something to stop these **downgrades**.
+Make sure your web server sends back the HSTS header. This is pretty straight forward. If you're using ExpressJS in NodeJS, then just use [helmetjs/hsts](https://github.com/helmetjs/hsts). For other environments it should be pretty straight forward as well.
+
+Then trust the browser to do something to stop these **downgrades**.
 
 {linenos=off}
     curl --head https://reputable.kiwi.bank.co.nz/
     
-    Strict-Transport-Security: max-age=31536000
+    Strict-Transport-Security: max-age=31536000 # That's one year.
 
 
 By using the HSTS header, you are telling the browser that your website should never be reached over plain HTTP.  
-There is however still a problem with this. The very first request for the websites page. At this point the browser has no idea about HSTS because it still has not fetched that first page that will come with the header. Once the browser does receive the header, if it does, it records this information against the domain.  
-Welcome to [HSTS Preload](#network-countermeasures-tls-downgrade-hsts-preload)
+There is however still a small problem with this. The very first request for the websites page. At this point the browser has no idea about HSTS because it still has not fetched that first page that will come with the header. Once the browser does receive the header, if it does, it records this information against the domain. From then on, it will only request via TLS until the `max-age` is reached. So there are two windows of opportunity there to MiTM and downgrade `HTTPS` to `HTTP`. 
 
-* [Another Slide Deck](https://speakerdeck.com/fmarier/integrity-protection-for-third-party-javascript) from Francois Marier. Also covering HTTP Strict Transport Security (HSTS)
-* MDN easily digestible [help](https://developer.mozilla.org/en-US/docs/Web/Security/HTTP_strict_transport_security) on using HSTS
-* Easy Reading: [OWASP](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security)
-* [IETF specification](https://tools.ietf.org/html/draft-ietf-websec-strict-transport-sec-14). Most browsers currently have support. IE < 12 does not. 12 is [expected to](http://blogs.msdn.com/b/ie/archive/2015/02/16/http-strict-transport-security-comes-to-internet-explorer.aspx).
+There is however an NTP attack that can leverage the second opportunity. For example by changing the targets computer date to say 2 years in the future. They are less likely to notice it if the day, month and time remain the same. When the request to the domain that the browser knew could only be reached over TLS has its HSTS `max-age` expired, then the request could go out as `HTTP`, but providing that the user explicitly sends it as `HTTP` without the `S`, or clicks a link without the `HTTPS`.
+
+Details of how this attack plays out and additional HSTS resources are linked to in the Attributions chapter.
+
+Welcome to [HSTS Preload](#network-countermeasures-tls-downgrade-hsts-preload)
 
 [Online Certificate Status Protocol (OCSP)](#network-countermeasures-tls-downgrade-certificate-revocation-evolution-ocsp) is very similar to HSTS, but at the X.509 certificate level.
 
 #### HTTP Strict Transport Security (HSTS) Preload {#network-countermeasures-tls-downgrade-hsts-preload}
 ![](images/ThreatTags/PreventionEASY.png)
 
-This includes a list that browsers have with any domains that have been submitted. When a use requests one of the pages from a domain on the browsers HSTS preload list, the browser will always initiate all requests to that domain over TLS.
+This includes a list that browsers have with any domains that have been submitted. When a user requests one of the pages from a domain on the browsers HSTS preload list, the browser will always initiate all requests to that domain over TLS. the `includeSubdomains` token must be specified. Chrome, Firefox, Safari, IE 11 and Edge are including this list now.
 
-In order to have your domain added to the browsers preload list, submit it [here](https://hstspreload.appspot.com/).
+In order to have your domain added to the browsers preload list, submit it online at the [hstspreload.appspot.com](https://hstspreload.appspot.com/). I can't see this scaling, but then not many have submitted their domains to it so far.
+
+Domains added to the preload list are not susceptible to the newer SSLStrip2 - dns2proxy attack demonstrated at BlackHat Asia in 2014 by Leonardo Nve
 
 [OCSP Must-Staple](#network-countermeasures-tls-downgrade-certificate-revocation-evolution-fix-to-ocsp) is very similar to HSTS Preload, but at the X.509 certificate level.
 
