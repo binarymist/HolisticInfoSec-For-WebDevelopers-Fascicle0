@@ -521,7 +521,7 @@ We do this by specifying particular response headers (more specifically directiv
 
 Names removed to save embarrassment. Sadly most banks do not take their web security very seriously. They seem to take the same approach as credit card companies. At this stage it appears to be cheaper to reimburse victims rather than make sure targets never get victimised in the first place. I think this strategy will change as cybercrimes become more prevalent and it becomes cheaper to reduce the occurrences than to react once they have happened.
 
-{linenos=off}
+{linenos=off, lang=bash}
     curl --head https://reputable.kiwi.bank.co.nz/
 
     Content-Security-Policy: default-src 'self' secure.reputable.kiwi.bank.co.nz;

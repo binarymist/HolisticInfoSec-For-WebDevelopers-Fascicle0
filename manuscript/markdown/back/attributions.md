@@ -198,7 +198,8 @@ Peter Kim discusses in "The Hacker PlayBook" about how he set-up SMTP and SSH do
 **MDN easily digestible help** on using CSP  
 [https://developer.mozilla.org/en-US/docs/Web/Security/CSP](https://developer.mozilla.org/en-US/docs/Web/Security/CSP)
 
-**Easy, but more in-depth:**  
+**Easy, but more in-depth:**
+
 * W3C specification 2. It is the specification after all. Not sure about browser support here yet [http://www.w3.org/TR/CSP2](http://www.w3.org/TR/CSP2).
 * W3C specification 1.1 [http://www.w3.org/TR/2014/WD-CSP11-20140211/](http://www.w3.org/TR/2014/WD-CSP11-20140211/) which most browsers currently support [http://caniuse.com/contentsecuritypolicy](http://caniuse.com/contentsecuritypolicy). IE 11 has partial support.
 
@@ -233,7 +234,7 @@ Peter Kim discusses in "The Hacker PlayBook" about how he set-up SMTP and SSH do
 **Security stackexchange questions and answers**  
 [http://security.stackexchange.com/questions/91092/how-does-bypassing-hsts-with-sslstrip-work-exactly](http://security.stackexchange.com/questions/91092/how-does-bypassing-hsts-with-sslstrip-work-exactly)
 
-**Good write-up on how to compromise HSTS**  
+**Good write-up on how to compromise HSTS** Including NTP vector.  
 [https://jetcat.nl/blog/bypassing-http-strict-transport-security-hsts](https://jetcat.nl/blog/bypassing-http-strict-transport-security-hsts)
 
 %% http://null-byte.wonderhowto.com/how-to/defeating-hsts-and-bypassing-https-with-dns-server-changes-and-mitmf-0162322/
