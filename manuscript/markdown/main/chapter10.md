@@ -539,18 +539,6 @@ Names removed to save embarrassment. Sadly most banks do not take their web secu
 Of course this is only as good as a clients connection is trusted. If the connection is not over TLS, then there is no real safety that the headers can not be changed. If the connection is over TLS, but the connection is intercepted before the TLS hand-shake, the same lack of trust applies. See the section on [TLS Downgrade](#network-countermeasures-tls-downgrade) for more information.  
 Not to be confused with Cross Origin Resource Sharing (CORS). CORS instructs the browser to over-ride the "same origin policy" thus allowing AJAX requests to be made to header specified alternative domains. For example: web site a allows restricted resources on its web page to be requested from another domain outside the domain from which the resource originated. Thus specifically knowing and allowing specific other domains access to its resources.
 
-
-
-* [Slide Deck](http://www.slideshare.net/fmarier/owaspnzday2012) from Francois Marier
-* [Another Slide Deck](https://speakerdeck.com/fmarier/integrity-protection-for-third-party-javascript) from Francois Marier. Also covering HTTP Strict Transport Security (HSTS)
-* Easy Reading: [OWASP](https://www.owasp.org/index.php/Content_Security_Policy)
-* [OWASP CSP Cheat Sheet](https://www.owasp.org/index.php/Content_Security_Policy_Cheat_Sheet) which also lists which directives are new in version 2
-* MDN easily digestible [help](https://developer.mozilla.org/en-US/docs/Web/Security/CSP) on using CSP
-* Easy, but more in-depth:
-  * [W3C specification 2](http://www.w3.org/TR/CSP2). It is the specification after all. Not sure about browser support here yet.  
- _Todo: write script that performs feature detection of version 2 of the specification._
-  * [W3C specification 1.1](http://www.w3.org/TR/2014/WD-CSP11-20140211/). Most browsers currently [support](http://caniuse.com/contentsecuritypolicy) this version. IE 11 has partial support.
-
 #### Sub-resource Integrity (SRI) {#network-countermeasures-wrongfully-trusting-the-loading-of-untrusted-web-resources-sri}
 ![](images/ThreatTags/PreventionEASY.png)
 
@@ -574,9 +562,6 @@ SRI can be used right now. Only the latest browsers are currently supporting SRI
 
 Tools such as openssl and the standard sha[256|512]sum programmes normally supplied with your operating system will do the job. The hash value provided needs to be base64 encoded.
 
-* [Slide Deck](https://speakerdeck.com/fmarier/integrity-protection-for-third-party-javascript) from Francois Marier. Covering other headers also
-* [W3C specification](http://www.w3.org/TR/SRI/)
-
 ### TLS Downgrade {#network-countermeasures-tls-downgrade}
 
 #### HTTP Strict Transport Security (HSTS) {#network-countermeasures-tls-downgrade-hsts}
@@ -586,11 +571,10 @@ Make sure your web server sends back the HSTS header. This is pretty straight fo
 
 Then trust the browser to do something to stop these **downgrades**.
 
-{linenos=off}
+{linenos=off, lang=bash}
     curl --head https://reputable.kiwi.bank.co.nz/
     
     Strict-Transport-Security: max-age=31536000 # That's one year.
-
 
 By using the HSTS header, you are telling the browser that your website should never be reached over plain HTTP.  
 There is however still a small problem with this. The very first request for the websites page. At this point the browser has no idea about HSTS because it still has not fetched that first page that will come with the header. Once the browser does receive the header, if it does, it records this information against the domain. From then on, it will only request via TLS until the `max-age` is reached. So there are two windows of opportunity there to MiTM and downgrade `HTTPS` to `HTTP`. 
@@ -598,8 +582,6 @@ There is however still a small problem with this. The very first request for the
 There is however an NTP attack that can leverage the second opportunity. For example by changing the targets computer date to say 2 years in the future. They are less likely to notice it if the day, month and time remain the same. When the request to the domain that the browser knew could only be reached over TLS has its HSTS `max-age` expired, then the request could go out as `HTTP`, but providing that the user explicitly sends it as `HTTP` without the `S`, or clicks a link without the `HTTPS`.
 
 Details of how this attack plays out and additional HSTS resources are linked to in the Attributions chapter.
-
-Welcome to [HSTS Preload](#network-countermeasures-tls-downgrade-hsts-preload)
 
 [Online Certificate Status Protocol (OCSP)](#network-countermeasures-tls-downgrade-certificate-revocation-evolution-ocsp) is very similar to HSTS, but at the X.509 certificate level.
 
