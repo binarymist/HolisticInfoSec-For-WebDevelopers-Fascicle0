@@ -240,9 +240,22 @@ The following books have been influential for me and the content from the People
 
 
 
-
-
-
 [**Justin Searls talk**](http://blog.testdouble.com/posts/2014-12-02-the-social-coding-contract.html) on consuming all the open source.
 
 [**Effecting Change**](http://blog.binarymist.net/2013/06/22/ideas-for-more-effective-meetings-and-presentations/)
+
+
+
+**Application Intrusion Detection and Response**
+
+**Appsensor home**  
+[http://appsensor.org/](http://appsensor.org/)
+
+**Sample Appsensor applications**  
+[https://github.com/jtmelton/appsensor/tree/master/sample-apps](https://github.com/jtmelton/appsensor/tree/master/sample-apps)
+
+**Slide deck** from John Melton (AppSensor project lead)  
+[http://www.slideshare.net/jtmelton/appsensor-near-real-time-event-detection-and-response](http://www.slideshare.net/jtmelton/appsensor-near-real-time-event-detection-and-response)
+
+**Good podcast on OWASP 24/7 soundcloud**  
+[https://soundcloud.com/owasp-podcast/john-melton-and-the-owasp-appsensor-project](https://soundcloud.com/owasp-podcast/john-melton-and-the-owasp-appsensor-project)

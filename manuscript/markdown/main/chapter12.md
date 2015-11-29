@@ -3200,29 +3200,22 @@ _Todo_
 
 #### Application Intrusion Detection and Response
 
-You can think of this as taking a WAF one level closer to your application. That is right, augmenting your application with logic to detect and respond to threats
+You can think of this as taking a WAF one step closer to your application. In fact integrating it with your application. Augmenting your application with logic to detect and respond to threats.
 
-AppSensor [AppSensor](http://appsensor.org/) brings detection -> prevention to your domain level.
-  Most applications today just take attacks & fall over.
-  I have heard so many times we want our applications to fail securely when they get bad input.
-  We do not want our applications being bullied and failing securely.
-  We want them to not fail at all in production, but rather defend themselves.
- 
-  Technically AppSensor is not a WAF because the concepts are used to shape your application logic.
+[AppSensor](http://appsensor.org/) brings detection -> prevention to your domain level. Most applications today just take attacks & fall over. I have heard so many times we want our applications to fail securely when they get bad input. We do not want our applications being bullied and failing securely.
+We want them to not fail at all in production, but rather defend themselves.
 
-  The project defines a conceptual framework and methodology that offers prescriptive guidance to implement intrusion detection and automated response into your applications. Providing attack awareness baked in, with real-time defences.
-  
-  AppSensor provides > 50 (signature based) detection points. Provides guidance on how to respond once attack identified. Possible actions include:
-    
-  * logging out the user
-  * locking the account or notifying an administrator
-  * more than a dozen response actions are described.
+Technically AppSensor is not a WAF because the concepts are used to shape your application logic.
 
-_Todo_
+The project defines a conceptual framework and methodology that offers prescriptive guidance to implement intrusion detection and automated response into your applications. Providing attack awareness baked in, with real-time defences.
 
-%% http://www.slideshare.net/jtmelton/appsensor-near-real-time-event-detection-and-response
+AppSensor provides > 50 (signature based) detection points. Provides guidance on how to respond once an attack is identified. Possible actions include:
 
-%% JohnMelton-AppSensor.mp3 from OWASP 24/7 also on soundcloud.
+* logging out the user
+* locking the account or notifying an administrator
+* more than a dozen response actions are described.
+
+At the time of writing the sample code is only in Java. The documentation is well worth checking out though. Resources in [Additional Resources]() chapter.
 
 ## 4. SSM Risks that Solution Causes
 
