@@ -433,7 +433,7 @@ Also feel free to try the same requests against the likes of the Metasploitable 
 
 Now if the target is running Apache 2.2.3, then you may see something like the following:
 
-{title="Response", linenos=off}
+{title="Response", linenos=off, lang=HTTP}
     HTTP/1.1 400 Bad Request
     Date: Thu, 29 Oct 2015 04:44:09 GMT
     Server: Apache/2.2.3 (CentOS)
@@ -442,7 +442,7 @@ Now if the target is running Apache 2.2.3, then you may see something like the f
 
 You can not rely on the Server field though. It could be obfuscated:
 
-{title="Response", linenos=off}
+{title="Response", linenos=off, lang=HTTP}
     403 HTTP/1.1 Forbidden
     Date: Thu, 29 Oct 2015 04:44:09 GMT
     Server: Unknown-Webserver/1.0
@@ -451,7 +451,7 @@ You can not rely on the Server field though. It could be obfuscated:
 
 Or if your target is running an Express server, you will probably see something like:
 
-{title="Response", linenos=off}
+{title="Response", linenos=off, lang=HTTP}
     HTTP/1.1 200 OK
     X-Powered-By: Express
     Content-Type: text/html; charset=utf-8
@@ -494,7 +494,7 @@ Now if we try some malformed requests or requests of non existent resources:
 
 We get a closed connection, but we still get the resource if there is one
 
-{title="Response", linenos=off}
+{title="Response", linenos=off, lang=HTTP}
     HTTP/1.1 200 OK
     X-Powered-By: Express
     Content-Type: text/html; charset=utf-8
@@ -513,7 +513,7 @@ Now we try an Apache server. Different versions have different behaviour also.
     nc <apache 2.2.3 server> 80
     GET / HTTP/1.0
 
-{title="Response", linenos=off}
+{title="Response", linenos=off, lang=HTTP}
     HTTP/1.1 200 OK
     Date: Thu, 29 Oct 2015 05:02:03 GMT
     Server: Apache/2.2.3 (CentOS)
@@ -741,8 +741,11 @@ Installed [out of the box](http://tools.kali.org/information-gathering/theharves
 
 If not run from discover-scripts:  
 within Kali Linux you can go through the menus: Information Gathering -> OSINT Analysis -> theharvester  
-or  
-just [Alt]+[F2] theharvester
+or run from the terminal
+
+{linenos=off, lang=Bash}
+    theharvester -d <target domain> -b all -c -t
+    # Just running theharvester without any options provides examples and details on the options.
 
 The sources used are:
 
@@ -811,7 +814,7 @@ Some of the sort of information you may get is:
 
 It depends on which moduels you use as to what information you receive.
 
-When you run recon-ng with no arguments, you will be presented with the titles of the collections of the included modules and you'll be dropped at a recon-ng prompt showing the current workspace you are in. It looks like:
+When you run `recon-ng` with no arguments, you will be presented with the titles of the collections of the included modules and you'll be dropped at a `recon-ng` prompt showing the current workspace you are in. It looks like:
 
 {linenos=off, lang=Bash}
     [recon-ng][default] > 
@@ -821,7 +824,7 @@ Type:
 {linenos=off}
     help
 
-and you will be presented with the recon-ng commands.
+and you will be presented with the `recon-ng` commands.
 
 Prepend any of the commands with help or simply type the command by itself if you want to know more about the specific command.
 
@@ -937,9 +940,9 @@ and you will be presented with a listing of all the modules in `/usr/share/recon
       reporting/xlsx
       reporting/xml
 
-A> As recon-ng uses workspaces, you can keep all your specific assignment data in its own workspace.
+A> As `recon-ng` uses workspaces, you can keep all your specific assignment data in its own workspace.
 
-Data is persisted to the file system `/user/.recon-ng/workspaces/<your new workspace name>/` as it's gathered. You can exit and restart recon-ng anytime without loosing the data you have already gathered. So lets see which workspaces we already have.
+Data is persisted to the file system `/user/.recon-ng/workspaces/<your new workspace name>/` as it's gathered. You can exit and restart `recon-ng` anytime without loosing the data you have already gathered. So lets see which workspaces we already have.
 
 {linenos=off, lang=Bash}
     # Typing workspaces alone tells us which arguments workspaces expects.
@@ -964,7 +967,7 @@ To delete an item you have added: `del [item] [rowid]`, for example:
 {linenos=off, lang=Bash}
     del domains 1 # To remove the first record 
 
-You can also query the workspace database with the `query` command. Just type it and you will get some help and be running in no time. Many of the commands can be performed using recon-ng commands or by using the `query` command and building up SQL queries.
+You can also query the workspace database with the `query` command. Just type it and you will get some help and be running in no time. Many of the commands can be performed using `recon-ng` commands or by using the `query` command and building up SQL queries.
 
 To use a specific module:
 
@@ -984,7 +987,7 @@ If you need more information about the current module you have `use`ed, type:
 {linenos=off}
     show info
 
-You will be notified when you attempt to `run` if you need an API key. Details on where to find these are on the [recon-ng wiki](https://bitbucket.org/LaNMaSteR53/recon-ng/wiki/Usage%20Guide#!acquiring-api-keys).
+You will be notified when you attempt to `run` if you need an API key. Details on where to find these are on the [`recon-ng` wiki](https://bitbucket.org/LaNMaSteR53/recon-ng/wiki/Usage%20Guide#!acquiring-api-keys).
 
 Before you add any social media API keys, you will want to create throwaway social media accounts, because many of the social media sites you will perform recon on will show the visiting user. You want that visiting user to be your throwaway account.
 
@@ -1018,9 +1021,9 @@ The report types you can use can be seen by typing:
     show modules reporting
     # These include html, json, csv, xml and others
 
-`exit` to quit out of recon-ng. Any data gathered will be retained.
+`exit` to quit out of `recon-ng`. Any data gathered will be retained.
 
-The commands may seem a bit heavy to start with, but they're very intuitive. Spend some time with recon-ng and it will end up being one of the first recon tools you turn to.
+The commands may seem a bit heavy to start with, but they're very intuitive. Spend some time with `recon-ng` and it will end up being one of the first recon tools you turn to.
 
 %% #### Maltego
 
@@ -1299,7 +1302,7 @@ My set-up was done with fetching the NodeGoat source code onto a physical machin
 There are also details on getting Zap running in a docker container on the [Zap wiki](https://github.com/zaproxy/zaproxy/wiki/Docker)
 
 
-##### NodeGoat running on your local machine
+##### NodeGoat Set-up on your local machine
 
 In VirtualBox you will need a Host-only Network added. By default this will be called `vboxnet0` in your VirtualBox settings. an `ifconfig` on the host will reveal a new network interface called `vboxnet0`. This allows guests and host to communicate with each other without anyone outside of the host network interface being able to see the communications. In this example we set the Adapter IP address to `192.168.56.1`. That address will be assigned to your host as an additional network interface.
 
@@ -1309,7 +1312,7 @@ In this example we enable the DHCP server on the Host-only Network by just check
 
 If you have a firewall running, You will need to allow TCP in on interface `vboxnet0`. From: `192.168.56.0/24` To: `192.168.56.1` on port `4000` (NodeGoat) and `35729` (LiveReload)
 
-##### Zap running on a local VirtualBox guest
+##### Zap Running on a local VirtualBox guest
 
 On the guest machine in the VirtualBox Network settings, set one of the Adapter tabs so that the network adapter is attached to Host-only Adapter. Once the networking is restarted on this guest, it will have a network interface bound to something like `192.168.56.20` (specified by the `192.168.56.0/24` range decided above when you set-up the `vboxnet0` interface).
 

