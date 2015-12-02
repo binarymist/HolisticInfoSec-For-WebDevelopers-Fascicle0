@@ -273,7 +273,12 @@ G> Now in Burpsuites Proxy tab -> HTTP history tab, right click on the (`POST`) 
 G>
 Now clear all the highlighted fields apart from the `password` value. Now we go to the Payloads tab. Keep the Payload set to 1 and Payload type set to [Simple list](https://portswigger.net/burp/help/intruder_payloads_types.html).
 G>
-G> Now I just added `y35w3c4n!$%`, `y35w3c4n!$&`, `y35w3c4n!$*` and `y35w3c4n!$@`. The last being the correct password. It can pay to have a valid account to test with, especially with `HTTP`. You don't need FoxyProxy on anymore either. Go into the Intruder menu up the top -> Start attack. You will now get a pop up window with the results of the passwords you added. Now with the Response tab and Raw tab selected, start at the top of the requests and just arrow down through them, inspecting the differences as you go. You should see that the last one, that's the `admin` password has one changed value from the other responses. It will have a `Location` header with value of `index.php` rather than `login.php` that all the failed responses contain. That is our difference that we use to feed to our brute forcing tool so that it knows when we have a successful login, even though in theory the login process isn't yet complete as we have not issued the follow up `GET` request, but it does not matter, as we know we would not have been given a `index.php` if we were not authorised.
+G> Now I just added `y35w3c4n!$%`, `y35w3c4n!$&`, `y35w3c4n!$*` and `y35w3c4n!$@`. The last being the correct password. It can pay to have a valid account to test with, especially with `HTTP`. You don't need FoxyProxy on anymore either.  
+G> Go into the Intruder menu up the top -> Start attack. You will now get a pop up window with the results of the passwords you added.  
+G> Now with the Response tab and Raw tab selected, start at the top of the requests and just arrow down through them, inspecting the differences as you go. You should see that the last one, that's the `y35w3c4n!$@` password has one changed value from the other responses. It will have a `Location` header with value of `index.php` rather than `login.php` that all the failed responses contain.
+
+{icon=bomb}
+G> That is our difference that we use to feed to our brute forcing tool so that it knows when we have a successful login, even though in theory the login process isn't yet complete as we have not issued the follow up `GET` request, but it does not matter, as we know we would not have been given a `index.php` if we were not authorised.
 G>
 G> Now every web application will do something a bit different. You just need to look for the difference in response from a bad password to a good one and use that to feed to your brute forcing tool.
 G>
