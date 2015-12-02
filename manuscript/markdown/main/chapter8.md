@@ -259,13 +259,21 @@ I> * Failure message for a failed attempt. The only place you need to look is th
 {icon=bomb}
 G> ## The Play
 G>
+G> For this example, we need to add Bob the Builder that we profiled in the CUPP example above to the DVWA database. Now I knew that the passwords in the DVWA database were being stored as `MD5`s from the exercise I did in the [SQLi section](#web-applications-identify-risks-sqli) from the Web Applications chapter. Now if the DVWA had of assumed that the datastore would at some stage be compromised as discussed in the [Data-store Compromise](#web-applications-identify-risks-management-of-application-secrets-data-store-compromise) section and provided the correct [countermeasures](#web-applications-countermeasures-data-store-compromise) as discussed, we would not be able to reverse engineer the crypto strategy as easily and the time it takes to brute force the passwords would also be significantly increased due to the key stretching of the Key Derivation Functions (KDFs). With that in mind though, if you profile effectively you will end up with a small wordlist to use in your chosen brute force tool, which may only take a few hours or days for the average users password.
+G>
+G> For the sake of demonstration, I chose a password from the middle of the wordlist that CUPP produced: `Y35w3c4n!$@`. Bob thought he was being clever changing the characters of "yes we can" to look like numbers and adding some special characters to the end. Hackers know all the tricks though.  
+G> Browse to `/phpmyadmin` of the OWASPBWA, -u `root` -p `owaspbwa` and find the dvwa database and add `Bob` as a `user` and his hashed password that we produced from:  
+G> `echo -n 'Y35w3c4n!$@' | md5sum`  
+G> `adff078ea28c7e56810b2bece495a6b4`  
+G> to the `password` field.
+G>
 G> Using an HTTP intercepting proxy as I mentioned above, lets use Burpsuite and our FoxyProxy. Once you have the DVWA running or another website you want to attempt to brute force, browse to the login page. Then turn the "Burp 8080" proxy on. Start burpsuite and make sure it is listening on port `8080` (or what ever your browsers proxy is going to send to). I added the correct `username` but false `password` values to the `username` and `password` fields and submit, although you can add any values.
 G>
 G> Now in Burpsuites Proxy tab -> HTTP history tab, right click on the (`POST`) request and select Send to Intruder. Now go to the Intruder tab and in the Positions tab, you can keep the Attack type: "[Sniper](https://portswigger.net/burp/help/intruder_positions.html)" because we are only using one wordlist. If we were using a wordlist for usernames and a different one for passwords, we would probably want to use "Cluster bomb".
 G>
 Now clear all the highlighted fields apart from the `password` value. Now we go to the Payloads tab. Keep the Payload set to 1 and Payload type set to [Simple list](https://portswigger.net/burp/help/intruder_payloads_types.html).
 G>
-G> Now I just added `y35w3c4n!$%`, `y35w3c4n!$&`, `y35w3c4n!$*`, `y35w3c4n!$@`. The last being the correct password. It can pay to have a valid account to test with, especially with `HTTP`. You don't need FoxyProxy on anymore either. Go into the Intruder menu up the top -> Start attack. You will now get a pop up window with the results of the passwords you added. Now with the Response tab and Raw tab selected, start at the top of the requests and just arrow down through them, inspecting the differences as you go. You should see that the last one, that's the `admin` password has one changed value from the other responses. It will have a `Location` header with value of `index.php` rather than `login.php` that all the failed responses contain. That is our difference that we use to feed to our brute forcing tool so that it knows when we have a successful login, even though in theory the login process isn't yet complete as we have not issued the follow up `GET` request, but it does not matter, as we know we would not have been given a `index.php` if we were not authorised.
+G> Now I just added `y35w3c4n!$%`, `y35w3c4n!$&`, `y35w3c4n!$*` and `y35w3c4n!$@`. The last being the correct password. It can pay to have a valid account to test with, especially with `HTTP`. You don't need FoxyProxy on anymore either. Go into the Intruder menu up the top -> Start attack. You will now get a pop up window with the results of the passwords you added. Now with the Response tab and Raw tab selected, start at the top of the requests and just arrow down through them, inspecting the differences as you go. You should see that the last one, that's the `admin` password has one changed value from the other responses. It will have a `Location` header with value of `index.php` rather than `login.php` that all the failed responses contain. That is our difference that we use to feed to our brute forcing tool so that it knows when we have a successful login, even though in theory the login process isn't yet complete as we have not issued the follow up `GET` request, but it does not matter, as we know we would not have been given a `index.php` if we were not authorised.
 G>
 G> Now every web application will do something a bit different. You just need to look for the difference in response from a bad password to a good one and use that to feed to your brute forcing tool.
 G>
@@ -280,7 +288,7 @@ G> From that we build our command. `^USER^` instructs hydra to use the login (`-
 G> So here we go:
 G> 
 G> {linenos=off, lang=bash}
-G>     # Taking the output from CUPP from above, which created a 31546 word ordlist.
+G>     # Taking the output from CUPP from above, which created a 31546 word wordlist.
 G>     # This is a small snippet of our word list for our initial test.
 G>     cat /opt/cupp/bob.txt
 G>     y35w3c4n!$%

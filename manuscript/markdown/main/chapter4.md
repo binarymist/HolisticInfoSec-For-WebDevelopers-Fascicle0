@@ -942,7 +942,7 @@ and you will be presented with a listing of all the modules in `/usr/share/recon
 
 A> As `recon-ng` uses workspaces, you can keep all your specific assignment data in its own workspace.
 
-Data is persisted to the file system `/user/.recon-ng/workspaces/<your new workspace name>/` as it's gathered. You can exit and restart `recon-ng` anytime without loosing the data you have already gathered. So lets see which workspaces we already have.
+Data is persisted to the file system `/<user>/.recon-ng/workspaces/<your new workspace name>/` as it's gathered. You can exit and restart `recon-ng` anytime without loosing the data you have already gathered. So lets see which workspaces we already have.
 
 {linenos=off, lang=Bash}
     # Typing workspaces alone tells us which arguments workspaces expects.
