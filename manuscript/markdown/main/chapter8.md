@@ -266,9 +266,10 @@ G> Browse to `/phpmyadmin` of the OWASPBWA, -u `root` -p `owaspbwa` and find the
 G> `echo -n 'Y35w3c4n!$@' | md5sum`  
 G> `adff078ea28c7e56810b2bece495a6b4`  
 G> to the `password` field.
-G>
-G> ![](images/phpmyadmin.png)
-G>
+
+![](images/phpmyadmin.png)
+
+{icon=bomb}
 G> Using an HTTP intercepting proxy as I mentioned above, lets use Burpsuite and our FoxyProxy. Once you have the DVWA running or another website you want to attempt to brute force, browse to the login page. Then turn the "Burp 8080" proxy on. Start burpsuite and make sure it is listening on port `8080` (or what ever your browsers proxy is going to send to). I added the correct `username` (Bob) but false `password` values to the `username` and `password` fields and submit, although you can add any values.
 G>
 G> Now in Burpsuites Proxy tab -> HTTP history tab, right click on the (`POST`) request and select Send to Intruder. Now go to the Intruder tab and in the Positions tab, you can keep the Attack type: "[Sniper](https://portswigger.net/burp/help/intruder_positions.html)" because we are only using one wordlist. If we were using a wordlist for usernames and a different one for passwords, we would probably want to use "Cluster bomb".
@@ -278,8 +279,7 @@ G>
 G> Now I just added `Y35w3c4n!$%`, `Y35w3c4n!$&`, `Y35w3c4n!$*` and `Y35w3c4n!$@`. The last being the correct password. It can pay to have a valid account to test with, especially with `HTTP`. You don't need FoxyProxy on anymore either.  
 G> Go into the Intruder menu up the top -> Start attack. You will now get a pop up window with the results of the passwords you added.  
 G> Now with the Response tab and Raw tab selected, start at the top of the requests and just arrow down through them, inspecting the differences as you go. You should see that the last one, that's the `Y35w3c4n!$@` password has one changed value from the other responses. It will have a `Location` header with value of `index.php` rather than `login.php` that all the failed responses contain.
-
-{icon=bomb}
+G>
 G> That is our difference that we use to feed to our brute forcing tool so that it knows when we have a successful login, even though in theory the login process isn't yet complete as we have not issued the follow up `GET` request, but it does not matter, as we know we would not have been given a `index.php` if we were not authorised.
 G>
 G> Now every web application will do something a bit different. You just need to look for the difference in response from a bad password to a good one and use that to feed to your brute forcing tool.
