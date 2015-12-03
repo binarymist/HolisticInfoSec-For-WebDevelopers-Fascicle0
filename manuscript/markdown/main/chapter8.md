@@ -291,7 +291,7 @@ G>     username=admin&password=whatever&Login=Login
 G> 
 G> From that we build our command. `^USER^` instructs hydra to use the login (`-l`) text or path to file if the upper case `-L` is used. `^PASS^` instructs hydra to use the password wordlist we provide it with with the `-P` option.
 
-{icon=bonb}
+{icon=bomb}
 G> So here we go:
 G> 
 G> {linenos=off, lang=bash}
