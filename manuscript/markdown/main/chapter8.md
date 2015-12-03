@@ -270,7 +270,7 @@ G> to the `password` field.
 ![](images/phpmyadmin.png)
 
 {icon=bomb}
-G> Using an HTTP intercepting proxy as I mentioned above, lets use Burpsuite and our FoxyProxy. Once you have the DVWA running or another website you want to attempt to brute force, browse to the login page. Then turn the "Burp 8080" proxy on. Start burpsuite and make sure it is listening on port `8080` (or what ever your browsers proxy is going to send to). I added the correct `username` (Bob) but false `password` values to the `username` and `password` fields and submit, although you can add any values.
+G> Using an HTTP intercepting proxy as I mentioned above, let's use Burpsuite and our FoxyProxy. Once you have the DVWA running or another website you want to attempt to brute force, browse to the login page. Then turn the "Burp 8080" proxy on. Start burpsuite and make sure it is listening on port `8080` (or what ever your browsers proxy is going to send to). I added the correct `username` (Bob) but false `password` values to the `username` and `password` fields and submit, although you can add any values.
 G>
 G> Now in Burpsuites Proxy tab -> HTTP history tab, right click on the (`POST`) request and select Send to Intruder. Now go to the Intruder tab and in the Positions tab, you can keep the Attack type: "[Sniper](https://portswigger.net/burp/help/intruder_positions.html)" because we are only using one wordlist. If we were using a wordlist for usernames and a different one for passwords, we would probably want to use "Cluster bomb".
 G>
@@ -290,7 +290,8 @@ G> {linenos=off, lang=bash}
 G>     username=admin&password=whatever&Login=Login
 G> 
 G> From that we build our command. `^USER^` instructs hydra to use the login (`-l`) text or path to file if the upper case `-L` is used. `^PASS^` instructs hydra to use the password wordlist we provide it with with the `-P` option.
-G> 
+
+{icon=bonb}
 G> So here we go:
 G> 
 G> {linenos=off, lang=bash}
