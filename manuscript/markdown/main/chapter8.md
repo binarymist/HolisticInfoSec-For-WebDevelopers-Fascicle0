@@ -150,7 +150,7 @@ There are a number of other options to customise the output.
     
     > Child's name: Bob Junior
     > Child's nickname: Lilbob
-    > Child's birthdate (DDMMYYYY): 15172001
+    > Child's birthdate (DDMMYYYY): 15122001
     
     
     > Pet's name: Spot
@@ -270,15 +270,15 @@ G> to the `password` field.
 ![](images/phpmyadmin.png)
 
 {icon=bomb}
-G> Using an HTTP intercepting proxy as I mentioned above, let's use Burpsuite and our FoxyProxy. Once you have the DVWA running or another website you want to attempt to brute force, browse to the login page. Then turn the "Burp 8080" proxy on. Start burpsuite and make sure it is listening on port `8080` (or what ever your browsers proxy is going to send to). I added the correct `username` (Bob) but false `password` values to the `username` and `password` fields and submit, although you can add any values.
+G> Using an HTTP intercepting proxy as I mentioned above, let's use Burpsuite and our FoxyProxy. Once you have the DVWA running or another website you want to attempt to brute force, browse to the login page. Then turn the "Burp 8080" proxy on. Start burpsuite and make sure it is listening on port `8080` (or what ever your browsers proxy is going to send to). I added a correct `username` ("user" in this case) but false `password` values to the `username` and `password` fields and submit, although you can add any values.
 G>
 G> Now in Burpsuites Proxy tab -> HTTP history tab, right click on the (`POST`) request and select Send to Intruder. Now go to the Intruder tab and in the Positions tab, you can keep the Attack type: "[Sniper](https://portswigger.net/burp/help/intruder_positions.html)" because we are only using one wordlist. If we were using a wordlist for usernames and a different one for passwords, we would probably want to use "Cluster bomb".
 G>
 Now clear all the highlighted fields apart from the `password` value. Now we go to the Payloads tab. Keep the Payload set to 1 and Payload type set to [Simple list](https://portswigger.net/burp/help/intruder_payloads_types.html).
 G>
-G> Now I just added `Y35w3c4n!$%`, `Y35w3c4n!$&`, `Y35w3c4n!$*` and `Y35w3c4n!$@`. The last being the correct password. It can pay to have a valid account to test with, especially with `HTTP`. You don't need FoxyProxy on anymore either.  
+G> Now I just added `user1`, `user2`, `user3` and `user`. The last being the correct password. It can pay to have a valid account to test with, especially with `HTTP`. You don't need FoxyProxy on anymore either.  
 G> Go into the Intruder menu up the top -> Start attack. You will now get a pop up window with the results of the passwords you added.  
-G> Now with the Response tab and Raw tab selected, start at the top of the requests and just arrow down through them, inspecting the differences as you go. You should see that the last one, that's the `Y35w3c4n!$@` password has one changed value from the other responses. It will have a `Location` header with value of `index.php` rather than `login.php` that all the failed responses contain.
+G> Now with the Response tab and Raw tab selected, start at the top of the requests and just arrow down through them, inspecting the differences as you go. You should see that the last one, that's the `user` password has one changed value from the other responses. It will have a `Location` header with value of `index.php` rather than `login.php` that all the failed responses contain.
 G>
 G> That is our difference that we use to feed to our brute forcing tool so that it knows when we have a successful login, even though in theory the login process isn't yet complete as we have not issued the follow up `GET` request, but it does not matter, as we know we would not have been given a `index.php` if we were not authorised.
 G>

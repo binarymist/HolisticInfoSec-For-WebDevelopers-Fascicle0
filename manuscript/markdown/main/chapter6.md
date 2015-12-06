@@ -6,6 +6,8 @@ _Todo_
 
 %% Possibly call this chapter Internet of Compromisable Things (IoCT)
 
+%% https://www.youtube.com/playlist?list=PL9fPq3eQfaaBAmA0G2oEptwL0tpCAZJ_b
+
 Bruce Schneier has good [insight](http://www.networkworld.com/article/2909212/security0/schneier-on-really-bad-iot-security-it-s-going-to-come-crashing-down.html) on the problems to come I believe.
 
 If you think of the attack surface that Wi-Fi brought with it, you could probably double that for what we are going to experience with IoT, and I fear that may be an underestimate.
