@@ -80,7 +80,7 @@ A very profitable tactic is for an adversary to in one shape or form acquire a s
 ### Weak Password Strategies {#people-identify-risks-weak-password-strategies}
 ![](images/ThreatTags/easy-widespread-average-severe.png)
 
-#### Password Profiling
+#### Password Profiling {#people-identify-risks-weak-password-strategies-password-profiling}
 
 There are plenty of large password wordlists around. I discussed a handful of these in the [Tooling Set-up](#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-password-lists) chapter. What an attacker does with password profiling is create short lists of words based on information gathered in the reconnaissance stage. These wordlists should be much shorter than the "off the shelf" wordlists sometimes used for brute forcing targets accounts.
 
