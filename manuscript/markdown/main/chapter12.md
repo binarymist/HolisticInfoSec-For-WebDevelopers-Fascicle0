@@ -297,14 +297,17 @@ G>
 G> Lets determine the hash type with hash-identifier. Just run it and throw the hash at it and it will tell you that it is most likely a simple MD5. which is a one-way hashing function with no Key derivation. So very quick to crack.
 G>
 G> So take your pick of the following three commands:  
-G> Create `./hashtocrack.txt` and put the hash(s) you want cracked in it. If you still have the wordlist we created in the [Brute Forcing](#people-identify-risks-weak-password-strategies-brute-forcing-hydra) section in the People chapter, just use it.  
-G> 1. `hashcat -m 0 ./hashtocrack.txt ./wordlist-to-throw-at-dvwa`  
+G> Create `~/hashtocrack.txt` and put the hash(s) you want cracked in it. Now usually you would create a profiled wordlist taylored to your target like we did in the [Password Profiling](#people-identify-risks-weak-password-strategies-password-profiling) section in the People chapter. For this exercise just add the following three words to `~/wordlist-to-throw-at-dvwa`:  
+G> `dogs`, `cats`, `admins`, `admin`. Now you can compare the hashed words from the list with the hash in the `~/hashtocrack.txt`  
+G> 1. `hashcat -m 0 ~/hashtocrack.txt ~/wordlist-to-throw-at-dvwa`  
 G>    `-m 0` means MD5 to hashcat.  
 G> 2. `[algorithm]` for next command in this case will be `MD5`  
 G>    `findmyhash [algorithm] -h <hash_value>`  
 G>    `findmyhash` is a cracker that queries online lists.  
-G> 3. `john --format=raw-MD5 /root/hashtocrack.txt wordlist-to-throw-at-dvwa --show`  
+G> 3. `john --format=raw-MD5 ~/hashtocrack.txt ~/wordlist-to-throw-at-dvwa --show`  
 G> This gives us the super secure password of "admin"
+
+{icon=bomb}
 G>
 G> In order to get login, we actually need the username. In this case they were the same, but for some other users they were not. So our last query.  
 G> Full server query guess:  
