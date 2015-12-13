@@ -331,7 +331,7 @@ _Todo_
 ### Component Placement {#network-identify-risks-component-placement}
 
 _Todo_:
-DMZ for example. You may need to place your web server in a DMZ, but that does not mean it is dependencies like data-store servers should also be there.
+DMZ for example. You may need to place your web server in a DMZ, but that does not mean its dependencies like data-store servers should also be there.
 
 ### Wire Inspecting {#network-identify-risks-wire-inspecting}
 
@@ -501,7 +501,7 @@ Do what the attacker does on your internal DNS server.
 #### SMTP {#network-countermeasures-doppelganger-domains-smtp}
 ![](images/ThreatTags/PreventionAVERAGE.png)
 
-Seup your own internal catch-all SMTP server to correct miss typed domains before someone else does.
+Set-up your own internal catch-all SMTP server to correct miss typed domains before someone else does.
 
 #### SSH {#network-countermeasures-doppelganger-domains-ssh}
 ![](images/ThreatTags/PreventionAVERAGE.png)

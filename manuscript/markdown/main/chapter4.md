@@ -1162,7 +1162,20 @@ Beat your own systems up and watch logs. Get familiar with signatures of differe
 
 We will go through the actual exploitation that an attacker or penetration tester would carry out in the following chapters Identify Risks sections.
 
+#### Isolating Testing and Malware
+
 _Todo_
+
+##### Qubes
+
+* http://www.meetup.com/OWASP-New-Zealand-Chapter-Christchurch/events/226227782/
+* https://www.google.co.nz/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8&client=ubuntu#q=qubes
+* https://www.qubes-os.org/
+* https://www.qubes-os.org/doc/templates/
+* https://www.qubes-os.org/getting-started/
+* https://www.qubes-os.org/doc/qubes-architecture/
+
+
 
 Discuss isolating (potential) malware:  
 firejail  

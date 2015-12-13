@@ -8,6 +8,11 @@ _Todo_
 
 %% https://www.youtube.com/playlist?list=PL9fPq3eQfaaBAmA0G2oEptwL0tpCAZJ_b
 
+%% Chris CampbellAlso, remind me to lend you my Arduino USB stick at KiwiCon. Or you can grab one from Jaycar for next to nothing:
+%% http://www.jaycar.co.nz/Kits%2C-Science-%26-Learning/Electronic-Project-Kits/Computer-%26-Programming/LeoStick-Arduino-Compatible/p/XC4266
+%% They are a pretty good alternative to Teensy, and there's even a script that can convert Ducky Scripts to run on them - although I haven't had much luck with it:
+%% http://www.adebenham.com/files/leo/compile_payload.sh
+
 Bruce Schneier has good [insight](http://www.networkworld.com/article/2909212/security0/schneier-on-really-bad-iot-security-it-s-going-to-come-crashing-down.html) on the problems to come I believe.
 
 If you think of the attack surface that Wi-Fi brought with it, you could probably double that for what we are going to experience with IoT, and I fear that may be an underestimate.
@@ -17,6 +22,7 @@ OWASP also has an IoT Top 10 https://www.owasp.org/index.php/OWASP_Internet_of_T
 _Todo_
 
 %% Implement an IoT device on maybe the tessel 2 using a fork of nodeminder, or on possibly raspberry pi using zoneminder. Some writing around this in the Physical chapter under ### Cameras, Sensors and Alarms. Link to this once done.
+%% Possibly using containers?
 
 %% Tessel 2 podcast on NodeUp 85_01 covering RX.js, functional programming, piping.
 
