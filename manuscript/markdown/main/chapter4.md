@@ -1160,36 +1160,114 @@ During this stage, thinking about and recording countermeasures for the vulnerab
 
 Beat your own systems up and watch logs. Get familiar with signatures of different tools and attacks, then you will know when you are actually under attack. You can take the same concept with active and semi-active reconnaissance. This way, you will be able to pre-empt your attackers exploitation.
 
-We will go through the actual exploitation that an attacker or penetration tester would carry out in the following chapters Identify Risks sections.
+We will go through the actual exploitation that an attacker or penetration tester would carry out in each of the following chapters Identify Risks sections.
 
-#### Isolating Testing and Malware
+#### Isolating, Testing Potential Malware
 
-_Todo_
+There are many ways to isolate potentially infectious malware, such as air gaping, virtualisation, Linux Containers (LXC and later LXD) to an extent and their derivatives. Then the purpose built tools such as Firejail and Qubes.
 
-##### Qubes
+Air gaping can be somewhat impractical, plus with the likes of wifi, bluetooth, etc, air gaps are not always as effective as they used to be.
 
-* http://www.meetup.com/OWASP-New-Zealand-Chapter-Christchurch/events/226227782/
-* https://www.google.co.nz/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8&client=ubuntu#q=qubes
-* https://www.qubes-os.org/
-* https://www.qubes-os.org/doc/templates/
-* https://www.qubes-os.org/getting-started/
-* https://www.qubes-os.org/doc/qubes-architecture/
+I'm going to make a few suggestions. This topic as most, goes very deep and broad and could be the content of an array of books. I'll attempt to give you an idea of some of the offerings that you could consider for this. Generally speaking, the order of offerings presented below runs from systems with some isolation first down to systems purposely designed for containing infectious malware toward the bottom of this section.
 
+##### linux containers (LXC)
 
+&nbsp;
 
-Discuss isolating (potential) malware:  
-firejail  
-https://threatpost.com/firefox-37-to-include-new-onecrl-certificate-blocklist/111411/  
-http://sourceforge.net/projects/firejail/  
-http://linuxmint.tumblr.com/post/128281378277/firejail
+Containers on a host share the same kernel and operating system. The rest of the operating system files can be unique per container. This makes it "possible" to isolate running applications within a container from other applications on the container host.
 
-linux containers
+%% _Todo_ Discuss the level of isolation here if time permits.
 
+Windows containers are also coming along, but they are also scoped to the windows operating system they run inside.
 
-docker
+In terms of performance, containers beat VMs because they share a lot more, which also means that in terms of isolating malware, generally speaking VMs do a better job.
 
+##### Docker
 
-What else?
+&nbsp;
+
+![](images/DockerHighLevel.png)
+%% Image in Alerts account
+
+Docker which was open sourced in [March 2013](http://www.infoq.com/news/2013/03/Docker) focuses on containing application environments. Docker was designed to "_pack, ship and run any application as a lightweight container_" as stated in their github [README.md](https://github.com/docker/docker). Docker containers, unlike virtual machines do not require a separate operating system.
+
+Docker containers can be run on any x64-bit Linux kernel that supports [cgroups](https://en.wikipedia.org/wiki/Cgroups) ("_a Linux kernel feature that limits, accounts for and isolates the resource usage (CPU, memory, disk I/O, network, etc) of a collection of processes_").
+
+Docker used LXC as the default execution environment before the release of version 0.9 on March 13, 2014. After that Dockers own `libcontainer` library written in GoLang was used. 
+
+It's good to see "Security Disclosure" directions and contact details as the second header on the Docker github page. This installs confidence.
+
+I'm not going to go into Docker in depth here because by default it doesn't really provide enough isolation for the purpose of containing infectious malware. It's reason to exist is more focussed on assisting dev-ops.
+
+##### Virtual Machines
+
+&nbsp;
+
+With network adapters configured to provide the isolation you require. VMs whether:
+* [Type-1, native or bare-metal](http://blog.binarymist.net/2012/01/23/bare-metal-hypervisor-setup-evaluation/) (Xen, VMware ESX(i), KVM, ProxMox, Archipel, etc) or
+* Type-2 or Hosted (VMware Workstation, Server, Player, VirtualBox, etc)) have a greater degree of separation than containers and don't share their operating system with the host or other guests. Although as discussed further on, Type-2 does use the hosting operating systems services which dramatically increases the surface area for attack.
+
+![](images/HypervisorTypesHighLevel.png)
+%% Image in Alerts account
+
+The guest (or VM) emulates a real physical machine, but requests for resources such as CPU, memory, disk storage, network, USB, etc are managed by a virtualisation layer controlled by the host system, which delegates its resources as it sees fit. 
+
+Malware can still cross all of these boundaries to varying extents. It's these boundaries that you need to consider when attempting to isolate potentially infectious binaries.
+
+##### [FireJail](https://firejail.wordpress.com/)
+
+&nbsp;
+
+FireJail is a SUID (Set owner User ID upon execution) program that sandboxes specified running environments of untrusted processes (servers, graphical applications, user login sessions) using [Linux namespaces](https://lwn.net/Articles/531114/) and [seccomp-bpf](https://l3net.wordpress.com/2015/04/13/firejail-seccomp-guide/) (introduced into the Linux kernel in v3.5). Firejail "_allows a process and all its descendants to have their own private view of the globally shared kernel resources, such as the network stack, process table, mount table._"
+
+"_Written in C with virtually no dependencies, the software runs on any Linux computer with a 3.x kernel version or newer. The sandbox is lightweight, the overhead is low. There are no complicated configuration files to edit, no socket connections open, no daemons running in the background. All security features are implemented directly in Linux kernel and available on any Linux computer._". The source code is on [github](https://github.com/netblue30/firejail). Pre-built DEB, AUR and RPM packages are available for [download](https://firejail.wordpress.com/download-2/). Gentoo is also supported.
+
+Firejail has been modelled on the security sandbox that Google Chrome uses.
+
+Firejail "_includes security profiles for a large number of Linux programs_". Additional profiles can be created for programs not included. The profiles can be fine-tuned to suite your needs. Firejail can even run LXC, Docker and OpenVZ containers.
+
+To start a sandbox, just prefix your command with `firejail` like so:
+
+{title="As seen on firejail website", linenos=off, lang=Bash}
+    $ firejail firefox                       # starting Mozilla Firefox
+    $ firejail transmission-gtk              # starting Transmission BitTorrent 
+    $ firejail vlc                           # starting VideoLAN Client
+    $ sudo firejail /etc/init.d/nginx start  # starting nginx web server
+
+This can make it really simple to sandbox what-ever you want to test. prefixing your programs like this and creating menu items or modifying existing desktop menu items in this way makes in very convenient to run your programs in the firejail sandbox.
+
+FireJail also provides a separate graphical tool (Firetools). The firejail [web site](https://firejail.wordpress.com/) has good documentation to expand on this.
+
+##### [Qubes](https://www.qubes-os.org/)
+
+&nbsp;
+
+Before we look at Qubes, I'd just like to address Tails also, as they're often talked about in the same sentence. Tails is a live system (usually loaded from a DVD, USB stick, or SD card). It leaves no traces on the computer you are loading it onto unless you explicitly ask it to. All connections to the internet are forced to go through the Tor network. Tails whole aim is to provide anonymity for the user. Tails provides many options around anonymity, even forgetting user passwords, which you can specify on boot if you desire. I use Tails on a daily basis on some jobs, but it's target qualities are amnesia and anonymity.
+
+Qubes will not keep you anonymouse without customisation, but its primary goal is to keep infectous malware contained and isolated. Technically Qubes is not a Linux distribution, it's closer to being a Xen distro if anything.
+
+Qubes is a standalone operating system which uses Xen to create it's isolated containers (AKA security domains, zones). A fairly standard case would be for a user to have a small number of domains such as: "work", "personal", "banking". Typically a user will use around five domains. You could use more if your levels of paranoia were greater or had other reasons.
+
+Qubes also contains system domains such as a Networking domain (or VM) and USB domains, as it considers these untrusted. Even the USB stacks and drivers are sand-boxed in their own unprivileged VM (currently experimental). A storage domain has also been [considered](https://github.com/QubesOS/qubes-secpack/blob/master/QSBs/qsb-020-2015.txt#L97).
+
+![](images/qubes-arch-diagram-1.png)
+
+In the above image, the "Storage Domain" is actually a USB domain.
+
+It provides proper GUI-level (one of the main goals) isolation. Along with security as one of the primary goals of the GUI virtualisation subsystem, performance was also priority so the virtualised applications feel as if they were executed natively. The GUI infrastructure introduces only about 2500 lines of C code (LOC) into the privileged domain (Dom0), thus keeping the attack surface small.
+
+As opposed to the mainstream desktop operating sytems which:
+
+"_are based on monolithic kernels usually containing tens of millions of lines of code. Most of this code is reachable from untrusted applications via all sorts of APIs, making the attack surface on the kernel huge._". All the networking, USB, etc drivers are also hosted in the kernel.  
+Or  
+Type-2 (hosted) hypervisors which suffer from similar weaknesses plus some of their own because they run inside of the hosting operating system as processes and/or kernel modules. This means they're trusting the underlying operating systems services for networking, USB, graphics, Human Interface Devices (HID) like keyboards and mice. Which means they are inheriting any buggy utilised resources in the underlying operating system. 
+
+Fedora is currently used for the default template for AppVMs. A cut down Fedora and Debian templates are also supported by Invisible Things Lab (the creators of Qubes). There are also community supported templates built around Whonix (providing anonymity), Ubuntu and Archlinux. Windows 7 can be run in a VM, [support for Windows 8+ is in development](https://www.qubes-os.org/doc/windows-appvms/).  
+Qubes VMs are light weight so as to be able to easily run many at once, requiring little memory and optimised to start almost instantly. Each VM is automatically assigned a private static IP.
+
+In order to expose any services within a VM to the hosts interface, port forwarding needs to be configured in the host. Qubes provides advanced networking configurations.
+
+There is no direct communication between VMs unless you explicitly set it up. In saying that, Qubes provides secure inter-VM clipbord and file sharing.
 
 ### Documenting and Reporting
 
@@ -1201,7 +1279,18 @@ Just because this section is last in the Penetration Testing section, does not m
 
 _Todo_
 
-Discuss what Dradis provides and how it helps.
+Discuss what Dradis provides and how it helps.  
+http://dradisframework.org/
+
+#### CaseFile
+
+_Todo_
+
+Discuss CaseFile.  
+http://tools.kali.org/information-gathering/casefile
+
+
+
 
 ## Agile Development and Practices {#process-and-practises-agile-development-and-practices}
 
