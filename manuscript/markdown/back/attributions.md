@@ -56,13 +56,13 @@ http-waf-fingerprint: [https://nmap.org/nsedoc/scripts/http-waf-fingerprint.html
 
 **firejail**
 
-**allows a process and all its descendants** to have their own private view of the globally shared kernel resources, such as the network stack, process table, mount table.  
+**Allows a process and all its descendants** to have their own private view of the globally shared kernel resources, such as the network stack, process table, mount table.  
 [https://firejail.wordpress.com/](https://firejail.wordpress.com/)
 
 **The source code is on github**  
 [https://github.com/netblue30/firejail](https://github.com/netblue30/firejail)
 
-**Pre-built DEB, AUR and RPM packages are available for download  
+**Pre-built DEB, AUR and RPM packages** are available for download  
 [https://firejail.wordpress.com/download-2/](https://firejail.wordpress.com/download-2/)
 
 **Firejail can even run LXC, Docker and OpenVZ containers**  
@@ -70,13 +70,13 @@ http-waf-fingerprint: [https://nmap.org/nsedoc/scripts/http-waf-fingerprint.html
 
 **Qubes**
 
-**Technically Qubes is not a Linux distribution**, it's closer to being a Xen distro if anything.  
+**Technically Qubes is not a Linux distribution**, it's closer to being a Xen distro if anything  
 [https://www.qubes-os.org/doc/user-faq/#is-qubes-just-another-linux-distribution](https://www.qubes-os.org/doc/user-faq/#is-qubes-just-another-linux-distribution)
 
 **USB stacks and drivers are sand-boxed** in their own unprivileged VM (currently experimental)  
 [https://www.qubes-os.org/doc/qubes-architecture/](https://www.qubes-os.org/doc/qubes-architecture/)
 
-**A storage domain has also been considered  
+**A storage domain has also been considered**  
 [https://github.com/QubesOS/qubes-secpack/blob/master/QSBs/qsb-020-2015.txt#L97](https://github.com/QubesOS/qubes-secpack/blob/master/QSBs/qsb-020-2015.txt#L97)
 
 **It provides proper GUI-level** (one of the main goals) isolation  
@@ -85,7 +85,7 @@ http-waf-fingerprint: [https://nmap.org/nsedoc/scripts/http-waf-fingerprint.html
 **Along with security** as one of the primary goals of the GUI virtualisation subsystem, performance was also priority so the virtualised applications feel as if they were executed natively  
 [https://www.qubes-os.org/doc/user-faq/#is-qubes-just-another-linux-distribution](https://www.qubes-os.org/doc/user-faq/#is-qubes-just-another-linux-distribution)
 
-**based on monolithic kernels** usually containing tens of millions of lines of code. Most of this code is reachable from untrusted applications via all sorts of APIs, making the attack surface on the kernel huge.  
+**Based on monolithic kernels** usually containing tens of millions of lines of code. Most of this code is reachable from untrusted applications via all sorts of APIs, making the attack surface on the kernel huge.  
 [http://theinvisiblethings.blogspot.it/2012/09/how-is-qubes-os-different-from.html](http://theinvisiblethings.blogspot.it/2012/09/how-is-qubes-os-different-from.html)
 
 **Ssupport for Windows 8+ is in development**  

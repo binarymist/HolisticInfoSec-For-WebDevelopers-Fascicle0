@@ -1280,14 +1280,16 @@ Just because this section is last in the Penetration Testing section, does not m
 _Todo_
 
 Discuss what Dradis provides and how it helps.  
-http://dradisframework.org/
+
+%% http://dradisframework.org/
 
 #### CaseFile
 
 _Todo_
 
 Discuss CaseFile.  
-http://tools.kali.org/information-gathering/casefile
+
+%% http://tools.kali.org/information-gathering/casefile
 
 
 
