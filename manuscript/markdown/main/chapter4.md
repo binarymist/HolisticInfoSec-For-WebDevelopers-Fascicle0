@@ -1168,7 +1168,7 @@ There are many ways to isolate potentially infectious malware, such as air gapin
 
 Air gaping can be somewhat impractical, plus with the likes of wifi, bluetooth, etc, air gaps are not always as effective as they used to be.
 
-I'm going to make a few suggestions. This topic as most, goes very deep and broad and could be the content of an array of books. I'll attempt to give you an idea of some of the offerings that you could consider for this. Generally speaking, the order of offerings presented below runs from systems with some isolation first down to systems purposely designed for containing infectious malware toward the bottom of this section.
+I'm going to make a few suggestions. This topic as most, goes very deep and broad and could be the content of an array of books. I'll attempt to give you an idea of some of the offerings that you could consider for this. Generally speaking, the order of offerings presented below runs from systems with some isolation first, down to systems purposely designed for containing infectious malware toward the bottom of this section.
 
 ##### linux containers (LXC)
 
@@ -1189,11 +1189,11 @@ In terms of performance, containers beat VMs because they share a lot more, whic
 ![](images/DockerHighLevel.png)
 %% Image in Alerts account
 
-Docker which was open sourced in [March 2013](http://www.infoq.com/news/2013/03/Docker) focuses on containing application environments. Docker was designed to "_pack, ship and run any application as a lightweight container_" as stated in their github [README.md](https://github.com/docker/docker). Docker containers, unlike virtual machines do not require a separate operating system.
+Docker was open sourced in [March 2013](http://www.infoq.com/news/2013/03/Docker) and is focused on containing application environments. Docker was designed to "_pack, ship and run any application as a lightweight container_" as stated in their github [README.md](https://github.com/docker/docker). Docker containers, unlike virtual machines do not require a separate operating system.
 
 Docker containers can be run on any x64-bit Linux kernel that supports [cgroups](https://en.wikipedia.org/wiki/Cgroups) ("_a Linux kernel feature that limits, accounts for and isolates the resource usage (CPU, memory, disk I/O, network, etc) of a collection of processes_").
 
-Docker used LXC as the default execution environment before the release of version 0.9 on March 13, 2014. After that Dockers own `libcontainer` library written in GoLang was used. 
+Docker used LXC as the default execution environment before the release of its version 0.9 on March 13, 2014. After that Dockers own `libcontainer` library written in GoLang was used. 
 
 It's good to see "Security Disclosure" directions and contact details as the second header on the Docker github page. This installs confidence.
 
@@ -1244,7 +1244,7 @@ FireJail also provides a separate graphical tool (Firetools). The firejail [web 
 
 Before we look at Qubes, I'd just like to address Tails also, as they're often talked about in the same sentence. Tails is a live system (usually loaded from a DVD, USB stick, or SD card). It leaves no traces on the computer you are loading it onto unless you explicitly ask it to. All connections to the internet are forced to go through the Tor network. Tails whole aim is to provide anonymity for the user. Tails provides many options around anonymity, even forgetting user passwords, which you can specify on boot if you desire. I use Tails on a daily basis on some jobs, but it's target qualities are amnesia and anonymity.
 
-Qubes will not keep you anonymouse without customisation, but its primary goal is to keep infectous malware contained and isolated. Technically Qubes is not a Linux distribution, it's closer to being a Xen distro if anything.
+Qubes will not keep you anonymous without customisation. Its primary goal is to keep infectious malware contained and isolated. Technically Qubes is not a Linux distribution, it's closer to being a Xen distro if anything.
 
 Qubes is a standalone operating system which uses Xen to create it's isolated containers (AKA security domains, zones). A fairly standard case would be for a user to have a small number of domains such as: "work", "personal", "banking". Typically a user will use around five domains. You could use more if your levels of paranoia were greater or had other reasons.
 
@@ -1260,14 +1260,14 @@ As opposed to the mainstream desktop operating sytems which:
 
 "_are based on monolithic kernels usually containing tens of millions of lines of code. Most of this code is reachable from untrusted applications via all sorts of APIs, making the attack surface on the kernel huge._". All the networking, USB, etc drivers are also hosted in the kernel.  
 Or  
-Type-2 (hosted) hypervisors which suffer from similar weaknesses plus some of their own because they run inside of the hosting operating system as processes and/or kernel modules. This means they're trusting the underlying operating systems services for networking, USB, graphics, Human Interface Devices (HID) like keyboards and mice. Which means they are inheriting any buggy utilised resources in the underlying operating system. 
+Type-2 (hosted) hypervisors which suffer from similar weaknesses plus some of their own because they run inside of the hosting operating system as processes and/or kernel modules. This means they're trusting the underlying operating systems services for networking, USB, graphics, Human Interface Devices (HIDs) like keyboards and mice. Which means they are inheriting any buggy utilised resources in the underlying operating system. 
 
 Fedora is currently used for the default template for AppVMs. A cut down Fedora and Debian templates are also supported by Invisible Things Lab (the creators of Qubes). There are also community supported templates built around Whonix (providing anonymity), Ubuntu and Archlinux. Windows 7 can be run in a VM, [support for Windows 8+ is in development](https://www.qubes-os.org/doc/windows-appvms/).  
 Qubes VMs are light weight so as to be able to easily run many at once, requiring little memory and optimised to start almost instantly. Each VM is automatically assigned a private static IP.
 
 In order to expose any services within a VM to the hosts interface, port forwarding needs to be configured in the host. Qubes provides advanced networking configurations.
 
-There is no direct communication between VMs unless you explicitly set it up. In saying that, Qubes provides secure inter-VM clipbord and file sharing.
+There is no direct communication between VMs unless you explicitly set it up. In saying that, Qubes provides secure inter-VM clip-board and file sharing.
 
 ### Documenting and Reporting
 
