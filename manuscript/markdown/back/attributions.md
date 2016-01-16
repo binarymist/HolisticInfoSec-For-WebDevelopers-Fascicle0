@@ -88,9 +88,17 @@ http-waf-fingerprint: [https://nmap.org/nsedoc/scripts/http-waf-fingerprint.html
 **Based on monolithic kernels** usually containing tens of millions of lines of code. Most of this code is reachable from untrusted applications via all sorts of APIs, making the attack surface on the kernel huge.  
 [http://theinvisiblethings.blogspot.it/2012/09/how-is-qubes-os-different-from.html](http://theinvisiblethings.blogspot.it/2012/09/how-is-qubes-os-different-from.html)
 
-**Ssupport for Windows 8+ is in development**  
+**Support for Windows 8+ is in development**  
 [https://www.qubes-os.org/doc/windows-appvms/](https://www.qubes-os.org/doc/windows-appvms/)
 
+**Excellent tools for this task**. There are also many others. Many of which are included in Kali Linux  
+[http://tools.kali.org/reporting-tools](http://tools.kali.org/reporting-tools)
+
+**Dradis is included in Kali Linux** and the source code can be accessed from the dradisframework repository  
+[https://github.com/dradis/dradisframework](https://github.com/dradis/dradisframework)
+
+**There is a collection of security tools that Dradis integrates with  
+[https://github.com/dradis/dradisframework#some-of-the-features](https://github.com/dradis/dradisframework#some-of-the-features)
 
 **If you look at the public statistics** on businesses loosing value due to being compromised regularly, the figures are staggering  
 [http://www.meetup.com/OWASP-New-Zealand-Chapter-Christchurch/events/223462991/](http://www.meetup.com/OWASP-New-Zealand-Chapter-Christchurch/events/223462991/) 
@@ -104,6 +112,14 @@ http-waf-fingerprint: [https://nmap.org/nsedoc/scripts/http-waf-fingerprint.html
 **NodeGoat** The purposly vulnerable NodeJS web application  
 [https://github.com/OWASP/NodeGoat](https://github.com/OWASP/NodeGoat)
 
+**DBC**  
+[http://blog.binarymist.net/2010/10/11/lsp-dbc-and-nets-support/](http://blog.binarymist.net/2010/10/11/lsp-dbc-and-nets-support/)
+
+**Flow** looks to be a good option. Providing consumers with the option of introducing type checking progressively.  
+[(http://flowtype.org/)](http://flowtype.org/)
+
+**I really liked what Moxie Marlinspike** said on the topic of career advice  
+[http://www.thoughtcrime.org/blog/career-advice/](http://www.thoughtcrime.org/blog/career-advice/)
 
 ## [Physical](#physical)
 

@@ -1273,26 +1273,21 @@ There is no direct communication between VMs unless you explicitly set it up. In
 
 Just because this section is last in the Penetration Testing section, does not mean it is carried out last. A penetration tester or even an attacker will be recording information throughout the entire engagement. Especially during the Reconnaissance stage.
 
-#### Dradis
+There are many tools that can help us to capture, organise and provide physical representations of how the data is related. The below are excellent tools for this task. There are also many others. Many of which are [included](http://tools.kali.org/reporting-tools) in Kali Linux.
 
-%% "The Social Engineer's Playbook" pg 81
+#### [Dradis](http://dradisframework.org/)
 
-_Todo_
+As software engineers often use wikis for storing and collaborating on information that is meant for the teams benefit, Dradis is a similar type of web application that stores all the information of what has been done and what is left to be done on an engagement for info-sec teams. It's self contained and can be run from the likes of a laptop where ever you're working from.
 
-Discuss what Dradis provides and how it helps.  
-
-%% http://dradisframework.org/
+Like good wikis, Dradis provides the ability to add attachments and create reports. Dradis is included in Kali Linux and the source code can be accessed from the dradisframework [repository](https://github.com/dradis/dradisframework) of dradis which is on github. There is a collection of security tools that Dradis [integrates with](https://github.com/dradis/dradisframework#some-of-the-features) and creating connectors to additional tools is stated to be easy.
 
 #### CaseFile
 
-_Todo_
+Created by the same organisation as Maltego (which falls into the reconnaissance category), CaseFile has similar characteristics but is targeted toward information that is manually gathered and entered off-line. It doesn't use transforms like Maltego and it's about a third of the price, unless you're using the community edition which is free. Both Maltego and CaseFile community editions are packaged in Kali Linux.
 
-Discuss CaseFile.  
+CaseFile is useful for mapping the relationships between the types of information you enter. Providing the ability to view the ascending and descending relationships to many levels of depth. Out of the box, it comes with its own entity types for you to store your information and you can create custom types as well.
 
-%% http://tools.kali.org/information-gathering/casefile
-
-
-
+Your CSV, XLS and XLSX formatted datasets can also be used and CaseFile will produce visualisations of how the data is related to each other.
 
 ## Agile Development and Practices {#process-and-practises-agile-development-and-practices}
 
@@ -1553,7 +1548,7 @@ Some developers have an inquisitiveness about how their work can be exploited, s
 1. Take the lead on the security front
 2. Mentor, infect their passion and pass on their knowledge to their co-workers
 
-Remember I mentioned in the People chapter in the ["Top Developer Motivators in Order"](#people-countermeasures-morale-productivity-and-engagement-killers-top-developer-motivators-in-order) section how developers love being champion of something? The role of security champion or any champion for that matter needs to be applied to the developer as a vacuum. People do not respond well to being pushed into anything. The best developers will just pick up the role, but many will not be as proactive. For the less proactive developers, it pays to create the role and as a Product Owner or manager approach them and ask them if they would like to take the responsibility as security champion. Once a developer has taken up this responsibility, they will usually do a pretty good job of infecting the rest of their team with their passion and knowledge.
+I mention in the People chapter in the ["Top Developer Motivators in Order"](#people-countermeasures-morale-productivity-and-engagement-killers-top-developer-motivators-in-order) section how developers love being champion of something? The role of security champion or any champion for that matter needs to be applied to the developer as a vacuum. People do not respond well to being pushed into anything. The best developers will just pick up the role, but many will not be as proactive. For the less proactive developers, it pays to create the role and as a Product Owner or manager approach them and ask them if they would like to take the responsibility as security champion. Once a developer has taken up this responsibility, they will usually do a pretty good job of infecting the rest of their team with their passion and knowledge.
 
 ### Pair Programming
 
@@ -1561,13 +1556,15 @@ Two pairs of eyes on the same code is proven to drastically reduce defects, and 
 
 ### Code Review
 
-If we can not get the simple things right like [Coding standards and conventions](http://blog.binarymist.net/2012/12/19/javascript-coding-standards-and-guidelines/) to help remove some of the "wild west" attitudes and behaviours, then how will we ever get the complicated things right? The whole team needs to abide by the standards, conventions and guidelines.
+If we can not get the simple things right like [Coding standards and conventions](http://blog.binarymist.net/2012/12/19/javascript-coding-standards-and-guidelines/) to help remove some of the "wild west" attitudes and behaviours, then how will we ever get the complicated things right? The whole team doesn't necessary have to agree on everything, but needs to be in alignment with and abide by the standards, conventions and guidelines.
 
-[Callback Hell Alternatives](http://blog.binarymist.net/2014/07/26/node-js-asynchronicity-and-callback-nesting/) for example.
+Having a pair review you code against the standards you have crated and offer [alternative](http://blog.binarymist.net/2014/07/26/node-js-asynchronicity-and-callback-nesting/) approaches and techniques for not only standards violations but for possible semantic modifications.
 
-Manual and Automated.
+It's often a good idea to automate as much of your coding standards as possible with static analysis and other related tooling. Ideally using your source control commit hooks to trigger the review process. This is discussed in more detail in the "Consuming Free and Open Source" sections in the Web Applications chapter.
 
-Check out the [BSIMM Code Review](https://www.bsimm.com/online/ssdl/cr/) for some good ideas.
+Automating is not going to catch everything though. Real person pair reviews should not be neglected. Team reviews should be carried out in moderation. I've found them to be less effective due to the fact that we loose face when our defects are highlighted in front of the entire team.
+
+The [BSIMM Code Review](https://www.bsimm.com/online/ssdl/cr/) resource has some good ideas.
 
 #### Why? {#process-agile-development-and-practices-code-review-why}
 
@@ -1575,19 +1572,21 @@ Because when humans are in creative mode, we often struggle to see the defects i
 
 #### Linting, Static Analysis
 
-Start with the likes of JSHint. There are lots of other good tooling options.
+Start with the likes of JSHint for general purpose JavaScript linting. There are lots of other good tooling options.
 
 Techniques and tools to assist with automating
 
 * [https://wiki.mozilla.org/Security/B2G/JavaScript_code_analysis](https://wiki.mozilla.org/Security/B2G/JavaScript_code_analysis)
-* [JSPrime](https://www.youtube.com/watch?v=Vk5SPGpqiLc) Security focused
+  * [DOMXSSScanner](https://github.com/yaph/domxssscanner). Does what the name suggests.
+  * [JSPrime](https://www.youtube.com/watch?v=Vk5SPGpqiLc). Security focused. Not currently maintained at this point in time. The owners are keen for someone to pick it up.
+  * [JSWebTools](http://www.jswebtools.org/). A collection of research papers and JS related security tools.
 
 #### Dynamic Analysis
 
-Tooling is still immature here. We have got a way to go, but lets start getting our feet wet.
+Tooling is still immature here. We have got a way to go, but lets start getting our feet wet. Here are a few resources to dip your toes:
 
-* [Titanium Code Processor](https://theoreticalideations.com/tag/titanium-code-processor/)
-* [Slide Deck](https://speakerdeck.com/ariya/dynamic-code-analysis-for-javascript)
+* [Titanium Code Processor](https://theoreticalideations.com/tag/titanium-code-processor/) For (Titanium Mobile)[https://github.com/appcelerator/titanium_mobile] (native mobile applications using JavaScript) projects. You can find the source code at the appcelerator account on (github)[https://github.com/appcelerator/titanium-code-processor] 
+* [Slide Deck](https://speakerdeck.com/ariya/dynamic-code-analysis-for-javascript) by Ariya Hidayat.
 * [Jalangi](https://www.eecs.berkeley.edu/~gongliang13/jalangi_ff/)
 
 &nbsp;
@@ -1602,34 +1601,70 @@ Because of the distinct lack of discipline within JavaScript (unlike most other 
 
 #### Static Type Checking
 
-In JavaScript we need as much help as we can to fail fast. Static type checking gives us this. It also feels like the step before DbC.
+In JavaScript we need as much help as we can to fail fast. Static type checking gives us this. It also feels like the step before [DbC](http://blog.binarymist.net/2010/10/11/lsp-dbc-and-nets-support/.
 
-* [flow](http://flowtype.org/) looks to be a good option. Providing consumers with the option of introducing type checking progressively and/or to certain parts that make the most sense. Or rather missing parts that require the extra flexibility.
+* [Flow](http://flowtype.org/) looks to be a good option. Providing consumers with the option of introducing type checking progressively and/or to certain parts that make the most sense. Or rather missing parts that require the extra flexibility.
 
+Here is an example from the flow website.
+
+{title="", linenos=off, lang=JavaScript}
+    /* @flow */
+    function foo(x) {
+      return x * 10;
+    }
+    foo('Hello, world!');
+
+{title="Run flow", linenos=off, lang=bash}
+    $> flow
+    hello.js:5:5,19: string
+    This type is incompatible with
+      hello.js:3:10,15: number
+    
+{title="Refactoring to DbC", linenos=off, lang=JavaScript}
+    function foo(x: string, y: number): string {
+      return x.length * y;
+    }
+    foo('Hello', 42);
+
+{title="Run flow", linenos=off, lang=bash}
+    $> flow
+    hello.js:3:10,21: number
+    This type is incompatible with
+      hello.js:2:37,42: string
 
 #### Design by Contract (DbC)
 
 Enforcing preconditions, postconditions and invariants in our routines.
 That is right, we can even employ this design principle in JavaScript. I wrote about DbC in a [previous post](http://blog.binarymist.net/2010/10/11/lsp-dbc-and-nets-support/#dbc) in regards to usage in .Net.  
-In JavaScript, I believe the DbC principle is even more important as part of adding discipline and keeping us on the straight and narrow. I believe DbC is the principle that helps us achieve the [Liskov Substitution Principle](http://blog.binarymist.net/2010/10/11/lsp-dbc-and-nets-support/#lsp), which is the 'L' in the SOLID design mnemonic. These are the offerings I have noticed that provide support:
+In JavaScript, I believe the DbC principle is even more important as part of adding discipline and keeping us on the straight and narrow. I believe DbC is the principle that helps us achieve the [Liskov Substitution Principle](http://blog.binarymist.net/2010/10/11/lsp-dbc-and-nets-support/#lsp), which is the 'L' in the SOLID design mnemonic. These are the offerings I have noticed that provide support additionally to the flow just mentioned above:
 
-1. [ristretto-js](https://code.google.com/p/ristretto-js/w/list)
-2. [contract-js on NPM](https://www.npmjs.com/package/contracts-js)
+2. [contract-js on NPM](https://www.npmjs.com/package/contracts-js) is our current leader in the DbC space.
   * [contract.js at home](http://www.contractsjs.org/)
 3. [contractual on NPM](https://www.npmjs.com/package/contractual)
+4. [ristretto-js](https://code.google.com/p/ristretto-js/w/list). Doesn't look to be currently maintained.
 
 In many cases you can implement your cross cutting code contracts using AOP. This gets it out of your code, so that it is not in your face.
 
-### Forming Habits
+### Forming Habits and Sharpening Skills
 
-_Todo_
+Something I've learnt as part of my career progression and applied it to multiple areas of my life is starting out as you plan on finishing or progressing. What I mean by that is that the habits you establish early in your career will steer you in the direction of those habits.
 
-%% Start out the way you want to end.
+There have been a collection of people that I would call mentors that I've taken some advice from and that helped to firm up some of my beliefs in terms of forming habits. Most of these have been from reading books, blog posts and listening to technology podcasts.
 
+I really liked what Moxie Marlinspike said on the topic of [career advice](http://www.thoughtcrime.org/blog/career-advice/). Distilled down: Essentially we become what we do for a job. It's just habits. What ever you do all the time will shape who you become as a person. If you want to become outstanding at something, you need to put the effort into learning everything you possibly can about it and pushing yourself relentlessly. Of course sacrifices must be made somewhere in order to do this and you need to count the costs first.
 
+You've probably heard the saying "No pain, no gain"? What doesn't kill you will make you stronger. Making a habit of constantly pushing yourself will pay off in terms of becoming very good at what ever it is you're doing.
 
-### Sharpen Your Skills
+Steer your career by reading the right books. The right books being those written by our software greats. Steve McConnel, Bob Martin and the others that have striven for excellence, and people that understand what goes into making a great crafts person.  
+The book: "So Good They Can't Ignore You" by Cal Newport goes through a collection of interviews and analyses of some of the most successful people. The over arching theme is that excellence is a by-product of forming the right habits and pushing yourself relentlessly. Especially in your early years.
 
-_Todo_
+Listen to educational technology podcasts when you have down time, travelling etc. Cram that information into your head.
 
-%% Look at the likes of NodeGoat and other vulnerable apps.
+Be ready to admit mistakes and seek out positions where you are the worst developer and you feel uncomfortable. Being around the best will lift your abilities quickly if you're willing to push your self and learn from those that are better than you. I've seen this in many professions. The lower performer if they want to lift their game can do so quickly in a pressured environment like this.
+
+Forming habits such as  
+* TDDing your code
+* Making your code as readable as possible. Favouring read time convenience over write time. Your code will be read many times more than it is written. By making it as easy as possible to read (not making your code too clever), you'll weed out many bugs that have slipped through the gaps because developers struggled to understand what your code actually does. Yes you may be able to write something in less lines of code and/or it may be more performant, but at the cost of alienating other developers and harbouring defects.
+* Establishing Continuous Integration and Deployment helps to weed out defects early, thus saving big costs.
+
+Exercises such as purposely vulnerable targets (applications, networks, social engineering, etc) with the aim of challenging and lifting your current skill-set are invaluable.
