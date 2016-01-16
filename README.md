@@ -1,5 +1,7 @@
 # Holistic InfoSec For Web Developers
 
+[![Join the chat at https://gitter.im/binarymist/HolisticInfoSec-For-WebDevelopers](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/binarymist/HolisticInfoSec-For-WebDevelopers?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 To access the original (now out of date) training which the book was based on, head on over to the [wiki](https://github.com/binarymist/HolisticInfoSec-For-WebDevelopers/wiki/BinaryMist-Approach-To-Threat-Modelling) to get started.
 
 The contents of the book that's WIP is listed below. The actual book can be found [here](https://leanpub.com/holistic-infosec-for-web-developers).
