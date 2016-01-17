@@ -118,6 +118,12 @@ http-waf-fingerprint: [https://nmap.org/nsedoc/scripts/http-waf-fingerprint.html
 **Flow** looks to be a good option. Providing consumers with the option of introducing type checking progressively.  
 [(http://flowtype.org/)](http://flowtype.org/)
 
+**Example from the flow website**  
+[http://flowtype.org/](http://flowtype.org/)
+
+**Essentials for Creating and Maintaining a High Performance Development Team**  
+[http://blog.binarymist.net/2014/01/25/essentials-for-creating-and-maintaining-a-high-performance-development-team/](http://blog.binarymist.net/2014/01/25/essentials-for-creating-and-maintaining-a-high-performance-development-team/)
+
 **I really liked what Moxie Marlinspike** said on the topic of career advice  
 [http://www.thoughtcrime.org/blog/career-advice/](http://www.thoughtcrime.org/blog/career-advice/)
 

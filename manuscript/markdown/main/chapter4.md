@@ -1172,8 +1172,6 @@ I'm going to make a few suggestions. This topic as most, goes very deep and broa
 
 ##### linux containers (LXC)
 
-&nbsp;
-
 Containers on a host share the same kernel and operating system. The rest of the operating system files can be unique per container. This makes it "possible" to isolate running applications within a container from other applications on the container host.
 
 %% _Todo_ Discuss the level of isolation here if time permits.
@@ -1183,8 +1181,6 @@ Windows containers are also coming along, but they are also scoped to the window
 In terms of performance, containers beat VMs because they share a lot more, which also means that in terms of isolating malware, generally speaking VMs do a better job.
 
 ##### Docker
-
-&nbsp;
 
 ![](images/DockerHighLevel.png)
 %% Image in Alerts account
@@ -1201,8 +1197,6 @@ I'm not going to go into Docker in depth here because by default it doesn't real
 
 ##### Virtual Machines
 
-&nbsp;
-
 With network adapters configured to provide the isolation you require. VMs whether:
 * [Type-1, native or bare-metal](http://blog.binarymist.net/2012/01/23/bare-metal-hypervisor-setup-evaluation/) (Xen, VMware ESX(i), KVM, ProxMox, Archipel, etc) or
 * Type-2 or Hosted (VMware Workstation, Server, Player, VirtualBox, etc)) have a greater degree of separation than containers and don't share their operating system with the host or other guests. Although as discussed further on, Type-2 does use the hosting operating systems services which dramatically increases the surface area for attack.
@@ -1215,8 +1209,6 @@ The guest (or VM) emulates a real physical machine, but requests for resources s
 Malware can still cross all of these boundaries to varying extents. It's these boundaries that you need to consider when attempting to isolate potentially infectious binaries.
 
 ##### [FireJail](https://firejail.wordpress.com/)
-
-&nbsp;
 
 FireJail is a SUID (Set owner User ID upon execution) program that sandboxes specified running environments of untrusted processes (servers, graphical applications, user login sessions) using [Linux namespaces](https://lwn.net/Articles/531114/) and [seccomp-bpf](https://l3net.wordpress.com/2015/04/13/firejail-seccomp-guide/) (introduced into the Linux kernel in v3.5). Firejail "_allows a process and all its descendants to have their own private view of the globally shared kernel resources, such as the network stack, process table, mount table._"
 
@@ -1239,8 +1231,6 @@ This can make it really simple to sandbox what-ever you want to test. prefixing 
 FireJail also provides a separate graphical tool (Firetools). The firejail [web site](https://firejail.wordpress.com/) has good documentation to expand on this.
 
 ##### [Qubes](https://www.qubes-os.org/)
-
-&nbsp;
 
 Before we look at Qubes, I'd just like to address Tails also, as they're often talked about in the same sentence. Tails is a live system (usually loaded from a DVD, USB stick, or SD card). It leaves no traces on the computer you are loading it onto unless you explicitly ask it to. All connections to the internet are forced to go through the Tor network. Tails whole aim is to provide anonymity for the user. Tails provides many options around anonymity, even forgetting user passwords, which you can specify on boot if you desire. I use Tails on a daily basis on some jobs, but it's target qualities are amnesia and anonymity.
 
@@ -1550,7 +1540,7 @@ Some developers have an inquisitiveness about how their work can be exploited, s
 
 I mention in the People chapter in the ["Top Developer Motivators in Order"](#people-countermeasures-morale-productivity-and-engagement-killers-top-developer-motivators-in-order) section how developers love being champion of something? The role of security champion or any champion for that matter needs to be applied to the developer as a vacuum. People do not respond well to being pushed into anything. The best developers will just pick up the role, but many will not be as proactive. For the less proactive developers, it pays to create the role and as a Product Owner or manager approach them and ask them if they would like to take the responsibility as security champion. Once a developer has taken up this responsibility, they will usually do a pretty good job of infecting the rest of their team with their passion and knowledge.
 
-### Pair Programming
+### Pair Programming {#process-agile-development-and-practices-pair-programming}
 
 Two pairs of eyes on the same code is proven to drastically reduce defects, and it does it at the cheapest possible place, as they are being created. Pair programming can be a very effective discipline, but not all the time and not for all people. There is a lot of resources on the topic. If you have not tried it, then you should, but it is probably counter productive to mandate that all the developers should do it all of the time. It is probably a good idea to encourage developers to pair on complex tasks. It is a tool, try it and use it wisely.
 
@@ -1644,6 +1634,85 @@ In JavaScript, I believe the DbC principle is even more important as part of add
 4. [ristretto-js](https://code.google.com/p/ristretto-js/w/list). Doesn't look to be currently maintained.
 
 In many cases you can implement your cross cutting code contracts using AOP. This gets it out of your code, so that it is not in your face.
+
+### Essentials for Creating and Maintaining a High Performance Development Team
+
+#### How and Why Many Software Development Shops Fail
+
+What I've seen a lot of, is organisations hiring code monkeys rather than professionals. Either they hire:
+
+* The cheapest talent they can get their hands on. Now they want the best, but how much they have to pay the developer is the most important factor to them.
+
+Or:
+
+* The person that completes feature implementations as fast as possible (sometimes known or thought of as rock stars). Often young developers without a large amount of experience, which causes the more Professional Developers to slow down a bit and think tasks through a little more.  
+Now, both approaches are short sighted. They hire code monkeys rather than professionals. Code monkeys write code fast and incur technical debt that is hidden at first, but over time slows the Development Team down until it can barely move.
+
+##### The Scenario {#process-agile-development-and-practices-essentials-for-creating-and-maintaining-a-high-performance-development-team-how-and-why-many-software-development-shops-fail-the-scenario}
+
+Code Monkey finishes his task much faster than Professional Developer.
+
+Code Monkey is solely focused on completing his task as fast as possible. He cuts some code and declares the task done. Professional Developer thinks the problem through, does a little research to satisfy himself that his proposed approach  is in fact the most appropriate approach for the problem. He organises a [test condition workshop](http://blog.binarymist.net/2012/03/24/how-to-optimise-your-testing-effort/#testConditionWorkshop) which solidifies requirements and drives out design defects via active stake holder participation. He drives his low level design with TDD. Makes sure he follows the [coding standards](http://blog.binarymist.net/2013/03/02/how-to-increase-software-developer-productivity/#codingStandardsAndGuidelines), thus making future maintenance to his code easier, as it is much [easier to read](http://blog.binarymist.net/2009/12/24/keeping-encapsulation-on-ones-mind/). Asks for a pair to [review](http://blog.binarymist.net/2012/03/24/how-to-optimise-your-testing-effort/#pairReview) his code or perhaps requests a fellow team member to sit with him and [pair programme](#process-agile-development-and-practices-pair-programming) for a bit on some complex areas of the code base. Makes sure his code is being run in the [continuous integration](http://blog.binarymist.net/2012/03/24/how-to-optimise-your-testing-effort/#continuousIntegration) suite, that his [acceptance tests](http://www.slideshare.net/kimcarter75098/moving-to-tdd-bdd) (which have been driving his feature) are passing and the [security regression tests](#process-agile-development-and-practices-security-regression-testing) are not regressing. Checks that his work complies with the [Definition of Done](http://blog.binarymist.net/2013/03/02/how-to-increase-software-developer-productivity/#definitionOfDone). You do have a Definition of Done right?
+
+Now what the Product Owner or software development manager often fails to understand is that it is the slow (Professional) developer that is creating code that can be maintained and extended at a sustainable pace. Professional Developer is investing time and effort into creating a better quality of code than the developer (Code Monkey) that appears to be producing code faster. The Product Owner and/or manager do not necessarily see this, in which case Code Monkey clearly looks to be the superior developer right (the rock star)? What also often happens is that Code Monkey rides on Professional Developers quality and adds his lower quality code on top, thus making Code Monkey look like a god.
+
+The Product Owner sees output immediately by Code Monkey that "appears" to be working very fast. He does not see the quality being created by Professional Developer that "appears" to be working slower.
+
+Time goes by. Sprint Review roles around. The stake holders love the new features that have been implemented and now want some additions and refinements. They ask the Product Owner to add some more User Stories into the Product Backlog. The Development Team pull these stories into a Sprint and start work. New functionality is added on top of the code that Professional Developer wrote previously. New functionality is added on top of the code that Code Monkey wrote previously.
+
+Sprint Review roles around again and the stake holders are happy with the new features that have been added on top of Professional Developers code. Of course they have no idea that the underlying code was crated by Professional Developer. Now the stake holders have been using the software that had the new features added on top of Code Monkeys lower quality code and they are starting to notice other areas of the application that are no longer behaving the way they are supposed to. This continues to happen and the stake holders are oblivious to the fact that it is due to the code that Code Monkey is writing. They still think he is a rock star because he appears to pump out code so fast.
+
+So… while Professional Developer seems to be slowing The Team down and clearly Code Monkey is simply amazing because he delivers his features so much faster. The actual truth is exactly the opposite. Professional Developer is creating [SOLID](http://blog.binarymist.net/2012/12/01/moving-to-tdd/#solidPrinciples) code and running at a pace that is sustainable (a key principle of the agile manifesto).
+
+The code that Professional Developer wrote is easier to modify and extend as its design is superior, due to being well thought out and driven by tests. His code satisfies the acceptance tests, so everyone knows it meets the living specification. It is faster to add changes to his code because it is easier to read and there are less surprises. If any other team member changes Professional Developers code which makes it no longer conform to the specification, the acceptance Tests around his code fail, thus providing instant feedback to the developer making the change.
+
+It is the practices (formed by habit) of Professional Developer that:
+
+1. Provide the entire Development Team assurity that the software satisfies the requirements of the specification at all times
+2. Allow The Development Team to run at a sustainable pace
+3. Provide confidence in ongoing future estimations due to less surprises
+4. Produce code that everyone wants to work with
+5. Produce less error prone software that does what it says it will do on the box.
+
+#### Scrum Teams can Fail Too
+
+Velocity of the Development Team starts high then declines. Often it is hard for people (including the Product Owner) to pin-point why this is happening. The Scrum Team may have started out delivering at a consistently high cadence. They appeared to be really on fire.
+
+The code base is small but growing fast. As it starts to get larger, the Development Team starts to feel the weight of a lot of code that is been hacked together in a rush. This causes the teams ability to release software fast to wane. A Scrum Team can get to this point quite fast, as they are a high performance team. When you get to this point, almost every change to the code base is hard. Make one change and something else fails (the whac-a-mole effect).
+
+1. Routines are hundreds of lines long. Developers have to understand hundreds of lines of code in order to make a small change.
+2. Names are not as meaningful as they should be.
+3. Routines have multiple levels of abstraction, so multiple levels of code need to be understood to make a single change.
+4. Inheritance is over used/abused, thus creating unnecessarily tight coupling.
+5. There are many aspects of the code that have become terrible to work with.
+
+##### How Does This Happen?
+
+How does the Product Owner know that the quality of code being created is not good? The Product Owner is not generally a developer so does not know and even if he is, he is not in the code day in, day out. Also it is not generally the most important concern of the Product Owner, rather getting new functionality out the door is, so this is what the Development Team are rewarded for. When they pass a Sprint, the Product Owner is happy and praises the Development Team. The Product Owner has no idea that the quality of code is not as good as it needs to be to sustain a code base that is easy to extend.
+
+So the Development Team does what ever it needs right now, to make sure they deliver right now (the current Sprint). Quality becomes secondary, because no one is rewarding them for it. This is a lack of professionalism on the Development Teams part. Bear in mind though, that each developer is competing against every other to appear as though they have produced the most. After all, that is what they are being rewarded for. Often what this means is they are working too fast and not thinking enough about what they are doing, thus the quality of the code-base is deteriorating, like in the example above with Code Monkey.
+
+I have personally seen this on close to 100% of all non Scrum projects I have been involved with. Scrum Teams are sometimes better off because they have other practices in place that ensure quality remains high, but these practices are not prescribed by Scrum.
+
+##### So... What do We Do?
+
+We not only reward the Development Team for delivering features fast but we also reward them for the sort of practices that Professional Developer (from our example [above](#process-agile-development-and-practices-essentials-for-creating-and-maintaining-a-high-performance-development-team-how-and-why-many-software-development-shops-fail-the-scenario) performs.
+
+##### How do We Do This
+
+We add the practices that Professional Developer from [above](#process-agile-development-and-practices-essentials-for-creating-and-maintaining-a-high-performance-development-team-how-and-why-many-software-development-shops-fail-the-scenario) performs to our [Definition of Done](http://blog.binarymist.net/2013/03/02/how-to-increase-software-developer-productivity/#definitionOfDone).
+
+The Product Owner runs through the Acceptance Criteria which should be included on every Product Backlog item (preferably during the Sprint) indicating acceptance. Also running through the Definition of Done… querying the Development Team that each point has in fact been done for the Backlog item in question. This of course should be done by the developers themselves first. This provides the Team with confidence that the Sprint Backlog item is actually complete. Essentially, the work is not Done, until all the Acceptance Criteria points and Definition of Done points are checked off. This way the Development Team is being rewarded for delivering fast and also delivering high quality features that do what the stake holders expect them to do. No nasty surprises.
+
+On top of what our solo Professional Developer did [above](#process-agile-development-and-practices-essentials-for-creating-and-maintaining-a-high-performance-development-team-how-and-why-many-software-development-shops-fail-the-scenario), we should:
+
+1. Measure test speed and reward fast running tests
+2. Measure cyclomatic Complexity
+3. Run static code analysis and use productivity enhancing tools. This is not cheating, it is allowing the developers to work faster and create cleaner code. This can even be set-up as pre-commit hooks etc on source control. Discussed in more detail in the "Consuming Free and Open Source" sections in the Web Applications chapter.
+4. Code reviews need to be based on the coding standards and guidelines
+5. Encourage developers to commit regularly, thus their code is being run against the entire test suite, providing confidence that their code plays nicely with everyone elses code. Commit frequency can be measured
+6. The Development team should shame developers when they break the [CI build](http://blog.binarymist.net/2014/02/22/automating-specification-by-example-for-net). Report on how long builds stay broken for and shame when the duration is longer than an agreed on time.
+7. Most of these practices can be added to the Definition of Done, this way Developers can and should be rewarded for doing these activities. Even better, you can automate most of these practices.
 
 ### Forming Habits and Sharpening Skills
 
