@@ -97,7 +97,7 @@ http-waf-fingerprint: [https://nmap.org/nsedoc/scripts/http-waf-fingerprint.html
 **Dradis is included in Kali Linux** and the source code can be accessed from the dradisframework repository  
 [https://github.com/dradis/dradisframework](https://github.com/dradis/dradisframework)
 
-**There is a collection of security tools that Dradis integrates with  
+**There is a collection of security tools** that Dradis integrates with  
 [https://github.com/dradis/dradisframework#some-of-the-features](https://github.com/dradis/dradisframework#some-of-the-features)
 
 **If you look at the public statistics** on businesses loosing value due to being compromised regularly, the figures are staggering  
@@ -115,7 +115,7 @@ http-waf-fingerprint: [https://nmap.org/nsedoc/scripts/http-waf-fingerprint.html
 **DBC**  
 [http://blog.binarymist.net/2010/10/11/lsp-dbc-and-nets-support/](http://blog.binarymist.net/2010/10/11/lsp-dbc-and-nets-support/)
 
-**Flow** looks to be a good option. Providing consumers with the option of introducing type checking progressively.  
+**Flow** looks to be a good option. Providing consumers with the ability of introducing type checking progressively.  
 [(http://flowtype.org/)](http://flowtype.org/)
 
 **Example from the flow website**  

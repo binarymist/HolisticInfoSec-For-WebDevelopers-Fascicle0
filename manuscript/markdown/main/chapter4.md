@@ -1548,13 +1548,13 @@ Two pairs of eyes on the same code is proven to drastically reduce defects, and 
 
 If we can not get the simple things right like [Coding standards and conventions](http://blog.binarymist.net/2012/12/19/javascript-coding-standards-and-guidelines/) to help remove some of the "wild west" attitudes and behaviours, then how will we ever get the complicated things right? The whole team doesn't necessary have to agree on everything, but needs to be in alignment with and abide by the standards, conventions and guidelines.
 
-Having a pair review you code against the standards you have crated and offer [alternative](http://blog.binarymist.net/2014/07/26/node-js-asynchronicity-and-callback-nesting/) approaches and techniques for not only standards violations but for possible semantic modifications.
+Having a pair review your code against the standards you have created and offer [alternative](http://blog.binarymist.net/2014/07/26/node-js-asynchronicity-and-callback-nesting/) approaches and techniques for not only standards violations but for possible semantic modifications.
 
 It's often a good idea to automate as much of your coding standards as possible with static analysis and other related tooling. Ideally using your source control commit hooks to trigger the review process. This is discussed in more detail in the "Consuming Free and Open Source" sections in the Web Applications chapter.
 
 Automating is not going to catch everything though. Real person pair reviews should not be neglected. Team reviews should be carried out in moderation. I've found them to be less effective due to the fact that we loose face when our defects are highlighted in front of the entire team.
 
-The [BSIMM Code Review](https://www.bsimm.com/online/ssdl/cr/) resource has some good ideas.
+The [BSIMM Code Review](https://www.bsimm.com/online/ssdl/cr/) resource has some good ideas worth exploring.
 
 #### Why? {#process-agile-development-and-practices-code-review-why}
 
@@ -1579,8 +1579,6 @@ Tooling is still immature here. We have got a way to go, but lets start getting 
 * [Slide Deck](https://speakerdeck.com/ariya/dynamic-code-analysis-for-javascript) by Ariya Hidayat.
 * [Jalangi](https://www.eecs.berkeley.edu/~gongliang13/jalangi_ff/)
 
-&nbsp;
-
 ### Techniques for Asserting Discipline
 
 JavaScript is an inherently flexible and undisciplined language. This quality is a double edged sword. It provides us with extreme power and also allows us to slaughter ourselves. Discipline is very much needed in order to stay safe and be able to reason about our applications as they grow larger.
@@ -1591,9 +1589,9 @@ Because of the distinct lack of discipline within JavaScript (unlike most other 
 
 #### Static Type Checking
 
-In JavaScript we need as much help as we can to fail fast. Static type checking gives us this. It also feels like the step before [DbC](http://blog.binarymist.net/2010/10/11/lsp-dbc-and-nets-support/.
+In JavaScript we need as much help as we can to fail fast. Static type checking gives us this. It also feels like the step before [DbC](http://blog.binarymist.net/2010/10/11/lsp-dbc-and-nets-support/).
 
-* [Flow](http://flowtype.org/) looks to be a good option. Providing consumers with the option of introducing type checking progressively and/or to certain parts that make the most sense. Or rather missing parts that require the extra flexibility.
+* [Flow](http://flowtype.org/) looks to be a good option. Providing consumers with the ability of introducing type checking progressively and/or to certain parts that make the most sense. Or rather missing parts that require the extra flexibility.
 
 Here is an example from the flow website.
 
@@ -1625,8 +1623,8 @@ Here is an example from the flow website.
 #### Design by Contract (DbC)
 
 Enforcing preconditions, postconditions and invariants in our routines.
-That is right, we can even employ this design principle in JavaScript. I wrote about DbC in a [previous post](http://blog.binarymist.net/2010/10/11/lsp-dbc-and-nets-support/#dbc) in regards to usage in .Net.  
-In JavaScript, I believe the DbC principle is even more important as part of adding discipline and keeping us on the straight and narrow. I believe DbC is the principle that helps us achieve the [Liskov Substitution Principle](http://blog.binarymist.net/2010/10/11/lsp-dbc-and-nets-support/#lsp), which is the 'L' in the SOLID design mnemonic. These are the offerings I have noticed that provide support additionally to the flow just mentioned above:
+We can even employ this design principle in JavaScript. I wrote about DbC in a [previous post](http://blog.binarymist.net/2010/10/11/lsp-dbc-and-nets-support/#dbc) in regards to usage in .Net.  
+In JavaScript, I believe employing the DbC principle is even more important as part of adding discipline and keeping us on the straight and narrow. I believe DbC is the principle that helps us achieve the [Liskov Substitution Principle](http://blog.binarymist.net/2010/10/11/lsp-dbc-and-nets-support/#lsp), which is the 'L' in the SOLID design mnemonic. These are the offerings I have noticed that provide support additionally to the flow just mentioned above:
 
 2. [contract-js on NPM](https://www.npmjs.com/package/contracts-js) is our current leader in the DbC space.
   * [contract.js at home](http://www.contractsjs.org/)
@@ -1678,7 +1676,7 @@ It is the practices (formed by habit) of Professional Developer that:
 
 Velocity of the Development Team starts high then declines. Often it is hard for people (including the Product Owner) to pin-point why this is happening. The Scrum Team may have started out delivering at a consistently high cadence. They appeared to be really on fire.
 
-The code base is small but growing fast. As it starts to get larger, the Development Team starts to feel the weight of a lot of code that is been hacked together in a rush. This causes the teams ability to release software fast to wane. A Scrum Team can get to this point quite fast, as they are a high performance team. When you get to this point, almost every change to the code base is hard. Make one change and something else fails (the whac-a-mole effect).
+The code base is small but growing fast. As it starts to get larger, the Development Team starts to feel the weight of a lot of code that has been hacked together in a rush. This causes the teams ability to release software fast to wane. A Scrum Team can get to this point quite fast, as they are a high performance team. When you get to this point, almost every change to the code base is hard. Make one change and something else fails (the whac-a-mole effect).
 
 1. Routines are hundreds of lines long. Developers have to understand hundreds of lines of code in order to make a small change.
 2. Names are not as meaningful as they should be.
@@ -1729,7 +1727,7 @@ The book: "So Good They Can't Ignore You" by Cal Newport goes through a collecti
 
 Listen to educational technology podcasts when you have down time, travelling etc. Cram that information into your head.
 
-Be ready to admit mistakes and seek out positions where you are the worst developer and you feel uncomfortable. Being around the best will lift your abilities quickly if you're willing to push your self and learn from those that are better than you. I've seen this in many professions. The lower performer if they want to lift their game can do so quickly in a pressured environment like this.
+Be ready to admit mistakes and seek out positions where you are the worst developer and you feel uncomfortable. Being around the best will lift your abilities quickly if you're willing to push your self and learn from those that are better than you. I've seen this in many professions. The lower performer if they want to lift their game can do so quickly in a pressured environment like this if they are given the space to.
 
 Forming habits such as  
 * TDDing your code
