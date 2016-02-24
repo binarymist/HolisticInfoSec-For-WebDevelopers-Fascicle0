@@ -6,7 +6,7 @@ First of all, why? Why start so high? Developers spend most of their lives focus
 
 Stepping back allows your peripheral vision to kick in.
 
-This modelling process should be performed by a collection of the following people:
+This stepping back process, a form of modeling, should be performed by a collection of the following people:
 
 1. Deeply technical (software expert (developer/engineer)). I specifically do not mention tester(s) here, as testing is the job of the developer. The developer is responsible for delivering high quality working code every Sprint.
 2. Network expert(s)
@@ -14,27 +14,27 @@ This modelling process should be performed by a collection of the following peop
 4. The person solely responsible for the project or product being delivered
 5. Person(s) with security specialisations in the areas involved in the finished product.
 
-Now you might be thinking that this team looks very familiar. Well that is probably because it is. It looks very much like a Scrum Team.
+You might be thinking that this team looks very familiar. It probably is, as it looks very much like a Scrum Team.
 
 "_Scrum Teams are self-organizing and **cross-functional**. Self-organizing teams choose how best to accomplish their work, rather than being directed by others outside the team. Cross-functional teams have **all competencies needed to accomplish the work** without depending on others not part of the team. The team model in Scrum is designed to optimize flexibility, creativity, and productivity._"
 
 > [Scrum Guide](http://www.scrumguides.org/scrum-guide.html)
 
-Having this process performed by a team brings out the best in everyone. There are of course times when it is more effective to break out and work alone for a period of time.
+Performing this process as a team brings out the best in everyone. There are, of course, times when it is more effective to break out and work alone for a period of time.
 
 ## 1. SSM Asset Identification {#starting-with-the-30000-foot-view-asset-identification}
 * [MS 1. Identify Assets](https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_006)
 * [OWASP Assets](https://www.owasp.org/index.php/Application_Threat_Modeling#Assets)
 
-The first question we must ask ourselves is: What are assets in the context of threat modelling? Assets are something we or our clients place value on that we are responsible for and subsequently will probably want to protect because someone unauthorised to access them also places value (covets) on them.
+The first question we must ask ourselves: What are assets in the context of threat modeling? Assets are something we or our clients place value on that we are responsible for, and subsequently will want to protect from unauthorised access.
 
-Assets will often emerge as you progress through the following steps, so you will probably end up modifying this list as you go, but it is vital that you do not miss this step in your eagerness to secure your world. If you do not have a good grasp on what it is that you are trying to protect, then there may be nothing or at least little to protect. This is unlikely, but still, you will want to have some idea of what your assets are before taking the next step. Feel free as you progress to jump back and modify the list of assets. More than likely you will keep adding to it as you identify additional risks and even work through the countermeasures of each chapter. This is how the process usually unfolds.
+Assets often emerge as you progress through the following steps, you will probably end up modifying this list as you go, but it is vital that you do not miss this step in your eagerness to increase security. If you do not have a good grasp on what it is that you are trying to protect, then there may be nothing, or at least little, to protect. You must have some idea of what your assets are before taking the next step. Feel free, even obligated, as you progress, to jump back and modify the list of assets. More than likely you will keep adding to it as you identify additional risks and work through the countermeasures of each chapter. This is commonly how the process unfolds.
 
-Identifying your assets is a domain specific task, so you are the best person(s) to do this. I will help to direct your thoughts as we progress though.
+Identifying your assets is a domain-specific task, so you are the best person(s) to do this. I will help to direct your thoughts as we progress though.
 
-Many of the following chapters will address asset identification as the first step. Many assets will be the same for many chapters. Do not think about the assets as the be all and end all, but they can be useful to keep in your thoughts through the following steps of this chapter, which will be specialised in each following chapter.
+Many of the following chapters will address asset identification as the first step. Many assets will be the same for many chapters. Do not think about the assets as the be all and end all, but they are useful to keep in the forefront as you procede through the following steps of this chapter.
 
-Here are some that may or may not apply to your domain:
+Here are some assets to consider as part of your domain:
 
 * User credentials
   Often stored within data stores, but also often found on the likes of post-it notes stuck to monitors or under a keyboard etc.
@@ -46,7 +46,7 @@ Here are some that may or may not apply to your domain:
 * Confidential client information
 * Reputation. I am sure you can think of a few ways that you or your organisations reputation could be tarnished or worse.
 
-Now if you relate the potential loses with information security vectors, you will come up with a target list we can take into the next stages.
+Now, if you relate the potential loses with information security vectors, you will come up with a target list we can take into the next stages.
 
 ## 2. SSM Identify Risks {#starting-with-the-30000-foot-view-identify-risks}
 
@@ -62,7 +62,7 @@ This is where we abstract things a bit and think about some of the entities that
 {#starting-with-the-30000-foot-view-identify-risks-threat-agents}
 ![](images/ThreatAgents.png)
 
-Then think about some of the relationships the target business depends on and how they could be leaking IP.
+Think about some of the relationships the target business takes a dependency on, and how they could be leaking intellectual property (IP).
 
 {#starting-with-the-30000-foot-view-identify-risks-likelihood-and-impact}
 ![](images/LikelihoodAndImpact.gif)
@@ -101,7 +101,7 @@ and the [Intel Threat Agent Library](http://www.sbs.ox.ac.uk/cybersecurity-capac
 
 ### Rating of Threats {#ms-6-rate-the-threats}
 
-So how do we rate the threats we have just discovered? With a simple formula
+How do we rate the threats we have just discovered? With a simple formula
 Based on the [MicroSoft 6. Rate the Threats](https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_011)
 
 I> Risk = Likelihood * Impact
@@ -124,7 +124,7 @@ Keep your eye on the vulnerability advisories, as that is part of what an attack
 ![](images/BobTheBuilder.jpg)
  <!---This is where the images live: https://raw.githubusercontent.com/wiki/binarymist/HolisticInfoSec-For-WebDevelopers/BinaryMist-Approach-To-Threat-Modelling-Assets/BobTheBuilder.jpg-->
 
-This is where you work through collaboratively creating countermeasure Product Backlog Items (PBIs). Countermeasure PBIs are like any other PBI. PBI qualities:
+Here is where you work through collaboratively creating countermeasure Product Backlog Items (PBIs). Countermeasure PBIs are like any other PBI. PBI qualities:
 
 * Estimable
 * Independent
@@ -132,7 +132,7 @@ This is where you work through collaboratively creating countermeasure Product B
 * Should promote collaboration
 * Must fit within a Sprint by the time they are properly groomed
  
-Your countermeasure PBIs also need to reference the risk they were created due to, thus providing context and urgency information. The PBIs need to be integrated into the Product Backlog, ordered based on the risk ratings. This way what you decide to fix first will be determined by the highest scoring risks.
+Your countermeasure PBIs also need to reference the risk they were created in response to, thus providing context and urgency information. The PBIs need to be integrated into the Product Backlog, ordered based on the risk ratings. This way what you decide to fix first will be determined by the highest scoring risks.
 
 * [OWASP Countermeasure Identification](https://www.owasp.org/index.php/Application_Threat_Modeling#Countermeasure_Identification)
 * [MS STRIDE provides countermeasures to identified threats](https://msdn.microsoft.com/en-us/library/ff648641.aspx#c02618429_005)
@@ -140,22 +140,22 @@ Your countermeasure PBIs also need to reference the risk they were created due t
 
 ## 4. SSM Risks that Solution Causes {#starting-with-the-30000-foot-view-risks-that-solution-causes}
 
-This is really dependent on the solution(s) you discover. Often there will be new risks that the mitigation techniques introduce. We will work through many possibilities in the following chapters.
+This is really dependent on the solution(s) you discover. Often there will be new risks that mitigation techniques introduce. We will work through many possibilities in following chapters.
 
 * Make sure before you test that you have written permission for all the areas that you are about to test, documenting what could possibly go wrong.
 * Make sure you have backups and that they work.
 * Complacency?
 * Spending too much on technological solutions and ignoring the fact that the person on the front desk can easily be tricked to reveal information an attacker needs or lower the defences of a computer system. See the section on [People](#people).
 
-As we work through the following chapters we will discuss many more hypothetical risks that proposed countermeasures may cause.
+As we work through later chapters we will discuss many more hypothetical risks that proposed countermeasures may cause.
 
 ## 5. SSM Costs and Trade-offs {#starting-with-the-30000-foot-view-costs-and-trade-offs}
 I am not here to do the work for you, but rather to help you do it.
 
 > Give a man a fish and feed him for a day. Teach a man to fish and feed him for life
 
-This is really dependent on the solution(s) you discover.
+This, again, is really dependent on the solution(s) you discover.
 
-Think in terms of Counter-Measure costs - vs - Breach Costs and weigh them up against each other.
+Think in terms of Counter-Measure costs - vs - Breach Costs, and weigh them against each other.
 
 
