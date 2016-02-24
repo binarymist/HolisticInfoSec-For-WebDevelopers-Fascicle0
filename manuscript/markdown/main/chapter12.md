@@ -217,6 +217,7 @@ G> Click on the Execute button and on the next request -> response from the hook
 #### Cross-Site Request Forgery (CSRF)
 
 _Todo_
+%% Take details from https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)_Prevention_Cheat_Sheet#General_Recommendation:_Synchronizer_Token_Pattern
 
 #### SQLi {#web-applications-identify-risks-sqli}
 
