@@ -1,2 +1,11 @@
-markdown/main/chapter10.md
+frontmatter:
+   
+mainmatter:
+   
+   markdown/main/chapter8.md
+   
+backmatter:
+   
+   markdown/back/attributions.md
+
 

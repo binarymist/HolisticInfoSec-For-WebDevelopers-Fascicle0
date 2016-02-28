@@ -20,12 +20,31 @@ Take results from [higher level Asset Identification](#starting-with-the-30000-f
 _Todo_ Probably more here.
 
 ## 2. SSM Identify Risks {#people-identify-risks}
-Risks based on the failures of people present a very different set of attack vectors than any others mentioned in this material. People are both complex, complicated and our personalities are full of faults just waiting to be compromised, thus the approach at finding vulnerabilities is quite different.  
+
+Risks based on the failures of people present a very different set of attack vectors than any others mentioned in this material. People are both complex, complicated and our personalities are full of faults just waiting to be exploited, thus the approach at finding vulnerabilities is quite different.  
 You can still use some of the processes from the top level [2. SSM Identify Risks](#starting-with-the-30000-foot-view-identify-risks), but the outcomes can look quite different.  
 I find the [Threat agents cloud](#starting-with-the-30000-foot-view-identify-risks-threat-agents) and [Likelihood and impact](#starting-with-the-30000-foot-view-identify-risks-likelihood-and-impact) diagrams still quite useful. Also [MS 5. Document the Threats](#ms-5-document-the-threats), [OWASP Risk Rating Methodology](#ms-5-document-the-threats) and the [intel-threat-agent-library](#intel-threat-agent-library) as they are technology agnostic.  
 [OWASP Ranking of Threats](#ms-6-rate-the-threats), [MS 6. Rate the Threats](#ms-6-rate-the-threats)  and DREAD to a degree are useful.
 
 People are the strongest point in a security process, they are often also the weakest.
+
+### Ignorance
+
+In working as a contract software developer within many teams, I always struggle to get past the fact of how oblivious most developers are to the fact of the amount of insecurities they just don't consider. Usually after explaining the situation and importance of the vulnerability with them, they start to understand it, but it's still an ongoing battle to get them into the place where they continually consider the importance of their decisions in creating secure systems.
+
+The fact that the people responsible for creating our software have a perception that is even more distorted than the actual consumers of that software is truly concerning. [The Arxan 5th Annual State of Application Security Report](https://www.arxan.com/resources/state-of-application-security/) _Perception vs. Reality_ highlights this.
+
+{title="The perception looks something like this"}
+|Application Executives (producers) |                              |Consumers|
+|-----------------------------------|------------------------------|---------|
+|87%                                |Feel my mobile applications   |83%      |
+|                                   |are adequately secure         |         |
+|-----------------------------------|------------------------------|---------|
+|82%                                |Believe everything is being   |57%      |
+|                                   |done to protect my apps       |         |
+|-----------------------------------|------------------------------|---------|
+|46%                                |Think my app will likely be   |48       |
+|                                   |hacked within next 6 months   |         |
 
 ### Morale, Productivity and Engagement Killers
 
@@ -776,6 +795,14 @@ Using ducky script and the existing community provided payloads as examples, the
 Just make sure when you are testing your malware that you do it in a lab environment before the targets environment.
 
 ## 3. SSM Countermeasures
+
+### Ignorance
+
+The first step to overcoming the ignorance is to understand the reality. The Identify Risks sections throughout the book provide us with the reality. On top of that, drawing again from [The Arxan 5th Annual State of Application Security Report](https://www.arxan.com/resources/state-of-application-security/) _Perception vs. Reality_ "_126 of the most popular mobile health and finance apps from USA, UK, Germany and Japan were tested for security vulnerabilities_" 90% of them were vulnerable to at least 2 of the [OWASP Mobile top 10 Risks](https://www.owasp.org/index.php/Projects/OWASP_Mobile_Security_Project_-_Top_Ten_Mobile_Risks).
+
+Another interesting (but not surprising) observation is that "_50% of organisations allocate no budget for mobile app security_". Probably why almost half of the app consumers rightly believe their apps will be hacked within the next six months. Developers: You're probably reading this book because you understand the situation to a degree. It's our responsibility to reach out to our peers and execs and help them understand the situation.
+
+It was also noted in the Arxan report that 80% of consumers would change providers if they knew about the vulnerabilities and had a better option. 90% of the app execs (the creators) also believed that consumers would switch if they knew and better offerings were available. Taking this information, we should be using good security as a marketing advantage.
 
 ### [Morale, Productivity and Engagement Killers](https://speakerdeck.com/binarymist/how-to-increase-software-developer-productivity) {#people-countermeasures-morale-productivity-and-engagement-killers}
 
