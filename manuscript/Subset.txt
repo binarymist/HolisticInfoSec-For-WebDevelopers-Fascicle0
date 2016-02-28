@@ -1,5 +1,3 @@
-frontmatter:
-   
 mainmatter:
    
    markdown/main/chapter8.md

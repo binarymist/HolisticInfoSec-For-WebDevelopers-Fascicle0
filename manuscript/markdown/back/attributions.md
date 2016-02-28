@@ -191,6 +191,9 @@ Bruce Schneier: Data and Goliath: Introduction: USA National Security Agency (NS
 
 ## [People](#people)
 
+**The Arxan 5th Annual State of Application Security Report  
+[https://www.arxan.com/resources/state-of-application-security/](https://www.arxan.com/resources/state-of-application-security/) _Perception vs. Reality_
+
 **Studies show that motivation** has a larger effect on productivity and quality than any other factor. Software Engineering Economics by Barry W. Boehm 1981.
 
 **Those distracted by incoming email** and phone calls saw a 10-point fall in their IQ by BBC:  
@@ -216,6 +219,9 @@ Bruce Schneier: Data and Goliath: Introduction: USA National Security Agency (NS
 
 **The Multi-Tasking Myth** by Jeff Atwood:  
 [http://blog.codinghorror.com/the-multi-tasking-myth/](http://blog.codinghorror.com/the-multi-tasking-myth/)
+
+**Also noted in the Arxan report that 80% of consumers would change providers** if they knew about the vulnerabilities and had a better option. 90% of the app execs (the creators) also believed that consumers would switch if they knew and better offerings were available.  
+[https://www.arxan.com/wp-content/uploads/2016/01/State_of_Application_Security_2016_Consolidated_Report.pdf](https://www.arxan.com/wp-content/uploads/2016/01/State_of_Application_Security_2016_Consolidated_Report.pdf)
 
 **What you need to do** is be aware of how much productivity is killed with each switch. Then do everything in your power to make sure your Development Team is sheltered from as much as possible. [How to Increase Software Developer Productivity](http://blog.binarymist.net/2013/03/02/how-to-increase-software-developer-productivity/#context-switching) by Kim Carter.
 
