@@ -167,6 +167,9 @@ The following books have been influential for me and the content from the People
 
 ## [Web Applications](#web-applications)
 
+**OWASP canonical XSS resource**  
+[https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)](https://www.owasp.org/index.php/Cross-site_Scripting_(XSS))
+
 **Hashcat rules based** attack  
 [http://hashcat.net/wiki/doku.php?id=rule_based_attack](http://hashcat.net/wiki/doku.php?id=rule_based_attack)
 
@@ -247,7 +250,8 @@ The following books have been influential for me and the content from the People
 **Password Cracking Strategy**  
 [http://null-byte.wonderhowto.com/how-to/hack-like-pro-crack-passwords-part-2-cracking-strategy-0156491/](http://null-byte.wonderhowto.com/how-to/hack-like-pro-crack-passwords-part-2-cracking-strategy-0156491/)
 
-
+**Securing Sessions** via cookie attributes  
+[https://www.owasp.org/index.php/HttpOnly](https://www.owasp.org/index.php/HttpOnly)
 
 [**Justin Searls talk**](http://blog.testdouble.com/posts/2014-12-02-the-social-coding-contract.html) on consuming all the open source.
 

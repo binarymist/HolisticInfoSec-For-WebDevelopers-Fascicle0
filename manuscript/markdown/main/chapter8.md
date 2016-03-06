@@ -35,17 +35,16 @@ In working as a contract software engineer within many teams, I always struggle 
 The fact that the people responsible for creating our software have a perception that is even more distorted than the actual consumers of that software is truly concerning. [The Arxan 5th Annual State of Application Security Report](https://www.arxan.com/resources/state-of-application-security/) _Perception vs. Reality_ highlights this.
 
 {title="The perception looks something like this"}
-|Application Executives |                              |Consumers|
-|(producers)            |                              |         |
-|-----------------------|------------------------------|---------|
-|         87%           |Feel my mobile applications   |   83%   |
-|                       |are adequately secure         |         |
-|-----------------------|------------------------------|---------|
-|         82%           |Believe everything is being   |   57%   |
-|                       |done to protect my apps       |         |
-|-----------------------|------------------------------|---------|
-|         46%           |Think my app will likely be   |   48%   |
-|                       |hacked within next 6 months   |         |
+|Creators |                              |Consumers|
+|:-------:|:----------------------------:|:-------:|
+|   87%   |Feel my mobile applications   |   83%   |
+|         |are adequately secure         |         |
+|---------|------------------------------|---------|
+|   82%   |Believe everything is being   |   57%   |
+|         |done to protect my apps       |         |
+|---------|------------------------------|---------|
+|   46%   |Think my app will likely be   |   48%   |
+|         |hacked within next 6 months   |         |
 
 ### Morale, Productivity and Engagement Killers
 

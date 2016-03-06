@@ -191,7 +191,7 @@ Bruce Schneier: Data and Goliath: Introduction: USA National Security Agency (NS
 
 ## [People](#people)
 
-**The Arxan 5th Annual State of Application Security Report  
+**The Arxan 5th Annual State of Application Security Report**  
 [https://www.arxan.com/resources/state-of-application-security/](https://www.arxan.com/resources/state-of-application-security/) _Perception vs. Reality_
 
 **Studies show that motivation** has a larger effect on productivity and quality than any other factor. Software Engineering Economics by Barry W. Boehm 1981.
