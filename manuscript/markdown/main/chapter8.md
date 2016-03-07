@@ -798,7 +798,7 @@ Just make sure when you are testing your malware that you do it in a lab environ
 
 ### Ignorance
 
-The first step to overcoming the ignorance is to understand the reality. The Identify Risks sections throughout the book provide us with the reality. On top of that, drawing again from [The Arxan 5th Annual State of Application Security Report](https://www.arxan.com/resources/state-of-application-security/) _Perception vs. Reality_, "_126 of the most popular mobile health and finance apps from USA, UK, Germany and Japan were tested for security vulnerabilities_" 90% of them were vulnerable to at least 2 of the [OWASP Mobile top 10 Risks](https://www.owasp.org/index.php/Projects/OWASP_Mobile_Security_Project_-_Top_Ten_Mobile_Risks).
+The first step to overcoming the ignorance is to understand the reality. The Identify Risks sections throughout the book provide us with the reality. On top of that, drawing again from [The Arxan 5th Annual State of Application Security Report](https://www.arxan.com/resources/state-of-application-security/) _Perception vs. Reality_, "_126 of the most popular mobile health and finance apps from USA, UK, Germany and Japan were tested for security vulnerabilities_" 90% of them were vulnerable to at least 2 of the [OWASP Mobile top 10 Risks](https://www.owasp.org/index.php/Mobile_Top_10_2016-Top_10).
 
 Another interesting (but sadly not surprising) observation, is that "_50% of organisations allocate no budget for mobile app security_". Probably why almost half of the app consumers rightly believe their apps will be hacked within the next six months. Developers: You're probably reading this book because you understand the situation to a degree. It's our responsibility to reach out to our peers and execs, help them understand the situation and lead them to the solutions.
 
@@ -988,6 +988,10 @@ Treating your workers well as discussed in the [Morale, Productivity and Engagem
 Often the modern thinking is that we can replace flawed people with technology. People are resilient and dynamic. They can spot a threat they have never seen before and defend against it. Computers can only defend against what they have been programmed to defend against. Technological defences are brittle. It is the role of technology to support humans to make good decisions.
 
 Employees can get complacent with training, unless they are faced with very real simulations. Get creative, establish a base line training for all and additional training for areas of specialisation and extra trust. 
+
+_Todo_
+
+### Ignorance
 
 _Todo_
 

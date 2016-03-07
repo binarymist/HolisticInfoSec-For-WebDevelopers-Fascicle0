@@ -115,8 +115,8 @@ http-waf-fingerprint: [https://nmap.org/nsedoc/scripts/http-waf-fingerprint.html
 **DBC**  
 [http://blog.binarymist.net/2010/10/11/lsp-dbc-and-nets-support/](http://blog.binarymist.net/2010/10/11/lsp-dbc-and-nets-support/)
 
-**Flow** looks to be a good option. Providing consumers with the ability of introducing type checking progressively.  
-[(http://flowtype.org/)](http://flowtype.org/)
+**Flow** looks to be a good option. Providing consumers with the ability of introducing type checking progressively  
+[http://flowtype.org/](http://flowtype.org/)
 
 **Example from the flow website**  
 [http://flowtype.org/](http://flowtype.org/)
@@ -381,6 +381,9 @@ Good resource on what XSS actually is:
 
 **EBay with 145 million active buyers** had a small number of employee log-in credentials [compromised](http://www.darkreading.com/attacks-breaches/ebay-database-hacked-with-stolen-employee-credentials-/d/d-id/1269093) allowing unauthorised access to eBay's corporate network.
 
+**The OWASP Top 10 risks** No. 2 Broken Authentication and Session Management  
+[https://www.owasp.org/index.php/Top_10_2013-A2-Broken_Authentication_and_Session_Management](https://www.owasp.org/index.php/Top_10_2013-A2-Broken_Authentication_and_Session_Management)
+
 **the winston-syslog-posix package** was inspired by blargh  
 [https://www.npmjs.com/package/winston-syslog-posix](https://www.npmjs.com/package/winston-syslog-posix)  
 [http://tmont.com/blargh/2013/12/writing-to-the-syslog-with-winston](http://tmont.com/blargh/2013/12/writing-to-the-syslog-with-winston)
@@ -389,7 +392,7 @@ Good resource on what XSS actually is:
 [http://help.papertrailapp.com/kb/configuration/configuring-centralized-logging-from-nodejs-apps/](http://help.papertrailapp.com/kb/configuration/configuring-centralized-logging-from-nodejs-apps/)
 
 **Excellent resource for dealing with user input** based on the execution contexts that it passes through  
-[https://www.owasp.org/index.php/XSS_%28Cross_Site_Scripting%29_Prevention_Cheat_Sheet](https://www.owasp.org/index.php/XSS_%28Cross_Site_Scripting%29_Prevention_Cheat_Sheet)
+https://www.owasp.org/index.php/XSS_%28Cross_Site_Scripting%29_Prevention_Cheat_Sheet
 
 **Hackers halfway across the world** _might know your password, but they don't know who your friends are_  
 [https://m.facebook.com/story.php?story_fbid=191422450875446&id=121897834504447](https://m.facebook.com/story.php?story_fbid=191422450875446&id=121897834504447)
@@ -460,6 +463,70 @@ Good resource on what XSS actually is:
 
 "**Using four AMD Radeon HD6990 graphics cards**, _I am able to make about 15.5 billion guesses per second using the SHA-1 algorithm._"
 [Per Thorsheim](http://securitynirvana.blogspot.co.nz/2012/06/final-word-on-linkedin-leak.html)
+
+
+
+
+
+
+**Resource Owner Password Credentials**  
+[http://tools.ietf.org/html/rfc6749#section-1.3.3](http://tools.ietf.org/html/rfc6749#section-1.3.3)
+
+**Resource Owner Password Credentials Grant**  
+[http://tools.ietf.org/html/rfc6749#section-4.3](http://tools.ietf.org/html/rfc6749#section-4.3)
+
+**Security Considerations**  
+[http://tools.ietf.org/html/rfc6749#section-10.7](http://tools.ietf.org/html/rfc6749#section-10.7)
+
+**Flows are detailed in the**  
+OAuth 2.0 [http://tools.ietf.org/html/rfc6749](http://tools.ietf.org/html/rfc6749)  
+and  
+OpenID Connect [http://openid.net/specs/openid-connect-core-1_0.html](http://openid.net/specs/openid-connect-core-1_0.html) specifications
+
+**Reference for front-end, JWT for back-end** it is on the road map  
+[https://github.com/IdentityServer/IdentityServer3/issues/1725](https://github.com/IdentityServer/IdentityServer3/issues/1725)
+
+**MembershipReboot** Is a user identity management library with a similar name to the ASP.NET Membership Provider, inspired by it due to frustrations [http://brockallen.com/2012/09/02/think-twice-about-using-membershipprovider-and-simplemembership/](http://brockallen.com/2012/09/02/think-twice-about-using-membershipprovider-and-simplemembership/) that Brock Allen (MembershipReboot creator) had from it
+
+**Going down the path of** MembershipReboot  
+[https://github.com/brockallen/BrockAllen.MembershipReboot](https://github.com/brockallen/BrockAllen.MembershipReboot) and IdentityServer3.MembershipReboot  [https://github.com/IdentityServer/IdentityServer3.MembershipReboot](https://github.com/IdentityServer/IdentityServer3.MembershipReboot)
+
+**Customise, out of the box**. All you need to do is add the properties you require to the already provided `CustomUser`  
+[https://github.com/IdentityServer/IdentityServer3.MembershipReboot/blob/master/source/WebHost/MR/CustomUser.cs](https://github.com/IdentityServer/IdentityServer3.MembershipReboot/blob/master/source/WebHost/MR/CustomUser.cs)
+
+**Security focussed configuration**  
+[https://github.com/brockallen/BrockAllen.MembershipReboot/wiki/Security-Settings-Configuration](https://github.com/brockallen/BrockAllen.MembershipReboot/wiki/Security-Settings-Configuration)
+
+**Password storage** is addressed  
+[http://brockallen.com/2014/02/09/how-membershipreboot-stores-passwords-properly/](http://brockallen.com/2014/02/09/how-membershipreboot-stores-passwords-properly/)
+
+**0 means to automatically calculate** the number based on the OWASP recommendations  
+[https://www.owasp.org/index.php/Password_Storage_Cheat_Sheet](https://www.owasp.org/index.php/Password_Storage_Cheat_Sheet) for the current year
+
+**The good, the bad and the ugly of ASP.NET Identity**  
+[http://brockallen.com/2013/10/20/the-good-the-bad-and-the-ugly-of-asp-net-identity/#ugly](http://brockallen.com/2013/10/20/the-good-the-bad-and-the-ugly-of-asp-net-identity/#ugly)
+
+**Community provided** OWIN OAuth middleware providers  
+[https://github.com/RockstarLabs/OwinOAuthProviders](https://github.com/RockstarLabs/OwinOAuthProviders)
+
+**MembershipReboot supports adding secret questions and answers** along with the ability to update user account details. Details on how this can be done is in the sample code  
+[https://github.com/brockallen/BrockAllen.MembershipReboot/tree/master/samples](https://github.com/brockallen/BrockAllen.MembershipReboot/tree/master/samples) kindly provided by Brock Allen and documentation on their github wiki [https://github.com/brockallen/BrockAllen.MembershipReboot/wiki#features](https://github.com/brockallen/BrockAllen.MembershipReboot/wiki#features)
+
+**Set the `Secure` attribute**  
+[https://www.owasp.org/index.php/Session_Management_Cheat_Sheet#Secure_Attribute](https://www.owasp.org/index.php/Session_Management_Cheat_Sheet#Secure_Attribute)
+
+**OWASP** Session Management Cheat Sheet  
+[https://www.owasp.org/index.php/Session_Management_Cheat_Sheet#Cookies](https://www.owasp.org/index.php/Session_Management_Cheat_Sheet#Cookies)
+
+
+
+
+
+
+
+
+
+
 
 **Dibbe Edwards discusses** some excellent initiatives on how they do it at IBM  
 [https://soundcloud.com/owasp-podcast/dibbe-edwards-devops-and-open-source-at-ibm](https://soundcloud.com/owasp-podcast/dibbe-edwards-devops-and-open-source-at-ibm)

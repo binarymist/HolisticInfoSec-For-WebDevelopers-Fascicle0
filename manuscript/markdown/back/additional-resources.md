@@ -168,7 +168,7 @@ The following books have been influential for me and the content from the People
 ## [Web Applications](#web-applications)
 
 **OWASP canonical XSS resource**  
-[https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)](https://www.owasp.org/index.php/Cross-site_Scripting_(XSS))
+[https://www.owasp.org/index.php/Cross-site_Scripting_%28XSS%29](https://www.owasp.org/index.php/Cross-site_Scripting_%28XSS%29)
 
 **Hashcat rules based** attack  
 [http://hashcat.net/wiki/doku.php?id=rule_based_attack](http://hashcat.net/wiki/doku.php?id=rule_based_attack)
@@ -228,19 +228,26 @@ The following books have been influential for me and the content from the People
 
 [http://stackoverflow.com/questions/8472/practical-non-image-based-captcha-approaches](http://stackoverflow.com/questions/8472/practical-non-image-based-captcha-approaches)
 
-[**Blowfish cipher**](https://en.wikipedia.org/wiki/Blowfish_(cipher))
+**Blowfish cipher**  
+[https://en.wikipedia.org/wiki/Blowfish_%28cipher%29](https://en.wikipedia.org/wiki/Blowfish_%28cipher%29)
 
-[**PBKDF2**](https://en.wikipedia.org/wiki/PBKDF2)
+**PBKDF2**  
+[https://en.wikipedia.org/wiki/PBKDF2](https://en.wikipedia.org/wiki/PBKDF2)
 
-[**Key Derivation Function**](https://en.wikipedia.org/wiki/Key_derivation_function) (KDF)
+**Key Derivation Function**  
+[https://en.wikipedia.org/wiki/Key_derivation_function](https://en.wikipedia.org/wiki/Key_derivation_function) (KDF)
 
-[**bcrypt**](https://en.wikipedia.org/wiki/Bcrypt)
+**bcrypt**  
+[https://en.wikipedia.org/wiki/Bcrypt](https://en.wikipedia.org/wiki/Bcrypt)
 
-[**Cryptographic hash function**](https://en.wikipedia.org/wiki/Cryptographic_hash_function): MD5, SHA1, SHA2, etc
+**Cryptographic hash function**  
+[https://en.wikipedia.org/wiki/Cryptographic_hash_function](https://en.wikipedia.org/wiki/Cryptographic_hash_function): MD5, SHA1, SHA2, etc
 
-[**Key stretching**](https://en.wikipedia.org/wiki/Key_stretching)
+**Key stretching**  
+[https://en.wikipedia.org/wiki/Key_stretching](https://en.wikipedia.org/wiki/Key_stretching)
 
-[**scrypt**](https://en.wikipedia.org/wiki/Scrypt)
+**scrypt**  
+[https://en.wikipedia.org/wiki/Scrypt](https://en.wikipedia.org/wiki/Scrypt)
 
 **bcrypt brute-forcing** becoming feasible with well ordered rainbow tables  
 [http://www.openwall.com/presentations/Passwords13-Energy-Efficient-Cracking/Passwords13-Energy-Efficient-Cracking.pdf](http://www.openwall.com/presentations/Passwords13-Energy-Efficient-Cracking/Passwords13-Energy-Efficient-Cracking.pdf)  
@@ -253,9 +260,11 @@ The following books have been influential for me and the content from the People
 **Securing Sessions** via cookie attributes  
 [https://www.owasp.org/index.php/HttpOnly](https://www.owasp.org/index.php/HttpOnly)
 
-[**Justin Searls talk**](http://blog.testdouble.com/posts/2014-12-02-the-social-coding-contract.html) on consuming all the open source.
+**Justin Searls talk** on consuming all the open source  
+[http://blog.testdouble.com/posts/2014-12-02-the-social-coding-contract.html](http://blog.testdouble.com/posts/2014-12-02-the-social-coding-contract.html)
 
-[**Effecting Change**](http://blog.binarymist.net/2013/06/22/ideas-for-more-effective-meetings-and-presentations/)
+**Effecting Change**  
+[http://blog.binarymist.net/2013/06/22/ideas-for-more-effective-meetings-and-presentations/](http://blog.binarymist.net/2013/06/22/ideas-for-more-effective-meetings-and-presentations/)
 
 
 
