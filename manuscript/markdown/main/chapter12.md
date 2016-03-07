@@ -3142,13 +3142,13 @@ Some note worthy benefits I've found with MembershipReboot are:
         namespace My.MembershipAPI {
            /// <summary>
            /// Utilising the Adapter pattern, gives us control over the Target (MembershipUser)
-	         /// interface. The adapter interface (CustomMembershipUser) provides members that
-	         /// our client (that's our call sites) can use.
+	       /// interface. The adapter interface (CustomMembershipUser) provides members that
+	       /// our client (that's our call sites) can use.
            /// The MembershipUser interface can't be used by our clients as it is, because
-	         /// we have a different set of parameters to pass.
+	       /// we have a different set of parameters to pass.
            /// Hence we provide an adapter (CustomMembershipUser)
            /// The Adaptee (User) becomes part of the Target (MembershipUser) by way of
-	         /// Adapter (CustomMembershipUser)
+	       /// Adapter (CustomMembershipUser)
            /// </summary>
            public class CustomMembershipUser : MembershipUser {
            
@@ -3226,7 +3226,7 @@ Some note worthy benefits I've found with MembershipReboot are:
            public class CustomUserRepository
               : DbContextUserAccountRepository<CustomDatabase, CustomUser> {
                  public CustomUserRepository(CustomDatabase ctx) : base(ctx) {}
-	         }
+	       }
         }
         
 2. The security focussed [configuration](https://github.com/brockallen/BrockAllen.MembershipReboot/wiki/Security-Settings-Configuration). You can choose to set this within code or config.  
@@ -3417,7 +3417,7 @@ The OWIN startup or config file could look like the following. You can see in th
              "https://identity.localtest.me:44334/connect/token";
           public const string ConnectionString = "AuthServiceDb";
           // 1 day of seconds. Make sure this is equivalent to what the service layer
-	        // API is specifying.
+	      // API is specifying.
           public const int UserAccessLifetime = 86400;
           public const string ServiceLayerClientSecret =
              "9b28b73e-9f66-42bf-ba87-189569136b20";
@@ -3683,9 +3683,9 @@ The OWIN startup or config file could look like the following. You can see in th
                 ServiceLayerConstants.CookieName,
                 tokenResponse.AccessToken
              );
-	           /*
+	         /*
              owasp.org/index.php/Session_Management_Cheat_Sheet#Expire_and_Max-Age_Attributes
-	           */
+	         */
              cookie.Expires = DateTimeOffset.Now.AddDays(
                 ServiceLayerConstants.UserAccessLifetime
              );
@@ -3696,10 +3696,10 @@ The OWIN startup or config file could look like the following. You can see in th
              );
              cookie.HttpOnly = true;
              cookie.Secure = true;
-	           /*
+	         /*
              www.owasp.org/index.php/Session_Management_Cheat_Sheet#Domain_and_Path_Attributes
              Cosider prefixing with the host.
-	           */
+	         */
              cookie.Domain = ".localtest.me";
              cookie.Path = "/";
     
