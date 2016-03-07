@@ -226,7 +226,7 @@ _Todo_
 The first link describes things the best.  
 "Anatomy of an attack"  
 "Generating the tokens"  
-The specific server side web application is responsible for generating the unique tokens and adding them to the responses.
+The specific server side web application is responsible for generating the unique tokens and adding them to the responses.  
 The application in the browser, or browser, or users device, is responsible for storing the one-time token, then issuing it with each request where CSRF is a concern.  
 
 Each technology will do things differently.
@@ -3137,147 +3137,149 @@ Is a user identity management library with a similar name to the ASP.NET Members
 Some note worthy benefits I've found with MembershipReboot are:
 
 1. From a project I was working on a few years back, MembershipUser was not providing the properties we needed, so having to hide MembershipUser as an Adaptee within an Adapter pattern implementation, a bit like this:
-
-  {title="MembershipUser.cs", linenos=off, lang=C#}
-      namespace My.MembershipAPI {
-         /// <summary>
-         /// Utilising the Adapter pattern, gives us control over the Target (MembershipUser) interface.
-         /// The adapter interface (CustomMembershipUser) provides members that our client (that's our call sites) can use.
-         /// The MembershipUser interface can't be used by our clients as it is, because we have a different set of parameters to pass.
-         /// Hence we provide an adapter (CustomMembershipUser)
-         /// The Adaptee (User) becomes part of the Target (MembershipUser) by way of Adapter (CustomMembershipUser)
-         /// </summary>
-         public class CustomMembershipUser : MembershipUser {
-         
-            public CustomMembershipUser(
-               MembershipUser membershipUser,
-               string firstName,
-               string lastName,
-               long securityQuestionId,
-               bool isBusinessAStartup,
-               string businessName
-            ) : base (
-               membershipUser.ProviderName,
-               membershipUser.UserName,
-               membershipUser.ProviderUserKey,
-               membershipUser.Email,
-               membershipUser.PasswordQuestion,
-               membershipUser.Comment,
-               membershipUser.IsApproved,
-               membershipUser.IsLockedOut,
-               membershipUser.CreationDate,
-               membershipUser.LastLoginDate,
-               membershipUser.LastActivityDate,
-               membershipUser.LastPasswordChangedDate,
-               membershipUser.LastLockoutDate
-            ) {
-               UserAccount = new User {
-                  FirstName = firstName,
-                  LastName = lastName,
-                  SecurityQuestionId = securityQuestionId,
-                  isBusinessAStartup = isBusinessAStartup,
-                  MembershipUserId = (Guid)membershipUser.ProviderUserKey,
-                  BusinessName = businessName
-               };
-            }
-            
-            public CustomMembershipUser(MembershipUser membershipUser) : base (
-               membershipUser.ProviderName,
-               membershipUser.UserName,
-               membershipUser.ProviderUserKey,
-               membershipUser.Email,
-               membershipUser.PasswordQuestion,
-               membershipUser.Comment,
-               membershipUser.IsApproved,
-               membershipUser.IsLockedOut,
-               membershipUser.CreationDate,
-               membershipUser.LastLoginDate,
-               membershipUser.LastActivityDate,
-               membershipUser.LastPasswordChangedDate,
-               membershipUser.LastLockoutDate
-            ) {}
-            
-            /// <summary>
-            /// Provides get and set access to our User 
-            /// </summary>
-            public User UserAccount { get; set; }
-         }
-      }
-      
-  Where as going down the path of [MembershipReboot](https://github.com/brockallen/BrockAllen.MembershipReboot) and [IdentityServer3.MembershipReboot](https://github.com/IdentityServer/IdentityServer3.MembershipReboot) which is a "_User Service plugin for IdentityServer v3 that uses MembershipReboot as its identity management library. In other words, you're using IdentityServer v3 and you want to use MembershipReboot as your database for user passwords..._" provides the ability to customise, out of the box. All you need to do is add the properties you require to the already provided [`CustomUser`](https://github.com/IdentityServer/IdentityServer3.MembershipReboot/blob/master/source/WebHost/MR/CustomUser.cs) and the data store schema which is also provided in an Entity Framework project that comes with MembershipReboot.
-  
-  {title="IdentityServer3.MembershipReboot\\source\\WebHost\\MR\\CustomUser.cs", linenos=off, lang=C#}
-      namespace WebHost.MR {
-         public class CustomUser : RelationalUserAccount {
-            public virtual string FirstName { get; set; }
-            public virtual string LastName { get; set; }
-            public virtual int? Age { get; set; }
-         }
-         
-         public class CustomUserAccountService : UserAccountService<CustomUser> {
-            public CustomUserAccountService(CustomConfig config, CustomUserRepository repo)
-               : base(config, repo) {
-            }
-         }
-         
-         public class CustomUserRepository
-            : DbContextUserAccountRepository<CustomDatabase, CustomUser> {
-               public CustomUserRepository(CustomDatabase ctx) : base(ctx) {
-               }
-         }
-      }
-      
+    
+    {title="MembershipUser.cs", linenos=off, lang=C#}
+        namespace My.MembershipAPI {
+           /// <summary>
+           /// Utilising the Adapter pattern, gives us control over the Target (MembershipUser)
+	   /// interface. The adapter interface (CustomMembershipUser) provides members that
+	   /// our client (that's our call sites) can use.
+           /// The MembershipUser interface can't be used by our clients as it is, because
+	   /// we have a different set of parameters to pass.
+           /// Hence we provide an adapter (CustomMembershipUser)
+           /// The Adaptee (User) becomes part of the Target (MembershipUser) by way of
+	   /// Adapter (CustomMembershipUser)
+           /// </summary>
+           public class CustomMembershipUser : MembershipUser {
+           
+              public CustomMembershipUser(
+                 MembershipUser membershipUser,
+                 string firstName,
+                 string lastName,
+                 long securityQuestionId,
+                 bool isBusinessAStartup,
+                 string businessName
+              ) : base (
+                 membershipUser.ProviderName,
+                 membershipUser.UserName,
+                 membershipUser.ProviderUserKey,
+                 membershipUser.Email,
+                 membershipUser.PasswordQuestion,
+                 membershipUser.Comment,
+                 membershipUser.IsApproved,
+                 membershipUser.IsLockedOut,
+                 membershipUser.CreationDate,
+                 membershipUser.LastLoginDate,
+                 membershipUser.LastActivityDate,
+                 membershipUser.LastPasswordChangedDate,
+                 membershipUser.LastLockoutDate
+              ) {
+                 UserAccount = new User {
+                    FirstName = firstName,
+                    LastName = lastName,
+                    SecurityQuestionId = securityQuestionId,
+                    isBusinessAStartup = isBusinessAStartup,
+                    MembershipUserId = (Guid)membershipUser.ProviderUserKey,
+                    BusinessName = businessName
+                 };
+              }
+              
+              public CustomMembershipUser(MembershipUser membershipUser) : base (
+                 membershipUser.ProviderName,
+                 membershipUser.UserName,
+                 membershipUser.ProviderUserKey,
+                 membershipUser.Email,
+                 membershipUser.PasswordQuestion,
+                 membershipUser.Comment,
+                 membershipUser.IsApproved,
+                 membershipUser.IsLockedOut,
+                 membershipUser.CreationDate,
+                 membershipUser.LastLoginDate,
+                 membershipUser.LastActivityDate,
+                 membershipUser.LastPasswordChangedDate,
+                 membershipUser.LastLockoutDate
+              ) {}
+              
+              /// <summary>
+              /// Provides get and set access to our User 
+              /// </summary>
+              public User UserAccount { get; set; }
+           }
+        }
+        
+    Where as going down the path of [MembershipReboot](https://github.com/brockallen/BrockAllen.MembershipReboot) and [IdentityServer3.MembershipReboot](https://github.com/IdentityServer/IdentityServer3.MembershipReboot) which is a "_User Service plugin for IdentityServer v3 that uses MembershipReboot as its identity management library. In other words, you're using IdentityServer v3 and you want to use MembershipReboot as your database for user passwords..._" provides the ability to customise, out of the box. All you need to do is add the properties you require to the already provided [`CustomUser`](https://github.com/IdentityServer/IdentityServer3.MembershipReboot/blob/master/source/WebHost/MR/CustomUser.cs) and the data store schema which is also provided in an Entity Framework project that comes with MembershipReboot.
+    
+    {title="IdentityServer3.MembershipReboot\\source\\WebHost\\MR\\CustomUser.cs", linenos=off, lang=C#}
+        namespace WebHost.MR {
+           public class CustomUser : RelationalUserAccount {
+              public virtual string FirstName { get; set; }
+              public virtual string LastName { get; set; }
+              public virtual int? Age { get; set; }
+           }
+           
+           public class CustomUserAccountService : UserAccountService<CustomUser> {
+              public CustomUserAccountService(CustomConfig config, CustomUserRepository repo)
+                 : base(config, repo) {
+              }
+           }
+           
+           public class CustomUserRepository
+              : DbContextUserAccountRepository<CustomDatabase, CustomUser> {
+                 public CustomUserRepository(CustomDatabase ctx) : base(ctx) {}
+	   }
+        }
+        
 2. The security focussed [configuration](https://github.com/brockallen/BrockAllen.MembershipReboot/wiki/Security-Settings-Configuration). You can choose to set this within code or config.  
-Password storage (as discussed above under the [Data-store Compromise](#web-applications-countermeasures-data-store-compromise) section is [addressed](http://brockallen.com/2014/02/09/how-membershipreboot-stores-passwords-properly/) by using the mature PBKDF2 and providing a config setting in the form of `passwordHashingIterationCount` on the `MembershipRebootConfiguration` class to dial in the number of iterations (stretching), as seen below on line 30. You now have control of how slow you want it to be to crack those passwords. What's more, the iteration count can be set to change each year automatically. If the developer chooses not to touch the iteration count at all (or more likely, forgets), then the default of 0 is inferred. 0 means to automatically calculate the number based on the [OWASP recommendations](https://www.owasp.org/index.php/Password_Storage_Cheat_Sheet) for the current year. In the year 2000 it should be 1000 iterations. The count should be doubled each subsequent two years, so in 2016 we should be using 256000 iterations and that's what MembershipReboot does if the setting is not changed.
-  
-  {title="backend\\Auth\\AuthService.WebApi\\app.config", linenos=on, lang=XML}
-      <?xml version="1.0" encoding="utf-8"?>
-      <configuration>
-        <configSections>
-          <section
-            name="membershipReboot"
-            type="BrockAllen.MembershipReboot.SecuritySettings,
-            BrockAllen.MembershipReboot" />
-          <section
-            name="entityFramework"
-            type="System.Data.Entity.Internal.ConfigFile.EntityFrameworkSection,
-            EntityFramework,
-            Version=6.0.0.0,
-            Culture=neutral,
-            PublicKeyToken=b77a5c561934e089"
-            requirePermission="false" />
-          <connectionStrings>
-            <add 
-              name="MembershipReboot"
-              connectionString=
-              "Data Source=(LocalDb)\v11.0;InitialCatalog=AuthServiceDb;Integrated Security=True"
-              providerName="System.Data.SqlClient" />      
-          </connectionStrings>
-          <membershipReboot
-            requireAccountVerification="true"
-            emailIsUsername="false"
-            multiTenant="false"
-            allowAccountDeletion="true"
-            passwordHashingIterationCount="0"
-            accountLockoutDuration="00:01:00"
-            passwordResetFrequency="0" />          
-          <!--
-          Test user bob with password secret was created with 10 iterations of the PBKDF2 KDF
-          
-          "secret" 10 iterations:
-          A.ABP7I2M56JTnekBoUjUtG7G4poxMO3Br+cAPgXqYx//0KKxqILb7uYjuE9ofBr7amQ==
-          "secret" 10000 iterations:
-          3E800.AN02zizsHZG45IlCu0/8UjPZuwcopaSSBkU/d6VHq3pknf2BE7ExiLL38clIKn575g==
-          
-          Some more details on how the hash is constructed can be found here:
-          https://github.com/brockallen/BrockAllen.MembershipReboot/issues/603
-          -->
-        </configSections>  
-      </configuration>
-  
-  The iteration count of each users password is stored with the hashed password, as can be seen above on lines 37 and 39. This means each password can have a different number of iterations applied over time as required. Beautifully thought out!
-  
-  With the ASP.NET Membership Provider you can have salted SHA1 which as already mentioned was not designed for what it was chosen to be used for in this case and there doesn't appear to be any thought to (Moore's Law) the fact that machines keep getting faster. MD5 and SHA were designed to be fast, not slow and able to be slowed down. So storing passwords by SHA-1 hashing means they are incredibly fast to crack.
+Password storage (as discussed above under the [Data-store Compromise](#web-applications-countermeasures-data-store-compromise) section is [addressed](http://brockallen.com/2014/02/09/how-membershipreboot-stores-passwords-properly/) by using the mature PBKDF2 and providing a config setting in the form of `passwordHashingIterationCount` on the `MembershipRebootConfiguration` class to dial in the number of iterations (stretching), as seen below on line 29. You now have control of how slow you want it to be to crack those passwords. What's more, the iteration count can be set to change each year automatically. If the developer chooses not to touch the iteration count at all (or more likely, forgets), then the default of 0 is inferred. 0 means to automatically calculate the number based on the [OWASP recommendations](https://www.owasp.org/index.php/Password_Storage_Cheat_Sheet) for the current year. In the year 2000 it should be 1000 iterations. The count should be doubled each subsequent two years, so in 2016 we should be using 256000 iterations and that's what MembershipReboot does if the setting is not changed.
+    
+    {title="backend\\Auth\\AuthService.WebApi\\app.config", linenos=on, lang=XML}
+        <?xml version="1.0" encoding="utf-8"?>
+        <configuration>
+          <configSections>
+            <section
+              name="membershipReboot"
+              type="BrockAllen.MembershipReboot.SecuritySettings,
+              BrockAllen.MembershipReboot" />
+            <section
+              name="entityFramework"
+              type="System.Data.Entity.Internal.ConfigFile.EntityFrameworkSection,
+              EntityFramework,
+              Version=6.0.0.0,
+              Culture=neutral,
+              PublicKeyToken=b77a5c561934e089"
+              requirePermission="false" />
+            <connectionStrings>
+              <add 
+                name="MembershipReboot"
+                connectionString=
+                "Data Source=(LocalDb)\v11.0;InitialCatalog=AuthServiceDb;Integrated Security=True"
+                providerName="System.Data.SqlClient" />      
+            </connectionStrings>
+            <membershipReboot
+              requireAccountVerification="true"
+              emailIsUsername="false"
+              multiTenant="false"
+              allowAccountDeletion="true"
+              passwordHashingIterationCount="0"
+              accountLockoutDuration="00:01:00"
+              passwordResetFrequency="0" />          
+            <!--
+            Test user bob with password secret was created with 10 iterations of the PBKDF2 KDF
+            
+            "secret" 10 iterations:
+            A.ABP7I2M56JTnekBoUjUtG7G4poxMO3Br+cAPgXqYx//0KKxqILb7uYjuE9ofBr7amQ==
+            "secret" 10000 iterations:
+            3E800.AN02zizsHZG45IlCu0/8UjPZuwcopaSSBkU/d6VHq3pknf2BE7ExiLL38clIKn575g==
+            
+            Some more details on how the hash is constructed can be found here:
+            https://github.com/brockallen/BrockAllen.MembershipReboot/issues/603
+            -->
+          </configSections>  
+        </configuration>
+    
+    The iteration count of each users password is stored with the hashed password, as can be seen above on lines 36 and 38. This means each password can have a different number of iterations applied over time as required. Beautifully thought out!
+    
+    With the ASP.NET Membership Provider you can have salted SHA1 which as already mentioned was not designed for what it was chosen to be used for in this case and there doesn't appear to be any thought to (Moore's Law) the fact that machines keep getting faster. MD5 and SHA were designed to be fast, not slow and able to be slowed down. So storing passwords by SHA-1 hashing means they are incredibly fast to crack.
 
 Sadly the next offering in this space (ASP.NET Identity) that Microsoft produced also seems inferior. Brock Allen blogged about some of the short comings in his post titled "_[The good, the bad and the ugly of ASP.NET Identity](http://brockallen.com/2013/10/20/the-good-the-bad-and-the-ugly-of-asp-net-identity/#ugly)_" in which MembershipReboot caters for, such as the following:
 
@@ -3386,7 +3388,7 @@ The OWIN startup or config file could look like the following. You can see in th
              };
              app.UseFacebookAuthentication(fb);
     
-             TwitterAuthenticationOptions twitter = new     TwitterAuthenticationOptions {
+             TwitterAuthenticationOptions twitter = new TwitterAuthenticationOptions {
                 AuthenticationType = "Twitter",
                 SignInAsAuthenticationType = signInAsType,
                 ConsumerKey = "N8r8w7PIepwtZZwtH066kMlmq",
@@ -3414,7 +3416,8 @@ The OWIN startup or config file could look like the following. You can see in th
           public const string ClientConnectTokenUrl =
              "https://identity.localtest.me:44334/connect/token";
           public const string ConnectionString = "AuthServiceDb";
-          // 1 day of seconds. Make sure this is equivalent to what the service layer API is specifying.
+          // 1 day of seconds. Make sure this is equivalent to what the service layer
+	  // API is specifying.
           public const int UserAccessLifetime = 86400;
           public const string ServiceLayerClientSecret =
              "9b28b73e-9f66-42bf-ba87-189569136b20";
@@ -3528,7 +3531,6 @@ The OWIN startup or config file could look like the following. You can see in th
           public string GetTokenClaims(string token) {
              // There's no cookie so no point checking with the auth service.
              if (string.IsNullOrEmpty(token)) return null;
-         
     
              string url = ServiceLayerConstants.AccessTokenValidationUrl + token;
     
@@ -3550,7 +3552,8 @@ The OWIN startup or config file could look like the following. You can see in th
                    );
                    return null;
                 }
-             } catch (WebException e) when (((HttpWebResponse)e.Response).StatusCode == HttpStatusCode.BadRequest) {            
+             } catch (WebException e) when
+	        (((HttpWebResponse)e.Response).StatusCode == HttpStatusCode.BadRequest) {
                 return null;
              }
           }
@@ -3680,7 +3683,9 @@ The OWIN startup or config file could look like the following. You can see in th
                 ServiceLayerConstants.CookieName,
                 tokenResponse.AccessToken
              );
-             // www.owasp.org/index.php/Session_Management_Cheat_Sheet#Expire_and_Max-Age_Attributes
+	     /*
+             www.owasp.org/index.php/Session_Management_Cheat_Sheet#Expire_and_Max-Age_Attributes
+	     */
              cookie.Expires = DateTimeOffset.Now.AddDays(
                 ServiceLayerConstants.UserAccessLifetime
              );
@@ -3691,8 +3696,10 @@ The OWIN startup or config file could look like the following. You can see in th
              );
              cookie.HttpOnly = true;
              cookie.Secure = true;
-             // www.owasp.org/index.php/Session_Management_Cheat_Sheet#Domain_and_Path_Attributes
-             // Cosider prefixing with the host.
+	     /*
+             www.owasp.org/index.php/Session_Management_Cheat_Sheet#Domain_and_Path_Attributes
+             Cosider prefixing with the host.
+	     */
              cookie.Domain = ".localtest.me";
              cookie.Path = "/";
     
@@ -3737,7 +3744,8 @@ Turn the `HttpOnly` cookie flag on. This instructs web browser to not allow acce
 
 CSRF is the most common attack used to leverage cookies containing authentication details. In order to mitigate this attack vector, the use of the synchroniser token pattern is recommended. Each server side technology will implement this type of protection differently. CSRF is discussed in more depth in the Cross-Site Request Forgery (CSRF) sections.
 
-As for the `Expires` and `Max-Age` cookie attributes from `client\ServiceLayer\APIControllers\SecureController.cs` (seen above), these will need to be set to the maximum values that the business is prepared to accept along with the `Client.AccessTokenLifetime` from `backend\Auth\AuthService.WebApi\IdSvr\Clients.cs` (seen above) (which need to line up) for the IdentityServer.
+As for the `Expires` and `Max-Age` cookie attributes from  
+`client\ServiceLayer\APIControllers\SecureController.cs` (seen above), these will need to be set to the maximum values that the business is prepared to accept along with the `Client.AccessTokenLifetime` from `backend\Auth\AuthService.WebApi\IdSvr\Clients.cs` (seen above) (which need to line up) for the IdentityServer.
 
 The OWASP [Session Management Cheat Sheet](https://www.owasp.org/index.php/Session_Management_Cheat_Sheet#Cookies) has more details around securing cookies.
 

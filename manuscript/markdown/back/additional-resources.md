@@ -168,7 +168,7 @@ The following books have been influential for me and the content from the People
 ## [Web Applications](#web-applications)
 
 **OWASP canonical XSS resource**  
-[https://www.owasp.org/index.php/Cross-site_Scripting_%28XSS%29](https://www.owasp.org/index.php/Cross-site_Scripting_%28XSS%29)
+https://www.owasp.org/index.php/Cross-site_Scripting_%28XSS%29
 
 **Hashcat rules based** attack  
 [http://hashcat.net/wiki/doku.php?id=rule_based_attack](http://hashcat.net/wiki/doku.php?id=rule_based_attack)
@@ -229,7 +229,7 @@ The following books have been influential for me and the content from the People
 [http://stackoverflow.com/questions/8472/practical-non-image-based-captcha-approaches](http://stackoverflow.com/questions/8472/practical-non-image-based-captcha-approaches)
 
 **Blowfish cipher**  
-[https://en.wikipedia.org/wiki/Blowfish_%28cipher%29](https://en.wikipedia.org/wiki/Blowfish_%28cipher%29)
+https://en.wikipedia.org/wiki/Blowfish_%28cipher%29
 
 **PBKDF2**  
 [https://en.wikipedia.org/wiki/PBKDF2](https://en.wikipedia.org/wiki/PBKDF2)
