@@ -1,9 +1,12 @@
 mainmatter:
    
    markdown/main/chapter8.md
+
+   markdown/main/chapter12.md
    
 backmatter:
    
-   markdown/back/attributions.md
+   markdown/back/additional-resources.md
 
+   markdown/back/attributions.md
 
