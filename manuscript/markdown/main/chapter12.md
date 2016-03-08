@@ -3430,6 +3430,7 @@ The OWIN startup or config file could look like the following. You can see in th
        }
     }
 
+
 {title="client\\ServiceLayer\\ServiceLayerConstants.cs", linenos=off, lang=C#}
     // Lives in Service Layer APIs of Architecture diagram above.
     namespace ServiceLayer {
@@ -3447,8 +3448,9 @@ The OWIN startup or config file could look like the following. You can see in th
        }
     }
 
+
 {title="backend\\Auth\\AuthService.WebApi\\IdSvr\\Clients.cs", linenos=off, lang=C#}
-   // Lives in Auth Service of Architecture diagram above.
+    // Lives in Auth Service of Architecture diagram above.
     using System.Collections.Generic;
     using IdentityServer3.Core;
     using IdentityServer3.Core.Models;
@@ -3593,7 +3595,7 @@ The OWIN startup or config file could look like the following. You can see in th
 %% {title="client\ServiceLayer\Authentication\AuthenticationHandler.cs", linenos=on, lang=C#}
 
 
-{title="client\\ServiceLayer\\APIControllers\\SecureController.cs", linenos=on, lang=C#}
+{title="client\\ServiceLayer\\APIControllers\\SecureController.cs", linenos=off, lang=C#}
     // Lives in Service Layer API of Architecture diagram above.
     using System;
     using System.Collections.Generic;
