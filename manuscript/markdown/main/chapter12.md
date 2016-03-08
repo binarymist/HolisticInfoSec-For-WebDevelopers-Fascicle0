@@ -3565,7 +3565,7 @@ The OWIN startup or config file could look like the following. You can see in th
              } catch (WebException e)
                 when (((HttpWebResponse)e.Response).StatusCode == HttpStatusCode.BadRequest) {
                    return null;
-                }
+             }
           }
     
           // This addresses the faulty logout risk.
@@ -3672,6 +3672,8 @@ The OWIN startup or config file could look like the following. You can see in th
              return response;
           }
     
+          // Used as part of the "remember me" strategy.
+          // Front-end calls when new access token is required.
           [HttpGet]
           [Route("refreshsession")]
           public HttpResponseMessage RefreshSession(string refreshToken) {
