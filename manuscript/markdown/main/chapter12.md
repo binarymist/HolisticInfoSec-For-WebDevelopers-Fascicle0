@@ -3233,6 +3233,7 @@ Some note worthy benefits I've found with MembershipReboot are:
 Password storage (as discussed above under the [Data-store Compromise](#web-applications-countermeasures-data-store-compromise) section is [addressed](http://brockallen.com/2014/02/09/how-membershipreboot-stores-passwords-properly/) by using the mature PBKDF2 and providing a config setting in the form of `passwordHashingIterationCount` on the `MembershipRebootConfiguration` class to dial in the number of iterations (stretching), as seen below on line 29. You now have control of how slow you want it to be to crack those passwords. What's more, the iteration count can be set to change each year automatically. If the developer chooses not to touch the iteration count at all (or more likely, forgets), then the default of 0 is inferred. 0 means to automatically calculate the number based on the [OWASP recommendations](https://www.owasp.org/index.php/Password_Storage_Cheat_Sheet) for the current year. In the year 2000 it should be 1000 iterations. The count should be doubled each subsequent two years, so in 2016 we should be using 256000 iterations and that's what MembershipReboot does if the setting is not changed.
     
     {title="backend\\Auth\\AuthService.WebApi\\app.config", linenos=on, lang=XML}
+        <!--Lives in Auth Service of Architecture diagram below.-->
         <?xml version="1.0" encoding="utf-8"?>
         <configuration>
           <configSections>
@@ -3312,6 +3313,7 @@ There are also many other community provided [OWIN OAuth middleware providers](h
 The OWIN startup or config file could look like the following. You can see in the second half of the code file is the configuration of the external identity providers:
 
 {title="backend\\Auth\\AuthService.WebApi\\Owin\\OwinConfig.cs", linenos=off, lang=C#}
+    // Lives in Auth Service of Architecture diagram below.
     using System;
     using System.Collections.Generic;
     using System.Security.Cryptography.X509Certificates;
@@ -3409,6 +3411,7 @@ The OWIN startup or config file could look like the following. You can see in th
 ![](images/AuthArchitecture.png)
 
 {title="backend\\Auth\\AuthService.WebApi\\AuthServiceWebApiConstants.cs", linenos=off, lang=C#}
+    // Lives in Auth Service of Architecture diagram above.
     namespace AuthService.WebApi {
        public class AuthServiceWebApiConstants {
           public const string AccessTokenValidationUrl =
@@ -3428,6 +3431,7 @@ The OWIN startup or config file could look like the following. You can see in th
     }
 
 {title="client\\ServiceLayer\\ServiceLayerConstants.cs", linenos=off, lang=C#}
+    // Lives in Service Layer APIs of Architecture diagram above.
     namespace ServiceLayer {
        public class ServiceLayerConstants {
           public const string AccessTokenValidationUrl =
@@ -3443,7 +3447,8 @@ The OWIN startup or config file could look like the following. You can see in th
        }
     }
 
-{title="backend\\Auth\\AuthService.WebApi\\IdSvr\\Clients.cs", linenos=on, lang=C#}
+{title="backend\\Auth\\AuthService.WebApi\\IdSvr\\Clients.cs", linenos=off, lang=C#}
+   // Lives in Auth Service of Architecture diagram above.
     using System.Collections.Generic;
     using IdentityServer3.Core;
     using IdentityServer3.Core.Models;
@@ -3494,7 +3499,8 @@ The OWIN startup or config file could look like the following. You can see in th
        }
     }
 
-{title="client\\ServiceLayer\\Authentication\\CookieRequestReader.cs", linenos=on, lang=C#}
+{title="client\\ServiceLayer\\Authentication\\CookieRequestReader.cs", linenos=off, lang=C#}
+    // Lives in Service Layer API of Architecture diagram above.
     using System.Linq;
     using System.Net.Http;
     using System.Net.Http.Headers;
@@ -3511,7 +3517,8 @@ The OWIN startup or config file could look like the following. You can see in th
        }
     }
 
-{title="client\\ServiceLayer\\Authentication\\AuthServiceValidator.cs", linenos=on, lang=C#}
+{title="client\\ServiceLayer\\Authentication\\AuthServiceValidator.cs", linenos=off, lang=C#}
+    // Lives in Service Layer API of Architecture diagram above.
     using System.Collections.Generic;
     using System.IO;
     using System.Net;
@@ -3528,6 +3535,7 @@ The OWIN startup or config file could look like the following. You can see in th
              _log = log;
           }
     
+          // Called on each resource request other than login/outs.
           public string GetTokenClaims(string token) {
              // There's no cookie so no point checking with the auth service.
              if (string.IsNullOrEmpty(token)) return null;
@@ -3555,10 +3563,11 @@ The OWIN startup or config file could look like the following. You can see in th
              } catch (WebException e)
                 when (((HttpWebResponse)e.Response).StatusCode == HttpStatusCode.BadRequest) {
                    return null;
-             }
+                }
           }
     
-          // This addresses the faulty logout risk
+          // This addresses the faulty logout risk.
+          // Called by SecureController.
           public async Task<bool> LogMeOut(string token) {
              string tokenRevocationEndpoint =
                 "https://identity.localtest.me:44334/connect/revocation";
@@ -3585,6 +3594,7 @@ The OWIN startup or config file could look like the following. You can see in th
 
 
 {title="client\\ServiceLayer\\APIControllers\\SecureController.cs", linenos=on, lang=C#}
+    // Lives in Service Layer API of Architecture diagram above.
     using System;
     using System.Collections.Generic;
     using System.Web.Http;
@@ -3605,6 +3615,7 @@ The OWIN startup or config file could look like the following. You can see in th
              public string Password { get; set; }
           }
     
+          // TokenClient is an Identity Server component.
           private TokenClient _tokenClient;
           private readonly IIdentityValidator _identityValidator;
     
