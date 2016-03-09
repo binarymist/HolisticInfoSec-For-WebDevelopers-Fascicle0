@@ -10,7 +10,7 @@ Take results from [higher level Asset Identification](#starting-with-the-30000-f
 * Servers, the cabinets they reside in, the rooms cabinets reside in.
 * Physical buildings, their openings such as doors and windows. Keys, RFID cards, Access codes
 * Sensitive printed matter
-* Plant, such as work-stations or any other devices that could be used to launch attack sequences from. Laptops and mobile devices (including personal) configured to access internal Access Points (APs). Wi-Fi APs
+* Plant, such as work-stations or any other devices that could be used to launch attack sequences from, or even cause diversions to allow an attacker to carry out an action they wouldn't be able to otherwise. Laptops and mobile devices (including personal) configured to access internal Access Points (APs). Wi-Fi APs
 * Visibility into who is where and doing what. Visibility brings immense power to make good decisions and is often an excellent target for an attacker to remove from you.
 
 ## 2. SSM Identify Risks {#physical-identify-risks}
@@ -32,13 +32,13 @@ We not only see this principle applied to networks, but also physical security.
 
 ![](images/ThreatTags/easy-common-easy-moderate.png)
 
-Filing cabinets and other cupboards left unlocked or locked and keys or combinations put in obvious places.
+Doors that lead to isolated areas. Filing cabinets and other cupboards left unlocked or locked and keys or combinations put in obvious places. What assets or potential foot holds are in those areas? What about electronic systems other than core computing systems, like alarm, surveillance or air conditioning components. Sometimes all that's in the way of a successful exploit being carried out is the fact that someone's watching something. If an attacker can take that someone's attention away from an exploitable target (be it a computer, another unlocked door, person or what ever) for a short period of time, they may be able to carry out an activity that takes them further along their attack traversal path. 
 
 ### Insecure Doors and/or Windows {#physical-identify-risks-insecure-doors-windows}
 
 ![](images/ThreatTags/easy-widespread-easy-severe.png)
 
-Open doors, open windows. Uninteresting right, because there seems to be little challenge to mitigate. So little challenge that the vulnerability often gets ignored. Believe it or not, but it is often the cleaners responsibility to lock doors, windows and set alarms. I have discussed some of these types of threat agents [here](http://blog.binarymist.net/2012/11/04/sanitising-user-input-from-browser-part-1/#threat-agents). Many places I have worked in have had double latched windows only single latched when I do the rounds just before I leave. It is very easy to pry a double latch window open from the outside that is single latched.
+Open doors, open windows. Uninteresting right, because there seems to be little challenge to mitigate. So little challenge that the vulnerability often gets ignored. Believe it or not, but it is often the cleaners responsibility to lock doors, windows and set alarms. Anyone can be or masquerade as a cleaner. I have discussed some of these types of threat agents on my [blog](http://blog.binarymist.net/2012/11/04/sanitising-user-input-from-browser-part-1/#threat-agents). Many places I have worked in have had double latched windows only single latched when I do the rounds just before I leave. It is very easy to pry a double latch window open from the outside that is single latched.
 
 ### Easily Penetrable Building Materials
 
@@ -77,9 +77,7 @@ Or build your own with the likes of the Tessel and its [RFID module](https://tes
 
 &nbsp;
 
-Of course there are many more.
-
-_Todo_ what are they?
+Of course there are many more that I may go into in another book or blog post.
 
 %% https://www.google.co.nz/search?q=rfid+tags&oq=rfid+tags&aqs=chrome..69i57j0l5.13744j0j7&client=ubuntu&sourceid=chrome&es_sm=93&ie=UTF-8#q=rfid+tag+exploitation
 %% http://www.rfidvirus.org/
@@ -157,7 +155,7 @@ There is a common theme through this section of prevent, detect and respond. Dis
 
 ![](images/ThreatTags/PreventionAVERAGE.png)
 
-Harden internal attack vectors. BinaryMist takes the approach of [De-perimeterisation](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#fire-walling). That is not relying on network firewalls or LAN segmentation. Hardening every layer (defence in depth) as though all other layers are weak and easily compromised.
+Harden internal attack vectors. [BinaryMist](http://binarymist.io) takes the approach of [De-perimeterisation](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#fire-walling). That is not relying on network firewalls or LAN segmentation. Hardening every layer (defence in depth) as though all other layers are weak and easily compromised.
 
 ![](images/DefenceInDepth.png)
 
@@ -167,15 +165,15 @@ I have [blogged](http://blog.binarymist.net/2012/11/04/sanitising-user-input-fro
 
 ![](images/ThreatTags/PreventionEASY.png)
 
-Provide education -> monitor -> test that the education is taking effect and repeat. There are also quite a few ideas in the [People](#people) chapter on increasing staff engagement.
+Provide education -> monitor -> test that the education is taking effect and repeat if not. Have someone with a devious creative mindset test these areas. There are also quite a few ideas in the [People](#people) chapter on increasing staff engagement.
 
 ### Insecure Doors and/or Windows {#physical-countermeasures-insecure-doors-windows}
 
 ![](images/ThreatTags/PreventionVERYEASY.png)
 
 A lot of what you can do to make sure staff secure premises openings when they leave comes down to engagement. See the [People](#people) chapter for ideas on how to increase staff engagement and motivation to care about the organisation they work for and be alert. Do not underestimate how much of staff members attitude has to do with this.  
-Do not work your staff so hard that they are so tired that when they leave the premises they just do not think about doing a full rounds check.  
-It is the age old law. What goes around comes around. Treat your staff as you would like to be treated and they will be much more likely to... that is right, make sure premises openings are locked properly when they leave.
+Do not work your staff so hard that they are so tired that when they leave the premises they just do not think about doing a full rounds check, or if they do miss something.  
+It is the age old law. What goes around comes around. Treat your staff as you would like to be treated and they will be much more likely to... that's right, make sure premises openings are locked properly when they leave.
 
 Train staff. The training loop is also important. Educate -> monitor -> test, repeat.
 
@@ -209,7 +207,7 @@ There are many attack vectors represented here in the following countermeasures:
 
 * Outside bins that lock
 * High quality shredders
-* easily accessible and convenient lockable storage for each individual staff member
+* easily accessible and convenient lockable storage for each individual staff member. Make sure they're very easy to use, else they won't be used.
 * Policy and possible company culture change for all of the above points and any that I have missed
 * Education -> monitor -> test, repeat
 
@@ -238,7 +236,7 @@ Most of what you can do here comes down to the people problem described in the c
 
 1. Educating your workers
 3. Creating a [culture](http://blog.binarymist.net/2014/04/26/culture-in-the-work-place/) that thinks about security and includes it as part of who they are
-4. Test your workers. Measure the results. Make sure your investment is falling on fertile ground and actually taking root. Adjust your training and change techniques to address weak areas. Measure again. Keep iterating on this.
+4. Test your workers (come in after hours and check who has left monitors on). Measure the results. Make sure your investment is falling on fertile ground and actually taking root. Adjust your training and change techniques to address weak areas. Measure again. Keep iterating on this.
 3. Again simple stuff, but from my experience, if your organisation falls into this bucket, until an attacker takes advantage of this, management seems blissfully unaware. So... If you see it, put your [change agent skills](http://blog.binarymist.net/2014/04/26/culture-in-the-work-place/#effecting-change) to work. This can take significant cultural change. Be patient and make that change move from ground up. It does not matter where you sit in the organisations hierarchy. If you do not really know where to start, I would recommend grabbing a copy of [Fearless Change](http://blog.binarymist.net/2013/06/22/ideas-for-more-effective-meetings-and-presentations/). It is not about meetings and presentations by the way. I have gained a lot of insight on how to gently change organisations and bring big improvements in many areas. I would also recommend [Nonviolent Communication](http://en.wikipedia.org/wiki/Nonviolent_Communication) by Marshall Rosenberg.
 
 ### Networking Equipment
@@ -279,7 +277,7 @@ Feel free to hide the SSID, but it adds little in the way of security and does a
 * Do not purchase an AP with WPS
 * If you already have one and the firmware allows you to turn WPS off then do so. Just be aware that sometimes you will turn this off and the firmware will ignore your choice, so be sure to test it or at least obtain a reliable configuration from the device. For example, I have worked with Cisco Aironet 1142 devices and their Web UI displays something completely different to the configuration when you print it out.
 * Consider re-flashing the device with a firmware that does not have WPS.
-* Research and purchase a device that does not have WPS.
+* Research and purchase a device(s) that does not have WPS.
 
 #### WPA2 and WPA
 
@@ -324,7 +322,7 @@ I do not see many risks associated with improving a premises internal security o
 
 ### Internal Doors and Cabinets Left Unlocked
 
-The inconvenience of always having to go through the process of unlocking and locking could cause frustration and lack of understanding around why this process is necessary. Additional openness, empathy and education may be required to keep staff motivated to the cause.
+The inconvenience of always having to go through the process of unlocking and locking can cause frustration and lack of understanding around why this process is necessary. Additional openness, empathy and education may be required by (servant leader) management to keep staff motivated and devoted to the cause.
 
 ### Insecure Doors and/or Windows
 
@@ -350,7 +348,7 @@ With multi-factor authentication, the something you have or know parts could pot
 
 ### Computers Logged in and Unlocked
 
-Once this is addressed, there is a risk that staff will be starting to think about security in many areas, but this is the whole point right? This is really simple stuff right. There is a risk that it takes a second longer to access your desktop.
+Once this is addressed, there is a risk that staff will be starting to think about security in many areas, but this is the whole point right? This is really simple stuff. There is a risk that it takes a second longer to access your desktop.
 
 ### Networking Equipment
 

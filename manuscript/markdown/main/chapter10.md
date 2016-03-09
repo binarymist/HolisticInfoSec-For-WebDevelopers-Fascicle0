@@ -343,6 +343,7 @@ _Todo_
 
 _Todo_ Discuss and detail some wireless exploits. Specifically at least some of the WPS vectors discussed in the Physical chapter. Plus hopefully some more.
 
+%% Can we crack WPA2? Provide quick overview of how it can be done or at least the likes of WEP.
 %% Crunch generates every possible combination of characters you tell it too
 %% https://forums.kali.org/showthread.php?18261-Cracking-WPA-key-with-crunch-aircrack-(almost-fullproof-but-how-speed-things-up)
 %% http://adaywithtape.blogspot.co.nz/2011/05/creating-wordlists-with-crunch-v30.html
