@@ -189,7 +189,7 @@ If you have the luxury of building from scratch for your premises, steer clear o
 1. Roofing iron or other roofing materials are less likely to be compromised if the roof is clearly visible from a public place. The busier the public place is the better. If you have to use roofing iron, consider screwing it on with Tek screws, or even better with screws that do not have a common head, thus requiring a specialised tool. If your attacker is smart, they will do their reconnaissance on what is holding this material on before the attack. Tek screws are very difficult to remove with a claw hammer or small pinch bar. Nothing is impenetrable, but you can make an attackers job very difficult.
 2. Sky-lights. If you are using these, put them in places that are as public as possible and as hard to reach as possible. Also having them a long way from the floor will make the break-in harder. Fixed sash sky-lights are also a little more difficult. You could also consider fitting bars on the insides of these. Same goes for windows that are in secluded quite places.
 3. Weak exterior cladding. Just try and steer clear of using these types of materials. If you have no option, consider making your other layers of defence stronger to compensate.
-4. Suspended Ceiling. Filling the roof cavity with obstacles such as barbed wire, bunched chicken wire etc can demotivate all but the most determined attacker.
+4. Suspended Ceiling. Filling the roof cavity with obstacles such as barbed wire, bunched chicken wire etc can demotivate all but the most determined attackers.
 
 #### Crime Prevention Through Environmental Design (CPTED)
 
@@ -212,7 +212,7 @@ Just remove them. Do not make information publicly available that could be used 
 1. Dumpster diving. Make sure your trash baskets only get used for trash that is not sensitive. Educate -> monitor -> test, repeat. All bins that could hold not only sensitive printed material, but any sensitive material whether shredded or not should be locked and fixed securely to something difficult to move. Destroy your own sensitive material and use shredders that shred more than one way into very hard to re-assemble pieces.
 Not all paper shredders are created equal. Understand the pros and cons.
 2. Printed matter left in insecure places: Your desk is insecure. Consider whether printing sensitive information is necessary. Is there a better way? If you have to print it and if it needs to be retained, then it should also be locked in some kind of safe storage that can not easily just be removed.
-3. Printer Management: Most modern MFD’s have the capability to encrypt hard drives, which should be used whilst the device is in operation, however it should also be considered best practice to remove or de-gausse MFD hard drives before the device leaves premise at end of life / lease.
+3. Printer Management: Most modern MFD’s have the capability to encrypt hard drives, which should be used whilst the device is in operation, however it should also be considered best practice to remove or [degausse](http://blog.binarymist.net/2013/03/17/erasing-data-from-your-drives/) MFD hard drives before the device leaves premise at end of life / lease.
 
 There are many attack vectors represented here in the following countermeasures:
 
@@ -272,7 +272,7 @@ As with [Transient Devices](#physical-countermeasures-transient-devices), use DH
 
 Discussed in more depth in the [Network](#network) chapter.
 
-This “outside” vulnerability can be mitigated by the implementation of Li-Fi (Light Fidelity) systems. Li-Fi transmits high-speed data using visible light communication (VLC), and as the light waves cannot penetrate walls, external access becomes virtually impossible. Li-Fi AP’s also have an inherent short range which is essentially diffused by windows. The [speed benefits](http://www.sciencealert.com/li-fi-tested-in-the-real-world-for-the-first-time-is-100-times-faster-than-wi-fi) of Li-Fi are also compelling, many times faster than current Wi-Fi speeds. 
+The “outside” vulnerability can be mitigated by the implementation of Li-Fi (Light Fidelity) systems. Li-Fi transmits high-speed data using visible light communication (VLC), and as the light waves cannot penetrate walls, external access becomes virtually impossible. Li-Fi AP’s also have an inherent short range which is essentially diffused by windows. The [speed benefits](http://www.sciencealert.com/li-fi-tested-in-the-real-world-for-the-first-time-is-100-times-faster-than-wi-fi) of Li-Fi are also compelling, many times faster than current Wi-Fi speeds. 
 
 I usually use a pass-phrase of about 40 characters long, made up of as close as I can get to random characters which are a mix of alphanumeric, upper case, lower case and symbols. For some people it can be a little awkward. For those abiding by best practises of using password vaults, it should actually be easier than typing a short pass-phrase, because they will be copy -> pasting it. In this case there is no convenience lost, in fact if it feels inconvenient, this should push the user toward using a password vault, which they should be using already.
 

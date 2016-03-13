@@ -138,11 +138,14 @@ http-waf-fingerprint: [https://nmap.org/nsedoc/scripts/http-waf-fingerprint.html
 **Detection works where prevention fails** and detection is of no use without response.  
 Beyond Fear by Bruce Schneier
 
+**Remove or degausse MFD hard drives** before the device leaves premise at end of life / lease  
+[http://blog.binarymist.net/2013/03/17/erasing-data-from-your-drives/](http://blog.binarymist.net/2013/03/17/erasing-data-from-your-drives/)
+
 **You will also need to think about company culture** and whether this needs some work:  
 [http://blog.binarymist.net/2014/04/26/culture-in-the-work-place/](http://blog.binarymist.net/2014/04/26/culture-in-the-work-place/)
 
-**The speed benefits**  
-[http://www.sciencealert.com/li-fi-tested-in-the-real-world-for-the-first-time-is-100-times-faster-than-wi-fi](http://www.sciencealert.com/li-fi-tested-in-the-real-world-for-the-first-time-is-100-times-faster-than-wi-fi) of Li-Fi are also compelling, many times faster than current Wi-Fi speeds.
+**The speed benefits** of Li-Fi are also compelling, many times faster than current Wi-Fi speeds.  
+[http://www.sciencealert.com/li-fi-tested-in-the-real-world-for-the-first-time-is-100-times-faster-than-wi-fi](http://www.sciencealert.com/li-fi-tested-in-the-real-world-for-the-first-time-is-100-times-faster-than-wi-fi)
 
 **People can be your strongest or your weakest defence**. This is your choice. Cultural change can be implemented from any level. The most successfully being from the shop flaw:  
 [http://blog.binarymist.net/2014/04/26/culture-in-the-work-place/](http://blog.binarymist.net/2014/04/26/culture-in-the-work-place/)
