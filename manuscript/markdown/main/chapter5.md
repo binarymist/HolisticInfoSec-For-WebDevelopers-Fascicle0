@@ -49,6 +49,7 @@ There are many building materials in use today that are trivially easy to compro
 1. Roofing iron, in fact most roofing materials are very easy to either break through or remove. Once an attacker has a small section of roofing material removed, there is little in the way of physical elements stopping them entering the human inhabitable areas. Ceiling and wall linings have little strength and are easily just pushed from their substrate.
 2. Sky-lights, as are windows, are easy to get through. Sky-lights are often just less obvious than windows, not always though of course. There are usually metal strips with rubbers underneath holding the glass panes in. With a flat blade screw-driver or any other similar tool, these are usually trivial to remove. This is my usual approach at entering my house when I have misplaced my keys. This is quick, easy and does not have to damage anything.
 3. Weak exterior cladding. There are lots of fairly weak building materials in use today. Fibre cement for example is often only 6mm thick. Sometimes this may have a plaster coat on it, which may give a deceptive appearance of strength. Either way, with a good kick, penetration is fairly straight forward.
+4. Suspended Ceiling. If you have sensitive information stored in any area, such as server rooms, archive rooms, etc which has a false or suspended (dropped) ceiling, then this is an easily penetrable vulnerability. GIB or Acoustic NRC tiles are extremely common in office environments, but can be removed easily with bare hands, no tools required.
 
 ### Service Labels
 
@@ -62,6 +63,8 @@ Often labels are attached to doors, windows, air conditioning units and any othe
 
 1. Dumpster diving. Trash baskets or shredded material inside the building or dumpsters outside of the building. Whether the printed material is non-shredded or shredded. There have been quite a few tests and studies performed on the effectiveness of many shredders and how easy it is to reassemble shredded printed matter with time. In-fact there are competitions devoted to reassembling shredded printed documents with contestants that have successfully reassembled all printed matter. I have also known of organisations that pay for a service of picking up printed matter, taking away and destroying. What is to stop an attacker masquerading as someone from the organisation you pay to do this?
 2. Printed matter left in insecure places: Your desk is insecure. Visitors or service contractors can easily photo documents when you are not there without you ever being aware that they have copied them.
+3. Printer Management: Most businesses use Multi Function Devices (MFD’s) for the convenience of having Printers, Scanners, Faxes, Binders etc all combined into a single unit. This is generally a cost saving initiative, and also saves floor/desk real estate considerably. However, MFD’s contain hard drives which can store up to 3000 previously printed documents. These hard drives are not only easy to remove, but are generally forgotten about when a device is retired / lease expired etc. Any sensitive information that is retained on the hard drive at time of sale / release, then becomes the legal property of the new owners / leaseholders.  
+There is a well known incident involving a Californian Police department who put 6 old MFD’s up for auction. All of these devices were subsequently purchased by a local motorcycle gang. Unfortunately for the police, they forgot to wipe / remove the MFD hard drives, resulting in thousands of sensitive police reports and case files becoming the legal property of the motor cycle gang.
 
 ### RFID Tags {#physical-identify-risks-rfid}
 
@@ -186,6 +189,13 @@ If you have the luxury of building from scratch for your premises, steer clear o
 1. Roofing iron or other roofing materials are less likely to be compromised if the roof is clearly visible from a public place. The busier the public place is the better. If you have to use roofing iron, consider screwing it on with Tek screws, or even better with screws that do not have a common head, thus requiring a specialised tool. If your attacker is smart, they will do their reconnaissance on what is holding this material on before the attack. Tek screws are very difficult to remove with a claw hammer or small pinch bar. Nothing is impenetrable, but you can make an attackers job very difficult.
 2. Sky-lights. If you are using these, put them in places that are as public as possible and as hard to reach as possible. Also having them a long way from the floor will make the break-in harder. Fixed sash sky-lights are also a little more difficult. You could also consider fitting bars on the insides of these. Same goes for windows that are in secluded quite places.
 3. Weak exterior cladding. Just try and steer clear of using these types of materials. If you have no option, consider making your other layers of defence stronger to compensate.
+4. Suspended Ceiling. Filling the roof cavity with obstacles such as barbed wire, bunched chicken wire etc can demotivate all but the most determined attacker.
+
+#### Crime Prevention Through Environmental Design (CPTED)
+
+Again, if you are in the position to be building a premise from scratch, or completing an indepth refurbishment, you can implement CPTED. This is a focus on the external elements of a premise. Using landscaping techniques focused on security, you can use pathways, benches, hedgerows, sculptures and plantings in combination with lighting techniques and highly visible external security cameras to control access to the building, increasing the difficulty for an attacker to approach undetected. A well designed CPTED strategy can deter many attackers before they even reach your building, let alone attempt to access the building.
+
+&nbsp;
 
 There are of course detection followed by response techniques that you can use to help in the case where you are unable to or it does not make sense to change weak building materials. These are covered below.
 
@@ -202,6 +212,7 @@ Just remove them. Do not make information publicly available that could be used 
 1. Dumpster diving. Make sure your trash baskets only get used for trash that is not sensitive. Educate -> monitor -> test, repeat. All bins that could hold not only sensitive printed material, but any sensitive material whether shredded or not should be locked and fixed securely to something difficult to move. Destroy your own sensitive material and use shredders that shred more than one way into very hard to re-assemble pieces.
 Not all paper shredders are created equal. Understand the pros and cons.
 2. Printed matter left in insecure places: Your desk is insecure. Consider whether printing sensitive information is necessary. Is there a better way? If you have to print it and if it needs to be retained, then it should also be locked in some kind of safe storage that can not easily just be removed.
+3. Printer Management: Most modern MFD’s have the capability to encrypt hard drives, which should be used whilst the device is in operation, however it should also be considered best practice to remove or de-gausse MFD hard drives before the device leaves premise at end of life / lease.
 
 There are many attack vectors represented here in the following countermeasures:
 
@@ -238,6 +249,7 @@ Most of what you can do here comes down to the people problem described in the c
 2. Creating a [culture](http://blog.binarymist.net/2014/04/26/culture-in-the-work-place/) that thinks about security and includes it as part of who they are
 3. Test your workers (come in after hours and check who has left monitors on). Measure the results. Make sure your investment is falling on fertile ground and actually taking root. Adjust your training and change techniques to address weak areas. Measure again. Keep iterating on this.
 4. Again simple stuff, but from my experience, if your organisation falls into this bucket, until an attacker takes advantage of this, management seems blissfully unaware. So... If you see it, put your [change agent skills](http://blog.binarymist.net/2014/04/26/culture-in-the-work-place/#effecting-change) to work. This can take significant cultural change. Be patient and make that change move from ground up. It does not matter where you sit in the organisations hierarchy. If you do not really know where to start, I would recommend grabbing a copy of [Fearless Change](http://blog.binarymist.net/2013/06/22/ideas-for-more-effective-meetings-and-presentations/). It is not about meetings and presentations by the way. I have gained a lot of insight on how to gently change organisations and bring big improvements in many areas. I would also recommend [Nonviolent Communication](http://en.wikipedia.org/wiki/Nonviolent_Communication) by Marshall Rosenberg.
+5. Getting buy-in from end users can often be a difficult task in this area. Often this can be due to an inherent distrust of management by line level staff. Any change of process that relates to security will result in negative feelings and questions such as “what has happened”, “what are they looking for now”, “I haven't done anything wrong” etc. The key word here is transparency. Right from the outset, management need to inform staff of plans, what processes are being put in place and why. What are the possible ramifications if these processes are not established etc. Also this discussion should be had first hand from senior management to line staff, not via a supervisor / team-leader etc. This removes an additional layer of suspicion.
 
 ### Networking Equipment
 
@@ -260,7 +272,9 @@ As with [Transient Devices](#physical-countermeasures-transient-devices), use DH
 
 Discussed in more depth in the [Network](#network) chapter.
 
-I usually use a pass-phrase of about 40 characters long made up of as close as I can get to random characters which are a mix of alphanumeric, upper case, lower case and symbols. For some people it can be a little awkward. For those abiding by best practises of using password vaults, it should actually be easier than typing a short pass-phrase, because they will be copy -> pasting it. In this case there is no convenience lost, in fact if it feels inconvenient, this should push the user toward using a password vault, which they should be using already.
+This “outside” vulnerability can be mitigated by the implementation of Li-Fi (Light Fidelity) systems. Li-Fi transmits high-speed data using visible light communication (VLC), and as the light waves cannot penetrate walls, external access becomes virtually impossible. Li-Fi AP’s also have an inherent short range which is essentially diffused by windows. The [speed benefits](http://www.sciencealert.com/li-fi-tested-in-the-real-world-for-the-first-time-is-100-times-faster-than-wi-fi) of Li-Fi are also compelling, many times faster than current Wi-Fi speeds. 
+
+I usually use a pass-phrase of about 40 characters long, made up of as close as I can get to random characters which are a mix of alphanumeric, upper case, lower case and symbols. For some people it can be a little awkward. For those abiding by best practises of using password vaults, it should actually be easier than typing a short pass-phrase, because they will be copy -> pasting it. In this case there is no convenience lost, in fact if it feels inconvenient, this should push the user toward using a password vault, which they should be using already.
 
 The [Transient Devices](#physical-countermeasures-transient-devices) section may also be of interest.
 

@@ -141,6 +141,9 @@ Beyond Fear by Bruce Schneier
 **You will also need to think about company culture** and whether this needs some work:  
 [http://blog.binarymist.net/2014/04/26/culture-in-the-work-place/](http://blog.binarymist.net/2014/04/26/culture-in-the-work-place/)
 
+**The speed benefits**  
+[http://www.sciencealert.com/li-fi-tested-in-the-real-world-for-the-first-time-is-100-times-faster-than-wi-fi](http://www.sciencealert.com/li-fi-tested-in-the-real-world-for-the-first-time-is-100-times-faster-than-wi-fi) of Li-Fi are also compelling, many times faster than current Wi-Fi speeds.
+
 **People can be your strongest or your weakest defence**. This is your choice. Cultural change can be implemented from any level. The most successfully being from the shop flaw:  
 [http://blog.binarymist.net/2014/04/26/culture-in-the-work-place/](http://blog.binarymist.net/2014/04/26/culture-in-the-work-place/)
 
@@ -193,6 +196,9 @@ Bruce Schneier: Data and Goliath: Introduction: USA National Security Agency (NS
 
 **The Arxan 5th Annual State of Application Security Report**  
 [https://www.arxan.com/resources/state-of-application-security/](https://www.arxan.com/resources/state-of-application-security/) _Perception vs. Reality_
+
+**The content Michael Bazzell has collated**  
+[https://inteltechniques.com/links.html](https://inteltechniques.com/links.html) and his excellent books on the gathering of Open Source Intelligence.
 
 **Studies show that motivation** has a larger effect on productivity and quality than any other factor. Software Engineering Economics by Barry W. Boehm 1981.
 
