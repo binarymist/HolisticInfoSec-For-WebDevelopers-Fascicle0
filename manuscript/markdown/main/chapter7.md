@@ -7,6 +7,7 @@ _Todo_
 Some resources to start with:  
 https://bluebox.com/business/bluebox-and-nist-addressing-mobile-threats/  
 https://media.blackhat.com/bh-us-12/Briefings/C_Miller/BH_US_12_Miller_NFC_attack_surface_WP.pdf
+https://www.owasp.org/index.php/Mobile_Top_10_2016-Top_10
 
 %% Memory extractor http://www.kitploit.com/2015/11/lime-linux-memory-extractor.html
 

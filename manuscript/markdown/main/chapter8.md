@@ -6,10 +6,25 @@ Like the chapter on [Physical](#physical) security, the people problem is often 
 
 Why is it often over-looked? A couple of reasons I can think of.
 
-1. It is too simple
+1. It's too simple
 2. Many of us do not like to put the spot-light on ourselves and look deep inside to try and find what makes us tick, what our flaws look like, why they exist, how we can re-architect the affected areas and in some cases work around them, but being aware of them. There is often real pain when we start poking and prodding at our inner weak areas.
 
-As with many other attacks, this is often one that is a key component of a larger attack. 
+As with many other attacks, this is often one that is a key component of a larger more sophisticated attack.
+
+If you think back to the Penetration Testing [process](#process-and-practises-penetration-testing) we walked through in the Process and Practises chapter, a social engineer generally carries out their attach sequences in a similar manner. The following steps is the high level approach often taken:
+
+1. **Reconnaissance** (or Information Gathering)  
+is one of the most important steps in a social engineering engagement. Similar to the [forms](#process-and-practises-penetration-testing-reconnaissance-reconnaissance-forms) discussed in the Process and Practises chapter, a huge amount of freely available information can be gathered without anyone suspecting what it's going to be used for or that it's used at all (semi-active), or that it's even being gathered (passive). This information is used to feed the creation of the following attack steps and also technical attacks. We've already looked at some of the forms of information that an attacker can use to build their targets profile in the Process and Practises and Physical chapters. I'd also like to draw your attention to the content Michael Bazzell has [collated](https://inteltechniques.com/links.html) and his excellent books on the gathering of Open Source Intelligence.
+2. **Connecting with Target**  
+Humans are complicated units, we have spirits, souls, feelings, emotions and usually need to feel like we can trust someone before we hand over our jewels. An attacker can't approach a human as they would a machine. Although there are similarities. There are areas that we know we have to work around for example. A skilled social engineer will build relationship with a target while they are gently probing for weaknesses. This is often carried out over weeks or even months of communications, slowly or sometimes quickly trust can be built. There are also many ways to fast track this process like:
+  * Pretexting (becoming someone else). Learning some ones behaviour, what they do, how they do it, their routines, what they know, who they know, how they talk, what they like, their family members and their details. Most of the details are now freely available on the internet via many forms. Equipped with these details, pretexting is acting as if you are that person. The closer you get to believing you are that person, the more successful the pretext will be.
+  * Elicitation. Getting people to come out of their shells, open up and trust the attacker. Then starting to produce the information the attacker requires. Causing or steering a target to perform the specific behaviour that the attacker wants, such as revealing secrets. Pouring on praise and discussing the targets accomplishments works wonders with getting people to open up. There are many other ways to elicit information. Elicitation is a two pronged fork, it not only gathers information, but it also builds rapport with the target.
+3. **Exploitation**  
+This is where an attacker has discovered human vulnerabilities in their target and uses them to:
+  * Coerce the target to yield information that can be used against the target
+  * Direct or control the actions of the target
+4. **Exit / Execution**  
+This is where the attacker hits the jackpot and acquires what they were after from the beginning of the assignment and leaves the target unsuspecting that they've been played at all, often thinking and feeling that they've helped someone legitimately. Just like with a successful technology based attack. The target should not have a clue they've been exploited.
 
 ## 1. SSM Asset Identification
 Take results from [higher level Asset Identification](#starting-with-the-30000-foot-view-asset-identification). Remove any that are not applicable. Add any newly discovered. Here are some to get you started:
@@ -20,12 +35,31 @@ Take results from [higher level Asset Identification](#starting-with-the-30000-f
 _Todo_ Probably more here.
 
 ## 2. SSM Identify Risks {#people-identify-risks}
-Risks based on the failures of people present a very different set of attack vectors than any others mentioned in this material. People are both complex, complicated and our personalities are full of faults just waiting to be compromised, thus the approach at finding vulnerabilities is quite different.  
+
+Risks based on the failures of people present a very different set of attack vectors than any others mentioned in this material. People are both complex, complicated and our personalities are full of faults just waiting to be exploited, thus the approach at finding vulnerabilities is quite different.  
 You can still use some of the processes from the top level [2. SSM Identify Risks](#starting-with-the-30000-foot-view-identify-risks), but the outcomes can look quite different.  
 I find the [Threat agents cloud](#starting-with-the-30000-foot-view-identify-risks-threat-agents) and [Likelihood and impact](#starting-with-the-30000-foot-view-identify-risks-likelihood-and-impact) diagrams still quite useful. Also [MS 5. Document the Threats](#ms-5-document-the-threats), [OWASP Risk Rating Methodology](#ms-5-document-the-threats) and the [intel-threat-agent-library](#intel-threat-agent-library) as they are technology agnostic.  
 [OWASP Ranking of Threats](#ms-6-rate-the-threats), [MS 6. Rate the Threats](#ms-6-rate-the-threats)  and DREAD to a degree are useful.
 
 People are the strongest point in a security process, they are often also the weakest.
+
+### Ignorance
+
+In working as a contract software engineer within many teams, I always struggle to get past the fact of how oblivious most developers are to the fact of the amount of insecurities they just don't consider. Usually after explaining the situation and importance of the vulnerability with them, they start to understand it, but it's still an ongoing battle to get them into the place where they continually consider the importance of their decisions in creating secure systems.
+
+The fact that the people responsible for creating our software have a perception that is even more distorted than the actual consumers of that software is truly concerning. [The Arxan 5th Annual State of Application Security Report](https://www.arxan.com/resources/state-of-application-security/) _Perception vs. Reality_ highlights this.
+
+{title="The perception looks something like this"}
+|Creators |                              |Consumers|
+|:-------:|:----------------------------:|:-------:|
+|   87%   |Feel my mobile applications   |   83%   |
+|         |are adequately secure         |         |
+|---------|------------------------------|---------|
+|   82%   |Believe everything is being   |   57%   |
+|         |done to protect my apps       |         |
+|---------|------------------------------|---------|
+|   46%   |Think my app will likely be   |   48%   |
+|         |hacked within next 6 months   |         |
 
 ### Morale, Productivity and Engagement Killers
 
@@ -777,6 +811,14 @@ Just make sure when you are testing your malware that you do it in a lab environ
 
 ## 3. SSM Countermeasures
 
+### Ignorance
+
+The first step to overcoming the ignorance is to understand the reality. The Identify Risks sections throughout the book provide us with the reality. On top of that, drawing again from [The Arxan 5th Annual State of Application Security Report](https://www.arxan.com/resources/state-of-application-security/) _Perception vs. Reality_, "_126 of the most popular mobile health and finance apps from USA, UK, Germany and Japan were tested for security vulnerabilities_" 90% of them were vulnerable to at least 2 of the [OWASP Mobile top 10 Risks](https://www.owasp.org/index.php/Mobile_Top_10_2016-Top_10).
+
+Another interesting (but sadly not surprising) observation, is that "_50% of organisations allocate no budget for mobile app security_". Probably why almost half of the app consumers rightly believe their apps will be hacked within the next six months. Developers: You're probably reading this book because you understand the situation to a degree. It's our responsibility to reach out to our peers and execs, help them understand the situation and lead them to the solutions.
+
+It was also noted in the Arxan report that 80% of consumers would change providers if they knew about the vulnerabilities and had a better option. 90% of the app execs (the creators) also believed that consumers would switch if they knew, and better offerings were available. Taking this information, we should be using good security as a marketing advantage.
+
 ### [Morale, Productivity and Engagement Killers](https://speakerdeck.com/binarymist/how-to-increase-software-developer-productivity) {#people-countermeasures-morale-productivity-and-engagement-killers}
 
 Staff are often thought of as resources. If you want the best out of your people, treat them like valuable assets. Go out of your way to build meaningful relationships with them and create empathy. People base their decisions on emotions, later justifying them with facts. With this in mind, keep them in a good emotional place. Staff that feel appreciated work much harder and will be more likely to:
@@ -961,6 +1003,10 @@ Treating your workers well as discussed in the [Morale, Productivity and Engagem
 Often the modern thinking is that we can replace flawed people with technology. People are resilient and dynamic. They can spot a threat they have never seen before and defend against it. Computers can only defend against what they have been programmed to defend against. Technological defences are brittle. It is the role of technology to support humans to make good decisions.
 
 Employees can get complacent with training, unless they are faced with very real simulations. Get creative, establish a base line training for all and additional training for areas of specialisation and extra trust. 
+
+_Todo_
+
+### Ignorance
 
 _Todo_
 

@@ -17,6 +17,8 @@ Bruce Schneier has good [insight](http://www.networkworld.com/article/2909212/se
 
 If you think of the attack surface that Wi-Fi brought with it, you could probably double that for what we are going to experience with IoT, and I fear that may be an underestimate.
 
+https://www.owasp.org/index.php/OWASP_Internet_of_Things_Project
+
 OWASP also has an IoT Top 10 https://www.owasp.org/index.php/OWASP_Internet_of_Things_Top_Ten_Project which I could potentially fill in.
 
 _Todo_

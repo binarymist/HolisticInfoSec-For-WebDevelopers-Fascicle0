@@ -218,6 +218,19 @@ G> Click on the Execute button and on the next request -> response from the hook
 
 _Todo_
 
+%% Take details from:
+
+* http://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages
+* https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)_Prevention_Cheat_Sheet#General_Recommendation:_Synchronizer_Token_Pattern
+
+The first link describes things the best.  
+"Anatomy of an attack"  
+"Generating the tokens"  
+The specific server side web application is responsible for generating the unique tokens and adding them to the responses.  
+The application in the browser, or browser, or users device, is responsible for storing the one-time token, then issuing it with each request where CSRF is a concern.  
+
+Each technology will do things differently.
+
 #### SQLi {#web-applications-identify-risks-sqli}
 
 ![](images/HandsOnHack.png)
@@ -392,6 +405,13 @@ Are you using well salted and quality strong key derivation functions (KDFs) for
 
 %% http://www.windowsecurity.com/articles-tutorials/authentication_and_encryption/How-Cracked-Windows-Password-Part2.html
 
+#### Caching of Sensitive Data {#web-applications-identify-risks-management-of-application-secrets-caching-of-sensitive-data}
+![](images/ThreatTags/easy-common-difficult-moderate.png)
+
+_Todo_
+
+
+
 #### Physical Access
 
 _Todo_
@@ -422,6 +442,8 @@ oclHashcat
 John the Ripper (JtR)  
 Cain and Abel (windows)
 
+%% http://www.troyhunt.com/2011/06/owasp-top-10-for-net-developers-part-7.html "Anatomy of an insecure cryptographic storage attack" onwards
+%% http://www.troyhunt.com/2012/06/our-password-hashing-has-no-clothes.html
 
 _Todo_
 
@@ -447,11 +469,50 @@ _Todo_
 
 
 
-### Lack of Authentication {#web-applications-identify-risks-lack-of-authentication}
 
-_Todo_  
-_Todo_  
-...
+
+
+
+
+
+
+
+### Lack of Authentication, Authorisation and Session Management {#web-applications-identify-risks-lack-of-authentication-authorisation-session-management}
+
+Also brought to light by the OWASP Top 10 risks "[_No. 2 Broken Authentication and Session Management_](https://www.owasp.org/index.php/Top_10_2013-A2-Broken_Authentication_and_Session_Management)".
+
+With this category of attacks, your attacker could be either someone you do or do not know. Possibly someone already with an account, an insider maybe, looking to take the next step which could be privilege escalation or even just alteration so that they have access to different resources by way of acquiring other accounts. Some possible attack vectors could be:
+
+* Password acquisition: by way of data-store theft (off-line attack) or poor password hashing strategies (susceptible to off-line and on-line attacks), discussed in the Countermeasures section but in more depth in the Management of Application Secrets sections
+* Passwords or sessionIds travelling over unsecured channels susceptible to Man In the Middle (MItM) attacks, discussed in the Countermeasures section but also refer to the TLS Downgrade sections of the Network chapter
+* Buggy Session Management, SessionIds exposed in URLs
+* Faulty logout (not invalidating authentication tokens)
+* Faulty remember me functionality
+* Long session time-outs can exacerbate other weak areas of defence
+* Secret questions
+* Updating account details
+
+In the Countermeasures section I go through some mature and well tested libraries and other technologies, and details around making them fit into a specific business architecture.
+
+Consider what data could be exposed from any of the accounts and how this could be used to gain a foot hold to launch further alternative attacks. Each step allowing the attacker to move closer to their ultimate target, the ultimate target being something hopefully discussed during the Asset Identification phase or taking another iteration of it as you learn and think of additional possible targeted assets.
+
+Often the line between the following two concepts gets blurred, sometimes because where one starts and one ends is often not absolute or clear, and sometimes intentionally. Neither help new comers and even those used to working with the concepts get to grips with which is which and what the responsibilities of each include.
+
+#### What is Authentication
+
+The process of determining whether an entity (be it person or something else) is who or what it claims to be.
+
+Being authenticated, means the entity is known to be who or what it/he/she claims to be.
+
+#### What is Authorisation
+
+The process of verifying that an entity (usually requesting)(be it person or something else) has the right to a resource or to carry out an action, then granting permission requested.
+
+Being authorised, means the entity has the power or right to certain privileges.
+
+&nbsp;
+
+**Don't build your own** authentication, authorisation or session management system unless it's your core business. It's too easy to get things wrong and you only need one defect in order to be compromised. Leave it to those that have already done it or do it as part of their core business and have already worked through the defects.
 
 ### Cryptography on the Client (AKA Untrusted Crypto) {#web-applications-identify-risks-cryptography-on-the-client}
 
@@ -2622,8 +2683,6 @@ The above solutions are excellent targets for creating exploits that will have a
 
 ##### Still Not Cutting it
 
-&nbsp;
-
 "_Given the fact that many clients count on conversions to make money, not receiving 3.2% of those conversions could put a dent in sales.  Personally, I would rather sort through a few SPAM conversions instead of losing out on possible income._"
 
 > Casey Henry: [Captchas' Effect on Conversion Rates](https://moz.com/blog/captchas-affect-on-conversion-rates)
@@ -2634,13 +2693,9 @@ The above solutions are excellent targets for creating exploits that will have a
 
 ##### User Time Expenditure
 
-&nbsp;
-
 Recording how long it takes from fetch to submit. This is another technique, in which the time is measured from fetch to submit. For example if the time span is under five seconds it is more than likely a bot, so handle the message accordingly.
 
 ##### Bot Pot
-
-&nbsp;
 
 Spamming bots operating on custom mechanisms will in most cases just try, then move on. If you decide to use one of the common offerings from above, exploits will be more common, depending on how wide spread the offering is. This is one of the cases where going custom is a better option. Worse case is you get some spam and you can modify your technique, but you get to keep things simple, tailored to your web application, your users needs, no external dependencies and no monthly fees. This is also the simplest technique and requires very little work to implement.
 
@@ -2949,7 +3004,7 @@ PBKDF2, bcrypt and [scrypt](http://www.tarsnap.com/scrypt.html) are KDFs that ar
 
 PBKDF2, bcrypt and the newer scrypt, apply a Pseudorandom Function (PRF) such as a cryptographic hash, cipher or HMAC to the data being received along with a unique salt. The salt should be stored with the hashed data.
 
-Do not use MD5, SHA-1 or the SHA-2 family of cryptographic one-way hashing functions by themselves for cryptographic purposes like hashing your sensitive data. In-fact do not use hashing functions at all for this unless they are leveraged with one of the mentioned KDFs. Why? Because the hashing speed can not be slowed as hardware continues to get faster. Many organisations that have had their data-stores stolen and continue to on a weekly basis could avoid their secrets being compromised simply by using a decent KDF with salt and a decent number of iterations.
+Do not use MD5, SHA-1 or the SHA-2 family of cryptographic one-way hashing functions by themselves for cryptographic purposes like hashing your sensitive data. In-fact do not use hashing functions at all for this unless they are leveraged with one of the mentioned KDFs. Why? Because they were not designed for passwords (to be slow), the hashing speed can not be slowed as hardware continues to get faster. Many organisations that have had their data-stores stolen and continue to on a weekly basis could avoid their secrets being compromised simply by using a decent KDF with salt and a decent number of iterations.
 "_Using four AMD Radeon HD6990 graphics cards, I am able to make about 15.5 billion guesses per second using the SHA-1 algorithm._"
 
 > Per Thorsheim
@@ -2969,6 +3024,37 @@ The hashing functions that PBKDF2 uses were a lot easier to get speed increases 
 
 The sensitive data stored within a data-store should be the output of using one of the three key derivation functions we have just discussed. Feed with the data you want protected and a salt. All good frameworks will have at least PBKDF2 and bcrypt APIs
 
+#### Caching of Sensitive Data {#web-applications-countermeasures-management-of-application-secrets-caching-of-sensitive-data}
+![](images/ThreatTags/PreventionVERYEASY.png)
+
+Logging out from an application obviously does not clear the browser cache of any sensitive information that might have been stored. Test that any sensitive data responses have `Cache-Control` and `Expires` headers set appropriately.
+
+Use an HTTP intercepting proxy such as ZAP, Burp, etc, to search through the server responses that belong to the session, checking that the server instructed the browser not to cache any data for all responses containing sensitive information.
+
+Use the following headers on such responses:
+
+`Cache-Control: no-cache, no-store`  
+`Expires: 0, or past date`  
+`Pragma: no-cache`  
+
+You can also add the following flags to the `Cache-Control` header in order to better prevent persistently linked files on the filesystem:
+
+`must-revalidate`, `pre-check=0`, `post-check=0`, `max-age=0`, and `s-maxage=0`
+
+To check that the browsers are respecting the headers, check the cache stores. For example:
+
+For Mozilla Firefox:
+
+* Unix/Linux: `~/.mozilla/firefox/<profile-id>/Cache/`
+* Windows: `C:\Documents and Settings\<user_name>\Local Settings\Application Data\`  
+  `Mozilla\Firefox\Profiles\<profile-id>\Cache>`
+
+For Internet Explorer:
+
+* `C:\Documents and Settings\<user_name>\Local Settings\Temporary Internet Files>`
+
+Don't forget to plug all your changes into your [Zap Regression Test suite](#process-agile-development-and-practices-security-regression-testing).
+
 #### Physical Access
 
 _Todo_
@@ -2985,11 +3071,698 @@ _Todo_
 
 _Todo_
 
-### Lack of Authentication {#web-applications-countermeasures-lack-of-authentication}
+### Lack of Authentication, Authorisation and Session Management {#web-applications-countermeasures-lack-of-authentication-authorisation-session-management}
 
-_Todo_  
-_Todo_   
-...
+I'm going to walk you through some of the important parts of what a possible authentication and authorisation solution might look like that will address the points raised in the [Identify Risks](#web-applications-identify-risks-lack-of-authentication-authorisation-session-management) section from above.
+
+{title="Relevant Standards"}
+| Authentication (identity)         | Authorisation
+|-----------------------------------|----------
+| OpenID                            | OAuth 2
+| OpenID Connect (built on OAuth 2) |
+
+The following code is one example of how we can establish authentication and authorisation of individuals desiring to work with a system comprised of any number of front-ends (web, mobile, etc), a service layer API that provides an abstraction to, and communicates with the underlying back-end micro-services. The example uses the Resource Owner Password Credentials (ROPC) flow which is quite a common flow with todays front-end -> service API -> back-end micro-service architectures.
+
+It's also worth checking out the following sections in the OAuth 2.0 specification around the ROPC flow:
+
+* [Resource Owner Password Credentials](http://tools.ietf.org/html/rfc6749#section-1.3.3)
+* [Resource Owner Password Credentials Grant](http://tools.ietf.org/html/rfc6749#section-4.3)
+* [Security Considerations](http://tools.ietf.org/html/rfc6749#section-10.7)
+
+All the flows are detailed in the [OAuth 2.0](http://tools.ietf.org/html/rfc6749) and [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) specifications.
+
+We'll also discuss integrating external identity providers (The Facebooks, Twitters and Googles) of our world. 
+
+#### Chosen technologies:
+
+|front-end(s)                    |service layer API | back-end micro-services |
+|--------------------------------|------------------|-------------------------|
+|N/A                             |C#.NET            |C#.NET                   |
+|--------------------------------|------------------|-------------------------|
+|`Secure` `HTTPOnly` cookie      |IdentityServer3   |IdentityServer3          |
+|containing reference token      |                  |                         |
+|--------------------------------|------------------|-------------------------|
+|localStorage for refresh token  |reference token   |                         |
+|                                |MembershipReboot  |MembershipReboot         |
+
+Getting to grips with and understanding enough to create a solution like this can be quite a steep learning experience. The folks from IdentityServer which do this for the love of it have created an outstanding Open Source Software (OSS) project and in all my dealings with them have always gone out of their way to help. In all the projects I've worked on, with all the edge cases, there has always been a way to create the solution that satisfied the requirements.
+
+#### Technology and Design Decisions
+
+##### Reference Token vs JSON Web Token (JWT)
+
+Ideally reference access tokens should be used between front-end(s) and the service layer, which they are in this case. Then JWT, which contains a signed list of the users claims, from the service layer to the back-end micro-services.
+
+JWTs can not be revoked as they are self contained (contain everything about a user that is necessary to make a decision about what the user should be authorised to access)
+
+Reference tokens on the other hand simply contain a reference to the user account which is managed by identity server via MembershipReboot in this case. Thus enabling revocation (logging out of the user for example).
+
+Identity server does not currently support both types of token at once, being able to switch between one or the other (reference for front-end, JWT for back-end), although it is [on the road map](https://github.com/IdentityServer/IdentityServer3/issues/1725). Until this configuration is supported, the service layer can get the users claims by using the reference token. One of those claims being the user GUID. The claims could then be propagated to the micro-services.
+
+##### IdentityServer3
+
+IdentityServer2 was focussed around authentication with some OAuth2 support to assist with authentication.  
+AuthorizationServer was more focused on OAuth2 for delegated authorisation.  
+IdentityServer3 is a C#.NET library that focusses on both authentication and authorisation. You don't have to have your surrounding out of process components (service layer, micro-services) in .NET for IdentityServer3 to be a viable option. They could be written in another language, so long as they speak HTTP.
+
+##### MembershipReboot
+
+Is a user identity management library with a similar name to the ASP.NET Membership Provider, inspired by it due to [frustrations](http://brockallen.com/2012/09/02/think-twice-about-using-membershipprovider-and-simplemembership/) that Brock Allen (MembershipReboot creator) had from it such as:  
+
+1. A misguided false perception of security, which I agree with
+2. A leaky abstraction due to the 27 abstract methods that may or may not be pertinent to your applications needs. Any custom provider you build will need to implement all of these methods whether they are useful to your application or not, otherwise consumers of your custom provider will receive a NotImplementedException. If you choose to only implement the methods that make sense for your application, then the consumers need to know to much about your custom providers internals. Hence encapsulation has broken down and abstraction is leaking.
+3. The lockout feature, where as when a certain number of incorrect login attempts occurred, the account would be locked, preventing any further attempts. Also preventing the legitimate account owner from logging in, thus a denial of service (DoS), as there is no ability to unlock the account after a certain period of time. With MembershipReboot we have the `AccountLockoutFailedLoginAttempts` and the much needed `AccountLockoutDuration` on the `MembershipRebootConfiguration` class which does what you expect it to do.
+4. Others
+ 
+Some note worthy benefits I've found with MembershipReboot are:
+
+1. From a project I was working on a few years back, MembershipUser was not providing the properties we needed, so having to hide MembershipUser as an Adaptee within an Adapter pattern implementation, a bit like this:
+    
+    {title="MembershipUser.cs", linenos=off, lang=C#}
+        namespace My.MembershipAPI {
+           /// <summary>
+           /// Utilising the Adapter pattern, gives us control over the Target (MembershipUser)
+	       /// interface. The adapter interface (CustomMembershipUser) provides members that
+	       /// our client (that's our call sites) can use.
+           /// The MembershipUser interface can't be used by our clients as it is, because
+	       /// we have a different set of parameters to pass.
+           /// Hence we provide an adapter (CustomMembershipUser)
+           /// The Adaptee (User) becomes part of the Target (MembershipUser) by way of
+	       /// Adapter (CustomMembershipUser)
+           /// </summary>
+           public class CustomMembershipUser : MembershipUser {
+           
+              public CustomMembershipUser(
+                 MembershipUser membershipUser,
+                 string firstName,
+                 string lastName,
+                 long securityQuestionId,
+                 bool isBusinessAStartup,
+                 string businessName
+              ) : base (
+                 membershipUser.ProviderName,
+                 membershipUser.UserName,
+                 membershipUser.ProviderUserKey,
+                 membershipUser.Email,
+                 membershipUser.PasswordQuestion,
+                 membershipUser.Comment,
+                 membershipUser.IsApproved,
+                 membershipUser.IsLockedOut,
+                 membershipUser.CreationDate,
+                 membershipUser.LastLoginDate,
+                 membershipUser.LastActivityDate,
+                 membershipUser.LastPasswordChangedDate,
+                 membershipUser.LastLockoutDate
+              ) {
+                 UserAccount = new User {
+                    FirstName = firstName,
+                    LastName = lastName,
+                    SecurityQuestionId = securityQuestionId,
+                    isBusinessAStartup = isBusinessAStartup,
+                    MembershipUserId = (Guid)membershipUser.ProviderUserKey,
+                    BusinessName = businessName
+                 };
+              }
+              
+              public CustomMembershipUser(MembershipUser membershipUser) : base (
+                 membershipUser.ProviderName,
+                 membershipUser.UserName,
+                 membershipUser.ProviderUserKey,
+                 membershipUser.Email,
+                 membershipUser.PasswordQuestion,
+                 membershipUser.Comment,
+                 membershipUser.IsApproved,
+                 membershipUser.IsLockedOut,
+                 membershipUser.CreationDate,
+                 membershipUser.LastLoginDate,
+                 membershipUser.LastActivityDate,
+                 membershipUser.LastPasswordChangedDate,
+                 membershipUser.LastLockoutDate
+              ) {}
+              
+              /// <summary>
+              /// Provides get and set access to our User 
+              /// </summary>
+              public User UserAccount { get; set; }
+           }
+        }
+        
+    Where as going down the path of [MembershipReboot](https://github.com/brockallen/BrockAllen.MembershipReboot) and [IdentityServer3.MembershipReboot](https://github.com/IdentityServer/IdentityServer3.MembershipReboot) which is a "_User Service plugin for IdentityServer v3 that uses MembershipReboot as its identity management library. In other words, you're using IdentityServer v3 and you want to use MembershipReboot as your database for user passwords..._" provides the ability to customise, out of the box. All you need to do is add the properties you require to the already provided [`CustomUser`](https://github.com/IdentityServer/IdentityServer3.MembershipReboot/blob/master/source/WebHost/MR/CustomUser.cs) and the data store schema which is also provided in an Entity Framework project that comes with MembershipReboot.
+    
+    {title="IdentityServer3.MembershipReboot\\source\\WebHost\\MR\\CustomUser.cs", linenos=off, lang=C#}
+        namespace WebHost.MR {
+           public class CustomUser : RelationalUserAccount {
+              public virtual string FirstName { get; set; }
+              public virtual string LastName { get; set; }
+              public virtual int? Age { get; set; }
+           }
+           
+           public class CustomUserAccountService : UserAccountService<CustomUser> {
+              public CustomUserAccountService(CustomConfig config, CustomUserRepository repo)
+                 : base(config, repo) {
+              }
+           }
+           
+           public class CustomUserRepository
+              : DbContextUserAccountRepository<CustomDatabase, CustomUser> {
+                 public CustomUserRepository(CustomDatabase ctx) : base(ctx) {}
+	       }
+        }
+        
+2. The security focussed [configuration](https://github.com/brockallen/BrockAllen.MembershipReboot/wiki/Security-Settings-Configuration). You can choose to set this within code or config.  
+Password storage (as discussed above under the [Data-store Compromise](#web-applications-countermeasures-data-store-compromise) section is [addressed](http://brockallen.com/2014/02/09/how-membershipreboot-stores-passwords-properly/) by using the mature PBKDF2 and providing a config setting in the form of `passwordHashingIterationCount` on the `MembershipRebootConfiguration` class to dial in the number of iterations (stretching), as seen below on line 29. You now have control of how slow you want it to be to crack those passwords. What's more, the iteration count can be set to change each year automatically. If the developer chooses not to touch the iteration count at all (or more likely, forgets), then the default of 0 is inferred. 0 means to automatically calculate the number based on the [OWASP recommendations](https://www.owasp.org/index.php/Password_Storage_Cheat_Sheet) for the current year. In the year 2000 it should be 1000 iterations. The count should be doubled each subsequent two years, so in 2016 we should be using 256000 iterations and that's what MembershipReboot does if the setting is not changed.
+    
+    {title="backend\\Auth\\AuthService.WebApi\\app.config", linenos=on, lang=XML}
+        <!--Lives in Auth Service of Architecture diagram below.-->
+        <?xml version="1.0" encoding="utf-8"?>
+        <configuration>
+          <configSections>
+            <section
+              name="membershipReboot"
+              type="BrockAllen.MembershipReboot.SecuritySettings,
+              BrockAllen.MembershipReboot" />
+            <section
+              name="entityFramework"
+              type="System.Data.Entity.Internal.ConfigFile.EntityFrameworkSection,
+              EntityFramework,
+              Version=6.0.0.0,
+              Culture=neutral,
+              PublicKeyToken=b77a5c561934e089"
+              requirePermission="false" />
+            <connectionStrings>
+              <add 
+                name="MembershipReboot"
+                connectionString=
+                "Data Source=(LocalDb)\v11.0;InitialCatalog=AuthServiceDb;Integrated Security=True"
+                providerName="System.Data.SqlClient" />      
+            </connectionStrings>
+            <membershipReboot
+              requireAccountVerification="true"
+              emailIsUsername="false"
+              multiTenant="false"
+              allowAccountDeletion="true"
+              passwordHashingIterationCount="0"
+              accountLockoutDuration="00:01:00"
+              passwordResetFrequency="0" />          
+            <!--
+            Test user bob with password secret was created with 10 iterations of the PBKDF2 KDF
+            
+            "secret" 10 iterations:
+            A.ABP7I2M56JTnekBoUjUtG7G4poxMO3Br+cAPgXqYx//0KKxqILb7uYjuE9ofBr7amQ==
+            "secret" 10000 iterations:
+            3E800.AN02zizsHZG45IlCu0/8UjPZuwcopaSSBkU/d6VHq3pknf2BE7ExiLL38clIKn575g==
+            
+            Some more details on how the hash is constructed can be found here:
+            https://github.com/brockallen/BrockAllen.MembershipReboot/issues/603
+            -->
+          </configSections>  
+        </configuration>
+    
+    The iteration count of each users password is stored with the hashed password, as can be seen above on lines 36 and 38. This means each password can have a different number of iterations applied over time as required. Beautifully thought out!
+    
+    With the ASP.NET Membership Provider you can have salted SHA1 which as already mentioned was not designed for what it was chosen to be used for in this case and there doesn't appear to be any thought to (Moore's Law) the fact that machines keep getting faster. MD5 and SHA were designed to be fast, not slow and able to be slowed down. So storing passwords by SHA-1 hashing means they are incredibly fast to crack.
+
+Sadly the next offering in this space (ASP.NET Identity) that Microsoft produced also seems inferior. Brock Allen blogged about some of the short comings in his post titled "_[The good, the bad and the ugly of ASP.NET Identity](http://brockallen.com/2013/10/20/the-good-the-bad-and-the-ugly-of-asp-net-identity/#ugly)_" in which MembershipReboot caters for, such as the following:
+
+* Email account verification
+* Password reset
+* Username reminder
+* Account lockout
+* Password guessing prevention
+* Close/Delete account
+* Modern password storage strategies (as already discussed)
+* Mobile phone verification
+* Two factor authentication
+* Certificate based authentication
+* Auditing
+* Tracing
+
+##### External Identity Providers
+
+Microsoft Katana provides support for
+
+* WS-Federation
+* OpenID Connect
+* Google
+* Twitter
+* Microsoft Account
+* Facebook
+
+There are also many other community provided [OWIN OAuth middleware providers](https://github.com/RockstarLabs/OwinOAuthProviders) 
+
+The OWIN startup or config file could look like the following. You can see in the second half of the code file is the configuration of the external identity providers:
+
+{title="backend\\Auth\\AuthService.WebApi\\Owin\\OwinConfig.cs", linenos=off, lang=C#}
+    // Lives in Auth Service of Architecture diagram below.
+    using System;
+    using System.Collections.Generic;
+    using System.Security.Cryptography.X509Certificates;
+    using System.Web.Http;
+    using AuthService.WebApi.IdSvr;
+    using IdentityManager.Logging;
+    using IdentityManager.Core.Logging;
+    using IdentityServer3.Core.Configuration;
+    using Infrastructure.IOC;
+    using Infrastructure.WebApi.Owin;
+    using Microsoft.Owin.Security.Facebook;
+    using Microsoft.Owin.Security.Google;
+    using Microsoft.Owin.Security.Twitter;
+    using Owin;
+    using Serilog;
+    
+    namespace AuthService.WebApi.Owin {
+    
+       public class OwinConfig : IOwinConfig {
+          // Todo: Add to config file
+          public string Name => "Auth Service OWIN Self-Host";
+          public string Protocol => "https";
+          public string HostName => "localtest.me";
+          public int Port => 44334;
+          public List<string> Subdomains => new List<string> { "identity" };
+    
+          public HttpConfiguration BuildConfiguration(IAppBuilder app) {
+             // Unhandled exception logger.
+             app.Use<GlobalExceptionMiddleware>();
+    
+             LogProvider.SetCurrentLogProvider(new DiagnosticsTraceLogProvider());
+             // TODO: Needs to use IoC to initialise the api controllers.
+             Log.Logger = Ioc.Get<Infrastructure.Logging.ILog>().Logger;    
+    
+             IdentityServerServiceFactory idSvrFactory =
+             Factory.Configure(AuthServiceWebApiConstants.ConnectionString);
+             idSvrFactory.ConfigureCustomUserService(
+                AuthServiceWebApiConstants.ConnectionString
+             );
+    
+             IdentityServerOptions options = new IdentityServerOptions {
+                SiteName = "Auth Service",
+                SigningCertificate = LoadCertificate(),
+                Factory = idSvrFactory,
+                AuthenticationOptions = new AuthenticationOptions {
+                   IdentityProviders = ConfigureAdditionalIdentityProviders,
+                },
+                RequireSsl = true // Default = true.                
+             };
+    
+             app.UseIdentityServer(options);
+    
+             return new HttpConfiguration();
+          }
+    
+          public static void ConfigureAdditionalIdentityProviders(
+             IAppBuilder app,
+             string signInAsType
+          ) {
+             GoogleOAuth2AuthenticationOptions google = new GoogleOAuth2AuthenticationOptions {
+                AuthenticationType = "Google",
+                SignInAsAuthenticationType = signInAsType,
+                ClientId =
+                   "767400843187-8boio83mb57ruogr9af9ut09fkg56b27.apps.googleusercontent.com",
+                ClientSecret = "5fWcBT0udKY7_b6E3gEiJlze"
+             };
+             app.UseGoogleAuthentication(google);
+    
+             FacebookAuthenticationOptions fb = new FacebookAuthenticationOptions {
+                AuthenticationType = "Facebook",
+                SignInAsAuthenticationType = signInAsType,
+                AppId = "676607329068058",
+                AppSecret = "9d6ab75f921942e61fb43a9b1fc25c63"
+             };
+             app.UseFacebookAuthentication(fb);
+    
+             TwitterAuthenticationOptions twitter = new TwitterAuthenticationOptions {
+                AuthenticationType = "Twitter",
+                SignInAsAuthenticationType = signInAsType,
+                ConsumerKey = "N8r8w7PIepwtZZwtH066kMlmq",
+                ConsumerSecret = "df15L2x6kNI50E4PYcHS0ImBQlcGIt6huET8gQN41VFpUCwNjM"
+             };
+             app.UseTwitterAuthentication(twitter);
+          }
+    
+          private X509Certificate2 LoadCertificate() => new X509Certificate2(
+             $@"{AppDomain.CurrentDomain.BaseDirectory}\idsrv3test.pfx", "idsrv3test"
+          );
+       }
+    }
+
+
+#### Architecture
+
+![](images/AuthArchitecture.png)
+
+{title="backend\\Auth\\AuthService.WebApi\\AuthServiceWebApiConstants.cs", linenos=off, lang=C#}
+    // Lives in Auth Service of Architecture diagram above.
+    namespace AuthService.WebApi {
+       public class AuthServiceWebApiConstants {
+          public const string AccessTokenValidationUrl =
+             "https://identity.localtest.me:44334/connect/accesstokenvalidation?token=";
+          public const string ClientConnectTokenUrl =
+             "https://identity.localtest.me:44334/connect/token";
+          public const string ConnectionString = "AuthServiceDb";
+          // 1 day of seconds. Make sure this is equivalent to what the service layer
+	      // API is specifying.
+          public const int UserAccessLifetime = 86400;
+          public const string ServiceLayerClientSecret =
+             "9b28b73e-9f66-42bf-ba87-189569136b20";
+          public const string ServiceLayerClientId = "ServiceLayerClient";
+          public const string CookieName = "sessionId";
+          public const int TokenCleanupIntervalSeconds = 60;
+       }
+    }
+
+
+{title="client\\ServiceLayer\\ServiceLayerConstants.cs", linenos=off, lang=C#}
+    // Lives in Service Layer APIs of Architecture diagram above.
+    namespace ServiceLayer {
+       public class ServiceLayerConstants {
+          public const string AccessTokenValidationUrl =
+             "https://identity.localtest.me:44334/connect/accesstokenvalidation?token=";
+          public const string ClientConnectTokenUrl =
+             "https://identity.localtest.me:44334/connect/token";
+          // Days. Make sure this is equivalent to what the auth service is specifying.
+          public const double UserAccessLifetime = 1;
+          public const string ServiceLayerClientSecret =
+             "9b28b73e-9f66-42bf-ba87-189569136b20";
+          public const string ServiceLayerClientId = "ServiceLayerClient";
+          public const string CookieName = "sessionId";
+       }
+    }
+
+
+{title="backend\\Auth\\AuthService.WebApi\\IdSvr\\Clients.cs", linenos=off, lang=C#}
+    // Lives in Auth Service of Architecture diagram above.
+    using System.Collections.Generic;
+    using IdentityServer3.Core;
+    using IdentityServer3.Core.Models;
+    
+    namespace AuthService.WebApi.IdSvrApi {
+       public static class Clients {
+          public static List<Client> Get() {
+             return new List<Client> {
+    
+                // human is involved
+                new Client {
+                   ClientName = "Silicon on behalf of Carbon Client",
+                   ClientId = AuthServiceWebApiConstants.ServiceLayerClientId,
+                   Enabled = true,
+                   AccessTokenType = AccessTokenType.Reference,
+                   AccessTokenLifetime = AuthServiceWebApiConstants.UserAccessLifetime,
+                   Flow = Flows.ResourceOwner,
+    
+                   RedirectUris = new List<string> {
+                      "https://localtest.me:44334"
+                   },
+    
+                   AllowedScopes = new List<string> {
+                      Constants.StandardScopes.OpenId,
+                      Constants.StandardScopes.Profile,
+                      Constants.StandardScopes.Roles,
+                      Constants.StandardScopes.OfflineAccess, // For refresh tokens
+                      "microservice1",
+                      "microservice2",
+                      // Etc.
+                   },
+    
+                   ClientSecrets = new List<Secret> {
+                      new Secret(AuthServiceWebApiConstants.ServiceLayerClientSecret.Sha256())
+                   },
+                   /*
+                   identityserver.github.io/Documentation/docs/configuration/clients.html
+                   Docs on how the config for the refresh token life-cycle works:
+                   identityserver.github.io/Documentation/docs/advanced/refreshTokens.html
+                   */
+                   AbsoluteRefreshTokenLifetime = 2592000, // Seconds: default of 30 days.
+                   SlidingRefreshTokenLifetime = 1296000, // Seconds: default of 15 days.
+                   RefreshTokenUsage = TokenUsage.OneTimeOnly,
+                   RefreshTokenExpiration = TokenExpiration.Sliding
+                }
+             };
+          }
+       }
+    }
+
+{title="client\\ServiceLayer\\Authentication\\CookieRequestReader.cs", linenos=off, lang=C#}
+    // Lives in Service Layer API of Architecture diagram above.
+    using System.Linq;
+    using System.Net.Http;
+    using System.Net.Http.Headers;
+    
+    namespace ServiceLayer.Authentication {
+       /// <summary>Reads any cookie value from the request</summary
+       public static class CookieRequestReader {
+          public static string GetCookieValue(HttpRequestMessage request, string cookieName) {
+             CookieHeaderValue cookie =
+                request.Headers.GetCookies(cookieName).FirstOrDefault();
+             if (cookie != null) return cookie[cookieName].Value;
+             return null;
+          }
+       }
+    }
+
+{title="client\\ServiceLayer\\Authentication\\AuthServiceValidator.cs", linenos=off, lang=C#}
+    // Lives in Service Layer API of Architecture diagram above.
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Net;
+    using System.Net.Http;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Infrastructure.Logging;
+    
+    namespace ServiceLayer.Authentication {
+       public class AuthServiceValidator : IIdentityValidator {
+          private readonly ILog _log;
+    
+          public AuthServiceValidator(ILog log) {
+             _log = log;
+          }
+    
+          // Called on each resource request other than login/outs.
+          public string GetTokenClaims(string token) {
+             // There's no cookie so no point checking with the auth service.
+             if (string.IsNullOrEmpty(token)) return null;
+    
+             string url = ServiceLayerConstants.AccessTokenValidationUrl + token;
+    
+             HttpWebRequest outgoingRequest = (HttpWebRequest)WebRequest.Create(url);
+             try {
+                using (HttpWebResponse response =
+                   (HttpWebResponse)outgoingRequest.GetResponse()) {
+                   if (response.StatusCode == HttpStatusCode.OK) {
+                      using (Stream stream = response.GetResponseStream()) {
+                         StreamReader reader = new StreamReader(stream, Encoding.UTF8);
+                         string accessTokenValidationJson = reader.ReadToEnd();
+                         return accessTokenValidationJson;
+                      }
+                   }
+    
+                   _log.Warning(
+                      $"Received HTTP status code {response.StatusCode} when calling " +
+                      "Identity Server token validation service."
+                   );
+                   return null;
+                }
+             } catch (WebException e)
+                when (((HttpWebResponse)e.Response).StatusCode == HttpStatusCode.BadRequest) {
+                   return null;
+             }
+          }
+    
+          // This addresses the faulty logout risk.
+          // Called by SecureController.
+          public async Task<bool> LogMeOut(string token) {
+             string tokenRevocationEndpoint =
+                "https://identity.localtest.me:44334/connect/revocation";
+    
+             Dictionary<string, string> postBody = new Dictionary<string, string> {
+                { "token", token },
+                { "token_type_hint", "access_token" }
+             };
+             HttpClient client = new HttpClient();
+             client.SetBasicAuthentication(
+                ServiceLayerConstants.ServiceLayerClientId,
+                ServiceLayerConstants.ServiceLayerClientSecret
+             );
+             HttpResponseMessage response = await client.PostAsync(
+                tokenRevocationEndpoint,
+                new FormUrlEncodedContent(postBody)
+             );
+             return response.StatusCode == HttpStatusCode.OK;
+          }
+       }
+    }
+
+%% {title="client\ServiceLayer\Authentication\AuthenticationHandler.cs", linenos=on, lang=C#}
+
+
+{title="client\\ServiceLayer\\APIControllers\\SecureController.cs", linenos=off, lang=C#}
+    // Lives in Service Layer API of Architecture diagram above.
+    using System;
+    using System.Collections.Generic;
+    using System.Web.Http;
+    using System.Net.Http;
+    using System.Net.Http.Headers;
+    using System.Threading.Tasks;
+    using ServiceLayer.Authentication;
+    using IdentityModel.Client;
+    using Infrastructure.IOC;
+    using Infrastructure.Logging;
+    
+    namespace ServiceLayer.ApiControllers {
+    
+       [RoutePrefix("api/secure")]
+       public class SecureController : ApiController {
+          public class LoginDto {
+             public string Username { get; set; }
+             public string Password { get; set; }
+          }
+    
+          // TokenClient is an Identity Server component.
+          private TokenClient _tokenClient;
+          private readonly IIdentityValidator _identityValidator;
+    
+          public SecureController() {
+             //  TODO: Needs to use IoC to initialise the api controllers.
+             _identityValidator = new AuthServiceValidator(Ioc.Get<ILog>());
+    
+             _tokenClient = new TokenClient(
+                 ServiceLayerConstants.ClientConnectTokenUrl,
+                 ServiceLayerConstants.ServiceLayerClientId,
+                 ServiceLayerConstants.ServiceLayerClientSecret
+             );
+          }
+    
+          [HttpPost]
+          [Route("login")]
+          public HttpResponseMessage Login(LoginDto login) {
+             TokenResponse tokenResponse = GetUserAccessToken(
+                // Must include offline_access scope for refresh token.
+                new Dictionary<string, string>() {
+                   { "userName", login.Username },
+                   { "passWord", login.Password },
+                   { "scope", "TaskService offline_access" }
+                }
+             );
+             return CreateLoginResponse(tokenResponse);
+          }
+    
+          [HttpGet]
+          [Route("logout")]
+          public async Task<HttpResponseMessage> Logout() {
+             CookieHeaderValue cookie = new CookieHeaderValue(
+                ServiceLayerConstants.CookieName,
+                string.Empty
+             );
+             const int yesterday = -1;
+             HttpResponseMessage response = new HttpResponseMessage();
+             string token = CookieRequestReader.GetCookieValue(
+                Request,
+                ServiceLayerConstants.CookieName
+             );
+             bool loggedOut = await _identityValidator.LogMeOut(token);
+    
+             cookie.MaxAge = TimeSpan.Zero;
+             cookie.Expires = DateTimeOffset.Now.AddDays(yesterday);
+             cookie.HttpOnly = true;
+             cookie.Domain = ".localtest.me";
+             cookie.Path = "/";
+    
+             response.Headers.AddCookies(new CookieHeaderValue[] { cookie });
+             response.Content = new StringContent($"{{\"LoggedOut\":\"{loggedOut}\"}}");
+             return response;
+          }
+    
+          // Used as part of the "remember me" strategy.
+          // Front-end calls when new access token is required.
+          [HttpGet]
+          [Route("refreshsession")]
+          public HttpResponseMessage RefreshSession(string refreshToken) {
+             TokenResponse response = _tokenClient.RequestRefreshTokenAsync(
+                refreshToken
+             ).Result;
+             HttpResponseMessage message = CreateLoginResponse(response);
+             return message;
+          }
+    
+          private TokenResponse GetUserAccessToken(Dictionary<string, string> credsAndScope) {
+             var req = _tokenClient.RequestResourceOwnerPasswordAsync(
+                credsAndScope["userName"],
+                credsAndScope["passWord"],
+                credsAndScope["scope"]
+             );
+             return req.Result;
+          }
+    
+          private HttpResponseMessage CreateLoginResponse(TokenResponse tokenResponse) {
+             CookieHeaderValue cookie = new CookieHeaderValue(
+                ServiceLayerConstants.CookieName,
+                tokenResponse.AccessToken
+             );
+	         /*
+             owasp.org/index.php/Session_Management_Cheat_Sheet#Expire_and_Max-Age_Attributes
+	         */
+             cookie.Expires = DateTimeOffset.Now.AddDays(
+                ServiceLayerConstants.UserAccessLifetime
+             );
+             cookie.MaxAge = new TimeSpan(
+                hours: ((int)ServiceLayerConstants.UserAccessLifetime) * 24,
+                minutes: 0,
+                seconds: 0
+             );
+             cookie.HttpOnly = true;
+             cookie.Secure = true;
+	         /*
+             www.owasp.org/index.php/Session_Management_Cheat_Sheet#Domain_and_Path_Attributes
+             Cosider prefixing with the host.
+	         */
+             cookie.Domain = ".localtest.me";
+             cookie.Path = "/";
+    
+             HttpResponseMessage response = new HttpResponseMessage();
+             response.Headers.AddCookies(new CookieHeaderValue[] { cookie });
+             response.Content = new StringContent(
+                $"{{\"refreshToken\":\"{tokenResponse.RefreshToken}\"}}"
+             );
+             return response;
+          }
+       }
+    }
+
+
+
+
+
+
+
+
+
+MembershipReboot supports adding secret questions and answers along with the ability to update user account details. Details on how this can be done is in the [sample code](https://github.com/brockallen/BrockAllen.MembershipReboot/tree/master/samples) kindly provided by Brock Allen and documentation on their [github wiki](https://github.com/brockallen/BrockAllen.MembershipReboot/wiki#features).
+
+#### Securing Sessions
+
+In the above example we (were constrained by a business requirement) chose to use cookies to carry the access token. Alternatively the access token could be transported within the end users HTTP response and request bodies and stored in local storage.
+
+Using local storage means there is less to be concerned about in terms of protecting the token than using cookies. LocalStorag is only concerned with XSS, where as cookies are susceptible to both CSRF and XSS attacks (although XSS to a lesser degree). If you decided to use local storage, You're anti XSS strategy needs to be water-tight.  
+Even with the `HttpOnly` flag set on your cookie, it is possible to compromise the cookie contents if the values of the `Domain` and/or `Path` cookie attributes are too permissive. For example if you have the `Domain` value set to `.localtest.me`, an attacker can attempt to launch attacks on the cookie token between other hosts with the same domain name. Some of these hosts may contain vulnerabilities, thus increasing the attack surface.
+
+| host          | domain name | top level domain |
+|---------------|-------------|------------------|
+| api           | localtest   | me               |
+| identity      | localtest   | me               |
+| microservice1 | localtest   | me               |
+| microservice2 | localtest   | me               |
+
+Set the [`Secure` attribute](https://www.owasp.org/index.php/Session_Management_Cheat_Sheet#Secure_Attribute) on the cookie. This instructs web browsers to only send the cookie over a TLS (HTTPS) connection, thus removing this MItM attack vector.  
+You can and should test this by inspecting the headers with an HTTP intercepting proxy. While you're at it, you may as well add this as a test to your [Zap Regression Test suite](#process-agile-development-and-practices-security-regression-testing).
+
+Turn the `HttpOnly` cookie flag on. This instructs web browser to not allow access to the cookie via JavaScript. The `Secure` flag must also be enabled as mentioned above, in order to mitigate Session Id theft.
+
+CSRF is the most common attack used to leverage cookies containing authentication details. In order to mitigate this attack vector, the use of the synchroniser token pattern is recommended. Each server side technology will implement this type of protection differently. CSRF is discussed in more depth in the Cross-Site Request Forgery (CSRF) sections.
+
+As for the `Expires` and `Max-Age` cookie attributes from  
+`client\ServiceLayer\APIControllers\SecureController.cs` (seen above), these will need to be set to the maximum values that the business is prepared to accept along with the `Client.AccessTokenLifetime` from `backend\Auth\AuthService.WebApi\IdSvr\Clients.cs` (seen above) (which need to line up) for the IdentityServer.
+
+The OWASP [Session Management Cheat Sheet](https://www.owasp.org/index.php/Session_Management_Cheat_Sheet#Cookies) has more details around securing cookies.
 
 ### Cryptography on the Client (AKA Untrusted Crypto) {#web-applications-countermeasures-cryptography-on-the-client}
 
