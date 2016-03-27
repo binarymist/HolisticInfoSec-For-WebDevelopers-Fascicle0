@@ -478,7 +478,7 @@ I address the compromise of password hashes in the Web Applications chapter unde
 ### Vishing (Phone Calls) {#people-identify-risks-phone-calls}
 ![](images/ThreatTags/average-widespread-average-severe.png)
 
-Vishing (voice based phishing (usually phone calls)) is amongst the most common SE attacks. This is where an attacker will call their target and elicit sensitive information about the organisation that will be useful to launch further attacks.
+Vishing (voice based phishing (usually phone calls)) is amongst the most common of SE attacks. This is where an attacker will call their target and elicit sensitive information about the organisation that will be useful to launch further attacks.
 
 With a little practice vishing can become reasonably easy to pull off and with minimal risk. Plus the social engineer (SE) can practice, practice, practice until they get the results they are looking for. If at first they do not succeed, then they can simply hangup and try again in a few days. Each attempt improving on what let them down last time.  
 As mentioned in Bruce Schneier's Beyond Fear: Convicted hacker Kevin Mitnick testified before Congress in 2000 about social engineering. “_I was so successful in that line of attack that I rarely had to resort to a technical attack,_” he said. “_Companies can spend millions of dollars toward technological protections, and that’s wasted if somebody can basically call someone on the telephone and either convince them to do something on the computer that lowers the computers defences or reveals the information they were seeking._”  
@@ -511,6 +511,7 @@ SMS spoofing can also be very useful. Some services can not handle return messag
 SMS spoofing was [removed](https://github.com/trustedsec/social-engineer-toolkit/blob/master/readme/CHANGES#L285) from the social engineering toolkit in version 6.0 due to lack of maintenance. I think mainly because it is getting harder to successfully do due to the telecommunication providers clamping down. It's still in the SET in Backtrack though.
 
 ### SMiShing {#people-identify-risks-smishing}
+![](images/ThreatTags/average-common-easy-moderate.png)
 
 This is where an attacker will send an SMS message to a target. Usually to invoke an immediate action on the part of the target. The request may be to convince the target to:
 
@@ -520,9 +521,9 @@ This is where an attacker will send an SMS message to a target. Usually to invok
 
 SMiShing attacks are [on the rise](http://www.pcworld.com/article/254979/smishing_attacks_are_on_the_rise.html). They are low cost and low risk and often play a part in a SE attack.
 
-The technical equipment required to carry out a SMish:
+The technical equipment required to carry out a SMiSh looks like the following:
 
-1. Something to create and send message from. A burner phone (or prepaid SIM) or software such as The Social Engineer Toolkit (SET) which provides functionality to create and send a spoofed SMS found in Backtrak.
+1. Something to create and send a message from. A burner phone (or prepaid SIM) or software such as The Social Engineer Toolkit (SET) which provides functionality to create and send a spoofed SMS, found in Backtrack.
 2. The intermediary. Often also providing the spoofing service which provides the number that the message appears to have been sent from. Services like the before mentioned burnerapp, spoofcard and others provide a spoofing service and other features like voice changers, auto responders.
 
 ### Favour for a Favour {#people-identify-risks-favour-for-a-favour}
@@ -563,7 +564,7 @@ Effective ways at getting into a work premises.
 ### Phishing {#people-identify-risks-phishing}
 ![](images/ThreatTags/average-widespread-easy-moderate.png)
 
-Emails being sent out with payloads veiled with enticing email subjects, file names, etc, in the form of web links and files that when executed deliver a malicious payload. This type of attack is the most common of all SE attacks. This includes Spear Phishing.  
+Emails being sent out with payloads veiled with enticing email subjects, file names, etc, in the form of web links and files that when clicked deliver a malicious payload. This type of attack is the most common of all SE attacks. This includes Spear Phishing.  
 Also check out the [Infectious Media](#people-identify-risks-infectious-media) section in this chapter. Casting a wide net in the hope that a number of the receivers will fall for the scam. This attack takes advantage of the large number of receivers that will potentially fall for the scam. Generally the percentage of victims will be much lower than if it was a spear phishing attack, because the email will be more general in the attempt to reach less specific targets.  
 Like large commercial fishing enterprises, this type of attack is very common and being executed on large scale in many instances at a time.  
 This type of attack is also usually a lot easier to detect, because the attackers have to be more general in their approach and they rely less on detailed information gathering of their victims when crafting the attack than if it was more targeted.  
@@ -929,6 +930,7 @@ _Todo_
 %% Remove accounts from everything. domains, databases, APs, email, cloud applications/storage, etc
 
 ### Weak Password Strategies {#people-countermeasures-weak-password-strategies}
+![](images/ThreatTags/PreventionEASY.png)
 
 Defeating compromise is actually very simple, but few follow the guidelines. Everyone else is being exploited now or later, whether they are aware of it or not.
 
@@ -948,7 +950,7 @@ Make sure that people being trusted are trustworthy. Test them. Most attacks tar
 
 Developing simple scripts or process flow charts for employees to check when receiving calls can be helpful. For example requesting the callers employee ID and name and not answering any further questions until it's acquired. Some queries like password or other sensitive data requests should also never be complied with. Any queries outside of what the employee is allowed to answer should be referred to the supervisor. Just having these sorts of process flows documented provides assurity and confidence to the employees taking the calls.
 
-Creating policy that ensures call receivers request and obtain the callers name, organisation, title and phone number to call them back will often scare off an attacker. Well prepared attackers will have a call back phone number, so the call receiver will need to be prepared to verify that the supplied number is in fact belonging to the claimed organisation. Michael Bazzell has an excellent collection of tools to assist with validating phone numbers under the "Telephone Numbers" heading at his website [inteltechniques.com](https://inteltechniques.com/links.html). Michael also has a simple [tool](https://inteltechniques.com/intel/menu.html) which leverage's a collection of phone number search API's.
+Creating policy that ensures call receivers request and obtain the callers name, organisation, title and phone number to call them back will often scare off an attacker. Well prepared attackers will have a call back phone number, so the call receiver will need to be prepared to verify that the supplied number is in fact belonging to the claimed organisation. Michael Bazzell has an excellent collection of tools to assist with validating phone numbers under the "Telephone Numbers" heading at his website [inteltechniques.com](https://inteltechniques.com/links.html). Michael also has a simple [tool](https://inteltechniques.com/intel/menu.html) again under "Telephone Number", but on the left, which leverage's a collection of phone number search API's.
 
 ### Spoofing Caller Id {#people-countermeasures-spoofing-caller-id}
 
@@ -959,10 +961,11 @@ Do not rely on caller Id. It is untrusted. I am not aware of any way to successf
 With SMS, the first line of detection is to respond to the number that was spoofed confirming any information in the initial message. This will rule out many services. Failing that, confirmation by calling the sender and recognising their voice, will go a long way. Next line of defence would be to contact them via some other means, email, or face to face is always going to be the best. Work you way through the list of communication techniques from the [Email](#people-countermeasures-morale-productivity-and-engagement-killers-email) section above.
 
 ### SMiShing {#people-countermeasures-smishing}
+![](images/ThreatTags/PreventionAVERAGE.png)
 
 Not putting your cell phone number in public places, although this can often be impractical, as these numbers are on business cards, sign written on vehicles, company websites and many other places.
 
-Verify that the number that the SMS came from is who you think it is or is the legitimate entity you may be lead to thinking it is. As with the Spoofing Caller Id section above, verify with the claimed entity that the requesting details are legitimate by ideally calling them and recognising their voice, ideally from another device or medium. Or even better face to face. If the message appears urgent and plays on the fact that the target may be negatively affected if they don't respond as requested, many people will feel compelled to buy it, rather than to confirm as mentioned.
+Verify that the number that the SMS came from is who you think it is or is the legitimate entity you may be lead to thinking it is. As with the Spoofing Caller Id section above, verify with the claimed entity that the requesting details are legitimate by ideally calling them and recognising their voice, ideally from another device or medium. Or even better face to face. If the message appears urgent and plays on the fact that the target may be negatively affected if they don't respond as requested immediately, many people will feel compelled to buy it, rather than to confirm as mentioned.
 
 Carry out simulated attacks on the trainees. When they fall for the SMiSh, use the mistake to be a learning opportunity by following up with immediate educational feedback. If it's a link embedded in a SMS message, make the resource that the link leads to, be a training page, informing the trainee that they have been tricked and provide educational information about awareness of this type of attack. Or have the message direct a user to some other type of action that if they perform it, they'll realise they've been tricked and provide the same educational information.
 

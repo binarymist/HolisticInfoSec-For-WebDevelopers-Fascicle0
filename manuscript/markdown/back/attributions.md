@@ -242,7 +242,7 @@ Elliot was making his way through the so called impenetrable storage facility (S
 **His colleagues diverted the manager** that was escorting him out of the building by sending her a spoofed SMS message  
 [http://null-byte.wonderhowto.com/how-to/hacks-mr-robot-send-spoofed-sms-text-message-0163331/](http://null-byte.wonderhowto.com/how-to/hacks-mr-robot-send-spoofed-sms-text-message-0163331/)
 
-**SMiShing attacks are on the rise  
+**SMiShing attacks are on the rise**  
 [http://www.pcworld.com/article/254979/smishing_attacks_are_on_the_rise.html](http://www.pcworld.com/article/254979/smishing_attacks_are_on_the_rise.html)
 
 **Also noted in the Arxan report that 80% of consumers would change providers** if they knew about the vulnerabilities and had a better option. 90% of the app execs (the creators) also believed that consumers would switch if they knew and better offerings were available.  
@@ -261,11 +261,12 @@ Elliot was making his way through the so called impenetrable storage facility (S
 **Michael Bazzell has an excellent collection of tools** to assist with validating phone numbers under the "Telephone Numbers" heading at his website  
 [https://inteltechniques.com/links.html](https://inteltechniques.com/links.html)
 
-**Michael also has a simple tool**  
+**Michael also has a simple tool** under the "Telephone Number" heading on the left  
 [https://inteltechniques.com/intel/menu.html](https://inteltechniques.com/intel/menu.html)  
 which leverage's a collection of phone number search API's.
 
-**Services such that**  
+**Services such that**
+
 * Wombatsecurity  
   [https://www.wombatsecurity.com/](https://www.wombatsecurity.com/)
 * LUCY  
