@@ -475,12 +475,16 @@ I think the following may have suffered from the redirect problem also. Since th
 
 I address the compromise of password hashes in the Web Applications chapter under [Management of Application Secrets](#web-applications-identify-risks-management-of-application-secrets-cracking).
 
-### Phone Calls {#people-identify-risks-phone-calls}
-![](images/ThreatTags/average-common-average-severe.png)
+### Vishing (Phone Calls) {#people-identify-risks-phone-calls}
+![](images/ThreatTags/average-widespread-average-severe.png)
 
-With practice this can become reasonably easy to pull off, also with very little risk. Plus the social engineer (SE) can practice, practice, practice until they get the results they are looking for. If at first they do not succeed, then they can simply hangup and try again in a few days. Each attempt improving on what let them down last time.  
+Vishing (voice based phishing (usually phone calls)) is amongst the most common SE attacks. This is where an attacker will call their target and elicit sensitive information about the organisation that will be useful to launch further attacks.
+
+With a little practice vishing can become reasonably easy to pull off and with minimal risk. Plus the social engineer (SE) can practice, practice, practice until they get the results they are looking for. If at first they do not succeed, then they can simply hangup and try again in a few days. Each attempt improving on what let them down last time.  
 As mentioned in Bruce Schneier's Beyond Fear: Convicted hacker Kevin Mitnick testified before Congress in 2000 about social engineering. “_I was so successful in that line of attack that I rarely had to resort to a technical attack,_” he said. “_Companies can spend millions of dollars toward technological protections, and that’s wasted if somebody can basically call someone on the telephone and either convince them to do something on the computer that lowers the computers defences or reveals the information they were seeking._”  
 The government that imprisoned Kevin Mitnick for nearly five years, later [sought his advice](http://www.politechbot.com/p-00969.html) about how to keep its own networks safe from intruders.
+
+Penetrating an organisation using Vishing is one of the most common tactics, due to the fact that it is very often successful, minimal skills are required and the risk is low. If an attacker is struggling to penetrate an organisations technical defences, then usually switching to Vishing will yield a positive result for the attacker.
 
 ### Spoofing Caller Id {#people-identify-risks-spoofing-caller-id}
 ![](images/ThreatTags/easy-widespread-difficult-low.png)
@@ -489,9 +493,11 @@ This is arranging an impersonated identification (name or number) to be displaye
 This can be quite a useful confirmation for a social engineer to use as part of their pretexting. Caller Id spoofing has been around since at least 2004, with companies offering paid services like:
 
 * SpoofApp
-* SpoofCard
+* [SpoofCard](https://www.spoofcard.com/)
+* [burnerapp](http://www.burnerapp.com/)
 * SpoofTell
 * Jumblo
+* [SMSGang](http://www.smsgang.com/)
 * and many more coming and going all the time.
 
 Some are free some are paid for. The SMS providers offering spoofing capabilities seem to come and go a lot, as they get shut-down regularly.
@@ -500,9 +506,24 @@ Or you can [DIY](http://www.social-engineer.org/wiki/archives/CallerIDspoofing/C
 
 If you are planning a phone call, you are going to have to have a pretty solid idea of who your pretext is and know as much as possible about them in order to make your pretext believable. This is where you really draw from the reconnaissance as seen in the [Processes and Practises](#process-and-practises-penetration-testing-reconnaissance) chapter. It is a good idea to script out the points you (social engineer) want to cover in your phone call. Rehearse the points many times so that they become very natural sounding. The more you practise, the easier it will be when you have to deviate (the target will often throw curve balls at you) from your points and come back to them. There is no substitute for having as much information as possible on the target and have rehearsed the call many times.
 
-SMS spoofing can also be very useful. Most services can not handle return messages though, unless the attacker has physical access to a phone that would contact the targets phone (as with [flexispy](http://blog.flexispy.com/spoof-sms-powerful-secret-weapon-shouldve-using/)) and can install software on the initiating phone which the attacker can control.
+SMS spoofing can also be very useful. Some services can not handle return messages though, unless the attacker has physical access to a phone that would contact the targets phone (as with [flexispy](http://blog.flexispy.com/spoof-sms-powerful-secret-weapon-shouldve-using/)) and can install software on the initiating phone which the attacker can control.
 
-SMS spoofing was [removed](https://github.com/trustedsec/social-engineer-toolkit/blob/master/readme/CHANGES#L285) from the social engineering toolkit in version 6.0 due to lack of maintenance. I think mainly because it is getting harder to successfully do due to the telecommunication providers clamping down.
+SMS spoofing was [removed](https://github.com/trustedsec/social-engineer-toolkit/blob/master/readme/CHANGES#L285) from the social engineering toolkit in version 6.0 due to lack of maintenance. I think mainly because it is getting harder to successfully do due to the telecommunication providers clamping down. It's still in the SET in Backtrack though.
+
+### SMiShing {#people-identify-risks-smishing}
+
+This is where an attacker will send an SMS message to a target. Usually to invoke an immediate action on the part of the target. The request may be to convince the target to:
+
+* Download and execute a malicious payload. This could take many forms. For example if you tap a web URL and visit a page, you may download a malicious script or otherwise executable with permissions to do what ever you have permission to do on your device. Use your imagination here.
+* Call a number masquerading as a legitimate entity
+* Pretty much any action. Even diverting the current action of the target to allow an attack from another vector, as seen in [episode 5](http://www.usanetwork.com/mrrobot/episode-guide/season-1-episode-5-eps143xpl0itswmv) of Mr Robot when Elliot was making his way through the so called impenetrable storage facility (Steel Mountain) to plant a Raspberry Pi on the network, his colleagues diverted the manager that was escorting him out of the building by sending her a [spoofed SMS message](http://null-byte.wonderhowto.com/how-to/hacks-mr-robot-send-spoofed-sms-text-message-0163331/) that appeared to be from her husband that was at hospital with a serious health issue.
+
+SMiShing attacks are [on the rise](http://www.pcworld.com/article/254979/smishing_attacks_are_on_the_rise.html). They are low cost and low risk and often play a part in a SE attack.
+
+The technical equipment required to carry out a SMish:
+
+1. Something to create and send message from. A burner phone (or prepaid SIM) or software such as The Social Engineer Toolkit (SET) which provides functionality to create and send a spoofed SMS found in Backtrak.
+2. The intermediary. Often also providing the spoofing service which provides the number that the message appears to have been sent from. Services like the before mentioned burnerapp, spoofcard and others provide a spoofing service and other features like voice changers, auto responders.
 
 ### Favour for a Favour {#people-identify-risks-favour-for-a-favour}
 ![](images/ThreatTags/easy-common-average-severe.png)
@@ -537,12 +558,13 @@ Effective ways at getting into a work premises.
 
 1. Mingle in with a crowd of people returning from a lunch break. Be prepared to drop some names of people that work there but are not in the current group. Yes, that means you have to do your home work and know their faces. You will get through the locked front door 99% of the time.
 2. Wait in the car park until you see someone close to the front door (inside or outside) and carry a large heavy **looking** box toward the door. 99% of the time, they will open the door for you. Just make sure you have thought about all possible questions that may get fired at you and have well researched answers ready to respond with.
-3. Even before you get to the building itself, often premises will have gates that open by remote control or card. If an attacker is close enough to someone already entering the premises, they will get through at the same time. Now obviously this needs to be as inconspicuous as possible. Like park close enough but not too close as to be recognised as pulling out from an external car park to tailgate the way in. Also early mornings are best for this, as staff are often still half asleep when they turn up to work. Picking your target to follow in is where you will use the OSINT you have gathered during the reconnaissance phase. An attacker will choose someone that likely doesn't get a lot of sleep. Maybe a late night coder, hacker, gamer, or someone that has a new born baby and doesn't get much sleep.
+3. Even before you get to the building itself, often premises will have gates that open by remote control or card. If an attacker is close enough to someone already entering the premises, they will get through at the same time. Now obviously this needs to be as inconspicuous as possible. Like park close enough but not too close as to be recognised as pulling out from an external car park to tailgate the way in. Also early mornings are best for this, as staff are often still half asleep when they turn up to work. Picking your target to follow in is where you will use the Open Source Intelligence (OSInt) you have gathered during the reconnaissance phase. An attacker will choose someone that likely doesn't get a lot of sleep. Maybe a late night coder, hacker, gamer, or someone that has a new born baby and doesn't get much sleep.
 
 ### Phishing {#people-identify-risks-phishing}
 ![](images/ThreatTags/average-widespread-easy-moderate.png)
 
-Emails being sent out with payloads veiled with enticing email subjects, file names, etc. in the form of web links and files that when executed deliver a malicious payload. Also check out the [Infectious Media](#people-identify-risks-infectious-media) section in this chapter. Casting a wide net in the hope that a number of the receivers will fall for the scam. This attack takes advantage of the large number of receivers that will potentially fall for the scam. Generally the percentage of victims will be much lower than if it was a spear phishing attack, because the email will be more general in the attempt to reach less specific targets.  
+Emails being sent out with payloads veiled with enticing email subjects, file names, etc, in the form of web links and files that when executed deliver a malicious payload. This type of attack is the most common of all SE attacks. This includes Spear Phishing.  
+Also check out the [Infectious Media](#people-identify-risks-infectious-media) section in this chapter. Casting a wide net in the hope that a number of the receivers will fall for the scam. This attack takes advantage of the large number of receivers that will potentially fall for the scam. Generally the percentage of victims will be much lower than if it was a spear phishing attack, because the email will be more general in the attempt to reach less specific targets.  
 Like large commercial fishing enterprises, this type of attack is very common and being executed on large scale in many instances at a time.  
 This type of attack is also usually a lot easier to detect, because the attackers have to be more general in their approach and they rely less on detailed information gathering of their victims when crafting the attack than if it was more targeted.  
 The outcome on average is also usually less dramatic. Yes the odd victim will be fooled. This type of attack is a numbers game. For example 100 people may be fooled when a 50'000 email campaign is crafted and sent.
@@ -559,7 +581,7 @@ _Todo_ Discuss what targets are likely to click on.
 %% Book: Social Engineering The Art Of Human Hacking
 %%   Pg 50 has good info about what people are likely to click on.-->
 
-This type of attack is targeted toward a smaller number of receivers generally with more specifically tailored scams. In order to pull a successful attack off, that is one that has a high catch rate and where no receivers actually raise alarm bells with managers, scrupulous reconnaissance needs to be carried out on your target(s).
+This type of attack is targeted toward a smaller number of receivers generally with more specifically tailored scams. In order to pull a successful attack off, that is one that has a high catch rate and where no receivers actually raise alarm bells with managers, scrupulous reconnaissance needs to be carried out on your target(s). With all the OSInt freely available on the social media sites and many other avenues, an attacker can usually find enough information to craft very legitimate looking and enticing emails that a receiver will either follow a link to a malicious website or download -> execute a malicious payload. 
 
 {#wdcnz-demo-2}
 ![](images/HandsOnHack.png)
@@ -572,7 +594,7 @@ I> ## Synopsis
 I>
 I> Clone a website that we know our victim visits and has to log-in at.  
 I> Host the clone from our attack machine, although this could be hosted anywhere and would be more effective in not getting caught, hosting on the likes of one of the free VPSs on the internet.  
-I> Using the Credential Harvester from the Social Engineer Toolkit (SET) or setoolkit in Kali Linux. This uses the `HTML` `referer` header, in which it intercepts the request that comes from the victims IP address and harvests the posted credential fields. We demonstrate a similar attack on a XSS vulnerable website that we have hooked with BeEF, where we use BeEFs "Pretty Theft" module to harvest the victims credentials when they log in to the website in the [Cross-Site Scripting (XSS)](#web-applications-identify-risks-cross-site-scripting) section in chapter 12 Web Applications.  
+I> Using the Credential Harvester from SET in Kali Linux. This uses the `HTML` `referer` header, in which it intercepts the request that comes from the victims IP address and harvests the posted credential fields. We demonstrate a similar attack on a XSS vulnerable website that we have hooked with BeEF, where we use BeEFs "Pretty Theft" module to harvest the victims credentials when they log in to the website in the [Cross-Site Scripting (XSS)](#web-applications-identify-risks-cross-site-scripting) section in chapter 12 Web Applications.  
 I> Social engineer our victim to our cloned website.  
 I> Once victim enters their credentials and submits, SET harvests the credentials.  
 I> They are redirected to the original website to make it look less conspicuous, kind of like a failed log-in.  
@@ -854,8 +876,9 @@ We have many communication tools that are far more effective than email. Let us 
 2. Audio Visual. We have cyber networks now, the internet, and many great AV tools for one on one and team collaboration. I could list all the tools I know of and/or use, but this landscape is constantly evolving. Find what works for you and your teams. Many people find that using a good AV tool fits their work flow better than physical face to face communications. This is because it allows workers to have the best of both worlds. It gives them their own space and at the push of a button allows them to see their co-worker(s) and hear them. I have personally found good AV tools to be very liberating and great productivity enhancers.
 3. Audio only. Push to talk. The likes of Mumble can be an excellent staple tool for talking things through during the working day, when you do not need that extra information that the visual aspect provides. I have used this on many occasions and found it to be a very effective medium. When you do need more, then you can just escalate to a higher form of communication with the added visual component.
 4. Phone calls are similar to Push to talk, but the context switching overhead is larger, because you have to dial, often put a headset on and wait for an answer. Audio quality is often worse also.
-5. Instant Messaging (IM) tools. These are great for quick short communication sessions where you need to pass links and/or have a quick discussion where you do not need the additional overhead of audio. There is often little context switching overhead. It is easy to work and talk with co-workers. You are really starting to loose a large percentage of the communication information here though. Misunderstandings can creep in. Always be ready to escalate to a higher level of communication.
-6. Email. Leave this as a last resort. It is ineffective and costly in many ways. Especially for software engineers, where there is a high price for context switching. Software engineers and architects have to build large landscapes of the programmes they are working on in their heads before they can start to make any changes. Essentially loading a programme into memory and wrapping our human understanding of how the mechanics work around it. If a developer has this picture loaded into their memory and then switches to deal with an email, a large part of the picture can easily drop out of memory. Once the email work is finished, the developer has to re-load the picture. Second time around is quicker, but this can still be very costly.
+5. Group Instant Messaging (GIM) tools. Slack is currently taking the GIM world by storm. It provides a large number of add-ons to provide integration of many services, becoming much more than just Instant Messaging to more of a collaboration dash-board, where team members can receive notifications for many types of events. Thus helping to keep all team members up to date with each other. There are of course quite a number of other tools in this space like IRC, Gitter and many others, but Slack offers so much more than any of the other offerings I've seen to date and continues to broaden its integrations.
+6. Instant Messaging (IM) tools. These are great for quick short communication sessions where you need to pass links and/or have a quick discussion where you do not need the additional overhead of audio. There is often little context switching overhead. It is easy to work and talk with co-workers. You are really starting to loose a large percentage of the communication information here though. Misunderstandings can creep in. Always be ready to escalate to a higher level of communication.
+7. Email. Leave this as a last resort. It is ineffective and costly in many ways. Especially for software engineers, where there is a high price for context switching. Software engineers and architects have to build large landscapes of the programmes they are working on in their heads before they can start to make any changes. Essentially loading a programme into memory and wrapping our human understanding of how the mechanics work around it. If a developer has this picture loaded into their memory and then switches to deal with an email, a large part of the picture can easily drop out of memory. Once the email work is finished, the developer has to re-load the picture. Second time around is quicker, but this can still be very costly.
 
 Also do not forget there are many live collaborative drawing, documenting and coding tools available now. These can actually make a work-flow far more effective than being in the same room as co-workers but having to work on one set of screens, as you can both work form your own workstations on the same work.
    
@@ -915,15 +938,17 @@ Defeating compromise is actually very simple, but few follow the guidelines. Eve
 * Unique for every account
 * Use password database (ideally multi factor authentication) that generates passwords for you based on criteria you set. This way the profiling attacks mentioned are going to have a tough time brute forcing your accounts. It is such simple and easy to implement advice, but still so many are failing to take heed.
 
-### Phone Calls {#people-countermeasures-phone-calls}
+### Vishing (Phone Calls) {#people-countermeasures-phone-calls}
 ![](images/ThreatTags/PreventionDIFFICULT.png)
 
 Even the most technically and security focussed people can be played.
 
-Focus on the low hanging fruit. Social Engineering attacks via phone calls is definitely one of the lowest. Using the output from the various risk rating and ranking of threats from [2 SSM Identify Risks](#people-identify-risks) will help you realise this.  
+Focus on the low hanging fruit. SE attacks via phone call is definitely one of the lowest. Using the output from the various risk rating and ranking of threats from [2 SSM Identify Risks](#people-identify-risks) will help you realise this.  
 Make sure that people being trusted are trustworthy. Test them. Most attacks target trusted people because they have something of value. Make sure the amount of value they have access to is in proportion to how trustworthy they actually are. Do not assume. Educate (train) and test employees. Make sure they are well compensated. Do what ever it takes to keep their levels of passion and engagement high. People with these qualities will be far more likely to succeed in recognising and warding off attacks.
 
-Developing simple scripts or process flow charts for employees to check when receiving calls can be helpful. For example requesting the callers employee ID and name and not answering any further questions until you get it. Some queries like password or other sensitive data requests should also never be complied with. Any queries outside of what the employee is allowed to answer should be referred to the supervisor. Just having these sorts of process flows documented provides assurity and comfort to the employees taking the calls.
+Developing simple scripts or process flow charts for employees to check when receiving calls can be helpful. For example requesting the callers employee ID and name and not answering any further questions until it's acquired. Some queries like password or other sensitive data requests should also never be complied with. Any queries outside of what the employee is allowed to answer should be referred to the supervisor. Just having these sorts of process flows documented provides assurity and confidence to the employees taking the calls.
+
+Creating policy that ensures call receivers request and obtain the callers name, organisation, title and phone number to call them back will often scare off an attacker. Well prepared attackers will have a call back phone number, so the call receiver will need to be prepared to verify that the supplied number is in fact belonging to the claimed organisation. Michael Bazzell has an excellent collection of tools to assist with validating phone numbers under the "Telephone Numbers" heading at his website [inteltechniques.com](https://inteltechniques.com/links.html). Michael also has a simple [tool](https://inteltechniques.com/intel/menu.html) which leverage's a collection of phone number search API's.
 
 ### Spoofing Caller Id {#people-countermeasures-spoofing-caller-id}
 
@@ -932,6 +957,16 @@ Developing simple scripts or process flow charts for employees to check when rec
 Do not rely on caller Id. It is untrusted. I am not aware of any way to successfully [detect](http://www.cse.sc.edu/~mustafah/download/cid_USC_CSE_TR-2013-001.pdf) caller Id spoofing before the call is answered.
 
 With SMS, the first line of detection is to respond to the number that was spoofed confirming any information in the initial message. This will rule out many services. Failing that, confirmation by calling the sender and recognising their voice, will go a long way. Next line of defence would be to contact them via some other means, email, or face to face is always going to be the best. Work you way through the list of communication techniques from the [Email](#people-countermeasures-morale-productivity-and-engagement-killers-email) section above.
+
+### SMiShing {#people-countermeasures-smishing}
+
+Not putting your cell phone number in public places, although this can often be impractical, as these numbers are on business cards, sign written on vehicles, company websites and many other places.
+
+Verify that the number that the SMS came from is who you think it is or is the legitimate entity you may be lead to thinking it is. As with the Spoofing Caller Id section above, verify with the claimed entity that the requesting details are legitimate by ideally calling them and recognising their voice, ideally from another device or medium. Or even better face to face. If the message appears urgent and plays on the fact that the target may be negatively affected if they don't respond as requested, many people will feel compelled to buy it, rather than to confirm as mentioned.
+
+Carry out simulated attacks on the trainees. When they fall for the SMiSh, use the mistake to be a learning opportunity by following up with immediate educational feedback. If it's a link embedded in a SMS message, make the resource that the link leads to, be a training page, informing the trainee that they have been tricked and provide educational information about awareness of this type of attack. Or have the message direct a user to some other type of action that if they perform it, they'll realise they've been tricked and provide the same educational information.
+
+Services such that [Wombatsecurity](https://www.wombatsecurity.com/), [LUCY](http://phishing-server.com/) and others provide, automate the above training techniques.
 
 ### Favour for a Favour {#people-countermeasures-favour-for-a-favour}
 ![](images/ThreatTags/PreventionAVERAGE.png)
@@ -971,6 +1006,8 @@ If you took the people out of the security equation, there would be no insecurit
 _Todo_
 
 ### Spear Phishing
+
+_Todo_ Chris Campbell to add to 
 
 The most effective way to teach people about the dangers of spear phishing, how it can be avoided and why it matters, is to actually test them. Training and lecturing does little to improve the situation.
 
@@ -1054,13 +1091,23 @@ _Todo_
 
 _Todo_
 
-### Phone Calls
+### Vishing (Phone Calls)
 
 _Todo_
 
 ### Spoofing Caller Id
 
 _Todo_
+
+### SMiShing
+
+_Todo_
+
+
+
+
+
+
 
 ### Favour for a Favour
 
@@ -1142,13 +1189,21 @@ _Todo_
 
 _Todo_
 
-### Phone Calls
+### Vishing (Phone Calls)
 
 _Todo_
 
 ### Spoofing Caller Id
 
 _Todo_
+
+### SMiShing
+
+_Todo_
+
+
+
+
 
 ### Favour for a Favour
 

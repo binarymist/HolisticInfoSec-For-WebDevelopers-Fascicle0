@@ -116,6 +116,18 @@ Finding details on companies: [https://www.business.govt.nz/companies/](https://
 **SMSspoofing** information  
 [http://www.smsspoofing.com/](http://www.smsspoofing.com/)
 
+
+
+**Vishing scams** under the heading "Examples"  
+[http://www.social-engineer.org/framework/attack-vectors/vishing/](http://www.social-engineer.org/framework/attack-vectors/vishing/)
+
+**The Social Engineer's Playbook** by Jeremiah Talamantes has a collection of Vishing plays near the end of the book.
+
+**Phishing scams** under the heading "Here are a few social engineering scams executed via phishing"  
+[https://digitalguardian.com/blog/social-engineering-attacks-common-techniques-how-prevent-attack](https://digitalguardian.com/blog/social-engineering-attacks-common-techniques-how-prevent-attack)
+
+**The Social Engineer's Playbook** by Jeremiah Talamantes has a collection of spear phishing plays near the end of the book.
+
 **USB Rubber Ducky Home**  
 [http://usbrubberducky.com/](http://usbrubberducky.com/)
 

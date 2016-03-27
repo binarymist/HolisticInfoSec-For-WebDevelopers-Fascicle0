@@ -217,27 +217,62 @@ Bruce Schneier: Data and Goliath: Introduction: USA National Security Agency (NS
 **"_CeWL is a ruby app which spiders a given url_** _to a specified depth, optionally following external links, and returns a list of words which can then be used for password crackers_"  
 [https://digi.ninja/projects/cewl.php](https://digi.ninja/projects/cewl.php)
 
-
 **Hydra** has many other options. Plenty of good documentation out there.  
 [http://null-byte.wonderhowto.com/how-to/hack-like-pro-crack-online-web-form-passwords-with-thc-hydra-burp-suite-0160643/](http://null-byte.wonderhowto.com/how-to/hack-like-pro-crack-online-web-form-passwords-with-thc-hydra-burp-suite-0160643/)
-
-
 
 **You can DIY** with the likes of Asterisk  
 [http://www.social-engineer.org/wiki/archives/CallerIDspoofing/CallerID-SpoofingWithAsterisk.html](http://www.social-engineer.org/wiki/archives/CallerIDspoofing/CallerID-SpoofingWithAsterisk.html)
 
-**The Multi-Tasking Myth** by Jeff Atwood:  
-[http://blog.codinghorror.com/the-multi-tasking-myth/](http://blog.codinghorror.com/the-multi-tasking-myth/)
+**The government that imprisoned Kevin Mitnick** for nearly five years, later sought his advice about how to keep its own networks safe from intruders  
+[http://www.politechbot.com/p-00969.html](http://www.politechbot.com/p-00969.html) 
+
+**Open source framework** providing all the tools anyone would need to spoof caller Ids and much more  
+[http://www.social-engineer.org/wiki/archives/CallerIDspoofing/CallerID-SpoofingWithAsterisk.html](http://www.social-engineer.org/wiki/archives/CallerIDspoofing/CallerID-SpoofingWithAsterisk.html)
+
+**Some services can not handle return messages though**, unless the attacker has physical access to a phone that would contact the targets phone (as with flexispy)  
+[http://blog.flexispy.com/spoof-sms-powerful-secret-weapon-shouldve-using/](http://blog.flexispy.com/spoof-sms-powerful-secret-weapon-shouldve-using/)
+
+**SMS spoofing was removed from the social engineering toolkit** in version 6.0 due to lack of maintenance  
+[https://github.com/trustedsec/social-engineer-toolkit/blob/master/readme/CHANGES#L285](https://github.com/trustedsec/social-engineer-toolkit/blob/master/readme/CHANGES#L285)
+
+**Episode 5 of Mr Robot**  
+[http://www.usanetwork.com/mrrobot/episode-guide/season-1-episode-5-eps143xpl0itswmv](http://www.usanetwork.com/mrrobot/episode-guide/season-1-episode-5-eps143xpl0itswmv)  
+Elliot was making his way through the so called impenetrable storage facility (Steel Mountain) to plant a Raspberry Pi on the network
+
+**His colleagues diverted the manager** that was escorting him out of the building by sending her a spoofed SMS message  
+[http://null-byte.wonderhowto.com/how-to/hacks-mr-robot-send-spoofed-sms-text-message-0163331/](http://null-byte.wonderhowto.com/how-to/hacks-mr-robot-send-spoofed-sms-text-message-0163331/)
+
+**SMiShing attacks are on the rise  
+[http://www.pcworld.com/article/254979/smishing_attacks_are_on_the_rise.html](http://www.pcworld.com/article/254979/smishing_attacks_are_on_the_rise.html)
 
 **Also noted in the Arxan report that 80% of consumers would change providers** if they knew about the vulnerabilities and had a better option. 90% of the app execs (the creators) also believed that consumers would switch if they knew and better offerings were available.  
 [https://www.arxan.com/wp-content/uploads/2016/01/State_of_Application_Security_2016_Consolidated_Report.pdf](https://www.arxan.com/wp-content/uploads/2016/01/State_of_Application_Security_2016_Consolidated_Report.pdf)
 
 **What you need to do** is be aware of how much productivity is killed with each switch. Then do everything in your power to make sure your Development Team is sheltered from as much as possible. [How to Increase Software Developer Productivity](http://blog.binarymist.net/2013/03/02/how-to-increase-software-developer-productivity/#context-switching) by Kim Carter.
 
+**The Multi-Tasking Myth** by Jeff Atwood:  
+[http://blog.codinghorror.com/the-multi-tasking-myth/](http://blog.codinghorror.com/the-multi-tasking-myth/)
+
 **The trick here** is that when you manage programmers, specifically, task switches take a really, really, really long time. [Human Task Switches Considered Harmful](http://www.joelonsoftware.com/articles/fog0000000022.html).
 
 **Get yourself a OneRNG** for generating true randomness  
 [http://onerng.info/](http://onerng.info/)
+
+**Michael Bazzell has an excellent collection of tools** to assist with validating phone numbers under the "Telephone Numbers" heading at his website  
+[https://inteltechniques.com/links.html](https://inteltechniques.com/links.html)
+
+**Michael also has a simple tool**  
+[https://inteltechniques.com/intel/menu.html](https://inteltechniques.com/intel/menu.html)  
+which leverage's a collection of phone number search API's.
+
+**Services such that**  
+* Wombatsecurity  
+  [https://www.wombatsecurity.com/](https://www.wombatsecurity.com/)
+* LUCY  
+  [http://phishing-server.com/](http://phishing-server.com/)  
+* and others provide,
+
+automate the above training techniques
 
 ## [Cloud](#cloud)
 
