@@ -205,6 +205,9 @@ Bruce Schneier: Data and Goliath: Introduction: USA National Security Agency (NS
 
 **Studies show that motivation** has a larger effect on productivity and quality than any other factor. Software Engineering Economics by Barry W. Boehm 1981.
 
+**Increase software developer productivity** on my blog  
+[http://blog.binarymist.net/2013/03/02/how-to-increase-software-developer-productivity/](http://blog.binarymist.net/2013/03/02/how-to-increase-software-developer-productivity/)
+
 **Those distracted by incoming email** and phone calls saw a 10-point fall in their IQ by BBC:  
 [http://news.bbc.co.uk/2/hi/uk_news/4471607.stm](http://news.bbc.co.uk/2/hi/uk_news/4471607.stm)
 

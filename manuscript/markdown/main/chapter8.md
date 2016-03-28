@@ -44,6 +44,7 @@ I find the [Threat agents cloud](#starting-with-the-30000-foot-view-identify-ris
 People are the strongest point in a security process, they are often also the weakest.
 
 ### Ignorance
+![](images/ThreatTags/easy-common-average-moderate.png)
 
 In working as a contract software engineer within many teams, I always struggle to get past the fact of how oblivious most developers are to the fact of the amount of insecurities they just don't consider. Usually after explaining the situation and importance of the vulnerability with them, they start to understand it, but it's still an ongoing battle to get them into the place where they continually consider the importance of their decisions in creating secure systems.
 
@@ -109,7 +110,7 @@ I have been around many administrative people that do not understand how much co
 ### Employee Snatching
 ![](images/ThreatTags/easy-verywidespread-difficult-moderate.png)
 
-A very profitable tactic is for an adversary to in one shape or form acquire a staff member of a target organisation, perhaps a competing organisation. Depending on how long the staff member has worked for the target will depend how much of a gold mine they are. Why bother doing something illegal when you can just offer the staff member a better deal than they are currently getting?
+A very profitable tactic is for an adversary to in one shape or form acquire a staff member of a target organisation, perhaps a competing organisation. Depending on how long the staff member has worked for the target, their skills, motivations and other positive attributes, will determine how much of a gold mine they are. Why bother doing something illegal when you can just offer the staff member a better deal than they are currently getting?
 
 ### Weak Password Strategies {#people-identify-risks-weak-password-strategies}
 ![](images/ThreatTags/easy-widespread-average-severe.png)
@@ -830,6 +831,7 @@ Just make sure when you are testing your malware that you do it in a lab environ
 ## 3. SSM Countermeasures
 
 ### Ignorance
+![](images/ThreatTags/PreventionDIFFICULT.png)
 
 The first step to overcoming the ignorance is to understand the reality. The Identify Risks sections throughout the book provide us with the reality. On top of that, drawing again from [The Arxan 5th Annual State of Application Security Report](https://www.arxan.com/resources/state-of-application-security/) _Perception vs. Reality_, "_126 of the most popular mobile health and finance apps from USA, UK, Germany and Japan were tested for security vulnerabilities_" 90% of them were vulnerable to at least 2 of the [OWASP Mobile top 10 Risks](https://www.owasp.org/index.php/Mobile_Top_10_2016-Top_10).
 
@@ -851,7 +853,7 @@ Staff are often thought of as resources. If you want the best out of your people
 #### Undermined Motivation
 ![](images/ThreatTags/PreventionEASY.png)
 
-If you are a manager do not screw your workers. It may sound obvious, but I still see it happening in many organisations. Software Engineers are smart people that have paid a price to get into the field they work in. They are self motivated. Product Owners (POs) or managers have a strong influence on how motivated they remain. If POs or managers are smart, they will do everything in their power to feed the engineers appetite to excel.
+If you are an upper level manager do not screw your workers. It may sound obvious, but I still see it happening in many organisations. Software Engineers are smart people that have paid a price to get into the field they work in. They are self motivated. Product Owners (POs) or managers have a strong influence on how motivated they remain. If POs or managers are smart, they will do everything in their power to feed the engineers appetite to excel.
 
 #### Adding people to a Late Project
 ![](images/ThreatTags/PreventionAVERAGE.png)
@@ -861,7 +863,8 @@ Throwing more engineers at a problem usually makes it worse. The only definite w
 #### Noisy, Crowded Offices
 ![](images/ThreatTags/PreventionEASY.png)
 
-Allow your developers to create a space that they love working in. When I work from home my days are far more productive than when working for a company that insists on cramming as many workers around you into as small and often noisy a space as possible.
+Allow your developers to create a space that they love working in. When I work from home my days are far more productive than when working for a company that insists on cramming as many workers around you into as small and often noisy a space as possible. I get to stay in the concentration zone for a lot longer, thus my work has better design and less defects.  
+This probably wouldn't be the case if I was at home working with screaming kids. Developers know how to increase their own productivity. Let them. I documented a collection of tools and techniques to increase software developer productivity on my [blog](http://blog.binarymist.net/2013/03/02/how-to-increase-software-developer-productivity/).
    
 #### Email {#people-countermeasures-morale-productivity-and-engagement-killers-email}
 ![](images/ThreatTags/PreventionEASY.png)
@@ -881,7 +884,7 @@ Also do not forget there are many live collaborative drawing, documenting and co
 #### Meetings
 ![](images/ThreatTags/PreventionEASY.png)
 
-Find out when the most productive times are for developers and let them own that time. Often developers work late because it is the only time they do not get interrupted and they have quiet time to concentrate. If your a Product Owner or Manager, make sure your developers have plenty of uninterrupted time to work their magic. Schedule meetings in the least productive part of the day. It may sound obvious, but ask developers when this is. A managers role is to facilitate for the developers and get out of their way. Let them manage themselves.
+Find out when the most productive times are for developers and let them own that time. Often developers work late because it is the only time they do not get interrupted and they have quiet time to concentrate. If your a Product Owner or Manager, make sure your developers have plenty of uninterrupted time to work their magic. Schedule meetings in the least productive part of the day. It may sound obvious, but ask developers when this is. A managers role is to facilitate for the developers and get out of their way. Let them manage themselves and the projects they work on.
 
 This is where professional developers will shine. If they feel like they are being pulled into to many meetings and their productivity is suffering, they will speak up. Just beware that many developers will not though.
 
@@ -898,7 +901,7 @@ In a previous Scrum Team that I was Scrum Master of, The Development Team decide
 #### Top Developer Motivators in Order {#people-countermeasures-morale-productivity-and-engagement-killers-top-developer-motivators-in-order}
 ![](images/ThreatTags/PreventionEASY.png)
 
-1. Developers love to develop software. The best way to motivate developers is to let them develop. Provide an environment to stimulate focus.
+1. Developers love to develop software. The best way to motivate developers is to let them develop. Provide an environment (or better, allow them to create their own environment) to stimulate focus.
 2. The Work it self
   * Variety of Skills. Developers enjoy freedom and expectation to exercise a variety of skills, thus producing 'T' shaped developers, those with broad experience and some deep specialities.
   * Responsibility, Significance. People who tighten nuts on air-planes will feel that their work is more important and meaningful than people who tighten nuts on decorative mirrors. Developers must experience meaning in their work.   
@@ -930,7 +933,7 @@ It's usually a good idea to have a comprehensive check-list of what must be reli
 
 Exit interviews are also an excellent opportunity to get feedback about what the organisation could be doing better. Don't miss this opportunity.
 
-Make peace with the departing worker. Get on their good side if not already. This can help to short circuit possible malicious activity once the worker has left. It also shows existing workers that the organisation is open enough to receive and hopefully act on any useful feedback, which is often more likely to be honest with a leaving worker than existing staff.
+The organisation needs to make peace with the departing worker. Get on their good side if not already. This can help to short circuit possible malicious activity once the worker has left. It also shows existing workers that the organisation is open enough to receive and hopefully act on any useful feedback, which is often more likely to be honest with a leaving worker than existing staff.
 
 ### Weak Password Strategies {#people-countermeasures-weak-password-strategies}
 ![](images/ThreatTags/PreventionEASY.png)
@@ -939,7 +942,7 @@ Defeating compromise is actually very simple, but few follow the guidelines. Eve
 
 * Good passwords should be long and complex enough that you are unable to remember them
 * Mix of random or at worst pseudorandom alphanumeric, upper/lower case, special characters. Get yourself a [OneRNG](http://onerng.info/) for generating true randomness.
-* Swapping characters with numbers and special characters do not really make compromise much harder
+* Swapping characters with numbers and special characters do not really make compromise much harder as we've already seen in the Identify Risks section [above](#people-identify-risks-weak-password-strategies)
 * Unique for every account
 * Use password database (ideally multi factor authentication) that generates passwords for you based on criteria you set. This way the profiling attacks mentioned are going to have a tough time brute forcing your accounts. It is such simple and easy to implement advice, but still so many are failing to take heed.
 
@@ -977,7 +980,7 @@ Services such that [Wombatsecurity](https://www.wombatsecurity.com/), [LUCY](htt
 ### Favour for a Favour {#people-countermeasures-favour-for-a-favour}
 ![](images/ThreatTags/PreventionAVERAGE.png)
 
-If someone you do not know does you a favour then asks for a favour. You are probably being played. Get suspicious. Start thinking hard about what they are actually asking for. 
+If someone you do not know does you a favour then asks for a favour. There is a high chance you are being played. Get suspicious. Start thinking hard about what they are actually asking for. 
 
 ### The New Employee {#people-countermeasures-the-new-employee}
 ![](images/ThreatTags/PreventionAVERAGE.png)
@@ -987,7 +990,7 @@ All employees must be educated in that they should never reveal their passwords.
 ### We Have a Problem {#people-countermeasures-we-have-a-problem}
 ![](images/ThreatTags/PreventionAVERAGE.png)
 
-Many of the social engineering attacks put a focus on a problem that does not exist, but sounds very real. If the pretend problem could stop the victim from getting their work done, that will provide more leverage and more willingness on the part of the victim to give up sensitive data that they otherwise would not.
+Many of the social engineering attacks put a focus on a problem that does not exist, but sounds very real. If the pretend problem could stop the victim from getting their work done, that will provide more leverage and more willingness on the part of the target to give up sensitive information that they otherwise would not. Verify that the requester is who they say they are. Ask for all the forms of identification required to satisfy yourself that they are who they are leading you to believe they are. Then immediately verify that the stated problem exists before going any further. This will usually short circuit the SE. 
 
 ### It's Just the Cleaner {#people-countermeasures-its-just-the-cleaner}
 ![](images/ThreatTags/PreventionVERYEASY.png)
@@ -1001,7 +1004,7 @@ Many of the social engineering attacks put a focus on a problem that does not ex
 
 &nbsp;
 
-All of these attacks require: Train -> Monitor -> Test, repeat
+All of these attacks require the "Train -> Monitor -> Test, repeat" cycle.
 
 Creating an organisation wide single point of contact that can process all security related concerns will help to see when an attack is in progress, as in most cases, the attacker(s) will be making multiple attempts to pre-load and elicit sensitive information. Often from multiple targets. Emphasise that employees should contact that single point at even the slightest feeling of something being a bit suspicious.
 
@@ -1009,7 +1012,7 @@ If you took the people out of the security equation, there would be no insecurit
 
 ### Phishing
 
-_Todo_
+_Todo_ Chris Campbell to add to 
 
 ### Spear Phishing
 
@@ -1045,201 +1048,208 @@ Treating your workers well as discussed in the [Morale, Productivity and Engagem
 ## 4. SSM Risks that Solution Causes
 Often the modern thinking is that we can replace flawed people with technology. People are resilient and dynamic. They can spot a threat they have never seen before and defend against it. Computers can only defend against what they have been programmed to defend against. Technological defences are brittle. It is the role of technology to support humans to make good decisions.
 
-Employees can get complacent with training, unless they are faced with very real simulations. Get creative, establish a base line training for all and additional training for areas of specialisation and extra trust. 
-
-_Todo_
+Employees can get complacent with training, unless they are faced with very real simulations. Get creative, establish a base line training for all and additional training for areas of specialisation and extra trust.
 
 ### Ignorance
 
-_Todo_
+As with any type of learning and educating ourselves and peers, this has the potential to increase confidence in one self too much, thus causing blind spots. I see this risk as low and that the benefit of bringing revelation outweighs the possible side effects.
 
 ### Morale, Productivity and Engagement Killers
 
-_Todo_
+I don't see any negatives for removing morale, productivity and engagement killers.
 
 #### Undermined Motivation
 
-_Todo_
+The only risk is that your workers will become more engaged, work harder, come up with better ideas. Basically... it's all positive.
 
 #### Adding people to a Late Project
 
-_Todo_
+You may not deliver what someone initially thought you would. It's Ok, you weren't going to any way. This means you discover the reality early rather than late. Removing naivety, facing the reality and accepting that any given project takes a certain amount of time to complete. The more pressure that's applied, the greater the loss in quality. Managers may jump up and down and try and make developers work faster. This is futile.
 
 #### Noisy, Crowded Offices
 
-_Todo_
+The reality I've witnessed when developers manage the creation and modification of their work spaces is simply superior working environments that work for developers.
+
+![](images/DevelopmentScreens.jpg)
 
 #### Email
 
-_Todo_
+Possible confusion as to which medium should be used for what. Create and agree on the mediums that should be used and make sure everyone involved is in agreement.  
+Don't be scared to try different mediums and use what works the best for your team(s).
 
 #### Meetings
 
-_Todo_
+The main risk is that developers will achieve more when they're in control of when they leave the zone and go into meetings. I'm pretty sure this is what everyone wants.
 
 #### Context Switching
 
-_Todo_
+People within the organisation that are used to interrupting developers when ever a thought comes into their heads and now have to record their thoughts and bring to developers when the developers are ready, perhaps in predefined time slots, may feel put out and need to make some personal adjustments.
 
 #### Top Developer Motivators in Order
 
-_Todo_
+By providing developers with the tools needed to maximise their motivation, these developers will become a sought after asset. They will have to be guarded from the temptations of competitors.
 
 ### Employee Snatching
 
-_Todo_
+As per above, your people assets need to be guarded. This all comes back to the same thing. What goes around comes around. Treat your knowledge workers how they expect to be treated. Check the [Top Developer Motivators in Order](#people-countermeasures-morale-productivity-and-engagement-killers-top-developer-motivators-in-order) above if unsure what this means.
 
 #### Exit Interviews
 
-_Todo_
+This can take some courage, transparency and willingness to inspect and adapt to the direction in which the organisation should change based on open and honest feedback that's generally readily forth coming from workers leaving an organisation.
 
 ### Weak Password Strategies
 
-_Todo_
+Some added complexity is introduced, added complexity provides opportunity for mistakes to occur. Nothing much is more unsafe than recording your passwords on paper in plain text or in an unencrypted text file on your computer though. Possible over confidence that your secrets are now guaranteed impenetrable.
 
 ### Vishing (Phone Calls)
 
-_Todo_
+Risks that some callers by get annoyed initially until they get used to the heightened security questions and techniques being carried out by the call receiver(s).
 
 ### Spoofing Caller Id
 
-_Todo_
+No risks involved with not relying on caller Id.
 
 ### SMiShing
 
-_Todo_
-
-
-
-
-
-
+Similar to Vishing above.
 
 ### Favour for a Favour
 
-_Todo_
+No real risk in getting suspicious and putting the brain to work about what could be going on here.
 
 ### The New Employee
 
-_Todo_
+As with the SE trying these attacks on you, there is minimal risk in attempting reverse SE on them to gain as much information about them as possible.
 
 ### We Have a Problem
 
-_Todo_
+I don't see any risks in making sure the requester is who they say they are and that the specified problem exists before complying with any further requests.
 
 ### It’s Just the Cleaner
 
-_Todo_
+Risks that Solution Causes
+
+
+
+Some possible embarrassment that worker(s) failed the test. Bear in mind, the failings may be partly or more due to lack or faulty education/training. Learning this way is very memorable though. The mistake is unlikely to be made twice.
+
+
 
 ### Tailgating
 
-_Todo_
+There are few risks with being suspicious and reporting suspicious activities no matter how insignificant they may seem. Unless the person taking the reports is not the right person for the job.  
+Test the person expected to be receiving the reports. Make sure their manner to receive reports is to a high standard and that the reports are actually followed up on, no matter how busy they are.
 
 ### Phishing
 
-_Todo_
+_Todo_ Chris Campbell to add to 
 
 ### Spear Phishing
 
-_Todo_
+_Todo_ Chris Campbell to add to 
 
 ### Infectious Media
 
-_Todo_
+
 
 
 ## 5. SSM Costs and Trade-offs
 
+### Ignorance
+
+The costs involved in training and educating are hard to put a cost on. Much of the learning can be done in peoples own time. The key factors here are creating the awareness that increasing our knowledge is a need in order to do ones job effectively and creating the desire to learn.  
+By simply creating the awareness that the solutions we're creating are not as secure as we may think they are, this will often spark the desire to learn how we can lift our quality levels. Demonstrating how easy it is to exploit flaws in the solutions we're creating is usually a good motivator to spark the desire to learn more in developers and upper levels of management also.
+
+It doesn't have to be costly to demonstrate weaknesses. Either get the security champions within your organisation or an external security consultant to find a collection of vulnerabilities and demonstrate the exploitation of them to the other developers and upper level management.
+
+Costly training is usually not needed. Good developers self teach once they have the desire. There are usually security focussed groups within your community which meet regularly, like OWASP for example. There are plenty of smart developers keen to help others understand how they can improve their knowledge. There are also many good books, blogs, podcasts on security topics. Most of which are free.
 
 ### Morale, Productivity and Engagement Killers
 
-_Todo_
-
 #### Undermined Motivation
 
-_Todo_
+Some training and realignment of POs and upper level managements mind-sets may be required. This type of change can sometimes be hard and take time. I used to work in an organisation where there was one specific sales person that had far to much trust from above. No matter how much the organisation tried to bring positive change into the culture, this particular sales person sabotaged all attempts to bring the change. If you're in a position above this type of person, attempt to lead them to sincere change. If all of your attempts fail, remove them from the organisation. If you're in a position below this type of person, there are in fact many techniques to change them. I highly recommend the following books for many well tested techniques that I've personally used effectively:
+
+* Fearless Change by Mary Lynn Manns and Linda Rising
+* Change Agent by Os Hillman
 
 #### Adding people to a Late Project
 
-_Todo_
+Building a smaller thing may mean additional work in managing customer expectations.
 
 #### Noisy, Crowded Offices
 
-_Todo_
+No significant costs involved with providing a decent budget and allowing developers to create their own environment. Any costs incurred will be insignificant to the benefits produced.
 
 #### Email
 
-_Todo_
+There may be some costs up front in trialling mediums that some people haven't used before. 
 
 #### Meetings
 
-_Todo_
+There could be a cost in changing some mind-sets and culture of upper level managers to realise that their role is best served as servant leaders. Empower developers to do what they do best and get out of their way.
 
 #### Context Switching
 
-_Todo_
+People outside of the development team will need to have their mind-sets changed. They can no longer interrupt developers on a whim. They need to be educated as to what the costs are to interrupt developers that are in the zone. Self managing development teams will usually track and record interruptions during Sprints and address as soon as possible, if developers attempts at removing the interruptions fail, escalate to the Scrum Master who will help to guide and empower the development team within the organisation to bring about the necessary changes. If progress is slow, and it's been addressed during the Sprints, the [Retrospective](http://blog.binarymist.net/2012/07/28/guidance-on-running-scrum-retrospectives/) is a good time and place to raise the awareness and make sure change occurs.
 
 #### Top Developer Motivators in Order
 
-_Todo_
+Cultural change will probably be necessary, this will cost time and brain cycles to come up with creative ways to bring about these motivations. I've never seen any place where this effort has been invested and it not return at least the expected yield.
 
 ### Employee Snatching
 
-_Todo_
+Nothing new here really, the costs involved with keeping developers morale, productivity and engagement high are mostly around cultural change. The amount of time this may take depends on many human factors.
 
 #### Exit Interviews
 
-_Todo_
+Create a process and make sure it's followed. There are plenty of resources on the inter-webs on how to create effective exit interviews and maximise their output.
 
 ### Weak Password Strategies
 
-_Todo_
+You may have to review a collection of password vaults and make an educated decision on which is best for your target purpose. Many are free and open source. Personally I prefer to be able to inspect how my secrets are being stored than to just trust that someone is taking care of them.
 
 ### Vishing (Phone Calls)
 
-_Todo_
+Possible inconvenience in testing and educating workers of the dangers involved. Scripts and check-lists need to be created. Workers will have to become familiar with them and they'll need to be re-tested.
 
 ### Spoofing Caller Id
 
-_Todo_
+Just training and testing required here.
 
 ### SMiShing
 
-_Todo_
-
-
-
-
+Training and testing required here. Plus the cost of engaging the brain, always being suspicious and thinking of ways you could be outsmarted. Verifying the source number is the legitimate number you're lead to believe it is. Not to much of a big deal though with the services discussed in the [Vishing Countermeasures](#people-countermeasures-phone-calls) section.
 
 ### Favour for a Favour
 
-_Todo_
+Minimal cost in engaging the brain and thinking. Of course it would be a good idea to test some of these techniques on your workers and see how they respond.
 
 ### The New Employee
 
-_Todo_
+In order to be prepared and ready to try reverse SE, some fairly advanced skills will be required, or at least an understanding, healthy suspicion and a sharp mind.
 
 ### We Have a Problem
 
-_Todo_
+This is just one of those exercises that has to be tested. upon failure, some education/training and retesting will be required.
 
 ### It’s Just the Cleaner
 
-_Todo_
+Some cost involved in educating/training, testing and repeating.
 
 ### Tailgating
 
-_Todo_
+Contacting the organisational security contact for every suspicious event could be costly depending on how large your organisation is and what its assets are. If financially infeasible to have someone performing this role alone, you could look at giving the role to someone that performs another role. Obviously the person would have to be very knowledgeable, engaged and passionate about security.
 
 ### Phishing
 
-_Todo_
+_Todo_ Chris Campbell to add to 
 
 ### Spear Phishing
 
-_Todo_
+_Todo_ Chris Campbell to add to 
 
 ### Infectious Media
 
-_Todo_
+
 
