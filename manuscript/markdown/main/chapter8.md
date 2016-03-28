@@ -2,7 +2,7 @@
 
 ![10,000' view of People Security](images/10000People.gif)
 
-Like the chapter on [Physical](#physical) security, the people problem is often over-looked, not only by technical people this time, but by all. For a proficient social engineer, it is generally fairly easy to craft and execute attacks. Although not quite as easy and simple as walking through the front door that is left open. With a little patience, practice and the right frame of mind, the majority of people can be played successfully, even those that are very aware.
+Like the chapter on [Physical](#physical) security, the people problem is often over-looked, not only by technical people this time, but by all. For a proficient social engineer (SE), it is generally fairly easy to craft and execute attacks. Although not quite as easy and simple as walking through the front door that is left open. With a little patience, practice and the right frame of mind, the majority of people can be played successfully, even those that are very aware.
 
 Why is it often over-looked? A couple of reasons I can think of.
 
@@ -11,12 +11,12 @@ Why is it often over-looked? A couple of reasons I can think of.
 
 As with many other attacks, this is often one that is a key component of a larger more sophisticated attack.
 
-If you think back to the Penetration Testing [process](#process-and-practises-penetration-testing) we walked through in the Process and Practises chapter, a social engineer generally carries out their attach sequences in a similar manner. The following steps is the high level approach often taken:
+If you think back to the Penetration Testing [process](#process-and-practises-penetration-testing) we walked through in the Process and Practises chapter, a SE generally carries out their attach sequences in a similar manner. The following steps is the high level approach often taken:
 
 1. **Reconnaissance** (or Information Gathering)  
-is one of the most important steps in a social engineering engagement. Similar to the [forms](#process-and-practises-penetration-testing-reconnaissance-reconnaissance-forms) discussed in the Process and Practises chapter, a huge amount of freely available information can be gathered without anyone suspecting what it's going to be used for or that it's used at all (semi-active), or that it's even being gathered (passive). This information is used to feed the creation of the following attack steps and also technical attacks. We've already looked at some of the forms of information that an attacker can use to build their targets profile in the Process and Practises and Physical chapters. I'd also like to draw your attention to the content Michael Bazzell has [collated](https://inteltechniques.com/links.html) and his excellent books on the gathering of Open Source Intelligence.
+is one of the most important steps in a SE engagement. Similar to the [forms](#process-and-practises-penetration-testing-reconnaissance-reconnaissance-forms) discussed in the Process and Practises chapter, a huge amount of freely available information can be gathered without anyone suspecting what it's going to be used for or that it's used at all (semi-active), or that it's even being gathered (passive). This information is used to feed the creation of the following attack steps and also technical attacks. We've already looked at some of the forms of information that an attacker can use to build their targets profile in the Process and Practises and Physical chapters. I'd also like to draw your attention to the content Michael Bazzell has [collated](https://inteltechniques.com/links.html) and his excellent books on the gathering of Open Source Intelligence.
 2. **Connecting with Target**  
-Humans are complicated units, we have spirits, souls, feelings, emotions and usually need to feel like we can trust someone before we hand over our jewels. An attacker can't approach a human as they would a machine. Although there are similarities. There are areas that we know we have to work around for example. A skilled social engineer will build relationship with a target while they are gently probing for weaknesses. This is often carried out over weeks or even months of communications, slowly or sometimes quickly trust can be built. There are also many ways to fast track this process like:
+Humans are complicated units, we have spirits, souls, feelings, emotions and usually need to feel like we can trust someone before we hand over our jewels. An attacker can't approach a human as they would a machine. Although there are similarities. There are areas that we know we have to work around for example. A skilled SE will build relationship with a target while they are gently probing for weaknesses. This is often carried out over weeks or even months of communications, slowly or sometimes quickly trust can be built. There are also many ways to fast track this process like:
   * Pretexting (becoming someone else). Learning some ones behaviour, what they do, how they do it, their routines, what they know, who they know, how they talk, what they like, their family members and their details. Most of the details are now freely available on the internet via many forms. Equipped with these details, pretexting is acting as if you are that person. The closer you get to believing you are that person, the more successful the pretext will be.
   * Elicitation. Getting people to come out of their shells, open up and trust the attacker. Then starting to produce the information the attacker requires. Causing or steering a target to perform the specific behaviour that the attacker wants, such as revealing secrets. Pouring on praise and discussing the targets accomplishments works wonders with getting people to open up. There are many other ways to elicit information. Elicitation is a two pronged fork, it not only gathers information, but it also builds rapport with the target.
 3. **Exploitation**  
@@ -29,10 +29,10 @@ This is where the attacker hits the jackpot and acquires what they were after fr
 ## 1. SSM Asset Identification
 Take results from [higher level Asset Identification](#starting-with-the-30000-foot-view-asset-identification). Remove any that are not applicable. Add any newly discovered. Here are some to get you started:
 
-* People carry huge amounts of confidential information and not only in their bags and devices but also most importantly their brains. People are like sponges, we soak up information everywhere. We also leak a lot and are capable of leaking without even knowing it when played by a skilled social engineer, but I will leave that part to the Identify Risks section.
+* People carry huge amounts of confidential information and not only in their bags and devices but also most importantly their brains. People are like sponges, we soak up information everywhere. We also leak a lot and are capable of leaking without even knowing it when played by a skilled SE, but I will leave that part to the Identify Risks section.
 * State of mind. That is right, an engaged, devoted and loyal worker is truly an asset. I can not emphasise this enough.
 
-_Todo_ Probably more here.
+Many of the assets are the same as the other chapters, it's just that people present a huge opportunity for exploitation.
 
 ## 2. SSM Identify Risks {#people-identify-risks}
 
@@ -93,7 +93,7 @@ The content is only 7% of communication. The rest is voice, tone, body language 
 #### Meetings
 ![](images/ThreatTags/average-common-easy-low.png)
 
-Be aware that this is actually not creating software.
+Be aware that this is actually not creating software. Time box your meetings to help create a sense of urgency and briefness. Time boxing also helps people to work as efficiently as possible
 
 #### Context Switching
 ![](images/ThreatTags/average-common-average-moderate.png)
@@ -490,7 +490,7 @@ Penetrating an organisation using Vishing is one of the most common tactics, due
 ![](images/ThreatTags/easy-widespread-difficult-low.png)
 
 This is arranging an impersonated identification (name or number) to be displayed on the receiving end of a phone that is in the state of receiving a call or SMS. The telephony providers do not perform authentication on whether the caller Id is valid or spoofed. To disambiguate, this is the caller Id and not the caller number.  
-This can be quite a useful confirmation for a social engineer to use as part of their pretexting. Caller Id spoofing has been around since at least 2004, with companies offering paid services like:
+This can be quite a useful confirmation for a SE to use as part of their pretexting. Caller Id spoofing has been around since at least 2004, with companies offering paid services like:
 
 * SpoofApp
 * [SpoofCard](https://www.spoofcard.com/)
@@ -504,11 +504,11 @@ Some are free some are paid for. The SMS providers offering spoofing capabilitie
 
 Or you can [DIY](http://www.social-engineer.org/wiki/archives/CallerIDspoofing/CallerID-SpoofingWithAsterisk.html) with the likes of [Asterisk](http://www.asterisk.org/get-started), an open source framework providing all the tools anyone would need to spoof caller Ids and much more. You will need a VoIP service provider, but you control everything else and all of the information about your targets is in your hands alone.
 
-If you are planning a phone call, you are going to have to have a pretty solid idea of who your pretext is and know as much as possible about them in order to make your pretext believable. This is where you really draw from the reconnaissance as seen in the [Processes and Practises](#process-and-practises-penetration-testing-reconnaissance) chapter. It is a good idea to script out the points you (social engineer) want to cover in your phone call. Rehearse the points many times so that they become very natural sounding. The more you practise, the easier it will be when you have to deviate (the target will often throw curve balls at you) from your points and come back to them. There is no substitute for having as much information as possible on the target and have rehearsed the call many times.
+If you are planning a phone call, you are going to have to have a pretty solid idea of who your pretext is and know as much as possible about them in order to make your pretext believable. This is where you really draw from the reconnaissance as seen in the [Processes and Practises](#process-and-practises-penetration-testing-reconnaissance) chapter. It is a good idea to script out the points you (SE) want to cover in your phone call. Rehearse the points many times so that they become very natural sounding. The more you practise, the easier it will be when you have to deviate (the target will often throw curve balls at you) from your points and come back to them. There is no substitute for having as much information as possible on the target and have rehearsed the call many times.
 
 SMS spoofing can also be very useful. Some services can not handle return messages though, unless the attacker has physical access to a phone that would contact the targets phone (as with [flexispy](http://blog.flexispy.com/spoof-sms-powerful-secret-weapon-shouldve-using/)) and can install software on the initiating phone which the attacker can control.
 
-SMS spoofing was [removed](https://github.com/trustedsec/social-engineer-toolkit/blob/master/readme/CHANGES#L285) from the social engineering toolkit in version 6.0 due to lack of maintenance. I think mainly because it is getting harder to successfully do due to the telecommunication providers clamping down. It's still in the SET in Backtrack though.
+SMS spoofing was [removed](https://github.com/trustedsec/social-engineer-toolkit/blob/master/readme/CHANGES#L285) from the SE toolkit in version 6.0 due to lack of maintenance. I think mainly because it is getting harder to successfully do due to the telecommunication providers clamping down. It's still in the SET in Backtrack though.
 
 ### SMiShing {#people-identify-risks-smishing}
 ![](images/ThreatTags/average-common-easy-moderate.png)
@@ -523,7 +523,7 @@ SMiShing attacks are [on the rise](http://www.pcworld.com/article/254979/smishin
 
 The technical equipment required to carry out a SMiSh looks like the following:
 
-1. Something to create and send a message from. A burner phone (or prepaid SIM) or software such as The Social Engineer Toolkit (SET) which provides functionality to create and send a spoofed SMS, found in Backtrack.
+1. Something to create and send a message from. A burner phone (or prepaid SIM) or software such as The SE Toolkit (SET) which provides functionality to create and send a spoofed SMS, found in Backtrack.
 2. The intermediary. Often also providing the spoofing service which provides the number that the message appears to have been sent from. Services like the before mentioned burnerapp, spoofcard and others provide a spoofing service and other features like voice changers, auto responders.
 
 ### Favour for a Favour {#people-identify-risks-favour-for-a-favour}
@@ -577,12 +577,7 @@ SET can use sendmail, gmail or your own open-mail relay out of the box to perfor
 ### Spear Phishing {#people-identify-risks-spear-phishing}
 ![](images/ThreatTags/easy-common-average-severe.png)
 
-_Todo_ Discuss what targets are likely to click on.
-
-%% Book: Social Engineering The Art Of Human Hacking
-%%   Pg 50 has good info about what people are likely to click on.-->
-
-This type of attack is targeted toward a smaller number of receivers generally with more specifically tailored scams. In order to pull a successful attack off, that is one that has a high catch rate and where no receivers actually raise alarm bells with managers, scrupulous reconnaissance needs to be carried out on your target(s). With all the OSInt freely available on the social media sites and many other avenues, an attacker can usually find enough information to craft very legitimate looking and enticing emails that a receiver will either follow a link to a malicious website or download -> execute a malicious payload. 
+This type of attack is targeted toward a smaller number of receivers generally with more specifically tailored scams. In order to pull a successful attack off, that is one that has a high catch rate and where no receivers actually raise alarm bells with managers, scrupulous reconnaissance needs to be carried out on your target(s). With all the OSInt freely available on the social media sites and many other avenues, an attacker can usually find enough information to craft very legitimate looking and enticing emails that a receiver will either follow a link to a malicious website (usually that looks like a legitimate website they are used to using) or download -> execute a malicious payload. 
 
 {#wdcnz-demo-2}
 ![](images/HandsOnHack.png)
@@ -596,7 +591,7 @@ I>
 I> Clone a website that we know our victim visits and has to log-in at.  
 I> Host the clone from our attack machine, although this could be hosted anywhere and would be more effective in not getting caught, hosting on the likes of one of the free VPSs on the internet.  
 I> Using the Credential Harvester from SET in Kali Linux. This uses the `HTML` `referer` header, in which it intercepts the request that comes from the victims IP address and harvests the posted credential fields. We demonstrate a similar attack on a XSS vulnerable website that we have hooked with BeEF, where we use BeEFs "Pretty Theft" module to harvest the victims credentials when they log in to the website in the [Cross-Site Scripting (XSS)](#web-applications-identify-risks-cross-site-scripting) section in chapter 12 Web Applications.  
-I> Social engineer our victim to our cloned website.  
+I> SE our victim to our cloned website.  
 I> Once victim enters their credentials and submits, SET harvests the credentials.  
 I> They are redirected to the original website to make it look less conspicuous, kind of like a failed log-in.  
 I> Making the URL look more legitimate is covered in the [ARP](#network-identify-risks-spoofing-arp) and [DNS](#network-identify-risks-spoofing-dns) spoofing section in the Network chapter.
@@ -723,7 +718,7 @@ T> As you can see below, SET also has a few other options for helping an attacke
 Infectious media is generally thought about as a tool used by:
 
 1. **An Attacker with Physical Access**. The payload can be used to do pretty much anything. Often used when it is easier to insert directly into a computer than remotely deploying a payload. For example an attacker can masquerade as a service person, contractor, or what ever looks legitimate enough to get them physical access. Often only a few seconds are required to insert the media, deposit and/or run a payload, or vacuum up some target data, pull the media out and be off.
-2. **An Attacker with No Access**. Handing out or leaving lying around somewhere where the target will notice and their curiosity will drive them to insert the media themselves, thus doing a large part of the attackers job for them. As always, social engineers leverage the human targets weaknesses against the target to carry out the attackers bidding. 
+2. **An Attacker with No Access**. Handing out or leaving lying around somewhere where the target will notice and their curiosity will drive them to insert the media themselves, thus doing a large part of the attackers job for them. As always, SEs leverage the human targets weaknesses against the target to carry out the attackers bidding. 
 
 #### [Social Engineering Toolkit (Set)](http://www.social-engineer.org/framework/se-tools/computer-based/social-engineer-toolkit-set/)
 
@@ -739,7 +734,7 @@ The Teensy USB device as a [penetration testing device](http://www.irongeek.com/
 
 The USB standard has a HID specification, which means any USB device that says it is a keyboard will be automatically accepted by most OSs. 
 
-The main Duckyscript Encoder which is a Java application that converts the ducky script files into hex code, so you can load them on your micro SD card, insert the card into the ducky and social engineer your ducky into your targets computer, can be downloaded from the hak5darren github accounts USB-Rubber-Ducky repository [Downloads page](https://github.com/hak5darren/USB-Rubber-Ducky/wiki/Downloads) on the wiki.
+The main Duckyscript Encoder which is a Java application that converts the ducky script files into hex code, so you can load them on your micro SD card, insert the card into the ducky and SE your ducky into your targets computer, can be downloaded from the hak5darren github accounts USB-Rubber-Ducky repository [Downloads page](https://github.com/hak5darren/USB-Rubber-Ducky/wiki/Downloads) on the wiki.
 
 The source code for the encoder and firmware are in the same repository although the official encoder only supports US keyboards.  
 If you need additional keyboard support you are going to have to use the encoder.jar from the midnitesnake github accounts usb-rubber-ducky repository [Encoder folder](https://github.com/midnitesnake/USB-Rubber-Ducky/tree/master/Encoder).
@@ -925,9 +920,17 @@ A lot of combating snatching of staff comes down to the countermeasures of [Mora
 
 #### Exit Interviews
 
-_Todo_
+There are many reasons to perform exit interviews, but we're just focussing on security here.
 
-%% Remove accounts from everything. domains, databases, APs, email, cloud applications/storage, etc
+An exit interview should be carried out for every person leaving an organisation, ideally as soon as possible after notice has been given. The intention is to extract as much of the intellectual property (IP) that they have acquired while working for the organisation and remove all privileges that are no longer necessary for them to perform their role. Such as accounts and access for everything. domains, databases, physical access, access poins, email, cloud applications/storage, etc. There is a lot to consider here.
+
+knowledge transfer. Especially the knowledge that only the leaving person has. This is always going to be hard. Even if the person leaving wants to pass on their knowledge, there is so much of it that has been acquired by the person during their time working for an organisation, that they won't think of everything. There is usually minimal incentive for an employee or contractor to make sure they pass on as much as possible and the interviewer is not going to know if pieces are missed.
+
+It's usually a good idea to have a comprehensive check-list of what must be relinquished to make sure as much as possible is covered.
+
+Exit interviews are also an excellent opportunity to get feedback about what the organisation could be doing better. Don't miss this opportunity.
+
+Make peace with the departing worker. Get on their good side if not already. This can help to short circuit possible malicious activity once the worker has left. It also shows existing workers that the organisation is open enough to receive and hopefully act on any useful feedback, which is often more likely to be honest with a leaving worker than existing staff.
 
 ### Weak Password Strategies {#people-countermeasures-weak-password-strategies}
 ![](images/ThreatTags/PreventionEASY.png)

@@ -171,6 +171,9 @@ The following books have been influential for me and the content from the People
 * Chapter 10 of Beyond Fear by Bruce Schneier
 * Gray Hat Hacking The Ethical Hacker's Handbook
 
+**Tips on preparing for and carrying out exit interviews**  
+[http://www.businessballs.com/exitinterviews.htm](http://www.businessballs.com/exitinterviews.htm)
+
 ## [VPS](#vps)
 
 [**Details**](https://community.rapid7.com/community/metasploit/blog/2013/03/09/psexec-demystified) on the Metasploit PSExec module.
