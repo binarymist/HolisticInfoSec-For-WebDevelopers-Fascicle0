@@ -278,7 +278,10 @@ which leverage's a collection of phone number search API's.
 
 automate the above training techniques
 
-## [Cloud](#cloud)
+**Retrospective** is a good time and place to raise the awareness and make sure change occurs  
+[http://blog.binarymist.net/2012/07/28/guidance-on-running-scrum-retrospectives/](http://blog.binarymist.net/2012/07/28/guidance-on-running-scrum-retrospectives/) 
+
+
 
 
 ## [VPS](#vps)
@@ -406,6 +409,8 @@ and also the specification
 [http://twit.cachefly.net/audio/sn/sn0453/sn0453.mp3](http://twit.cachefly.net/audio/sn/sn0453/sn0453.mp3)  
 [https://www.grc.com/sn/sn-453-notes.pdf](https://www.grc.com/sn/sn-453-notes.pdf)  
 [https://www.grc.com/sn/sn-453.htm](https://www.grc.com/sn/sn-453.htm)
+
+## [Cloud](#cloud)
 
 ## [Web Applications](#web-applications)
 

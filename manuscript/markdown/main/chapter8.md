@@ -1068,14 +1068,14 @@ You may not deliver what someone initially thought you would. It's Ok, you weren
 
 #### Noisy, Crowded Offices
 
-The reality I've witnessed when developers manage the creation and modification of their work spaces is simply superior working environments that work for developers.
+The reality I've witnessed when developers manage the creation and modification of their work spaces is simply superior working environments that work for developers and allow them to produce a higher quality of work and as quick as possible.
 
 ![](images/DevelopmentScreens.jpg)
 
 #### Email
 
 Possible confusion as to which medium should be used for what. Create and agree on the mediums that should be used and make sure everyone involved is in agreement.  
-Don't be scared to try different mediums and use what works the best for your team(s).
+Don't be scared to try different mediums and use what works best for your team(s).
 
 #### Meetings
 
@@ -1099,15 +1099,15 @@ This can take some courage, transparency and willingness to inspect and adapt to
 
 ### Weak Password Strategies
 
-Some added complexity is introduced, added complexity provides opportunity for mistakes to occur. Nothing much is more unsafe than recording your passwords on paper in plain text or in an unencrypted text file on your computer though. Possible over confidence that your secrets are now guaranteed impenetrable.
+Some added complexity is introduced, added complexity provides opportunity for mistakes to occur. Nothing much is more unsafe than recording your passwords on paper in plain text or in an unencrypted text file on your computer. Possible over confidence that your secrets are now guaranteed impenetrable.
 
 ### Vishing (Phone Calls)
 
-Risks that some callers by get annoyed initially until they get used to the heightened security questions and techniques being carried out by the call receiver(s).
+Risks that some callers may get annoyed initially until they get used to the heightened security questions and techniques being carried out by the call receiver(s). You can use the additional policy and checks as an opportunity to market your heightened security stand-point.
 
 ### Spoofing Caller Id
 
-No risks involved with not relying on caller Id.
+No risks perceived with not relying on caller Id.
 
 ### SMiShing
 
@@ -1127,13 +1127,7 @@ I don't see any risks in making sure the requester is who they say they are and 
 
 ### It’s Just the Cleaner
 
-Risks that Solution Causes
-
-
-
 Some possible embarrassment that worker(s) failed the test. Bear in mind, the failings may be partly or more due to lack or faulty education/training. Learning this way is very memorable though. The mistake is unlikely to be made twice.
-
-
 
 ### Tailgating
 
@@ -1150,14 +1144,13 @@ _Todo_ Chris Campbell to add to
 
 ### Infectious Media
 
-
-
+Again, this is just education, training and testing to make sure the education has taken effect. Potential embarrassment is a risk.
 
 ## 5. SSM Costs and Trade-offs
 
 ### Ignorance
 
-The costs involved in training and educating are hard to put a cost on. Much of the learning can be done in peoples own time. The key factors here are creating the awareness that increasing our knowledge is a need in order to do ones job effectively and creating the desire to learn.  
+The effort involved in training and educating are hard to put a cost on. Much of the learning can be done in peoples own time. The key factors here are creating the awareness that increasing our knowledge is a need in order to do ones job effectively and creating the desire to learn.  
 By simply creating the awareness that the solutions we're creating are not as secure as we may think they are, this will often spark the desire to learn how we can lift our quality levels. Demonstrating how easy it is to exploit flaws in the solutions we're creating is usually a good motivator to spark the desire to learn more in developers and upper levels of management also.
 
 It doesn't have to be costly to demonstrate weaknesses. Either get the security champions within your organisation or an external security consultant to find a collection of vulnerabilities and demonstrate the exploitation of them to the other developers and upper level management.
@@ -1168,7 +1161,7 @@ Costly training is usually not needed. Good developers self teach once they have
 
 #### Undermined Motivation
 
-Some training and realignment of POs and upper level managements mind-sets may be required. This type of change can sometimes be hard and take time. I used to work in an organisation where there was one specific sales person that had far to much trust from above. No matter how much the organisation tried to bring positive change into the culture, this particular sales person sabotaged all attempts to bring the change. If you're in a position above this type of person, attempt to lead them to sincere change. If all of your attempts fail, remove them from the organisation. If you're in a position below this type of person, there are in fact many techniques to change them. I highly recommend the following books for many well tested techniques that I've personally used effectively:
+Some training and realignment of POs and upper level managements mind-sets may be required. This type of change can sometimes be hard and take time. I used to work in an organisation where there was one specific sales person that had far to much trust from above. No matter how much the organisation tried to bring positive change into the culture, this particular sales person sabotaged all attempts. If you're in a position above this type of person, attempt to lead them to sincere change. If all of your attempts fail, remove them from the organisation. If you're in a position below this type of person, there are in fact many techniques to bring change. I highly recommend the following books for many well tested techniques that I've personally used effectively:
 
 * Fearless Change by Mary Lynn Manns and Linda Rising
 * Change Agent by Os Hillman
@@ -1231,7 +1224,7 @@ In order to be prepared and ready to try reverse SE, some fairly advanced skills
 
 ### We Have a Problem
 
-This is just one of those exercises that has to be tested. upon failure, some education/training and retesting will be required.
+This is just one of those exercises that has to be tested. Upon failure, some education/training and retesting will be required.
 
 ### It’s Just the Cleaner
 
@@ -1251,5 +1244,4 @@ _Todo_ Chris Campbell to add to
 
 ### Infectious Media
 
-
-
+Some cost involved in educating/training, testing and repeating.
