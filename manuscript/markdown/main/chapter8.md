@@ -1068,7 +1068,7 @@ You may not deliver what someone initially thought you would. It's Ok, you weren
 
 #### Noisy, Crowded Offices
 
-The reality I've witnessed when developers manage the creation and modification of their work spaces is simply superior working environments that work for developers and allow them to produce a higher quality of work and as quick as possible.
+The reality I've witnessed when developers manage the creation and modification of their work spaces is simply superior working environments that work for developers and allow them to produce a higher quality of work and as quickly as possible.
 
 ![](images/DevelopmentScreens.jpg)
 
@@ -1103,7 +1103,7 @@ Some added complexity is introduced, added complexity provides opportunity for m
 
 ### Vishing (Phone Calls)
 
-Risks that some callers may get annoyed initially until they get used to the heightened security questions and techniques being carried out by the call receiver(s). You can use the additional policy and checks as an opportunity to market your heightened security stand-point.
+Risks that some callers may get annoyed initially until they get used to the heightened security questions and techniques being carried out by the call receiver(s). You can use the additional policy and checks as an opportunity to market your heightened security stand-point as well.
 
 ### Spoofing Caller Id
 
