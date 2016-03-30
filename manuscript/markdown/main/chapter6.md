@@ -1,4 +1,4 @@
-# People {#people}
+# 6. People {#people}
 
 ![10,000' view of People Security](images/10000People.gif)
 

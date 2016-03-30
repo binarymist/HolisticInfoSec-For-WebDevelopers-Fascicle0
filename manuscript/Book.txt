@@ -1,5 +1,7 @@
 frontmatter:
 
+   markdown/front/foreword.md
+
    markdown/front/preface.md
    
    markdown/front/introduction.md
@@ -17,18 +19,6 @@ mainmatter:
    markdown/main/chapter5.md
    
    markdown/main/chapter6.md
-   
-   markdown/main/chapter7.md
-   
-   markdown/main/chapter8.md
-   
-   markdown/main/chapter9.md
-   
-   markdown/main/chapter10.md
-   
-   markdown/main/chapter11.md
-
-   markdown/main/chapter12.md
    
 backmatter:
 

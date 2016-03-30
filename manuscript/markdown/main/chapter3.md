@@ -1,4 +1,4 @@
-# Tooling Setup {#tooling-setup}
+# 3. Tooling Setup {#tooling-setup}
 
 All the software tools I use for penetration and security testing are free and most are also open source (other than Windows of course). I always try hard to stick to this, as it makes:
 

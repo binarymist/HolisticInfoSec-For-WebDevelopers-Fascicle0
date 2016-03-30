@@ -1,5 +1,7 @@
 # Introduction
 
+%% An introduction deals with the subject of the book, supplementing and introducing the text and indicating a point of view to be adopted by the reader. The introduction usually forms a part of the text [and the text numbering system]; the preface does not." (In other words, the arabic numbering of the book (1,2,3) starts with the introduction, if there is one. The other front matter takes i, ii, iii, etc.)
+
 Target Audience:
 
 * Software Architects

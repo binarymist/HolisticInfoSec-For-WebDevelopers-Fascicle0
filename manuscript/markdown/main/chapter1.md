@@ -1,4 +1,4 @@
-# Starting with the 30,000' View {#starting-with-the-30000-foot-view}
+# 1. Starting with the 30,000' View {#starting-with-the-30000-foot-view}
 
 ![](images/30000View.gif)
 
