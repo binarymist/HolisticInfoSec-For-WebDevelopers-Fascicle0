@@ -556,7 +556,7 @@ Grab your self a cleaners uniform and you have got access to just about everythi
 ### Emulating Targets Mannerisms
 ![](images/ThreatTags/easy-uncommon-average-moderate.png)
 
-I've always found it interesting listening to and or watching certain classes of people, how they talk, their lingo, slang, what they where, how they stand etc. As an attacker a very useful tool is to emulate the target subtly. This creates a subconscious rapport between the two people. In general, people are attracted to people that have similar attributes. By learning how a target does these things and then subtly emulating them, a powerful tool is leveraged which has the effect of subconsciously drawing the target in to relationship with the attacker, or at least making it easier to draw them in. Subtlety is the key.
+I've always found it interesting listening to and or watching certain classes of people, how they talk, their lingo, slang, what they wear, how they stand etc. As an attacker a very useful tool is to emulate the target subtly. This creates a subconscious rapport between the two people. In general, people are attracted to people that have similar attributes. By learning how a target does these things and then subtly emulating them, a powerful tool is leveraged which has the effect of subconsciously drawing the target in to relationship with the attacker, or at least making it easier to draw them in. Subtlety is the key. By doing this, an attacker can more easily obtain their trust.
 
 ### Tailgating {#people-identify-risks-tailgating}
 ![](images/ThreatTags/easy-common-easy-moderate.png)
@@ -1247,7 +1247,7 @@ Some cost involved in educating/training, testing and repeating.
 
 ### Emulating Targets Mannerisms
 
-It'll cost some pride if you get it wrong. If you get it right, you may just blow an attackers cover.
+It'll cost some pride if the target gets it wrong. If the targets assumption is correct, they may just blow an attackers cover.
 
 ### Tailgating
 
