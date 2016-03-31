@@ -60,7 +60,7 @@
 **SecurityFocus** BugTraq  
 [http://www.securityfocus.com/archive/1](http://www.securityfocus.com/archive/1)
 
-**Rapid7** (current owner of Metasploit) also has a database**  
+**Rapid7** (current owner of Metasploit) also has a database  
 [http://www.rapid7.com/db/modules/search](http://www.rapid7.com/db/modules/search)
 
 **NodeSecurity**  
@@ -348,10 +348,10 @@ http-waf-fingerprint: [https://nmap.org/nsedoc/scripts/http-waf-fingerprint.html
 **Detection works where prevention fails** and detection is of no use without response.  
 Beyond Fear by Bruce Schneier
 
-**People can be your strongest or your weakest defence**. This is your choice. Cultural change can be implemented from any level. The most successfully being from the shop flaw:  
+**People can be your strongest or your weakest defence**. This is your choice. Cultural change can be implemented from any level. The most successfully being from the shop floor  
 [http://blog.binarymist.net/2014/04/26/culture-in-the-work-place/](http://blog.binarymist.net/2014/04/26/culture-in-the-work-place/)
 
-**You will also need to think about company culture** and whether this needs some work:  
+**You will also need to think about company culture** and whether this needs some works  
 [http://blog.binarymist.net/2014/04/26/culture-in-the-work-place/](http://blog.binarymist.net/2014/04/26/culture-in-the-work-place/)
 
 **The speed benefits** of Li-Fi are also compelling, many times faster than current Wi-Fi speeds.  
@@ -401,7 +401,8 @@ Beyond Fear by Bruce Schneier
 **Hydra** seems like the most mature of the brute force specific tools  
 [https://www.thc.org/thc-hydra/network_password_cracker_comparison.html](https://www.thc.org/thc-hydra/network_password_cracker_comparison.html)
 
-**Keep the Attack type: “Sniper”** because we are only using one wordlist [https://portswigger.net/burp/help/intruder_positions.html](https://portswigger.net/burp/help/intruder_positions.html)
+**Keep the Attack type: "Sniper"** because we are only using one wordlist  
+[https://portswigger.net/burp/help/intruder_positions.html](https://portswigger.net/burp/help/intruder_positions.html)
 
 **Keep the Payload set to 1 and Payload type set to Simple list**  
 [https://portswigger.net/burp/help/intruder_payloads_types.html](https://portswigger.net/burp/help/intruder_payloads_types.html)

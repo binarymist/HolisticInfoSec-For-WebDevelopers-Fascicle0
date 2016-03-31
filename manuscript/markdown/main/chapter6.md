@@ -294,7 +294,7 @@ I> * Failure message for a failed attempt. The only place you need to look is th
 {icon=bomb}
 G> ## The Play
 G>
-G> For this example, we need to add Bob the Builder that we profiled in the CUPP example above to the DVWA database. Now I knew that the passwords in the DVWA database were being stored as `MD5`s from the exercise I did in the SQLi section from the Web Applications chapter in fascicle 1. Now if the DVWA had of assumed that the datastore would at some stage be compromised as discussed in the Data-store Compromise section and provided the correct countermeasures as discussed in the countermeasures section of the Web Applications chapter in fascicle 1, we would not be able to reverse engineer the crypto strategy as easily and the time it takes to brute force the passwords would also be significantly increased due to the key stretching of the Key Derivation Functions (KDFs). With that in mind though, if you profile effectively you will end up with a small wordlist to use in your chosen brute force tool, which may only take a few hours or days for the average users password.
+G> For this example, we need to add Bob the Builder that we profiled in the CUPP example above to the DVWA database. Now I knew that the passwords in the DVWA database were being stored as `MD5`s from the exercise I did in the SQLi section from the Web Applications chapter in [fascicle 1](https://leanpub.com/holistic-infosec-for-web-developers-fascicle1-vps-network-cloud-webapplications). Now if the DVWA had of assumed that the datastore would at some stage be compromised as discussed in the Data-store Compromise section and provided the correct countermeasures as discussed in the countermeasures section of the Web Applications chapter in [fascicle 1](https://leanpub.com/holistic-infosec-for-web-developers-fascicle1-vps-network-cloud-webapplications), we would not be able to reverse engineer the crypto strategy as easily and the time it takes to brute force the passwords would also be significantly increased due to the key stretching of the Key Derivation Functions (KDFs). With that in mind though, if you profile effectively you will end up with a small wordlist to use in your chosen brute force tool, which may only take a few hours or days for the average users password.
 G>
 G> For the sake of demonstration, I chose a password from the middle of the wordlist that CUPP produced: `Y35w3c4n!$@`. Bob thought he was being clever changing the characters of "yes we can" to look like numbers and adding some special characters to the end. Hackers know all the tricks though.  
 G> Browse to `/phpmyadmin` of the OWASPBWA, -u `root` -p `owaspbwa` and find the dvwa database and add `Bob` as a `user` and his hashed password that we produced from:  
@@ -463,7 +463,7 @@ I also tried with just the correct password. The issue was that Medusa was not h
 
 &nbsp;
 
-I think the following may have suffered from the redirect problem also. Since then I found a [few changes](http://seclists.org/nmap-dev/2014/q3/479) to this script which may have fixed it, although I have not re-tested. The following command just took too long to complete. It may have got confused with the redirect. I am not sure.
+I think the following may have suffered from the redirect problem also. Since then I found a [few changes](http://seclists.org/nmap-dev/2014/q3/479) to this script which may have fixed it, although I have not re-tested. The following command just took too long to complete. It may have got confused with the redirect. I am not sure.f
 
 {linenos=off, lang=text}
     nmap 192.168.56.22 -p80 --script=http-form-brute --script-args \
@@ -474,7 +474,7 @@ I think the following may have suffered from the redirect problem also. Since th
     passvar=admin, \
     uservar=admin' -vvv -d
 
-I address the compromise of password hashes in the Web Applications chapter of fascicle 1 under the section "Management of Application Secrets".
+I address the compromise of password hashes in the Web Applications chapter of [fascicle 1](https://leanpub.com/holistic-infosec-for-web-developers-fascicle1-vps-network-cloud-webapplications) under the section "Management of Application Secrets".
 
 ### Vishing (Phone Calls) {#people-identify-risks-phone-calls}
 ![](images/ThreatTags/average-widespread-average-severe.png)
@@ -583,7 +583,7 @@ This type of attack is targeted toward a smaller number of receivers generally w
 {#wdcnz-demo-2}
 ![](images/HandsOnHack.png)
 
-The following attack was one of five that I demonstrated at WDCNZ in 2015. There was one leading up to this which focused on exploiting a Cross-Site Scripting (XSS) vulnerable website with the Browser Exploitation Framework (BeEF). This can be found in chapter 12 of fascicle 1 under the Cross-Site Scripting (XSS) section.
+The following attack was one of five that I demonstrated at WDCNZ in 2015. There was one leading up to this which focused on exploiting a Cross-Site Scripting (XSS) vulnerable website with the Browser Exploitation Framework (BeEF). This can be found in chapter 12 of [fascicle 1](https://leanpub.com/holistic-infosec-for-web-developers-fascicle1-vps-network-cloud-webapplications) under the Cross-Site Scripting (XSS) section.
 
 You can find the video of how this attack is played out [here](https://www.youtube.com/watch?v=tb4o5UCHzSA).
 
@@ -591,11 +591,11 @@ I> ## Synopsis
 I>
 I> Clone a website that we know our victim visits and has to log-in at.  
 I> Host the clone from our attack machine, although this could be hosted anywhere and would be more effective in not getting caught, hosting on the likes of one of the free VPSs on the internet.  
-I> Using the Credential Harvester from SET in Kali Linux. This uses the `HTML` `referer` header, in which it intercepts the request that comes from the victims IP address and harvests the posted credential fields. We demonstrate a similar attack on a XSS vulnerable website that we have hooked with BeEF, where we use BeEFs "Pretty Theft" module to harvest the victims credentials when they log in to the website in the Cross-Site Scripting (XSS) section in the Web Applications chapter of fascicle 1.  
+I> Using the Credential Harvester from SET in Kali Linux. This uses the `HTML` `referer` header, in which it intercepts the request that comes from the victims IP address and harvests the posted credential fields. We demonstrate a similar attack on a XSS vulnerable website that we have hooked with BeEF, where we use BeEFs "Pretty Theft" module to harvest the victims credentials when they log in to the website in the Cross-Site Scripting (XSS) section in the Web Applications chapter of [fascicle 1](https://leanpub.com/holistic-infosec-for-web-developers-fascicle1-vps-network-cloud-webapplications).  
 I> SE our victim to our cloned website.  
 I> Once victim enters their credentials and submits, SET harvests the credentials.  
 I> They are redirected to the original website to make it look less conspicuous, kind of like a failed log-in.  
-I> Making the URL look more legitimate is covered in the ARP and DNS spoofing sections of the Network chapter in fascicle 1.
+I> Making the URL look more legitimate is covered in the ARP and DNS spoofing sections of the Network chapter in [fascicle 1](https://leanpub.com/holistic-infosec-for-web-developers-fascicle1-vps-network-cloud-webapplications).
 
 {icon=bomb}
 G> ## The Play
