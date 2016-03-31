@@ -1,4 +1,4 @@
-# 1. Starting with the 30,000' View {#starting-with-the-30000-foot-view}
+# Starting with the 30,000' View {#starting-with-the-30000-foot-view}
 
 ![](images/30000View.gif)
 
@@ -97,7 +97,7 @@ Think about some of the relationships the target business takes a dependency on,
   * How much personally identifiable information could be disclosed?
 
 {#intel-threat-agent-library}
-and the [Intel Threat Agent Library](http://www.sbs.ox.ac.uk/cybersecurity-capacity/system/files/Intel%20-%20Threat%20Agent%20Library%20Helps%20Identify%20Information%20Security%20Risks.pdf)
+and the [Intel Threat Agent Library](https://communities.intel.com/servlet/JiveServlet/previewBody/1151-102-1-1111/Threat%20Agent%20Library_07-2202w.pdf)
 
 ### Rating of Threats {#ms-6-rate-the-threats}
 

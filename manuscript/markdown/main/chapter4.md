@@ -1362,7 +1362,7 @@ BSIMM has some good [guidance on security testing](https://www.bsimm.com/online/
 
 ### Security Regression Testing {#process-agile-development-and-practices-security-regression-testing}
 
-If you are using NodeJS and have not already got your tests running as part of a CI build or pre-commit hook, check out the Consuming Free and Open Source [Tooling](#web-applications-countermeasures-consuming-free-and-open-source-tooling) section for some info on how to set this up.
+If you are using NodeJS and have not already got your tests running as part of a CI build or pre-commit hook, check out the Consuming Free and Open Source Tooling section in [fascicle 1](https://leanpub.com/holistic-infosec-for-web-developers-fascicle1-vps-network-cloud-webapplications) for some info on how to set this up.
 
 Now as I see it, this is one of the biggest wins you can take for minimum expenditure. You can simply continue to use your existing automated test suites and frameworks. All you have to do is add a **security focused test API** into the mix. You can continue to use Your chosen (language specific) TDD/BDD framework of choice. Just proxy your existing tests through the security API. Then simply tell the API to attack your application, targeting all the known vulnerabilities that the API knows about. The API now understands your applications external facing structure due to the fact that it has proxied all your requests and responses. The security API already exists. All you have to do is use it.
 
@@ -1575,7 +1575,7 @@ Techniques and tools to assist with automating
 
 Tooling is still immature here. We have got a way to go, but lets start getting our feet wet. Here are a few resources to dip your toes:
 
-* [Titanium Code Processor](https://theoreticalideations.com/tag/titanium-code-processor/) For (Titanium Mobile)[https://github.com/appcelerator/titanium_mobile] (native mobile applications using JavaScript) projects. You can find the source code at the appcelerator account on (github)[https://github.com/appcelerator/titanium-code-processor] 
+* [Titanium Code Processor](https://theoreticalideations.com/tag/titanium-code-processor/) For [Titanium Mobile](https://github.com/appcelerator/titanium_mobile) (native mobile applications using JavaScript) projects. You can find the source code at the appcelerator account on [github](https://github.com/appcelerator/titanium-code-processor) 
 * [Slide Deck](https://speakerdeck.com/ariya/dynamic-code-analysis-for-javascript) by Ariya Hidayat.
 * [Jalangi](https://www.eecs.berkeley.edu/~gongliang13/jalangi_ff/)
 

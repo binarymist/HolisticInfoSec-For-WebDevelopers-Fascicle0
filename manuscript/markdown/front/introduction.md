@@ -8,7 +8,7 @@ Target Audience:
 * Software Developers/Engineers
 * Product Owners
 
-If your looking to save money and save face due to potential embarrassment because your business assets have been compromised, continue reading. If your looking to become better at delivering secure solutions, continue reading.
+If you're looking to save money and save face due to potential embarrassment because you're business assets may have been compromised, continue reading. If your looking to become better at delivering secure solutions, continue reading.
 
 Traditionally security has often been applied at the end of projects where it's most costly in the development life cycle to re-design and re-deploy. This is why security, in fact quality in general, is often seen as being to expensive and corners are cut.
 
