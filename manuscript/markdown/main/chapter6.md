@@ -463,7 +463,7 @@ I also tried with just the correct password. The issue was that Medusa was not h
 
 &nbsp;
 
-I think the following may have suffered from the redirect problem also. Since then I found a [few changes](http://seclists.org/nmap-dev/2014/q3/479) to this script which may have fixed it, although I have not re-tested. The following command just took too long to complete. It may have got confused with the redirect. I am not sure.f
+I think the following may have suffered from the redirect problem also. Since then I found a [few changes](http://seclists.org/nmap-dev/2014/q3/479) to this script which may have fixed it, although I have not re-tested. The following command just took too long to complete. It may have got confused with the redirect. I am not sure.
 
 {linenos=off, lang=text}
     nmap 192.168.56.22 -p80 --script=http-form-brute --script-args \
@@ -553,6 +553,11 @@ An excellent way of gaining additional trust is to fix the problem that does not
 
 Grab your self a cleaners uniform and you have got access to just about everything within an organisation. It really is that simple. Often when my wife was doing commercial cleaning and she walked into a room at 20:00 - 21:00 with a few developers left working away. They would sometimes be surprised because they had not been told that the cleaners were coming, let-a-lone, who they were. The response would usually go something like "Oh, it is just the cleaners". Why? Because they had their free pass... a cleaners uniform, maybe a broom or vacuum cleaner or mop.
 
+### Emulating Targets Mannerisms
+![](images/ThreatTags/easy-uncommon-average-moderate.png)
+
+I've always found it interesting listening to and or watching certain classes of people, how they talk, their lingo, slang, what they where, how they stand etc. As an attacker a very useful tool is to emulate the target subtly. This creates a subconscious rapport between the two people. In general, people are attracted to people that have similar attributes. By learning how a target does these things and then subtly emulating them, a powerful tool is leveraged which has the effect of subconsciously drawing the target in to relationship with the attacker, or at least making it easier to draw them in. Subtlety is the key.
+
 ### Tailgating {#people-identify-risks-tailgating}
 ![](images/ThreatTags/easy-common-easy-moderate.png)
 
@@ -583,7 +588,7 @@ This type of attack is targeted toward a smaller number of receivers generally w
 {#wdcnz-demo-2}
 ![](images/HandsOnHack.png)
 
-The following attack was one of five that I demonstrated at WDCNZ in 2015. There was one leading up to this which focused on exploiting a Cross-Site Scripting (XSS) vulnerable website with the Browser Exploitation Framework (BeEF). This can be found in chapter 12 of [fascicle 1](https://leanpub.com/holistic-infosec-for-web-developers-fascicle1-vps-network-cloud-webapplications) under the Cross-Site Scripting (XSS) section.
+The following attack was one of five that I demonstrated at WDCNZ in 2015. There was one leading up to this which focused on exploiting a Cross-Site Scripting (XSS) vulnerable website with the Browser Exploitation Framework (BeEF). This can be found in the Web Applications chapter of [fascicle 1](https://leanpub.com/holistic-infosec-for-web-developers-fascicle1-vps-network-cloud-webapplications) under the Cross-Site Scripting (XSS) section.
 
 You can find the video of how this attack is played out [here](https://www.youtube.com/watch?v=tb4o5UCHzSA).
 
@@ -999,6 +1004,12 @@ Many of the social engineering attacks put a focus on a problem that does not ex
 2. Train your workers
 3. Test them. Send some random in without telling your workers and see what happens. Adjust your training to suite
 
+### Emulating Targets Mannerisms
+![](images/ThreatTags/PreventionDIFFICULT.png)
+
+If this is over done, then it's easy to spot, but if it's subtle, it's not. This sort of pretext is much easier to carry out if the attacker is in touch with the targets culture, industry and the other sources of influence that make a person dress, act, speak, behave a certain way. A skilled emulation technique is very hard to diffuse.  
+All a target can really do is be sure they are being emulated, then question it head on.
+
 ### Tailgating {#people-countermeasures-tailgating}
 ![](images/ThreatTags/PreventionAVERAGE.png)
 
@@ -1129,6 +1140,10 @@ I don't see any risks in making sure the requester is who they say they are and 
 
 Some possible embarrassment that worker(s) failed the test. Bear in mind, the failings may be partly or more due to lack or faulty education/training. Learning this way is very memorable though. The mistake is unlikely to be made twice.
 
+### Emulating Targets Mannerisms
+
+If the targets assumption is incorrect, then they may end up making a fool of themselves.
+
 ### Tailgating
 
 There are few risks with being suspicious and reporting suspicious activities no matter how insignificant they may seem. Unless the person taking the reports is not the right person for the job.  
@@ -1229,6 +1244,10 @@ This is just one of those exercises that has to be tested. Upon failure, some ed
 ### It’s Just the Cleaner
 
 Some cost involved in educating/training, testing and repeating.
+
+### Emulating Targets Mannerisms
+
+It'll cost some pride if you get it wrong. If you get it right, you may just blow an attackers cover.
 
 ### Tailgating
 
