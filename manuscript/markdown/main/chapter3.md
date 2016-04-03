@@ -1,6 +1,6 @@
 # 3. Tooling Setup {#tooling-setup}
 
-All the software tools I use for penetration and security testing are free and most are also open source (other than Windows of course). I always try hard to stick to this, as it makes:
+At this stage, all the software tools I use for penetration and security testing are free and most are also open source (other than Windows of course). I always try hard to stick to this, as it makes:
 
 1. Pitching tooling acquisition to managers and those that hold the purse strings easy
 2. Learning how the tools work and contributing to the security ecosystem
@@ -55,18 +55,18 @@ I've used the ISO installed on a VM guest in this setup, as I had a capable host
 
 The Offensive Security team which can be found on [IRC](http://docs.kali.org/community/kali-linux-irc-channel) are also very helpful and quick to respond to package requests, etc.
 
-You should find most of what you need [here](http://docs.kali.org/category/installation). Just follow the links specific to your requirements.
+You should find most of what you need at [kali category installation](http://docs.kali.org/category/installation). Just follow the links specific to your requirements.
 
 %% 2015-05-19 Setup Kali 1.1.0a-amd64
 
-The VMware and VirtualBox images were [here](https://www.offensive-security.com/kali-linux-vmware-arm-image-download/) if you want to go the turn-key way.
+The VMware and VirtualBox images were at [https://www.offensive-security.com/kali-linux-vmware-arm-image-download/](https://www.offensive-security.com/kali-linux-vmware-arm-image-download/) if you want to go the turn-key way.
 
 For this install I created a new VirtualBox VM based on Debian 64.  
 Made a fixed disk of size 40GB and 4GB RAM. More RAM is helpful sometimes, but in most cases I've found 4GB to be enough.
 
-The ISO can be downloaded from [here](https://www.kali.org/downloads/) via torrent and direct download. A little over 3GB.
+The ISO can be downloaded from [kali downloads](https://www.kali.org/downloads/) via torrent and direct download. A little over 3GB.
 
-you’re going to want to check the validity of the ISO (or other image if that's your preference) by verifying the SHA1 checksums. Now this is where the [instructions](http://docs.kali.org/introduction/download-official-kali-linux-images) can be a little confusing. You’ll need to make sure that the SHA1SUMS file that contains the specific checksum you’re going to use to verify the checksum of the image you downloaded, is in fact the authentic SHA1SUMS file. Instructions say on the Kali [downloads](https://www.kali.org/downloads/) page: “When you download an image, be sure to download the SHA1SUMS and SHA1SUMS.gpg files that are next to the downloaded image (i.e. in the same directory on the server).”. You’ve got to read between the lines a bit here. A little further down the page has the key to where these files are. It’s buried in a wget command. Plus you have to add another directory to find them. The location was [here](http://archive.kali.org/kali-images/). Now that you’ve got these two files downloaded in the same directory, verify the SHA1SUMS.gpg signature as follows:
+you’re going to want to check the validity of the ISO (or other image if that's your preference) by verifying the SHA1 checksums. Now this ([http://docs.kali.org/introduction/download-official-kali-linux-images](http://docs.kali.org/introduction/download-official-kali-linux-images)) is where the instructions can be a little confusing. You’ll need to make sure that the SHA1SUMS file that contains the specific checksum you’re going to use to verify the checksum of the image you downloaded, is in fact the authentic SHA1SUMS file. Instructions say on the Kali [downloads](https://www.kali.org/downloads/) page: “When you download an image, be sure to download the SHA1SUMS and SHA1SUMS.gpg files that are next to the downloaded image (i.e. in the same directory on the server).”. You’ve got to read between the lines a bit here. A little further down the page has the key to where these files are. It’s buried in a wget command. Plus you have to add another directory to find them. The location was at ([http://archive.kali.org/kali-images/](http://archive.kali.org/kali-images/)). Now that you’ve got these two files downloaded in the same directory, verify the SHA1SUMS.gpg signature as follows:
 
 {linenos=off}
     gpg --verify SHA1SUMS.gpg SHA1SUMS
@@ -79,7 +79,7 @@ Output:
 
 If you get a warning about the key not being certified with a trusted signature, it's because you still need to import the kali key.
 
-I imported the kali gpg key and did the checksums. Details [here](http://docs.kali.org/introduction/download-official-kali-linux-images). If you need any extra help with gpg, check out my [blog post](http://blog.binarymist.net/2015/01/31/gnupg-key-pair-with-sub-keys/) on the sugject.
+I imported the kali gpg key and did the checksums. Details here ([http://docs.kali.org/introduction/download-official-kali-linux-images](http://docs.kali.org/introduction/download-official-kali-linux-images)). If you need any extra help with gpg, check out my [blog post](http://blog.binarymist.net/2015/01/31/gnupg-key-pair-with-sub-keys/) on the sugject.
 
 Now verify the checksum of the image you downloaded with the checksum within the (authentic) SHA1SUMS file.
 
@@ -92,7 +92,7 @@ Compare the output of the following two commands. They should be the same.
     # Print the checksum from the SHA1SUMS file for your specific downloaded image file name.
     grep [name of your downloaded image file] SHA1SUMS
 
-You can refer to [the hard-disk install](http://docs.kali.org/installation/kali-linux-hard-disk-install) for running through the OS installer if you need it.
+You can refer to the hard-disk install ([http://docs.kali.org/installation/kali-linux-hard-disk-install](http://docs.kali.org/installation/kali-linux-hard-disk-install)) for running through the OS installer if you need it.
 
 Once installed, run:
 
@@ -566,11 +566,3 @@ Run `dmesg | grep htc` and you should see something similar to the following pri
 You should now be able to select the phones wireless hot-spot you want to connect to in network manager.
 
 
-
-
-
-
-
-## Windows
-
-_Todo_

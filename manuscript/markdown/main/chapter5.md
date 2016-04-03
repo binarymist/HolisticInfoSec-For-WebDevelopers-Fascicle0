@@ -111,7 +111,7 @@ Wi-Fi pretty much took the world by storm. It provided an extremely convenient w
 
 As the human race, we seem bent on adopting technologies as integral parts of our lives with often almost complete ignorance of the costs we are incurring. Every thing that looks good comes at a cost. Generally the better it looks the higher the cost. With Wi-Fi, the cost is the huge attack surface that comes with it. An attacker no longer needs to break into a building and find an active port. They can just sit in their car in the parking lot pretending to answer email or what ever. Or wait until the workers have gone home for the day and comfortably establish themselves outside the organisations premises and go to work on the internal network. It could not be much easier. Keep in mind, most attacks come from within organisations.
 
-Discussed in more depth in the Network chapter of [fascicle 1](https://leanpub.com/holistic-infosec-for-web-developers-fascicle1-vps-network-cloud-webapplications).
+Discussed in more depth in the Network chapter of [Fascicle 1](https://leanpub.com/holistic-infosec-for-web-developers-fascicle1-vps-network-cloud-webapplications).
 
 #### Hiding the SSID
 
@@ -270,7 +270,7 @@ As with [Transient Devices](#physical-countermeasures-transient-devices), use DH
 
 ![](images/ThreatTags/PreventionAVERAGE.png)
 
-Discussed in more depth in the Network chapter in [fascicle 1](https://leanpub.com/holistic-infosec-for-web-developers-fascicle1-vps-network-cloud-webapplications).
+Discussed in more depth in the Network chapter in [Fascicle 1](https://leanpub.com/holistic-infosec-for-web-developers-fascicle1-vps-network-cloud-webapplications).
 
 The “outside” vulnerability can be mitigated by the implementation of Li-Fi (Light Fidelity) systems. Li-Fi transmits high-speed data using visible light communication (VLC), and as the light waves cannot penetrate walls, external access becomes virtually impossible. Li-Fi AP’s also have an inherent short range which is essentially diffused by windows. The [speed benefits](http://www.sciencealert.com/li-fi-tested-in-the-real-world-for-the-first-time-is-100-times-faster-than-wi-fi) of Li-Fi are also compelling, many times faster than current Wi-Fi speeds. 
 

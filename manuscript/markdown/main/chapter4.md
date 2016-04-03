@@ -1362,7 +1362,7 @@ BSIMM has some good [guidance on security testing](https://www.bsimm.com/online/
 
 ### Security Regression Testing {#process-agile-development-and-practices-security-regression-testing}
 
-If you are using NodeJS and have not already got your tests running as part of a CI build or pre-commit hook, check out the Consuming Free and Open Source Tooling section in [fascicle 1](https://leanpub.com/holistic-infosec-for-web-developers-fascicle1-vps-network-cloud-webapplications) for some info on how to set this up.
+If you are using NodeJS and have not already got your tests running as part of a CI build or pre-commit hook, check out the Consuming Free and Open Source Tooling section in [Fascicle 1](https://leanpub.com/holistic-infosec-for-web-developers-fascicle1-vps-network-cloud-webapplications) for some info on how to set this up.
 
 Now as I see it, this is one of the biggest wins you can take for minimum expenditure. You can simply continue to use your existing automated test suites and frameworks. All you have to do is add a **security focused test API** into the mix. You can continue to use Your chosen (language specific) TDD/BDD framework of choice. Just proxy your existing tests through the security API. Then simply tell the API to attack your application, targeting all the known vulnerabilities that the API knows about. The API now understands your applications external facing structure due to the fact that it has proxied all your requests and responses. The security API already exists. All you have to do is use it.
 
