@@ -1391,7 +1391,9 @@ My set-up was done with fetching the NodeGoat source code onto a physical machin
 There are also details on getting Zap running in a docker container on the [Zap wiki](https://github.com/zaproxy/zaproxy/wiki/Docker)
 
 
-##### NodeGoat Set-up on your local machine
+##### NodeGoat Set-up on your local machine {#process-agile-development-and-practices-security-regression-testing-nodegoat-set-up-on-your-local-machine}
+
+The following is also addressed in the [Kali Linux Install](#tooling-setup-kali-linux-kali-linux-install) section of the Tooling Setup chapter.
 
 In VirtualBox you will need a Host-only Network added. By default this will be called `vboxnet0` in your VirtualBox settings. an `ifconfig` on the host will reveal a new network interface called `vboxnet0`. This allows guests and host to communicate with each other without anyone outside of the host network interface being able to see the communications. In this example we set the Adapter IP address to `192.168.56.1`. That address will be assigned to your host as an additional network interface.
 

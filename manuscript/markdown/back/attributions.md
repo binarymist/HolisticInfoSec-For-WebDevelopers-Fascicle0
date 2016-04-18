@@ -80,13 +80,16 @@
 
 ## [Tooling Setup](#tooling-setup)
 
-**Peter Kim discusses a selection of tools** in "The Hacker Playbook" that he uses regularly. I've included them in this section as they have been found to be very useful. 
+**Peter Kim discusses a selection of tools** in "The Hacker Playbook" that he uses regularly. I've included some of them in this section as they have been found to be very useful.
 
 **Kali Linux**  
 [http://docs.kali.org/introduction/what-is-kali-linux](http://docs.kali.org/introduction/what-is-kali-linux)
 
 **Kali repository**  
 [http://git.kali.org/gitweb/](http://git.kali.org/gitweb/)
+
+**Turn-key** VMware or VirtualBox  
+[https://www.offensive-security.com/kali-linux-vmware-virtualbox-image-download/](https://www.offensive-security.com/kali-linux-vmware-virtualbox-image-download/) image
 
 **Custom ARM images**  
 [https://www.offensive-security.com/kali-linux-vmware-virtualbox-image-download/](https://www.offensive-security.com/kali-linux-vmware-virtualbox-image-download/)
@@ -99,6 +102,9 @@
 
 **Official Kali documentation**  
 [http://docs.kali.org/category/installation](http://docs.kali.org/category/installation)
+
+**Pre-generated SSH host key**, check-out Nilesh Kapoor's talk at OWASP NZ Day 2016 on Host Hardening  
+[https://www.owasp.org/index.php/OWASP_New_Zealand_Day_2016#tab=Presentation_Schedule](https://www.owasp.org/index.php/OWASP_New_Zealand_Day_2016#tab=Presentation_Schedule)
 
 **VMware and VirtualBox images**  
 [https://www.offensive-security.com/kali-linux-vmware-virtualbox-image-download/](https://www.offensive-security.com/kali-linux-vmware-virtualbox-image-download/)
@@ -120,6 +126,15 @@
 
 **Hard-disk install**  
 [http://docs.kali.org/installation/kali-linux-hard-disk-install](http://docs.kali.org/installation/kali-linux-hard-disk-install)
+
+**Install Guest Additions**  
+[http://docs.kali.org/general-use/kali-linux-virtual-box-guest](http://docs.kali.org/general-use/kali-linux-virtual-box-guest)
+
+**You'll need to add your user**  
+[https://www.virtualbox.org/manual/ch04.html#sf_mount_auto](https://www.virtualbox.org/manual/ch04.html#sf_mount_auto)
+
+**The Metasploit Community / Pro package is no longer shipping** in Kali  
+[https://www.kali.org/releases/kali-linux-20-released/](https://www.kali.org/releases/kali-linux-20-released/)
 
 **Useful metasploit commands**  
 [https://www.offensive-security.com/metasploit-unleashed/msfconsole-commands/](https://www.offensive-security.com/metasploit-unleashed/msfconsole-commands/)
@@ -145,6 +160,9 @@
 **BeEF console**  
 [https://github.com/beefproject/beef/wiki/BeEF-Console](https://github.com/beefproject/beef/wiki/BeEF-Console)
 
+**Terminator does everything I need from a terminal**. Briefly discussed on my blog  
+[http://blog.binarymist.net/2013/01/19/a-decent-console-for-windows/](http://blog.binarymist.net/2013/01/19/a-decent-console-for-windows/)
+
 **Veil Framework**  
 [https://www.veil-framework.com/](https://www.veil-framework.com/)
 
@@ -156,6 +174,9 @@
 
 **Rockyou**  
 [http://downloads.skullsecurity.org/passwords/rockyou.txt.bz2](http://downloads.skullsecurity.org/passwords/rockyou.txt.bz2)
+
+**These came available from a social game and advertising website in 2009**  
+Peter Kims "The Hacker Playbook 2".
 
 **Search for crackstation**  
 [https://crackstation.net/buy-crackstation-wordlist-password-cracking-dictionary.htm](https://crackstation.net/buy-crackstation-wordlist-password-cracking-dictionary.htm)
