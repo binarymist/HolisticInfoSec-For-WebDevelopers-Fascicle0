@@ -765,7 +765,7 @@ The sources used are:
 
 Both passive and active options available.
 
-#### Discover-scripts
+#### Discover-scripts {#process-and-practises-penetration-testing-reconnaissance-discover-scripts}
 
 Is an excellent Open Source Intelligence Tool (OSINT).
 

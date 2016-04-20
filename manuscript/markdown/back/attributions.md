@@ -130,7 +130,7 @@
 **Install Guest Additions**  
 [http://docs.kali.org/general-use/kali-linux-virtual-box-guest](http://docs.kali.org/general-use/kali-linux-virtual-box-guest)
 
-**You'll need to add your user**  
+**You will need to add your user**  
 [https://www.virtualbox.org/manual/ch04.html#sf_mount_auto](https://www.virtualbox.org/manual/ch04.html#sf_mount_auto)
 
 **The Metasploit Community / Pro package is no longer shipping** in Kali  
