@@ -336,7 +336,6 @@ To install:
 2. 
     {line-numbers=off}
        cd /opt/Veil && ./Install.sh -c  
-
   The dependency installs take a while. Python on Windows, Ruby and Go.
 3. Select the defaults for the Python for Windows install.
 4. When the install reaches the "Select Destination Directory", go with the default.
@@ -395,7 +394,7 @@ According to the installation directions, swig2.0 was required, although the rel
   * You can also add any extra ports you want to scan, `8080,8001` etc.
   * Create a networks.txt and add the cidr range you want to scan.
   * `cd /opt/httpscreenshot && ./masshttp.sh`
-7. If you want to run `httpscreenshot.py` by itself, the simplest way:  
+7. If you want to run `httpscreenshot.py` by itself, the simplest way:
   * `cd /opt/httpscreenshot && vim inputURLs`  
   Now add the URLs you want screen shots of and save.
   * Then run it:  
@@ -664,8 +663,8 @@ First of all you need to add the user that controls guest to the vboxusers group
 
 ##### Provide USB recognition to guest:
 
-Install the particular VirtualBox Extension Pack on to the host. These packs can be found here ([https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)) for the most recent, and older builds,  
-here: ([https://www.virtualbox.org/wiki/Download_Old_Builds_5_0](https://www.virtualbox.org/wiki/Download_Old_Builds_5_0)). Do not forget to checksum the pack before you add the extension. The version of the extension pack must match that of the VirtualBox installed. Now in your guest, check to see if you have the appropriate linux-headers package installed. If you do not, run the following:
+Install the particular VirtualBox Extension Pack on to the host. These packs can be found here ([https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)) for the most recent,  
+and older builds here: ([https://www.virtualbox.org/wiki/Download_Old_Builds_5_0](https://www.virtualbox.org/wiki/Download_Old_Builds_5_0)). Do not forget to checksum the pack before you add the extension. The version of the extension pack must match that of the VirtualBox installed. Now in your guest, check to see if you have the appropriate linux-headers package installed. If you do not, run the following:
 
 1. `apt-get update`
 2. `apt-get upgrade`
