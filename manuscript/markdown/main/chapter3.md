@@ -105,7 +105,7 @@ and your Host-only adapter like :
 
 Then any time you need to be on the same network segment as the physical host, just switch the Host-only Adapter to Bridged Adapter and you may need to set the interface in the "Name" drop-down box to wlan0 or what ever the primary interface is that your physical host is using to connect to the physical network. You may need to update your `/etc/network/interfaces` here also to the default that the install provided.
 
-Alternatively make the switch to Bridged Adapter on Adapter 1. This way you don't need to change the `/etc/network/interfaces` at all. In VirtualBox 5.0.4 I couldn't get an internet connection through any of the VirtualBox adapters no matter how I configured them. It seems that VirtualBox may be a little buggy now in terms of NAT and NAT Network. If you run into this problem, and you decide to set-up the external wireless adapter as discussed below, you can by-pass the VirtualBox adapters all together. This works for me.
+Alternatively, make the switch to Bridged Adapter on Adapter 1. This way you don't need to change the `/etc/network/interfaces` at all. In VirtualBox 5.0.4 I couldn't get an internet connection through any of the VirtualBox adapters no matter how I configured them. It seems that VirtualBox may be a little buggy now in terms of NAT and NAT Network. If you run into this problem, and you decide to set-up the external wireless adapter as discussed in the [Additional Hardware](#tooling-setup-kali-linux-additional-hardware) section below, you can by-pass the VirtualBox adapters all together. This works for me.
 
 %% This looked good, but it didn't work: https://www.pythian.com/blog/test-lab-using-virtualbox-nat-networking/
 
@@ -599,7 +599,7 @@ Is a light weight HTTP intercepting proxy as an Iceweasel add-on which allows yo
 %% #### OpenVAS
 %% http://blog.binarymist.net/2014/03/29/up-and-running-with-kali-linux-and-friends/#openVAS   
 
-### Additional Hardware
+### Additional Hardware {#tooling-setup-kali-linux-additional-hardware}
 
 
 #### TP-LINK TL-WN722N USB Wireless Adapter
