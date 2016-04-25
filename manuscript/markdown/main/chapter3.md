@@ -277,7 +277,9 @@ A set of shell scripts tied together in a CUI to aggregate Kali Linux informatio
 
 #### [SmbExec](https://github.com/pentestgeek/smbexec) {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-smbexec}
 
-The process looks like the following in Kali 2016.1
+Connects to the Windows Domain Controller and using the Windows Shadow Copy (AKA Volume Snapshot Service (VSS)), grabs the ntds.dit file which is the heart of Active Directory, including user accounts.
+
+The set-up process looks like the following in Kali 2016.1
 
 1. `git clone https://github.com/pentestgeek/smbexec.git /opt/smbexec`
 2. `cd /opt/smbexec && ./install.sh`
@@ -322,6 +324,9 @@ or see the documentation for more details
 %% Error running. Didn't like my password: https://github.com/michenriksen/gitrob/issues/63
 
 #### [CMSmap](https://github.com/Dionach/CMSmap)
+
+CMSmap is a python open source CMS scanner that automates the process of detecting security flaws of the most popular Content Management Systems (CMSs).  
+Currently supports: WordPress, Joomla and Drupal.
 
 `git clone https://github.com/Dionach/CMSmap.git /opt/CMSmap`
 
@@ -382,7 +387,8 @@ Easy to use password profiling tool.
 
 #### [Http Screenshot](https://github.com/breenmachine/httpscreenshot) {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-httpscreenshot}
 
-Useful for taking screen shots of a large number of websites concurrently.
+Useful for taking screen shots of a large number of websites concurrently.  
+Can use Masscan under the covers.
 
 1. `pip install selenium`
 2. `git clone https://github.com/breenmachine/httpscreenshot.git /opt/httpscreenshot`
