@@ -1022,19 +1022,26 @@ Creating an organisation wide single point of contact that can process all secur
 If you took the people out of the security equation, there would be no insecurities. People are the source of (I am fairly sure) all of the security issues we face today. So realistically, this is where we need to focus most of our attention. Education, establishing cultures of people that understand the issues, are prepared to and expect to be played and can and do react appropriately. 
 
 ### Phishing
+![](images/ThreatTags/PreventionAVERAGE.png)
 
-_Todo_ Chris Campbell to add to 
-
-### Spear Phishing
-
-_Todo_ Chris Campbell to add to 
-
-The most effective way to teach people about the dangers of spear phishing, how it can be avoided and why it matters, is to actually test them. Training and lecturing does little to improve the situation.
+Phishing typically involves a widely distributed campaign where the angle of the conveyed story or sales pitch is aimed at gaining the buy-in of as many persons as possible. It's social engineering on a large scale. For example, details of staff remuneration reviews may be offered in an email, or a voucher for free products may be offered in a download. The success of phishing is the result of exploiting human behaviour: people like rewards (especially if they're free), the feeling of being rewarded weakens a persons judgement and with weakened judgement a person becomes easier to manipulate. Likewise, should a person be faced with a story or sales pitch that appeals to their values or interests, their judgement will be weakened in a similar manner. The most effective way to teach people about the dangers of phishing, how it can be avoided and why it matters, is to reinforce their judgement by actually testing them. Simulated phishing tests aim to bolster this natural defence mechanism and heighten subconscious awareness, whereas the development of knowledge through training and lecturing does little to nothing to address this.
 
 Test the following:
 
 * Will a target click on a link in an email sent to them? The email may have a spoofed from address and contain information specifically targeted and attractive to the target.
 * Will a target visit a website based on a link passed to them and enter either personal or business related information?
+* Will a target insert unknown USB media and open files found on the device?
+
+Results of the test should be conveyed in a way that outlines the statistics collected by the test and potential impact it may have had. A tool such as [Pond](https://bitbucket.org/t0x0/pond) can help you automate the entire testing process.
+
+> Section by Chris Campbell
+
+### Spear Phishing
+![](images/ThreatTags/PreventionDIFFICULT.png)
+
+Whilst the motive behind spear phishing - to establish a social engineering vector that will circumvent the natural defense mechanism of chosen targets - is the same as Phishing, it does not involve the use of such a widely distributed campaign. The preparation of a spear phishing attack will involve research of the victim: an individual, an organisation or a specific department of that organisation. With such a tailored social engineering vector comes a significantly higher chance of success, thus it becomes a more important attack to try and mitigate. Preventing the success of such an attack is done in the same way as with Phishing - through actual tests - but the preparation must replicate a spear phishing attack and present content of great relevance to the target(s).
+
+> Section by Chris Campbell
 
 ### Infectious Media
 ![](images/ThreatTags/PreventionAVERAGE.png)
@@ -1151,11 +1158,17 @@ Test the person expected to be receiving the reports. Make sure their manner to 
 
 ### Phishing
 
-_Todo_ Chris Campbell to add to 
+"_Regardless of the circumstances, being victimised can be very demoralising. As simulating a phishing attack as a test essentially involves victimising staff, it is very important that the results of the test must not be personalised and the motive of the test is very clearly communicated. Failing to do so may leave an HR crisis on your plate._"
+
+> Chris Campbell
+
+This is one of those practises that you really need to have scope sign off on before starting the tests.
 
 ### Spear Phishing
 
-_Todo_ Chris Campbell to add to 
+"_Given the nature of spear phishing, where specific persons are targeted as opposed to a wider group, it becomes even more important that the test is clearly conveyed as being done to benefit those involved._"
+
+> Chris Campbell
 
 ### Infectious Media
 
@@ -1255,11 +1268,17 @@ Contacting the organisational security contact for every suspicious event could 
 
 ### Phishing
 
-_Todo_ Chris Campbell to add to 
+"_Some staff may reject the concept of their employer victimising them in a simulated phishing test - even if it's communicated that the intention of the testing is to benefit the staff, which may be an impact on staff morale and cost HR and management time spent resolving the dispute.
+
+Should [Pond](https://bitbucket.org/t0x0/pond) be used to facilitate the testing, then hosting of the application will incur Windows licensing costs._"
+
+> Chris Campbell
 
 ### Spear Phishing
 
-_Todo_ Chris Campbell to add to 
+"_The costs are the same as incurred by phish testing, however more time will be spent in preparing the tests._"
+
+> Chris Campbell
 
 ### Infectious Media
 
