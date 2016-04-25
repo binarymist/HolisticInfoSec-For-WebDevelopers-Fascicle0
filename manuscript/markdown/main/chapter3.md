@@ -107,6 +107,8 @@ Then any time you need to be on the same network segment as the physical host, j
 
 Alternatively make the switch to Bridged Adapter on Adapter 1. This way you don't need to change the `/etc/network/interfaces` at all. In VirtualBox 5.0.4 I couldn't get an internet connection through any of the VirtualBox adapters no matter how I configured them. It seems that VirtualBox may be a little buggy now in terms of NAT and NAT Network. If you run into this problem, and you decide to set-up the external wireless adapter as discussed below, you can by-pass the VirtualBox adapters all together. This works for me.
 
+%% This looked good, but it didn't work: https://www.pythian.com/blog/test-lab-using-virtualbox-nat-networking/
+
 The ISO can be downloaded from [kali downloads](https://www.kali.org/downloads/) via torrent and direct download. A little over 3GB.
 
 you are going to want to check the validity of the ISO (or other image if that is your preference) by verifying the SHA1 checksums. Details are directly under the downloads section. This should be enough to get you going.
