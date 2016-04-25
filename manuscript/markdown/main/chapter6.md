@@ -1268,9 +1268,9 @@ Contacting the organisational security contact for every suspicious event could 
 
 ### Phishing
 
-"_Some staff may reject the concept of their employer victimising them in a simulated phishing test - even if it's communicated that the intention of the testing is to benefit the staff, which may be an impact on staff morale and cost HR and management time spent resolving the dispute.
+"_Some staff may reject the concept of their employer victimising them in a simulated phishing test - even if it's communicated that the intention of the testing is to benefit the staff, which may be an impact on staff morale and cost HR and management time spent resolving the dispute._"
 
-Should [Pond](https://bitbucket.org/t0x0/pond) be used to facilitate the testing, then hosting of the application will incur Windows licensing costs._"
+"_Should [Pond](https://bitbucket.org/t0x0/pond) be used to facilitate the testing, then hosting of the application will incur Windows licensing costs._"
 
 > Chris Campbell
 

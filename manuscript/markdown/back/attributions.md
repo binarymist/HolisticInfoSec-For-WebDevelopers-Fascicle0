@@ -489,8 +489,10 @@ which leverage's a collection of phone number search API's.
 
 automate the above training techniques
 
-**A tool such as Pond** can help you automate the entire testing process.  [https://bitbucket.org/t0x0/pond](https://bitbucket.org/t0x0/pond)  
-Chris Campbell (creator of Pond) can be found at [https://twitter.com/t0x0_nz](https://twitter.com/t0x0_nz)
+**A tool such as Pond** can help you automate the entire testing process.  
+[https://bitbucket.org/t0x0/pond](https://bitbucket.org/t0x0/pond)  
+Chris Campbell (creator of Pond) can be found at:  
+[https://twitter.com/t0x0_nz](https://twitter.com/t0x0_nz)
 
 **Retrospective** is a good time and place to raise the awareness and make sure change occurs  
 [http://blog.binarymist.net/2012/07/28/guidance-on-running-scrum-retrospectives/](http://blog.binarymist.net/2012/07/28/guidance-on-running-scrum-retrospectives/) 
