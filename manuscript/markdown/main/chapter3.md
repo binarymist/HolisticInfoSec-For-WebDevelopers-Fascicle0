@@ -103,7 +103,9 @@ and your Host-only adapter like :
 
 ![](images/GuestHostOnlyAdapter.png)
 
-Then any time you need to be on the same network segment as the physical host, just switch the Host-only Adapter to Bridged Adapter.
+Then any time you need to be on the same network segment as the physical host, just switch the Host-only Adapter to Bridged Adapter and you may need to set the interface in the "Name" drop-down box to wlan0 or what ever the primary interface is that your physical host is using to connect to the physical network. You may need to update your `/etc/network/interfaces` here also to the default that the install provided.
+
+Alternatively make the switch to Bridged Adapter on Adapter 1. This way you don't need to change the `/etc/network/interfaces` at all. In VirtualBox 5.0.4 I couldn't get an internet connection through any of the VirtualBox adapters no matter how I configured them. It seems that VirtualBox may be a little buggy now in terms of NAT and NAT Network. If you run into this problem, and you decide to set-up the external wireless adapter as discussed below, you can by-pass the VirtualBox adapters all together. This works for me.
 
 The ISO can be downloaded from [kali downloads](https://www.kali.org/downloads/) via torrent and direct download. A little over 3GB.
 
