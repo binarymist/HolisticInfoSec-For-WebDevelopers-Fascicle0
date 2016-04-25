@@ -387,7 +387,7 @@ Easy to use password profiling tool.
 
 #### [Http Screenshot](https://github.com/breenmachine/httpscreenshot) {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-httpscreenshot}
 
-Useful for taking screen shots of a large number of websites concurrently.  
+Useful for taking screen shots and HTML of a large number of websites concurrently.  
 Can use Masscan under the covers.
 
 1. `pip install selenium`
