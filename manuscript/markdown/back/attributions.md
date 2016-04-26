@@ -308,7 +308,7 @@ http-waf-fingerprint: [https://nmap.org/nsedoc/scripts/http-waf-fingerprint.html
 [https://github.com/OWASP/NodeGoat](https://github.com/OWASP/NodeGoat)
 
 **OWASP ZAP** (which also comes pre-installed on Kali Linux) is a particularly useful tool for security regression testing.  
-(https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project)[https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project]
+[https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project)
 
 **Node.JS (by way of zaproxy)**  
 [https://www.npmjs.com/package/zaproxy](https://www.npmjs.com/package/zaproxy)
