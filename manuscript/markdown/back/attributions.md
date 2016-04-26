@@ -307,6 +307,21 @@ http-waf-fingerprint: [https://nmap.org/nsedoc/scripts/http-waf-fingerprint.html
 **NodeGoat** The purposly vulnerable NodeJS web application  
 [https://github.com/OWASP/NodeGoat](https://github.com/OWASP/NodeGoat)
 
+**OWASP ZAP** (which also comes pre-installed on Kali Linux) is a particularly useful tool for security regression testing.  
+(https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project)[https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project]
+
+**Node.JS (by way of zaproxy)**  
+[https://www.npmjs.com/package/zaproxy](https://www.npmjs.com/package/zaproxy)
+
+**ZapPenTester** write-up on codeproject  
+[http://www.codeproject.com/Articles/708129/Automated-penetration-testing-in-the-Microsoft-sta](http://www.codeproject.com/Articles/708129/Automated-penetration-testing-in-the-Microsoft-sta)
+
+**The source**  
+[https://github.com/gustavorhm/ZapPenTester](https://github.com/gustavorhm/ZapPenTester)
+
+**There is also the Zap supported zap-api-dotnet**  
+[https://github.com/zaproxy/zap-api-dotnet](https://github.com/zaproxy/zap-api-dotnet)
+
 **BSIMM** again has some good guidance  
 [https://www.bsimm.com/framework/deployment/penetration-testing/](https://www.bsimm.com/framework/deployment/penetration-testing/)
 

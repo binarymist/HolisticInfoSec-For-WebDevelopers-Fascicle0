@@ -1374,11 +1374,13 @@ I demonstrate this to many of my clients and in my training classes.
 
 The ZAP API can be accessed directly or by any of the following client implementations:
 
-* Node.JS (by way of [zaproxy](https://www.npmjs.com/package/zaproxy)). You can see this all in [my code](https://github.com/binarymist/NodeGoat/tree/master/test/security).
+* Node.JS (by way of [zaproxy](https://www.npmjs.com/package/zaproxy)). You can see this all in [my code](https://github.com/binarymist/NodeGoat/tree/master/test/security). The source for zaproxy is in the Zap core project "[zaproxy](https://github.com/zaproxy/zaproxy/tree/develop/nodejs/api/zapv2)"
 * Python
 * PHP
 * Ruby
-* .Net [write-up](http://www.codeproject.com/Articles/708129/Automated-penetration-testing-in-the-Microsoft-sta) on codeproject and the [source](https://github.com/gustavorhm/ZapPenTester) (ZapPenTester) on the github gustavorhm account. It is easy to see how the API is started and used from the [Zap.cs](https://github.com/gustavorhm/ZapPenTester/blob/master/ZAPPenTester/Zap.cs) file.
+* .Net
+  1. ZapPenTester: [write-up](http://www.codeproject.com/Articles/708129/Automated-penetration-testing-in-the-Microsoft-sta) on codeproject and the [source](https://github.com/gustavorhm/ZapPenTester) (ZapPenTester) on the github gustavorhm account. It is easy to see how the API is started and used from the [Zap.cs](https://github.com/gustavorhm/ZapPenTester/blob/master/ZAPPenTester/Zap.cs) file.
+  2. There is also the Zap supported [zap-api-dotnet](https://github.com/zaproxy/zap-api-dotnet).
 
 There is also the [OWASP Secure TDD Project](https://www.owasp.org/index.php/OWASP_Secure_TDD_Project). A .Net solution. This project appears to either be abandoned or just very low activity. Feel free to offer to help though if you are a .Net developer.
 
