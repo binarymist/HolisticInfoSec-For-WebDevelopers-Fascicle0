@@ -219,6 +219,9 @@ http-waf-fingerprint: [https://nmap.org/nsedoc/scripts/http-waf-fingerprint.html
 **theHarvester** is a tool for gathering e-mail acconts, subdomain names, virtual hosts, open ports/ banners, and employee names from different public sources (search engines, pgp key servers)  
 [https://github.com/laramies/theHarvester](https://github.com/laramies/theHarvester)
 
+**See issue 30**  
+[https://github.com/laramies/theHarvester/issues/30](https://github.com/laramies/theHarvester/issues/30)
+
 **API keys**  for recon-ng  
 [https://bitbucket.org/LaNMaSteR53/recon-ng/wiki/Usage%20Guide#!acquiring-api-keys](https://bitbucket.org/LaNMaSteR53/recon-ng/wiki/Usage%20Guide#!acquiring-api-keys)
 
