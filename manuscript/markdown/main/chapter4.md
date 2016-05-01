@@ -685,7 +685,7 @@ Recon-ng as discussed below also has some in `/usr/share/recon-ng/data/` that it
     # and your chosen wordlist for the directories.jbrofuzz mentioned above.
     # dnsenum can also recurse on all the subdomains with the -r option
 
-This will provide the same results as a simple `dnsenum <target domain>` and then start the bruteforce which lists the IP addresses with the domains and record types
+This will provide the same results as a simple `dnsenum <target domain>` and then start the bruteforce which lists the IP addresses with the domains and record types. In saying that, I've had some trouble with dnsenum in Kali 2016.1 rolling, so I mostly use dnsrecon now.
 
 {linenos=off}
     binarymist.net.             3174    IN   A       202.46.170.8
@@ -719,7 +719,7 @@ This will provide the same results as a simple `dnsenum <target domain>` and the
 Is another similar tool to dnsenum with a few different options. It is usually helpful to try several similar tools for the same or similar exercise as you will get different results and it is good not to depend on any single tool for a specific task. Do not become tool dependent.
 
 {linenos=off}
-    dnsrecon -d <target domain>
+    dnsrecon -d <target domain> -D <your chosen wordlist> -t brt
 
 There are many other options. Simply run the tool with no arguments to get its help.
 
@@ -743,8 +743,12 @@ If not run from discover-scripts:
 within Kali Linux you can go through the menus: Information Gathering -> OSINT Analysis -> theharvester  
 or run from the terminal
 
+Just beware though, that if you want to perform a DNS brute force (`-c`), then at the time of writing, the `/usr/share/theharvester/discovery/dnssearch.py` assumes that the word list you will be using is the non existent `/usr/share/theharvester/dns-names.txt`. Running theHarvester from anywhere other than `/usr/share/theharvester/` if you use the `-c` option will fail. It's been fixed (by way of providing a command line argument) in the latest code base, I haven't tested it yet though, as at this time it isn't in the kali 2016.1 rolling repository. So I just symlink any wordlist I would like to use:
+
+`ln -s /usr/share/dirbuster/wordlists/directories.jbrofuzz /usr/share/theharvester/dns-names.txt`
+
 {linenos=off, lang=Bash}
-    theharvester -d <target domain> -b all -c -t
+    /usr/share/theharvester# python theharvester -d <target domain> -b all -c -t
     # Just running theharvester without any options provides examples and details on the options.
 
 The sources used are:
@@ -764,6 +768,8 @@ The sources used are:
 * shodan (for internet connected devices). Their website states they search The Web, Refrigerators, Webcams, Power Plants, IoT, Buildings. To use, you need to register and put your API key in discovery/shodansearch.py
 
 Both passive and active options available.
+
+%% Gitrob would be good here also.
 
 #### Discover-scripts {#process-and-practises-penetration-testing-reconnaissance-discover-scripts}
 

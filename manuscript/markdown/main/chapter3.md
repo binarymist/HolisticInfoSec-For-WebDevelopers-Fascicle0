@@ -292,6 +292,7 @@ You may also need to:
 7. ln -s /usr/bin/pth-smbclient smbexeclient
 
 %% Had discussion with Jonny via email about the links.
+%% This is also broken currently. See https://github.com/pentestgeek/smbexec/issues/129
 
 #### [Gitrob](https://github.com/michenriksen/gitrob)
 
