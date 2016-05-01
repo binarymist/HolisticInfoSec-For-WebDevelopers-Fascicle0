@@ -211,7 +211,7 @@ This is an example of using nmap against an un-hardened target. I discuss in lat
     # Attempt to detect un-hardened target OS and services running on it.
     nmap -A <target>
 
-{title="nmap result", linenos=off}
+{title="nmap result", linenos=off, lang=Bash}
     Starting Nmap 6.47 ( http://nmap.org ) at 2015-11-12 20:17 NZDT
     Nmap scan report for <target>
     Host is up (0.00067s latency).
@@ -335,7 +335,7 @@ Now using the service detection option `-sV` on the un-hardened metasploitable 2
 {title="nmap command", linenos=off}
     nmap -sV --version-intensity 9 <target>
 
-{title="nmap result", linenos=off}
+{title="nmap result", linenos=off, lang=Bash}
     Starting Nmap 6.47 ( http://nmap.org ) at 2015-11-12 19:38 NZDT
     Nmap scan report for <target>
     Host is up (0.000085s latency).
