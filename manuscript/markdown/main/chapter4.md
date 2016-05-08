@@ -743,9 +743,11 @@ If not run from discover-scripts:
 within Kali Linux you can go through the menus: Information Gathering -> OSINT Analysis -> theharvester  
 or run from the terminal
 
-Just beware though, that if you want to perform a DNS brute force (`-c`), then at the time of writing, the `/usr/share/theharvester/discovery/dnssearch.py` assumes that the word list you will be using is the non existent `/usr/share/theharvester/dns-names.txt`. Running theHarvester from anywhere other than `/usr/share/theharvester/` if you use the `-c` option will fail. It's been fixed (by way of providing a command line argument) in the latest code base, I haven't tested it yet though, as at this time it isn't in the kali 2016.1 rolling repository. So I just symlink any wordlist I would like to use:
+Just beware though, that if you want to perform a DNS brute force (`-c`), then at the time of writing, the `/usr/share/theharvester/discovery/dnssearch.py` script assumes that the word list you will be using is the non existent `/usr/share/theharvester/dns-names.txt` wordlist. Running theHarvester from anywhere other than `/usr/share/theharvester/` if you use the `-c` option will fail. It's been fixed (by way of providing a command line argument) in the latest code base, I haven't tested it yet though, as at this time it isn't in the kali 2016.1 rolling repository. See [issue 30](https://github.com/laramies/theHarvester/issues/30). So I just symlink any wordlist I would like to use:
 
 `ln -s /usr/share/dirbuster/wordlists/directories.jbrofuzz /usr/share/theharvester/dns-names.txt`
+
+Then run like this:
 
 {linenos=off, lang=Bash}
     /usr/share/theharvester# python theharvester -d <target domain> -b all -c -t
@@ -1386,7 +1388,7 @@ The ZAP API can be accessed directly or by any of the following client implement
 * Ruby
 * .Net
   1. ZapPenTester: [write-up](http://www.codeproject.com/Articles/708129/Automated-penetration-testing-in-the-Microsoft-sta) on codeproject and the [source](https://github.com/gustavorhm/ZapPenTester) on the github gustavorhm account. It is easy to see how the API is started and used from the [Zap.cs](https://github.com/gustavorhm/ZapPenTester/blob/master/ZAPPenTester/Zap.cs) file.
-  2. There is also the Zap supported [zap-api-dotnet](https://github.com/zaproxy/zap-api-dotnet).
+  2. There is also the Zap supported [zap-api-dotnet](https://github.com/zaproxy/zap-api-dotnet) offering, which I have had good success with.
 
 There is also the [OWASP Secure TDD Project](https://www.owasp.org/index.php/OWASP_Secure_TDD_Project). A .Net solution. This project appears to either be abandoned or just very low activity. Feel free to offer to help though if you are a .Net developer.
 
@@ -1427,7 +1429,9 @@ The other way to do it is via the `~/ZAP/config.xml` file in the following secti
 
 Update the `zapHostName` and `zapPort` properties in file `config/env/test.js` to reflect the host name (or IP address) and port that the Zap API is listening on within your virtual guest. If you want to debug the security regression tests, add the same properties to the `config/env/development.js` file.
 
-Start Zap the usual way. Zap can and probably should be scripted to start automatically on each test or suite run, also reset the database so you have a known state if you are planning on using the API in your development team. Zap can be terminated via its API and is usually good practice to do so on each test or suite run. If you don't have a UI:
+You will also need to make sure the zapApiKey in the `config/env/test.js` file matches that in the Zap UI Options menu -> API -> API Key, or in the `~/ZAP/config.xml` file in the `<api><key></key></api>` section. Again, if you want to debug the security regression tests, make sure the key value matches in the `config/env/development.js` file also.
+
+Start Zap the usual way. Zap can and probably should be scripted to start automatically on each test or suite run, also reset the database so you have a known state if you are planning on using the API in your development team. Zap can be terminated via its API and is usually good practice to do so on each test or suite run Alternatively you can just create a new session via the Zap Api. If you don't have a UI:
 
 {linenos=off, lang=Bash}
     owasp-zap -daemon
@@ -1448,10 +1452,10 @@ For each test run, this is the usual set of steps:
     # In another terminal start the security regression test(s):
     grunt testsecurity
 
-By default the XSS vulnerabilities exist in the `/profile` route. By running `grunt testsecurity`, the `test/security/profile-test.js` will be run and you should be informed of a failed test with the following output:
+By default the XSS vulnerabilities exist in the `/profile` route. By running `grunt testsecurity`, the `test/security/profile-test.js` will be run and you should be informed of a failed test with output similar to the following:
 
 {title="Zap Found Vulnerabilities", linenos=off, lang=Bash}
-    me@myBox in Source/NodeGoat git:(workshop) ✗  grunt testsecurity
+    me@myBox in Source/NodeGoat git:(workshop)   grunt testsecurity
     Running "env:test" (env) task
 
     Running "mochaTest:security" (mochaTest) task
