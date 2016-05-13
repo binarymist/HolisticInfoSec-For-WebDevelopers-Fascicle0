@@ -750,7 +750,7 @@ Just beware though, that if you want to perform a DNS brute force (`-c`), then a
 Then run like this:
 
 {linenos=off, lang=Bash}
-    /usr/share/theharvester# python theharvester -d <target domain> -b all -c -t
+    /usr/share/theharvester# python theHarvester.py -d <target domain> -b all -c -t
     # Just running theharvester without any options provides examples and details on the options.
 
 The sources used are:
@@ -1431,7 +1431,7 @@ Update the `zapHostName` and `zapPort` properties in file `config/env/test.js` t
 
 You will also need to make sure the zapApiKey in the `config/env/test.js` file matches that in the Zap UI Options menu -> API -> API Key, or in the `~/ZAP/config.xml` file in the `<api><key></key></api>` section. Again, if you want to debug the security regression tests, make sure the key value matches in the `config/env/development.js` file also.
 
-Start Zap the usual way. Zap can and probably should be scripted to start automatically on each test or suite run, also reset the database so you have a known state if you are planning on using the API in your development team. Zap can be terminated via its API and is usually good practice to do so on each test or suite run Alternatively you can just create a new session via the Zap Api. If you don't have a UI:
+Start Zap the usual way. Zap can and probably should be scripted to start automatically on each test or suite run, also reset the database so you have a known state if you are planning on using the API in your development team. Zap can be terminated via its API and is usually good practice to do so on each test or suite run Alternatively, you can just create a new session via the Zap Api. If you don't have a UI:
 
 {linenos=off, lang=Bash}
     owasp-zap -daemon
