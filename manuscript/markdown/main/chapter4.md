@@ -1409,8 +1409,6 @@ In VirtualBox you will need a Host-only Network added. By default this will be c
 
 With this step taken, you will also need to make sure the `hostName` property in the `config/env/all.js` is set to the same IP address, as this IP address is used in the regression test(s) to inform the selenium web driver where our NodeGoat is listening from. In addition to that, requests are proxied through the Zap API to this same address.
 
-In this example we enable the DHCP server on the Host-only Network by just checking the check-box. The DHCP address will be `192.168.56.2`
-
 If you have a firewall running, You will need to allow TCP in on interface `vboxnet0`. From: `192.168.56.0/24` To: `192.168.56.1` on port `4000` (NodeGoat) and `35729` (LiveReload)
 
 ##### Zap Running on a local VirtualBox guest
