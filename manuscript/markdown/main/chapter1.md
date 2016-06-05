@@ -121,7 +121,7 @@ Keep your eye on the vulnerability advisories, as that is part of what an attack
 
 ## 3. SSM Countermeasures {#starting-with-the-30000-foot-view-countermeasures}
 
-![](images/BobTheBuilder.jpg)
+![](images/ProductBacklog.png)
  <!---This is where the images live: https://raw.githubusercontent.com/wiki/binarymist/HolisticInfoSec-For-WebDevelopers/BinaryMist-Approach-To-Threat-Modelling-Assets/BobTheBuilder.jpg-->
 
 Here is where you work through collaboratively creating countermeasure Product Backlog Items (PBIs). Countermeasure PBIs are like any other PBI. PBI qualities:
