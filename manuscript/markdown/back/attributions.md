@@ -490,6 +490,9 @@ Elliot was making his way through the so called impenetrable storage facility (S
 **Get yourself a OneRNG** for generating true randomness  
 [http://onerng.info/](http://onerng.info/)
 
+**MembershipReboot** also raises events via an event bus architecture that your application can listen to and take further action on  
+[https://brockallen.com/2014/02/10/how-membershipreboot-mitigates-login-and-two-factor-authentication-brute-force-attacks/](https://brockallen.com/2014/02/10/how-membershipreboot-mitigates-login-and-two-factor-authentication-brute-force-attacks/)
+
 **Michael Bazzell has an excellent collection of tools** to assist with validating phone numbers under the "Telephone Numbers" heading at his website  
 [https://inteltechniques.com/links.html](https://inteltechniques.com/links.html)
 

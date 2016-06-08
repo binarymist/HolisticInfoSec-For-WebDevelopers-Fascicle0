@@ -951,6 +951,18 @@ Defeating compromise is actually very simple, but few follow the guidelines. Eve
 * Unique for every account
 * Use password database (ideally multi factor authentication) that generates passwords for you based on criteria you set. This way the profiling attacks mentioned are going to have a tough time brute forcing your accounts. It is such simple and easy to implement advice, but still so many are failing to take heed.
 
+#### Brute Forcing
+
+Most identity management solutions (ASP.NET Identity for example) do nothing for detection, prevention or notification.
+
+MembershipReboot keeps track of the number of failed login attempts (default five) and time of last failed login, then locking the user out of their account if five failed attempts have been made within the lockout duration (default of five minutes), even if correct credentials are used during the lockout period.
+MembershipReboot also raises events via an event bus architecture that your application can listen to and take further action on.
+      
+Adding a second factor for authentication can help, but this to can be brute forced if implemented incorrectly.
+There should be a short window of opportunity to enter the out of band code into the input field. In MembershipReboot, this is implemented by a configurable short-lived authentication cookie which by default expires after five minutes.
+MembershipReboot uses the same tracking mechanism for the second factor as it does for entering passwords, so by default, the user has five attempts to enter the correct code before they are locked out. So the user is allowed five attempts or five minutes, which ever occurs first.
+This sort of implementation of two factor authentication goes a long way to mitigating brute force attacks.
+
 ### Vishing (Phone Calls) {#people-countermeasures-phone-calls}
 ![](images/ThreatTags/PreventionDIFFICULT.png)
 
@@ -1118,6 +1130,8 @@ This can take some courage, transparency and willingness to inspect and adapt to
 ### Weak Password Strategies
 
 Some added complexity is introduced, added complexity provides opportunity for mistakes to occur. Nothing much is more unsafe than recording your passwords on paper in plain text or in an unencrypted text file on your computer. Possible over confidence that your secrets are now guaranteed impenetrable.
+
+When it comes to mitigating brute force attacks and relying on multi factor authentication, the countermeasures rely on the implementation being well thought out, or consuming libraries that others have done the same. Nothing substitutes doing your own research.
 
 ### Vishing (Phone Calls)
 
