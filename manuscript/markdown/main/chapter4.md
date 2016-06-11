@@ -1349,7 +1349,7 @@ Also consider creating evil test conditions. Often developers do not have the mi
 
 Once you have your evil test conditions defined, as usual once your normal test conditions are ready, you start the Test Driven Development (TDD) cycling, but now augmenting those usual test conditions with the evil ones.
 
-![](images/red_green_refactor.jpg)
+![](images/RedGreenRefactor.png)
 
 Adding **security focused TDD/BDD/ATDD** tests. This is the same amount of work as any other developer test driven development, but it has the same huge benefit of bringing the finding of not just faults, but security faults, from where it is very expensive to fix:  
 
