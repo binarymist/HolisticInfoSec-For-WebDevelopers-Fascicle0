@@ -180,7 +180,7 @@ or possibly with a resource script:
 `msfconsole -r <your custom resource>.rc`  
 We used to start the Metasploit service with:  
 `service metasploit start`  
-but now that there is no `metasploit` service as such.
+but now there is no `metasploit` service as such.
 
 ##### Useful metasploit [commands](https://www.offensive-security.com/metasploit-unleashed/msfconsole-commands/)
 
