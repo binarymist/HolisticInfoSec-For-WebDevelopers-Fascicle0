@@ -1268,6 +1268,16 @@ In order to expose services within a VM to the host's interface, port forwarding
 
 There is no direct communication between VMs unless you explicitly set it up. That said, Qubes provides secure inter-VM clip-board and file sharing.
 
+#### Offensive
+
+In terms of tooling up for offensive exploitation, there are at least three scenarios:
+
+1. PenTester: Using your favourite security focused OS in a VM on any host is often good enough if you're not expecting to be attacked yourself
+2. BlackHat in potentially hostile environment: Use your favourite security focused OS as a Whonix-Workstation as a Qubes TemplateVM communicating through a Whonix-Gateway as a Qubes TemplateVM, both of which reside in a Qubes bare metal hypervisor (installed directly onto your hardware).
+3. BlackHat with a requirement for amnesia: Same as 2, but you'll need to do a lot of work to clean up all your foot prints. Another option to save manual clean-up is to use Tails as a Qubes TemplateVM in the 2 scenario. Tails is however not a penetration testing distribution, so you can't cover all these scenarios at once with out of the box solutions.
+
+See the Additional Resources chapter for more information.
+
 ### Documenting and Reporting
 
 While this section is last in the Penetration Testing section, that does not mean carry it out last. Penetration tester and attacker alike will be recording information throughout their entire engagement, especially during the Reconnaissance stage, so too should you.
@@ -1722,6 +1732,7 @@ In addition to what our solo Professional Developer accomplished [above](#proces
 4. code reviews need to be based on the coding standards and guidelines
 5. encourage developers to commit regularly, thus their code is being run against the entire test suite, providing confidence that their code plays nicely with everyone elses code. Commit frequency can be measured
 6. shame developers when they break the [CI build](http://blog.binarymist.net/2014/02/22/automating-specification-by-example-for-net). Report on how long builds stay broken for and shame when the duration is longer than an agreed on time.
+
 Most of these practices can be added to the Definition of Done, this way Developers can and should be rewarded for doing these activities. Even better, you can automate most of these practices.
 
 ### Forming Habits and Sharpening Skills

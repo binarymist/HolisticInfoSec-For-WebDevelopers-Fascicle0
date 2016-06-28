@@ -51,14 +51,20 @@ Man page is very good [http://linux.die.net/man/1/nmap](http://linux.die.net/man
 Finding details on people: [http://searchenginez.com/findpeople_newzealand.html](http://searchenginez.com/findpeople_newzealand.html)  
 Finding details on companies: [https://www.business.govt.nz/companies/](https://www.business.govt.nz/companies/)
 
+**Firejail tips**  
+[http://forums.linuxmint.com/viewtopic.php?f=42&t=202735](http://forums.linuxmint.com/viewtopic.php?f=42&t=202735)
+
 **Insight on where Qubes is going**  
 [http://theinvisiblethings.blogspot.co.nz/2013/03/introducing-qubes-odyssey-framework.html](http://theinvisiblethings.blogspot.co.nz/2013/03/introducing-qubes-odyssey-framework.html)
 
 **The Operating System That Can Protect You** Even if You Get Hacked  
 [https://micahflee.com/2014/04/the-operating-system-that-can-protect-you-even-if-you-get-hacked/](https://micahflee.com/2014/04/the-operating-system-that-can-protect-you-even-if-you-get-hacked/)
 
-**Firejail tips**  
-[http://forums.linuxmint.com/viewtopic.php?f=42&t=202735](http://forums.linuxmint.com/viewtopic.php?f=42&t=202735)
+**Offensive Exploitation tooling setup**  
+For the BlackHat in a potentially hostile environment, one example of a machine configuration might be:  
+[https://scottlinux.com/2015/09/01/use-kali-linux-through-tor-with-whonix-gateway/](https://scottlinux.com/2015/09/01/use-kali-linux-through-tor-with-whonix-gateway/)  
+on top of  
+[https://www.whonix.org/wiki/Qubes](https://www.whonix.org/wiki/Qubes)
 
 **OpenSSL Heartbleed and Apples Goto Fail** could have been prevented if (S)TDD was used. Check out Mike Bland's excellent study and POC  
 [http://martinfowler.com/articles/testing-culture.html](http://martinfowler.com/articles/testing-culture.html).
