@@ -1272,9 +1272,9 @@ There is no direct communication between VMs unless you explicitly set it up. Th
 
 In terms of tooling up for offensive exploitation, there are at least three scenarios:
 
-1. PenTester: Using your favourite security focused OS in a VM on any host is often good enough if you're not expecting to be attacked yourself
-2. BlackHat in potentially hostile environment: Use your favourite security focused OS as a Whonix-Workstation as a Qubes TemplateVM communicating through a Whonix-Gateway as a Qubes TemplateVM, both of which reside in a Qubes bare metal hypervisor (installed directly onto your hardware).
-3. BlackHat with a requirement for amnesia: Same as 2, but you'll need to do a lot of work to clean up all your foot prints. Another option to save manual clean-up is to use Tails as a Qubes TemplateVM in the 2 scenario. Tails is however not a penetration testing distribution, so you can't cover all these scenarios at once with out of the box solutions.
+1. Penetration Tester: Using your favourite security focused OS in a VM on any host is often good enough if you're not expecting to be attacked yourself
+2. Black Hat in potentially hostile environment: Use your favourite security focused OS as a Whonix-Workstation as a Qubes TemplateVM communicating through a Whonix-Gateway as a Qubes TemplateVM, both of which reside in a Qubes bare metal hypervisor (installed directly onto your hardware).
+3. Black Hat with a requirement for amnesia: Same as 2, but you'll need to do a lot of work to clean up all your foot prints. Another option to save manual clean-up is to use Tails as a Qubes TemplateVM in the 2 scenario. Tails is however not a penetration testing distribution, so you can't cover all these scenarios at once with out of the box solutions.
 
 See the Additional Resources chapter for more information.
 

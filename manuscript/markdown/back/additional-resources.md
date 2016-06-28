@@ -57,11 +57,11 @@ Finding details on companies: [https://www.business.govt.nz/companies/](https://
 **Insight on where Qubes is going**  
 [http://theinvisiblethings.blogspot.co.nz/2013/03/introducing-qubes-odyssey-framework.html](http://theinvisiblethings.blogspot.co.nz/2013/03/introducing-qubes-odyssey-framework.html)
 
-**The Operating System That Can Protect You** Even if You Get Hacked  
+**The Operating System That Can Protect You** even when you get hacked  
 [https://micahflee.com/2014/04/the-operating-system-that-can-protect-you-even-if-you-get-hacked/](https://micahflee.com/2014/04/the-operating-system-that-can-protect-you-even-if-you-get-hacked/)
 
 **Offensive Exploitation tooling setup**  
-For the BlackHat in a potentially hostile environment, one example of a machine configuration might be:  
+For the Black Hat in a potentially hostile environment, one example of a machine configuration might be:  
 [https://scottlinux.com/2015/09/01/use-kali-linux-through-tor-with-whonix-gateway/](https://scottlinux.com/2015/09/01/use-kali-linux-through-tor-with-whonix-gateway/)  
 on top of  
 [https://www.whonix.org/wiki/Qubes](https://www.whonix.org/wiki/Qubes)
