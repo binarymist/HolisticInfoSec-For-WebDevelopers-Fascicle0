@@ -23,8 +23,8 @@ You might be thinking that this team looks very familiar. It probably is, as it 
 Performing this process as a team brings out the best in everyone. There are, of course, times when it is more effective to break out and work alone for a period of time.
 
 ## 1. SSM Asset Identification {#starting-with-the-30000-foot-view-asset-identification}
-* [MS 1. Identify Assets](https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_006)
-* [OWASP Assets](https://www.owasp.org/index.php/Application_Threat_Modeling#Assets)
+* [Microsoft (MS) 1. Identify Assets](https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_006)
+* [Open Web Application Security Project (OWASP) Assets](https://www.owasp.org/index.php/Application_Threat_Modeling#Assets)
 
 The first question we must ask ourselves: What are assets in the context of threat modeling? Assets are something we or our clients place value on that we are responsible for, and subsequently will want to protect from unauthorised access.
 
