@@ -27,11 +27,11 @@ The reason I set out on the journey of distilling my knowledge and others into t
 
 ## Acknowledgements
 
-![](images/LeanneCarter.jpg)
+![](images/LeanneCarter.png)
 
 Leanne Carter: For being the long suffering wife of a technologist that often puts his priorities in the wrong places. Leanne has a very pragmatic approach to everything, always seeing the simple (should be obvious) answers to everything. One of Leanne's natural abilities is being able to walk into a room and lighten the mood instantly. Reviewing and proof editing.
 
-![](images/RussMcRee.jpg)
+![](images/RussMcRee.png)
 
 Russ McRee: For helping and chair leading with many aspects of the book writing and promoting process, for contacts, reaching out to them requesting favours. Technical Editing. Making sense of my writing and helping to shape and mould it into something that is easily readable by the target audience. 
 
