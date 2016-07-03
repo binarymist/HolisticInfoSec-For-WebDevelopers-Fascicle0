@@ -1593,6 +1593,7 @@ Techniques and tools to assist with automating
   * [DOMXSSScanner](https://github.com/yaph/domxssscanner). Does what the name suggests.
   * [JSPrime](https://www.youtube.com/watch?v=Vk5SPGpqiLc). Security focused. Not currently maintained at this point in time. The owners are keen for someone to pick it up.
   * [JSWebTools](http://www.jswebtools.org/). A collection of research papers and JS related security tools.
+* [Code Climate](https://codeclimate.com/) is a static analysis platform that provides an open and extensible model to run [community provided analysis engines](https://codeclimate.com/engines).
 
 #### Dynamic Analysis
 

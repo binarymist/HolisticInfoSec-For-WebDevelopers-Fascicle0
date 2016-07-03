@@ -337,6 +337,11 @@ http-waf-fingerprint: [https://nmap.org/nsedoc/scripts/http-waf-fingerprint.html
 **JSWebTools**  
 [http://www.jswebtools.org/](http://www.jswebtools.org/)
 
+**Code Climate** is a static analysis platform  
+[https://codeclimate.com/](https://codeclimate.com/)  
+that provides an open and extensible model to run community provided analysis engines  
+[https://codeclimate.com/engines](https://codeclimate.com/engines)
+
 **Flow** looks to be a good option. Providing consumers with the ability of introducing type checking progressively  
 [http://flowtype.org/](http://flowtype.org/)
 
