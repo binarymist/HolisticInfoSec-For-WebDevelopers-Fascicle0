@@ -2,13 +2,13 @@
 
 ![](images/30000View.gif)
 
-First of all, why? Why start so high? Developers spend most of their lives focusing on code, and sometimes on architectural concepts and patterns. Software developers rarely focus on anything higher than this which has the affect of causing blind spots. The reason we start so high, and encourage the developer to come back to this level every so often, is to ensure that they are actually creating good, secure code and that their priorities are correctly aligned with the needs of their business. Ironically, as is often the case, a security focus may not necessarily align with the business's wants.
+First of all, why? Why start so high? Developers spend most of their lives focusing on code, and sometimes on architectural concepts and patterns. Software developers rarely focus on anything higher than this which has the affect of causing blind spots. The reason we start so high, and encourage the developer to come back to this level every so often, is to ensure that they are actually creating good, secure code and that their priorities are correctly aligned with the needs of their business. Ironically, as is often the case, a security focus may not necessarily align with the business' wants.
 
 Stepping back allows your peripheral vision to kick in.
 
-This stepping back process, a form of modeling, should be performed by a collection of the following people:
+This stepping back process (a form of modeling), should be performed by a collection of the following people:
 
-1. Deeply technical (software expert (developer/engineer)). I specifically do not mention tester(s) here, as testing is the job of the developer. The developer is responsible for delivering high quality working code every Sprint.
+1. Deeply technical (software expert (developer/engineer)). I specifically do not mention tester(s) here, as testing should be the job of the developer. The developer is responsible for delivering high quality working code every Sprint.
 2. Network expert(s)
 3. Domain expert(s) 
 4. The person solely responsible for the project or product being delivered
@@ -37,14 +37,13 @@ Many of the following chapters will address asset identification as the first st
 Here are some assets to consider as part of your domain:
 
 * User credentials
-  Often stored within data stores, but also often found on the likes of post-it notes stuck to monitors or under a keyboard etc.
+  often stored within data stores, but also often found on the likes of post-it notes stuck to monitors or under a keyboard etc.
 * Identity information
   such as: Email addresses, physical addresses, phone numbers, birth certificates
 * Credit card numbers and similar
-* Confidential business information
-  This could come in many forms such as email, organisation wide wikis, document storage, and be stored in many places, such as: in data stores, code, configuration files, peoples heads, peoples desks and many others
+* Confidential business information could come in many forms such as email, organisation wide wikis, document storage, and be stored in many places, such as: in data stores, code, configuration files, peoples heads, peoples desks and many others
 * Confidential client information
-* Reputation. I am sure you can think of a few ways that you or your organisations reputation could be tarnished or worse.
+* Reputation: I am sure you can think of a few ways that you or your organisations reputation could be tarnished or worse.
 
 Now, if you relate the potential loses with information security vectors, you will come up with a target list we can take into the next stages.
 
@@ -84,13 +83,13 @@ Think about some of the relationships the target business takes a dependency on,
   * How easy is it for this group of threat agents to actually exploit this vulnerability?
   * How well known is this vulnerability to this group of threat agents?
   * How likely is an exploit to be detected?
-* Impact    "Technical Factors"
+* Impact "Technical Factors"
   * What's the impact likely to be if a particular exploit is executed
   * How much data could be disclosed and how sensitive is it?
   * How much data could be corrupted and how damaged is it?
   * Which services could be lost, how vital are they and how long could they be down for?
   * Would you be able to trace the threat agents actions to an individual?
-* Impact    "Business Factors"
+* Impact "Business Factors"
   * What would the financial damage be to any given exploit?
   * Would the exploit result in reputation damage that could harm your business?
   * How much exposure does non-compliance introduce?
@@ -152,7 +151,7 @@ As we work through later chapters we will discuss many more hypothetical risks t
 ## 5. SSM Costs and Trade-offs {#starting-with-the-30000-foot-view-costs-and-trade-offs}
 I am not here to do the work for you, but rather to help you do it.
 
-> Give a man a fish and feed him for a day. Teach a man to fish and feed him for life
+> "Give a man a fish and feed him for a day. Teach a man to fish and feed him for life" - Anne Isabella Ritchie.
 
 This, again, is really dependent on the solution(s) you discover.
 
