@@ -1,6 +1,6 @@
 # 3. Tooling Setup {#tooling-setup}
 
-All the software tools I use for penetration and security testing are free, and most are also open source. I'm always diligent in focusing on free and open source tools, as it makes it easy:
+All the software tools I use for penetration and security testing are free, and most of them are open source. I am always diligent in focusing on the free and open source tools, as it makes it easier:
 
 1. To pitch tooling acquisition to managers, and those that hold the purse strings.
 2. To learn how the tools work and contribute to the security ecosystem.
@@ -14,13 +14,13 @@ Kali is also FHS compliant in that the file system complies to the Linux File-sy
 Wireless device support is vast, including wireless USB devices.  
 As with BackTrack 5, the Kali ISO also has an option to boot into forensics mode. No drives are written to (including swap) and no drives will be auto mounted upon insertion.
 
-Some of the following recommendations have come from my [blog post](http://blog.binarymist.net/2014/03/29/up-and-running-with-kali-linux-and-friends/) originally used for a PenTest Magazine article.
+Some of the following recommendations have come from my [blog post](http://blog.binarymist.net/2014/03/29/up-and-running-with-kali-linux-and-friends/) originally used in a PenTest Magazine article.
 
 When it comes to actually installing Kali on hardware, there are a multitude of options available.
 
 All externally listening services are disabled by default, but very easy to turn on if/when required. The goal is to reduce chances of detecting the presence of Kali.
 
-Kali also provides a simple way to create your own ISO image from the latest source. You can include the packages you want, exclude the ones you do not, and you can customise the kernel. The options are virtually limitless.
+Kali also provides a simple way to create your own ISO image from the latest source. You can include the packages you want and exclude the ones you don't, you can also customise the kernel. The options are virtually limitless.
 
 The default desktop environment in Kali 2.0 is Gnome3, but Kali also provides an easy way to configure which desktop environment you use.
 
@@ -51,21 +51,21 @@ Want more info still?
 ### Kali Linux Install {#tooling-setup-kali-linux-kali-linux-install}
 
 Offensive Security (the creators of Kali Linux) provide many options for running their distribution including ISO, turn-key [VMware or VirtualBox](https://www.offensive-security.com/kali-linux-vmware-virtualbox-image-download/) image, [custom ARM images](https://www.offensive-security.com/kali-linux-vmware-arm-image-download/), and Mobile images ([NetHunter](https://www.kali.org/kali-linux-nethunter/)).
-I have used the ISO installed on a VM guest for this set-up, as I had a capable host for running this VM side by side with my preferred Windows VM. I didn't want the pre-generated SSH host key, which is why I chose the ISO over the turn-key image. Learn more about the dangers of using an install with the pre-generated SSH host key via Nilesh Kapoor's talk at OWASP NZ Day 2016 on [Host Hardening](https://www.owasp.org/index.php/OWASP_New_Zealand_Day_2016#tab=Presentation_Schedule). Slide 12 details how to regenerate the SSH keychain. If you install on physical hardware, you can just skip this section and move to the "[Tools I Use](#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux)" section.
+I have used the ISO installed on a VM guest for this set-up, as I had a capable host for running this VM side by side with my preferred Windows VM. I did not want the pre-generated SSH host key, which is why I chose the ISO over the turn-key image. Learn more about the dangers of using an install with the pre-generated SSH host key via Nilesh Kapoor's talk at OWASP NZ Day 2016 on [Host Hardening](https://www.owasp.org/index.php/OWASP_New_Zealand_Day_2016#tab=Presentation_Schedule). Slide 12 details how to regenerate the SSH keychain. Note: If you install on physical hardware, you cannskip this section and move to the "[Tools I Use](#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux)" section.
 
 The Offensive Security team, which can be found on [IRC](http://docs.kali.org/community/kali-linux-irc-channel), are also very helpful and quick to respond to package requests, etc.
 
 You should find most of what you need at [kali category installation](http://docs.kali.org/category/installation), just follow the links specific to your requirements.
 
 For this install I created a new VirtualBox VM based on Debian 64.  
-I created a dynamically allocated 45GB VDI disk with 4GB RAM. More RAM is helpful sometimes, but in most cases I've found 4GB to be enough. You can also increase the size of the disk if you want to. 50GB will give a little more breathing room, especially if you have additional tools or password lists. With this install I end up with a total of 24.2 GB used.
+I created a dynamically allocated 45GB VDI disk with 4GB RAM. More RAM is helpful sometimes, but in most cases I have found 4GB to be enough. You can also increase the size of the disk if you want to, 50GB will give you a little more breathing room, especially if you have additional tools or password lists. With this install, I ended up using a total of 24.2 GB.
 
 The following are just my preferences, you can play with these as you like.  
 Once the machine is created, I go into the settings and change the location of Snapshots to be stored with the VM, which is running on its own SSD.  
-Change the Shared Clipboard and Drag'n'Drop to Bidirectional.  
+Then I change the Shared Clipboard and Drag'n'Drop to Bidirectional.  
 Change Processors to use as many cores as you can without affecting the rest of your system and any other VMs running on it.  
 Increase the Video Memory to at least 64MB.  
-I usually like to add a shared folder to easily copy files from host <-> guest. Do not forget to add your user to the vboxsf group that VirtualBox Guest Additions Installer creates below.  
+I usually like to add a shared folder so its easier to copy files from host <-> guest. Do not forget to add your user to the vboxsf group that VirtualBox Guest Additions Installer creates below.  
 
 Setup network host adapters: this is also discussed in the [NodeGoat Set-up on your local machine](#process-agile-development-and-practices-security-regression-testing-nodegoat-set-up-on-your-local-machine) section in the Process and Practises chapter:
 
@@ -111,7 +111,7 @@ Alternatively, make the switch to Bridged Adapter on Adapter 1. This way you don
 
 The ISO can be downloaded from [kali downloads](https://www.kali.org/downloads/) via torrent and direct download and is a little over 3GB in size.
 
-You'll want to check the validity of the ISO (or other image if that is your preference) by verifying the SHA1 checksums. Details are directly under the downloads section and should be enough to get you going.
+You will want to check the validity of the ISO (or other image if that is your preference) by verifying the SHA1 checksums. Details are directly under the downloads section and should be enough to get you going.
 
 There are additional details if you want to read them at [http://docs.kali.org/introduction/download-official-kali-linux-images](http://docs.kali.org/introduction/download-official-kali-linux-images), but essentially there are several ways to validate that you have the official Kali Linux installer and not some tampered-with binary. The details at the above link provide a bit more explanation around the validation steps, and importing the Kali GPG public key. At the bottom of the page is the command for cryptographically validating the downloaded binary once you have validated the downloaded `SHA1SUMS` file with the `SHA1SUMS.pgp` key that you also downloaded. You'll likely just have to change the actual `.iso` name in the command to that of the `.iso` you downloaded.
 
@@ -130,9 +130,9 @@ Once installed, run the following, and regularly thereafter. On the first dist-u
     apt-get install -y virtualbox-guest-x11
     reboot
 
-In Kali 2016.1 (Sana) the default user is no longer root. If your installing, make sure you use a decent password, not a dictionary word or similar. It is generally a good idea to use a mix of upper case, lower case characters, numbers and special characters, and of a decent length. You will get the option to set your password and create a root user, or just use sudo during the install. If you want to change password later, at the terminal, enter: `passwd` and follow the prompts. Many of the commands used in this book will require root privileges. Prefixing with `sudo` will elevate your privileges to those of root.
+In Kali 2016.1 (Sana) the default user is no longer root. If your installing, make sure you use a decent password, not a dictionary word or similar. It is generally a good idea to use a mix of upper case, lower case characters, numbers and special characters, and of a decent length. You will get the option to set your password and create a root user, or just use sudo during the install. If you want to change the password later, at the terminal, enter: `passwd` and follow the prompts. Many of the commands used in this book will require root privileges. Prefixing with `sudo` will elevate your privileges to those of root.
 
-I usually set-up the `/etc/network/interfaces` file here for the host-only adapter, as we will need this working for the Process and Practises chapter at a minimum, again this is partly discussed in the [NodeGoat Set-up on your local machine](#process-agile-development-and-practices-security-regression-testing-nodegoat-set-up-on-your-local-machine) section in the Process and Practises chapter. Backup your `/etc/network/interfaces` before making changes, and add the following to the bottom of the interfaces:
+I usually set-up the `/etc/network/interfaces` file here for the host-only adapter, we will need this working for the Process and Practises chapter at a minimum, again this is partly discussed in the [NodeGoat Set-up on your local machine](#process-agile-development-and-practices-security-regression-testing-nodegoat-set-up-on-your-local-machine) section in the Process and Practises chapter. Backup your `/etc/network/interfaces` before making changes, and add the following to the bottom of the interfaces:
 
 {linenos=off}
     #Host-only adapter
@@ -266,7 +266,7 @@ I now take a backup in case I need to revert. With VirtualBox it is very easy to
 
 #### Terminator {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-terminator}
 
-As I spend most of my life in terminals, I want a good one. I've found Terminator does everything I need from a terminal. Briefly discussed on my [blog](http://blog.binarymist.net/2013/01/19/a-decent-console-for-windows/) . If you also like a decent terminal experience, then:  
+As I spend most of my life in terminals, I want a good one. I have found that Terminator does everything I need from a terminal. Briefly discussed on my [blog](http://blog.binarymist.net/2013/01/19/a-decent-console-for-windows/). If you also like a decent terminal experience, then:  
 `apt-get install terminator`
 
 #### [Discover Scripts](#process-and-practises-penetration-testing-reconnaissance-discover-scripts) {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-discover-scripts}
@@ -334,7 +334,7 @@ Currently supports: WordPress, Joomla and Drupal.
 
 #### [Veil Framework](https://www.veil-framework.com/) {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-veil-framework}
 
-I decided to clone the Veil-Framework, as it has a good collection of very useful tools. Veil-Evasion is specifically useful for antimalware evasion. The Veil super project also has an install script to install all Veil projects, found at the [Veil](https://github.com/Veil-Framework/Veil) repository for the Veil-Framework account on github.
+I have decided to clone the Veil-Framework, as it has a good collection of very useful tools. Veil-Evasion is specifically useful for antimalware evasion. The Veil super project also has an install script to install all Veil projects, found at the [Veil](https://github.com/Veil-Framework/Veil) repository for the Veil-Framework account on github.
 
 There are install guides here:  
 [https://www.veil-framework.com/guidesvideos/](https://www.veil-framework.com/guidesvideos/)
@@ -590,11 +590,11 @@ I like to know where my JavaScript is coming from.
 
 ##### SQL Inject Me
 
-This tool is simple and often useful for running a quick vulnerability assessment and is open source software (GPLv3) from Security Compass Labs. SQL Inject Me is a component of the Exploit-Me suite, allowing you to test all or any number of input fields on all or any of a page's forms. Just fill in the fields with valid data, then test with all the tool's attacks, or with those you have defined in the options menu. It then looks for database errors which are rendered into the returned HTML as a result of sending escape strings, it does not cater for blind injection. You can also add or remove escape strings, and resulting error strings that SQL Inject Me should look for on response. The order in which each escape string can be tried can also be changed. All you need to know can be found [here](http://labs.securitycompass.com/exploit-me/sql-inject-me/sql-inject-me-faq/).
+This tool is simple and often useful for running a quick vulnerability assessment and is open source software (GPLv3) from Security Compass Labs. SQL Inject Me is a component of the Exploit-Me suite, allowing you to test all or any number of input fields on all or any of a page's forms. Just fill in the fields with valid data, then test with all the tools attacks, or with those you have defined in the options menu. It then looks for database errors which are rendered into the returned HTML as a result of sending escape strings, it does not cater for blind injection. You can also add or remove escape strings, and resulting error strings that SQL Inject Me should look for on response. The order in which each escape string can be tried can also be changed. All you need to know can be found [here](http://labs.securitycompass.com/exploit-me/sql-inject-me/sql-inject-me-faq/).
 
 ##### XSS Me
 
-XSS Me is also simple and often useful for running a quick vulnerability assessment. It too is open source software (GPLv3) from Security Compass Labs and is also a component of the Exploit-Me suite. This tool's behaviour is very similar to SQL Inject Me (follows the Principle of Least Astonishment (POLA)) which makes using the tools very easy. Both these add-ons have next to no learning curve. The level of entry is very low and I think are exactly what web developers need to eliminate excuses for not testing their own security. It also helps developers understand how these attacks can be carried out. XSS Me currently only tests for reflected XSS. It does not attempt to compromise the security of the target system. Both XSS Me and SQL Inject Me are reconnaissance tools, where the information provided is simply the vulnerabilities found. XSS Me does not support stored XSS or user supplied data from sources such as cookies, links, or HTTP headers. XSS Me's effectivess in finding vulnerabilities is also determined by the list of attack strings the tool has available. Out of the box, the list of XSS attack strings are derived from RSnake's collection, which were donated to OWASP and who now maintains it as one of their [cheat-sheets](https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet). Multiple encodings are not yet supported, but are planned for the future. You can help to keep the collection up to date by submitting new attack strings.
+XSS Me is also simple and often useful for running a quick vulnerability assessment. It also is open source software (GPLv3) from Security Compass Labs and an component of the Exploit-Me suite. This tools behaviour is very similar to SQL Inject Me (follows the Principle of Least Astonishment (POLA)), which makes using the tools very easy. Both these add-ons have next to no learning curve. The level of entry is very low and I think are exactly what web developers need to eliminate excuses for not testing their own security. It also helps developers understand how these attacks can be carried out. XSS Me currently only tests for reflected XSS. It does not attempt to compromise the security of the target system. Both XSS Me and SQL Inject Me are reconnaissance tools, where the information provided is simply the vulnerabilities found. XSS Me does not support stored XSS or user supplied data from sources such as cookies, links, or HTTP headers. XSS Me's effectivess in finding vulnerabilities is also determined by the list of attack strings the tool has available. Out of the box, the list of XSS attack strings are derived from RSnake's collection, which were donated to OWASP and who now maintains it as one of their [cheat-sheets](https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet). Multiple encodings are not yet supported, but are planned for the future. You can help to keep the collection up to date by submitting new attack strings.
 
 ##### [Tamper Data](https://addons.mozilla.org/en-US/firefox/addon/tamper-data/)
 
@@ -610,13 +610,13 @@ This is a light weight HTTP intercepting proxy as an Iceweasel add-on which allo
 
 #### TP-LINK TL-WN722N USB Wireless Adapter
 
-It is often very helpful to have at least a couple of Wi-Fi adapters when performing wireless reconnaissance or attacks, or simply to maintain internet connectivity if using your phone as a wireless hot-spot while you are on another network. It's also useful for researching while your connected to a target's wireless Access Point (AP). An easy way to do this is to use the laptop's on-board wireless interface to connect to the phone's wireless hot-spot, and pass the USB Wi-Fi adapter straight to the guest.
+It is often very helpful to have at least a couple of Wi-Fi adapters when performing wireless reconnaissance or attacks, or simply to maintain internet connectivity if using your phone as a wireless hot-spot while you are on another network. It is also useful for researching while your connected to a target's wireless Access Point (AP). An easy way to do this is to use the laptop's on-board wireless interface to connect to the phone's wireless hot-spot, and pass the USB Wi-Fi adapter straight to the guest.
 
 There are many devices of varying specifications. I've found (along with others) that the TL-WN722N hits a good sweet spot of cross platform compatibility, price, size, ease of purchase, and a few other considerations.
 
 As I find it flexible to run pen testing set-ups on VMs, the following addresses such configurations. Using VirtualBox 5.0.4, USB devices have to be "passed through" to the guest. The following process explains what is involved.
 
-The following is the process I found to set-up the pass-through on Kali 2016.1 (first Kali rolling release. Kernel 4.3, Gnome 3.18), by-passing the Linux Mint 17.3 (Rosa) Host (in my case).
+The following is the process I have found to set-up the pass-through on Kali 2016.1 (first Kali rolling release. Kernel 4.3, Gnome 3.18), by-passing the Linux Mint 17.3 (Rosa) Host (in my case).
 
 ##### Wi-Fi Adapter:
 
