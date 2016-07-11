@@ -19,4 +19,4 @@ This is where books like this come in.
 Kim's background as a software engineer means that he understands the development process and the pressures that developers are under.
 It is a wide ranging book that can help you learn about all aspects of security and help you design and build secure systems.
 
-> Simon Bennetts
+> Simon Bennetts - [Zed Attack Proxy](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project) Lead
