@@ -42,7 +42,7 @@ Here are some assets to consider as part of your domain:
   such as: Email addresses, physical addresses, phone numbers, birth certificates
 * Credit card numbers and similar
 * Confidential business information
-  This could come in many forms such as email, organisation wide wikis, document storage, and be stored in many places, such as: in data stores, code, configuration files, peoples heads, peoples desks and many others
+  This could come in many forms such as email, organisation wide wikis, document storage, and be stored in many places, such as: in data stores, code, configuration files, peoples heads, peoples desks and many others.
 * Confidential client information
 * Reputation. I am sure you can think of a few ways that you or your organisations reputation could be tarnished or worse.
 
@@ -85,7 +85,7 @@ Think about some of the relationships the target business takes a dependency on,
   * How well known is this vulnerability to this group of threat agents?
   * How likely is an exploit to be detected?
 * Impact    "Technical Factors"
-  * What's the impact likely to be if a particular exploit is executed
+  * What's the impact likely to be if a particular exploit is executed?
   * How much data could be disclosed and how sensitive is it?
   * How much data could be corrupted and how damaged is it?
   * Which services could be lost, how vital are they and how long could they be down for?

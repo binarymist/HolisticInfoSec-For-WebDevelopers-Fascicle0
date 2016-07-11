@@ -2,8 +2,8 @@
 
 All the software tools I use for penetration and security testing are free, and most are also open source. I'm always diligent in focusing on free and open source tools, as it makes it easy:
 
-1. to pitch tooling acquisition to managers, and those that hold the purse strings
-2. to learn how the tools work and contribute to the security ecosystem
+1. To pitch tooling acquisition to managers, and those that hold the purse strings.
+2. To learn how the tools work and contribute to the security ecosystem.
 
 ## Kali Linux {#tooling-setup-kali-linux}
 
@@ -71,9 +71,9 @@ Setup network host adapters: this is also discussed in the [NodeGoat Set-up on y
 
 Host-only Adapter allows:
 
-1. The VM to talk to the host and other VMs connected to the host
-2. The host to talk to guest VMs  
-(often useful for the likes of demoing OWASP Zap Api where you may have Zap running on Kali and a vulnerable web app running on another VM or your physical hardware)  
+1. The VM to talk to the host and other VMs connected to the host.
+2. The host to talk to guest VMs.  
+(often useful for the likes of demoing OWASP Zap Api where you may have Zap running on Kali and a vulnerable web app running on another VM or your physical hardware).  
 
 NAT networking allows the VM to talk to the internet via the host's network interface.
 
@@ -348,17 +348,17 @@ To install:
     {line-numbers=off}
        cd /opt/Veil && ./Install.sh -c  
   The dependency installs take a while, these include Python on Windows, Ruby and Go
-3. Select the defaults for the Python for Windows install
-4. When the install reaches the "Select Destination Directory", go with the default
-5. Click the "Yes" when asked if you want to overwrite the existing Python files
-6. Select the defaults for the rest of the Python install
-7. Next up is the pywin32 set-up. Click "Next" to continue
-8. Use the default Python directory location -> click "Next" -> "Next" -> "Finish"
-9. Next up is pycrypto. "Next" -> "Next" -> "Next" -> "Finish"
-10. Choose your language
-11. Accept the Ruby License Agreement
-12. "Install" -> "Yes" to Folder Exists -> "Finish"
-13. Finally, golang
+3. Select the defaults for the Python for Windows install.
+4. When the install reaches the "Select Destination Directory", go with the default.
+5. Click the "Yes" when asked if you want to overwrite the existing Python files.
+6. Select the defaults for the rest of the Python install.
+7. Next up is the pywin32 set-up. Click "Next" to continue.
+8. Use the default Python directory location -> click "Next" -> "Next" -> "Finish".
+9. Next up is pycrypto. "Next" -> "Next" -> "Next" -> "Finish".
+10. Choose your language.
+11. Accept the Ruby License Agreement.
+12. "Install" -> "Yes" to Folder Exists -> "Finish".
+13. Finally, golang.
 
 To run Veil-Evasion:  
 `cd /opt/Veil/Veil-Evasion/ && ./Veil-Evasion.py`
@@ -680,8 +680,8 @@ and older builds here: ([https://www.virtualbox.org/wiki/Download_Old_Builds_5_0
 2. `apt-get upgrade`
 3. `apt-get dist-upgrade`
 4. `apt-get install linux-headers-$(uname -r)`
-5. Shutdown Linux guest OS
-6. Apply extension to VirtualBox in the host at: File -> Preferences -> Extensions
+5. Shutdown Linux guest OS.
+6. Apply extension to VirtualBox in the host at: File -> Preferences -> Extensions.
 
 ##### Blacklist Wi-Fi Module on Host:
 

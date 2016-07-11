@@ -27,9 +27,9 @@ Information gathering can and should be done (initially) in such a way that the 
 
 Passive reconnaissance is the phase when information gathering cannot be detected by the target. Information is gathered indirectly from the target, often from:
 
-* Sources that have had a direct relationship with the target
-* Social media web sites
-* Search engines
+* Sources that have had a direct relationship with the target.
+* Social media web sites.
+* Search engines.
 
 The pen tester or attacker cannot directly probe the target, they must use third party information. Sometimes this may be out of date, so confirmation and validation are desirable, even required. This is usually not too difficult, but it takes more time than if the passive constraint was lifted, and the pen tester could probe directly.
 
@@ -43,8 +43,8 @@ Semi-active reconnaissance includes gathering information directly from the targ
 
 Active reconnaissance involves interacting with the target directly, engaging in activities such as:
 
-* Snooping physical premises
-* Port scanning the entire range `nmap -p- <target>` and some of the aggressive nmap scanning modes shown below
+* Snooping physical premises.
+* Port scanning the entire range `nmap -p- <target>` and some of the aggressive nmap scanning modes shown below.
 * Spidering public facing resources. Directories and files, often public without the administrators realising it. If they ran a spidering tool against their servers they would see all the publicly accessible resources.
 * Banner grabbing and probing, which we address below under the [Service Fingerprinting](#process-and-practises-penetration-testing-reconnaissance-service-fingerprinting) section.
 
@@ -813,10 +813,10 @@ Another tool in a similar vein to discover-scripts, Recon-ng has a similar feel 
 
 Some of the information you may gather is:
 
-1. Additional companies
+1. Additional companies.
 2. Hosts you did not know existed, with their IP addresses, domain names, countries of origin, region, latitude, longitude and the module used to find the information.
-3. Contacts, first and last names, email addresses, pgp key associations
-4. Vulnerabilities, credentials
+3. Contacts, first and last names, email addresses, pgp key associations.
+4. Vulnerabilities, credentials.
 5. So much more.
 
 Which moduels you use determines what information you receive.
@@ -1272,7 +1272,7 @@ There is no direct communication between VMs unless you explicitly set it up. Th
 
 In terms of tooling up for offensive exploitation, there are at least three scenarios:
 
-1. Penetration Tester: Using your favourite security focused OS in a VM on any host is often good enough if you're not expecting to be attacked yourself
+1. Penetration Tester: Using your favourite security focused OS in a VM on any host is often good enough if you're not expecting to be attacked yourself.
 2. Black Hat in potentially hostile environment: Use your favourite security focused OS as a Whonix-Workstation as a Qubes TemplateVM communicating through a Whonix-Gateway as a Qubes TemplateVM, both of which reside in a Qubes bare metal hypervisor (installed directly onto your hardware).
 3. Black Hat with a requirement for amnesia: Same as 2, but you'll need to do a lot of work to clean up all your foot prints. Another option to save manual clean-up is to use Tails as a Qubes TemplateVM in the 2 scenario. Tails is however not a penetration testing distribution, so you can't cover all these scenarios at once with out of the box solutions.
 
@@ -1558,8 +1558,8 @@ BSIMM again has some [good guidance](https://www.bsimm.com/online/deployment/pt/
 
 Some developers have an inquisitiveness about how their work can be exploited, so it is important to have at least a none zero number of developers with a security focus within each team to:
 
-1. take the lead on the security front
-2. mentor; infect with their passion, and pass on their knowledge to their co-workers
+1. Take the lead on the security front.
+2. Mentor; infect with their passion, and pass on their knowledge to their co-workers.
 
 I mention in the People chapter, specifically the ["Top Developer Motivators in Order"](#people-countermeasures-morale-productivity-and-engagement-killers-top-developer-motivators-in-order) section, how developers love being champion of something. The role of security champion or any champion for that matter, needs to be applied to the developer as a vacuum. People do not respond well to being pushed into anything. The best developers will just pick up the role, but many will not be as proactive. For less proactive developers, it pays to create the role and, as a Product Owner or manager, approach them and ask them if they would like to take on the responsibility as security champion. Once a developer has taken up this responsibility, they will usually do a pretty good job of infusing the rest of their team with their passion and knowledge.
 
@@ -1689,11 +1689,11 @@ The code that Professional Developer wrote is easier to modify and extend as its
 
 It is the practices (formed by habit) of Professional Developer that:
 
-1. provide the entire Development Team assurity that the software satisfies the requirements of the specification at all times
-2. allow The Development Team to run at a sustainable pace
-3. provide confidence in ongoing future estimations due to less surprises
-4. produce code that everyone wants to work with
-5. produce less error prone software that does what it says it will do on the box.
+1. Provide the entire Development Team assurity that the software satisfies the requirements of the specification at all times.
+2. Allow The Development Team to run at a sustainable pace.
+3. Provide confidence in ongoing future estimations due to less surprises.
+4. Produce code that everyone wants to work with.
+5. Produce less error prone software that does what it says it will do on the box.
 
 #### Scrum Teams can Fail Too
 
@@ -1701,11 +1701,11 @@ Velocity of the Development Team starts high, then declines. Often it is hard fo
 
 The code base is small but growing fast. As it starts to get larger, the Development Team starts to feel the technical weight of a lot of code that has been hacked together in a rush. This causes the team's ability to release software fast to wane. A Scrum Team can get to this point quite quickly, as they are a high performance team. When you arrive at this point, almost every change to the code base is hard. You make one change and something else fails (the whac-a-mole effect). This degradation can be driven by the fact that:
 
-1. Routines are hundreds of lines long. Developers have to understand hundreds of lines of code in order to make a small change
-2. Names are not as meaningful as they should be
-3. Routines have multiple levels of abstraction, so multiple levels of code need to be understood to make a single change
-4. Inheritance is over used/abused, thus creating unnecessarily tight coupling
-5. There are many aspects of the code that have become terrible to work with
+1. Routines are hundreds of lines long. Developers have to understand hundreds of lines of code in order to make a small change.
+2. Names are not as meaningful as they should be.
+3. Routines have multiple levels of abstraction, so multiple levels of code need to be understood to make a single change.
+4. Inheritance is over used/abused, thus creating unnecessarily tight coupling.
+5. There are many aspects of the code that have become terrible to work with.
 
 ##### How Does This Happen?
 
@@ -1727,12 +1727,12 @@ The Product Owner runs through Acceptance Criteria, which should be included on 
 
 In addition to what our solo Professional Developer accomplished [above](#process-agile-development-and-practices-essentials-for-creating-and-maintaining-a-high-performance-development-team-how-and-why-many-software-development-shops-fail-the-scenario), we should:
 
-1. measure test speed and reward fast running tests
-2. measure cyclomatic Complexity
-3. run static code analysis and use productivity enhancing tools. This is not cheating, it is allowing the developers to work faster and create cleaner code. This can even be set-up as pre-commit hooks etc on source control. Discussed in more detail in the "Consuming Free and Open Source" sections in the Web Applications chapter.
-4. code reviews need to be based on the coding standards and guidelines
-5. encourage developers to commit regularly, thus their code is being run against the entire test suite, providing confidence that their code plays nicely with everyone elses code. Commit frequency can be measured
-6. shame developers when they break the [CI build](http://blog.binarymist.net/2014/02/22/automating-specification-by-example-for-net). Report on how long builds stay broken for and shame when the duration is longer than an agreed on time.
+1. Measure test speed and reward fast running tests.
+2. Measure cyclomatic Complexity.
+3. Run static code analysis and use productivity enhancing tools. This is not cheating, it is allowing the developers to work faster and create cleaner code. This can even be set-up as pre-commit hooks etc on source control. Discussed in more detail in the "Consuming Free and Open Source" sections in the Web Applications chapter.
+4. Code reviews need to be based on the coding standards and guidelines.
+5. Encourage developers to commit regularly, thus their code is being run against the entire test suite, providing confidence that their code plays nicely with everyone elses code. Commit frequency can be measured.
+6. Shame developers when they break the [CI build](http://blog.binarymist.net/2014/02/22/automating-specification-by-example-for-net). Report on how long builds stay broken for and shame when the duration is longer than an agreed on time.
 
 Most of these practices can be added to the Definition of Done, this way Developers can and should be rewarded for doing these activities. Even better, you can automate most of these practices.
 

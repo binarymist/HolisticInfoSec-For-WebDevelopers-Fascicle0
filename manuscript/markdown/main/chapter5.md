@@ -8,8 +8,8 @@ Physical security is often over looked, especially by technical people, although
 Take the results from [higher level Asset Identification](#starting-with-the-30000-foot-view-asset-identification). Remove any that are not applicable, and add any newly discovered. Here are some to get you started:
 
 * Servers, the cabinets they reside in, the rooms cabinets reside in.
-* Physical buildings, their openings, such as doors and windows. Keys, RFID cards, access codes
-* Sensitive printed matter
+* Physical buildings, their openings, such as doors and windows. Keys, RFID cards, access codes.
+* Sensitive printed matter.
 * Plant, such as work-stations or any other devices that could be used to launch attack sequences from, or even cause diversions, to allow an attacker to carry out an action they wouldn't be able to otherwise. Laptops and mobile devices (including personal) configured to access internal Access Points (APs). Wi-Fi APs.
 * Visibility into who is where and doing what. Visibility brings immense power to make good decisions, and is often an excellent target for an attacker to deny you.
 
