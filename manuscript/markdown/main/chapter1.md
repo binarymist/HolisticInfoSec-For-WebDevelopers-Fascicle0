@@ -139,7 +139,7 @@ Your countermeasure PBIs also need to reference the risk they were created in re
 
 ## 4. SSM Risks that Solution Causes {#starting-with-the-30000-foot-view-risks-that-solution-causes}
 
-This is really dependent on the solution(s) you discover. Often there will be new risks that mitigation techniques introduced. We will work through many possibilities in following chapters.
+This is really dependent on the solution(s) you discover. Often there will be new risks that the mitigation techniques introduce. We will work through many possibilities in the following chapters.
 
 * Make sure before you test that you have written permission for all the areas that you are about to test, documenting what could possibly go wrong.
 * Make sure you have backups and that they work.
