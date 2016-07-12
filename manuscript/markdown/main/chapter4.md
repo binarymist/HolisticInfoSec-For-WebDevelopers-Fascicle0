@@ -7,7 +7,7 @@ Approaching the security "problem" from a penetration tester's point of view (re
 * The penetration tester tries to find all the faults in your system. This is not limited to the technology aspect either, as we address throughout this book.
 * As a web developer, you are more focused on delivering a solution that makes a problem less of a problem. Often, you're not thinking so much about what could go wrong, rather more focused on how to make it work.
 
-These two disciplines can and do work in harmony together. There is a real need for improving security-related awareness for software developers, including skills and knowledge. Since this book is focused on the web developer, it is my intention to show you, as a web developer, how to take the lessons learned from the penetration tester's perspective, and apply some of them to your own work and life. Yes, security needs to become part of who you are, and grow with you as you do. I have the advantage of working in both of these disciplines, as well have been on some very successful Scrum teams, often as Scrum Master. This has enabled relatively easy empathy with both sides of the red/blue discussion, and the ability to take the best from one side, then apply it to the other. Both can, in fact, exist in harmony.
+These two disciplines can and do work in harmony together. There is a real need for improving security-related awareness for software developers, including skills and knowledge. Since this book is focused on the web developer, it is my intention to show you, as a web developer, how to take the lessons learned from the penetration tester's perspective, and apply some of them to your own work and life. Yes, security needs to become part of who you are, and grow with you as you do. I have the advantage of working in both of these disciplines, as well as have been on some very successful Scrum teams, often as Scrum Master. This has enabled relatively easy empathy with both sides of the red/blue discussion, and the ability to take the best from one side, then apply it to the other. Both can, in fact, exist in harmony.
 
 ## Penetration Testing {#process-and-practises-penetration-testing}
 
@@ -15,7 +15,7 @@ Following are processes and procedures commonly utilized by a penetration tester
 
 ### Reconnaissance {#process-and-practises-penetration-testing-reconnaissance}
 
-Reconnaissance, or re-con, is the act of information gathering. The quieter you are during this phase, the less likely you will be able to raise suspicions or trigger your client's defences.  
+Reconnaissance, or re-con, is the act of information gathering. The quieter you can be during this phase, the less likely you will be to raise suspicions or trigger your client's defences.  
 Here, we want to gather as much potentially useful information as possible for use in later phases. This is where we start to obtain information about services, and other software being used, moving from the passive to the more active techniques. We must learn as much as possible about the people who are in scope for the target organization, and how they are related to that organisation, their roles, skills, and potential level of privilege and access.  
 This allows us to create effective attack strategies, including non-technical aspects such as physical security and pretexts for the people we want to exploit.
 
@@ -206,7 +206,7 @@ Using the service detection option, `-sV`, the results provide almost as much in
 
 **Metasploitable 2**
 
-An example of using Nmap against an un-hardened target follows in later chapters where I will discuss how to go about the hardening process. I have also provided quite a bit of information specific to hardening servers on my [blog](http://blog.binarymist.net/).
+An example of using Nmap against an un-hardened target follows. In later chapters I will discuss how to go about the hardening process. I have also provided quite a bit of information specific to hardening servers on my [blog](http://blog.binarymist.net/).
 
 {title="nmap command", linenos=off, lang=Bash}
     # Attempt to detect un-hardened target OS and services running on it.
@@ -304,7 +304,7 @@ An example of using Nmap against an un-hardened target follows in later chapters
     |_http-favicon: Apache Tomcat
     |_http-methods: No Allow or Public header in OPTIONS response (status code 200)
     |_http-title: Apache Tomcat/5.5
-    1 service unrecognised despite returning data. If you know the service/version, please submit the following fingerprint at http://www.insecure.org/cgi-bin/servicefp-submit.cgi :
+    1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at http://www.insecure.org/cgi-bin/servicefp-submit.cgi :
     SF-Port514-TCP:V=6.47%I=7%D=11/12%Time=56443D13%P=x86_64-unknown-linux-gnu
     SF:%r(NULL,33,"\x01getnameinfo:\x20Temporary\x20failure\x20in\x20name\x20r
     SF:esolution\n");
@@ -365,7 +365,7 @@ Using the service detection option, `-sV`, on the un-hardened metasploitable 2, 
     6667/tcp open  irc         Unreal ircd
     8009/tcp open  ajp13       Apache Jserv (Protocol v1.3)
     8180/tcp open  http        Apache Tomcat/Coyote JSP engine 1.1
-    1 service unrecognised despite returning data. If you know the service/version, please submit the following fingerprint at http://www.insecure.org/cgi-bin/servicefp-submit.cgi :
+    1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at http://www.insecure.org/cgi-bin/servicefp-submit.cgi :
     SF-Port514-TCP:V=6.47%I=9%D=11/12%Time=564433FA%P=x86_64-unknown-linux-gnu
     SF:%r(NULL,33,"\x01getnameinfo:\x20Temporary\x20failure\x20in\x20name\x20r
     SF:esolution\n");
@@ -1274,7 +1274,7 @@ In terms of tooling up for offensive exploitation, there are at least three scen
 
 1. Penetration Tester: Using your favourite security focused OS in a VM on any host is often good enough if you are not expecting to be attacked yourself.
 2. Black Hat in potentially hostile environment: Use your favourite security focused OS as a Whonix-Workstation as a Qubes TemplateVM communicating through a Whonix-Gateway as a Qubes TemplateVM, both of which reside in a Qubes bare metal hyper-visor (installed directly onto your hardware).
-3. Black Hat with a requirement for amnesia: Same as 2, but you need to do a lot of work to clean up all your foot prints. Another option is to save manual clean-up to use Tails as a Qubes TemplateVM in the 2 scenario. Tails is however not a penetration testing distribution, so you can not cover all these scenarios at once with out of the box solutions.
+3. Black Hat with a requirement for amnesia: Same as 2, but you need to do a lot of work to clean up all your foot prints. Another option to save manual clean-up is to use Tails as a Qubes TemplateVM in the 2 scenario. Tails is however not a penetration testing distribution, so you can not cover all these scenarios at once with out of the box solutions.
 
 See the Additional Resources chapter for more information.
 
@@ -1309,7 +1309,7 @@ This process is most significantly about reducing the cost of producing quality 
 
 The 10,000' View should be carried out in each Sprint and for each PBI as it is pulled into WIP. If the particular PBI includes Physical, IoT, Mobile, People, Cloud, VPS, Network, Web Applications attributes, you can apply the concepts and direction discussed in these chapters to the PBI that you are working on.
 
-It is not my intention to encourage you to think only about security (in this book at least), because then you would not deliver a product. I would rather security become part of who you are, so part of your normal work-flow includes being security conscious, and habits that you build become firmly entrenched in your work. As such, your deliverables will be no longer be at the bottom of the tree where your attackers will pick off the low hanging fruit.
+It is not my intention to encourage you to think only about security (in this book at least), because then you would not deliver a product. I would rather security become part of who you are, so part of your normal work-flow includes being security conscious, and habits that you build become firmly entrenched. As such, your deliverables will no longer be at the bottom of the tree where your attackers will pick off the low hanging fruit.
 
 I have compiled a collection of some of the most powerful practises designed to increase quality with the least money spent. Use these to augment your agile work-flow. 
 
@@ -1319,7 +1319,7 @@ A> Let's look at some of the practices we can use as developers to enhance the l
 
 ### Architecture
 
-There are no architects on the Scrum Team, just Developers. Some of those developers have architect qualities. They often the ones who step back to see the bigger picture, and understand the interactions between components and the people using the software, including every aspect of the end product, the people intending to use it, and the risks.
+There are no architects on the Scrum Team, just Developers. Some of those developers have architect qualities. They are often the ones who step back to see the bigger picture, and understand the interactions between components and the people using the software, including every aspect of the end product, the people intending to use it, and the risks.
 
 Agile architecture includes some design up front, in collaboration with the team and everyone with a vested interest. Agile architecture is not siloed, it is part of development, just as it is with requirements analysis and testing; all done in parallel.
 
@@ -1330,7 +1330,7 @@ Another defining factor that sets the architect apart, is their ability to trans
 
 ### Cheapest Place to Deal with Defects
 
-There have been many studies specifically looking at the costs of finding and fixing defects early, as opposed to the planning on how to fix defects once the product is delivered, or not planning at all.
+There have been many studies specifically looking at the costs of finding and fixing defects early, as opposed to the planning of how to fix defects once the product is delivered, or not planning at all.
 
 The following table shows the average cost of fixing defects based on when they were introduced versus when they are detected. Putting these practises in the right order can reduce costs by up to 100 times.
 
@@ -1370,7 +1370,7 @@ to the least expensive possible phase to fix. Enhance your test conditions with 
 
 ![](images/CostOfChange-WithSTDD.png)  
 
-Now, instead of the business waiting until go-live before contracting experts to attack our systems, and telling us **that your security sucks**, we take an proactive approach (as the self managing team that we are). We move a lot of the effort traditionally performed at go-live, to **up front**, where you yourself, as the developer, can test and fix, thus saving the embarrassment and the business a lot of money. This is what being a professional developer is all about: taking the initiative and leading from the front.
+Now, instead of the business waiting until go-live before contracting experts to attack our systems, and telling us that **your security sucks**, we take a proactive approach (as the self managing team that we are). We move a lot of the effort traditionally performed at go-live, to **up front**, where you yourself, as the developer, can test and fix, thus saving the embarrassment and the business a lot of money. This is what being a professional developer is all about: taking the initiative and leading from the front.
 
 What is so good about STDD and SBDD, is that it rolls up Specifications, Design, Implementation and Verification all into one process, thus working toward delivering each increment that is truly ["Done"](http://blog.binarymist.net/2013/03/02/how-to-increase-software-developer-productivity/#definitionOfDone). Driving development with tests is not about testing! It is about creating code that is testable. Testable code is inherently well designed and gives us the ability to reason about its state at any given time.  
 OpenSSL Heartbleed and Apple's Goto Fail could have been prevented if (S)TDD was used. Check out Mike Bland's [excellent study and POC](http://martinfowler.com/articles/testing-culture.html).
@@ -1387,7 +1387,7 @@ As I see it, this is one of the biggest wins you can take, with minimum expendit
 
 I created a [proof of concept (POC)](https://github.com/binarymist/NodeGoat/wiki/Security-Regression-Testing-with-Zap-API) by using the existing NodeGoat, purposely vulnerable web application written in NodeJS and used the RESTful API of OWASP Zap to proxy the selenium tests, then launch it's own tests. The "own tests" are already part of Zap. It is all done for you for free. We will discuss this soon on how to set-up the NodeGoat Web Application along with the Zap REST API.
 
-I have demonstrate this to many of my clients, and in my training classes. I have also created a video that I use for short talks, which exhibits a run of the regression testing suite before and after a security defect is introduced and mitigated. You can see the short demonstration here: [https://youtu.be/DrwXUOJWMoo](https://youtu.be/DrwXUOJWMoo)
+I have demonstrated this to many of my clients, and in my training classes. I have also created a video that I use for short talks, which exhibits a run of the regression testing suite before and after a security defect is introduced and mitigated. You can see the short demonstration here: [https://youtu.be/DrwXUOJWMoo](https://youtu.be/DrwXUOJWMoo)
 
 [OWASP ZAP](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project) (which also comes [pre-installed on Kali Linux](http://blog.binarymist.net/2014/03/29/up-and-running-with-kali-linux-and-friends/#zap) ) is a particularly useful tool for security regression testing. It provides manual tooling similar to that of Burp Suite, with many other features.
 
@@ -1544,7 +1544,7 @@ You should then be informed of a successful test with the following output:
 
 ### Hand-crafted Penetration Testing
 
-Hand-crafted penetration testing is sometimes also referred to as "guerilla testing".
+Hand-crafted penetration testing is sometimes also referred to as "guerrilla testing".
 
 As previously discussed, this can be costly when performed late in a project's life cycle. By automating as much as possible, including high level scans which help to identify starting points to attack, developers are left to do what they do best...being creative.
 
@@ -1607,7 +1607,7 @@ Tooling is still immature here, we have got a way to go, but lets start by getti
 
 JavaScript is an inherently flexible and undisciplined language. This quality is a double edged sword. It provides us with extreme power, and also allows us to slaughter ourselves. Discipline is very much needed in order to stay safe and be able to assess our applications as they grow larger.
 
-I have been involved in many JavaScript project rescue missions where a Development Team can no longer understand what the monster they have created is doing, what state it is in and why. In almost all occasions, the developers on the team do not have a deep understanding of the language, and often of any of the language. Given this, I always try and push the fact that JavaScript developers must do everything they can to understand the language. In most cases this means taking their learning home and becoming intimate with JavaScript's beauty.
+I have been involved in many JavaScript project rescue missions where a Development Team can no longer understand what the monster they have created is doing, what state it is in and why. In almost all occasions, the developers on the team do not have a deep understanding of the language, and often of any language. Given this, I always try and push the fact that JavaScript developers must do everything they can to understand the language. In most cases this means taking their learning home and becoming intimate with JavaScript's beauty.
 
 Because of the distinct lack of discipline within JavaScript (unlike most other languages) I try and convey as much understanding around techniques as possible to help impose extra rigour where and when needed. The remarkable thing about JavaScript is that when you really need to do something unconventional, you can, but I like to **weigh up the trade-offs** of either approach.
 
@@ -1663,25 +1663,25 @@ In many cases, you can implement cross cutting code contracts using AOP. This ge
 
 I have seen many organizations hire code monkeys rather than professionals. 
 They sometimes hire the cheapest talent they can get their hands on. They want the best, but the developers pay (as little as possible) is the most important factor to them.
-Alternatively, hire the person that can complete feature implementations as fast as possible (sometimes known or thought of as rock stars). These are often the young developers without much experience, which causes the more professional developers to slow down a bit and think tasks through a little more.  
+Alternatively, they hire the person that can complete feature implementations as fast as possible (sometimes known or thought of as rock stars). These are often the young developers without much experience, which causes the more professional developers to slow down a bit and think tasks through a little more.  
 Both approaches are short sighted. Code monkeys write code fast and incur technical debt that is hidden at first, but over time slows the Development Team down until it can barely move.
 
 ##### The Scenario {#process-agile-development-and-practices-essentials-for-creating-and-maintaining-a-high-performance-development-team-how-and-why-many-software-development-shops-fail-the-scenario}
 
 Code Monkey finishes his task much faster than Professional Developer.
 
-The Code Monkey is solely focused on completing the task as fast as possible. They cut some code and declares that the task done. The Professional Developer thinks the problem through, does a little research to satisfy them self that their proposed approach is in fact the most appropriate approach for the problem. They organises a [test condition workshop](http://blog.binarymist.net/2012/03/24/how-to-optimise-your-testing-effort/#testConditionWorkshop), which solidifies requirements and drives out design defects via active stake holder participation. They drives there low level design with TDD, and makes sure they follow [coding standards](http://blog.binarymist.net/2013/03/02/how-to-increase-software-developer-productivity/#codingStandardsAndGuidelines), thus ensuring that future maintenance to their code is easier, and much [easier to read](http://blog.binarymist.net/2009/12/24/keeping-encapsulation-on-ones-mind/).
+The Code Monkey is solely focused on completing the task as fast as possible. They cut some code and declare that the task is done. The Professional Developer thinks the problem through, does a little research to satisfy them self that their proposed approach is in fact the most appropriate approach for the problem. They organise a [test condition workshop](http://blog.binarymist.net/2012/03/24/how-to-optimise-your-testing-effort/#testConditionWorkshop), which solidifies requirements and drives out design defects via active stake holder participation. They drive there low level design with TDD, and make sure they follow [coding standards](http://blog.binarymist.net/2013/03/02/how-to-increase-software-developer-productivity/#codingStandardsAndGuidelines), thus ensuring that future maintenance to their code is easier, and much [easier to read](http://blog.binarymist.net/2009/12/24/keeping-encapsulation-on-ones-mind/).
 They ask for a pair to [review](http://blog.binarymist.net/2012/03/24/how-to-optimise-your-testing-effort/#pairReview) their code or perhaps requests a fellow team member to sit with them and [pair program](#process-agile-development-and-practices-pair-programming) for a bit on some complex areas of the code base.
-This makes sure their code is being run in the [continuous integration](http://blog.binarymist.net/2012/03/24/how-to-optimise-your-testing-effort/#continuousIntegration) suite, that they [acceptance tests](http://www.slideshare.net/kimcarter75098/moving-to-tdd-bdd) (which has been driving their feature) are passing, and that [security regression tests](#process-agile-development-and-practices-security-regression-testing) are not regressing.
+This makes sure their code is being run in the [continuous integration](http://blog.binarymist.net/2012/03/24/how-to-optimise-your-testing-effort/#continuousIntegration) suite, that their [acceptance tests](http://www.slideshare.net/kimcarter75098/moving-to-tdd-bdd) (which has been driving their feature) are passing, and that [security regression tests](#process-agile-development-and-practices-security-regression-testing) are not regressing.
 They check that their work complies with the [Definition of Done](http://blog.binarymist.net/2013/03/02/how-to-increase-software-developer-productivity/#definitionOfDone). You do have a Definition of Done, right?
 
 What the Product Owner or software development manager often fails to understand is that it is the slower (professional) developer that is creating code that can be maintained and extended at a sustainable pace. The Professional Developer is investing time and effort into creating a better quality of code than the Code Monkey, who appears to be producing code faster. The Product Owner and/or manager do not necessarily see this, in which case the Code Monkey clearly looks to be the superior developer. What also often occurs is that the Code Monkey rides on the Professional Developer's quality and adds their lower quality code on top, thus making the Code Monkey appear god-like.
 
 The Product Owner sees output immediately produced by the Code Monkey who "appears" to be working very fast. They do not see the quality being created by the Professional Developer, who "appears" to be working slower.
 
-Time goes by. The Sprint Review rolls around. Stake holders love the new features that have been implemented and now want some additions and refinements. They ask the Product Owner to add some more User Stories into the Product Backlog. The Development Team pull these stories into a Sprint and start work. New functionality is added on top of the code that the  Professional Developer wrote previously. New functionality is also added on top of the code that Code Monkey wrote.
+Time goes by. The Sprint Review rolls around. Stake holders love the new features that have been implemented and now want some additions and refinements. They ask the Product Owner to add some more User Stories into the Product Backlog. The Development Team pull these stories into a Sprint and start work. New functionality is added on top of the code that the Professional Developer wrote previously. New functionality is also added on top of the code that Code Monkey wrote.
 
-Sprint Review roles around again, and stake holders are happy with the new features that have been added on top of the Professional Developers code. Of course, they have no idea that the underlying code was crated by the Professional Developer. Now, the stake holders have been using the software that had the new features added on top of the Code Monkey's lower quality code, and they are starting to notice other areas of the application that is no longer behaving the way it is supposed to. This continues to happen, and the stake holders are oblivious to the fact that it is due to the code that the Code Monkey is writing. They still think he is a rock star because he appears to of pump out code so fast.
+Sprint Review roles around again, and stake holders are happy with the new features that have been added on top of the Professional Developers code. Of course, they have no idea that the underlying code was crated by the Professional Developer. Now, the stake holders have been using the software that had the new features added on top of the Code Monkey's lower quality code, and they are starting to notice other areas of the application that are no longer behaving the way they are supposed to. This continues to happen, and the stake holders are oblivious to the fact that it is due to the code that the Code Monkey is writing. They still think he is a rock star because he appears to pump out code so fast.
 
 So… while the Professional Developer seems to be slowing The Team down and clearly the Code Monkey is simply amazing because they deliver their features so much faster. The actual truth is exactly the opposite. The Professional Developer is creating [SOLID](http://blog.binarymist.net/2012/12/01/moving-to-tdd/#solidPrinciples) code and running at a pace that is sustainable (a key principle of the agile manifesto).
 
@@ -1729,7 +1729,7 @@ In addition to what our solo Professional Developer accomplished [above](#proces
 
 1. Measure test speed and reward fast running tests.
 2. Measure cyclomatic Complexity.
-3. Run a static code analysis and use productivity enhancing tools. This is not cheating, it is allowing the developers to work faster and create cleaner code. This can even be set-up as pre-commit hooks etc. on source control. This is discussed in more detail in the "Consuming Free and Open Source" sections in the Web Applications chapter.
+3. Run static code analysis and use productivity enhancing tools. This is not cheating, it is allowing the developers to work faster and create cleaner code. This can even be set-up as pre-commit hooks etc. on source control. This is discussed in more detail in the "Consuming Free and Open Source" sections in the Web Applications chapter.
 4. Code reviews need to be based on the coding standards and guidelines.
 5. Encourage developers to commit regularly, thus their code is being run against the entire test suite, providing confidence that their code plays nicely with everyone else's code. Commit frequency can be measured.
 6. Shame developers when they break the [CI build](http://blog.binarymist.net/2014/02/22/automating-specification-by-example-for-net). Report on how long builds stay broken for and shame when the duration is longer than an agreed on time.
@@ -1742,7 +1742,7 @@ Something I have learnt as part of my career progression, and have applied to mu
 
 There are a collection of people that I would call as mentors from whom I have taken advice from that helped to firm up some of my beliefs in terms of forming habits. Most of these have been from reading books, blog posts, and listening to technology pod-casts.
 
-I really liked what Moxie Marlinspike said on the topic of [career advice](http://www.thoughtcrime.org/blog/career-advice/). Distilled down: Essentially we become what we do for a job. It is just habits. What ever you do all the time will shape who you become as a person. If you want to become outstanding at something, you need to put effort into learning everything you possibly can about it and pushing yourself relentlessly. Of course, sacrifices must be made somewhere in order to do this, and you need to count the costs first.
+I really liked what Moxie Marlinspike said on the topic of [career advice](http://www.thoughtcrime.org/blog/career-advice/). Distilled down: Essentially we become what we do for a job. It is just habits. What ever you do all the time will shape who you become as a person. If you want to become outstanding at something, you need to put the effort into learning everything you possibly can about it and pushing yourself relentlessly. Of course, sacrifices must be made somewhere in order to do this, and you need to count the costs first.
 
 You have probably heard the saying "No pain, no gain" or "What doesn't kill you will make you stronger". Making a habit of constantly pushing yourself will pay off in terms of becoming very good at what ever it is you're doing.
 
