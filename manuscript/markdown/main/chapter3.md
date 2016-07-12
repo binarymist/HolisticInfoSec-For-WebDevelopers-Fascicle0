@@ -113,7 +113,7 @@ The ISO can be downloaded from [kali downloads](https://www.kali.org/downloads/)
 
 You will want to check the validity of the ISO (or other image if that is your preference) by verifying the SHA1 checksums. Details are directly under the downloads section and should be enough to get you going.
 
-There are additional details if you want to read them at [http://docs.kali.org/introduction/download-official-kali-linux-images](http://docs.kali.org/introduction/download-official-kali-linux-images), but essentially there are several ways to validate that if you have the official Kali Linux installer and not some tampered-with binary. The details at the above link provide a bit more explanation around the validation steps, and importing the Kali GPG public key. At the bottom of the page is the command for cryptographically validating the downloaded binary once you have validated the downloaded `SHA1SUMS` file with the `SHA1SUMS.pgp` key that you also downloaded. You will likely just have to change the actual `.iso` name in the command to that of the `.iso` you downloaded.
+There are additional details if you want to read them at [http://docs.kali.org/introduction/download-official-kali-linux-images](http://docs.kali.org/introduction/download-official-kali-linux-images), but essentially there are several ways to validate that you have the official Kali Linux installer and not some tampered-with binary. The details at the above link provide a bit more explanation around the validation steps, and importing the Kali GPG public key. At the bottom of the page is the command for cryptographically validating the downloaded binary once you have validated the downloaded `SHA1SUMS` file with the `SHA1SUMS.pgp` key that you also downloaded. You will likely just have to change the actual `.iso` name in the command to that of the `.iso` you downloaded.
 
 You can refer to the hard-disk install ([http://docs.kali.org/installation/kali-linux-hard-disk-install](http://docs.kali.org/installation/kali-linux-hard-disk-install)) for running through the OS installer if you need it. For Partitioning disks, I choose "Guided - use entire disk and set up LVM" for future flexibility.
 
@@ -758,3 +758,4 @@ Run `dmesg | grep htc`, you should see something similar to the following printe
     [ 5.860808] ath9k_htc 2-1:1.0: ath9k_htc: FW Version: 1.3
 
 You should now be able to select the phone's wireless hot-spot you want to connect to in network manager.
+
