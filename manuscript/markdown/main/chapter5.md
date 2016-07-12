@@ -7,48 +7,48 @@ Physical security is often over looked, especially by technical people, although
 ## 1. SSM Asset Identification {#physical-asset-identification}
 Take the results from [higher level Asset Identification](#starting-with-the-30000-foot-view-asset-identification). Remove any that are not applicable, and add any newly discovered. Here are some to get you started:
 
-* Servers, the cabinets they reside in, the rooms cabinets reside in.
-* Physical buildings, their openings, such as doors and windows. Keys, RFID cards, access codes.
+* Servers: the cabinets they reside in, the rooms cabinets reside in.
+* Physical buildings: their openings, such as doors and windows. Keys, RFID cards and access codes.
 * Sensitive printed matter.
-* Plant, such as work-stations or any other devices that could be used to launch attack sequences from, or even cause diversions, to allow an attacker to carry out an action they wouldn't be able to otherwise. Laptops and mobile devices (including personal) configured to access internal Access Points (APs). Wi-Fi APs.
+* Plant: such as work-stations or any other devices that could be used to launch attack sequences from, or even cause diversions, to allow an attacker to carry out an action they wouldn't be able to otherwise. Laptops and mobile devices (including personal) configured to access internal Access Points (APs). Wi-Fi APs.
 * Visibility into who is where and doing what. Visibility brings immense power to make good decisions, and is often an excellent target for an attacker to deny you.
 
 ## 2. SSM Identify Risks {#physical-identify-risks}
 You can take the same process that we did at the [top level](#starting-with-the-30000-foot-view-identify-risks), but abstract the ideas, and then solidify them on physical components. Some of the ideas will work, some won't.
 
-Many times physical security is good, but it is compromised by the people problem. My wife used to do a lot of commercial cleaning when she was younger, and every night she would come home with new stories about how people were the weakest link when it came to security. Most of the time when physical security is breached, there is actually no security, because **people** have failed the design.
+Many times physical security is good, but it gets compromised by the people problem. My wife used to do commercial cleaning when she was younger, and every night she would come home with new stories about how people were the weakest link when it came to security. Most of the time when physical security is breached, there is actually no security, because **people** have failed the design.
 
-I am also a qualified carpenter, and part of my job when I was practising was to break into buildings when tenants had run out on the lease, so I know a few things about physical security as well. Even when doors and windows are locked, their security is usually trivial to compromise without damaging anything. Funnily enough, it was seldom required to force latches, bump or pick locks. There is always a path of least resistance, the lowest hanging fruit, because [people](#people) are usually the weakest link in any security solution. This does not actually have to be the case though, they can be the strongest link as well. Refer to the chapter on People for further details.
+I am also a qualified carpenter, and part of my job was to break into buildings when the tenants had run out on the lease, so I know a few things about physical security as well. Even when doors and windows are locked, their security is usually trivial to compromise without damaging anything. Funnily enough, it was seldom that we were required to force latches, bump or pick locks. There is always a path of least resistance, the lowest hanging fruit, because [people](#people) are usually the weakest link in any security solution. This does not actually have to be the case though, they can be the strongest link as well. Refer to the chapter on People for further details.
 
 ### Fortress Mentality {#physical-identify-risks-fortress-mentality}
 
 ![](images/ThreatTags/easy-widespread-easy-severe.png)
 
-We see the same analogy of the candy bar (fortress) running through many areas of security.  
+We can see the analogy of the candy bar (fortress) running through many areas of security.  
 “_Many organizations still adopt a fortress mentality, where everyone on the outside is bad and stuff on the inside is less dangerous_,” said Brian Krebs, author of the Krebs on Security blog. “_Years of experience has taught us that the biggest problems often stem from the fact that once something gets through the outer defences, it’s often a cakewalk to move around the internal network unimpeded._”  
-We not only see this principle applied to networks, but also physical security.
+We not only see this principle applied to networks, but also to physical security.
 
 ### Internal Doors and Cabinets Left Unlocked {#physical-identify-risks-internal-doors-and-cabinets-unlocked}
 
 ![](images/ThreatTags/easy-common-easy-moderate.png)
 
-Consider doors that lead to isolated areas, filing cabinets and other cupboards left unlocked or locked, and keys or combinations put in obvious places. What assets or potential foot holds are in those areas? What about electronic systems other than core computing systems, such as alarm, surveillance or air conditioning components? Sometimes all that's in the way of a successful exploit being carried out is the fact that someone's watching something. If an attacker can take that someone's attention away from an exploitable target (be it a computer, another unlocked door, person, or whatever) for a short period of time, they may be able to carry out an activity that takes them further along their attack traversal path. 
+Consider doors that lead to isolated areas, filing cabinets and other cupboards left unlocked or locked, and keys or combinations put in obvious places. What assets or potential foot holds are in those areas? What about electronic systems other than core computing systems, such as alarm, surveillance or air conditioning components? Sometimes all that is in the way of a successful exploit being carried out, is the fact that someone's watching something. If an attacker can take someone's attention away from an exploitable target (be it a computer, another unlocked door, person, or whatever) for a short period of time, they may be able to carry out an activity that takes them further along their attack traversal path. 
 
 ### Insecure Doors and/or Windows {#physical-identify-risks-insecure-doors-windows}
 
 ![](images/ThreatTags/easy-widespread-easy-severe.png)
 
-Open doors and windows are typically uninteresting because they represent so little challenge to mitigate. So little challenge, in fact, that the vulnerability is often ignored. Believe it or not, it is often the cleaner's responsibility to lock doors, windows and set alarms. Anyone can be, or masquerade, as a cleaner. I have discussed some of these types of threat agents on my [blog](http://blog.binarymist.net/2012/11/04/sanitising-user-input-from-browser-part-1/#threat-agents). Many places I have worked in have had double latched windows only single latched when I do the rounds just before I leave. It is very easy to pry a double latch window open from the outside that is only single latched.
+Open doors and windows are typically uninteresting because they represent so little challenge to mitigate. So little challenge, in fact, that the vulnerability is often ignored. Believe it or not, it is often the cleaner's responsibility to lock doors, windows and set alarms. Anyone can be, or masquerade, as a cleaner. I have discussed some of these types of threat agents on my [blog](http://blog.binarymist.net/2012/11/04/sanitising-user-input-from-browser-part-1/#threat-agents). Many places I have worked in that have double latched windows, only single latched them when I do the rounds just before I leave. It is very easy to pry a double latch window open from the outside when it has only been single latched.
 
 ### Easily Penetrable Building Materials
 
 ![](images/ThreatTags/easy-widespread-easy-moderate.png)
 
-There are many building materials in use today that are trivially easy to compromise. Although cyber attacks, as opposed to simple physical penetration, are on the increase, physical attacks are generally lower tech and easier to carry out by less technically skilled people. One factor being realised with regard to cyber-crime is that the physical vector can also be a key component of carrying out a successful technology based attack, in a manner similar to social engineering as we cover in the [People](#people) chapter.
+There are many building materials use today, that are trivially easy to compromise. Although cyber attacks, as opposed to simple physical penetration, are on the increase, physical attacks are generally lower tech and easier to carry out by less technically skilled people. One factor being realised with regard to cyber-crime is that the physical vector can also be a key component of carrying out a successful technology based attack, in a manner similar to social engineering as we cover in the [People](#people) chapter.
 
-1. Roofing iron, in fact most roofing materials are very easy to either break through or remove. Once an attacker has a small section of roofing material removed, there is little in the way of physical elements stopping them entering the human inhabitable areas. Ceiling and wall linings have little strength and are easily just pushed from their substrate.
-2. Skylights, as are windows, are easy to get through. Skylights are often just less obvious than windows, although not always. There are usually metal strips with rubber molding underneath holding the glass panes in. With a flat blade screw-driver or any other similar tool, these are typically simple to remove. This is my usual approach to entering my house when I have misplaced my keys. This is quick, easy, and does not result in damage.
-3. Weak exterior cladding: there are lots of fairly weak building materials in use today. Fibre cement for example is often only 6mm thick. Sometimes this may have a plaster coat on it, which may give a deceptive appearance of strength. Either way, with a good kick, penetration is fairly straight forward.
+1. Roofing iron, in fact most roofing materials are very easy to either break through or remove. Once an attacker has a small section of roofing material removed, there is little in the way of physical elements stopping them from entering the human inhabitable areas. Ceiling and wall linings have little strength and are easily pushed from their substrate.
+2. Skylights, as are windows, are easy to get through. Skylights are often just less obvious than windows, although not always. There are usually metal strips with rubber moulding underneath holding the glass panes in. With a flat blade screw-driver or any other similar tool, these are typically simple to remove. This would be my usual approach to entering my house when I have misplaced my keys. This is quick, easy, and does not result in any damage.
+3. Weak exterior cladding: there are lots of fairly weak building materials used today. Fibre cement for example is often only 6mm thick. Sometimes this may have a plaster coat on it, which may give a deceptive appearance of strength. Either way, with a good kick, penetration is fairly straight forward.
 4. Suspended ceilings: if you have sensitive information stored in any area, such as server rooms, archive rooms, etc. Which has a false or suspended (dropped) ceiling, this is often an easily penetrable vulnerability. GIB or Acoustic NRC tiles are extremely common in office environments, but can be removed easily with bare hands, no tools required.
 
 ### Service Labels
@@ -63,7 +63,7 @@ Often labels are attached to doors, windows, air conditioning units, and any oth
 
 1. Dumpster diving: trash baskets or shredded material inside the building or dumpsters outside of the building. Even if the printed material is shredded, there have been quite a few tests and studies performed on the effectiveness of many shredders and how easy it is to reassemble shredded printed matter with time. In fact, there are competitions devoted to reassembling shredded printed documents with contestants that have successfully reassembled all printed matter. I also know of organisations that pay a service to pick up printed material, take it away, and destroy it. What is to stop an attacker masquerading as someone from the organisation you pay to do this?
 2. Printed material left in insecure places: your desk is insecure. Visitors or service contractors can easily photo documents when you are not there, without you ever being aware that they have copied them.
-3. Printer Management: Most businesses use Multi Function Devices (MFD’s) for the convenience of having printers, scanners, faxes, binders, etc. all combined into a single unit. This is generally a cost saving initiative, and also saves floor/desk real estate considerably. However, MFD’s contain hard drives which can store a plethora of previously printed documents. These hard drives are not only easy to remove, but are generally forgotten about when a device is retired or lease expired etc. Any sensitive information that is retained on the hard drive at time of sale or release, then becomes the legal property of the new owners or leaseholders.  
+3. Printer Management: most businesses use Multi Function Devices (MFD’s) for the convenience of having printers, scanners, faxes, binders, etc. all combined into a single unit. This is generally a cost saving initiative, and also saves floor/desk real estate considerably. However, MFD’s contain hard drives which can store a plethora of previously printed documents. These hard drives are not only easy to remove, but are generally forgotten about when a device is retired or lease expired etc. Any sensitive information that is retained on the hard drive at time of sale or release, then becomes the legal property of the new owners or leaseholders.  
 There is a well known incident involving a Californian Police department who put 6 old MFD’s up for auction. All of these devices were subsequently purchased by a local motorcycle gang. Unfortunately for the police, they forgot to wipe and/or remove the MFD hard drives, resulting in thousands of sensitive police reports and case files becoming the legal property of the motor cycle gang.
 
 ### RFID Tags {#physical-identify-risks-rfid}
@@ -95,7 +95,7 @@ Computers left logged in, not locked, and screens left on often include very sen
 
 ![](images/ThreatTags/average-common-average-severe.png)
 
-Wherever you have networking equipment installed, it represents an optimal target for an attacker looking to compromise assets on your network. An attacker needs just enough time to plant infectious media that will do their bidding, perhaps destruction or establishing a reverse shell to an external host they control, giving them full access to your network. Do not underestimate how quickly this can be done. Often simply plugging media in is all that is required.
+Wherever you have networking equipment installed, it represents an optimal target for an attacker looking to compromise assets on your network. An attacker only needs just enough time to plant infectious media that will do their bidding, perhaps destruction or establishing a reverse shell to an external host they control, giving them full access to your network. Do not underestimate how quickly this can be done. Often simply plugging media in, is all that is required.
 
 ### Network Ports
 
@@ -147,36 +147,36 @@ In my experience, when a staff member finishes working for an organisation, they
 
 ![](images/ThreatTags/easy-widespread-average-moderate.png)
 
-A lack of visibilty removes the ability to make well-informed decisions. Visibility dictates your ability to react when a malicious actor is doing something to compromise your asset(s).  
+A lack of visibility removes the ability to make well-informed decisions. Visibility dictates your ability to react when a malicious actor is doing something to compromise your asset(s).  
 The tools you use to provide visibility will determine what an attacker needs to do to go about avoiding or removing it.
 
 ## 3. SSM Countermeasures
 
-There is a common theme throughout this section: prevent, detect and respond. It's discussed in a little more depth in the [RFID Tags](#physical-countermeasures-rfid) section.
+There is a common theme throughout this section: prevent, detect and respond. It is discussed in a little more depth in the [RFID Tags](#physical-countermeasures-rfid) section.
 
 ### Fortress Mentality {#physical-countermeasures-fortress-mentality}
 
 ![](images/ThreatTags/PreventionAVERAGE.png)
 
-Harden internal attack vectors. [BinaryMist](http://binarymist.io) takes the approach of [De-perimeterisation](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#fire-walling). Don't rely only on network firewalls or LAN segmentation. Harden every layer (defence in depth) as though all other layers are weak and easily compromised.
+Harden internal attack vectors. [BinaryMist](http://binarymist.io) takes the approach of [De-perimeterisation](http://blog.binarymist.net/2014/12/27/installation-hardening-of-debian-web-server/#fire-walling). Do not rely only on network firewalls or LAN segmentation. Harden every layer (defence in depth) as though all other layers are weak and easily compromised.
 
 ![](images/DefenceInDepth.png)
 
-I have [blogged](http://blog.binarymist.net/2012/11/04/sanitising-user-input-from-browser-part-1/#defense-in-depth) and [spoken](http://blog.binarymist.net/presentations-publications/#whats-our-software-doing-with-all-that-user-input) about this on many occasions. The same principle applies to physical security. When the outer layer is removed, there should be many layers of defence within the physical premises as well. We discuss some of these below.
+I have [blogged](http://blog.binarymist.net/2012/11/04/sanitising-user-input-from-browser-part-1/#defense-in-depth) and [spoken](http://blog.binarymist.net/presentations-publications/#whats-our-software-doing-with-all-that-user-input) about this on many occasions. The same principle applies to physical security. When the outer layer is removed, there should be many layers of defence within the physical premises as well. We will discuss some of these below.
 
 ### Internal Doors and Cabinets Left Unlocked {#physical-countermeasures-internal-doors-and-cabinets-unlocked}
 
 ![](images/ThreatTags/PreventionEASY.png)
 
-Provide education, then monitor and test that the education is taking effect; repeat if not. Have someone with a devious, creative mindset test these areas. There are also quite a few ideas in the [People](#people) chapter on increasing staff engagement.
+Provide education, then monitor and test that the education is taking effect; repeat if not, have someone with a devious, creative mindset test these areas. There are also quite a few ideas in the [People](#people) chapter on increasing staff engagement.
 
 ### Insecure Doors and/or Windows {#physical-countermeasures-insecure-doors-windows}
 
 ![](images/ThreatTags/PreventionVERYEASY.png)
 
-Much of ensuring that staff secures the premises when they leave comes down to the level of engagement. See the [People](#people) chapter for ideas on how to increase staff engagement and motivation to take care in the organisation they work for while being alert. Do not underestimate how much of staff member's attitude affects this.  
-Don't overwork your staff to the point that they are too tired when they leave the premises to think about doing a full rounds check, or if they do, then miss something.  
-It is an age old law. What goes around comes around. Treat your staff as you would like to be treated, and they will be much more likely to make sure that premises openings are locked properly when they leave.
+Much of ensuring that staff do secure the premises when they leave, comes down to the level of engagement. See the [People](#people) chapter for ideas on how to increase staff engagement and motivation to take care of the organisation they work for, while being alert. Do not underestimate how much of the staff member's attitude affects this.  
+Do not overwork your staff to the point that they are too tired when they leave the premises to think about doing a full rounds check, or if they do, then miss something.  
+It is an age old law. What goes around comes around. Treat your staff as you would like to be treated, and they will be more likely to make sure that the premises openings are locked properly when they leave.
 
 Train staff. The training loop is also important. Educate -> monitor -> test, repeat.
 
@@ -187,17 +187,17 @@ Train staff. The training loop is also important. Educate -> monitor -> test, re
 If you have the luxury of building your premises from scratch, steer clear of using materials that just look good. Tilt panel concrete and 8" steel reinforced, grouted block-work is very good against most types of attacks. Of course, if you have a determined attacker, they will get through that, so you will have to rely on defence in depth. Make sure you have many layers of protection, and think as though every one of them will be compromised with enough time, planning and/or perseverance.
 
 1. Roofing iron or other roofing materials are less likely to be compromised if the roof is clearly visible from a public place. The busier the public place, the better. If you have to use roofing iron, consider screwing it on with Tek screws, or even better with screws that do not have a common head, thus requiring a specialised tool. If your attacker is smart, they will do their reconnaissance on what is holding this material down before the attack. Tek screws are very difficult to remove with a claw hammer or small pinch bar. Nothing is impenetrable, but you can make an attackers job very difficult.
-2. Skylights: If you are using these, put them in places that are as public as possible and as hard to reach as possible. Also, installing them high above the floor will make a break-in harder. Fixed sash sky-lights are also a little more difficult. You could also consider fitting bars on the inside of these. This also applies to windows that are in secluded, quite places.
+2. Skylights: If you are using these, put them in places that are as public as possible and as hard to reach as possible. Also, installing them high above the floor will make a break-in harder. Fixed sash sky-lights are also a little more difficult. You could also consider fitting bars on the inside of these. This also applies to windows that are in secluded, quiet places.
 3. Weak exterior cladding: Just try and steer clear of using these types of materials. If you have no option, consider making your other layers of defence stronger to compensate.
 4. Suspended Ceiling: Filling the roof cavity with obstacles such as barbed wire, bunched chicken wire, etc. can demotivate all but the most determined attackers.
 
 #### Crime Prevention Through Environmental Design (CPTED)
 
-Again, if you are in the position to be building a premise from scratch, or completing an indepth refurbishment, you can implement CPTED. This is a focus on the external elements of a premise. Using landscaping techniques focused on security, you can use pathways, benches, hedgerows, sculptures and plantings in combination with lighting techniques and highly visible external security cameras to control access to the building, increasing the difficulty for an attacker to approach undetected. A well designed CPTED strategy can deter many attackers before they even reach your building, let alone attempt to access the building.
+Again, if you are in the position to be building a premise from scratch, or completing an in-depth refurbishment, you can implement CPTED. This is a focus on the external elements of a premise. Using landscaping techniques focused on security, you can use pathways, benches, hedgerows, sculptures and plantings in combination with lighting techniques and highly visible external security cameras to control access to the building, increasing the difficulty for an attacker to approach undetected. A well designed CPTED strategy can deter many attackers before they even reach your building, let alone attempt to access the building.
 
 &nbsp;
 
-There are of course detection followed by response techniques that you can use to help in cases where you are unable to, or it does not make sense to change weak building materials. These are covered below.
+There is of course detection followed by response techniques that you can use to help in cases where you are unable to, or it does not make sense to change weak building materials. These are covered below.
 
 ### Service Labels
 
@@ -218,7 +218,7 @@ There are many attack vectors represented here in the following countermeasures:
 
 * Outside bins that lock
 * High quality shredders
-* Easily accessible and convenient lockable storage for each individual staff member. Make sure they're very easy to use, or else they won't be used.
+* Easily accessible and convenient lockable storage for each individual staff member. Make sure they are very easy to use, or else they won't be used.
 * Policy and possible company culture change for all of the above points and any that I have missed
 * Education -> monitor -> test, repeat
 
@@ -246,16 +246,16 @@ You can then use your ranking as input to the Countermeasures step, thus helping
 Most of what you can do here comes down to the people problem described in the chapter on [People](#people).
 
 1. Educate your workers
-2. Create a [culture](http://blog.binarymist.net/2014/04/26/culture-in-the-work-place/) that inspires thinking about security and includes it as part of who they are
-3. Test your workers (come in after hours and check who has left monitors on). Measure the results. Make sure your investment is falling on fertile ground and actually taking root. Adjust your training and change techniques to address weak areas. Measure again. Keep iterating on this
-4. Again simple stuff, but from my experience, if your organisation falls into this bucket, until an attacker takes advantage of this, management remains blissfully unaware. So, if you see it, put your [change agent skills](http://blog.binarymist.net/2014/04/26/culture-in-the-work-place/#effecting-change) to work. This can take significant cultural change. Be patient and make that change move from ground up. It does not matter where you sit in the organisations hierarchy. If you do not really know where to start, I would recommend grabbing a copy of [Fearless Change](http://blog.binarymist.net/2013/06/22/ideas-for-more-effective-meetings-and-presentations/). It is not about meetings and presentations, by the way. I have gained a lot of insight on how to gently change organisations, and bring big improvements in many areas. I would also recommend [Nonviolent Communication](http://en.wikipedia.org/wiki/Nonviolent_Communication) by Marshall Rosenberg
-5. Getting buy-in from end users can often be a difficult task in this area. Often this can be due to an inherent distrust of management by line level staff. Any change of process that relates to security will result in negative feelings and questions such as “what has happened”, “what are they looking for now”, “I haven't done anything wrong”, etc. The key word here is transparency. Right from the outset, management need to inform staff of plans, what processes are being put in place and why. What are the possible ramifications if these processes are not established? Also this discussion should be had first hand from senior management to line staff, not via a supervisor / team-leader, etc. This removes an additional layer of suspicion
+2. Create a [culture](http://blog.binarymist.net/2014/04/26/culture-in-the-work-place/) that inspires people to think about security and includes it as part of who they are
+3. Test your workers (come in after hours and check who has left monitors on). Measure the results. Make sure your investment is falling on fertile ground and actually taking root. Adjust your training and change techniques to address the weak areas. Measure again. Keep iterating on this
+4. Again simple stuff, but from my experience, if your organisation falls into this bucket, until an attacker takes advantage of this, management remains blissfully unaware. So, if you see it, put your [change agent skills](http://blog.binarymist.net/2014/04/26/culture-in-the-work-place/#effecting-change) to work. This can take a significant cultural change, so be patient and make that change move from ground up and it does not matter where you sit in the organisations hierarchy. If you do not really know where to start, I would recommend grabbing a copy of [Fearless Change](http://blog.binarymist.net/2013/06/22/ideas-for-more-effective-meetings-and-presentations/). It is not about meetings and presentations, by the way. I have gained a lot of insight on how to gently change organisations, and bring big improvements in many areas. I would also recommend [Nonviolent Communication](http://en.wikipedia.org/wiki/Nonviolent_Communication) by Marshall Rosenberg
+5. Getting buy-in from end users can often be a difficult task in this area. Often this can be due to an inherent distrust of management by line level staff. Any change of process that relates to security will result in negative feelings and questions such as “what has happened”, “what are they looking for now”, “I haven't done anything wrong”, etc. The key word here is transparency. Right from the outset, management need to inform staff of their plans, what processes are being put in place and why. What are the possible ramifications if these processes are not established? Also this discussion should be had first hand from senior management to line staff, not via a supervisor / team-leader, etc. This removes an additional layer of suspicion.
 
 ### Networking Equipment
 
 ![](images/ThreatTags/PreventionAVERAGE.png)
 
-Ideally, these components should be stored in server cabinets which are locked; do not leave the keys sitting in the locks, or in obvious places, and have all panels fitted. So often I have seen these cabinets wide open due to laziness, or because no one knows where the keys are anymore. The server rooms should also be locked when no one is in them, and closely guarded. Also consider using detection mechanisms. Use movement detection devices and cameras that are set up to capture and send alerts to someone that will notice them and respond. This way when your prevention fails, your detection and response will save the day.
+Ideally, these components should be stored in server cabinets which are locked; do not leave the keys sitting in the locks, or in an obvious place, and have all the panels fitted. So often I have seen these cabinets wide open due to laziness, or because no one knows where the keys are any more. The server rooms should also be locked when no one is in them, and closely guarded. Also consider using detection mechanisms. Use movement detection devices and cameras that are set up to capture and send alerts to someone that will notice them and respond. This way when your prevention fails, your detection and response will save the day.
 
 You will also need to think about company culture as it pertains to networking, and whether this needs some work.
 
@@ -274,7 +274,7 @@ This is discussed in more depth in the Network chapter of [Fascicle 1](https://l
 
 The “outside” vulnerability can be mitigated by the implementation of Li-Fi (Light Fidelity) systems. Li-Fi transmits high-speed data using visible light communication (VLC), and as the light waves cannot penetrate walls, external access becomes virtually impossible. Li-Fi APs also have an inherently short range, which is essentially diffused by windows. The [speed benefits](http://www.sciencealert.com/li-fi-tested-in-the-real-world-for-the-first-time-is-100-times-faster-than-wi-fi) of Li-Fi are also compelling, many times faster than current Wi-Fi speeds. 
 
-I usually use a passphrase of about 40 characters long, made up of random characters including a mix of alphanumeric, upper case, lower case and symbols. For some people this can be a little awkward. For those abiding by best practises of using password vaults, it should actually be easier than typing a short pass-phrase, because they will be copy and pasted from the safe. In this case, there is no convenience lost. If such long passphrases feel inconvenient for users, it should compell them to use a password vault (which they should already be doing).
+I usually use a pass-phrase of about 40 characters long, made up of random characters including a mix of alphanumeric, upper case, lower case and symbols. For some people this can be a little awkward. For those abiding by the best practises of using password vaults, it should actually be easier than typing a short pass-phrase, because they will be copied and pasted from the safe. In this case, there is no convenience lost. If such long pass-phrases feel inconvenient for users, it should compel them to use a password vault (which they should already be doing).
 
 The [Transient Devices](#physical-countermeasures-transient-devices) section may also be of interest.
 
@@ -282,14 +282,14 @@ The [Transient Devices](#physical-countermeasures-transient-devices) section may
 
 ![](images/ThreatTags/PreventionDIFFICULT.png)
 
-Feel free to hide the SSID, but it adds little in the way of security and does add quite a bit in the way of inconvenience. 
+Feel free to hide the SSID, but it adds little in the way of security and does add quite a bit more in the way of inconvenience. 
 
 #### Wi-Fi Protected Set-up (WPS)
 
 ![](images/ThreatTags/PreventionEASY.png)
 
 * Do not purchase an AP with WPS
-* If you already have one and the firmware allows you to turn WPS off then do so. Just be aware that sometimes you will turn this off and the firmware will ignore your choice, so be sure to test it, or at least obtain a reliable configuration from the device. For example, I have worked with Cisco Aironet 1142 devices and their Web UI displays something completely different to the configuration when you print it out.
+* If you already have one and the firmware allows you to turn WPS off, then do so. Just be aware that sometimes you will turn this off and the firmware will ignore your choice, so be sure to test it, or at least obtain a reliable configuration from the device. For example, I have worked with Cisco Aironet 1142 devices and their Web UI displays something completely different to the configuration when you print it out.
 * Consider re-flashing the device with a firmware that does not have WPS.
 * Research and purchase a device(s) that does not have WPS.
 
@@ -298,11 +298,11 @@ Feel free to hide the SSID, but it adds little in the way of security and does a
 ![](images/ThreatTags/PreventionEASY.png)
 
 Make sure your AP is set-up to use one of the encryption algorithms considered to be secure enough today. Make use of Wi-Fi Protected Access 2 (WPA2), but not with the flawed WPS standard which undermines WPA2 security.  
-Do not use WEP with TKIP, it's trivial to crack.
+Do not use WEP with TKIP, it is trivial to crack.
 
-WPA, which was a stop gap solution created due to the insecurities found in WEP, is a significantly stronger protocol than its predecessor. WPA also implements Temporal Key Integrity Protocol (TKIP) which generates a new 128 bit key for each packet rather than using the same key for each packet as WEP does, thus mitigating replay attacks.
+WPA, which was a stop gap solution created due to the insecurities found in WEP, it is a significantly stronger protocol than its predecessor. WPA also implements Temporal Key Integrity Protocol (TKIP) which generates a new 128 bit key for each packet rather than using the same key for each packet as WEP does, thus mitigating replay attacks.
 
-WPA Also includes the message integrity checking algorithm "Michael" which is much stronger than the cyclic redundancy check (CRC) used by WEP.
+WPA also includes the message integrity checking algorithm "Michael" which is much stronger than the cyclic redundancy check (CRC) used by WEP.
 
 WPA2 uses the Counter Mode Cipher Block Chaining Message Authentication Code Protocol (CCMP), which is an Advanced Encryption Standard (AES) based encryption mode, and is still considered fairly secure in its own right.
 
@@ -312,7 +312,7 @@ You may have also noticed the pre-shared key (PSK) acronym related to WPA2. It s
 
 ![](images/ThreatTags/PreventionAVERAGE.png)
 
-Make sure that, as part of a staff member's exit interview, whether they be permanent or a contractor, you do everything in your power to have them remove Wi-Fi credentials from their transient devices, or better still, have the network administrator remove their ability to connect to your network.
+Make sure that, as part of a staff members exit interview, whether they be permanent or a contractor, you do everything in your power to have them remove Wi-Fi credentials from their transient devices, or better still, have the network administrator remove their ability to connect to your network.
 
 Be very careful who you hand credentials out to. For visitors, consider setting up an AP that has access to the internet alone. Always limit access to your internal resources.
 
@@ -332,7 +332,7 @@ Detection is an important part of the overall security of your premises. When yo
 
 ### Fortress Mentality
 
-I do not see many risks associated with improving a premises internal security, other than possible over confidence that may result as a byproduct.
+I do not see many risks associated with improving a premises internal security, other than possible over confidence that may result as a by-product.
 
 ### Internal Doors and Cabinets Left Unlocked
 
@@ -353,12 +353,12 @@ With labels removed you run the risk that someone will forget who services the a
 ### Sensitive Printed Matter
 
 People may rebel against policy if they are not treated the right way. Sometimes it is hard to see this, people are good at hiding their true feelings. I discuss strategies of getting the most out of your people in the [People](#people) chapter so as to avoid a lack of buy-in and engagement.
-As with security in all other areas, increasing it is likely to cost a little more and decrease some convenience. Although, with thought and planning, this can become part of your company culture. People can be your strongest, or your weakest defence. This is your choice. Cultural change can be implemented from any level. The most successfully being from the shop flaw.  
+As with security in all other areas, increasing it is likely to cost a little more and decrease some convenience. Although, with thought and planning, this can become part of your company culture. People can be your strongest, or your weakest defence. This is your choice. Cultural change can be implemented from any level. The most successfully being from the shop floor.  
 High quality shredders are not much more expensive than their lesser counter-parts.
 
 ### RFID Tags
 
-With multi-factor authentication, the "something you have" or "something you know" components could be potentially lost or forgotten. In a drastic case, "something you are" could also be removed. Increasing security decreases convenience.
+With multi-factor authentication, the "something you have" or "something you know" components could potentially be lost or forgotten. In a drastic case, "something you are" could also be removed. Increasing security decreases convenience.
 
 ### Computers Logged in and Unlocked
 
@@ -374,7 +374,7 @@ There may be some inconvenience encountered when new network components require 
 
 ### Wi-Fi Access Points
 
-In terms of long and complex passphrases, there are no real risks here, other than the fact that those without password vaults will be pushed toward using them. This should be looked at as a bonus. Yes, there may be some initial frustration, but that will soon be replaced with a solution that is both convenient and that elevates security. This affects not just those using password vaults, but anyone related to the people using them, because unique credential sets become so much easier to use and ubiquitous.
+In terms of long and complex pass-phrases, there are no real risks here, other than the fact that those without password vaults will be pushed toward using them. This should be looked at, as a bonus. Yes, there may be some initial frustration, but that will soon be replaced with a solution that is both convenient and that elevates security. This affects not just those using password vaults, but anyone related to the people using them, because unique credential sets become so much easier to use and ubiquitous.
 
 #### Hiding the SSID
 
@@ -410,19 +410,19 @@ There is often much work to be done specific to your internal organisation. Work
 
 ### Internal Doors and Cabinets Left Unlocked
 
-There is a time cost, and the prospect that staff will question costs associated with this policy and its worthiness. These sorts of issues require solid relationships and empathy as an investment from those mandating the policies.
+There is a time cost, and the prospect that staff will question the costs associated with this policy and its worthiness. These sorts of issues require solid relationships and empathy as an investment from those mandating the policies.
 
 ### Insecure Doors and/or Windows
 
-There are trade-offs that must be thought about and discussed in regards to what happens if people lose unlocking mechanisms, and cannot traverse the premises or exit in emergency. Coded locks may be an appropriate mechanism in this case, but changing codes and their assignment to people also need to be thought about.
+There are trade-offs that must be thought about and discussed in regards to what happens if people lose unlocking mechanisms, and cannot traverse the premises or exit in emergency. Coded locks may be an appropriate mechanism in this case, but changing codes and their assignment to people may also need to be thought about.
 
 ### Easily Penetrable Building Materials
 
-Consider where the lowest hanging fruit is in terms of your over-all security stature. This is why iterating on the threat model is important to build your intuition. Consider everything, then weigh the importance of building materials for your situation. For example, if your internal posture is comprised of many layers of well thought out security, and people are engaged, loyal and subscribed to well constructed policy, then your external posture will be less of an issue if it is breached. Before you can make this decision though, you will need to work through the various chapters to gain a good understanding of your current security posture in each area.
+Consider where the lowest hanging fruit is in terms of your over-all security structure. This is why iterating on the threat model is important to build your intuition. Consider everything, then weigh the importance of building materials for your situation. For example, if your internal posture is comprised of many layers of well thought out security, and people are engaged, loyal and subscribed to well constructed policy, then your external posture will be less of an issue if it is breached. Before you can make this decision though, you will need to work through the various chapters to gain a good understanding of your current security posture in each area.
 
 ### Service Labels
 
-Record who the service agents are in a secure place that only those that need to know have access to.
+Record who the service agents are in a secure place and only those that need to know that information have access to it.
 
 ### Sensitive Printed Matter
 
@@ -440,7 +440,7 @@ This is a no brainer. There are no real disadvantages to securing your session b
 
 ### Networking Equipment
 
-Along with the training -> monitoring -> testing cycle, adding detection mechanisms may be extra cost and overhead. Iterating on the threat model will help provide insight into where you can cut costs and where you may have to invest. Often it is a matter of moving expenditure rather than just adding it. Balance out the areas that need it more than others. Overall security can be increased in most cases by moving expenditure to areas that are more in need.
+Along with the training -> monitoring -> testing cycle, adding detection mechanisms may be extra cost and overhead. Iterating on the threat model will help provide insight into where you can cut costs and where you may have to invest. Often it is a matter of moving expenditure rather than just adding it. Balance out the areas that need it more than others. Overall security can be increased in most cases by moving expenditure to areas that are in more need.
 
 ### Network Ports
 
@@ -456,18 +456,18 @@ This technically does not provide any increased security, but reduces convenienc
 
 #### Wi-Fi Protected Set-up (WPS)
 
-This leads to a little increase in effort to establish a wireless connection. Those who are provided access should also be recorded as having access, discussed below in the [Transient Devices](#physical-costs-and-trade-offs-transient-devices) section.
+This leads to a little increase in effort to establish a wireless connection. Those who are provided with access should also be recorded as having access, discussed below in the [Transient Devices](#physical-costs-and-trade-offs-transient-devices) section.
 
 #### WPA2 and WPA
 
-There are costs of upgrading if you have to change your APs, though it's unlikely because there has been WPA2 support even in consumer grade APs for quite a few years now.
+There are costs of upgrading if you have to change your APs, though it is unlikely because there has been WPA2 support even in consumer grade APs for quite a few years now.
 
 ### Transient Devices {#physical-costs-and-trade-offs-transient-devices}
 
-There may be a little more work in recording for whom access has been granted or removed. Consider the fact that having better visibility to who has access to the network is worth the extra overhead. The fact that you can remove access for staff members, ex-staff members, and guests, while maintaining access visibility, can be quite empowering and make it easier to track down unwanted visitors. 
+There may be a little more work in recording who has been granted access or been removed. Consider the fact that having better visibility to who has access to the network is worth the extra overhead. The fact that you can remove access for staff members, ex-staff members, and guests, while maintaining access visibility, can be quite empowering and makes it easier to track down unwanted visitors. 
 
 ### Lack of Visibility
 
 #### Cameras, Sensors and Alarms
 
-I have found CCTV systems using ZoneMinder an excellent cost-effective physical surveillance tool kit, with many options to configure to suit what ever scenario will work best for you. There will be some setup time, and you may have to pay for physical cameras if you do not already have them, as well as computer hardware and video capture cards. The cameras can be expensive if you require high resolution images. Video capture cards and the other hardware is inexpensive. Lighting can be an issue as well. In dark areas, you may have to use infrared lighting around the cameras (often included in the camera), although movement sensors that switch flood lights on can also be an option in dark areas.
+I have found CCTV systems using ZoneMinder, an excellent cost-effective physical surveillance tool kit, with many options to configure and to suit what ever scenario will work best for you. There will be some set-up time, and you may have to pay for physical cameras if you do not already have them, as well as computer hardware and video capture cards. The cameras can be expensive if you require high resolution images. Video capture cards and the other hardware is inexpensive. Lighting can be an issue as well. In dark areas, you may have to use infra-red lighting around the cameras (often included in the camera), although movement sensors that switch flood lights on, can also be an option in dark areas.
