@@ -51,7 +51,7 @@ Want more info still?
 ### Kali Linux Install {#tooling-setup-kali-linux-kali-linux-install}
 
 Offensive Security (the creators of Kali Linux) provide many options for running their distribution including ISO, turn-key [VMware or VirtualBox](https://www.offensive-security.com/kali-linux-vmware-virtualbox-image-download/) image, [custom ARM images](https://www.offensive-security.com/kali-linux-vmware-arm-image-download/), and Mobile images ([NetHunter](https://www.kali.org/kali-linux-nethunter/)).
-I have used the ISO installed on a VM guest for this set-up, as I had a capable host for running this VM side by side with my preferred Windows VM. I did not want the pre-generated SSH host key, which is why I chose the ISO over the turn-key image. Learn more about the dangers of using an install with the pre-generated SSH host key via Nilesh Kapoor's talk at OWASP NZ Day 2016 on [Host Hardening](https://www.owasp.org/index.php/OWASP_New_Zealand_Day_2016#tab=Presentation_Schedule). Slide 12 details how to regenerate the SSH keychain. Note: If you install on physical hardware, you cannskip this section and move to the "[Tools I Use](#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux)" section.
+I have used the ISO installed on a VM guest for this set-up, as I had a capable host for running this VM side by side with my preferred Windows VM. I did not want the pre-generated SSH host key, which is why I chose the ISO over the turn-key image. Learn more about the dangers of using an install with the pre-generated SSH host key via Nilesh Kapoor's talk at OWASP NZ Day 2016 on [Host Hardening](https://www.owasp.org/index.php/OWASP_New_Zealand_Day_2016#tab=Presentation_Schedule). Slide 12 details how to regenerate the SSH keychain. Note: If you install on physical hardware, you can skip this section and move to the "[Tools I Use](#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux)" section.
 
 The Offensive Security team, which can be found on [IRC](http://docs.kali.org/community/kali-linux-irc-channel), are also very helpful and quick to respond to package requests, etc.
 
@@ -113,7 +113,7 @@ The ISO can be downloaded from [kali downloads](https://www.kali.org/downloads/)
 
 You will want to check the validity of the ISO (or other image if that is your preference) by verifying the SHA1 checksums. Details are directly under the downloads section and should be enough to get you going.
 
-There are additional details if you want to read them at [http://docs.kali.org/introduction/download-official-kali-linux-images](http://docs.kali.org/introduction/download-official-kali-linux-images), but essentially there are several ways to validate that you have the official Kali Linux installer and not some tampered-with binary. The details at the above link provide a bit more explanation around the validation steps, and importing the Kali GPG public key. At the bottom of the page is the command for cryptographically validating the downloaded binary once you have validated the downloaded `SHA1SUMS` file with the `SHA1SUMS.pgp` key that you also downloaded. You'll likely just have to change the actual `.iso` name in the command to that of the `.iso` you downloaded.
+There are additional details if you want to read them at [http://docs.kali.org/introduction/download-official-kali-linux-images](http://docs.kali.org/introduction/download-official-kali-linux-images), but essentially there are several ways to validate that if you have the official Kali Linux installer and not some tampered-with binary. The details at the above link provide a bit more explanation around the validation steps, and importing the Kali GPG public key. At the bottom of the page is the command for cryptographically validating the downloaded binary once you have validated the downloaded `SHA1SUMS` file with the `SHA1SUMS.pgp` key that you also downloaded. You will likely just have to change the actual `.iso` name in the command to that of the `.iso` you downloaded.
 
 You can refer to the hard-disk install ([http://docs.kali.org/installation/kali-linux-hard-disk-install](http://docs.kali.org/installation/kali-linux-hard-disk-install)) for running through the OS installer if you need it. For Partitioning disks, I choose "Guided - use entire disk and set up LVM" for future flexibility.
 
@@ -130,7 +130,7 @@ Once installed, run the following, and regularly thereafter. On the first dist-u
     apt-get install -y virtualbox-guest-x11
     reboot
 
-In Kali 2016.1 (Sana) the default user is no longer root. If your installing, make sure you use a decent password, not a dictionary word or similar. It is generally a good idea to use a mix of upper case, lower case characters, numbers and special characters, and of a decent length. You will get the option to set your password and create a root user, or just use sudo during the install. If you want to change the password later, at the terminal, enter: `passwd` and follow the prompts. Many of the commands used in this book will require root privileges. Prefixing with `sudo` will elevate your privileges to those of root.
+In Kali 2016.1 (Sana) the default user is no longer root. If your installing, make sure you use a decent password, not a dictionary word or similar. It is generally a good idea to use a mixture of upper case, lower case characters, numbers and special characters, and of a decent length. You will get the option to set your password and create a root user, or just use sudo during the install. If you want to change the password later, at the terminal, enter: `passwd` and follow the prompts. Many of the commands used in this book will require root privileges. Prefixing with `sudo` will elevate your privileges to those of root.
 
 I usually set-up the `/etc/network/interfaces` file here for the host-only adapter, we will need this working for the Process and Practises chapter at a minimum, again this is partly discussed in the [NodeGoat Set-up on your local machine](#process-agile-development-and-practices-security-regression-testing-nodegoat-set-up-on-your-local-machine) section in the Process and Practises chapter. Backup your `/etc/network/interfaces` before making changes, and add the following to the bottom of the interfaces:
 
@@ -231,7 +231,7 @@ If not using the resource file, once `msfconsole` is running, in order to enable
 
 `load msgrpc ServerHost=127.0.0.1 Pass=abc123`
 
-Finally... starting BeEF. There are at least three ways to do so. I find the first to be the most informative and interactive. Also, do not forget to run beef as root.
+Finally... starting BeEF. There are at least three ways to do so. I find that the first to be the most informative and interactive. Also, do not forget to run beef as root.
 
 * Contrary to a blog post on the [beefproject](http://blog.beefproject.com/2014/06/kali-formerly-backtrack-linux-beef.html), I've found the most useful way to run BeEF to be from the `/usr/share/beef-xss/` directory  
 `./beef`  
@@ -450,7 +450,7 @@ A collection of scripts produced by Peter Kim:
 
 #### BypassUAC {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-bypassuac}
 
-BypassUAC is used to bypass User Access Controls, post-exploitation, allowing us to get system privileges. I used this in the demo attack I describe in the Website section, under Spoofing, in the Risks section of the Network chapter of [Fascicle 1](https://leanpub.com/holistic-infosec-for-web-developers-fascicle1-vps-network-cloud-webapplications). There is, in fact, a way to do this that is less likely to trigger an antivirus (AV) alert. I cover this under the below set of directions.
+BypassUAC is used to bypass User Access Controls, post-exploitation, allowing us to get system privileges. I used this in the demo attack I describe in the Website section, under Spoofing, in the Risks section of the Network chapter of [Fascicle 1](https://leanpub.com/holistic-infosec-for-web-developers-fascicle1-vps-network-cloud-webapplications). There is, in fact, a way to do this that is less likely to trigger an anti-virus (AV) alert. I cover this under the below set of directions.
 
 In Kali 1.1
 
@@ -504,7 +504,7 @@ Spiderfoor is an automated OSINT gathering tool.
 
 #### [OWASP SecLists](http://github.com/danielmiessler/SecLists.git) {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-owasp-seclists}
 
-These are a collection of many different lists used during security assessments, which include usernames, passwords, URLs, sensitive data patterns, fuzzing payloads, web shells, and many more. Their goal is to enable a security tester to pull this repository onto a new testing system and have access to every type of list that may be needed.
+These are a collection of many different lists used during security assessments, which include user-names, passwords, URLs, sensitive data patterns, fuzzing payloads, web shells, and many more. Their goal is to enable a security tester to pull this repository onto a new testing system and have access to every type of list that may be needed.
 
 `git clone http://github.com/danielmiessler/SecLists.git /opt/SecLists`
 
@@ -534,7 +534,7 @@ We no longer must run everything as root, so this is no longer an issue.
 
 ##### FoxyProxy Standard {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-chromium-extensions-foxyproxy-standard}
 
-FoxyProxy Standard really reduces friction with web proxy interception. FoxyProxy is a very handy add-on for both Chromium and FireFox, although it seems to have more options for FireFox, or at least they are more easily accessible. It allows you to setup a list of proxies, and then switch between them as you need.
+FoxyProxy Standard really reduces friction with web proxy interception. FoxyProxy is a very handy add-on for both Chromium and FireFox, although it seems to have more options for FireFox, or at least they are more easily accessible. It allows you to set-up a list of proxies, and then switch between them as you need.
 
 FoxyProxy provides a menu button, so with two clicks you can disable the add-on completely to revert to your previous settings, or select any of your predefined proxies. This is a real time saver.
 
@@ -594,7 +594,7 @@ This tool is simple and often useful for running a quick vulnerability assessmen
 
 ##### XSS Me
 
-XSS Me is also simple and often useful for running a quick vulnerability assessment. It also is open source software (GPLv3) from Security Compass Labs and an component of the Exploit-Me suite. This tools behaviour is very similar to SQL Inject Me (follows the Principle of Least Astonishment (POLA)), which makes using the tools very easy. Both these add-ons have next to no learning curve. The level of entry is very low and I think are exactly what web developers need to eliminate excuses for not testing their own security. It also helps developers understand how these attacks can be carried out. XSS Me currently only tests for reflected XSS. It does not attempt to compromise the security of the target system. Both XSS Me and SQL Inject Me are reconnaissance tools, where the information provided is simply the vulnerabilities found. XSS Me does not support stored XSS or user supplied data from sources such as cookies, links, or HTTP headers. XSS Me's effectivess in finding vulnerabilities is also determined by the list of attack strings the tool has available. Out of the box, the list of XSS attack strings are derived from RSnake's collection, which were donated to OWASP and who now maintains it as one of their [cheat-sheets](https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet). Multiple encodings are not yet supported, but are planned for the future. You can help to keep the collection up to date by submitting new attack strings.
+XSS Me is also simple and often useful for running a quick vulnerability assessment. It also is open source software (GPLv3) from Security Compass Labs and an component of the Exploit-Me suite. This tools behaviour is very similar to SQL Inject Me (follows the Principle of Least Astonishment (POLA)), which makes using the tools very easy. Both these add-ons have next to no learning curve. The level of entry is very low and I think are exactly what web developers need to eliminate excuses for not testing their own security. It also helps developers understand how these attacks can be carried out. XSS Me currently only tests for reflected XSS. It does not attempt to compromise the security of the target system. Both XSS Me and SQL Inject Me are reconnaissance tools, where the information provided is simply the vulnerabilities found. XSS Me does not support stored XSS or user supplied data from sources such as cookies, links, or HTTP headers. XSS Me's effectiveness in finding vulnerabilities is also determined by the list of attack strings the tool has available. Out of the box, the list of XSS attack strings are derived from RSnake's collection, which were donated to OWASP and who now maintains it as one of their [cheat-sheets](https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet). Multiple encodings are not yet supported, but are planned for the future. You can help to keep the collection up to date by submitting new attack strings.
 
 ##### [Tamper Data](https://addons.mozilla.org/en-US/firefox/addon/tamper-data/)
 
@@ -612,7 +612,7 @@ This is a light weight HTTP intercepting proxy as an Iceweasel add-on which allo
 
 It is often very helpful to have at least a couple of Wi-Fi adapters when performing wireless reconnaissance or attacks, or simply to maintain internet connectivity if using your phone as a wireless hot-spot while you are on another network. It is also useful for researching while your connected to a target's wireless Access Point (AP). An easy way to do this is to use the laptop's on-board wireless interface to connect to the phone's wireless hot-spot, and pass the USB Wi-Fi adapter straight to the guest.
 
-There are many devices of varying specifications. I've found (along with others) that the TL-WN722N hits a good sweet spot of cross platform compatibility, price, size, ease of purchase, and a few other considerations.
+There are many devices of varying specifications. I have found (along with others) that the TL-WN722N hits a good sweet spot of cross platform compatibility, price, size, ease of purchase, and a few other considerations.
 
 As I find it flexible to run pen testing set-ups on VMs, the following addresses such configurations. Using VirtualBox 5.0.4, USB devices have to be "passed through" to the guest. The following process explains what is involved.
 
@@ -758,4 +758,3 @@ Run `dmesg | grep htc`, you should see something similar to the following printe
     [ 5.860808] ath9k_htc 2-1:1.0: ath9k_htc: FW Version: 1.3
 
 You should now be able to select the phone's wireless hot-spot you want to connect to in network manager.
-
