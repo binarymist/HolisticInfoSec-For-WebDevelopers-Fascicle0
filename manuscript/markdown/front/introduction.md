@@ -2,7 +2,7 @@
 
 %% An introduction deals with the subject of the book, supplementing and introducing the text and indicating a point of view to be adopted by the reader. The introduction usually forms a part of the text [and the text numbering system]; the preface does not." (In other words, the Arabic numbering of the book (1,2,3) starts with the introduction, if there is one. The other front matter takes i, ii, iii, etc.)
 
-In-depth guidance for Web Developers, Engineers, Architects and their teams, based on 25 years experience architectural, engineering, breaking and redesigning physical and technological systems then repeating the cycle iteratively.
+In-depth guidance for Web Developers, Engineers, Architects and their teams, based on 25 years experience architecting, engineering, breaking and redesigning physical and technological systems then repeating the cycle iteratively.
 
 Holistic InfoSec For Web Developers is focused toward agile teams and the realisation that high quality does not have to be expensive, providing it is introduced during the right points in the Development Life Cycle (DLC). I will focus on bringing quality building practises into each Sprint as part of the Teams Definition of Done (DoD), rather than waiting until going-live, when the cost of fixing defects is at its highest.
 
@@ -48,3 +48,4 @@ W> This is a Warning.
 T> This is a Tip.
 
 I> This is extra information.
+
