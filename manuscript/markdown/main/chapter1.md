@@ -6,7 +6,7 @@ First of all, why? Why start so high? Developers spend most of their lives focus
 
 Stepping back allows your peripheral vision to kick in.
 
-This stepping back process (a form of modeling), should be performed by a collection of the following people:
+This stepping back process (a form of modelling), should be performed by a collection of the following people:
 
 1. Deeply technical (software expert (developer/engineer)). I specifically do not mention tester(s) here, as testing should be the job of the developer. The developer is responsible for delivering high quality working code every Sprint.
 2. Network expert(s)
@@ -26,13 +26,13 @@ Performing this process as a team brings out the best in everyone. There are, of
 * [Microsoft (MS) 1. Identify Assets](https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_006)
 * [Open Web Application Security Project (OWASP) Assets](https://www.owasp.org/index.php/Application_Threat_Modeling#Assets)
 
-The first question we must ask ourselves: What are assets in the context of threat modeling? Assets are something we or our clients place value on that we are responsible for, and subsequently will want to protect from unauthorised access.
+The first question we must ask ourselves: What are assets in the context of threat modelling? Assets are something we or our clients place value on that we are responsible for, and subsequently will want to protect from unauthorised access.
 
-Assets often emerge as you progress through the following steps, you will probably end up modifying this list as you go, but it is vital that you do not miss this step in your eagerness to increase security. If you do not have a good grasp on what it is that you are trying to protect, then there may be nothing, or at least little, to protect. You must have some idea of what your assets are before taking the next step. Feel free, even obligated, as you progress, to jump back and modify the list of assets. More than likely you will keep adding to it as you identify additional risks and work through the countermeasures of each chapter. This is commonly how the process unfolds.
+Assets often emerge as you progress through the following steps, you will probably end up modifying this list as you go, but it is vital that you do not miss this step in your eagerness to increase security. If you do not have a good grasp on what it is that you are trying to protect, then there may be nothing, or at least little, to protect. You must have some idea of what your assets are before taking the next step. Feel free, even obligated, as you progress, to jump back and modify the list of assets. It is more than likely you will keep adding to it as you identify additional risks and work through the countermeasures of each chapter. This is commonly how the process unfolds.
 
 Identifying your assets is a domain-specific task, so you are the best person(s) to do this. I will help to direct your thoughts as we progress though.
 
-Many of the following chapters will address asset identification as the first step. Many assets will be the same for many chapters. Do not think about the assets as the be all and end all, but they are useful to keep in the forefront as you procede through the following steps of this chapter.
+Many of the following chapters will address asset identification as the first step. Many assets will be the same for many chapters. Do not think about the assets as the be all and end all, but they are useful to keep in the forefront as you proceed through the following steps of this chapter.
 
 Here are some assets to consider as part of your domain:
 
@@ -139,7 +139,7 @@ Your countermeasure PBIs also need to reference the risk they were created in re
 
 ## 4. SSM Risks that Solution Causes {#starting-with-the-30000-foot-view-risks-that-solution-causes}
 
-This is really dependent on the solution(s) you discover. Often there will be new risks that mitigation techniques introduce. We will work through many possibilities in following chapters.
+This is really dependent on the solution(s) you discover. Often there will be new risks that mitigation techniques introduced. We will work through many possibilities in following chapters.
 
 * Make sure before you test that you have written permission for all the areas that you are about to test, documenting what could possibly go wrong.
 * Make sure you have backups and that they work.
@@ -156,5 +156,4 @@ I am not here to do the work for you, but rather to help you do it.
 This, again, is really dependent on the solution(s) you discover.
 
 Think in terms of Counter-Measure costs - vs - Breach Costs, and weigh them against each other.
-
 
