@@ -130,7 +130,7 @@ Once installed, run the following, and regularly thereafter. On the first dist-u
     apt-get install -y virtualbox-guest-x11
     reboot
 
-In Kali 2016.1 (Sana) the default user is no longer root. If your installing, make sure you use a decent password, not a dictionary word or similar. It is generally a good idea to use a mixture of upper case, lower case characters, numbers and special characters, and of a decent length. You will get the option to set your password and create a root user, or just use sudo during the install. If you want to change the password later, at the terminal, enter: `passwd` and follow the prompts. Many of the commands used in this book will require root privileges. Prefixing with `sudo` will elevate your privileges to those of root.
+In Kali 2016.1 (Sana) the default user is no longer root. If you're installing, make sure you use a decent password, not a dictionary word or similar. It is generally a good idea to use a mixture of upper case, lower case characters, numbers and special characters, and of a decent length. You will get the option to set your password and create a root user, or just use sudo during the install. If you want to change the password later, at the terminal, enter: `passwd` and follow the prompts. Many of the commands used in this book will require root privileges. Prefixing with `sudo` will elevate your privileges to those of root.
 
 I usually set-up the `/etc/network/interfaces` file here for the host-only adapter, we will need this working for the Process and Practises chapter at a minimum, again this is partly discussed in the [NodeGoat Set-up on your local machine](#process-agile-development-and-practices-security-regression-testing-nodegoat-set-up-on-your-local-machine) section in the Process and Practises chapter. Backup your `/etc/network/interfaces` before making changes, and add the following to the bottom of the interfaces:
 
@@ -231,7 +231,7 @@ If not using the resource file, once `msfconsole` is running, in order to enable
 
 `load msgrpc ServerHost=127.0.0.1 Pass=abc123`
 
-Finally... starting BeEF. There are at least three ways to do so. I find that the first to be the most informative and interactive. Also, do not forget to run beef as root.
+Finally... starting BeEF. There are at least three ways to do so. I find that the first is the most informative and interactive. Also, do not forget to run beef as root.
 
 * Contrary to a blog post on the [beefproject](http://blog.beefproject.com/2014/06/kali-formerly-backtrack-linux-beef.html), I've found the most useful way to run BeEF to be from the `/usr/share/beef-xss/` directory  
 `./beef`  
