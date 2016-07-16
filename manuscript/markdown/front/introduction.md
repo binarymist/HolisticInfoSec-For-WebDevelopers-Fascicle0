@@ -16,7 +16,7 @@ W> Don't wait until you are on the stage, where the cost of your mistakes is at 
 
 When it comes to providing countermeasures to the identified risks, measuring the security posture of an application or network, is the step before. The best defence against an attacker is offence. This means that your best defence is to have someone with your best interests, either someone employed or contracted by you when discussing your assets, and who assess the vulnerabilities of your assets and attempts to exploit them.
 
-Each of the topic chapters (as shown on the cover) utilise a five step threat modelling process not dissimilar to Bruce Schneier's [Sensible Security Model](http://www.win.tue.nl/~wstomv/quotes/beyond-fear.html) (SSM), in which I will take you the reader through the five steps for the specific topic.
+Each of the topic chapters (as shown on the cover) utilise a five step threat modelling process similar to Bruce Schneier's [Sensible Security Model](http://www.win.tue.nl/~wstomv/quotes/beyond-fear.html) (SSM), in which I will take you the reader through the five steps for the specific topic.
 
 Asset Identification (Step 1): Provides insight on what your assets are. This is not always obvious at first. By studying our adversaries; their behaviours and goals, what they are attempting to obtain from you and how they go about acquiring it, assists us in defining what our assets are. These are the items we want to protect. I provide many examples throughout the book.
 
