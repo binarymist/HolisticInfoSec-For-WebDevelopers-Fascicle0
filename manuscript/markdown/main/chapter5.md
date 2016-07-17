@@ -16,7 +16,7 @@ Take the results from [higher level Asset Identification](#starting-with-the-300
 ## 2. SSM Identify Risks {#physical-identify-risks}
 You can take the same process that we did at the [top level](#starting-with-the-30000-foot-view-identify-risks), but abstract the ideas, and then solidify them on physical components. Some of the ideas will work, some won't.
 
-Many times physical security is good, but it gets compromised by the people problem. My wife used to do commercial cleaning when she was younger, and every night she would come home with new stories about how people were the weakest link when it came to security. Most of the time when physical security is breached, there is actually no security, because **people** have failed the design.
+Many times physical security is good, but it is compromised by the people problem. My wife used to do commercial cleaning when she was younger, and every night she would come home with new stories about how people were the weakest link when it came to security. Most of the time when physical security is breached, there is actually no security, because **people** have failed the design.
 
 I am also a qualified carpenter, and part of my job was to break into buildings when the tenants had run out on the lease, so I know a few things about physical security as well. Even when doors and windows are locked, their security is usually trivial to compromise without damaging anything. Funnily enough, it was seldom that we were required to force latches, bump or pick locks. There is always a path of least resistance, the lowest hanging fruit, because [people](#people) are usually the weakest link in any security solution. This does not actually have to be the case though, they can be the strongest link as well. Refer to the chapter on People for further details.
 
@@ -46,10 +46,10 @@ Open doors and windows are typically uninteresting because they represent so lit
 
 There are many building materials used today, that are trivially easy to compromise. Although cyber attacks, as opposed to simple physical penetration, are on the increase, physical attacks are generally lower tech and easier to carry out by less technically skilled people. One factor being realised with regard to cyber-crime is that the physical vector can also be a key component of carrying out a successful technology based attack, in a manner similar to social engineering as we cover in the [People](#people) chapter.
 
-1. Roofing iron, in fact most roofing materials are very easy to either break through or remove. Once an attacker has a small section of roofing material removed, there is little in the way of physical elements stopping them from entering the human inhabitable areas. Ceiling and wall linings have little strength and are easily pushed from their substrate.
+1. Roofing iron, and most roofing materials, are very easy to either break through or remove. Once an attacker has a small section of roofing material removed, there is little in the way of physical elements stopping them from entering the human inhabitable areas. Ceiling and wall linings have little strength and are easily pushed from their substrate.
 2. Skylights, as are windows, are easy to get through. Skylights are often just less obvious than windows, although not always. There are usually metal strips with rubber moulding underneath holding the glass panes in. With a flat blade screw-driver or any other similar tool, these are typically simple to remove. This would be my usual approach to entering my house when I have misplaced my keys. This is quick, easy, and does not result in any damage.
 3. Weak exterior cladding: there are lots of fairly weak building materials used today. Fibre cement for example is often only 6mm thick. Sometimes this may have a plaster coat on it, which may give a deceptive appearance of strength. Either way, with a good kick, penetration is fairly straight forward.
-4. Suspended ceilings: if you have sensitive information stored in any area, such as server rooms, archive rooms, etc. Which has a false or suspended (dropped) ceiling, this is often an easily penetrable vulnerability. GIB or Acoustic NRC tiles are extremely common in office environments, but can be removed easily with bare hands, no tools required.
+4. Suspended ceilings: if you have sensitive information stored in any area, such as server rooms and archive rooms, which have a false or suspended (dropped) ceiling, this is often an easily penetrable vulnerability. GIB or Acoustic NRC tiles are extremely common in office environments, but can be removed easily with bare hands, no tools required.
 
 ### Service Labels
 
@@ -390,13 +390,13 @@ No real risk here. It is possible, although unlikely, that you may not be using 
 
 ### Transient Devices
 
-There could be potential kickback due to the tightening of policy and implementation of transient device management. People often do not like change. 
+There could be potential pushback due to the tightening of policy and implementation of transient device management. People often do not like change. 
 
 ### Lack of Visibility
 
 #### Cameras, Sensors and Alarms
 
-Alarms may scare off an attacker lacking determination, but besides that, they generally just annoy neighbours due to the regular occurrence of false alarms. Do everything you can to minimise false alarms. Physically silent alarms that actually reach someone on alert, and who cares, can be far more effective. Do what ever it takes to make sure that the person supposed to be monitoring alarms and alerts does notice. Be creative if need be.
+Alarms may scare off an attacker lacking determination, but that aside, they generally just annoy neighbours due to the regular occurrence of false alarms. Do everything you can to minimise false alarms. Physically silent alarms that actually reach someone on alert, and who cares, can be far more effective. Do what ever it takes to make sure that the person supposed to be monitoring alarms and alerts does notice. Be creative if need be.
 
 You may experience possible complacency. We are under surveillance and have alarms, so we must be safe, right? Education may be required to make sure people understand that these are only one layer of defence and only as effective as the weakest link, often the person tasked with monitoring.
 
