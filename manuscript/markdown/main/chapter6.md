@@ -84,7 +84,7 @@ Throwing more engineers at a problem usually makes it worse. The only definite w
 #### Noisy, Crowded Offices
 ![](images/ThreatTags/easy-widespread-easy-low.png)
 
-Noise everywhere kills deep thought and concentration and removes the ability to concentrate. A loss of quality will be one of the main disadvantages.
+Excessive noise kills deep thought and concentration and removes the ability to concentrate. A loss of quality will be one of the main disadvantages.
    
 #### Email
 ![](images/ThreatTags/easy-widespread-average-low.png)
@@ -103,7 +103,7 @@ Dividing your workload between multiple tasks destroys motivation and actually m
 
 ![](images/ContextSwitching.png)
 
-Gerald Weinberg's rule that 20% of our time is lost every time we perform a context switch.
+Gerald Weinberg's rule establishes that 20% of our time is lost every time we perform a context switch.
 
 I have spent time with administrative staff who do not understand how much context switching effects all people's effectiveness at performing any task. This is even more apparent in deeply technical workers. Each task we try and complete in parallel negatively impacts the other tasks we are working on. The more tasks we juggle, the less processing power we have for each one.
 
@@ -937,7 +937,7 @@ It is usually a good idea to have a comprehensive check-list of what must be rel
 
 Exit interviews are also an excellent opportunity to get feedback about what the organisation could be doing better. Don't miss this opportunity.
 
-The organisation needs to make peace with the departing worker. Get on their good side if not already. This can help to short circuit possible malicious activity once the worker has left. It also shows existing workers that the organisation is open enough to receive, and hopefully act on, any useful feedback. You may note more direct honesty with a departing worker than existing staff.
+The organisation needs to make peace with the departing worker. Being on their good side can help to short circuit possible malicious activity once the worker has left. It also shows existing workers that the organisation is open enough to receive, and hopefully act on, any useful feedback. You may note more direct honesty with a departing worker than existing staff.
 
 ### Weak Password Strategies {#people-countermeasures-weak-password-strategies}
 ![](images/ThreatTags/PreventionEASY.png)
@@ -1103,7 +1103,7 @@ The reality I have witnessed when developers manage the creation and modificatio
 
 #### Email
 
-Possible confusion as to which medium should be used for what. Create and agree on the mediums that should be used and make sure everyone involved is in agreement.  
+There may be possible confusion as to which medium should be used for what, and when. Create and agree on the mediums that should be used and make sure everyone involved is in agreement.  
 Do not be scared to try different mediums and use what works best for your team(s).
 
 #### Meetings
