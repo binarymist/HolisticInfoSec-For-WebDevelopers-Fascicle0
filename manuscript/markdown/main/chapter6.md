@@ -46,7 +46,7 @@ People are the strongest point in a security process, they are often also the we
 ### Ignorance
 ![](images/ThreatTags/easy-common-average-moderate.png)
 
-While working as a contract software engineer on many teams, I often struggle to get past the fact that most developers are oblivious to the amount of insecurities they simply don't consider. Usually, after explaining the situation and importance of the vulnerability with them, they begin to understand it, but it is still an ongoing battle to get them to continually consider the importance of their decisions in creating secure systems.
+While working as a contract software engineer on many teams, I often struggle to move past the fact that most developers are oblivious to the amount of insecurities they simply don't consider. Usually, after explaining the situation and importance of the vulnerability with them, they begin to understand it, but it is still an ongoing battle to ensure that they continually consider the importance of their decisions in creating secure systems.
 
 The fact that people responsible for creating our software have a more distorted perception than actual software consumers is truly concerning. [The Arxan 5th Annual State of Application Security Report](https://www.arxan.com/resources/state-of-application-security/) _Perception vs. Reality_ highlights this.
 
@@ -1077,7 +1077,7 @@ Treating your workers well, as discussed in the [Morale, Productivity and Engage
 ## 4. SSM Risks that Solution Causes
 Often, the modern thinking is that we can replace flawed people with technology. People are resilient and dynamic. They can spot a threat they have never seen before and defend against it. Computers can only defend against what they have been programmed to defend against. Technological defences are brittle. It is the role of technology to support humans to make good decisions.
 
-Employees can get complacent with training, unless they are faced with very real simulations. Be creative, establish a training baseline for all, and additional training for areas of specialisation and extra trust.
+Employees can become complacent with training, unless they are faced with very real simulations. Be creative, establish a training baseline for all, and additional training for areas of specialisation and extra trust.
 
 ### Ignorance
 
@@ -1134,7 +1134,7 @@ When it comes to mitigating brute force attacks and relying on multi factor auth
 
 ### Vishing (Phone Calls)
 
-There is the risk that some callers may become annoyed initially until they get used to the heightened security questions and techniques being carried out by call recipients. You can use the additional policy and checks as an opportunity to market your heightened security standpoint as well.
+There is the risk that some callers may become annoyed initially until they become used to the heightened security questions and techniques being carried out by call recipients. You can use the additional policy and checks as an opportunity to market your heightened security standpoint as well.
 
 ### Spoofing Caller ID
 

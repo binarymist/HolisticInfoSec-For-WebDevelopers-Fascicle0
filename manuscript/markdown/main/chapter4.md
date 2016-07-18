@@ -15,7 +15,7 @@ Following are processes and procedures commonly utilized by a penetration tester
 
 ### Reconnaissance {#process-and-practises-penetration-testing-reconnaissance}
 
-Reconnaissance, or re-con, is the act of information gathering. The quieter you can be during this phase, the less likely you will be to raise suspicions or trigger your client's defences.  
+Reconnaissance, or recon, is the act of information gathering. The quieter you can be during this phase, the less likely you will be to raise suspicions or trigger your client's defences.  
 Here, we want to gather as much potentially useful information as possible for use in later phases. This is where we start to obtain information about services, and other software being used, moving from the passive to the more active techniques. We must learn as much as possible about the people who are in scope for the target organization, and how they are related to that organisation, their roles, skills, and potential level of privilege and access.  
 This allows us to create effective attack strategies, including non-technical aspects such as physical security and pretexts for the people we want to exploit.
 
@@ -730,7 +730,7 @@ A> I've found the following three tools (I like to call multi-tools) to be reall
 
 #### theHarvester
 
-is an Open Source Intelligence (OSINT) tool that can be used via discover-scripts.
+An Open Source Intelligence (OSINT) tool that can be used via discover-scripts.
 
 "_theHarvester is a tool for gathering e-mail accounts, subdomain names, virtual hosts, open ports/ banners, and employee names from different public sources (search engines, pgp key servers)._"
 
@@ -1129,7 +1129,7 @@ Keep in mind that most of this scanning is quite noisy and has the potential to 
 
 ### Vulnerability Searching {#process-and-practises-penetration-testing-vulnerability-searching}
 
-The vulnerability advisories that were mentioned in the [30,000 View](#vulnerability-advisories) chapter, I will cover some here in a little more detail.
+The vulnerability advisories that were mentioned in the [30,000 View](#vulnerability-advisories) chapter will be covered here in a little more detail.
 
 By now, we should have a good idea of some of the target's weaknesses; it is time to find some exploits.
 
@@ -1141,7 +1141,7 @@ BugTraq continues to be an excellent source of exploits based on known vulnerabi
 
 #### Exploit Database
 
-Exploit Database can be found at [github](https://github.com/offensive-security/exploit-database). From Offensive Security, the creators of Kali Linux, it has a very easy to use web front-end
+Exploit Database can be found at [github](https://github.com/offensive-security/exploit-database). From Offensive Security, the creators of Kali Linux, it has a very easy to use web front-end.
 
 ![](images/ExploitDd.png)
 
