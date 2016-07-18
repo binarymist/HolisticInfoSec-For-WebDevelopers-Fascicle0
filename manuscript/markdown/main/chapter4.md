@@ -50,8 +50,6 @@ Active reconnaissance involves interacting with the target directly, engaging in
 
 ##### Netcat
 
-&nbsp;
-
 Netcat, the network Swiss army knife, is not nearly as configurable as a dedicated port scanner, but can be used to scan ports, as well as:
 
 * Host a web page
@@ -74,8 +72,6 @@ Consider these uses.
     # Netcat is a rather blunt tool for port scanning.
 
 ##### Nmap
-
-&nbsp;
 
 **Hardened Web Server**
 
@@ -375,8 +371,6 @@ Using the service detection option, `-sV`, on the un-hardened metasploitable 2, 
     Service detection performed. Please report any incorrect results at http://nmap.org/submit/ .
     Nmap done: 1 IP address (1 host up) scanned in 11.47 seconds
 
-&nbsp;
-
 Unless you put a lot of work into hardening a system, it will respond with a lot of information, which is of excellent use to attackers. Most WWW web servers produce information about themselves that looks like a mix between these two systems.
 
 NMap and the NSE scripting engine are a very powerful tool-set for information gathering, from passive to active phases. There are many scripts available, and it's easy to assess their functionality using the `--script-help` option.
@@ -386,8 +380,6 @@ NMap and the NSE scripting engine are a very powerful tool-set for information g
 An attacker will often attempt to conceal their source IP address during an Nmap port scan with the likes of:
 
 ##### Decoy host `-D`
-
-&nbsp;
 
 This makes it appear to the target that the scans are coming from decoy hosts. You can optionally use `ME` as one of the decoys to represent your/the attackers address. Putting `ME` in the sixth position or later will cause some common port scan detectors such as Scanlogd to miss your IP address entirely. You can also use `RND` to generate a random non-reserved IP address. For more details check the man page.
 
@@ -407,8 +399,6 @@ Too many decoys will slow your scan down and often lead to less accurate results
 
 ##### Idle scan `-sI`
 
-&nbsp;
-
 There are a few things to know in order to use the idle scan properly and understand resulting behaviours and consequences. An idle scan is a side-channel attack which exploits predictable IP fragmentation ID sequence generation on the decoy host to glean information about open ports on the target. This is a clever yet simple technique. Intrusion Detection Systems (IDSs) will display the scan as coming from the decoy machine you specify (which must be active within certain criteria). Check the [Additional Resources](#additional-resources-process) chapter for further details.
 
 {linenos=off, lang=Bash}
@@ -422,8 +412,6 @@ Adding to what we have learnt above, the simplest way to deduce the details of t
 Feel free to try the same requests against the likes of the Metasploitable 2 VM. Its legitimate HTTP protocol is 1.0
 
 ##### Depending on the Server field
-
-&nbsp;
 
 {title="Request", linenos=off, lang=Bash}
     # Run netcat against your targets web server
@@ -463,13 +451,9 @@ If your target is running an Express server, you will probably see something lik
 
 ##### Ordering of Header Fields
 
-&nbsp;
-
 Every web server has its own specific ordering of header fields. This is usually more reliable for deducing the server type.
 
 ##### Malformed Requests
-
-&nbsp;
 
 If we try malformed requests or requests of non existent resources:
 
@@ -505,8 +489,6 @@ We receive a closed connection, but we still get the resource if there is one.
     Connection: close
     
     # We get the page markup here.
-
-&nbsp;
 
 When we try an Apache server, we note that different versions exhibit different behaviour.
 
@@ -549,8 +531,6 @@ Interesting, isn't it? Every server type answers in a different manner.
 
 ##### Non-existent protocol
 
-&nbsp;
-
 If we use a non-existent protocol:
 
 {title="Request", linenos=off}
@@ -576,8 +556,6 @@ We see Apache is `200 OK` happy to have cats for dinner.
     No Host: header seen.
 
 ##### Other Services {#process-and-practises-penetration-testing-reconnaissance-service-fingerprinting-other-services}
-
-&nbsp;
 
 Let's review the Secure Shell (SSH) service.
 
@@ -645,8 +623,6 @@ _If that is also not successful, it analyses the responses previously returned a
 #### DNS
 
 ##### Domain Information Groper (dig) 
-
-&nbsp;
 
 To perform a DNS lookup:
 
@@ -723,8 +699,6 @@ is another tool similar to dnsenum, with a few different options. It is usually 
     dnsrecon -d <target domain> -D <your chosen wordlist> -t brt
 
 There are many other options. Simply run the tool without arguments to read its help content.
-
-&nbsp;
 
 A> I've found the following three tools (I like to call multi-tools) to be really useful, and use them before and during just about every penetration testing assignment.
 
@@ -1313,8 +1287,6 @@ It is not my intention to encourage you to think only about security (in this bo
 
 I have compiled a collection of some of the most powerful practises designed to increase quality with the least money spent. Use these to augment your agile work-flow. 
 
-&nbsp;
-
 A> Let's look at some of the practices we can use as developers to enhance the level of security within our software, and how to integrate them into our Scrum process framework.
 
 ### Architecture
@@ -1325,8 +1297,6 @@ Agile architecture includes some design up front, in collaboration with the team
 
 We appreciate a software developer who excels at what is traditional architecture, as well as software engineering. An architect is essentially an extreme version of the 'T' shaped developer. They have very broad knowledge and skill sets, with multiple deep specialities.  
 Another defining factor that sets the architect apart, is their ability to translate effectively between the most technical people on a project and the least technical. I like to think of them as the people who spend a lot of time on the elevator of a high rise office building, where most technical people are on the bottom floors of the building, and the least technical are at the top. The architect spends time on each level accumulating what he/she has learned from all the other levels, then translating and applying it to the specific level to whom they are communicating too.
-
-&nbsp;
 
 ### Cheapest Place to Deal with Defects
 
@@ -1344,7 +1314,7 @@ Steve McConnel goes on to say: The data in the above table "_shows that, for exa
 
 "_The cost to fix a defect rises dramatically as the time from when it's introduced to when it's detected increases. This remains true whether the project is highly sequential (doing 100 percent of requirements and design up front) or highly iterative (doing 5 percent of requirements and design up front)._"
 
-> This material is used with the author's permission from Code Complete, by Steve McConnell Â© 2004. All Rights Reserved.
+> This material is used with the author's permission from Code Complete, by Steve McConnell © 2004. All Rights Reserved.
 
 ### Evil Test Conditions {#process-and-practises-agile-development-and-practices-evil-test-conditions}
 
@@ -1539,8 +1509,6 @@ You should then be informed of a successful test with the following output:
     
     
     Done, without errors.
-
-&nbsp;
 
 ### Hand-crafted Penetration Testing
 
