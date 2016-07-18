@@ -50,6 +50,8 @@ Active reconnaissance involves interacting with the target directly, engaging in
 
 ##### Netcat
 
+&nbsp;
+
 Netcat, the network Swiss army knife, is not nearly as configurable as a dedicated port scanner, but can be used to scan ports, as well as:
 
 * Host a web page
@@ -72,6 +74,8 @@ Consider these uses.
     # Netcat is a rather blunt tool for port scanning.
 
 ##### Nmap
+
+&nbsp;
 
 **Hardened Web Server**
 
@@ -371,6 +375,8 @@ Using the service detection option, `-sV`, on the un-hardened metasploitable 2, 
     Service detection performed. Please report any incorrect results at http://nmap.org/submit/ .
     Nmap done: 1 IP address (1 host up) scanned in 11.47 seconds
 
+&nbsp;
+
 Unless you put a lot of work into hardening a system, it will respond with a lot of information, which is of excellent use to attackers. Most WWW web servers produce information about themselves that looks like a mix between these two systems.
 
 NMap and the NSE scripting engine are a very powerful tool-set for information gathering, from passive to active phases. There are many scripts available, and it's easy to assess their functionality using the `--script-help` option.
@@ -380,6 +386,8 @@ NMap and the NSE scripting engine are a very powerful tool-set for information g
 An attacker will often attempt to conceal their source IP address during an Nmap port scan with the likes of:
 
 ##### Decoy host `-D`
+
+&nbsp;
 
 This makes it appear to the target that the scans are coming from decoy hosts. You can optionally use `ME` as one of the decoys to represent your/the attackers address. Putting `ME` in the sixth position or later will cause some common port scan detectors such as Scanlogd to miss your IP address entirely. You can also use `RND` to generate a random non-reserved IP address. For more details check the man page.
 
@@ -399,6 +407,8 @@ Too many decoys will slow your scan down and often lead to less accurate results
 
 ##### Idle scan `-sI`
 
+&nbsp;
+
 There are a few things to know in order to use the idle scan properly and understand resulting behaviours and consequences. An idle scan is a side-channel attack which exploits predictable IP fragmentation ID sequence generation on the decoy host to glean information about open ports on the target. This is a clever yet simple technique. Intrusion Detection Systems (IDSs) will display the scan as coming from the decoy machine you specify (which must be active within certain criteria). Check the [Additional Resources](#additional-resources-process) chapter for further details.
 
 {linenos=off, lang=Bash}
@@ -412,6 +422,8 @@ Adding to what we have learnt above, the simplest way to deduce the details of t
 Feel free to try the same requests against the likes of the Metasploitable 2 VM. Its legitimate HTTP protocol is 1.0
 
 ##### Depending on the Server field
+
+&nbsp;
 
 {title="Request", linenos=off, lang=Bash}
     # Run netcat against your targets web server
@@ -451,9 +463,13 @@ If your target is running an Express server, you will probably see something lik
 
 ##### Ordering of Header Fields
 
+&nbsp;
+
 Every web server has its own specific ordering of header fields. This is usually more reliable for deducing the server type.
 
 ##### Malformed Requests
+
+&nbsp;
 
 If we try malformed requests or requests of non existent resources:
 
@@ -489,6 +505,8 @@ We receive a closed connection, but we still get the resource if there is one.
     Connection: close
     
     # We get the page markup here.
+
+&nbsp;
 
 When we try an Apache server, we note that different versions exhibit different behaviour.
 
@@ -531,6 +549,8 @@ Interesting, isn't it? Every server type answers in a different manner.
 
 ##### Non-existent protocol
 
+&nbsp;
+
 If we use a non-existent protocol:
 
 {title="Request", linenos=off}
@@ -556,6 +576,8 @@ We see Apache is `200 OK` happy to have cats for dinner.
     No Host: header seen.
 
 ##### Other Services {#process-and-practises-penetration-testing-reconnaissance-service-fingerprinting-other-services}
+
+&nbsp;
 
 Let's review the Secure Shell (SSH) service.
 
@@ -623,6 +645,8 @@ _If that is also not successful, it analyses the responses previously returned a
 #### DNS
 
 ##### Domain Information Groper (dig) 
+
+&nbsp;
 
 To perform a DNS lookup:
 
@@ -699,6 +723,8 @@ is another tool similar to dnsenum, with a few different options. It is usually 
     dnsrecon -d <target domain> -D <your chosen wordlist> -t brt
 
 There are many other options. Simply run the tool without arguments to read its help content.
+
+&nbsp;
 
 A> I've found the following three tools (I like to call multi-tools) to be really useful, and use them before and during just about every penetration testing assignment.
 
@@ -1287,6 +1313,8 @@ It is not my intention to encourage you to think only about security (in this bo
 
 I have compiled a collection of some of the most powerful practises designed to increase quality with the least money spent. Use these to augment your agile work-flow. 
 
+&nbsp;
+
 A> Let's look at some of the practices we can use as developers to enhance the level of security within our software, and how to integrate them into our Scrum process framework.
 
 ### Architecture
@@ -1298,6 +1326,8 @@ Agile architecture includes some design up front, in collaboration with the team
 We appreciate a software developer who excels at what is traditional architecture, as well as software engineering. An architect is essentially an extreme version of the 'T' shaped developer. They have very broad knowledge and skill sets, with multiple deep specialities.  
 Another defining factor that sets the architect apart, is their ability to translate effectively between the most technical people on a project and the least technical. I like to think of them as the people who spend a lot of time on the elevator of a high rise office building, where most technical people are on the bottom floors of the building, and the least technical are at the top. The architect spends time on each level accumulating what he/she has learned from all the other levels, then translating and applying it to the specific level to whom they are communicating too.
 
+&nbsp;
+
 ### Cheapest Place to Deal with Defects
 
 There have been many studies specifically looking at the costs of finding and fixing defects early, as opposed to the planning of how to fix defects once the product is delivered, or not planning at all.
@@ -1306,7 +1336,7 @@ The following table shows the average cost of fixing defects based on when they 
 
 ![](images/AverageCostOfFixingDefects.png)
 
-> This material is used with the author's permission from Code Complete, by Steve McConnell © 2004. All Rights Reserved.
+> This material is used with the author's permission from Code Complete, by Steve McConnell � 2004. All Rights Reserved.
 
 Steve McConnel goes on to say: The data in the above table "_shows that, for example, an architecture defect that costs $1000 to fix when the architecture is being created can cost $15,000 to fix during system test._" The below figure illustrates this same phenomenon.
 
@@ -1486,7 +1516,7 @@ Complete these steps:
 You should then be informed of a successful test with the following output:
 
 {title="Fixed Vulnerabilities", linenos=off, lang=Bash}
-    me@myBox in Source/NodeGoat git:(workshop) ✗  grunt testsecurity
+    me@myBox in Source/NodeGoat git:(workshop)   grunt testsecurity
     Running "env:test" (env) task
     
     Running "mochaTest:security" (mochaTest) task
@@ -1502,13 +1532,15 @@ You should then be informed of a successful test with the following output:
     Scan 0 is 100% complete with 3 alerts.
     Writing report to Source/NodeGoat/test/security/report_2015-11-24-20-52.html
     
-        ✓ Should not exceed the decided threshold of vulnerabilities known to Zap (21106ms)
+         Should not exceed the decided threshold of vulnerabilities known to Zap (21106ms)
     
     
       1 passing (28s)
     
     
     Done, without errors.
+
+&nbsp;
 
 ### Hand-crafted Penetration Testing
 
@@ -1651,7 +1683,7 @@ Time goes by. The Sprint Review rolls around. Stake holders love the new feature
 
 Sprint Review roles around again, and stake holders are happy with the new features that have been added on top of the Professional Developers code. Of course, they have no idea that the underlying code was crated by the Professional Developer. Now, the stake holders have been using the software that had the new features added on top of the Code Monkey's lower quality code, and they are starting to notice other areas of the application that are no longer behaving the way they are supposed to. This continues to happen, and the stake holders are oblivious to the fact that it is due to the code that the Code Monkey is writing. They still think he is a rock star because he appears to pump out code so fast.
 
-So… while the Professional Developer seems to be slowing The Team down and clearly the Code Monkey is simply amazing because they deliver their features so much faster. The actual truth is exactly the opposite. The Professional Developer is creating [SOLID](http://blog.binarymist.net/2012/12/01/moving-to-tdd/#solidPrinciples) code and running at a pace that is sustainable (a key principle of the agile manifesto).
+So... while the Professional Developer seems to be slowing The Team down and clearly the Code Monkey is simply amazing because they deliver their features so much faster. The actual truth is exactly the opposite. The Professional Developer is creating [SOLID](http://blog.binarymist.net/2012/12/01/moving-to-tdd/#solidPrinciples) code and running at a pace that is sustainable (a key principle of the agile manifesto).
 
 The code that the Professional Developer wrote is easier to modify and extend as its design is superior, and it is well thought out and driven by tests. Their code satisfies acceptance tests, so everyone knows it meets the living specification. It is faster to add changes to their code because it is easier to read and therefore fewer surprises. If any other team members changes the Professional Developer's code in a manner that no longer conforms with the specification, the acceptance Tests around their code fail, thus providing instant feedback to the developer making the change.
 

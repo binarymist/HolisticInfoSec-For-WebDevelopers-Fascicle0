@@ -125,6 +125,8 @@ A> Word-list generators are used to create short more precise and targeted word-
 
 ##### [Crunch](http://tools.kali.org/password-attacks/crunch) {#people-identify-risks-weak-password-strategies-password-profiling-crunch}
 
+&nbsp;
+
 Crunch seems a little lower level or granular, perhaps less personalised than the likes of cupp which we discuss soon. Crunch often creates larger word-lists. Of course, this depends on how you specify your arguments for crunch. The likes of wild-cards can help with granularity. Crunch would probably be a good choice if you know more about organisational password policies and less about the individual people/person.
 
 Crunch generates every possible combination of characters you tell it to and provides control over the character sets you want used. There is a collection of character sets in Kali Linux in `/usr/share/rainbowcrack/charset.txt` you can use. The best one is in the crunch directory though: `/usr/share/crunch/charset.lst` You can also specify a literal set of characters as an argument.
@@ -151,6 +153,8 @@ or from the terminal:
     man crunch
 
 ##### Common User Passwords Profiler (CUPP) {#people-identify-risks-weak-password-strategies-password-profiling-cupp}
+
+&nbsp;
 
 Created by Muris Kurgas AKA j0rgan, this tool is easy to use and can be used in an interactive style. With the `-i` parameter, it interviews the person running it before it goes ahead and creates the word-list output. We installed this in the [Tooling Setup](#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-cupp) chapter.
 
@@ -202,6 +206,8 @@ There are a number of other options to customise the output.
 
 ##### Who's your Daddy (WyD)
 
+&nbsp;
+
 WyD is another password profiling tool that "_extracts words/strings from supplied files and directories. It parses files according to the file-types and extracts the useful information, e.g. song titles, authors and so on from mp3's or descriptions and titles from images._"
 
 "_It supports the following filetypes: plain, html, php, doc, ppt, mp3, pdf, jpeg, odp/ods/odp and extracting raw strings._"
@@ -209,6 +215,8 @@ WyD is another password profiling tool that "_extracts words/strings from suppli
 > [Remote Exploit](http://www.remote-exploit.org/articles/misc_research__amp_code/index.html)
 
 ##### [Custom Word List generator (CeWL)](http://tools.kali.org/password-attacks/cewl)
+
+&nbsp;
 
 I have found CeWL to be quite useful for creating targeted word-lists scraped from your target's website.
 
@@ -231,6 +239,8 @@ You can use the word-list produced and augment it with the likes of [crunch](#pe
 
 ##### [Wordhound](https://bitbucket.org/mattinfosec/wordhound.git)
 
+&nbsp;
+
 Wordhound is a Python application that creates word-lists based on generic websites, plain text (emails for example), Twitter, PDFs and Reddit sub-reddits.
 
 I discovered this tool in the Hacker Playbook 2. It looks like Kim had some trouble with it in Kali Linux but it does look like it has potential. I did not have the time to try it.
@@ -247,6 +257,8 @@ Often there are several requests that occur before a successful login (a `POST` 
 Often with HTTP brute forcing you will have to slow the requests down. Most tools provide options for that.
 
 ##### Hydra {#people-identify-risks-weak-password-strategies-brute-forcing-hydra}
+
+&nbsp;
 
 Hydra appears to be the most [mature](https://www.thc.org/thc-hydra/network_password_cracker_comparison.html) of the brute force specific tools.
 
@@ -363,6 +375,8 @@ Hydra has many other options. There is plenty of good [documentation](http://nul
 
 ##### Medusa
 
+&nbsp;
+
 I did not have success with Medusa for brute forcing HTTP.  
 Medusa was created due to the fact that the author was having some strife with Hydra.
 
@@ -446,6 +460,8 @@ Against the DVWA in the OWASPBWA suite, I used the following command:
 I also tried with only the correct password. Medusa unfortunately was not handling the redirects properly, the result was an `HTTP 302`.
 
 ##### nmap [http-form-brute](https://nmap.org/nsedoc/scripts/http-form-brute.html)
+
+&nbsp;
 
 I think the following may also have suffered from Medusa's redirect problem. I have since found a [few changes](http://seclists.org/nmap-dev/2014/q3/479) to this script which may have fixed it, although I have not re-tested. The following command just took too long to complete, it may have bogged down on the redirect, I'm not quite sure.
 
@@ -1007,6 +1023,8 @@ All a target can really do is be sure they are being emulated, then question it 
 
 ### Tailgating {#people-countermeasures-tailgating}
 ![](images/ThreatTags/PreventionAVERAGE.png)
+
+&nbsp;
 
 All of these attacks require the "Train -> Monitor -> Test, repeat" cycle to counter.
 
