@@ -2,12 +2,8 @@
 ## Fascicle 0
 Physical, People
 
-To access the original (now out of date) training which the book was based on, head on over to the [wiki](https://github.com/binarymist/HolisticInfoSec-For-WebDevelopers/wiki/BinaryMist-Approach-To-Threat-Modelling) to get started.
+The contents of fascicle 0 is now considered complete. The actual fascicle can be found [here](https://leanpub.com/holistic-infosec-for-web-developers). Enjoy!
 
-The contents of fascicle 0 that's a WIP is listed below. The actual fascicle can be found [here](https://leanpub.com/holistic-infosec-for-web-developers).
-
-[![Stories in Ready](https://badge.waffle.io/binarymist/HolisticInfoSec-For-WebDevelopers.png?label=ready&title=Ready)](https://waffle.io/binarymist/HolisticInfoSec-For-WebDevelopers)
-[![Stories in Progress](https://badge.waffle.io/binarymist/HolisticInfoSec-For-WebDevelopers.png?label=in%20progress&title=In%20Progress)](https://waffle.io/binarymist/HolisticInfoSec-For-WebDevelopers)
 
 [![](manuscript/images/title_page.png)](https://leanpub.com/holistic-infosec-for-web-developers)
 
