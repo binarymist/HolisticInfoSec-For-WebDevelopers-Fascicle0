@@ -522,7 +522,7 @@ As a web developer I use the chromium dev tools more frequently than FireFox dev
 
 In Kali Linux 1.1:
 
-In order to run this under the root account, you will need to add the following parameter to `/etc/chromium/default` between the quotes for `CHROMIUM_FLAGS=””`
+In order to run this under the root account, you will need to add the following parameter to `/etc/chromium/default` between the quotes for `CHROMIUM_FLAGS=""`
 
 `--user-data-dir`
 
