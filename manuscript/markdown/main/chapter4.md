@@ -744,7 +744,8 @@ or run from the terminal
 
 Just beware though, that if you want to perform a DNS brute force (`-c`), then at the time of writing, the `/usr/share/theharvester/discovery/dnssearch.py` script assumes that the word list you will be using is the non existent `/usr/share/theharvester/dns-names.txt` wordlist. Running theHarvester from anywhere other than `/usr/share/theharvester/` if you use the `-c` option will fail. It's been fixed (by way of providing a command line argument) in the latest code base, I haven't tested it yet though, as at this time it isn't in the Kali 2016.1 rolling repository. See [issue 30](https://github.com/laramies/theHarvester/issues/30). So I just symlink any wordlist I would like to use:
 
-`ln -s /usr/share/dirbuster/wordlists/directories.jbrofuzz /usr/share/theharvester/dns-names.txt`
+{linenos=off, lang=Bash}
+    ln -s /usr/share/dirbuster/wordlists/directories.jbrofuzz /usr/share/theharvester/dns-names.txt
 
 Then run like this:
 
@@ -1445,7 +1446,8 @@ Start Zap the usual way. Zap can, and probably should, be scripted to start auto
 {linenos=off, lang=Bash}
     owasp-zap -daemon
 
-Now you should be able to browse the Zap API from either machine at `http://192.168.56.20:8080/`.
+Now you should be able to browse the Zap API from either machine at  
+`http://192.168.56.20:8080/`.
 
 ##### Start the Security Regression test(s) from your local machine
 

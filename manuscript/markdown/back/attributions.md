@@ -43,7 +43,7 @@
 [https://www.owasp.org/index.php/OWASP_Risk_Rating_Methodology](https://www.owasp.org/index.php/OWASP_Risk_Rating_Methodology)
 
 **Intel Threat Agent Library**  
-[https://communities.intel.com/servlet/JiveServlet/previewBody/1151-102-1-1111/Threat%20Agent%20Library_07-2202w.pdf](https://communities.intel.com/servlet/JiveServlet/previewBody/1151-102-1-1111/Threat%20Agent%20Library_07-2202w.pdf)
+https://communities.intel.com/servlet/JiveServlet/previewBody/1151-102-1-1111/Threat%20Agent%20Library_07-2202w.pdf
 
 ### Rating of Threats
 
@@ -182,7 +182,7 @@ Peter Kims "The Hacker Playbook 2".
 [https://crackstation.net/buy-crackstation-wordlist-password-cracking-dictionary.htm](https://crackstation.net/buy-crackstation-wordlist-password-cracking-dictionary.htm)
 
 **Passwords_WordList_CLEANED**  
-[http://blog.thireus.com/cracking-story-how-i-cracked-over-122-million-sha1-and-md5-hashed-passwords/](http://blog.thireus.com/cracking-story-how-i-cracked-over-122-million-sha1-and-md5-hashed-passwords/)
+http://blog.thireus.com/cracking-story-how-i-cracked-over-122-million-sha1-and-md5-hashed-passwords/
 
 **SecLists is a collection of multiple types of lists** used during security assessments. List types include usernames, passwords, URLs, sensitive data grep strings, fuzzing payloads, and many more.
 
@@ -214,7 +214,7 @@ http-waf-fingerprint: [https://nmap.org/nsedoc/scripts/http-waf-fingerprint.html
 [http://unix.stackexchange.com/questions/93808/dig-vs-nslookup](http://unix.stackexchange.com/questions/93808/dig-vs-nslookup)
 
 **/usr/share/dirbuster/wordlists/directories.jbrofuzz is not great**, but it is not bad either  
-[http://null-byte.wonderhowto.com/how-to/hack-like-pro-abusing-dns-for-reconnaissance-0157448/](http://null-byte.wonderhowto.com/how-to/hack-like-pro-abusing-dns-for-reconnaissance-0157448/)
+http://null-byte.wonderhowto.com/how-to/hack-like-pro-abusing-dns-for-reconnaissance-0157448/
 
 **theHarvester** is a tool for gathering e-mail acconts, subdomain names, virtual hosts, open ports/ banners, and employee names from different public sources (search engines, pgp key servers)  
 [https://github.com/laramies/theHarvester](https://github.com/laramies/theHarvester)
@@ -458,13 +458,13 @@ Beyond Fear by Bruce Schneier
 [http://seclists.org/nmap-dev/2014/q3/479](http://seclists.org/nmap-dev/2014/q3/479)
 
 **You can DIY** with the likes of Asterisk  
-[http://www.social-engineer.org/wiki/archives/CallerIDspoofing/CallerID-SpoofingWithAsterisk.html](http://www.social-engineer.org/wiki/archives/CallerIDspoofing/CallerID-SpoofingWithAsterisk.html)
+http://www.social-engineer.org/wiki/archives/CallerIDspoofing/CallerID-SpoofingWithAsterisk.html
 
 **The government that imprisoned Kevin Mitnick** for nearly five years, later sought his advice about how to keep its own networks safe from intruders  
 [http://www.politechbot.com/p-00969.html](http://www.politechbot.com/p-00969.html) 
 
 **Open source framework** providing all the tools anyone would need to spoof caller Ids and much more  
-[http://www.social-engineer.org/wiki/archives/CallerIDspoofing/CallerID-SpoofingWithAsterisk.html](http://www.social-engineer.org/wiki/archives/CallerIDspoofing/CallerID-SpoofingWithAsterisk.html)
+http://www.social-engineer.org/wiki/archives/CallerIDspoofing/CallerID-SpoofingWithAsterisk.html
 
 **Some services can not handle return messages though**, unless the attacker has physical access to a phone that would contact the targets phone (as with flexispy)  
 [http://blog.flexispy.com/spoof-sms-powerful-secret-weapon-shouldve-using/](http://blog.flexispy.com/spoof-sms-powerful-secret-weapon-shouldve-using/)

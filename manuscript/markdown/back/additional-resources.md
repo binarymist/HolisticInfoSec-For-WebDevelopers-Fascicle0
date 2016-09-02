@@ -144,7 +144,7 @@ on top of
 [https://github.com/hak5darren/USB-Rubber-Ducky/wiki](https://github.com/hak5darren/USB-Rubber-Ducky/wiki)
 
 **Rubber Ducky** manual  
-[https://docs.google.com/viewer?url=https%3A%2F%2Fducky-decode.googlecode.com%2Ffiles%2FThe%2520USB%2520Rubber%2520Ducky%2520Draft.doc](https://docs.google.com/viewer?url=https%3A%2F%2Fducky-decode.googlecode.com%2Ffiles%2FThe%2520USB%2520Rubber%2520Ducky%2520Draft.doc)
+https://docs.google.com/viewer?url=https%3A%2F%2Fducky-decode.googlecode.com%2Ffiles%2FThe%2520USB%2520Rubber%2520Ducky%2520Draft.doc
 
 **Rubber Ducky** tutorials  
 [https://github.com/hak5darren/USB-Rubber-Ducky/wiki/Tutorials](https://github.com/hak5darren/USB-Rubber-Ducky/wiki/Tutorials)

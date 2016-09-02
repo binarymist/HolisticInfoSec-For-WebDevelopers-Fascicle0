@@ -813,9 +813,11 @@ This is how I set up my work-flow:
 I didn't use a Kali Linux VM for this, because it is just easier to use a physical machine when you are inserting and removing USB holders continuously. As such, on my Mint machine, I executed the following:
 
 1. `cd /opt && mkdir usb-rubber-ducky && cd usb-rubber-ducky`
-2. `wget https://github.com/midnitesnake/USB-Rubber-Ducky/raw/master/Decode/ducky-decode.pl`
+2. {title="Result", linenos=off}
+    wget https://github.com/midnitesnake/USB-Rubber-Ducky/raw/master/Decode/ducky-decode.pl
 3. Make it executable: `chmod u+x ducky-decode.pl`
-4. `wget https://github.com/midnitesnake/USB-Rubber-Ducky/raw/master/Encoder/encoder.jar`
+4. {title="Result", linenos=off}
+    wget https://github.com/midnitesnake/USB-Rubber-Ducky/raw/master/Encoder/encoder.jar
 5. Put the supplied micro SD card into the USB holder and plug it into an empty USB port. Now we are ready to fill it with a payload.
 
 My workflow went like this:
