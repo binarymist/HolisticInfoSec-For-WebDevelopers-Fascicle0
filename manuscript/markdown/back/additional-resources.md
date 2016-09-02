@@ -58,7 +58,7 @@ Finding details on companies: [https://www.business.govt.nz/companies/](https://
 [http://theinvisiblethings.blogspot.co.nz/2013/03/introducing-qubes-odyssey-framework.html](http://theinvisiblethings.blogspot.co.nz/2013/03/introducing-qubes-odyssey-framework.html)
 
 **The Operating System That Can Protect You** even when you get hacked  
-[https://micahflee.com/2014/04/the-operating-system-that-can-protect-you-even-if-you-get-hacked/](https://micahflee.com/2014/04/the-operating-system-that-can-protect-you-even-if-you-get-hacked/)
+https://micahflee.com/2014/04/the-operating-system-that-can-protect-you-even-if-you-get-hacked/
 
 **Offensive Exploitation tooling setup**  
 For the Black Hat in a potentially hostile environment, one example of a machine configuration might be:  
@@ -72,8 +72,8 @@ on top of
 **BSIMM has some good guidance on security testing**  
 [https://www.bsimm.com/online/ssdl/st/](https://www.bsimm.com/online/ssdl/st/)
 
-**NodeGoat Regression Testing with Zap**
-[https://github.com/binarymist/NodeGoat/wiki/Security-Regression-Testing-with-Zap-API](https://github.com/binarymist/NodeGoat/wiki/Security-Regression-Testing-with-Zap-API)
+**NodeGoat Regression Testing with Zap**  
+https://github.com/binarymist/NodeGoat/wiki/Security-Regression-Testing-with-Zap-API
 
 **Essentials for Creating and Maintaining a High Performance Development Team**  
 [http://blog.binarymist.net/2014/01/25/essentials-for-creating-and-maintaining-a-high-performance-development-team/](http://blog.binarymist.net/2014/01/25/essentials-for-creating-and-maintaining-a-high-performance-development-team/)
@@ -144,8 +144,8 @@ on top of
 [https://github.com/hak5darren/USB-Rubber-Ducky/wiki](https://github.com/hak5darren/USB-Rubber-Ducky/wiki)
 
 **Rubber Ducky** manual  
-https://docs.google.com/viewer?
-url=https%3A%2F%2Fducky-decode.googlecode.com%2Ffiles%2FThe%2520USB%2520Rubber%2520Ducky%2520Draft.doc
+https://docs.google.com/viewer?url=https%3A%2F%2Fducky-decode.googlecode.com%2Ffiles
+%2FThe%2520USB%2520Rubber%2520Ducky%2520Draft.doc
 
 **Rubber Ducky** tutorials  
 [https://github.com/hak5darren/USB-Rubber-Ducky/wiki/Tutorials](https://github.com/hak5darren/USB-Rubber-Ducky/wiki/Tutorials)

@@ -43,8 +43,8 @@
 [https://www.owasp.org/index.php/OWASP_Risk_Rating_Methodology](https://www.owasp.org/index.php/OWASP_Risk_Rating_Methodology)
 
 **Intel Threat Agent Library**  
-https://communities.intel.com/servlet/JiveServlet/previewBody/
-1151-102-1-1111/Threat%20Agent%20Library_07-2202w.pdf
+https://communities.intel.com/servlet/JiveServlet/previewBody/1151-102-1-1111/Threat%20
+Agent%20Library_07-2202w.pdf
 
 ### Rating of Threats
 
@@ -215,7 +215,8 @@ http-waf-fingerprint: [https://nmap.org/nsedoc/scripts/http-waf-fingerprint.html
 [http://unix.stackexchange.com/questions/93808/dig-vs-nslookup](http://unix.stackexchange.com/questions/93808/dig-vs-nslookup)
 
 **/usr/share/dirbuster/wordlists/directories.jbrofuzz is not great**, but it is not bad either  
-http://null-byte.wonderhowto.com/how-to/hack-like-pro-abusing-dns-for-reconnaissance-0157448/
+http://null-byte.wonderhowto.com/how-to/hack-like-pro-abusing-dns-for-reconnaissance-0
+157448/
 
 **theHarvester** is a tool for gathering e-mail acconts, subdomain names, virtual hosts, open ports/ banners, and employee names from different public sources (search engines, pgp key servers)  
 [https://github.com/laramies/theHarvester](https://github.com/laramies/theHarvester)
@@ -230,7 +231,8 @@ http://null-byte.wonderhowto.com/how-to/hack-like-pro-abusing-dns-for-reconnaiss
 "Penetration Tester's Open Source Toolkit" book
 
 **I also wrote about a few other vulnerability scanners on my blog**  
-[http://blog.binarymist.net/2014/03/29/up-and-running-with-kali-linux-and-friends/#vulnerability-scanners](http://blog.binarymist.net/2014/03/29/up-and-running-with-kali-linux-and-friends/#vulnerability-scanners)
+http://blog.binarymist.net/2014/03/29/up-and-running-with-kali-linux-and-friends/#vulner
+ability-scanners
 
 **Exploit Database**  
 [https://github.com/offensive-security/exploit-database](https://github.com/offensive-security/exploit-database)
@@ -303,7 +305,8 @@ http://null-byte.wonderhowto.com/how-to/hack-like-pro-abusing-dns-for-reconnaiss
 [http://www.meetup.com/OWASP-New-Zealand-Chapter-Christchurch/events/223462991/](http://www.meetup.com/OWASP-New-Zealand-Chapter-Christchurch/events/223462991/) 
 
 **I have already discussed the test condition workshop** many times on-line  
-[http://blog.binarymist.net/2012/03/24/how-to-optimise-your-testing-effort/#planningTheTestEffort](http://blog.binarymist.net/2012/03/24/how-to-optimise-your-testing-effort/#planningTheTestEffort)
+http://blog.binarymist.net/2012/03/24/how-to-optimise-your-testing-effort/#planningTheTes
+tEffort
 
 **Cost of Change** curve adapted from Scott W. Ambler's article on Examining the Agile Cost of Change Curve, which I've used in many presentations and workshops.  
 [http://www.agilemodeling.com/essays/costOfChange.htm](http://www.agilemodeling.com/essays/costOfChange.htm)
@@ -400,14 +403,8 @@ Beyond Fear by Bruce Schneier
 [http://blog.binarymist.net/2014/04/26/culture-in-the-work-place/](http://blog.binarymist.net/2014/04/26/culture-in-the-work-place/)
 
 **The speed benefits** of Li-Fi are also compelling, many times faster than current Wi-Fi speeds.  
-[http://www.sciencealert.com/li-fi-tested-in-the-real-world-for-the-first-time-is-100-times-faster-than-wi-fi](http://www.sciencealert.com/li-fi-tested-in-the-real-world-for-the-first-time-is-100-times-faster-than-wi-fi)
-
-
-
-
-
-
-
+http://www.sciencealer.com/li-fi-tested-in-the-real-world-for-the-first-time-is-100-times-fa
+ster-than-wi-fi
 
 ## [People](#people)
 
@@ -459,14 +456,15 @@ Beyond Fear by Bruce Schneier
 [http://seclists.org/nmap-dev/2014/q3/479](http://seclists.org/nmap-dev/2014/q3/479)
 
 **You can DIY** with the likes of Asterisk  
-http://www.social-engineer.org/wiki/archives/
-CallerIDspoofing/CallerID-SpoofingWithAsterisk.html
+http://www.social-engineer.org/wiki/archives/CallerIDspoofing/CallerID-SpoofingWithAste
+risk.html
 
 **The government that imprisoned Kevin Mitnick** for nearly five years, later sought his advice about how to keep its own networks safe from intruders  
 [http://www.politechbot.com/p-00969.html](http://www.politechbot.com/p-00969.html) 
 
 **Open source framework** providing all the tools anyone would need to spoof caller Ids and much more  
-http://www.social-engineer.org/wiki/archives/CallerIDspoofing/CallerID-SpoofingWithAsterisk.html
+http://www.social-engineer.org/wiki/archives/CallerIDspoofing/CallerID-SpoofingWithAste
+risk.html
 
 **Some services can not handle return messages though**, unless the attacker has physical access to a phone that would contact the targets phone (as with flexispy)  
 [http://blog.flexispy.com/spoof-sms-powerful-secret-weapon-shouldve-using/](http://blog.flexispy.com/spoof-sms-powerful-secret-weapon-shouldve-using/)
@@ -498,7 +496,8 @@ Elliot was making his way through the so called impenetrable storage facility (S
 [http://onerng.info/](http://onerng.info/)
 
 **MembershipReboot** also raises events via an event bus architecture that your application can listen to and take further action on  
-[https://brockallen.com/2014/02/10/how-membershipreboot-mitigates-login-and-two-factor-authentication-brute-force-attacks/](https://brockallen.com/2014/02/10/how-membershipreboot-mitigates-login-and-two-factor-authentication-brute-force-attacks/)
+https://brockallen.com/2014/02/10/how-membershipreboot-mitigates-login-and-two-factor-
+authentication-brute-force-attacks/
 
 **Michael Bazzell has an excellent collection of tools** to assist with validating phone numbers under the "Telephone Numbers" heading at his website  
 [https://inteltechniques.com/links.html](https://inteltechniques.com/links.html)
