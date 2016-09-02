@@ -58,7 +58,8 @@ Finding details on companies: [https://www.business.govt.nz/companies/](https://
 [http://theinvisiblethings.blogspot.co.nz/2013/03/introducing-qubes-odyssey-framework.html](http://theinvisiblethings.blogspot.co.nz/2013/03/introducing-qubes-odyssey-framework.html)
 
 **The Operating System That Can Protect You** even when you get hacked  
-https://micahflee.com/2014/04/the-operating-system-that-can-protect-you-even-if-you-get-hacked/
+https://micahflee.com/2014/04/the-operating-system-that-can-protect-you-even-if-you-get-  
+hacked/
 
 **Offensive Exploitation tooling setup**  
 For the Black Hat in a potentially hostile environment, one example of a machine configuration might be:  
@@ -76,7 +77,8 @@ on top of
 https://github.com/binarymist/NodeGoat/wiki/Security-Regression-Testing-with-Zap-API
 
 **Essentials for Creating and Maintaining a High Performance Development Team**  
-[http://blog.binarymist.net/2014/01/25/essentials-for-creating-and-maintaining-a-high-performance-development-team/](http://blog.binarymist.net/2014/01/25/essentials-for-creating-and-maintaining-a-high-performance-development-team/)
+http://blog.binarymist.net/2014/01/25/essentials-for-creating-and-maintaining-a-high-  
+performance-development-team/
 
 **How to Increase Software Developer Productivity**  
 [https://speakerdeck.com/binarymist/how-to-increase-software-developer-productivity](https://speakerdeck.com/binarymist/how-to-increase-software-developer-productivity)
@@ -93,7 +95,8 @@ https://github.com/binarymist/NodeGoat/wiki/Security-Regression-Testing-with-Zap
 [**Social Engineer**](http://www.social-engineer.org/) website has a plethora of excellent resources.
 
 **Creating a Custom Wordlist** with Crunch  
-[http://null-byte.wonderhowto.com/how-to/hack-like-pro-crack-passwords-part-4-creating-custom-wordlist-with-crunch-0156817/](http://null-byte.wonderhowto.com/how-to/hack-like-pro-crack-passwords-part-4-creating-custom-wordlist-with-crunch-0156817/)
+http://null-byte.wonderhowto.com/how-to/hack-like-pro-crack-passwords-part-4-creating-  
+custom-wordlist-with-crunch-0156817/
 
 **Creating wordlists with crunch** v3.0  
 [http://adaywithtape.blogspot.co.nz/2011/05/creating-wordlists-with-crunch-v30.html](http://adaywithtape.blogspot.co.nz/2011/05/creating-wordlists-with-crunch-v30.html)
@@ -102,10 +105,12 @@ https://github.com/binarymist/NodeGoat/wiki/Security-Regression-Testing-with-Zap
 [http://null-byte.wonderhowto.com/how-to/use-cupp-generate-password-lists-0162625/](http://null-byte.wonderhowto.com/how-to/use-cupp-generate-password-lists-0162625/)
 
 **Creating a Custom Wordlist with CeWL**  
-[http://null-byte.wonderhowto.com/how-to/hack-like-pro-crack-passwords-part-5-creating-custom-wordlist-with-cewl-0158855/](http://null-byte.wonderhowto.com/how-to/hack-like-pro-crack-passwords-part-5-creating-custom-wordlist-with-cewl-0158855/)
+http://null-byte.wonderhowto.com/how-to/hack-like-pro-crack-passwords-part-5-creating-  
+custom-wordlist-with-cewl-0158855/
 
 **Target specific automated dictionary generation** with WordHound  
-[http://www.irongeek.com/i.php?page=videos/passwordscon2014/target-specific-automated-dictionary-generation-matt-marx](http://www.irongeek.com/i.php?page=videos/passwordscon2014/target-specific-automated-dictionary-generation-matt-marx)
+http://www.irongeek.com/i.php?page=videos/passwordscon2014/target-specific-automated-  
+dictionary-generation-matt-marx
 
 **WordHound souce code**  
 [https://bitbucket.org/mattinfosec/wordhound.git](https://bitbucket.org/mattinfosec/wordhound.git)
@@ -130,7 +135,8 @@ https://github.com/binarymist/NodeGoat/wiki/Security-Regression-Testing-with-Zap
 **The Social Engineer's Playbook** by Jeremiah Talamantes has a collection of Vishing plays near the end of the book.
 
 **Phishing scams** under the heading "Here are a few social engineering scams executed via phishing"  
-[https://digitalguardian.com/blog/social-engineering-attacks-common-techniques-how-prevent-attack](https://digitalguardian.com/blog/social-engineering-attacks-common-techniques-how-prevent-attack)
+https://digitalguardian.com/blog/social-engineering-attacks-common-techniques-how-preve  
+nt-attack
 
 **The Social Engineer's Playbook** by Jeremiah Talamantes has a collection of spear phishing plays near the end of the book.
 
@@ -144,7 +150,7 @@ https://github.com/binarymist/NodeGoat/wiki/Security-Regression-Testing-with-Zap
 [https://github.com/hak5darren/USB-Rubber-Ducky/wiki](https://github.com/hak5darren/USB-Rubber-Ducky/wiki)
 
 **Rubber Ducky** manual  
-https://docs.google.com/viewer?url=https%3A%2F%2Fducky-decode.googlecode.com%2Ffiles
+https://docs.google.com/viewer?url=https%3A%2F%2Fducky-decode.googlecode.com%2Ffiles  
 %2FThe%2520USB%2520Rubber%2520Ducky%2520Draft.doc
 
 **Rubber Ducky** tutorials  
