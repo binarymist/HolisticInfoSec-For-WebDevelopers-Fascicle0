@@ -325,7 +325,8 @@ tEffort
 [https://www.npmjs.com/package/zaproxy](https://www.npmjs.com/package/zaproxy)
 
 **ZapPenTester** write-up on codeproject  
-[http://www.codeproject.com/Articles/708129/Automated-penetration-testing-in-the-Microsoft-sta](http://www.codeproject.com/Articles/708129/Automated-penetration-testing-in-the-Microsoft-sta)
+http://www.codeproject.com/Articles/708129/Automated-penetration-testing-in-the-Micros  
+oft-sta
 
 **The source**  
 [https://github.com/gustavorhm/ZapPenTester](https://github.com/gustavorhm/ZapPenTester)
