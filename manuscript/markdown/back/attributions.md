@@ -43,7 +43,8 @@
 [https://www.owasp.org/index.php/OWASP_Risk_Rating_Methodology](https://www.owasp.org/index.php/OWASP_Risk_Rating_Methodology)
 
 **Intel Threat Agent Library**  
-https://communities.intel.com/servlet/JiveServlet/previewBody/1151-102-1-1111/Threat%20Agent%20Library_07-2202w.pdf
+https://communities.intel.com/servlet/JiveServlet/previewBody/
+1151-102-1-1111/Threat%20Agent%20Library_07-2202w.pdf
 
 ### Rating of Threats
 
@@ -458,7 +459,8 @@ Beyond Fear by Bruce Schneier
 [http://seclists.org/nmap-dev/2014/q3/479](http://seclists.org/nmap-dev/2014/q3/479)
 
 **You can DIY** with the likes of Asterisk  
-http://www.social-engineer.org/wiki/archives/CallerIDspoofing/CallerID-SpoofingWithAsterisk.html
+http://www.social-engineer.org/wiki/archives/
+CallerIDspoofing/CallerID-SpoofingWithAsterisk.html
 
 **The government that imprisoned Kevin Mitnick** for nearly five years, later sought his advice about how to keep its own networks safe from intruders  
 [http://www.politechbot.com/p-00969.html](http://www.politechbot.com/p-00969.html) 
