@@ -1,6 +1,6 @@
 # 5. Physical {#physical}
 
-![10,000' view of Physical Security](images/10000Physical.gif)
+![10,000' view of Physical Security](images/10000Physical.png)
 
 Physical security is often over looked, especially by technical people, although in most cases, it is the simplest and easiest to circumvent, as well as the simplest and easiest to mitigate.
 
