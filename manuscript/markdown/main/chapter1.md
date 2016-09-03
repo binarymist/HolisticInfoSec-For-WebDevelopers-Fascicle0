@@ -64,7 +64,7 @@ This is where we abstract things a bit and think about some of the entities that
 Think about some of the relationships the target business takes a dependency on, and how they could be leaking intellectual property (IP).
 
 {#starting-with-the-30000-foot-view-identify-risks-likelihood-and-impact}
-![](images/LikelihoodAndImpact.gif)
+![](images/LikelihoodAndImpact.png)
 
 {#ms-5-document-the-threats}
 [MS 5. Document the Threats](https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_010)
