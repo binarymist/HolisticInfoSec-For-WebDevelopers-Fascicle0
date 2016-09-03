@@ -1,6 +1,6 @@
 # Starting with the 30,000' View {#starting-with-the-30000-foot-view}
 
-![](images/30000View.gif)
+![](images/30000View.png)
 
 First of all, why? Why start so high? Developers spend most of their lives focusing on code, and sometimes on architectural concepts and patterns. Software developers rarely focus on anything higher than this which has the affect of causing blind spots. The reason we start so high, and encourage the developer to come back to this level every so often, is to ensure that they are actually creating good, secure code and that their priorities are correctly aligned with the needs of their business. Ironically, as is often the case, a security focus may not necessarily align with the business' wants.
 
