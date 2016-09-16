@@ -487,6 +487,9 @@ Elliot was making his way through the so called impenetrable storage facility (S
 **SMiShing attacks are on the rise**  
 [http://www.pcworld.com/article/254979/smishing_attacks_are_on_the_rise.html](http://www.pcworld.com/article/254979/smishing_attacks_are_on_the_rise.html)
 
+**The following attack was one of five** that I demonstrated at WDCNZ in 2015. There was an attack leading up to this one  
+[https://www.youtube.com/watch?v=tb4o5UCHzSA](https://www.youtube.com/watch?v=tb4o5UCHzSA)
+
 **Also noted in the Arxan report that 80% of consumers would change providers** if they knew about the vulnerabilities and had a better option. 90% of the app execs (the creators) also believed that consumers would switch if they knew and better offerings were available.  
 [https://www.arxan.com/wp-content/uploads/2016/01/State_of_Application_Security_2016_Consolidated_Report.pdf](https://www.arxan.com/wp-content/uploads/2016/01/State_of_Application_Security_2016_Consolidated_Report.pdf)
 
