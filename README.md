@@ -22,4 +22,4 @@ The contents of fascicle 0 is now considered complete. The actual fascicle can b
 * [Chapter 6: People](manuscript/markdown/main/chapter6.md)
 
 
-
+[![](manuscript/images/Holistic_Info-Sec_for_Web_Developers_Fascicle0_Real.jpg)](https://leanpub.com/holistic-infosec-for-web-developers)
