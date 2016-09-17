@@ -320,6 +320,8 @@ Use DHCP static mappings and have your DHCP server configured to deny unknown cl
 
 Again, company policy and culture may require some work as well.
 
+{pagebreak}
+
 ### Lack of Visibility
 
 ![](images/ThreatTags/PreventionEASY.png)
