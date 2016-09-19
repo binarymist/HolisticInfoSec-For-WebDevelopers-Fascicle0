@@ -2,7 +2,7 @@
 ## Fascicle 0
 Physical, People
 
-The contents of fascicle 0 is now considered complete. The actual fascicle can be found [here](https://leanpub.com/holistic-infosec-for-web-developers). Enjoy!
+The contents of fascicle 0 is now considered complete. The actual fascicle can be found [here](https://leanpub.com/holistic-infosec-for-web-developers), Hard copy can be found on [Amazon](https://www.amazon.com/Holistic-InfoSec-Web-Developers-Physical/dp/1537444190/)
 
 
 [![](manuscript/images/title_page.png)](https://leanpub.com/holistic-infosec-for-web-developers)
@@ -11,7 +11,7 @@ The contents of fascicle 0 is now considered complete. The actual fascicle can b
 
 ## Table of Contents
 
-* Foreward (by ?)
+* [Foreward](manuscript/markdown/front/foreword.md)
 * [Preface](manuscript/markdown/front/preface.md)
 * [Introduction](manuscript/markdown/front/introduction.md)
 * [Chapter 1: The 30,000' View](manuscript/markdown/main/chapter1.md)

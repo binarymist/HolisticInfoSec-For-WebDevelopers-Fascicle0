@@ -10,13 +10,13 @@
 
 ## Description
 
-This book begins by taking the reader to the 30,000' view, so you can start to see the entire security landscape. I then attempt to explain a very simple threat modelling approach that I believe Bruce Schneier created, called the Sensible Security Model (SSM). We take the learnings from the first chapter and apply them to lower levels. I detail how to setup a security focussed distribution with all the tools and configuration options required for working through the book. We then walk through the Process and Practises that the attackers often execute, and we take the learnings from that and train the defenders on how they can bring the finding of defects from the most expensive place to the cheapest place, within your Sprint cycles.
+This book begins by taking the reader to the 30,000' view, so you can start to see the entire security landscape. I then attempt to explain a very simple threat modelling approach that I believe Bruce Schneier created, called the Sensible Security Model (SSM). We take the learnings from the first chapter and apply them to lower levels. I detail how to set-up a security focussed distribution with all the tools and configuration options required for working through the book. We then walk through the Process and Practises that the attackers often execute, and we take the learnings from that and train the defenders on how they can bring the finding of defects from the most expensive place to the cheapest place, within your Sprint cycles.
 
 The rest of the book focusses on the specific areas addressed on the cover of this book.
 
 ## Purpose
 
-My intention with "Holistic Info-Sec for Web Developers" is in many ways to help you answer your own questions and show you that creating systems and arming people to withstand the types of attacks commonly encounted today is not out of reach of mere mortals. That by simply lifting the lower hanging fruit for an attacker often means they will move on to an easier target. Unless they are specifically targeting you. In which case you should find many of the risks and countermeasures I address, affective for increasing the difficulty for your attacker, and thus dramatically increasing your chances of defence and counter-attack.
+My intention with "Holistic Info-Sec for Web Developers" is in many ways to help you answer your own questions and show you that creating systems and arming people to withstand the types of attacks commonly encounted today is not out of reach of mere mortals. That by simply lifting the lower hanging fruit for an attacker often means they will move on to an easier target. Unless they are specifically targeting you. In which case you should find many of the risks and countermeasures I address, effective for increasing the difficulty for your attacker, and thus dramatically increasing your chances of defence and counter-attack.
 
 ## Reason
 
