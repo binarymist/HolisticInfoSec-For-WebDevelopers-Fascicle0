@@ -514,6 +514,22 @@ Sniff passwords and hashes from a network interface or pcap file with Net-creds.
 
 `git clone https://github.com/DanMcInerney/net-creds.git /opt/net-creds`
 
+#### Unix-privesc-check
+
+The old 1.x shell script is shipped with Kali Linux (now the 1_x branch), but the newer branch "master" is more thorough, the code is cleaner, although still considered somewhat experimental. The master branch also has a lot more files.
+
+The old 1.x shell script for obvious reasons may be more portable for you. It also runs faster, because it does less. unix-privesc-check can be cloned from github.
+
+The home page is: [http://pentestmonkey.net/tools/audit/unix-privesc-check](http://pentestmonkey.net/tools/audit/unix-privesc-check)
+
+`git clone https://github.com/pentestmonkey/unix-privesc-check.git /opt/unix-privesc-check`
+
+#### LinEnum
+
+Another excellent shell script for performing host reconnaissance when you are on the host and looking to escalate your privilages. You need to get this script onto your targets box and just run it. You can find the required details on the `README.md` at the github.
+
+`git clone https://github.com/rebootuser/LinEnum.git /opt/LinEnum`
+
 #### Chromium {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-chromium}
 
 `sudo apt-get install chromium`
