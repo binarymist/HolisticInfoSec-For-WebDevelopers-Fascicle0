@@ -570,6 +570,8 @@ SET has many options to help with this type of attack. They are all covered at t
 
 SET can use sendmail, gmail, or your own open-mail relay out of the box to perform your attacks.
 
+Tools such as [phishlulz](https://github.com/antisnatchor/phishlulz) which leverages phishing-frenzy and BeEF can be very effective at demonstrating how easily people will fall for a phish, and/or performing reconnaissance and even gaining a foot-hold on your targets network.
+
 ### Spear Phishing {#people-identify-risks-spear-phishing}
 ![](images/ThreatTags/easy-common-average-severe.png)
 
@@ -824,6 +826,17 @@ Using ducky script and the existing community-provided payloads as examples, ima
 * Any payload you can dream up
 
 Make sure that when you are testing your malware you do so in a lab environment before doing so in the target's environment.
+
+#### Other Offerings
+
+[PoisonTap](https://github.com/samyk/poisontap) from [Samy Kamkar](https://samy.pl/) runs on devices such as the Raspberry Pi Zero and others.
+
+#### Additional USB Hardware
+
+* Digispark
+* Facedancer21
+* USB Killer
+* Great Scott Gadgets - GreatFET
 
 ## 3. SSM Countermeasures
 
