@@ -277,7 +277,7 @@ I> You will need:
 I> 
 I> * IP address or host name
 I> * Type of form. Listed in the man page.
-I> * The name of the field that takes the user name
+I> * The name of the field that takes the username
 I> * The name of the field that takes the password
 I> * Failure message for a failed attempt. The only place you need to look is the response of the first request. It seems that any string in the response can be used, even if it is a redirect back to `login.php`, any header value, body value, or even header name. Alternatively You could use a success message for a successful attempt, cookie or what ever the web site uses to inform of a successful login.
 
