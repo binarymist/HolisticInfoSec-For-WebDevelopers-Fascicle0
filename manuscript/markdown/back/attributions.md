@@ -228,6 +228,15 @@ http://null-byte.wonderhowto.com/how-to/hack-like-pro-abusing-dns-for-reconnaiss
 **See issue 30**  
 [https://github.com/laramies/theHarvester/issues/30](https://github.com/laramies/theHarvester/issues/30)
 
+**recon-ng tracks users by default** using google analytics.  
+[https://bitbucket.org/LaNMaSteR53/recon-ng/commits/eab6307](https://bitbucket.org/LaNMaSteR53/recon-ng/commits/eab6307)
+
+**You can dissable this with the** `--no-analytics` argument  
+[https://bitbucket.org/LaNMaSteR53/recon-ng/commits/717c7c6](https://bitbucket.org/LaNMaSteR53/recon-ng/commits/717c7c6)
+
+**Also discussed in the wiki**  
+[https://bitbucket.org/LaNMaSteR53/recon-ng/wiki/Usage%20Guide#!analytics](https://bitbucket.org/LaNMaSteR53/recon-ng/wiki/Usage%20Guide#!analytics)
+
 **API keys**  for recon-ng  
 [https://bitbucket.org/LaNMaSteR53/recon-ng/wiki/Usage%20Guide#!acquiring-api-keys](https://bitbucket.org/LaNMaSteR53/recon-ng/wiki/Usage%20Guide#!acquiring-api-keys)
 

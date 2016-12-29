@@ -812,6 +812,8 @@ Rather than having to become familiar with all the recon tools at once, you get 
 
 Another tool in a similar vein to discover-scripts, Recon-ng has a similar feel to metasploit, but for web based reconnaissance. If you are familiar with the metasploit framework, you will notice most of the options are very similar. Recon-ng has a modular framework, allowing anyone who can write some Python to contribute to the modules collection. This is a very powerful and easy-to-use recon tool.
 
+recon-ng [tracks users](https://bitbucket.org/LaNMaSteR53/recon-ng/commits/eab6307) by default using google analytics. You can dissable this with the [`--no-analytics`](https://bitbucket.org/LaNMaSteR53/recon-ng/commits/717c7c6) argument, also discussed in the [wiki.](https://bitbucket.org/LaNMaSteR53/recon-ng/wiki/Usage%20Guide#!analytics)
+
 Some of the information you may gather is:
 
 1. Additional companies.
