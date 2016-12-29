@@ -414,18 +414,21 @@ According to the installation directions, swig2.0 was required, although the rel
 
 %% Issue submitted: https://github.com/breenmachine/httpscreenshot/issues/20
 
-#### [PowerSploit](https://github.com/mattifestation/PowerSploit) {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-powersploit}
+#### [psmsf]()
 
-PowerSploit includes PowerShell scripts for post-exploitation.
+Useful for PowerShell and other attacks. Generates PowerShell and other payloads useful for evading anti-virus (AV) detection. Also provides the Metasploit resource files.
 
-2. `git clone https://github.com/mattifestation/PowerSploit.git /opt/PowerSploit`
-3. `cd PowerSploit`
-4. `wget https://raw.github.com/obscuresec/random/master/StartListener.py`
-5. `wget https://raw.github.com/darkoperator/powershell_scripts/master/ps_encoder.py`
+`git clone https://github.com/nixawk/psmsf.git /opt/psmsf`
+
+#### [PowerSploit](https://github.com/PowerShellMafia/PowerSploit/) {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-powersploit}
+
+PowerSploit includes PowerShell scripts for all phases of an assessment.
+
+`git clone https://github.com/PowerShellMafia/PowerSploit/.git /opt/PowerSploit`
 
 #### Nishang
 
-These are also a collection of PowerShell scripts, useful for exploitation (and post-exploitation).
+These are also a collection of PowerShell scripts useful for exploitation and post-exploitation.
 
 `git clone https://github.com/samratashok/nishang /opt/nishang`
 
@@ -450,7 +453,7 @@ A collection of scripts produced by Peter Kim:
 
 #### BypassUAC {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-bypassuac}
 
-BypassUAC is used to bypass User Access Controls, post-exploitation, allowing us to get system privileges. I used this in the demo attack I describe in the Website section, under Spoofing, in the Risks section of the Network chapter of [Fascicle 1](https://leanpub.com/holistic-infosec-for-web-developers-fascicle1-vps-network-cloud-webapplications). There is, in fact, a way to do this that is less likely to trigger an anti-virus (AV) alert. I cover this under the below set of directions.
+BypassUAC is used to bypass User Access Controls, post-exploitation, allowing us to get system privileges. I used this in the demo attack I describe in the Website section, under Spoofing, in the Risks section of the Network chapter of [Fascicle 1](https://leanpub.com/holistic-infosec-for-web-developers-fascicle1-vps-network-cloud-webapplications). There is, in fact, a way to do this that is less likely to trigger an AV alert. I cover this under the below set of directions.
 
 In Kali 1.1
 
@@ -775,3 +778,34 @@ Run `dmesg | grep htc`, you should see something similar to the following printe
 
 You should now be able to select the phone's wireless hot-spot you want to connect to in network manager.
 
+## Windows 7 {#tooling-setup-windows}
+
+We will be exploiting Windows machines and networks in Fascicle 1, so for that, you will need a Windows 7, optional Windows 10, and any other Windows Operating Systems you can get set-up to help you hone your knowledge of the systems, how to defend and attack them. Most of the tools I have used have been installed / set-up on a Windows 7 VM. This way we can use the VM for both offence and exploitation.
+
+### Tools I Use That Need Adding to Windows {#tooling-setup-windows-tools-i-use-that-need-adding-to-windows}
+
+I now take a backup in case I need to revert. With VirtualBox it is very easy to take a snap-shot that can be reverted to at any time. Snap-shots are excellent for returning to a known state between penetration tests. Testing is not really testing at all unless you can reproduce the same results during each test. Starting from a known state is essential for this.
+
+#### MinGW {#tooling-setup-windows-tools-i-use-that-need-adding-to-windows-mingw}
+
+I tried installing this in July of 2015 and ran into troubles, detailed under the Hyperion section, looks like they have applied a fix now though. The following worked for me:
+
+1. First of all have a read of [http://www.mingw.org/wiki/Getting_Started](http://www.mingw.org/wiki/Getting_Started)
+2. Then downloaded and install MinGW from [http://sourceforge.net/projects/mingw/](http://sourceforge.net/projects/mingw/), we just need gcc selected
+3. I also read [http://www.mingw.org/wiki/HOWTO_Install_the_MinGW_GCC_Compiler_Suite](http://www.mingw.org/wiki/HOWTO_Install_the_MinGW_GCC_Compiler_Suite) for some more information
+4. I also needed to add `C:\MinGW\bin` to my System Path
+
+#### Hyperion {#tooling-setup-windows-tools-i-use-that-need-adding-to-windows-hyperion}
+
+In July of 2015, this was my process:
+
+I started following these directions: [http://e-spohn.com/blog/2012/08/02/pe-crypters-hyperion/](http://e-spohn.com/blog/2012/08/02/pe-crypters-hyperion/).  
+Kali does not have g++ in `/root/.wine/drive_c/MinGW/bin/` but I did not see any point in installing it into wine as it would still have the same issues it had on windows.
+
+I followed the directions on setting up the MinGW compiler to compile hyperion, this did not work, I kept getting errors.  
+I made a fix on one of the files [http://www.gaia-gis.it/spatialite-2.4.0-3/mingw_how_to.html#libgeos](http://www.gaia-gis.it/spatialite-2.4.0-3/mingw_how_to.html#libgeos), but kept getting more errors, and just ended up copying the Hyperion-1.2 from [http://nullsecurity.net/tools/binary.html](http://nullsecurity.net/tools/binary.html) to the Windows 7 desktop.
+
+I installed MinGW from [http://sourceforge.net/projects/mingw/](http://sourceforge.net/projects/mingw/), but did not end up using it as it had to many errors.  
+It was missing a file `libgcc_s_dw2-1.dll` from `C:\MinGW\bin\` so I got this from the archive here: [http://sourceforge.net/projects/mingw/files/MinGW/Base/gcc/Version4/Previous%20Release%20gcc-4.4.0/](http://sourceforge.net/projects/mingw/files/MinGW/Base/gcc/Version4/Previous%20Release%20gcc-4.4.0/) as discussed here: [http://stackoverflow.com/questions/14502080/missing-libgcc-s-dw2-1-dll-error-when-launching-mingw-compiled-exe](http://stackoverflow.com/questions/14502080/missing-libgcc-s-dw2-1-dll-error-when-launching-mingw-compiled-exe). Then after reading this: [http://mingw-users.1079350.n2.nabble.com/Question-libgmp-10-dll-not-found-td7443661.html](http://mingw-users.1079350.n2.nabble.com/Question-libgmp-10-dll-not-found-td7443661.html) realised that to get hyperion to run, I would be best to copy `libgcc_s_dw2-1.dll` and `libstdc++-6.dll` from `C:\MinGW\bin` to `C:\Users\testaccount\Desktop\Hyperion-1.2`
+
+Now in 2017 MinGW is installing and running without problem, it should be a simple case of just downloading, checking the MD5 sum, although it is not over HTTPS, Join their IRC channel to confirm the MD5 sum, extract and run `make` and you should have the binary.
