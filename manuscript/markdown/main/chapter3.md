@@ -414,7 +414,7 @@ According to the installation directions, swig2.0 was required, although the rel
 
 %% Issue submitted: https://github.com/breenmachine/httpscreenshot/issues/20
 
-#### [psmsf]()
+#### [psmsf](https://github.com/nixawk/psmsf)
 
 Useful for PowerShell and other attacks. Generates PowerShell and other payloads useful for evading anti-virus (AV) detection. Also provides the Metasploit resource files.
 
@@ -778,9 +778,9 @@ Run `dmesg | grep htc`, you should see something similar to the following printe
 
 You should now be able to select the phone's wireless hot-spot you want to connect to in network manager.
 
-## Windows 7 {#tooling-setup-windows}
+## Windows {#tooling-setup-windows}
 
-We will be exploiting Windows machines and networks in Fascicle 1, so for that, you will need a Windows 7, optional Windows 10, and any other Windows Operating Systems you can get set-up to help you hone your knowledge of the systems, how to defend and attack them. Most of the tools I have used have been installed / set-up on a Windows 7 VM. This way we can use the VM for both offence and exploitation.
+We will be exploiting Windows machines and networks in Fascicle 1, so for that, you will need a Windows 7, optional Windows 10, and any other Windows Operating Systems you can get set-up to help you hone your knowledge of the systems, how to defend and attack them. Most of the tools I have used have been installed / set-up on a Windows 7 VM. This way we can use the VM for both offence and exploitation. Then just restore to a previous snapshot after each test.
 
 ### Tools I Use That Need Adding to Windows {#tooling-setup-windows-tools-i-use-that-need-adding-to-windows}
 
@@ -788,7 +788,7 @@ I now take a backup in case I need to revert. With VirtualBox it is very easy to
 
 #### MinGW {#tooling-setup-windows-tools-i-use-that-need-adding-to-windows-mingw}
 
-I tried installing this in July of 2015 and ran into troubles, detailed under the Hyperion section, looks like they have applied a fix now though. The following worked for me:
+I tried installing this in July of 2015 and ran into troubles (detailed under the Hyperion section), looks like they have applied a fix now though. The following worked for me:
 
 1. First of all have a read of [http://www.mingw.org/wiki/Getting_Started](http://www.mingw.org/wiki/Getting_Started)
 2. Then downloaded and install MinGW from [http://sourceforge.net/projects/mingw/](http://sourceforge.net/projects/mingw/), we just need gcc selected
@@ -803,9 +803,12 @@ I started following these directions: [http://e-spohn.com/blog/2012/08/02/pe-cry
 Kali does not have g++ in `/root/.wine/drive_c/MinGW/bin/` but I did not see any point in installing it into wine as it would still have the same issues it had on windows.
 
 I followed the directions on setting up the MinGW compiler to compile hyperion, this did not work, I kept getting errors.  
-I made a fix on one of the files [http://www.gaia-gis.it/spatialite-2.4.0-3/mingw_how_to.html#libgeos](http://www.gaia-gis.it/spatialite-2.4.0-3/mingw_how_to.html#libgeos), but kept getting more errors, and just ended up copying the Hyperion-1.2 from [http://nullsecurity.net/tools/binary.html](http://nullsecurity.net/tools/binary.html) to the Windows 7 desktop.
+I made a fix on one of the files ([http://www.gaia-gis.it/spatialite-2.4.0-3/mingw_how_to.html#libgeos](http://www.gaia-gis.it/spatialite-2.4.0-3/mingw_how_to.html#libgeos)), but kept getting more errors, and just ended up copying the Hyperion-1.2 from [http://nullsecurity.net/tools/binary.html](http://nullsecurity.net/tools/binary.html) to the Windows 7 desktop.
 
 I installed MinGW from [http://sourceforge.net/projects/mingw/](http://sourceforge.net/projects/mingw/), but did not end up using it as it had to many errors.  
-It was missing a file `libgcc_s_dw2-1.dll` from `C:\MinGW\bin\` so I got this from the archive here: [http://sourceforge.net/projects/mingw/files/MinGW/Base/gcc/Version4/Previous%20Release%20gcc-4.4.0/](http://sourceforge.net/projects/mingw/files/MinGW/Base/gcc/Version4/Previous%20Release%20gcc-4.4.0/) as discussed here: [http://stackoverflow.com/questions/14502080/missing-libgcc-s-dw2-1-dll-error-when-launching-mingw-compiled-exe](http://stackoverflow.com/questions/14502080/missing-libgcc-s-dw2-1-dll-error-when-launching-mingw-compiled-exe). Then after reading this: [http://mingw-users.1079350.n2.nabble.com/Question-libgmp-10-dll-not-found-td7443661.html](http://mingw-users.1079350.n2.nabble.com/Question-libgmp-10-dll-not-found-td7443661.html) realised that to get hyperion to run, I would be best to copy `libgcc_s_dw2-1.dll` and `libstdc++-6.dll` from `C:\MinGW\bin` to `C:\Users\testaccount\Desktop\Hyperion-1.2`
+It was missing a file `libgcc_s_dw2-1.dll` from `C:\MinGW\bin\` so I got this from the archive here: http://sourceforge.net/projects/mingw/files/MinGW/Base/gcc/Version4/Previous%20
+Release%20gcc-4.4.0/ as discussed here: [http://stackoverflow.com/questions/14502080/missing-libgcc-s-dw2-1-dll-error-when-launching-mingw-compiled-exe](http://stackoverflow.com/questions/14502080/missing-libgcc-s-dw2-1-dll-error-when-launching-mingw-compiled-exe). Then after reading this: [http://mingw-users.1079350.n2.nabble.com/Question-libgmp-10-dll-not-found-td7443661.html](http://mingw-users.1079350.n2.nabble.com/Question-libgmp-10-dll-not-found-td7443661.html) realised that to get hyperion to run, I would be best to copy `libgcc_s_dw2-1.dll` and `libstdc++-6.dll` from `C:\MinGW\bin` to `C:\Users\testaccount\Desktop\Hyperion-1.2`
+
+&nbsp;
 
 Now in 2017 MinGW is installing and running without problem, it should be a simple case of just downloading, checking the MD5 sum, although it is not over HTTPS, Join their IRC channel to confirm the MD5 sum, extract and run `make` and you should have the binary.
