@@ -414,7 +414,7 @@ According to the installation directions, swig2.0 was required, although the rel
 
 %% Issue submitted: https://github.com/breenmachine/httpscreenshot/issues/20
 
-#### [psmsf](https://github.com/nixawk/psmsf)
+#### [Psmsf](https://github.com/nixawk/psmsf)
 
 Useful for PowerShell and other attacks. Generates PowerShell and other payloads useful for evading anti-virus (AV) detection. Also provides the Metasploit resource files.
 
@@ -806,7 +806,7 @@ I followed the directions on setting up the MinGW compiler to compile hyperion, 
 I made a fix on one of the files ([http://www.gaia-gis.it/spatialite-2.4.0-3/mingw_how_to.html#libgeos](http://www.gaia-gis.it/spatialite-2.4.0-3/mingw_how_to.html#libgeos)), but kept getting more errors, and just ended up copying the Hyperion-1.2 from [http://nullsecurity.net/tools/binary.html](http://nullsecurity.net/tools/binary.html) to the Windows 7 desktop.
 
 I installed MinGW from [http://sourceforge.net/projects/mingw/](http://sourceforge.net/projects/mingw/), but did not end up using it as it had to many errors.  
-It was missing a file `libgcc_s_dw2-1.dll` from `C:\MinGW\bin\` so I got this from the archive here: http://sourceforge.net/projects/mingw/files/MinGW/Base/gcc/Version4/Previous%20
+It was missing a file `libgcc_s_dw2-1.dll` from `C:\MinGW\bin\` so I got this from the archive here: http://sourceforge.net/projects/mingw/files/MinGW/Base/gcc/Version4/Previous%20  
 Release%20gcc-4.4.0/ as discussed here: [http://stackoverflow.com/questions/14502080/missing-libgcc-s-dw2-1-dll-error-when-launching-mingw-compiled-exe](http://stackoverflow.com/questions/14502080/missing-libgcc-s-dw2-1-dll-error-when-launching-mingw-compiled-exe). Then after reading this: [http://mingw-users.1079350.n2.nabble.com/Question-libgmp-10-dll-not-found-td7443661.html](http://mingw-users.1079350.n2.nabble.com/Question-libgmp-10-dll-not-found-td7443661.html) realised that to get hyperion to run, I would be best to copy `libgcc_s_dw2-1.dll` and `libstdc++-6.dll` from `C:\MinGW\bin` to `C:\Users\testaccount\Desktop\Hyperion-1.2`
 
 &nbsp;
