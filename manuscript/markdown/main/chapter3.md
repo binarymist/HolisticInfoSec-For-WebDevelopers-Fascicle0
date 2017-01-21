@@ -420,18 +420,6 @@ Useful for PowerShell and other attacks. Generates PowerShell and other payloads
 
 `git clone https://github.com/nixawk/psmsf.git /opt/psmsf`
 
-#### [PowerSploit](https://github.com/PowerShellMafia/PowerSploit/) {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-powersploit}
-
-PowerSploit includes PowerShell scripts for all phases of an assessment.
-
-`git clone https://github.com/PowerShellMafia/PowerSploit/.git /opt/PowerSploit`
-
-#### Nishang
-
-These are also a collection of PowerShell scripts useful for exploitation and post-exploitation.
-
-`git clone https://github.com/samratashok/nishang /opt/nishang`
-
 #### Responder
 
 This is a LLMNR, NBT-NS and MDNS poisoner. It has built in authentication servers for SMB (Supports NTLMv1, NTLMv2 hashes with Extended Security NTLMSSP), MSSQL, HTTP(s), LDAP, FTP, POP3, IMAP, SMTP as well as a built-in DNS server.
@@ -813,3 +801,16 @@ Release%20gcc-4.4.0/ as discussed here: [http://stackoverflow.com/questions/1450
 &nbsp;
 
 Now in 2017 MinGW is installing and running without problem, it should be a simple case of just downloading, checking the MD5 sum, although it is not over HTTPS, Join their IRC channel to confirm the MD5 sum, extract and run `make` and you should have the binary.
+
+#### [Nishang](https://github.com/samratashok/nishang/) {#tooling-setup-windows-tools-i-use-that-need-adding-to-windows-nishang}
+
+These are also a collection of PowerShell scripts useful for exploitation and post-exploitation.
+
+`git clone https://github.com/samratashok/nishang C:/Source/nishang`
+
+#### [PowerSploit](https://github.com/PowerShellMafia/PowerSploit/) {#tooling-setup-windows-tools-i-use-that-need-adding-to-windows-powersploit}
+
+PowerSploit includes PowerShell scripts for all phases of an assessment.
+
+`git clone https://github.com/PowerShellMafia/PowerSploit/.git C:/Source/PowerSploit`
+
