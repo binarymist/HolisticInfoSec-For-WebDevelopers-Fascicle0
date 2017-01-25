@@ -802,11 +802,17 @@ Release%20gcc-4.4.0/ as discussed here: [http://stackoverflow.com/questions/1450
 
 Now in 2017 MinGW is installing and running without problem, it should be a simple case of just downloading, checking the MD5 sum, although it is not over HTTPS, Join their IRC channel to confirm the MD5 sum, extract and run `make` and you should have the binary.
 
+#### [psmsf](https://github.com/nixawk/psmsf/) {#tooling-setup-windows-tools-i-use-that-need-adding-to-windows-psmsf}
+
+Useful for creating PowerShell payloads with embedded Metasploit payloads via msfvenom.
+
+`git clone https://github.com/nixawk/psmsf.git /opt/psmsf`
+
 #### [Nishang](https://github.com/samratashok/nishang/) {#tooling-setup-windows-tools-i-use-that-need-adding-to-windows-nishang}
 
 These are also a collection of PowerShell scripts useful for exploitation and post-exploitation.
 
-`git clone https://github.com/samratashok/nishang C:/Source/nishang`
+`git clone https://github.com/samratashok/nishang.git C:/Source/nishang`
 
 #### [PowerSploit](https://github.com/PowerShellMafia/PowerSploit/) {#tooling-setup-windows-tools-i-use-that-need-adding-to-windows-powersploit}
 
