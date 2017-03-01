@@ -829,7 +829,8 @@ Make sure that when you are testing your malware you do so in a lab environment 
 
 #### Other Offerings
 
-[PoisonTap](https://github.com/samyk/poisontap) from [Samy Kamkar](https://samy.pl/) runs on devices such as the Raspberry Pi Zero and others.
+* [Bash Bunny](https://hakshop.com/products/bash-bunny) from Hak5, is similar to Rubber Ducky, but more fully featured, it has a full featured Linux distribution onboard and is accessible via serial console
+* [PoisonTap](https://github.com/samyk/poisontap) from [Samy Kamkar](https://samy.pl/) runs on devices such as the Raspberry Pi Zero
 
 #### Additional USB Hardware
 
