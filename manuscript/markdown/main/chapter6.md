@@ -269,6 +269,8 @@ or from the terminal.
 
 ![](images/HandsOnHack.png)
 
+You can find the video of how the following attack is played out at [http://youtu.be/zevpMvQwWOU](http://youtu.be/zevpMvQwWOU).
+
 I> ## Web Forms
 I>
 I> When it comes to using hydra against web forms, if you can, once you have the command set and ready to run, it is usually best to test it against the web site with a known good login to make sure hydra handles the success correctly and the failures correctly.
