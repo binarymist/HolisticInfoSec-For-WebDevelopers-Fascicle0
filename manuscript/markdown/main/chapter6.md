@@ -833,6 +833,7 @@ Make sure that when you are testing your malware you do so in a lab environment 
 
 * [Bash Bunny](https://hakshop.com/products/bash-bunny) from Hak5, is similar to Rubber Ducky, but more fully featured, it has a full featured Linux distribution onboard and is accessible via serial console
 * [PoisonTap](https://github.com/samyk/poisontap) from [Samy Kamkar](https://samy.pl/) runs on devices such as the Raspberry Pi Zero
+* [Wi-Fi Ducky](https://github.com/spacehuhn/wifi_ducky) runs ducky script remotely, allowing the attacker to experiment after the device has been inserted into the target machine by uploading arbitrary payloads, running and refining.
 
 #### Additional USB Hardware
 
