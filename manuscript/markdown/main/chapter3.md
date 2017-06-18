@@ -559,7 +559,7 @@ We no longer must run everything as root, so this is no longer an issue.
 
 #### [Iceweasel](https://wiki.debian.org/Iceweasel) (FireFox with different Licensing) add-ons {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-iceweasel-add-ons}
 
-A small introduction to Iceweasel: Iceweasel was forked from Firefox for the purpose of back-porting security fixes to Debian stable, and not including the trademarked Mozilla artwork
+A small introduction to Iceweasel: Iceweasel was forked from Firefox for the purpose of back-porting security fixes to Debian stable, and not including the trademarked Mozilla artwork.
 
 * **FoxyProxy Standard**: Similar to the same [Chromium](#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-chromium-extensions-foxyproxy-standard) Extension as discussed above
 * **NoScript**: I like to know where my JavaScript is coming from
