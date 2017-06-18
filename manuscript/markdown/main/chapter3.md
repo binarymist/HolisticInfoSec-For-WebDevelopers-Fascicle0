@@ -557,11 +557,11 @@ We no longer must run everything as root, so this is no longer an issue.
 * **User Agent Switcher for Chrome**
 * **Web Developer**: I am a web developer, it has some really useful tools that provide visibility and insight
 
-#### [IceWeasel](https://wiki.debian.org/Iceweasel) (FireFox with different Licensing) add-ons {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-iceweasel-add-ons}
+#### [Iceweasel](https://wiki.debian.org/Iceweasel) (FireFox with different Licensing) add-ons {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-iceweasel-add-ons}
 
-A small introduction to IceWeasel: IceWeasel was forked from Firefox for the purpose of back-porting security fixes to Debian stable, and not including the trademarked Mozilla artwork
+A small introduction to Iceweasel: Iceweasel was forked from Firefox for the purpose of back-porting security fixes to Debian stable, and not including the trademarked Mozilla artwork
 
-* **FoxyProxy Standard**: For [Chromium](#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-chromium-extensions-foxyproxy-standard), as discussed under the Chromium Extension of the same name above
+* **FoxyProxy Standard**: Similar to the same [Chromium](#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-chromium-extensions-foxyproxy-standard) Extension as discussed above
 * **NoScript**: I like to know where my JavaScript is coming from
 * **Tamper Data**
 * **Web Developer**: I'm a web developer, it has some really useful tools that provide visibility and insight
