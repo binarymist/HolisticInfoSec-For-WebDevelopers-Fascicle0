@@ -539,81 +539,44 @@ We no longer must run everything as root, so this is no longer an issue.
 
 #### Chromium Extensions {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-chromium-extensions}
 
-##### FoxyProxy Standard {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-chromium-extensions-foxyproxy-standard}
+{#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-chromium-extensions-foxyproxy-standard}
+* **FoxyProxy Standard**: FoxyProxy Standard really reduces friction with web proxy interception. FoxyProxy is a very handy add-on for both Chromium and FireFox, although it seems to have more options for FireFox, or at least they are more easily accessible. It allows you to set-up a list of proxies, and then switch between them as you need.  
+  
+  FoxyProxy provides a menu button, so with two clicks you can disable the add-on completely to revert to your previous settings, or select any of your predefined proxies. This is a real time saver.  
 
-FoxyProxy Standard really reduces friction with web proxy interception. FoxyProxy is a very handy add-on for both Chromium and FireFox, although it seems to have more options for FireFox, or at least they are more easily accessible. It allows you to set-up a list of proxies, and then switch between them as you need.
+  Once you add it to your browser, open it up, and add a new proxy. We will use this one for Burpsuite later.  
 
-FoxyProxy provides a menu button, so with two clicks you can disable the add-on completely to revert to your previous settings, or select any of your predefined proxies. This is a real time saver.
+  Proxy Name: Burp 8080 # or what ever you like.  
+  Host or IP Address: `127.0.0.1`  
+  Port: `8080`  
 
-Once you add it to your browser, open it up, and add a new proxy. We will use this one for Burpsuite later.
+* **ScriptSafe**: I like to be in control of where my JavaScript is coming from  
+* **Cookies**
+* **EditThisCookie**
+* **SessionBuddy**: For storage of browser sessions and easy hydration
+* **User Agent Switcher for Chrome**
+* **Web Developer**: I am a web developer, it has some really useful tools that provide visibility and insight
 
-Proxy Name: Burp 8080 # or what ever you like.  
-Host or IP Address: `127.0.0.1`  
-Port: `8080`
+#### [IceWeasel](https://wiki.debian.org/Iceweasel) (FireFox with different Licensing) add-ons {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-iceweasel-add-ons}
 
-##### ScriptSafe
+A small introduction to IceWeasel: IceWeasel was forked from Firefox for the purpose of back-porting security fixes to Debian stable, and not including the trademarked Mozilla artwork
 
-I like to be in control of where my JavaScript is coming from.
-
-##### Cookies
-
-##### EditThisCookie
-
-##### SessionBuddy
-
-For storage of browser sessions and easy hydration.
-
-##### User Agent Switcher for Chrome
-
-##### Web Developer
-
-I'm a web developer, it has some really useful tools that provide visibility and insight.
-
-#### IceWeasel (FireFox with different Licensing) add-ons {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-iceweasel-add-ons}
-
-##### FoxyProxy Standard
-
-For [Chromium](#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-chromium-extensions-foxyproxy-standard)
-
-##### NoScript
-
-I like to know where my JavaScript is coming from.
-
-##### Tamper Data
-
-##### Web Developer
-
-I'm a web developer, it has some really useful tools that provide visibility and insight.
-
-##### HackBar
-
-HackBar is somewhat useful for (en/de)coding (Base64, Hex, MD5, SHA-(1/256), etc), manipulating and splitting URLs
-
-##### Advanced Cookie Manager
-
-##### NoScript
-
-I like to know where my JavaScript is coming from.
-
-##### SQL Inject Me
-
-This tool is simple and often useful for running a quick vulnerability assessment and is open source software (GPLv3) from Security Compass Labs. SQL Inject Me is a component of the Exploit-Me suite, allowing you to test all or any number of input fields on all or any of a page's forms. Just fill in the fields with valid data, then test with all the tools attacks, or with those you have defined in the options menu. It then looks for database errors which are rendered into the returned HTML as a result of sending escape strings, it does not cater for blind injection. You can also add or remove escape strings, and resulting error strings that SQL Inject Me should look for on response. The order in which each escape string can be tried can also be changed. All you need to know can be found [here](http://labs.securitycompass.com/exploit-me/sql-inject-me/sql-inject-me-faq/).
-
-##### XSS Me
-
-XSS Me is also simple and often useful for running a quick vulnerability assessment. It also is open source software (GPLv3) from Security Compass Labs and an component of the Exploit-Me suite. This tools behaviour is very similar to SQL Inject Me (follows the Principle of Least Astonishment (POLA)), which makes using the tools very easy. Both these add-ons have next to no learning curve. The level of entry is very low and I think are exactly what web developers need to eliminate excuses for not testing their own security. It also helps developers understand how these attacks can be carried out. XSS Me currently only tests for reflected XSS. It does not attempt to compromise the security of the target system. Both XSS Me and SQL Inject Me are reconnaissance tools, where the information provided is simply the vulnerabilities found. XSS Me does not support stored XSS or user supplied data from sources such as cookies, links, or HTTP headers. XSS Me's effectiveness in finding vulnerabilities is also determined by the list of attack strings the tool has available. Out of the box, the list of XSS attack strings are derived from RSnake's collection, which were donated to OWASP and who now maintains it as one of their [cheat-sheets](https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet). Multiple encodings are not yet supported, but are planned for the future. You can help to keep the collection up to date by submitting new attack strings.
-
-##### [Tamper Data](https://addons.mozilla.org/en-US/firefox/addon/tamper-data/)
-
-This is a light weight HTTP intercepting proxy as an Iceweasel add-on which allows you to view and modify headers and post parameters.
-
-##### User Agent Switcher
+* **FoxyProxy Standard**: For [Chromium](#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-chromium-extensions-foxyproxy-standard), as discussed under the Chromium Extension of the same name above
+* **NoScript**: I like to know where my JavaScript is coming from
+* **Tamper Data**
+* **Web Developer**: I'm a web developer, it has some really useful tools that provide visibility and insight
+* **HackBar**: HackBar is somewhat useful for (en/de)coding (Base64, Hex, MD5, SHA-(1/256), etc), manipulating and splitting URLs
+* **Advanced Cookie Manager**
+* **NoScript**: I like to know where my JavaScript is coming from
+* **SQL Inject Me**: This tool is simple and often useful for running a quick vulnerability assessment and is open source software (GPLv3) from Security Compass Labs. SQL Inject Me is a component of the Exploit-Me suite, allowing you to test all or any number of input fields on all or any of a page's forms. Just fill in the fields with valid data, then test with all the tools attacks, or with those you have defined in the options menu. It then looks for database errors which are rendered into the returned HTML as a result of sending escape strings, it does not cater for blind injection. You can also add or remove escape strings, and resulting error strings that SQL Inject Me should look for on response. The order in which each escape string can be tried can also be changed. All you need to know can be found [here](http://labs.securitycompass.com/exploit-me/sql-inject-me/sql-inject-me-faq/)
+* **XSS Me**: XSS Me is also simple and often useful for running a quick vulnerability assessment. It also is open source software (GPLv3) from Security Compass Labs and an component of the Exploit-Me suite. This tools behaviour is very similar to SQL Inject Me (follows the Principle of Least Astonishment (POLA)), which makes using the tools very easy. Both these add-ons have next to no learning curve. The level of entry is very low and I think are exactly what web developers need to eliminate excuses for not testing their own security. It also helps developers understand how these attacks can be carried out. XSS Me currently only tests for reflected XSS. It does not attempt to compromise the security of the target system. Both XSS Me and SQL Inject Me are reconnaissance tools, where the information provided is simply the vulnerabilities found. XSS Me does not support stored XSS or user supplied data from sources such as cookies, links, or HTTP headers. XSS Me's effectiveness in finding vulnerabilities is also determined by the list of attack strings the tool has available. Out of the box, the list of XSS attack strings are derived from RSnake's collection, which were donated to OWASP and who now maintains it as one of their [cheat-sheets](https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet). Multiple encodings are not yet supported, but are planned for the future. You can help to keep the collection up to date by submitting new attack strings
+* **[Tamper Data](https://addons.mozilla.org/en-US/firefox/addon/tamper-data/)**: This is a light weight HTTP intercepting proxy as an Iceweasel add-on which allows you to view and modify headers and post parameters
+* **User Agent Switcher**
 
 %% #### OpenVAS
 %% http://blog.binarymist.net/2014/03/29/up-and-running-with-kali-linux-and-friends/#openVAS   
 
 ### Additional Hardware {#tooling-setup-kali-linux-additional-hardware}
-
 
 #### TP-LINK TL-WN722N USB Wireless Adapter
 
