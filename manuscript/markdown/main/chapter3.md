@@ -182,7 +182,7 @@ We used to start the Metasploit service with:
 `service metasploit start`  
 but now there is no `metasploit` service as such.
 
-##### Useful metasploit [commands](https://www.offensive-security.com/metasploit-unleashed/msfconsole-commands/)
+##### Useful metasploit commands
 
 * `msf >` [help](https://www.offensive-security.com/metasploit-unleashed/msfconsole-commands/#help)
 * `msf >` [show](https://www.offensive-security.com/metasploit-unleashed/msfconsole-commands/#show)
@@ -190,7 +190,8 @@ but now there is no `metasploit` service as such.
   * Additional module specific parameters are: `missing`, `advanced`, `evasion`, `targets`, `actions`  
 * `msf > show options`
 * `msf > info <module name>` [info](https://www.offensive-security.com/metasploit-unleashed/msfconsole-commands/#info)
-
+Refer the following link for more insight :https://www.offensive-security.com/metasploit-unleashed/msfconsole-commands/
+<!--- I have removed the link from the heading and placed it here as the font looks different when this URl was applied --->
 ##### metasploit meterpreter client commands
 
 * Meterpreter Client  
@@ -216,8 +217,7 @@ If you need Metasploit integration in BeEF (in most cases you will want this), s
 `extension: metasploit: enable: true`  
 in the `/etc/beef-xss/config.yaml` file.  
 Also make sure  
-`enable`  
-is set to `true` in `/usr/share/beef-xss/extensions/metasploit/config.yaml`
+`enable` is set to `true` in `/usr/share/beef-xss/extensions/metasploit/config.yaml`
 
 When running Metasploit for BeEF, I often provide `msfconsole` with a Metasploit resource file specifically for BeEF (I call this `beef.rc` and put it in `~/`). This resource file will have the following in it at a minimum:
 
@@ -325,16 +325,16 @@ or see the documentation for more details
 %% Errors installing. Submitted issue here: https://github.com/michenriksen/gitrob/issues/62
 %% Error running. Didn't like my password: https://github.com/michenriksen/gitrob/issues/63
 
-#### [CMSmap](https://github.com/Dionach/CMSmap)
+#### CMSmap
 
-CMSmap is a python open source CMS scanner that automates the process of detecting security flaws of the most popular Content Management Systems (CMSs).  
+[CMSmap] (https://github.com/Dionach/CMSmap) is a python open source CMS scanner that automates the process of detecting security flaws of the most popular Content Management Systems (CMSs).  
 Currently supports: WordPress, Joomla and Drupal.
 
 `git clone https://github.com/Dionach/CMSmap.git /opt/CMSmap`
 
-#### [Veil Framework](https://www.veil-framework.com/) {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-veil-framework}
+#### Veil Framework {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-veil-framework}
 
-I have decided to clone the Veil-Framework, as it has a good collection of very useful tools. Veil-Evasion is specifically useful for antimalware evasion. The Veil super project also has an install script to install all Veil projects, found at the [Veil](https://github.com/Veil-Framework/Veil) repository for the Veil-Framework account on github.
+I have decided to clone the [Veil-Framework] (https://www.veil-framework.com/), as it has a good collection of very useful tools. Veil-Evasion is specifically useful for antimalware evasion. The Veil super project also has an install script to install all Veil projects, found at the [Veil](https://github.com/Veil-Framework/Veil) repository for the Veil-Framework account on github.
 
 There are install guides here:  
 [https://www.veil-framework.com/guidesvideos/](https://www.veil-framework.com/guidesvideos/)
