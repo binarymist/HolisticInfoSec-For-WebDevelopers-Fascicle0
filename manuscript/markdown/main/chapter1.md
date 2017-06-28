@@ -12,7 +12,7 @@ This stepping back process (a form of modelling), should be performed by a colle
 2. Network expert(s)
 3. Domain expert(s) 
 4. The person solely responsible for the project or product being delivered
-5. Person(s) with security specialisations in the areas involved in the finished product.
+5. Person(s) with security specialisations in the areas involved in the finished product
 
 You might be thinking that this team looks very familiar. It probably is, as it looks very much like a Scrum Team.
 
