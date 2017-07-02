@@ -923,7 +923,7 @@ In a previous Scrum Team for which I was Scrum Master, the Development Team deci
   * Consumer and Pair Association: This represents knowing the results of their work and how it affects others   
   * Autonomy: Developers like control over what and how they perform their work. This includes self-managing teams. Many managers still need to realise that they can be freed up from a lot of work if they will just let the Development Team manage their own destiny
 3. Ownership / Buy-in: People work harder to achieve their own goals than someone else's. The Team decides how much it wants to tackle, the developer decides what to tackle. The schedules developers create are always ambitious. This is why Scrum, when run by the book, can be very effective   
-4. Goal Setting: Setting objectives for developers works, but only pick 1 or 2.
+4. Goal Setting: Setting objectives for developers works, but only pick 1 or 2
 Set more than that and developers lose their focus. Developers do not respond well to objectives that change daily or are collectively impossible to meet   
 5. Opportunities for Growth: Half of what a developer knows in order to do his job today will be out of date in 3 years time. If not moving forward in this industry, you are moving backwards. Developers are very motivated by learning new things. Let developers determine how they wish to grow professionally. The best developers will gravitate toward organisations that foster personal growth
 6. Personal Life: Top developers like to invest a lot of their own time experimenting, researching, teaching others, and running events. Let them, and in-fact encourage them

@@ -301,13 +301,13 @@ Gitrob is an OSINT reconnaissance tool for obtaining information from your targe
 1. `git clone https://github.com/michenriksen/gitrob.git /opt/gitrob`
 2. `gem install bundler`
 3. `apt-get install libpq-dev`
-3. `service postgresql start`
-4. `su postgres`
-5. `createuser -s  gitrob  --pwprompt` # Do not use a password with [@](https://github.com/michenriksen/gitrob/issues/63) in it
-6. `createdb -O gitrob gitrob`
-7. `exit`
-8. `cd /opt/gitrob/bin`
-9. `gem install gitrob`
+4. `service postgresql start`
+5. `su postgres`
+6. `createuser -s  gitrob  --pwprompt` # Do not use a password with [@](https://github.com/michenriksen/gitrob/issues/63) in it
+7. `createdb -O gitrob gitrob`
+8. `exit`
+9. `cd /opt/gitrob/bin`
+10. `gem install gitrob`
 
 You'll need to acquire a [github API token](https://github.com/settings/tokens), because gitrob derives its OSINT from the [github API](https://developer.github.com/v3/)
 
