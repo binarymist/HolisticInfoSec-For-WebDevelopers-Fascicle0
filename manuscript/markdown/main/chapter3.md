@@ -2,8 +2,8 @@
 
 All the software tools I use for penetration and security testing are free, and most of them are open source. I am always diligent in focusing on the free and open source tools, as it makes it easier:
 
-1. To pitch tooling acquisition to managers, and those that hold the purse strings.
-2. To learn how the tools work and contribute to the security ecosystem.
+1. To pitch tooling acquisition to managers, and those that hold the purse strings
+2. To learn how the tools work and contribute to the security ecosystem
 
 ## Kali Linux {#tooling-setup-kali-linux}
 
@@ -71,9 +71,8 @@ Setup network host adapters: this is also discussed in the [NodeGoat Set-up on y
 
 Host-only Adapter allows:
 
-1. The VM to talk to the host and other VMs connected to the host.
-2. The host to talk to guest VMs.  
-(often useful for the likes of demoing OWASP Zap Api where you may have Zap running on Kali and a vulnerable web app running on another VM or your physical hardware).  
+1. The VM to talk to the host and other VMs connected to the host
+2. The host to talk to guest VMs, often useful for the likes of demoing OWASP Zap Api where you may have Zap running on Kali and a vulnerable web app running on another VM or your physical hardware
 
 NAT networking allows the VM to talk to the internet via the host's network interface.
 
@@ -238,13 +237,13 @@ Finally... starting BeEF. There are at least three ways to do so. I find that th
 This way provides the most feedback. If the main `config.yaml`  
 (resides in `/etc/beef-xss/config.yaml`) contains:  
 `extension: console: shell: enable: true`  
-then we also get an interactive [console](https://github.com/beefproject/beef/wiki/BeEF-Console), but no web UI.
+then we also get an interactive [console](https://github.com/beefproject/beef/wiki/BeEF-Console), but no web UI
 * Second, running from the command line:  
 `service beef-xss start`  
-gives no other feedback.
+gives no other feedback
 * Third, running BeEF from the Kali menu:  
 Menu: Exploitation Tools -> BeEF XSS Framework -> beef  
-doesn't provide a lot of feedback as to what is loaded, and that is only if you are running as root.
+doesn't provide a lot of feedback as to what is loaded, and that is only if you are running as root
 
 #### Updating BurpSuite
 
@@ -289,7 +288,7 @@ The set-up process looks like this in Kali 2016.1
 You may also need to:
 5. cd /opt/smbexec/progs
 6. ln -s /usr/bin/pth-winexe smbwinexe  
-# in Kali 1.1. the following link was not needed as smbexeclient already existed.
+# in Kali 1.1. the following link was not needed as smbexeclient already existed
 7. ln -s /usr/bin/pth-smbclient smbexeclient
 
 %% Had discussion with Jonny via email about the links.
@@ -304,7 +303,7 @@ Gitrob is an OSINT reconnaissance tool for obtaining information from your targe
 3. `apt-get install libpq-dev`
 3. `service postgresql start`
 4. `su postgres`
-5. `createuser -s  gitrob  --pwprompt` # Do not use a password with [@](https://github.com/michenriksen/gitrob/issues/63) in it. 
+5. `createuser -s  gitrob  --pwprompt` # Do not use a password with [@](https://github.com/michenriksen/gitrob/issues/63) in it
 6. `createdb -O gitrob gitrob`
 7. `exit`
 8. `cd /opt/gitrob/bin`
@@ -348,17 +347,17 @@ To install:
     {line-numbers=off}
        cd /opt/Veil && ./Install.sh -c  
   The dependency installs take a while, these include Python on Windows, Ruby and Go
-3. Select the defaults for the Python for Windows install.
-4. When the install reaches the "Select Destination Directory", go with the default.
-5. Click the "Yes" when asked if you want to overwrite the existing Python files.
-6. Select the defaults for the rest of the Python install.
-7. Next up is the pywin32 set-up. Click "Next" to continue.
-8. Use the default Python directory location -> click "Next" -> "Next" -> "Finish".
-9. Next up is pycrypto. "Next" -> "Next" -> "Next" -> "Finish".
-10. Choose your language.
-11. Accept the Ruby License Agreement.
-12. "Install" -> "Yes" to Folder Exists -> "Finish".
-13. Finally, golang.
+3. Select the defaults for the Python for Windows install
+4. When the install reaches the "Select Destination Directory", go with the default
+5. Click the "Yes" when asked if you want to overwrite the existing Python files
+6. Select the defaults for the rest of the Python install
+7. Next up is the pywin32 set-up. Click "Next" to continue
+8. Use the default Python directory location -> click "Next" -> "Next" -> "Finish"
+9. Next up is pycrypto. "Next" -> "Next" -> "Next" -> "Finish"
+10. Choose your language
+11. Accept the Ruby License Agreement
+12. "Install" -> "Yes" to Folder Exists -> "Finish"
+13. Finally, golang
 
 To run Veil-Evasion:  
 `cd /opt/Veil/Veil-Evasion/ && ./Veil-Evasion.py`
@@ -375,7 +374,7 @@ To run Veil-Evasion:
   * Take your pick of:
     1. [https://downloads.skullsecurity.org/passwords/](https://downloads.skullsecurity.org/passwords/)
     2. [http://download.g0tmi1k.com/wordlists/large/](http://download.g0tmi1k.com/wordlists/large/)
-3. Decompress any that need it.
+3. Decompress any that need it
 
 There are many other good lists out there. Also if you:  
 `locate wordlists`  
@@ -491,7 +490,7 @@ Spiderfoor is an automated OSINT gathering tool.
 2. `git clone https://github.com/smicallef/spiderfoot /opt/spiderfoot`
 3. `cd /opt/spiderfoot && ./sf.py`  
   SpiderFoot starts a web server on http://127.0.0.1:5001  
-  The interface and port are configurable, so you can run it from anywhere.
+  The interface and port are configurable, so you can run it from anywhere
 
 #### [OWASP SecLists](http://github.com/danielmiessler/SecLists.git) {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-owasp-seclists}
 
@@ -650,8 +649,8 @@ and older builds here: ([https://www.virtualbox.org/wiki/Download_Old_Builds_5_0
 2. `apt-get upgrade`
 3. `apt-get dist-upgrade`
 4. `apt-get install linux-headers-$(uname -r)`
-5. Shutdown Linux guest OS.
-6. Apply extension to VirtualBox in the host at: File -> Preferences -> Extensions.
+5. Shutdown Linux guest OS
+6. Apply extension to VirtualBox in the host at: File -> Preferences -> Extensions
 
 ##### Blacklist Wi-Fi Module on Host:
 

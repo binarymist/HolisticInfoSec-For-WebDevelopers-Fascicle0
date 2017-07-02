@@ -8,7 +8,7 @@ Stepping back allows your peripheral vision to kick in.
 
 This stepping back process (a form of modelling), should be performed by a collection of the following people:
 
-1. Deeply technical (software expert (developer/engineer)). I specifically do not mention tester(s) here, as testing should be the job of the developer. The developer is responsible for delivering high quality working code every Sprint.
+1. Deeply technical (software expert (developer/engineer)). I specifically do not mention tester(s) here, as testing should be the job of the developer. The developer is responsible for delivering high quality working code every Sprint
 2. Network expert(s)
 3. Domain expert(s) 
 4. The person solely responsible for the project or product being delivered
@@ -36,14 +36,12 @@ Many of the following chapters will address asset identification as the first st
 
 Here are some assets to consider as part of your domain:
 
-* User credentials
-  often stored within data stores, but also often found on the likes of post-it notes stuck to monitors or under a keyboard etc.
-* Identity information
-  such as: Email addresses, physical addresses, phone numbers, birth certificates
+* User credentials: often stored within data stores, but also often found on the likes of post-it notes stuck to monitors or under a keyboard etc.
+* Identity information such as: Email addresses, physical addresses, phone numbers, birth certificates
 * Credit card numbers and similar
-* Confidential business information, could come in many forms such as email, organisation wide wikis, document storage, and be stored in many places, such as: in data stores, code, configuration files, peoples heads, peoples desks and many others.
+* Confidential business information, could come in many forms such as email, organisation wide wikis, document storage, and be stored in many places, such as: in data stores, code, configuration files, peoples heads, peoples desks and many others
 * Confidential client information
-* Reputation: I am sure you can think of a few ways that you or your organisations reputation could be tarnished or worse.
+* Reputation: I am sure you can think of a few ways that you or your organisations reputation could be tarnished or worse
 
 Now, if you relate the potential loses with information security vectors, you will come up with a target list we can take into the next stages.
 
@@ -141,10 +139,10 @@ Your countermeasure PBIs also need to reference the risk they were created in re
 
 This is really dependent on the solution(s) you discover. Often there will be new risks that the mitigation techniques introduce. We will work through many possibilities in the following chapters.
 
-* Make sure before you test that you have written permission for all the areas that you are about to test, documenting what could possibly go wrong.
-* Make sure you have backups and that they work.
+* Make sure before you test that you have written permission for all the areas that you are about to test, documenting what could possibly go wrong
+* Make sure you have backups and that they work
 * Complacency?
-* Spending too much on technological solutions and ignoring the fact that the person on the front desk can easily be tricked to reveal information an attacker needs or lower the defences of a computer system. See the section on [People](#people).
+* Spending too much on technological solutions and ignoring the fact that the person on the front desk can easily be tricked to reveal information an attacker needs or lower the defences of a computer system. See the section on [People](#people)
 
 As we work through later chapters we will discuss many more hypothetical risks that proposed countermeasures may cause.
 

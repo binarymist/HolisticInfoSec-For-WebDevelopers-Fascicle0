@@ -6,31 +6,31 @@ As in the chapter on [Physical](#physical) security, the people problem is often
 
 Why is "people security" often over-looked? A couple of reasons I can think of include:
 
-1. It is too simple.
-2. Many of us do not like to put the spot-light on ourselves and look deep inside to try and find out what makes us tick, or what our flaws look like, why they exist, and how we can re-architect the affected areas, and in some cases work around them, while being aware of them. There is often real pain when we start poking and prodding at our inner weak spots.
+1. It is too simple
+2. Many of us do not like to put the spot-light on ourselves and look deep inside to try and find out what makes us tick, or what our flaws look like, why they exist, and how we can re-architect the affected areas, and in some cases work around them, while being aware of them. There is often real pain when we start poking and prodding at our inner weak spots
 
 As with many other attacks, this is often one that is a key component of a larger more sophisticated attack.
 
 If you think back to the Penetration Testing [process](#process-and-practises-penetration-testing) we walked through in the Process and Practises chapter, a SE generally carries out their attack sequences in a similar manner. The following steps offer the high level approach often taken:
 
 1. **Reconnaissance** (or Information Gathering)  
-This is one of the most important steps in a SE engagement. Similar to the [forms](#process-and-practises-penetration-testing-reconnaissance-reconnaissance-forms) discussed in the Process and Practises chapter, a huge amount of freely available information can be gathered without anyone suspecting what it is going to be used for, if it is used at all (semi-active), or that its even being gathered (passive). This information is used to feed the creation of the following attack steps, as well as technical attacks. We have already looked at some forms of information that an attacker can use to build their target's profile in the Process and Practises and Physical chapters. I would also like to draw your attention to the content Michael Bazzell has [collated](https://inteltechniques.com/links.html) and his excellent books on the gathering of Open Source Intelligence.
+This is one of the most important steps in a SE engagement. Similar to the [forms](#process-and-practises-penetration-testing-reconnaissance-reconnaissance-forms) discussed in the Process and Practises chapter, a huge amount of freely available information can be gathered without anyone suspecting what it is going to be used for, if it is used at all (semi-active), or that its even being gathered (passive). This information is used to feed the creation of the following attack steps, as well as technical attacks. We have already looked at some forms of information that an attacker can use to build their target's profile in the Process and Practises and Physical chapters. I would also like to draw your attention to the content Michael Bazzell has [collated](https://inteltechniques.com/links.html) and his excellent books on the gathering of Open Source Intelligence
 2. **Connecting with Target**  
 Humans are complicated units; we have a body, spirit, soul, feelings, emotions, and usually need to feel like we can trust someone before we hand over the proverbial jewels. An attacker can not approach a human as they would a machine although there are similarities. There are areas that we know we have to work around, for example. A skilled SE will build relationship with a target while they are gently probing for weaknesses. This is often carried out over weeks, or even months of communication and interaction. It is typically a gradual process, but sometimes trust can be built quickly. There are also many ways to fast track this process, such as:
-  * Pretexting (becoming someone else): Here you learn someone else's behaviour, what they do, how they do it, their routines, what they know, who they know, how they talk, what they like, their family members, and their details. Most of these details are often freely available on the Internet in many forms. Equipped with these details, pretexting is simply acting as if you are that person. The closer you come to believing you are that person, the more successful the pretext will be.
-  * Elicitation: This requires breaking people out of their shells, to open up and trust the attacker, then start to produce the information the attacker requires. This often includes guiding or directing a target to perform the specific behaviour that the attacker wants, such as revealing secrets. Pouring on praise and discussing the targets accomplishments works wonders with eliciting openness from people. There are many other ways to elicit information. Elicitation is a two pronged fork, it not only gathers information, but it also builds rapport with the target.
+  * Pretexting (becoming someone else): Here you learn someone else's behaviour, what they do, how they do it, their routines, what they know, who they know, how they talk, what they like, their family members, and their details. Most of these details are often freely available on the Internet in many forms. Equipped with these details, pretexting is simply acting as if you are that person. The closer you come to believing you are that person, the more successful the pretext will be
+  * Elicitation: This requires breaking people out of their shells, to open up and trust the attacker, then start to produce the information the attacker requires. This often includes guiding or directing a target to perform the specific behaviour that the attacker wants, such as revealing secrets. Pouring on praise and discussing the targets accomplishments works wonders with eliciting openness from people. There are many other ways to elicit information. Elicitation is a two pronged fork, it not only gathers information, but it also builds rapport with the target
 3. **Exploitation**  
 At this stage an attacker has discovered human vulnerabilities in their target and uses them to:
   * Coerce the target to yield information that can be used against the target
   * Direct or control the actions of the target
 4. **Exit / Execution**  
-This is where the attacker hits the jackpot and acquires what they were after from the onset of the assignment or operation, and leaves the target unsuspecting that they have been played at all, often leaving them thinking and feeling that they have helped someone legitimately. Similar to a successful technology based attack, the target should not have a clue that they have been exploited.
+This is where the attacker hits the jackpot and acquires what they were after from the onset of the assignment or operation, and leaves the target unsuspecting that they have been played at all, often leaving them thinking and feeling that they have helped someone legitimately. Similar to a successful technology based attack, the target should not have a clue that they have been exploited
 
 ## 1. SSM Asset Identification
 Take results from [higher level Asset Identification](#starting-with-the-30000-foot-view-asset-identification). Remove any that are not applicable. Add any newly discovered. Here are some to get you started:
 
-* People carry huge amounts of confidential information on them, not only in their bags and devices, but also, most importantly, their brains. People are like sponges, we soak up information everywhere. We also leak a lot and are capable of leaking without even knowing it when targeted by a skilled SE. I will cover more of this in the Identify Risks section.
-* State of mind: An engaged, devoted, and loyal worker is truly an asset. I can not emphasise this enough.
+* People carry huge amounts of confidential information on them, not only in their bags and devices, but also, most importantly, their brains. People are like sponges, we soak up information everywhere. We also leak a lot and are capable of leaking without even knowing it when targeted by a skilled SE. I will cover more of this in the Identify Risks section
+* State of mind: An engaged, devoted, and loyal worker is truly an asset. I can not emphasise this enough
 
 Many of the assets are the same as those in other chapters, it is more that people present a huge opportunity for exploitation.
 
@@ -491,7 +491,7 @@ This can be quite a useful confirmation for a SE to use as part of their pretext
 * SpoofTell
 * Jumblo
 * [SMSGang](http://www.smsgang.com/)
-* and many more coming and going all the time.
+* and many more coming and going all the time
 
 Some services are free, some are paid for. SMS providers offering spoofing capabilities seem to come and go, as they get shut-down regularly.
 
@@ -508,16 +508,16 @@ SMS spoofing was [removed](https://github.com/trustedsec/social-engineer-toolkit
 
 Here an attacker will send an SMS message to a target, usually to invoke an immediate action on the part of the target. The request may be to convince the target to:
 
-* Download and execute a malicious payload. This can take many forms. For example, if you tap a web URL and visit a page, you may download a malicious script or executable with permissions matching those of the user on the device. Use your imagination here.
+* Download and execute a malicious payload. This can take many forms. For example, if you tap a web URL and visit a page, you may download a malicious script or executable with permissions matching those of the user on the device. Use your imagination here
 * Call a number masquerading as a legitimate entity
-* Pretty much any action, even diverting the current action of the target to allow an attack from another vector, as seen in [episode 5](http://www.usanetwork.com/mrrobot/episode-guide/season-1-episode-5-eps143xpl0itswmv) of Mr Robot. Elliot was making his way through the so called impenetrable storage facility (Steel Mountain) to plant a Raspberry Pi on the network. His colleagues diverted the manager who was escorting him out of the building by sending her a [spoofed SMS message](http://null-byte.wonderhowto.com/how-to/hacks-mr-robot-send-spoofed-sms-text-message-0163331/) that appeared to be from her husband who appeared to be at the hospital with a serious health issue.
+* Pretty much any action, even diverting the current action of the target to allow an attack from another vector, as seen in [episode 5](http://www.usanetwork.com/mrrobot/episode-guide/season-1-episode-5-eps143xpl0itswmv) of Mr Robot. Elliot was making his way through the so called impenetrable storage facility (Steel Mountain) to plant a Raspberry Pi on the network. His colleagues diverted the manager who was escorting him out of the building by sending her a [spoofed SMS message](http://null-byte.wonderhowto.com/how-to/hacks-mr-robot-send-spoofed-sms-text-message-0163331/) that appeared to be from her husband who appeared to be at the hospital with a serious health issue
 
 SMiShing attacks are [on the rise](http://www.pcworld.com/article/254979/smishing_attacks_are_on_the_rise.html). They are low cost and low risk and often play a part in a SE attack.
 
 The technical equipment required to carry out a SMiSh looks like the following:
 
-1. You will need something to create and send a message from such as a burner phone (or prepaid SIM) or software such as The SE Toolkit (SET), which provides functionality to create and send a spoofed SMS, found in Backtrack.
-2. An intermediary, often providing the spoofing service which, in turn, provides the number that the message appears to have been sent from. Services such as the before mentioned burnerapp, spoofcard, and others, provide a spoofing service and other features such as voice changers and auto responders.
+1. You will need something to create and send a message from such as a burner phone (or prepaid SIM) or software such as The SE Toolkit (SET), which provides functionality to create and send a spoofed SMS, found in Backtrack
+2. An intermediary, often providing the spoofing service which, in turn, provides the number that the message appears to have been sent from. Services such as the before mentioned burnerapp, spoofcard, and others, provide a spoofing service and other features such as voice changers and auto responders
 
 ### Favour for a Favour {#people-identify-risks-favour-for-a-favour}
 ![](images/ThreatTags/easy-common-average-severe.png)
@@ -555,9 +555,9 @@ I have always found it interesting listening to and/or watching certain classes 
 
 Following are some effective means of gaining physical access to workplace premises.
 
-1. Mingle in with a crowd of people returning from a lunch break. Be prepared to drop some names of people that work there but are not in the current group. Yes, that means you have to do your home work and know their faces. You will get through the locked front door 99% of the time.
-2. Wait in the car park until you see someone close to the front door (inside or outside) and carry a large heavy **looking** box toward the door. They will almost always open the door for you. Just make sure you have thought about all possible questions that may get fired at you, and have well researched answers ready to respond with.
-3. Even before you get to the building itself, often the premises will have gates that open by remote control or card. If an attacker is close enough to someone already entering the premises, they will get through at the same time. Obviously this needs to be as inconspicuous as possible. Park close enough, but not too close as to be recognised as someone trying to tailgate their way in. Early mornings are best for this, as staff are often still half asleep when they turn up to work. Picking your target to follow via the Open Source Intelligence (OSInt) you have gathered during the reconnaissance phase. An attacker will choose someone that likely does not get a lot of sleep, perhaps a late night coder, hacker, gamer, or someone who has a new born baby and doesn't get much sleep.
+1. Mingle in with a crowd of people returning from a lunch break. Be prepared to drop some names of people that work there but are not in the current group. Yes, that means you have to do your home work and know their faces. You will get through the locked front door 99% of the time
+2. Wait in the car park until you see someone close to the front door (inside or outside) and carry a large heavy **looking** box toward the door. They will almost always open the door for you. Just make sure you have thought about all possible questions that may get fired at you, and have well researched answers ready to respond with
+3. Even before you get to the building itself, often the premises will have gates that open by remote control or card. If an attacker is close enough to someone already entering the premises, they will get through at the same time. Obviously this needs to be as inconspicuous as possible. Park close enough, but not too close as to be recognised as someone trying to tailgate their way in. Early mornings are best for this, as staff are often still half asleep when they turn up to work. Picking your target to follow via the Open Source Intelligence (OSInt) you have gathered during the reconnaissance phase. An attacker will choose someone that likely does not get a lot of sleep, perhaps a late night coder, hacker, gamer, or someone who has a new born baby and doesn't get much sleep
 
 ### Phishing {#people-identify-risks-phishing}
 ![](images/ThreatTags/average-widespread-easy-moderate.png)
@@ -717,8 +717,8 @@ T> As you can see below, SET also has a few other options for helping an attacke
 
 Infectious media is generally thought about as a tool used by:
 
-1. **An Attacker with Physical Access**. The payload can be used to do pretty much anything. Often it is used when it is easier to insert directly into a computer than remotely deploying a payload. For example, an attacker can masquerade as a service person, contractor, or what ever looks legitimate enough for them to get physical access. Often only a few seconds are required to insert the media, deposit and/or run a payload, or vacuum up some target data, pull the media out and be off.
-2. **An Attacker with No Access**. Hand out or leave media lying around somewhere that the target(s) will notice, curiosity will drive them to insert the media themselves, thus doing a large part of the attacker's job for them. As always, SEs leverage the human target's weaknesses against the target to carry out the attacker's bidding. 
+1. **An Attacker with Physical Access**. The payload can be used to do pretty much anything. Often it is used when it is easier to insert directly into a computer than remotely deploying a payload. For example, an attacker can masquerade as a service person, contractor, or what ever looks legitimate enough for them to get physical access. Often only a few seconds are required to insert the media, deposit and/or run a payload, or vacuum up some target data, pull the media out and be off
+2. **An Attacker with No Access**. Hand out or leave media lying around somewhere that the target(s) will notice, curiosity will drive them to insert the media themselves, thus doing a large part of the attacker's job for them. As always, SEs leverage the human target's weaknesses against the target to carry out the attacker's bidding 
 
 #### [Social Engineering Toolkit (Set)](http://www.social-engineer.org/framework/se-tools/computer-based/social-engineer-toolkit-set/)
 
@@ -812,13 +812,13 @@ I didn't use a Kali Linux VM for this, because it is just easier to use a physic
 3. Make it executable: `chmod u+x ducky-decode.pl`
 4. {title="Result", linenos=off}
     wget https://github.com/midnitesnake/USB-Rubber-Ducky/raw/master/Encoder/encoder.jar
-5. Put the supplied micro SD card into the USB holder and plug it into an empty USB port. Now we are ready to fill it with a payload.
+5. Put the supplied micro SD card into the USB holder and plug it into an empty USB port. Now we are ready to fill it with a payload
 
 My workflow went like this:
 
-1. In one terminal pane I would have my text file `inject.txt` open in vim. In this file I would write my ducky script and save.
-2. In another terminal pane in the directory `/opt/usb-rubber-ducky/` I would run `java -jar encoder.jar`. This provides the options you need to create your payload so you can run `java -jar encoder.jar -i inject.txt -o /media/<you>/<name of micro SD card>/inject.bin`.
-3. Pull your USB holder out and put the card into the ducky. It is now set for a victim to plug it into their USB port and have the payload run.
+1. In one terminal pane I would have my text file `inject.txt` open in vim. In this file I would write my ducky script and save
+2. In another terminal pane in the directory `/opt/usb-rubber-ducky/` I would run `java -jar encoder.jar`. This provides the options you need to create your payload so you can run `java -jar encoder.jar -i inject.txt -o /media/<you>/<name of micro SD card>/inject.bin`
+3. Pull your USB holder out and put the card into the ducky. It is now set for a victim to plug it into their USB port and have the payload run
 
 Using ducky script and the existing community-provided payloads as examples, imagination is the only real limiting factor to what you can easily do with the USB Rubber Ducky, or any infectious media for that matter. For example:
 
@@ -833,7 +833,7 @@ Make sure that when you are testing your malware you do so in a lab environment 
 
 * [Bash Bunny](https://hakshop.com/products/bash-bunny) from Hak5, is similar to Rubber Ducky, but more fully featured, it has a full featured Linux distribution onboard and is accessible via serial console
 * [PoisonTap](https://github.com/samyk/poisontap) from [Samy Kamkar](https://samy.pl/) runs on devices such as the Raspberry Pi Zero
-* [Wi-Fi Ducky](https://github.com/spacehuhn/wifi_ducky) runs ducky script remotely, allowing the attacker to experiment after the device has been inserted into the target machine by uploading arbitrary payloads, running and refining.
+* [Wi-Fi Ducky](https://github.com/spacehuhn/wifi_ducky) runs ducky script remotely, allowing the attacker to experiment after the device has been inserted into the target machine by uploading arbitrary payloads, running and refining
 
 #### Additional USB Hardware
 
@@ -885,13 +885,13 @@ This probably would not be the case if I was at home working with screaming kids
 
 We have many communication tools that are far more effective than email. Use them! In order of effectiveness, we have:
 
-1. Face to face: You can not beat this. It uses as many of our senses as possible and includes the human spirit. Those that are aware need to encourage developers to talk to whoever it is they are working with face to face if it is practical.
-2. Audio Visual: We have cyber networks now, the Internet, and many great audio/visual tools for one on one and team collaboration. I could list all the tools I know of and/or use, but this landscape is constantly evolving. Find out what works for you and your teams. Many people find that using a good audio/visual tool fits their work flow better than physical face to face communications. This is because it allows workers to have the best of both worlds. It gives them their own space and at the push of a button and allows them to see and hear their co-worker(s). I have personally found good audio/visual tools to be very liberating and great productivity enhancers.
-3. Audio only and push-to-talk: The likes of Mumble can be an excellent staple tool for talking things through during the work day when you do not need that extra information that the visual aspect provides. I have used this on many occasions and found it to be a very effective medium. When you do need more, you can escalate to a higher form of communication with the added visual component.
-4. Phone calls are similar to push-to-talk, but the context switching overhead is larger because you have to dial, often put a headset on and wait for an answer. Audio quality is often worse as well.
-5. Group Instant Messaging (GIM) tools: Slack is currently taking the GIM world by storm. It provides a large number of add-ons to provide integration with many services, evolving from just Instant Messaging to more of a collaboration dashboard, where team members can receive notifications for many types of events, thus helping to keep all team members up to date with each other. There are of course quite a number of other tools in this space such as IRC, Gitter and many others, but Slack offers so much more than any of the other offerings I have seen to date and continues to broaden its integrations.
-6. Instant Messaging (IM) tools: These are great for quick short communication sessions where you need to pass links and/or have a quick discussion where you do not need the additional overhead of audio. There is often little context switching overhead. It is easy to work and talk with co-workers. You are really starting to lose a large percentage of communication information here though. Misunderstandings can creep in. Always be ready to escalate to a higher level of communication.
-7. Email: Leave this as a last resort. It is ineffective and costly in many ways, especially for software engineers, where there is a high price for context switching. Software engineers and architects have to build large landscapes of the programmes they are working on in their heads before they can start to make any changes, essentially loading a programme into memory and wrapping human understanding of how the mechanics work around it. If a developer has this picture loaded into memory and then switches to deal with an email, a large part of the picture can easily drop out of memory. Once the email work is finished, the developer has to re-load the picture. The second time around may be quicker, but this can still be very costly.
+1. Face to face: You can not beat this. It uses as many of our senses as possible and includes the human spirit. Those that are aware need to encourage developers to talk to whoever it is they are working with face to face if it is practical
+2. Audio Visual: We have cyber networks now, the Internet, and many great audio/visual tools for one on one and team collaboration. I could list all the tools I know of and/or use, but this landscape is constantly evolving. Find out what works for you and your teams. Many people find that using a good audio/visual tool fits their work flow better than physical face to face communications. This is because it allows workers to have the best of both worlds. It gives them their own space and at the push of a button and allows them to see and hear their co-worker(s). I have personally found good audio/visual tools to be very liberating and great productivity enhancers
+3. Audio only and push-to-talk: The likes of Mumble can be an excellent staple tool for talking things through during the work day when you do not need that extra information that the visual aspect provides. I have used this on many occasions and found it to be a very effective medium. When you do need more, you can escalate to a higher form of communication with the added visual component
+4. Phone calls are similar to push-to-talk, but the context switching overhead is larger because you have to dial, often put a headset on and wait for an answer. Audio quality is often worse as well
+5. Group Instant Messaging (GIM) tools: Slack is currently taking the GIM world by storm. It provides a large number of add-ons to provide integration with many services, evolving from just Instant Messaging to more of a collaboration dashboard, where team members can receive notifications for many types of events, thus helping to keep all team members up to date with each other. There are of course quite a number of other tools in this space such as IRC, Gitter and many others, but Slack offers so much more than any of the other offerings I have seen to date and continues to broaden its integrations
+6. Instant Messaging (IM) tools: These are great for quick short communication sessions where you need to pass links and/or have a quick discussion where you do not need the additional overhead of audio. There is often little context switching overhead. It is easy to work and talk with co-workers. You are really starting to lose a large percentage of communication information here though. Misunderstandings can creep in. Always be ready to escalate to a higher level of communication
+7. Email: Leave this as a last resort. It is ineffective and costly in many ways, especially for software engineers, where there is a high price for context switching. Software engineers and architects have to build large landscapes of the programmes they are working on in their heads before they can start to make any changes, essentially loading a programme into memory and wrapping human understanding of how the mechanics work around it. If a developer has this picture loaded into memory and then switches to deal with an email, a large part of the picture can easily drop out of memory. Once the email work is finished, the developer has to re-load the picture. The second time around may be quicker, but this can still be very costly
 
 Also, do not forget that there are many live collaborative drawing, documenting, and coding tools available now. These can actually make work-flow far more effective than being in the same room as co-workers and having to work on one set of screens, as you can both work form your own workstations on the same work.
    
@@ -915,19 +915,19 @@ In a previous Scrum Team for which I was Scrum Master, the Development Team deci
 #### Top Developer Motivators in Order {#people-countermeasures-morale-productivity-and-engagement-killers-top-developer-motivators-in-order}
 ![](images/ThreatTags/PreventionEASY.png)
 
-1. Developers love to develop software. The best way to motivate developers is to let them develop. Provide an environment or better, allow them to create their own environment in order to stimulate focus.
+1. Developers love to develop software. The best way to motivate developers is to let them develop. Provide an environment or better, allow them to create their own environment in order to stimulate focus
 2. The Work Itself
-  * Variety of Skills: Developers enjoy freedom and expectation to exercise a variety of skills, thus producing 'T' shaped developers, those with broad experience and some deep specialities.
-  * Responsibility, Significance: People who tighten nuts on air-planes will feel that their work is more important and meaningful than people who tighten nuts on decorative mirrors. Developers must experience meaning in their work.   
-  * Task Identity: People care more about their work when they can complete whole and identifiable pieces of work, User Stories for example.   
-  * Consumer and Pair Association: This represents knowing the results of their work and how it affects others.   
-  * Autonomy: Developers like control over what and how they perform their work. This includes self-managing teams. Many managers still need to realise that they can be freed up from a lot of work if they will just let the Development Team manage their own destiny.
-3. Ownership / Buy-in: People work harder to achieve their own goals than someone else's. The Team decides how much it wants to tackle, the developer decides what to tackle. The schedules developers create are always ambitious. This is why Scrum, when run by the book, can be very effective.   
+  * Variety of Skills: Developers enjoy freedom and expectation to exercise a variety of skills, thus producing 'T' shaped developers, those with broad experience and some deep specialities
+  * Responsibility, Significance: People who tighten nuts on air-planes will feel that their work is more important and meaningful than people who tighten nuts on decorative mirrors. Developers must experience meaning in their work   
+  * Task Identity: People care more about their work when they can complete whole and identifiable pieces of work, User Stories for example   
+  * Consumer and Pair Association: This represents knowing the results of their work and how it affects others   
+  * Autonomy: Developers like control over what and how they perform their work. This includes self-managing teams. Many managers still need to realise that they can be freed up from a lot of work if they will just let the Development Team manage their own destiny
+3. Ownership / Buy-in: People work harder to achieve their own goals than someone else's. The Team decides how much it wants to tackle, the developer decides what to tackle. The schedules developers create are always ambitious. This is why Scrum, when run by the book, can be very effective   
 4. Goal Setting: Setting objectives for developers works, but only pick 1 or 2.
-Set more than that and developers lose their focus. Developers do not respond well to objectives that change daily or are collectively impossible to meet.   
-5. Opportunities for Growth: Half of what a developer knows in order to do his job today will be out of date in 3 years time. If not moving forward in this industry, you are moving backwards. Developers are very motivated by learning new things. Let developers determine how they wish to grow professionally. The best developers will gravitate toward organisations that foster personal growth.
-6. Personal Life: Top developers like to invest a lot of their own time experimenting, researching, teaching others, and running events. Let them, and in-fact encourage them.
-7. Technical Leadership: Top developers love passing on their knowledge. This is part of what drives them. Assign each team member to be a technical lead, sometimes referred to as a champion, and possibly mentor for a particular domain, technology and process area.
+Set more than that and developers lose their focus. Developers do not respond well to objectives that change daily or are collectively impossible to meet   
+5. Opportunities for Growth: Half of what a developer knows in order to do his job today will be out of date in 3 years time. If not moving forward in this industry, you are moving backwards. Developers are very motivated by learning new things. Let developers determine how they wish to grow professionally. The best developers will gravitate toward organisations that foster personal growth
+6. Personal Life: Top developers like to invest a lot of their own time experimenting, researching, teaching others, and running events. Let them, and in-fact encourage them
+7. Technical Leadership: Top developers love passing on their knowledge. This is part of what drives them. Assign each team member to be a technical lead, sometimes referred to as a champion, and possibly mentor for a particular domain, technology and process area
 
 ### Employee Snatching
 ![](images/ThreatTags/PreventionDIFFICULT.png)
@@ -953,11 +953,11 @@ The organisation needs to make peace with the departing worker. Get on their goo
 
 Defeating compromise is actually very simple, but few follow the guidelines. Those who don't are being exploited now or in the future, whether they are aware of it or not.
 
-* Good passwords should be long and complex enough that you are unable to remember them.
-* Use a mix of random, or at worst pseudorandom, alphanumeric, upper/lower case, and special characters. Get yourself a [OneRNG](http://onerng.info/) for generating true randomness.
-* Swapping characters with numbers and special characters does not really make compromise that much more difficult as we have already seen in the Identify Risks section [above](#people-identify-risks-weak-password-strategies).
-* Use a unique password for every account.
-* Use a password database (ideally with multi-factor authentication) that generates passwords for you based on the criteria you set. This way, the profiling attacks we have mentioned are going to have a tough time brute forcing your accounts. This is such simpler and easy to implement advice, but still so many are failing to take heed.
+* Good passwords should be long and complex enough that you are unable to remember them
+* Use a mix of random, or at worst pseudorandom, alphanumeric, upper/lower case, and special characters. Get yourself a [OneRNG](http://onerng.info/) for generating true randomness
+* Swapping characters with numbers and special characters does not really make compromise that much more difficult as we have already seen in the Identify Risks section [above](#people-identify-risks-weak-password-strategies)
+* Use a unique password for every account
+* Use a password database (ideally with multi-factor authentication) that generates passwords for you based on the criteria you set. This way, the profiling attacks we have mentioned are going to have a tough time brute forcing your accounts. This is such simpler and easy to implement advice, but still so many are failing to take heed
 
 #### Brute Forcing
 
@@ -1020,9 +1020,9 @@ Many social engineering attacks put a focus on a problem that does not exist, bu
 ### It's Just the Cleaner {#people-countermeasures-its-just-the-cleaner}
 ![](images/ThreatTags/PreventionVERYEASY.png)
 
-1. Think. Respect your workers. Provide them with visibility as to who is allowed access where and when.
-2. Train your workers.
-3. Test them. Send random people in without telling your workers and see what happens. Adjust your training to suit.
+1. Think. Respect your workers. Provide them with visibility as to who is allowed access where and when
+2. Train your workers
+3. Test them. Send random people in without telling your workers and see what happens. Adjust your training to suit
 
 ### Emulating Targets Mannerisms
 ![](images/ThreatTags/PreventionDIFFICULT.png)
@@ -1048,7 +1048,7 @@ Phishing typically involves a widely distributed campaign where the conveyed sto
 
 Test the following:
 
-* Will a target click on a link in an email sent to them? The email may have a spoofed from address and contain information specifically targeted and attractive to the target.
+* Will a target click on a link in an email sent to them? The email may have a spoofed from address and contain information specifically targeted and attractive to the target
 * Will a target visit a website based on a link passed to them and enter either personal or business related information?
 * Will a target insert unknown USB media and open files found on the device?
 

@@ -4,8 +4,8 @@ This chapter details the common work-flow of a penetration tester, followed with
 
 Approaching the security "problem" from a penetration tester's point of view (red team) can be quite different than coming at it from a software developer's point of view (blue team). The software developer's role as a blue team member (defender) requires heightened awareness and additional perspective, some of which I'll offer here. 
 
-* The penetration tester tries to find all the faults in your system. This is not limited to the technology aspect either, as we address throughout this book.
-* As a web developer, you are more focused on delivering a solution that makes a problem less of a problem. Often, you're not thinking so much about what could go wrong, rather more focused on how to make it work.
+* The penetration tester tries to find all the faults in your system. This is not limited to the technology aspect either, as we address throughout this book
+* As a web developer, you are more focused on delivering a solution that makes a problem less of a problem. Often, you're not thinking so much about what could go wrong, rather more focused on how to make it work
 
 These two disciplines can and do work in harmony together. There is a real need for improving security-related awareness for software developers, including skills and knowledge. Since this book is focused on the web developer, it is my intention to show you, as a web developer, how to take the lessons learned from the penetration tester's perspective, and apply some of them to your own work and life. Yes, security needs to become part of who you are, and grow with you as you do. I have the advantage of working in both of these disciplines, as well as have been on some very successful Scrum teams, often as Scrum Master. This has enabled relatively easy empathy with both sides of the red/blue discussion, and the ability to take the best from one side, then apply it to the other. Both can, in fact, exist in harmony.
 
@@ -27,9 +27,9 @@ Information gathering can and should be done (initially) in such a way that the 
 
 Passive reconnaissance is the phase when information gathering cannot be detected by the target. Information is gathered indirectly from the target, often from:
 
-* Sources that have had a direct relationship with the target.
-* Social media web sites.
-* Search engines.
+* Sources that have had a direct relationship with the target
+* Social media web sites
+* Search engines
 
 The pen tester or attacker cannot directly probe the target, they must use third party information. Sometimes this may be out of date, so confirmation and validation are desirable, even required. This is usually not too difficult, but it takes more time than if the passive constraint was lifted, and the pen tester could probe directly.
 
@@ -43,10 +43,10 @@ Semi-active reconnaissance includes gathering information directly from the targ
 
 Active reconnaissance involves interacting with the target directly, engaging in activities such as:
 
-* Snooping physical premises.
-* Port scanning the entire range `nmap -p- <target>` and some of the aggressive nmap scanning modes shown below.
-* Spidering public facing resources. Directories and files, often public without the administrators realising it. If they ran a spidering tool against their servers they would see all the publicly accessible resources.
-* Banner grabbing and probing, which we address below under the [Service Fingerprinting](#process-and-practises-penetration-testing-reconnaissance-service-fingerprinting) section.
+* Snooping physical premises
+* Port scanning the entire range `nmap -p- <target>` and some of the aggressive nmap scanning modes shown below
+* Spidering public facing resources. Directories and files, often public without the administrators realising it. If they ran a spidering tool against their servers they would see all the publicly accessible resources
+* Banner grabbing and probing, which we address below under the [Service Fingerprinting](#process-and-practises-penetration-testing-reconnaissance-service-fingerprinting) section
 
 ##### Netcat
 
@@ -629,7 +629,7 @@ yields the following two scripts, which are very useful:
 1. `http-waf-detect.nse`  
 attempts to determine whether the web server is protected by an IDS, IPS or WAF
 2. `http-waf-fingerprint.nse`  
-attempts to discover the presence of a WAF, its type, and version.
+attempts to discover the presence of a WAF, its type, and version
 
 {title="Run both scripts", linenos=off}
     nmap -p80 --script "http-waf-*" <target>
@@ -794,7 +794,7 @@ Recon -> Domain -> Passive combines:
 * dnsrecon
 * URLCrazy
 * Whois
-* and multiple websites.
+* and multiple websites
 
 Recon -> Domain -> Active combines:
 
@@ -816,11 +816,11 @@ recon-ng [tracks users](https://bitbucket.org/LaNMaSteR53/recon-ng/commits/eab63
 
 Some of the information you may gather is:
 
-1. Additional companies.
-2. Hosts you did not know existed, with their IP addresses, domain names, countries of origin, region, latitude, longitude and the module used to find the information.
-3. Contacts, first and last names, email addresses, pgp key associations.
-4. Vulnerabilities, credentials.
-5. So much more.
+1. Additional companies
+2. Hosts you did not know existed, with their IP addresses, domain names, countries of origin, region, latitude, longitude and the module used to find the information
+3. Contacts, first and last names, email addresses, pgp key associations
+4. Vulnerabilities, credentials
+5. So much more
 
 Which modules you use determines what information you receive.
 
@@ -1121,7 +1121,7 @@ msfconsole has many modules available out of the box for poking and prodding at 
 I have also written about some other vulnerability scanners on my [blog](http://blog.binarymist.net/2014/03/29/up-and-running-with-kali-linux-and-friends/#vulnerability-scanners) such as:
 
 * OpenVAS
-* OWASP ZAP, which we will use in a few places in this book. ZAP is also an HTTP intercepting proxy with plenty of great built in features and is of course free and open source.
+* OWASP ZAP, which we will use in a few places in this book. ZAP is also an HTTP intercepting proxy with plenty of great built in features and is of course free and open source
 * SkipFish
 * Web Application Attack and Audit Framework (w3af)
 * Nikto
@@ -1275,9 +1275,9 @@ There is no direct communication between VMs unless you explicitly set it up. Th
 
 In terms of tooling up for offensive exploitation, there are at least three scenarios:
 
-1. Penetration Tester: Using your favourite security focused OS in a VM on any host is often good enough if you are not expecting to be attacked yourself.
-2. Black Hat in potentially hostile environment: Use your favourite security focused OS as a Whonix-Workstation as a Qubes TemplateVM communicating through a Whonix-Gateway as a Qubes TemplateVM, both of which reside in a Qubes bare metal hyper-visor (installed directly onto your hardware).
-3. Black Hat with a requirement for amnesia: Same as 2, but you need to do a lot of work to clean up all your foot prints. Another option to save manual clean-up is to use Tails as a Qubes TemplateVM in the 2 scenario. Tails is however not a penetration testing distribution, so you can not cover all these scenarios at once with out of the box solutions.
+1. Penetration Tester: Using your favourite security focused OS in a VM on any host is often good enough if you are not expecting to be attacked yourself
+2. Black Hat in potentially hostile environment: Use your favourite security focused OS as a Whonix-Workstation as a Qubes TemplateVM communicating through a Whonix-Gateway as a Qubes TemplateVM, both of which reside in a Qubes bare metal hyper-visor (installed directly onto your hardware)
+3. Black Hat with a requirement for amnesia: Same as 2, but you need to do a lot of work to clean up all your foot prints. Another option to save manual clean-up is to use Tails as a Qubes TemplateVM in the 2 scenario. Tails is however not a penetration testing distribution, so you can not cover all these scenarios at once with out of the box solutions
 
 See the Additional Resources chapter for more information.
 
@@ -1399,8 +1399,8 @@ The ZAP API can be accessed directly or by any of the following client implement
 * PHP
 * Ruby
 * .Net
-  1. ZapPenTester: [write-up](http://www.codeproject.com/Articles/708129/Automated-penetration-testing-in-the-Microsoft-sta) on codeproject and the [source](https://github.com/gustavorhm/ZapPenTester) on the github gustavorhm account. API use is well defined from the [Zap.cs](https://github.com/gustavorhm/ZapPenTester/blob/master/ZAPPenTester/Zap.cs) file.
-  2. There is also the Zap supported [zap-api-dotnet](https://github.com/zaproxy/zap-api-dotnet) offering, which I have had good success with for a large international clients web application.
+  1. ZapPenTester: [write-up](http://www.codeproject.com/Articles/708129/Automated-penetration-testing-in-the-Microsoft-sta) on codeproject and the [source](https://github.com/gustavorhm/ZapPenTester) on the github gustavorhm account. API use is well defined from the [Zap.cs](https://github.com/gustavorhm/ZapPenTester/blob/master/ZAPPenTester/Zap.cs) file
+  2. There is also the Zap supported [zap-api-dotnet](https://github.com/zaproxy/zap-api-dotnet) offering, which I have had good success with for a large international clients web application
 
 There is also the [OWASP Secure TDD Project](https://www.owasp.org/index.php/OWASP_Secure_TDD_Project), a .NET solution. This project appears to either be abandoned or very low on activity. Do feel free to offer to help though if you are a .NET developer.
 
@@ -1560,8 +1560,8 @@ BSIMM again has some [good guidance](https://www.bsimm.com/online/deployment/pt/
 
 Some developers have an inquisitiveness about how their work can be exploited, so it is important to have at least a non zero number of developers with a security focus within each team to:
 
-1. Take the lead on the security front.
-2. Mentor; infect with their passion, and pass on their knowledge to their co-workers.
+1. Take the lead on the security front
+2. Mentor; infect with their passion, and pass on their knowledge to their co-workers
 
 I mention in the People chapter, specifically the ["Top Developer Motivators in Order"](#people-countermeasures-morale-productivity-and-engagement-killers-top-developer-motivators-in-order) section, how developers love being the champion of something. The role of the security champion or any champion for that matter, needs to be applied to the developer as a vacuum. People do not respond well to being pushed into anything. The best developers will just pick up the role, but many will not be as proactive. For less proactive developers, it pays to create the role and, as the Product Owner or manager, approach them and ask them if they would like to take on the responsibility as security champion. Once a developer has taken up this responsibility, they will usually do a pretty good job of infusing the rest of their team with their passion and knowledge.
 
@@ -1592,17 +1592,17 @@ Start with the likes of JSHint for general purpose JavaScript linting. There are
 Techniques and tools to assist with automating
 
 * [https://wiki.mozilla.org/Security/B2G/JavaScript_code_analysis](https://wiki.mozilla.org/Security/B2G/JavaScript_code_analysis)
-  * [DOMXSSScanner](https://github.com/yaph/domxssscanner). Does what the name suggests.
-  * [JSPrime](https://www.youtube.com/watch?v=Vk5SPGpqiLc). Security focused. Not currently maintained at this point in time. The owners are keen for someone to pick it up.
-  * [JSWebTools](http://www.jswebtools.org/). A collection of research papers and JS related security tools.
-* [Code Climate](https://codeclimate.com/) is a static analysis platform that provides an open and extensible model to run [community provided analysis engines](https://codeclimate.com/engines).
+  * [DOMXSSScanner](https://github.com/yaph/domxssscanner). Does what the name suggests
+  * [JSPrime](https://www.youtube.com/watch?v=Vk5SPGpqiLc). Security focused. Not currently maintained at this point in time. The owners are keen for someone to pick it up
+  * [JSWebTools](http://www.jswebtools.org/). A collection of research papers and JS related security tools
+* [Code Climate](https://codeclimate.com/) is a static analysis platform that provides an open and extensible model to run [community provided analysis engines](https://codeclimate.com/engines)
 
 #### Dynamic Analysis
 
 Tooling is still immature here, we have got a way to go, but lets start by getting our feet wet. Here are a few resources in which to dip your toes:
 
 * [Titanium Code Processor](https://theoreticalideations.com/tag/titanium-code-processor/) For [Titanium Mobile](https://github.com/appcelerator/titanium_mobile) (native mobile applications using JavaScript) projects. You can find the source code at the appcelerator account on [github](https://github.com/appcelerator/titanium-code-processor) 
-* [Slide Deck](https://speakerdeck.com/ariya/dynamic-code-analysis-for-javascript) by Ariya Hidayat.
+* [Slide Deck](https://speakerdeck.com/ariya/dynamic-code-analysis-for-javascript) by Ariya Hidayat
 * [Jalangi](https://www.eecs.berkeley.edu/~gongliang13/jalangi_ff/)
 
 ### Techniques for Asserting Discipline
@@ -1617,7 +1617,7 @@ Because of the distinct lack of discipline within JavaScript (unlike most other 
 
 In JavaScript, we need as much help as we can to fail fast. Static type checking gives us this. It also feels like the step before [DbC](http://blog.binarymist.net/2010/10/11/lsp-dbc-and-nets-support/).
 
-* [Flow](http://flowtype.org/) is a good option. It provides consumers with the ability to introduce type checking progressively and/or to certain parts that make the most sense. This can include missing parts that require extra flexibility.
+[Flow](http://flowtype.org/) is a good option. It provides consumers with the ability to introduce type checking progressively and/or to certain parts that make the most sense. This can include missing parts that require extra flexibility.
 
 Here is an example from the Flow website.
 
@@ -1652,10 +1652,10 @@ DbC enforces preconditions, postconditions and invariants in our routines.
 We can employ this design principle in JavaScript. I wrote about DbC in a [previous post](http://blog.binarymist.net/2010/10/11/lsp-dbc-and-nets-support/#dbc) with regard to usage in .Net.  
 In JavaScript, I believe employing the DbC principle is even more important as part of adding discipline, and keeping us on the straight and narrow. I believe DbC is the principle that helps us achieve the [Liskov Substitution Principle](http://blog.binarymist.net/2010/10/11/lsp-dbc-and-nets-support/#lsp), which is the 'L' in the SOLID design mnemonic. These are the offerings I have noticed that provide additional support to the flow just mentioned above:
 
-1. [contract-js on NPM](https://www.npmjs.com/package/contracts-js) is our current leader in the DbC space.
+1. [contract-js on NPM](https://www.npmjs.com/package/contracts-js) is our current leader in the DbC space
   * [contract.js at home](http://www.contractsjs.org/)
 2. [contractual on NPM](https://www.npmjs.com/package/contractual)
-3. [ristretto-js](https://code.google.com/p/ristretto-js/w/list). Doesn't look to be currently maintained.
+3. [ristretto-js](https://code.google.com/p/ristretto-js/w/list). Doesn't look to be currently maintained
 
 In many cases, you can implement cross cutting code contracts using AOP. This gets it out of your code, and thus out of your face.
 
@@ -1691,11 +1691,11 @@ The code that the Professional Developer wrote is easier to modify and extend as
 
 It is the practices (formed by habit) of the Professional Developer that:
 
-1. Provide the entire Development Team assurity that the software satisfies the requirements of the specification at all times.
-2. Allow The Development Team to run at a sustainable pace.
-3. Provide confidence in ongoing future estimations due to less surprises.
-4. Produce code that everyone wants to work with.
-5. Produce less error prone software that does what it says it will do on the box.
+1. Provide the entire Development Team assurity that the software satisfies the requirements of the specification at all times
+2. Allow The Development Team to run at a sustainable pace
+3. Provide confidence in ongoing future estimations due to less surprises
+4. Produce code that everyone wants to work with
+5. Produce less error prone software that does what it says it will do on the box
 
 #### Scrum Teams can Fail Too
 
@@ -1703,11 +1703,11 @@ Velocity of the Development Team starts high, then declines. Often it is hard fo
 
 The code base is small but growing fast. As it starts to get larger, the Development Team starts to feel the technical weight of a lot of code that has been hacked together in a rush. This causes the team's ability to release software fast to wane. A Scrum Team can get to this point quite quickly, as they are a high performance team. When you arrive at this point, almost every change to the code base is hard. You make one change and something else fails (the whac-a-mole effect). This degradation can be driven by the fact that:
 
-1. Routines are hundreds of lines long. Developers have to understand hundreds of lines of code in order to make a small change.
-2. Names are not as meaningful as they should be.
-3. Routines have multiple levels of abstraction, so multiple levels of code need to be understood to make a single change.
-4. Inheritance is over used/abused, thus creating unnecessarily tight coupling.
-5. There are many aspects of the code that have become terrible to work with.
+1. Routines are hundreds of lines long. Developers have to understand hundreds of lines of code in order to make a small change
+2. Names are not as meaningful as they should be
+3. Routines have multiple levels of abstraction, so multiple levels of code need to be understood to make a single change
+4. Inheritance is over used/abused, thus creating unnecessarily tight coupling
+5. There are many aspects of the code that have become terrible to work with
 
 ##### How Does This Happen?
 
@@ -1729,12 +1729,12 @@ The Product Owner runs through Acceptance Criteria, which should be included on 
 
 In addition to what our solo Professional Developer accomplished [above](#process-agile-development-and-practices-essentials-for-creating-and-maintaining-a-high-performance-development-team-how-and-why-many-software-development-shops-fail-the-scenario), we should:
 
-1. Measure test speed and reward fast running tests.
-2. Measure cyclomatic Complexity.
-3. Run static code analysis and use productivity enhancing tools. This is not cheating, it is allowing the developers to work faster and create cleaner code. This can even be set-up as pre-commit hooks etc. on source control. This is discussed in more detail in the "Consuming Free and Open Source" sections in the Web Applications chapter.
-4. Code reviews need to be based on the coding standards and guidelines.
-5. Encourage developers to commit regularly, thus their code is being run against the entire test suite, providing confidence that their code plays nicely with everyone else's code. Commit frequency can be measured.
-6. Shame developers when they break the [CI build](http://blog.binarymist.net/2014/02/22/automating-specification-by-example-for-net). Report on how long builds stay broken for and shame when the duration is longer than an agreed on time.
+1. Measure test speed and reward fast running tests
+2. Measure cyclomatic Complexity
+3. Run static code analysis and use productivity enhancing tools. This is not cheating, it is allowing the developers to work faster and create cleaner code. This can even be set-up as pre-commit hooks etc. on source control. This is discussed in more detail in the "Consuming Free and Open Source" sections in the Web Applications chapter
+4. Code reviews need to be based on the coding standards and guidelines
+5. Encourage developers to commit regularly, thus their code is being run against the entire test suite, providing confidence that their code plays nicely with everyone else's code. Commit frequency can be measured
+6. Shame developers when they break the [CI build](http://blog.binarymist.net/2014/02/22/automating-specification-by-example-for-net). Report on how long builds stay broken for and shame when the duration is longer than an agreed on time
 
 Most of these practises can be added to the Definition of Done, this way Developers can and should be rewarded for doing these activities. Even better, you can automate most of these practises.
 

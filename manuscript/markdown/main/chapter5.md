@@ -7,11 +7,11 @@ Physical security is often over looked, especially by technical people, although
 ## 1. SSM Asset Identification {#physical-asset-identification}
 Take the results from [higher level Asset Identification](#starting-with-the-30000-foot-view-asset-identification). Remove any that are not applicable, and add any newly discovered. Here are some to get you started:
 
-* Servers: the cabinets they reside in, the rooms cabinets reside in.
-* Physical buildings: their openings, such as doors and windows. Keys, RFID cards and access codes.
-* Sensitive printed matter.
-* Plant: such as work-stations or any other devices that could be used to launch attack sequences from, or even cause diversions, to allow an attacker to carry out an action they wouldn't be able to otherwise. Laptops and mobile devices (including personal) configured to access internal Access Points (APs). Wi-Fi APs.
-* Visibility into who is where and doing what. Visibility brings immense power to make good decisions, and is often an excellent target for an attacker to deny you.
+* Servers: the cabinets they reside in, the rooms cabinets reside in
+* Physical buildings: their openings, such as doors and windows. Keys, RFID cards and access codes
+* Sensitive printed matter
+* Plant: such as work-stations or any other devices that could be used to launch attack sequences from, or even cause diversions, to allow an attacker to carry out an action they wouldn't be able to otherwise. Laptops and mobile devices (including personal) configured to access internal Access Points (APs). Wi-Fi APs
+* Visibility into who is where and doing what. Visibility brings immense power to make good decisions, and is often an excellent target for an attacker to deny you
 
 ## 2. SSM Identify Risks {#physical-identify-risks}
 You can take the same process that we did at the [top level](#starting-with-the-30000-foot-view-identify-risks), but abstract the ideas, and then solidify them on physical components. Some of the ideas will work, some won't.
@@ -46,10 +46,10 @@ Open doors and windows are typically uninteresting because they represent so lit
 
 There are many building materials used today, that are trivially easy to compromise. Although cyber attacks, as opposed to simple physical penetration, are on the increase, physical attacks are generally lower tech and easier to carry out by less technically skilled people. One factor being realised with regard to cyber-crime is that the physical vector can also be a key component of carrying out a successful technology based attack, in a manner similar to social engineering as we cover in the [People](#people) chapter.
 
-1. Roofing iron, and most roofing materials, are very easy to either break through or remove. Once an attacker has a small section of roofing material removed, there is little in the way of physical elements stopping them from entering the human inhabitable areas. Ceiling and wall linings have little strength and are easily pushed from their substrate.
-2. Skylights, as are windows, are easy to break through. Skylights are often just less obvious than windows, although not always. There are usually metal strips with rubber moulding underneath holding the glass panes in. With a flat blade screw-driver or any other similar tool, these are typically simple to remove. This would be my usual approach to entering my house when I have misplaced my keys. This is quick, easy, and does not result in any damage.
-3. Weak exterior cladding: There are lots of fairly weak building materials used today. Fibre cement for example is often only 6mm thick. Sometimes this may have a plaster coat on it, which may give a deceptive appearance of strength. Either way, with a good kick, penetration is fairly straight forward.
-4. Suspended ceilings: If you have sensitive information stored in any area, such as server rooms, archive rooms, etc. Which has a false or suspended (dropped) ceiling, this is often an easily penetrable vulnerability. GIB or Acoustic NRC tiles are extremely common in office environments, but can be removed easily with bare hands, no tools required.
+1. Roofing iron, and most roofing materials, are very easy to either break through or remove. Once an attacker has a small section of roofing material removed, there is little in the way of physical elements stopping them from entering the human inhabitable areas. Ceiling and wall linings have little strength and are easily pushed from their substrate
+2. Skylights, as are windows, are easy to break through. Skylights are often just less obvious than windows, although not always. There are usually metal strips with rubber moulding underneath holding the glass panes in. With a flat blade screw-driver or any other similar tool, these are typically simple to remove. This would be my usual approach to entering my house when I have misplaced my keys. This is quick, easy, and does not result in any damage
+3. Weak exterior cladding: There are lots of fairly weak building materials used today. Fibre cement for example is often only 6mm thick. Sometimes this may have a plaster coat on it, which may give a deceptive appearance of strength. Either way, with a good kick, penetration is fairly straight forward
+4. Suspended ceilings: If you have sensitive information stored in any area, such as server rooms, archive rooms, etc. Which has a false or suspended (dropped) ceiling, this is often an easily penetrable vulnerability. GIB or Acoustic NRC tiles are extremely common in office environments, but can be removed easily with bare hands, no tools required
 
 ### Service Labels
 
@@ -62,9 +62,9 @@ Often labels are attached to doors, windows, air conditioning units, and any oth
 ![](images/ThreatTags/average-common-difficult-moderate.png)
 
 1. Dumpster diving: Trash baskets or shredded material inside the building or dumpsters outside of the building. Even if the printed material is shredded, there have been quite a few tests and studies performed on the effectiveness of many shredders and how easy it is to reassemble shredded printed matter with time. In fact, there are competitions devoted to reassembling shredded printed documents with contestants that have successfully reassembled all printed matter. I also know of organisations that pay a service to pick up printed material, take it away, and destroy it. What is to stop an attacker masquerading as someone from the organisation you pay to do this?
-2. Printed material left in insecure places: Your desk is insecure. Visitors or service contractors can easily photo documents when you are not there, without you ever being aware that they have copied them.
+2. Printed material left in insecure places: Your desk is insecure. Visitors or service contractors can easily photo documents when you are not there, without you ever being aware that they have copied them
 3. Printer Management: Most businesses use Multi Function Devices (MFD’s) for the convenience of having printers, scanners, faxes, binders, etc. all combined into a single unit. This is generally a cost saving initiative, and also saves floor/desk real estate considerably. However, MFD’s contain hard drives which can store a plethora of previously printed documents. These hard drives are not only easy to remove, but are generally forgotten about when a device is retired or lease expired etc. Any sensitive information that is retained on the hard drive at time of sale or release, then becomes the legal property of the new owners or leaseholders.  
-There is a well known incident involving a Californian Police department who put 6 old MFD’s up for auction. All of these devices were subsequently purchased by a local motorcycle gang. Unfortunately for the police, they forgot to wipe and/or remove the MFD hard drives, resulting in thousands of sensitive police reports and case files becoming the legal property of the motor cycle gang.
+There is a well known incident involving a Californian Police department who put 6 old MFD’s up for auction. All of these devices were subsequently purchased by a local motorcycle gang. Unfortunately for the police, they forgot to wipe and/or remove the MFD hard drives, resulting in thousands of sensitive police reports and case files becoming the legal property of the motor cycle gang
 
 ### RFID Tags {#physical-identify-risks-rfid}
 
@@ -131,7 +131,7 @@ The method names are:
 * PIN
 * Push button
 * Near field communication (NFC)
-* USB.
+* USB
 
 Several brute-force attacks exist in which an attacker can compromise the PIN method. How WPS on the specific AP is implemented determines how long brute-force attacks will take to crack the PIN. In most cases this is only a matter of hours.
 
@@ -186,10 +186,10 @@ Train staff. The training loop is also important. Educate -> monitor -> test, re
 
 If you have the luxury of building your premises from scratch, steer clear of using materials that just look good. Tilt panel concrete and 8" steel reinforced, grouted block-work is very good against most types of attacks. Of course, if you have a determined attacker, they will break through that, so you will have to rely on defence in depth. Make sure you have many layers of protection, and think as though every one of them will be compromised with enough time, planning and/or perseverance.
 
-1. Roofing iron or other roofing materials are less likely to be compromised if the roof is clearly visible from a public place. The busier the public place, the better. If you have to use roofing iron, consider screwing it on with Tek screws, or even better with screws that do not have a common head, thus requiring a specialised tool. If your attacker is smart, they will do their reconnaissance on what is holding this material down before the attack. Tek screws are very difficult to remove with a claw hammer or small pinch bar. Nothing is impenetrable, but you can make an attackers job very difficult.
-2. Skylights: If you are using these, put them in places that are as public as possible and as hard to reach as possible. Also, installing them high above the floor will make a break-in harder. Fixed sash sky-lights are also a little more difficult. You could also consider fitting bars on the inside of these. This also applies to windows that are in secluded, quiet places.
-3. Weak exterior cladding: Just try and steer clear of using these types of materials. If you have no option, consider making your other layers of defence stronger to compensate.
-4. Suspended Ceiling: Filling the roof cavity with obstacles such as barbed wire, bunched chicken wire, etc. can demotivate all but the most determined attackers.
+1. Roofing iron or other roofing materials are less likely to be compromised if the roof is clearly visible from a public place. The busier the public place, the better. If you have to use roofing iron, consider screwing it on with Tek screws, or even better with screws that do not have a common head, thus requiring a specialised tool. If your attacker is smart, they will do their reconnaissance on what is holding this material down before the attack. Tek screws are very difficult to remove with a claw hammer or small pinch bar. Nothing is impenetrable, but you can make an attackers job very difficult
+2. Skylights: If you are using these, put them in places that are as public as possible and as hard to reach as possible. Also, installing them high above the floor will make a break-in harder. Fixed sash sky-lights are also a little more difficult. You could also consider fitting bars on the inside of these. This also applies to windows that are in secluded, quiet places
+3. Weak exterior cladding: Just try and steer clear of using these types of materials. If you have no option, consider making your other layers of defence stronger to compensate
+4. Suspended Ceiling: Filling the roof cavity with obstacles such as barbed wire, bunched chicken wire, etc. can demotivate all but the most determined attackers
 
 #### Crime Prevention Through Environmental Design (CPTED)
 
@@ -210,15 +210,15 @@ Just remove them. Do not make information publicly available that could be used 
 ![](images/ThreatTags/PreventionAVERAGE.png)
 
 1. Dumpster diving: Make sure your trash baskets are only used for trash that is not sensitive. Educate -> monitor -> test, repeat. All bins that could hold not only sensitive printed material, but any sensitive material that has been shredded or not, should be locked and fixed securely to something difficult to move. Destroy your own sensitive material, and use shredders that shred material in more than one way to ensure very hard to re-assemble pieces.
-Not all paper shredders are created equal. Understand the pros and cons.
-2. Printed matter left in insecure places: Your desk is insecure. Consider whether printing sensitive information is necessary. Is there a better way? If you have to print it and if it needs to be retained, then it should also be locked in some kind of safe storage that can not easily be removed.
-3. Printer Management: Most modern MFD’s have the capability to encrypt hard drives, which should be used whilst the device is in operation. However, it should also be considered best practice to remove or [degausse](http://blog.binarymist.net/2013/03/17/erasing-data-from-your-drives/) MFD hard drives before the device leaves the premise at end of life or lease.
+Not all paper shredders are created equal. Understand the pros and cons
+2. Printed matter left in insecure places: Your desk is insecure. Consider whether printing sensitive information is necessary. Is there a better way? If you have to print it and if it needs to be retained, then it should also be locked in some kind of safe storage that can not easily be removed
+3. Printer Management: Most modern MFD’s have the capability to encrypt hard drives, which should be used whilst the device is in operation. However, it should also be considered best practice to remove or [degausse](http://blog.binarymist.net/2013/03/17/erasing-data-from-your-drives/) MFD hard drives before the device leaves the premise at end of life or lease
 
 There are many attack vectors represented here in the following countermeasures:
 
 * Outside bins that lock
 * High quality shredders
-* Easily accessible and convenient lockable storage for each individual staff member. Make sure they are very easy to use, or else they won't be used.
+* Easily accessible and convenient lockable storage for each individual staff member. Make sure they are very easy to use, or else they won't be used
 * Policy and possible company culture change for all of the above points and any that I have missed
 * Education -> monitor -> test, repeat
 
@@ -228,12 +228,12 @@ There are many attack vectors represented here in the following countermeasures:
 
 There are at least a couple of strategies to deal with RFID tag cloning.
 
-1. Preventative.
-    1. Multi-factor authentication includes something you are (a fingerprint), something you know (PIN number) or something you have (a card).
-    2. There are all sorts of methods that chip manufacturers and the security community are using to make cloning more costly in terms of time and effort.
+1. Preventative:
+    1. Multi-factor authentication includes something you are (a fingerprint), something you know (PIN number) or something you have (a card)
+    2. There are all sorts of methods that chip manufacturers and the security community are using to make cloning more costly in terms of time and effort
 2. Detection, and reacting when it does happen, including methods such as:
-    1. Writing a new random number on the tag's memory every time it is scanned. When a tag is scanned that includes the same ID as another tag that is already in use, the back-end knows there is a duplicate tag.
-    2. Video surveillance of the area where front-end (tag) to back-end (reader) communications are made.
+    1. Writing a new random number on the tag's memory every time it is scanned. When a tag is scanned that includes the same ID as another tag that is already in use, the back-end knows there is a duplicate tag
+    2. Video surveillance of the area where front-end (tag) to back-end (reader) communications are made
 
 Keep in mind though, as Bruce Schneier said: "_Detection works where prevention fails and detection is of no use without response_."  
 As part of Identify Risks, you will need to apply the ranking techniques discussed in order to decide the Likelihood and Impact applicable to what is important to your business, and all the other factors that threat modelling techniques walk you through.  
@@ -245,11 +245,11 @@ You can then use your ranking as input to the Countermeasures step, thus helping
 
 Most of what you can do here comes down to the people problem described in the chapter on [People](#people).
 
-1. Educate your workers.
-2. Create a [culture](http://blog.binarymist.net/2014/04/26/culture-in-the-work-place/) that inspires people to think about security and includes it as part of who they are.
-3. Test your workers (come in after hours and check who has left monitors on). Measure the results. Make sure your investment is falling on fertile ground and actually taking root. Adjust your training and change techniques to address the weak areas. Measure again. Keep iterating on this.
-4. Again simple stuff, but from my experience, if your organisation falls into this bucket, until an attacker takes advantage of this, management remains blissfully unaware. So, if you see it, put your [change agent skills](http://blog.binarymist.net/2014/04/26/culture-in-the-work-place/#effecting-change) to work. This can take a significant cultural change, so be patient and make that change move from ground up, and it does not matter where you sit in the organisations hierarchy. If you do not really know where to start, I would recommend grabbing a copy of [Fearless Change](http://blog.binarymist.net/2013/06/22/ideas-for-more-effective-meetings-and-presentations/). It is not about meetings and presentations, by the way. I have gained a lot of insight on how to gently change organisations, and bring big improvements in many areas. I would also recommend [Nonviolent Communication](http://en.wikipedia.org/wiki/Nonviolent_Communication) by Marshall Rosenberg.
-5. Getting buy-in from end users can often be a difficult task in this area. Often this can be due to an inherent distrust of management by line level staff. Any change of process that relates to security will result in negative feelings and questions such as “what has happened”, “what are they looking for now”, “I haven't done anything wrong”, etc. The key word here is transparency. Right from the outset, management need to inform staff of their plans, what processes are being put in place and why. What are the possible ramifications if these processes are not established? Also this discussion should be had first hand from senior management to line staff, not via a supervisor / team-leader, etc. This removes an additional layer of suspicion.
+1. Educate your workers
+2. Create a [culture](http://blog.binarymist.net/2014/04/26/culture-in-the-work-place/) that inspires people to think about security and includes it as part of who they are
+3. Test your workers (come in after hours and check who has left monitors on). Measure the results. Make sure your investment is falling on fertile ground and actually taking root. Adjust your training and change techniques to address the weak areas. Measure again. Keep iterating on this
+4. Again simple stuff, but from my experience, if your organisation falls into this bucket, until an attacker takes advantage of this, management remains blissfully unaware. So, if you see it, put your [change agent skills](http://blog.binarymist.net/2014/04/26/culture-in-the-work-place/#effecting-change) to work. This can take a significant cultural change, so be patient and make that change move from ground up, and it does not matter where you sit in the organisations hierarchy. If you do not really know where to start, I would recommend grabbing a copy of [Fearless Change](http://blog.binarymist.net/2013/06/22/ideas-for-more-effective-meetings-and-presentations/). It is not about meetings and presentations, by the way. I have gained a lot of insight on how to gently change organisations, and bring big improvements in many areas. I would also recommend [Nonviolent Communication](http://en.wikipedia.org/wiki/Nonviolent_Communication) by Marshall Rosenberg
+5. Getting buy-in from end users can often be a difficult task in this area. Often this can be due to an inherent distrust of management by line level staff. Any change of process that relates to security will result in negative feelings and questions such as “what has happened”, “what are they looking for now”, “I haven't done anything wrong”, etc. The key word here is transparency. Right from the outset, management need to inform staff of their plans, what processes are being put in place and why. What are the possible ramifications if these processes are not established? Also this discussion should be had first hand from senior management to line staff, not via a supervisor / team-leader, etc. This removes an additional layer of suspicion
 
 ### Networking Equipment
 
@@ -289,9 +289,9 @@ Feel free to hide the SSID, but it adds little in the way of security and does a
 ![](images/ThreatTags/PreventionEASY.png)
 
 * Do not purchase an AP with WPS
-* If you already have one and the firmware allows you to turn WPS off, then do so. Just be aware that sometimes you will turn this off and the firmware will ignore your choice, so be sure to test it, or at least obtain a reliable configuration from the device. For example, I have worked with Cisco Aironet 1142 devices and their Web UI displays something completely different to the configuration when you print it out.
-* Consider re-flashing the device with a firmware that does not have WPS.
-* Research and purchase a device(s) that does not have WPS.
+* If you already have one and the firmware allows you to turn WPS off, then do so. Just be aware that sometimes you will turn this off and the firmware will ignore your choice, so be sure to test it, or at least obtain a reliable configuration from the device. For example, I have worked with Cisco Aironet 1142 devices and their Web UI displays something completely different to the configuration when you print it out
+* Consider re-flashing the device with a firmware that does not have WPS
+* Research and purchase a device(s) that does not have WPS
 
 #### WPA2 and WPA
 
