@@ -123,7 +123,7 @@ Keep your eye on the vulnerability advisories, as that is part of what an attack
 ![](images/ProductBacklog.png)
  <!---This is where the images live: https://raw.githubusercontent.com/wiki/binarymist/HolisticInfoSec-For-WebDevelopers/BinaryMist-Approach-To-Threat-Modelling-Assets/BobTheBuilder.jpg-->
 
-Here is where you work through collaboratively creating countermeasure **Product Backlog Items (PBIs)**. Countermeasure PBIs are like any other PBI. PBI qualities:
+Here is where you work through collaboratively creating countermeasure Product Backlog Items (PBIs). Countermeasure PBIs are like any other PBI. PBI qualities:
 
 * Estimable
 * Independent
