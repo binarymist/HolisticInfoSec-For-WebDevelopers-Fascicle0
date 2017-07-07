@@ -181,7 +181,7 @@ We used to start the Metasploit service with:
 `service metasploit start`  
 but now there is no `metasploit` service as such.
 
-##### Useful metasploit [commands](https://www.offensive-security.com/metasploit-unleashed/msfconsole-commands/)
+##### Useful metasploit commands
 
 * `msf >` [help](https://www.offensive-security.com/metasploit-unleashed/msfconsole-commands/#help)
 * `msf >` [show](https://www.offensive-security.com/metasploit-unleashed/msfconsole-commands/#show)
@@ -189,7 +189,8 @@ but now there is no `metasploit` service as such.
   * Additional module specific parameters are: `missing`, `advanced`, `evasion`, `targets`, `actions`  
 * `msf > show options`
 * `msf > info <module name>` [info](https://www.offensive-security.com/metasploit-unleashed/msfconsole-commands/#info)
-
+Refer the following link for more insight :https://www.offensive-security.com/metasploit-unleashed/msfconsole-commands/
+<!--- I have removed the link from the heading and placed it here as the font looks different when this URl was applied --->
 ##### metasploit meterpreter client commands
 
 * Meterpreter Client  
@@ -215,8 +216,7 @@ If you need Metasploit integration in BeEF (in most cases you will want this), s
 `extension: metasploit: enable: true`  
 in the `/etc/beef-xss/config.yaml` file.  
 Also make sure  
-`enable`  
-is set to `true` in `/usr/share/beef-xss/extensions/metasploit/config.yaml`
+`enable` is set to `true` in `/usr/share/beef-xss/extensions/metasploit/config.yaml`
 
 When running Metasploit for BeEF, I often provide `msfconsole` with a Metasploit resource file specifically for BeEF (I call this `beef.rc` and put it in `~/`). This resource file will have the following in it at a minimum:
 
@@ -324,16 +324,16 @@ or see the documentation for more details
 %% Errors installing. Submitted issue here: https://github.com/michenriksen/gitrob/issues/62
 %% Error running. Didn't like my password: https://github.com/michenriksen/gitrob/issues/63
 
-#### [CMSmap](https://github.com/Dionach/CMSmap)
+#### CMSmap
 
-CMSmap is a python open source CMS scanner that automates the process of detecting security flaws of the most popular Content Management Systems (CMSs).  
+[CMSmap] (https://github.com/Dionach/CMSmap) is a python open source CMS scanner that automates the process of detecting security flaws of the most popular Content Management Systems (CMSs).  
 Currently supports: WordPress, Joomla and Drupal.
 
 `git clone https://github.com/Dionach/CMSmap.git /opt/CMSmap`
 
-#### [Veil Framework](https://www.veil-framework.com/) {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-veil-framework}
+#### Veil Framework {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-veil-framework}
 
-I have decided to clone the Veil-Framework, as it has a good collection of very useful tools. Veil-Evasion is specifically useful for antimalware evasion. The Veil super project also has an install script to install all Veil projects, found at the [Veil](https://github.com/Veil-Framework/Veil) repository for the Veil-Framework account on github.
+I have decided to clone the [Veil-Framework] (https://www.veil-framework.com/), as it has a good collection of very useful tools. Veil-Evasion is specifically useful for antimalware evasion. The Veil super project also has an install script to install all Veil projects, found at the [Veil](https://github.com/Veil-Framework/Veil) repository for the Veil-Framework account on github.
 
 There are install guides here:  
 [https://www.veil-framework.com/guidesvideos/](https://www.veil-framework.com/guidesvideos/)
@@ -550,10 +550,10 @@ We no longer must run everything as root, so this is no longer an issue.
   Port: `8080`  
 
 * **ScriptSafe**: I like to be in control of where my JavaScript is coming from  
-* **Cookies**
-* **EditThisCookie**
+* **Cookies**: <!---Need some content here--->.
+* **EditThisCookie**:<Need some content here>
 * **SessionBuddy**: For storage of browser sessions and easy hydration
-* **User Agent Switcher for Chrome**
+* **User Agent Switcher for Chrome**:<Need some content here>
 * **Web Developer**: I am a web developer, it has some really useful tools that provide visibility and insight
 
 #### [Iceweasel](https://wiki.debian.org/Iceweasel) (FireFox with different Licensing) add-ons {#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-iceweasel-add-ons}
@@ -562,7 +562,7 @@ A small introduction to Iceweasel: Iceweasel was forked from Firefox for the pur
 
 * **FoxyProxy Standard**: Similar to the same [Chromium](#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-chromium-extensions-foxyproxy-standard) Extension as discussed above
 * **NoScript**: I like to know where my JavaScript is coming from
-* **Tamper Data**
+* **Tamper Data**:<!---Need some content here--->
 * **Web Developer**: I'm a web developer, it has some really useful tools that provide visibility and insight
 * **HackBar**: HackBar is somewhat useful for (en/de)coding (Base64, Hex, MD5, SHA-(1/256), etc), manipulating and splitting URLs
 * **Advanced Cookie Manager**
@@ -576,6 +576,7 @@ A small introduction to Iceweasel: Iceweasel was forked from Firefox for the pur
 %% http://blog.binarymist.net/2014/03/29/up-and-running-with-kali-linux-and-friends/#openVAS   
 
 ### Additional Hardware {#tooling-setup-kali-linux-additional-hardware}
+<!---Need some content here--->
 
 #### TP-LINK TL-WN722N USB Wireless Adapter
 
@@ -587,9 +588,9 @@ As I find it flexible to run pen testing set-ups on VMs, the following addresses
 
 The following is the process I have found to set-up the pass-through on Kali 2016.1 (first Kali rolling release. Kernel 4.3, Gnome 3.18), by-passing the Linux Mint 17.3 (Rosa) Host (in my case).
 
-##### Wi-Fi Adapter:
+##### Wi-Fi Adapter
 
-TP-LINK TL-WN722N Version 1.10
+TP-LINK TL-WN722N Version 1.10:
 
 * chip-set: Atheros ar9271
 * Vendor ID: 0cf3
@@ -599,7 +600,7 @@ TP-LINK TL-WN722N Version 1.10
 ![](images/TL-WN722N.jpg)
 
 ##### Useful commands:
-
+<!---Please provide a lead-in sentence before Bullet list--->
 * `iwconfig`
 * `ifconfig`
 * `sudo lshw -C network`
@@ -643,7 +644,7 @@ First of all, you need to add the user that controls the guest to the vboxusers 
 ##### Provide USB recognition to guest:
 
 Install the appropriate VirtualBox Extension Pack on to the host. These packs can be found here ([https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)) for the most recent,  
-and older builds here: ([https://www.virtualbox.org/wiki/Download_Old_Builds_5_0](https://www.virtualbox.org/wiki/Download_Old_Builds_5_0)). Do not forget to checksum the pack before you add the extension. The version of the extension pack must match that of the VirtualBox installed. Now in your guest, check to see if you have the appropriate linux-headers package installed. If you do not, run the following:
+and older builds here: ([https://www.virtualbox.org/wiki/Download_Old_Builds_5_0](https://www.virtualbox.org/wiki/Download_Old_Builds_5_0)). Do not forget to checksum the pack before you add the extension. The version of the extension pack must match that of the VirtualBox installed. Now in your guest, check to see if you have the appropriate linux-headers package installed. If you do not, run the following commands:
 
 1. `apt-get update`
 2. `apt-get upgrade`
@@ -653,21 +654,21 @@ and older builds here: ([https://www.virtualbox.org/wiki/Download_Old_Builds_5_0
 6. Apply extension to VirtualBox in the host at: File -> Preferences -> Extensions
 
 ##### Blacklist Wi-Fi Module on Host:
-
-Unload the `ath9k_htc` module to take effect immediately, and blacklist it so that it does not load on boot. The module needs to be blacklisted on the host in order for the guest to be able to load it. Now we need to check to see if the module is currently loaded on the host with the following command:
+<!---Please provide a lead-in sentence--->
+1.Unload the `ath9k_htc` module to take effect immediately, and blacklist it so that it does not load on boot. The module needs to be blacklisted on the host in order for the guest to be able to load it. Now we need to check to see if the module is currently loaded on the host with the following command:
 
 `lsmod | grep -e ath`
 
-We are looking for `ath9k_htc`. If it is visible in the output produced from the previous command, unload it with the following command:
+2.We are looking for `ath9k_htc`. If it is visible in the output produced from the previous command, unload it with the following command:
 
 `modprobe -r ath9k_htc`
 
-Next you will need to create a blacklist file in `/etc/modprobe.d/`  
+3.Next you will need to create a blacklist file in `/etc/modprobe.d/`  
 Create `/etc/modprobe.d/blacklist-ath9k.conf` and add the following text into it and save:
 
 `blacklist ath9k_htc`
 
-I had to do the following step on Kali 1.1, but it seems it is no longer necessary in Kali 2016.1 rolling. If you are still on 1.1, go into the settings of your VM -> USB -> and add a Device Filter. I named this tl-wn722n and added the Vendor and Product IDs we discovered with `lsusb`. Make sure Enable USB 2.0 (EHCI) Controller is also enabled.
+4.I had to perform the following step on Kali 1.1, but it seems it is no longer necessary in Kali 2016.1 rolling. If you are still on 1.1, go into the settings of your VM -> USB -> and add a Device Filter. I named this tl-wn722n and added the Vendor and Product IDs we discovered with the `lsusb` command. Make sure Enable USB 2.0 (EHCI) Controller is also enabled as shown in the following screenshot:
 
 ![](images/USBDeviceFilter.png)
 
@@ -713,7 +714,7 @@ I had to do the following step on Kali 1.1, but it seems it is no longer necessa
 ##### Test: 
 
 Plug your Wi-Fi adapter into your laptop.
-
+<!---Please provide a lead-in--->
 In the Devices menu of your guest -> USB Devices, you should be able to select the ATHEROS USB2.0 WLAN adapter.
 
 Run `dmesg | grep htc`, you should see something similar to the following printed:
