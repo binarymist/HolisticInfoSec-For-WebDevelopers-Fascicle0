@@ -76,14 +76,11 @@ You can even build your own with the likes of the Tessel and its [RFID module](h
 
 ![](images/tesselRFID.jpg)
 
-%% https://github.com/tessel/rfid-pn532/issues/24 Used with permission.
+ Used with permission : Refer the following link: %% https://github.com/tessel/rfid-pn532/issues/24.
 
-&nbsp;
 
-Of course, there are many more that I may explore in a later book or blog post.
-
-%% https://www.google.co.nz/search?q=rfid+tags&oq=rfid+tags&aqs=chrome..69i57j0l5.13744j0j7&client=ubuntu&sourceid=chrome&es_sm=93&ie=UTF-8#q=rfid+tag+exploitation
-%% http://www.rfidvirus.org/
+Of course, there are many more that I may explore in a later book or blog [post] (https://www.google.co.nz/search?q=rfid+tags&oq=rfid+tags&aqs=chrome..69i57j0l5.13744j0j7&client=ubuntu&sourceid=chrome&es_sm=93&ie=UTF-8#q=rfid+tag+exploitation
+%% http://www.rfidvirus.org/)
 
 ### Computers Logged in and Unlocked {#physical-identify-risks-computers-logged-in-unlocked}
 
@@ -152,7 +149,7 @@ The tools you use to provide visibility will determine what an attacker needs to
 
 ## 3. SSM Countermeasures
 
-There is a common theme throughout this section: prevent, detect and respond. It is discussed in a little more depth in the [RFID Tags](#physical-countermeasures-rfid) section.
+There is a common theme throughout this section: prevent, detect and respond.It is discussed in a little more depth in sub-section, *RFID Tags* of section, *3. SSM Countermeasures* of Chapter 5, *Physical*.
 
 ### Fortress Mentality {#physical-countermeasures-fortress-mentality}
 
@@ -168,13 +165,13 @@ I have [blogged](http://blog.binarymist.net/2012/11/04/sanitising-user-input-fro
 
 ![](images/ThreatTags/PreventionEASY.png)
 
-Provide education, then monitor and test that the education is taking effect; repeat if not, have someone with a devious, creative mindset test these areas. There are also quite a few ideas in the [People](#people) chapter on increasing staff engagement.
+Provide education, then monitor and test that the education is taking effect; repeat if not, have someone with a devious, creative mindset test these areas. There are also quite a few ideas in the Chapter 6, *People* on increasing staff engagement.
 
 ### Insecure Doors and/or Windows {#physical-countermeasures-insecure-doors-windows}
 
 ![](images/ThreatTags/PreventionVERYEASY.png)
 
-Much of ensuring that staff do secure the premises when they leave, comes down to the level of engagement. See the [People](#people) chapter for ideas on how to increase staff engagement and motivation to take care of the organisation they work for, while being alert. Do not underestimate how much of the staff member's attitude affects this.  
+Much of ensuring that staff do secure the premises when they leave, comes down to the level of engagement. See Chapter 6, People for ideas for ideas on how to increase staff engagement and motivation to take care of the organisation they work for, while being alert. Do not underestimate how much of the staff member's attitude affects this.  
 Do not overwork your staff to the point that they are too tired when they leave the premises to think about doing a full rounds check, or if they do, then miss something.  
 It is an age old law. What goes around comes around. Treat your staff as you would like to be treated, and they will be more likely to make sure that the premises openings are locked properly when they leave.
 
@@ -243,7 +240,7 @@ You can then use your ranking as input to the Countermeasures step, thus helping
 
 ![](images/ThreatTags/PreventionEASY.png)
 
-Most of what you can do here comes down to the people problem described in the chapter on [People](#people).
+Most of what you can do here comes down to the people problem described in in Chapter 6, *People*.
 
 1. Educate your workers.
 2. Create a [culture](http://blog.binarymist.net/2014/04/26/culture-in-the-work-place/) that inspires people to think about security and includes it as part of who they are.
@@ -276,7 +273,7 @@ The “outside” vulnerability can be mitigated by the implementation of Li-Fi 
 
 I usually use a pass-phrase of about 40 characters long, made up of random characters including a mix of alphanumeric, upper case, lower case and symbols. For some people this can be a little awkward. For those abiding by the best practises of using password vaults, it should actually be easier than typing a short pass-phrase, because they will be copied and pasted from the safe. In this case, there is no convenience lost. If such long pass-phrases feel inconvenient for users, it should compel them to use a password vault (which they should already be doing).
 
-The [Transient Devices](#physical-countermeasures-transient-devices) section may also be of interest.
+The sub-section Transient Devices in section 3. SSM countermeasures in this chapter may also be of interest.
 
 #### Hiding the SSID
 
@@ -328,7 +325,7 @@ Again, company policy and culture may require some work as well.
 
 #### Cameras, Sensors and Alarms
 
-Detection is an important part of the overall security of your premises. When your prevention fails, you are going to want to know about it so that you can react appropriately. Ideally, surveillance systems should also be configured to send alerts to someone who is going to take notice of them. I have addressed some of the concerns about alerts that fail to trigger human reaction specifically in the "Morale, Productivity and Engagement Killers" section of the [People](#people) chapter. I have found ZoneMinder, an open source video surveillance solution, to be excellent at recording, detecting motion, and providing events. You can then do what ever you like with the events, including email, SMS, push notifications, etc. Be prepared to get your hands dirty here though as this is an open and extensible platform. I have also noticed NodeMinder, which was of interest to me, but at the time of this writing, was not being maintained, like so many NPM packages.
+Detection is an important part of the overall security of your premises. When your prevention fails, you are going to want to know about it so that you can react appropriately. Ideally, surveillance systems should also be configured to send alerts to someone who is going to take notice of them. I have addressed some of the concerns about alerts that fail to trigger human reaction specifically  section *Morale, Productivity and Engagement Killers* of the Chapter 6, *People*. I have found ZoneMinder. I have found ZoneMinder, an open source video surveillance solution, to be excellent at recording, detecting motion, and providing events. You can then do what ever you like with the events, including email, SMS, push notifications, etc. Be prepared to get your hands dirty here though as this is an open and extensible platform. I have also noticed NodeMinder, which was of interest to me, but at the time of this writing, was not being maintained, like so many NPM packages.
 
 ## 4. SSM Risks that Solution Causes
 
@@ -354,7 +351,7 @@ With labels removed you run the risk that someone will forget who services the a
 
 ### Sensitive Printed Matter
 
-People may rebel against policy if they are not treated the right way. Sometimes it is hard to see this, people are good at hiding their true feelings. I discuss strategies of getting the most out of your people in the [People](#people) chapter so as to avoid a lack of buy-in and engagement.
+People may rebel against policy if they are not treated the right way. Sometimes it is hard to see this, people are good at hiding their true feelings. I discuss strategies of getting the most out of your people in Chapter 6, *People* so as to avoid a lack of buy-in and engagement.
 As with security in all other areas, increasing it is likely to cost a little more and decrease some convenience. Although, with thought and planning, this can become part of your company culture. People can be your strongest, or your weakest defence. This is your choice. Cultural change can be implemented from any level. The most successfully being from the shop floor.  
 High quality shredders are not much more expensive than their lesser counter-parts.
 
@@ -458,7 +455,7 @@ This technically does not provide any increased security, but reduces convenienc
 
 #### Wi-Fi Protected Set-up (WPS)
 
-This leads to a little increase in effort to establish a wireless connection. Those who are provided with access should also be recorded as having access, discussed below in the [Transient Devices](#physical-costs-and-trade-offs-transient-devices) section.
+This leads to a little increase in effort to establish a wireless connection. Those who are provided with access should also be recorded as having access, discussed below in the section *ransient Devices* of Chapter 5, *Physical*.
 
 #### WPA2 and WPA
 
