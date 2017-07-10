@@ -21,7 +21,7 @@ This allows us to create effective attack strategies, including non-technical as
 
 #### Reconnaissance Forms {#process-and-practises-penetration-testing-reconnaissance-reconnaissance-forms}
 
-Information gathering can and should be done (initially) in such a way that the target does not know you are doing it (passive). However, reconnaissance can achieve "noise" levels so loud that the target *should* absolutely know you are doing it (active). Unfortunately, all too often target organisations do not notice more active assessment due to insufficient logging, monitoring, and alerting, as discussed in several of the following chapters. These activities also require that someone actually take notice, as discussed in Chapter 5, People specific to engagement.
+Information gathering can and should be done (initially) in such a way that the target does not know you are doing it (passive). However, reconnaissance can achieve "noise" levels so loud that the target *should* absolutely know you are doing it (active). Unfortunately, all too often target organisations do not notice more active assessment due to insufficient logging, monitoring, and alerting, as discussed in several of the following chapters. These activities also require that someone actually take notice, as discussed in Chapter 5, _People_ specific to engagement.
 
 #### Passive
 
@@ -87,7 +87,7 @@ Following is the `nmap` command:
     # Attempt to detect hardened target OS and services running on it.
     nmap -A <target>
 
-Following is the `nmap` command's result:
+Following is the result for the `nmap` command:
 {title="nmap result", linenos=off, lang=Bash}
     Nmap scan report for <target> (<target ip>)
     Host is up (0.0014s latency).
@@ -188,7 +188,7 @@ Following is the `nmap` command:
 {title="nmap command", linenos=off, lang=Bash}
     nmap -sV --version-intensity 9 <target>
 
-Following is the result of the `nmap` command:
+Following is the result for the `nmap` command:
 {title="nmap result", linenos=off}
     Nmap scan report for <target> (<target ip>)
     Host is up (0.0061s latency).
@@ -218,7 +218,7 @@ Following is the `nmap` command:
     # Attempt to detect un-hardened target OS and services running on it.
     nmap -A <target>
 
-Following is result of the `nmap` command:
+Following is the result for the `nmap` command:
 {title="nmap result", linenos=off, lang=Bash}
     Starting Nmap 6.47 ( http://nmap.org ) at 2015-11-12 20:17 NZDT
     Nmap scan report for <target>
@@ -344,7 +344,7 @@ Following is the `nmap` command:
 {title="nmap command", linenos=off}
     nmap -sV --version-intensity 9 <target>
 
-Following is result of the `nmap` command:
+Following is the result for the `nmap` command:
 {title="nmap result", linenos=off, lang=Bash}
     Starting Nmap 6.47 ( http://nmap.org ) at 2015-11-12 19:38 NZDT
     Nmap scan report for <target>
@@ -431,9 +431,7 @@ Adding to what we have learnt above, the simplest way to deduce the details of t
 Feel free to try the same requests against the likes of the Metasploitable 2 VM. Its legitimate HTTP protocol is 1.0
 
 ##### Depending on the Server field
-
 **Request**:
-
 {title="Request", linenos=off, lang=Bash}
     # Run netcat against your targets web server
     nc <target> 80
@@ -473,12 +471,9 @@ If your target is running an Express server, you will probably see something lik
 
 ##### Ordering of Header Fields
 
-&nbsp;
-
 Every web server has its own specific ordering of header fields. This is usually more reliable for deducing the server type.
 
 ##### Malformed Requests
-
 
 If we try malformed requests or requests of non existent resources:
 **Request (not malformed)**:
@@ -570,7 +565,7 @@ If we use a non-existent protocol:
     GET / CATSFORDINNER/1.1
     # Express ignores cats for dinner. No response
 
-**Response**:
+**Request**:
 {title="Request", linenos=off}
     nc <apache 2.2.3 server> 80
     GET / CATSFORDINNER/1.0
@@ -638,12 +633,10 @@ will give you the full listing. To narrow down the listing to specifics for the 
 
 yields the following two scripts, which are very useful:
 
-1. `http-waf-detect.nse`  
-attempts to determine whether the web server is protected by an IDS, IPS or WAF
-2. `http-waf-fingerprint.nse`  
-attempts to discover the presence of a WAF, its type, and version.
+1. `http-waf-detect.nse`: This attempts to determine whether the web server is protected by an IDS, IPS or WAF
+2. `http-waf-fingerprint.nse`: This attempts to discover the presence of a WAF, its type, and version.
 
-Run both scripts:
+**Run both scripts**:
 {title="Run both scripts", linenos=off}
     nmap -p80 --script "http-waf-*" <target>
 
@@ -1186,7 +1179,7 @@ During this stage, contemplating and capturing countermeasures for vulnerabiliti
 
 Hammer your own systems and watch logs. Become familiar with the signatures and indicators of different tools and attacks, you will then know when you are actually under attack. You can take the same steps with active and semi-active reconnaissance. In this manner, you will be able to pre-empt your attacker's attempts at exploitation.
 
-We will go through actual exploitation that would be carried out by an attacker or penetration tester in each of the following chapter's *Identify Risks* sections.
+We will go through actual exploitation that would be carried out by an attacker or penetration tester in each of the following chapters *Identify Risks* sections.
 
 #### Isolating, Testing Potential Malware
 
