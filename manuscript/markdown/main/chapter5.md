@@ -171,7 +171,7 @@ Provide education, then monitor and test that the education is taking effect; re
 
 ![](images/ThreatTags/PreventionVERYEASY.png)
 
-Much of ensuring that staff do secure the premises when they leave, comes down to the level of engagement. See Chapter 6, People for ideas for ideas on how to increase staff engagement and motivation to take care of the organisation they work for, while being alert. Do not underestimate how much of the staff member's attitude affects this.  
+Much of ensuring that staff do secure the premises when they leave, comes down to the level of engagement. See Chapter 6, _People_ for ideas for ideas on how to increase staff engagement and motivation to take care of the organisation they work for, while being alert. Do not underestimate how much of the staff member's attitude affects this.  
 Do not overwork your staff to the point that they are too tired when they leave the premises to think about doing a full rounds check, or if they do, then miss something.  
 It is an age old law. What goes around comes around. Treat your staff as you would like to be treated, and they will be more likely to make sure that the premises openings are locked properly when they leave.
 
@@ -273,7 +273,7 @@ The “outside” vulnerability can be mitigated by the implementation of Li-Fi 
 
 I usually use a pass-phrase of about 40 characters long, made up of random characters including a mix of alphanumeric, upper case, lower case and symbols. For some people this can be a little awkward. For those abiding by the best practises of using password vaults, it should actually be easier than typing a short pass-phrase, because they will be copied and pasted from the safe. In this case, there is no convenience lost. If such long pass-phrases feel inconvenient for users, it should compel them to use a password vault (which they should already be doing).
 
-The sub-section Transient Devices in section 3. SSM countermeasures in this chapter may also be of interest.
+The sub-section _Transient Devices_ in section _3. SSM countermeasures_ in this chapter may also be of interest.
 
 #### Hiding the SSID
 
@@ -325,7 +325,7 @@ Again, company policy and culture may require some work as well.
 
 #### Cameras, Sensors and Alarms
 
-Detection is an important part of the overall security of your premises. When your prevention fails, you are going to want to know about it so that you can react appropriately. Ideally, surveillance systems should also be configured to send alerts to someone who is going to take notice of them. I have addressed some of the concerns about alerts that fail to trigger human reaction specifically  section *Morale, Productivity and Engagement Killers* of the Chapter 6, *People*. I have found ZoneMinder. I have found ZoneMinder, an open source video surveillance solution, to be excellent at recording, detecting motion, and providing events. You can then do what ever you like with the events, including email, SMS, push notifications, etc. Be prepared to get your hands dirty here though as this is an open and extensible platform. I have also noticed NodeMinder, which was of interest to me, but at the time of this writing, was not being maintained, like so many NPM packages.
+Detection is an important part of the overall security of your premises. When your prevention fails, you are going to want to know about it so that you can react appropriately. Ideally, surveillance systems should also be configured to send alerts to someone who is going to take notice of them. I have addressed some of the concerns about alerts that fail to trigger human reaction specifically  section _Morale, Productivity and Engagement Killers_ of the Chapter 6, _People_. I have found ZoneMinder. I have found ZoneMinder, an open source video surveillance solution, to be excellent at recording, detecting motion, and providing events. You can then do what ever you like with the events, including email, SMS, push notifications, etc. Be prepared to get your hands dirty here though as this is an open and extensible platform. I have also noticed NodeMinder, which was of interest to me, but at the time of this writing, was not being maintained, like so many NPM packages.
 
 ## 4. SSM Risks that Solution Causes
 
