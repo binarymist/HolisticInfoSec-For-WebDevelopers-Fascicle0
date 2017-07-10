@@ -2,7 +2,7 @@
 
 ![10,000' view of People Security](images/10000People.png)
 
-As in the chapter on [Physical](#physical) security, the people problem is often over-looked, not only by technical personnel, but by everyone. For a proficient social engineer (SE), it is easy to craft and execute attacks, although not quite as easy and simple as walking through the front door that has been left open. With a little patience, practise, and the right frame of mind, the majority of people can be played successfully, even those who are very aware.
+As in the Chapter 5, *Physical* on Physical security, the people problem is often over-looked, not only by technical personnel, but by everyone. For a proficient social engineer (SE), it is easy to craft and execute attacks, although not quite as easy and simple as walking through the front door that has been left open. With a little patience, practise, and the right frame of mind, the majority of people can be played successfully, even those who are very aware.
 
 Why is "people security" often over-looked? A couple of reasons I can think of include:
 
@@ -11,10 +11,11 @@ Why is "people security" often over-looked? A couple of reasons I can think of i
 
 As with many other attacks, this is often one that is a key component of a larger more sophisticated attack.
 
-If you think back to the Penetration Testing [process](#process-and-practises-penetration-testing) we walked through in the Process and Practises chapter, a SE generally carries out their attack sequences in a similar manner. The following steps offer the high level approach often taken:
+If you think back to the Penetration Testing process we walked through in the section, Penetration Testing in Chapter 4, Process and Practises, a SE generally carries out their attack sequences in a similar manner. The following steps offer the high level approach often taken:
 
 1. **Reconnaissance** (or Information Gathering)  
-This is one of the most important steps in a SE engagement. Similar to the [forms](#process-and-practises-penetration-testing-reconnaissance-reconnaissance-forms) discussed in the Process and Practises chapter, a huge amount of freely available information can be gathered without anyone suspecting what it is going to be used for, if it is used at all (semi-active), or that its even being gathered (passive). This information is used to feed the creation of the following attack steps, as well as technical attacks. We have already looked at some forms of information that an attacker can use to build their target's profile in the Process and Practises and Physical chapters. I would also like to draw your attention to the content Michael Bazzell has [collated](https://inteltechniques.com/links.html) and his excellent books on the gathering of Open Source Intelligence.
+This is one of the most important steps in a SE engagement. Similar to the forms discussed in sub-section, *Reconnaissance Forms* of section, *Penetration Testing* of Chapter 4, *Process and Practises*, a huge amount of freely available information can be gathered without anyone suspecting what it is going to be used for, if it is used at all (semi-active), or that its even being gathered (passive). This information is used to feed the creation of the following attack steps, as well as technical attacks.  We have already
+looked at some forms of information that an attacker can use to build their target's profile in the Chapter 4, Process and Practises and Chapter 5, Physical. I would also like to draw your attention to the content Michael Bazzell has [collated](https://inteltechniques.com/links.html) and his excellent books on the gathering of Open Source Intelligence.
 2. **Connecting with Target**  
 Humans are complicated units; we have a body, spirit, soul, feelings, emotions, and usually need to feel like we can trust someone before we hand over the proverbial jewels. An attacker can not approach a human as they would a machine although there are similarities. There are areas that we know we have to work around, for example. A skilled SE will build relationship with a target while they are gently probing for weaknesses. This is often carried out over weeks, or even months of communication and interaction. It is typically a gradual process, but sometimes trust can be built quickly. There are also many ways to fast track this process, such as:
   * Pretexting (becoming someone else): Here you learn someone else's behaviour, what they do, how they do it, their routines, what they know, who they know, how they talk, what they like, their family members, and their details. Most of these details are often freely available on the Internet in many forms. Equipped with these details, pretexting is simply acting as if you are that person. The closer you come to believing you are that person, the more successful the pretext will be.
@@ -27,7 +28,8 @@ At this stage an attacker has discovered human vulnerabilities in their target a
 This is where the attacker hits the jackpot and acquires what they were after from the onset of the assignment or operation, and leaves the target unsuspecting that they have been played at all, often leaving them thinking and feeling that they have helped someone legitimately. Similar to a successful technology based attack, the target should not have a clue that they have been exploited.
 
 ## 1. SSM Asset Identification
-Take results from [higher level Asset Identification](#starting-with-the-30000-foot-view-asset-identification). Remove any that are not applicable. Add any newly discovered. Here are some to get you started:
+Take results from the section, *1. SSM Asset Identification* of Chapter 1, *Starting with the
+30,000' View*. Remove any that are not applicable. Add any newly discovered. Here are some to get you started:
 
 * People carry huge amounts of confidential information on them, not only in their bags and devices, but also, most importantly, their brains. People are like sponges, we soak up information everywhere. We also leak a lot and are capable of leaking without even knowing it when targeted by a skilled SE. I will cover more of this in the Identify Risks section.
 * State of mind: An engaged, devoted, and loyal worker is truly an asset. I can not emphasise this enough.
@@ -38,8 +40,8 @@ Many of the assets are the same as those in other chapters, it is more that peop
 
 Risks based on the failures of people represent a very different set of attack vectors than any others mentioned in this material. People are both complex and complicated; our personalities are full of faults just waiting to be exploited, thus the approach at finding vulnerabilities is quite different.  
 You can still use some of the processes from the top level [2. SSM Identify Risks](#starting-with-the-30000-foot-view-identify-risks), but outcomes can look quite different.  
-I find the [Threat agents cloud](#starting-with-the-30000-foot-view-identify-risks-threat-agents) and [Likelihood and impact](#starting-with-the-30000-foot-view-identify-risks-likelihood-and-impact) diagrams still quite useful, as well as [MS 5. Document the Threats](#ms-5-document-the-threats), [OWASP Risk Rating Methodology](#ms-5-document-the-threats) and the [intel-threat-agent-library](#intel-threat-agent-library), as they are technology agnostic.  
-Additionally, [OWASP Ranking of Threats](#ms-6-rate-the-threats), [MS 6. Rate the Threats](#ms-6-rate-the-threats), and DREAD can be useful.
+I find the Threat agents cloud  diagrams still quite useful refer to the following sub-sections, *Threat Agents* and *Likelihood and impact*, of section *2. SSM Identify Risks* in Chapter 1, *Starting with the 30,000' View*, as well as the following sections, *OWASP Risk Rating Methodology* and the *Intel Threat Agent Library* in *MS 5. Document the Threats* as they are technology agnostic.
+Additionally refer to *OWASP Ranking of Threats* in the section *MS 5. Document the Threats*, *MS 6. Rate the Threats* mentioned in section *Rating of Threats*, and DREAD can be useful. People are the strongest point in a security process, they are often also the weakest.
 
 People are the strongest point in a security process, they are often also the weakest.
 
@@ -107,17 +109,15 @@ A very profitable tactic for an adversary is to acquire a staff member from a ta
 
 #### Password Profiling {#people-identify-risks-weak-password-strategies-password-profiling}
 
-There are a plethora of large password word-lists available. I discussed a handful of these in the [Tooling Set-up](#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-password-lists) chapter. An attacker will use password profiling to create short lists of words based on information gathered in the reconnaissance stage. These word-lists are typically much shorter than the "off the shelf" word-lists sometimes used for brute forcing targets accounts.
+There are a plethora of large password word-lists available. I discussed a handful of these in the sub-section, *Password Lists* , section *Tools I Use That Need Adding to Kali Linux* of Chapter 3, *Tooling Setup*. An attacker will use password profiling to create short lists of words based on information gathered in the reconnaissance stage. These word-lists are typically much shorter than the "off the shelf" word-lists sometimes used for brute forcing targets accounts.
 
-If running any of the following tools produces a list with your password in it, I strongly suggest you review the [Countermeasures](#people-countermeasures-weak-password-strategies) section to learn about strong passwords.
+If running any of the following tools produces a list with your password in it, I strongly suggest you review the section, *Countermeasures* in Chapter 4, *People to learn about strong passwords*.
 
 A> Word-list generators are used to create short more precise and targeted word-lists. It is important here to understand organisational password policies and constrain the tool that you use to produce a word-list that honours any password policies in place in the target organisation. Otherwise the tool will end up producing passwords not relevant to the target.
 
-##### [Crunch](http://tools.kali.org/password-attacks/crunch) {#people-identify-risks-weak-password-strategies-password-profiling-crunch}
+##### Crunch {#people-identify-risks-weak-password-strategies-password-profiling-crunch}
 
-&nbsp;
-
-Crunch seems a little lower level or granular, perhaps less personalised than the likes of cupp which we discuss soon. Crunch often creates larger word-lists. Of course, this depends on how you specify your arguments for crunch. The likes of wild-cards can help with granularity. Crunch would probably be a good choice if you know more about organisational password policies and less about the individual people/person.
+[Crunch](http://tools.kali.org/password-attacks/crunch) seems a little lower level or granular, perhaps less personalised than the likes of cupp which we discuss soon. Crunch often creates larger word-lists. Of course, this depends on how you specify your arguments for crunch. The likes of wild-cards can help with granularity. Crunch would probably be a good choice if you know more about organisational password policies and less about the individual people/person.
 
 Crunch generates every possible combination of characters you tell it to and provides control over the character sets you want used. There is a collection of character sets in Kali Linux in `/usr/share/rainbowcrack/charset.txt` you can use. The best one is in the crunch directory though: `/usr/share/crunch/charset.lst` You can also specify a literal set of characters as an argument.
 
@@ -144,9 +144,7 @@ or from the terminal:
 
 ##### Common User Passwords Profiler (CUPP) {#people-identify-risks-weak-password-strategies-password-profiling-cupp}
 
-&nbsp;
-
-Created by Muris Kurgas AKA j0rgan, this tool is easy to use and can be used in an interactive style. With the `-i` parameter, it interviews the person running it before it goes ahead and creates the word-list output. We installed this in the [Tooling Setup](#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-cupp) chapter.
+Created by Muris Kurgas AKA jorgan, this tool is easy to use and can be used in an interactive style. With the `-i` parameter, it interviews the person running it before it goes ahead and creates the word-list output. We installed this in the sub-section *Common User Passwords Profiler (cupp)* of section, Tools I Use That Need Adding to Kali Linux in  Chapter 3, *Tooling Setup*.
 
 Once you have git cloned it, check the source to confirm what you are about to run, then run it. I like to use interactive mode with `-i`. Run it with no arguments to see the help screen and `cd` into `/opt/cupp/` to explore.
 
@@ -225,15 +223,15 @@ General usage is from the terminal as follows:
     cewl -d 2 -m 3 -w ~/cewl-bob-wordlist.txt www.bobthebuilder.com/en-us/
     # If you go deep, it can take a very long time.
 
-You can use the word-list produced and augment it with the likes of [crunch](#people-identify-risks-weak-password-strategies-password-profiling-crunch) to add some common extra characters, or even [cupp](#people-identify-risks-weak-password-strategies-password-profiling-cupp) to make the passwords a bit more personal.
+You can use the word-list produced and augment it with the likes of crunch (refer to section Crunch) to add some common extra characters, or even cupp (refer to sub-section Common User Passwords Profiler in (CUPP)), of section Weak Password Strategies in this chapter) to make the passwords a bit more personal.
 
-##### [Wordhound](https://bitbucket.org/mattinfosec/wordhound.git)
-
-&nbsp;
+##### Wordhound
 
 Wordhound is a Python application that creates word-lists based on generic websites, plain text (emails for example), Twitter, PDFs and Reddit sub-reddits.
 
 I discovered this tool in the Hacker Playbook 2. It looks like Kim had some trouble with it in Kali Linux but it does look like it has potential. I did not have the time to try it.
+
+https://bitbucket.org/mattinfosec/wordhound.git
 
 #### Brute Forcing
 
@@ -253,7 +251,7 @@ Often with HTTP brute forcing you will have to slow the requests down. Most tool
 Hydra appears to be the most [mature](https://www.thc.org/thc-hydra/network_password_cracker_comparison.html) of the brute force specific tools.
 
 To run hydra, simply run it from the menu in Kali Linux:  
-Password Attacks -> Online Attacks -> hydra  
+**Password Attacks -> Online Attacks -> hydra**  
 or from the terminal.
 
 {title="SSH", linenos=off, lang=bash}
@@ -271,7 +269,7 @@ or from the terminal.
 
 You can find the video of how the following attack is played out at [http://youtu.be/zevpMvQwWOU](http://youtu.be/zevpMvQwWOU).
 
-I> ## Web Forms
+I> **Web Forms**
 I>
 I> When it comes to using hydra against web forms, if you can, once you have the command set and ready to run, it is usually best to test it against the web site with a known good login to make sure hydra handles the success correctly and the failures correctly.
 I>
@@ -284,9 +282,9 @@ I> * The name of the field that takes the password
 I> * Failure message for a failed attempt. The only place you need to look is the response of the first request. It seems that any string in the response can be used, even if it is a redirect back to `login.php`, any header value, body value, or even header name. Alternatively You could use a success message for a successful attempt, cookie or what ever the web site uses to inform of a successful login.
 
 {icon=bomb}
-G> ## The Play
+G> **The Play**
 G>
-G> For this example, we need to add Bob the Builder, as profiled in the CUPP example above, to the DVWA database. I knew that the passwords in the DVWA database were stored as `MD5`s from the exercise I did in the SQLi section from the Web Applications chapter in [Fascicle 1](https://leanpub.com/holistic-infosec-for-web-developers-fascicle1-vps-network-cloud-webapplications). If DVWA had assumed that the data-store would at some stage be compromised as discussed in the Data-store Compromise section, and provided the correct countermeasures as discussed in the countermeasures section of the Web Applications chapter in [Fascicle 1](https://leanpub.com/holistic-infosec-for-web-developers-fascicle1-vps-network-cloud-webapplications), we would not be able to reverse engineer the crypto strategy as easily. The time it takes to brute force the passwords would also be significantly increased due to the key stretching of the Key Derivation Functions (KDFs). With that in mind though, if you profile effectively you will end up with a small word-list to use in your chosen brute force tool, which may only take a few hours or days for the average user's password.
+G> For this example, we need to add Bob the Builder, as profiled in the CUPP example above, to the DVWA database. I knew that the passwords in the DVWA database were stored as `MD5`s from the exercise I did in the SQLi section from the Web Applications chapter in [Part 1](https://leanpub.com/holistic-infosec-for-web-developers-fascicle1-vps-network-cloud-webapplications). If DVWA had assumed that the data-store would at some stage be compromised as discussed in the Data-store Compromise section, and provided the correct countermeasures as discussed in the countermeasures section of the Web Applications chapter in [Part 1](https://leanpub.com/holistic-infosec-for-web-developers-fascicle1-vps-network-cloud-webapplications), we would not be able to reverse engineer the crypto strategy as easily. The time it takes to brute force the passwords would also be significantly increased due to the key stretching of the Key Derivation Functions (KDFs). With that in mind though, if you profile effectively you will end up with a small word-list to use in your chosen brute force tool, which may only take a few hours or days for the average user's password.
 G>
 G> For the sake of demonstration, I chose a password from the middle of the word-list that CUPP produced: `Y35w3c4n!$@`. Bob thought he was being clever changing the characters of "yes we can" to look like numbers and adding some special characters to the end. Hackers know all the tricks though.  
 G> Browse to `/phpmyadmin` of the OWASPBWA, -u `root` -p `owaspbwa` and find the dvwa database and add `Bob` as a `user` and his hashed password that we produced from:  
@@ -299,13 +297,13 @@ G> to the `password` field.
 {icon=bomb}
 G> Using an HTTP intercepting proxy as mentioned above, let's use Burpsuite and FoxyProxy. Once you have DVWA running, or another website you want to attempt to brute force, browse to the login page. Then turn the "Burp 8080" proxy on. Start burpsuite and make sure it is listening on port `8080` (or what ever your browsers proxy is going to send to). I added a correct `username` ("user" in this case) but false `password` values to the `username` and `password` fields and submitted. Note that you can add any values.
 G>
-G> Now in Burpsuites Proxy tab -> HTTP history tab, right click on the (`POST`) request and select Send to Intruder. Go to the Intruder tab and in the Positions tab, keep the Attack type: "[Sniper](https://portswigger.net/burp/help/intruder_positions.html)" because we are only using one wordlist. If we were using a wordlist for usernames and a different one for passwords, we would probably want to use "Cluster bomb".
+G> Now in Burpsuites **Proxy** tab -> **HTTP history** tab, right click on the (`POST`) request and select **Send to Intruder**. Go to the Intruder tab and in the **Positions** tab, keep the Attack type: "[Sniper](https://portswigger.net/burp/help/intruder_positions.html)" because we are only using one wordlist. If we were using a wordlist for usernames and a different one for passwords, we would probably want to use "Cluster bomb".
 G>
 Now clear all the highlighted fields apart from the `password` value, then go to the Payloads tab. Keep the Payload set to 1 and Payload type set to [Simple list](https://portswigger.net/burp/help/intruder_payloads_types.html).
 G>
 G> I just added `user1`, `user2`, `user3` and `user`, the last being the correct password. It can pay to have a valid account to test with, especially with `HTTP`. You do not need FoxyProxy on any more either.  
-G> Go into the Intruder menu up the top -> Start attack. You will now get a pop up window with the results of the passwords you added.  
-G> With the Response tab and Raw tab selected, start at the top of the requests and just arrow down through them, inspecting the differences as you go. You should see that the last one, the `user` password, has one changed value from the other responses. It will have a `Location` header with value of `index.php` rather than `login.php` that all the failed responses contain.
+G> Go into the Intruder menu up the top -> **Start attack**. You will now get a pop up window with the results of the passwords you added.  
+G> With the **Response** tab and **Raw** tab selected, start at the top of the requests and just arrow down through them, inspecting the differences as you go. You should see that the last one, the `user` password, has one changed value from the other responses. It will have a `Location` header with value of `index.php` rather than `login.php` that all the failed responses contain.
 G>
 G> That is our difference that we use to feed to our brute forcing tool so that it knows when we have a successful login, even though, in theory, the login process is not yet complete as we have not issued the follow up `GET` request. This does not matter, as we know we would not have been given an `index.php` if we were not authorised.
 G>
@@ -466,7 +464,7 @@ I think the following may also have suffered from Medusa's redirect problem. I h
     passvar=admin, \
     uservar=admin' -vvv -d
 
-I address the compromise of password hashes in the Web Applications chapter of [Fascicle 1](https://leanpub.com/holistic-infosec-for-web-developers-fascicle1-vps-network-cloud-webapplications) under the section "Management of Application Secrets".
+I address the compromise of password hashes in the Web Applications chapter of [Part 1](https://leanpub.com/holistic-infosec-for-web-developers-fascicle1-vps-network-cloud-webapplications) under the section "Management of Application Secrets".
 
 ### Vishing (Phone Calls) {#people-identify-risks-phone-calls}
 ![](images/ThreatTags/average-widespread-average-severe.png)
@@ -497,7 +495,7 @@ Some services are free, some are paid for. SMS providers offering spoofing capab
 
 You can [DIY](http://www.social-engineer.org/wiki/archives/CallerIDspoofing/CallerID-SpoofingWithAsterisk.html) with the likes of [Asterisk](http://www.asterisk.org/get-started), an open source framework that provides all the tools anyone would need to spoof Caller IDs and much more. You will need a VoIP service provider, but you control everything else, and all of the information about your target is in your hands alone.
 
-If you are planning a phone call, you are going to have to have a pretty solid idea of who your pretext is and know as much as possible about them in order to make your pretext believable. This is where you really draw from the reconnaissance phase as seen in the [Processes and Practises](#process-and-practises-penetration-testing-reconnaissance) chapter. It is a good idea to script out the points you (SE) want to cover in your phone call. Rehearse the points many times so that they sound natural. The more you practise, the easier it will be when you have to deviate (the target will often throw curve balls at you) from your points and come back to them. There is no substitute for having as much information as possible on the target and have rehearsed the call many times.
+If you are planning a phone call, you are going to have to have a pretty solid idea of who your pretext is and know as much as possible about them in order to make your pretext believable.This is where you really draw from the reconnaissance phase as seen in the sub-section *Reconnaissance* of section *Penetration Testing* in Chapter 4, *Processes and Practises*. It is a good idea to script out the points you (SE) want to cover in your phone call. Rehearse the points many times so that they sound natural. The more you practise, the easier it will be when you have to deviate (the target will often throw curve balls at you) from your points and come back to them. There is no substitute for having as much information as possible on the target and have rehearsed the call many times.
 
 SMS spoofing can also be very useful. Some services cannot handle return messages though, unless the attacker has physical access to a phone that would legitimately contact the target's phone (as with [flexispy](http://blog.flexispy.com/spoof-sms-powerful-secret-weapon-shouldve-using/)) and can install software on the initiating phone which the attacker controls.
 
@@ -730,9 +728,9 @@ Quite a few file formats are supported to cloak the payload, such as PDF, Word d
 
 The Teensy USB device as a [penetration testing device](http://www.irongeek.com/i.php?page=security/programmable-hid-usb-keystroke-dongle) overcomes running payloads on the target machine the same way a keyboard or Rubber Ducky would. Because it is a Human Interface Device (HID) it is trusted by most OSs. It can be concealed in any type of USB hardware. That alone creates a huge vector for exploitation. The Teensy has similar specifications to the Rubber Ducky but is about half the price. It is just a development board though, and has to be programmed via an Arduino. SET provides the reverse shells, listeners, and a good selection of exploits out of the box. Metasploit is at your disposal as usual with SET and attack vectors such as PowerShell, wscript, and others are available.
 
-#### [USB Rubber Ducky](http://usbrubberducky.com/)
+#### USB Rubber Ducky
 
-The USB standard has a HID specification, which means that any USB device masquerading as a keyboard will be automatically accepted by most OSs. 
+The [USB](http://usbrubberducky.com/) standard has a HID specification, which means that any USB device masquerading as a keyboard will be automatically accepted by most OSs. 
 
 The main Duckyscript Encoder is a Java application that converts the ducky script files into hex code. You can load them on your micro SD card, insert the card into the ducky and SE your ducky into your target's computer. The encoder can be downloaded from the hak5darren github accounts USB-Rubber-Ducky repository [Downloads page](https://github.com/hak5darren/USB-Rubber-Ducky/wiki/Downloads) on the wiki.
 
@@ -855,7 +853,7 @@ It was also noted in the Arxan report that 80% of consumers would change provide
 
 ### [Morale, Productivity and Engagement Killers](https://speakerdeck.com/binarymist/how-to-increase-software-developer-productivity) {#people-countermeasures-morale-productivity-and-engagement-killers}
 
-Staff are often thought of as resources. If you want the best out of your people, treat them like valuable assets. Go out of your way to build meaningful relationships with them and create empathy. People base their decisions on emotions, later justifying them with facts. With this in mind, keep them on strong emotional ground. Staff that feel appreciated work much harder and will be more likely to:
+Staff are often thought of as resources. If you want the best out of your people, treat them like valuable assets. Go out of your way to build meaningful relationships with them and create empathy. People base their decisions on emotions, later justifying them with facts. With this in mind, keep them on strong emotional ground. Staff that feel appreciated work much harder and will be more likely to. Go to the following [link] (https://speakerdeck.com/binarymist/how-to-increase-software-developer-productivity):
 
   * be conscientious about everything, including following organisational policy
   * remain engaged and alert
@@ -932,7 +930,7 @@ Set more than that and developers lose their focus. Developers do not respond we
 ### Employee Snatching
 ![](images/ThreatTags/PreventionDIFFICULT.png)
 
-Combative staff snatching can be attributed to the countermeasures of [Morale, Productivity and Engagement Killers](#people-countermeasures-morale-productivity-and-engagement-killers).
+Combative staff snatching can be attributed to sub-section *Morale Productivity* and Engagement Killers of *3. SSM Countermeasures* in this chapter.
 
 #### Exit Interviews
 
@@ -955,7 +953,7 @@ Defeating compromise is actually very simple, but few follow the guidelines. Tho
 
 * Good passwords should be long and complex enough that you are unable to remember them.
 * Use a mix of random, or at worst pseudorandom, alphanumeric, upper/lower case, and special characters. Get yourself a [OneRNG](http://onerng.info/) for generating true randomness.
-* Swapping characters with numbers and special characters does not really make compromise that much more difficult as we have already seen in the Identify Risks section [above](#people-identify-risks-weak-password-strategies).
+* Swapping characters with numbers and special characters does not really make compromise that much more difficult as we have already seen in the sub-section *Weak Password Strategies* of section *1.SSM Identify Risks*.
 * Use a unique password for every account.
 * Use a password database (ideally with multi-factor authentication) that generates passwords for you based on the criteria you set. This way, the profiling attacks we have mentioned are going to have a tough time brute forcing your accounts. This is such simpler and easy to implement advice, but still so many are failing to take heed.
 
@@ -989,7 +987,7 @@ Creating policy that ensures call recipients request and obtain the caller's nam
 
 Do not rely on Caller ID. It isn't trustworthy. I am not aware of any way to successfully [detect](http://www.cse.sc.edu/~mustafah/download/cid_USC_CSE_TR-2013-001.pdf) Caller ID spoofing before the call is answered.
 
-With SMS, the first line of detection is to respond to the number that was spoofed confirming any information in the initial message. This will rule out many services. Failing that, confirmation by calling the sender and recognising their voice, will go a long way. The next line of defence would be to contact them via some other means such as email, but face to face is always going to be the best. Work you way through the list of communication techniques from the [Email](#people-countermeasures-morale-productivity-and-engagement-killers-email) section above.
+With SMS, the first line of detection is to respond to the number that was spoofed confirming any information in the initial message. This will rule out many services. Failing that, confirmation by calling the sender and recognising their voice, will go a long way. The next line of defence would be to contact them via some other means such as email, but face to face is always going to be the best.Work your way through the list of communication techniques from the sub-section, *Email* of section, *SSM Countermeasures*.
 
 ### SMiShing {#people-countermeasures-smishing}
 ![](images/ThreatTags/PreventionAVERAGE.png)
@@ -1129,7 +1127,7 @@ By providing developers with the tools needed to maximise their motivation, thes
 
 ### Employee Snatching
 
-As per above, your people assets need to be guarded. This all comes back to the same thing: what comes around goes around. Treat your knowledge workers how they expect to be treated. Check the [Top Developer Motivators in Order](#people-countermeasures-morale-productivity-and-engagement-killers-top-developer-motivators-in-order) above if unsure what this means.
+As per above, your people assets need to be guarded. This all comes back to the same thing: what comes around goes around. Treat your knowledge workers how they expect to be treated. Check Top Developer Motivators in Order in sub-section, Morale, Productivity and Engagement Killers of section, SSM Countermeasures in this chapter if unsure what this means.
 
 #### Exit Interviews
 
@@ -1262,7 +1260,7 @@ There is just training and testing required here.
 
 ### SMiShing
 
-Training and testing are required here too, plus the cost of engaging the brain, always being suspicious and thinking of ways you could be outsmarted. Verify that the source number is the legitimate number you're led to believe it is. Not a big deal using the services discussed in the [Vishing Countermeasures](#people-countermeasures-phone-calls) section.
+Training and testing are required here too, plus the cost of engaging the brain, always being suspicious and thinking of ways you could be outsmarted. Verify that the source number is the legitimate number you're led to believe it is. Not a big deal using the services discussed in the sub-section  Vishing (Phone Calls) of section 3. SSM Countermeasures in this chapter.
 
 ### Favour for a Favour
 

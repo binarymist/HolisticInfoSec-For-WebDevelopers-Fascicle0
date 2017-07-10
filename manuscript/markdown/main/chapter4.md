@@ -21,7 +21,7 @@ This allows us to create effective attack strategies, including non-technical as
 
 #### Reconnaissance Forms {#process-and-practises-penetration-testing-reconnaissance-reconnaissance-forms}
 
-Information gathering can and should be done (initially) in such a way that the target does not know you are doing it (passive). However, reconnaissance can achieve "noise" levels so loud that the target *should* absolutely know you are doing it (active). Unfortunately, all too often target organisations do not notice more active assessment due to insufficient logging, monitoring, and alerting, as discussed in several of the following chapters. These activities also require that someone actually take notice, as discussed in the People chapter specific to engagement.
+Information gathering can and should be done (initially) in such a way that the target does not know you are doing it (passive). However, reconnaissance can achieve "noise" levels so loud that the target *should* absolutely know you are doing it (active). Unfortunately, all too often target organisations do not notice more active assessment due to insufficient logging, monitoring, and alerting, as discussed in several of the following chapters. These activities also require that someone actually take notice, as discussed in Chapter 5, _People_ specific to engagement.
 
 #### Passive
 
@@ -33,7 +33,7 @@ Passive reconnaissance is the phase when information gathering cannot be detecte
 
 The pen tester or attacker cannot directly probe the target, they must use third party information. Sometimes this may be out of date, so confirmation and validation are desirable, even required. This is usually not too difficult, but it takes more time than if the passive constraint was lifted, and the pen tester could probe directly.
 
-If you refer back to the diagram in the 30,000' view chapter under [Identify Risks](#starting-with-the-30000-foot-view-identify-risks-likelihood-and-impact), you will note "Your Organisation" and  indirect relationships to the "Competitor". You will see that your competitor, or attacker, has what is known as a passive or third party relationship with you via your bank, accountants, domain and/or technical consultants, professional services, telcos, ISP and any other number of intermediaries. These include social media, whois, DNS (and reverse) lookups and endless amounts of information floating available via the Internet and even our physical cities. Once you have acquired the names of the technology workers at the target organisation, you can search technology specific forums to see what sort of questions they are asking or possibly blogging about.
+If you refer back to the diagram in section, *2. SSM Identify Risks* of Chapter 1, *Starting with the 30,000' View*, you will note "Your Organisation" and  indirect relationships to the "Competitor". You will see that your competitor, or attacker, has what is known as a passive or third party relationship with you via your bank, accountants, domain and/or technical consultants, professional services, telcos, ISP and any other number of intermediaries. These include social media, whois, DNS (and reverse) lookups and endless amounts of information floating available via the Internet and even our physical cities. Once you have acquired the names of the technology workers at the target organisation, you can search technology specific forums to see what sort of questions they are asking or possibly blogging about.
 
 #### Semi-Active
 
@@ -46,7 +46,7 @@ Active reconnaissance involves interacting with the target directly, engaging in
 * Snooping physical premises.
 * Port scanning the entire range `nmap -p- <target>` and some of the aggressive nmap scanning modes shown below.
 * Spidering public facing resources. Directories and files, often public without the administrators realising it. If they ran a spidering tool against their servers they would see all the publicly accessible resources.
-* Banner grabbing and probing, which we address below under the [Service Fingerprinting](#process-and-practises-penetration-testing-reconnaissance-service-fingerprinting) section.
+* Banner grabbing and probing, which we address under the section, *Service fingerprinting* of Chapter 4, *Process and Practises*.
 
 ##### Netcat
 
@@ -78,15 +78,16 @@ Consider these uses.
 &nbsp;
 
 **Hardened Web Server**
-
 Following is an example using Nmap against a hardened target, with an SSH daemon and web server running...
 
 Using the aggressive option, `-A`, the pen tester makes a lot of noise, and any logs under even the most casual inspection by a system administrator, should clearly identify Nmap probes.
 
+Following is the `nmap` command:
 {title="nmap command", linenos=off, lang=Bash}
     # Attempt to detect hardened target OS and services running on it.
     nmap -A <target>
 
+Following is the result for the `nmap` command:
 {title="nmap result", linenos=off, lang=Bash}
     Nmap scan report for <target> (<target ip>)
     Host is up (0.0014s latency).
@@ -113,6 +114,7 @@ Using the aggressive option, `-A`, the pen tester makes a lot of noise, and any 
     Please report any incorrect results at http://nmap.org/submit/ .
     Nmap done: 1 IP address (1 host up) scanned in 35.18 seconds
 
+Following is the target system logs:
 {title="target system logs", linenos=off}
     <time> <target> sshd:  refused connect from <kali ip> (<kali ip>)
        <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - 
@@ -182,9 +184,11 @@ Using the aggressive option, `-A`, the pen tester makes a lot of noise, and any 
 
 Using the service detection option, `-sV`, the results provide almost as much information. Even with the intensity set to maximum, the pen tester makes very little noise, and if the logs are under review, the chance of missing these probes is likely. The only indicator that really stands out at all is the `sshd` auth request failure. As there are only two such references, it's likely that a system administrator wouldn't think that much of it. Without the `sshd` entries, this would fall under the Semi-Active phase mentioned above.
 
+Following is the `nmap` command:
 {title="nmap command", linenos=off, lang=Bash}
     nmap -sV --version-intensity 9 <target>
 
+Following is the result for the `nmap` command:
 {title="nmap result", linenos=off}
     Nmap scan report for <target> (<target ip>)
     Host is up (0.0061s latency).
@@ -198,6 +202,7 @@ Using the service detection option, `-sV`, the results provide almost as much in
     Service detection performed. Please report any incorrect results at http://nmap.org/submit/
     Nmap done: 1 IP address (1 host up) scanned in 17.63 seconds
 
+Following is the target system logs:
 {title="target system logs", linenos=off}
     <time> <target> sshd:  refused connect from <kali ip> (<kali ip>)
     <time> <target> <logger instance>:  [info] ::ffff:<kali ip> - - 
@@ -208,10 +213,12 @@ Using the service detection option, `-sV`, the results provide almost as much in
 
 An example of using Nmap against an un-hardened target follows. In later chapters I will discuss how to go about the hardening process. I have also provided quite a bit of information specific to hardening servers on my [blog](http://blog.binarymist.net/).
 
+Following is the `nmap` command:
 {title="nmap command", linenos=off, lang=Bash}
     # Attempt to detect un-hardened target OS and services running on it.
     nmap -A <target>
 
+Following is the result for the `nmap` command:
 {title="nmap result", linenos=off, lang=Bash}
     Starting Nmap 6.47 ( http://nmap.org ) at 2015-11-12 20:17 NZDT
     Nmap scan report for <target>
@@ -333,9 +340,11 @@ An example of using Nmap against an un-hardened target follows. In later chapter
 
 Using the service detection option, `-sV`, on the un-hardened metasploitable 2, we don't observe as much verbosity as with the `-A` flag set, but we still note quite a bit.
 
+Following is the `nmap` command:
 {title="nmap command", linenos=off}
     nmap -sV --version-intensity 9 <target>
 
+Following is the result for the `nmap` command:
 {title="nmap result", linenos=off, lang=Bash}
     Starting Nmap 6.47 ( http://nmap.org ) at 2015-11-12 19:38 NZDT
     Nmap scan report for <target>
@@ -409,7 +418,7 @@ Too many decoys will slow your scan down and often lead to less accurate results
 
 &nbsp;
 
-There are a few things to know in order to use the idle scan properly and understand resulting behaviours and consequences. An idle scan is a side-channel attack which exploits predictable IP fragmentation ID sequence generation on the decoy host to glean information about open ports on the target. This is a clever yet simple technique. Intrusion Detection Systems (IDSs) will display the scan as coming from the decoy machine you specify (which must be active within certain criteria). Check the [Additional Resources](#additional-resources-process) chapter for further details.
+There are a few things to know in order to use the idle scan properly and understand resulting behaviours and consequences. An idle scan is a side-channel attack which exploits predictable IP fragmentation ID sequence generation on the decoy host to glean information about open ports on the target. This is a clever yet simple technique. Intrusion Detection Systems (IDSs) will display the scan as coming from the decoy machine you specify (which must be active within certain criteria).Check the Appendix, Additional Resources for further details.
 
 {linenos=off, lang=Bash}
     # 1.1.1.1:1234 is the IP address and port of the decoy machine.
@@ -422,9 +431,7 @@ Adding to what we have learnt above, the simplest way to deduce the details of t
 Feel free to try the same requests against the likes of the Metasploitable 2 VM. Its legitimate HTTP protocol is 1.0
 
 ##### Depending on the Server field
-
-&nbsp;
-
+**Request**:
 {title="Request", linenos=off, lang=Bash}
     # Run netcat against your targets web server
     nc <target> 80
@@ -433,7 +440,7 @@ Feel free to try the same requests against the likes of the Metasploitable 2 VM.
     # You will probably need to hit the enter key twice.
 
 If the target is running Apache 2.2.3, you may see something resembling the following:
-
+**Response**:
 {title="Response", linenos=off, lang=HTTP}
     HTTP/1.1 400 Bad Request
     Date: Thu, 29 Oct 2015 04:44:09 GMT
@@ -443,6 +450,7 @@ If the target is running Apache 2.2.3, you may see something resembling the foll
 
 You can not rely on the Server field though as it could be obfuscated:
 
+**Response**:
 {title="Response", linenos=off, lang=HTTP}
     403 HTTP/1.1 Forbidden
     Date: Thu, 29 Oct 2015 04:44:09 GMT
@@ -451,7 +459,7 @@ You can not rely on the Server field though as it could be obfuscated:
     Content-Type: text/html; charset=iso-8859-1
 
 If your target is running an Express server, you will probably see something like:
-
+**Response**:
 {title="Response", linenos=off, lang=HTTP}
     HTTP/1.1 200 OK
     X-Powered-By: Express
@@ -463,21 +471,18 @@ If your target is running an Express server, you will probably see something lik
 
 ##### Ordering of Header Fields
 
-&nbsp;
-
 Every web server has its own specific ordering of header fields. This is usually more reliable for deducing the server type.
 
 ##### Malformed Requests
 
-&nbsp;
-
 If we try malformed requests or requests of non existent resources:
-
+**Request (not malformed)**:
 {title="Request (not malformed)", linenos=off}
     # Express is using HTTP 1.1
     nc <experss 4.0 server> 80
     GET / HTTP/1.1
 
+**Response**:
 {title="Response", linenos=off, lang=HTTP}
     HTTP/1.1 200 OK
     X-Powered-By: Express
@@ -487,14 +492,15 @@ If we try malformed requests or requests of non existent resources:
     Date: Thu, 29 Oct 2015 05:03:46 GMT
     Connection: keep-alive
     
-    # We get the page markup here.
+**Request (malformed)**:
+  # We get the page markup here.
 
 {title="Request (malformed)", linenos=off}
     nc <experss 4.0 server> 80
     GET / HTTP/3.0
 
 We receive a closed connection, but we still get the resource if there is one.
-
+**Response**:
 {title="Response", linenos=off, lang=HTTP}
     HTTP/1.1 200 OK
     X-Powered-By: Express
@@ -506,14 +512,16 @@ We receive a closed connection, but we still get the resource if there is one.
     
     # We get the page markup here.
 
-&nbsp;
+
 
 When we try an Apache server, we note that different versions exhibit different behaviour.
 
+**Request (not malformed)**
 {title="Request (not malformed)", linenos=off}
     nc <apache 2.2.3 server> 80
     GET / HTTP/1.0
 
+**Response**:
 {title="Response", linenos=off, lang=HTTP}
     HTTP/1.1 200 OK
     Date: Thu, 29 Oct 2015 05:02:03 GMT
@@ -524,10 +532,11 @@ When we try an Apache server, we note that different versions exhibit different 
     
     No Host: header seen.
 
+**Request (malformed)**:
 {title="Request (malformed)", linenos=off}
     nc <apache 2.2.3 server> 80
     GET / HTTP/1.1
-
+**Response**:
 {title="Response", linenos=off, lang=HTTP}
     HTTP/1.1 400 Bad Request
     Date: Thu, 29 Oct 2015 05:01:51 GMT
@@ -549,22 +558,20 @@ Interesting, isn't it? Every server type answers in a different manner.
 
 ##### Non-existent protocol
 
-&nbsp;
-
 If we use a non-existent protocol:
-
+**Request**:
 {title="Request", linenos=off}
     nc <express 4.0 server> 80
     GET / CATSFORDINNER/1.1
     # Express ignores cats for dinner. No response
 
-
+**Request**:
 {title="Request", linenos=off}
     nc <apache 2.2.3 server> 80
     GET / CATSFORDINNER/1.0
 
 We see Apache is `200 OK` happy to have cats for dinner.
-
+**Response**:
 {title="Response", linenos=off}
     HTTP/1.1 200 OK
     Date: Thu, 29 Oct 2015 05:12:51 GMT
@@ -585,7 +592,7 @@ Using Nmap's service detection option, `-sV`, is ideal because Nmap uses service
 
 {linenos=off}
     nmap -sV -p 22 <target>
-
+**Results**:
 {title="Results", linenos=off}
     Starting Nmap 6.40 ( http://nmap.org ) at 2015-10-29 19:46 NZDT
     Nmap scan report for <target> (<target ip>)
@@ -599,7 +606,7 @@ Typically, identifying banners are part of the released binary for a given servi
 
 {linenos=off}
     nc -v <target> 22
-
+**Results**:
 {title="Results", linenos=off}
     Connection to <target> 22 port [tcp/*] succeeded!
     SSH-2.0-OpenSSH_6.7p1 Debian-3
@@ -622,15 +629,14 @@ To view all of the currently available local Nmap scripts:
 will give you the full listing. To narrow down the listing to specifics for the scenario:
 
 {linenos=off}
-    nmap --script-help "http-waf*"
+    nmap --script-help "h   ttp-waf*"
 
 yields the following two scripts, which are very useful:
 
-1. `http-waf-detect.nse`  
-attempts to determine whether the web server is protected by an IDS, IPS or WAF
-2. `http-waf-fingerprint.nse`  
-attempts to discover the presence of a WAF, its type, and version.
+1. `http-waf-detect.nse`: This attempts to determine whether the web server is protected by an IDS, IPS or WAF
+2. `http-waf-fingerprint.nse`: This attempts to discover the presence of a WAF, its type, and version.
 
+**Run both scripts**:
 {title="Run both scripts", linenos=off}
     nmap -p80 --script "http-waf-*" <target>
 
@@ -641,6 +647,8 @@ is also an excellent tool included in Kali Linux. WAFW00F, or `wafw00f`, tests f
 "_Sends a normal HTTP request and analyses the response; this identifies a number of WAF solutions_  
 _If that is not successful, it sends a number of (potentially malicious) HTTP requests and uses simple logic to deduce which WAF it is_  
 _If that is also not successful, it analyses the responses previously returned and uses another simple algorithm to guess if a WAF or security solution is actively responding to our attacks_"
+–EnableSecurity
+
 
 #### DNS
 
@@ -781,7 +789,7 @@ is an excellent Open Source Intelligence (OSINT) tool.
 
 Discover is a collection of shell scripts to aggregate Kali Linux tools & automate various penetration testing tasks. Both passive and active options are available, allowing you to dig up a lot of information about your target long before you start trying to penetrate them. I have found both Domain and Person to be very useful.
 
-To run within Kali Linux you need to run the `/opt/discover/discover.sh` script. This is one of the additional tools we [added](#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-discover-scripts) to Kali.
+To run within Kali Linux you need to run the `/opt/discover/discover.sh` script. This is one of the additional tools we added (refer to the *Discover scripts* section in Chapter 3, *Tooling Setup*) to Kali.
 
 For example,  
 Recon -> Domain -> Passive combines:
@@ -851,9 +859,9 @@ Then type:
 
 {linenos=off}
     show modules
+You will be presented with a listing of all the modules in `/usr/share/recon-ng/modules/`:
 
-and you will be presented with a listing of all the modules in `/usr/share/recon-ng/modules/`:
-
+**recon-ng modules**:
 {title="recon-ng modules", linenos=off}
     Discovery
     ---------
@@ -1079,7 +1087,7 @@ The commands may feel a bit heavy to start with, but they are very intuitive. Sp
 
 An attacker will start to collate information, and will often feed it into a tool, or specific set of tools. If they have lots of time, which is rare, perform the same process manually. I find that the tools which have well thought out algorithms are the quickest and best way to create a short list of probable passwords to later attempt to access accounts via brute force attack.
 
-I discuss this further in the [People](#people-identify-risks-weak-password-strategies) chapter.
+I discuss this further in sub-section, *Weak Password Strategies* of section, *Identify Risks* of Chapter 6, *People*.
 
 ### Vulnerability Scanning / Discovery
 
@@ -1087,7 +1095,7 @@ In this phase an attacker directs their attention to obtaining (scanning for) we
 
 Much of the work the attacker accomplishes in the reconnaissance stage will also reveal vulnerabilities, in addition to all sorts of useful information.
 
-I am not going to spend much time in this section looking for vulnerabilities, as we do this throughout the book, especially in the Identify Risks sections of most chapters. I will list a handful of tools though that I find very useful in this stage.
+I am not going to spend much time in this section looking for vulnerabilities, as we do this throughout the book, especially in the *Identify Risks* sections of most chapters. I will list a handful of tools though that I find very useful in this stage.
 
 #### Nmap
 
@@ -1132,7 +1140,7 @@ Keep in mind that most of this scanning is quite noisy and has the potential to 
 
 ### Vulnerability Searching {#process-and-practises-penetration-testing-vulnerability-searching}
 
-The vulnerability advisories that were mentioned in the [30,000 View](#vulnerability-advisories) chapter will be covered here in a little more detail.
+The vulnerability advisories that were mentioned in Chapter 1, *Starting with the 30,000' View* will be covered here in a little more detail.
 
 By now, we should have a good idea of some of the target's weaknesses; it is time to find some exploits.
 
@@ -1171,7 +1179,7 @@ During this stage, contemplating and capturing countermeasures for vulnerabiliti
 
 Hammer your own systems and watch logs. Become familiar with the signatures and indicators of different tools and attacks, you will then know when you are actually under attack. You can take the same steps with active and semi-active reconnaissance. In this manner, you will be able to pre-empt your attacker's attempts at exploitation.
 
-We will go through actual exploitation that would be carried out by an attacker or penetration tester in each of the following chapter's Identify Risks sections.
+We will go through actual exploitation that would be carried out by an attacker or penetration tester in each of the following chapters *Identify Risks* sections.
 
 #### Isolating, Testing Potential Malware
 
@@ -1291,7 +1299,7 @@ There are many tools that can help us capture, organise, and provide physical re
 
 Software engineers often use wikis for storing and collaborating on information that is meant for the team's benefit; Dradis is a similar type of web application that stores all the information specific to what work has been completed, and what is left to be accomplished on an engagement for info-sec teams. It is self contained, and can be run from the likes of a laptop wherever you are working from.
 
-Like good wikis, Dradis provides the ability to add attachments and create reports. Dradis is included in Kali Linux, and the source code can be accessed from the dradisframework [repository](https://github.com/dradis/dradisframework) of dradis, which can be found on GitHub. There is a collection of security tools that Dradis [integrates with](https://github.com/dradis/dradisframework#some-of-the-features), and creating connectors to additional tools is stated to be easy.
+Like good wikis, Dradis provides the ability to add attachments and create reports. Dradis is included in Kali Linux, and the source code can be accessed from the 'dradisframework' [repository](https://github.com/dradis/dradisframework) of dradis, which can be found on GitHub. There is a collection of security tools that Dradis [integrates with](https://github.com/dradis/dradisframework#some-of-the-features), and creating connectors to additional tools is stated to be easy.
 
 #### CaseFile
 
@@ -1339,7 +1347,7 @@ The following table shows the average cost of fixing defects based on when they 
 
 ![](images/AverageCostOfFixingDefects.png)
 
-> This material is used with the author's permission from Code Complete, by Steve McConnell � 2004. All Rights Reserved.
+> This material is used with the author's permission from Code Complete, by Steve McConnell © 2004. All Rights Reserved.
 
 Steve McConnel goes on to say: The data in the above table "_shows that, for example, an architecture defect that costs $1000 to fix when the architecture is being created can cost $15,000 to fix during system test._" The below figure illustrates this same phenomenon.
 
@@ -1347,7 +1355,7 @@ Steve McConnel goes on to say: The data in the above table "_shows that, for exa
 
 "_The cost to fix a defect rises dramatically as the time from when it's introduced to when it's detected increases. This remains true whether the project is highly sequential (doing 100 percent of requirements and design up front) or highly iterative (doing 5 percent of requirements and design up front)._"
 
-> This material is used with the author's permission from Code Complete, by Steve McConnell � 2004. All Rights Reserved.
+> This material is used with the author's permission from Code Complete, by Steve McConnell © 2004. All Rights Reserved.
 
 ### Evil Test Conditions {#process-and-practises-agile-development-and-practices-evil-test-conditions}
 
@@ -1355,7 +1363,7 @@ Many developers will be familiar with the test condition workshop that is often 
 
 ![](images/TestCondition.png)
 
-Also consider creating evil test conditions. Often, developers do not have the mind set for this. That is why we need that "person(s) with security specialisations" within the team, as discussed right at the beginning of the 30,000' View chapter.
+Also consider creating evil test conditions. Often, developers do not have the mind set for this. That is why we need that "person(s) with security specialisations" within the team, as discussed right at the beginning of Chapter 1, Starting with the 30,000' View.
 
 ![](images/TestConditionEvil.png)
 
@@ -1382,7 +1390,7 @@ BSIMM also has some good [guidance on security testing](https://www.bsimm.com/on
 
 ### Security Regression Testing {#process-agile-development-and-practices-security-regression-testing}
 
-If you are using NodeJS, and have not already gotten your tests running as part of a CI build or pre-commit hook, check out the Consuming Free and Open Source Tooling section in [Fascicle 1](https://leanpub.com/holistic-infosec-for-web-developers-fascicle1-vps-network-cloud-webapplications) for some information on how to set this up.
+If you are using NodeJS, and have not already gotten your tests running as part of a CI build or pre-commit hook, check out the *Consuming Free* and *Open Source Tooling* section in *Holistic InfoSec For Web Developers, Part 1: VPS, Network, Cloud and Web Applications, Kim Carter, Leanpub* for some information on how to set this up.
 
 As I see it, this is one of the biggest wins you can take, with minimum expenditure. You can simply continue to use your existing automated test suites and frameworks. All you have to do is add a **security focused test API** into the mix. You can continue to use your chosen (language specific) TDD/BDD framework of choice, just proxy your existing tests through the security API. Then, simply tell the API to attack your application, targeting all known vulnerabilities that the API is aware of. The API will learn your application's external facing structure given that it has proxied all your requests and responses. The security API should already exist, all you have to do is use it.
 
@@ -1415,7 +1423,7 @@ Details on running Zap in a Docker container can be found on the [Zap wiki](http
 
 ##### NodeGoat Set-up on your local machine {#process-agile-development-and-practices-security-regression-testing-nodegoat-set-up-on-your-local-machine}
 
-The following is also addressed in the [Kali Linux Install](#tooling-setup-kali-linux-kali-linux-install) section of the Tooling Setup chapter.
+The following is also addressed in the *Kali Linux Install* section of Chapter 3, *Tooling Setup*..
 
 In VirtualBox you will need to add a Host-only Network. By default, this will be called `vboxnet0` in your VirtualBox settings. Running an `ifconfig` on the host will reveal a new network interface called `vboxnet0`. This allows guests and host to communicate with each other without anyone outside of the host network interface being able to see the communications. In this example, we set the Adapter IP address to `192.168.56.1`, an address then assigned to the host as an additional network interface.
 
@@ -1563,7 +1571,7 @@ Some developers have an inquisitiveness about how their work can be exploited, s
 1. Take the lead on the security front.
 2. Mentor; infect with their passion, and pass on their knowledge to their co-workers.
 
-I mention in the People chapter, specifically the ["Top Developer Motivators in Order"](#people-countermeasures-morale-productivity-and-engagement-killers-top-developer-motivators-in-order) section, how developers love being the champion of something. The role of the security champion or any champion for that matter, needs to be applied to the developer as a vacuum. People do not respond well to being pushed into anything. The best developers will just pick up the role, but many will not be as proactive. For less proactive developers, it pays to create the role and, as the Product Owner or manager, approach them and ask them if they would like to take on the responsibility as security champion. Once a developer has taken up this responsibility, they will usually do a pretty good job of infusing the rest of their team with their passion and knowledge.
+I mention in Chapter 6, *People*, specifically the *Top Developer Motivators in Order* section, how developers love being the champion of something. The role of the security champion or any champion for that matter, needs to be applied to the developer as a vacuum. People do not respond well to being pushed into anything. The best developers will just pick up the role, but many will not be as proactive. For less proactive developers, it pays to create the role and, as the Product Owner or manager, approach them and ask them if they would like to take on the responsibility as security champion. Once a developer has taken up this responsibility, they will usually do a pretty good job of infusing the rest of their team with their passion and knowledge.
 
 ### Pair Programming {#process-agile-development-and-practices-pair-programming}
 
@@ -1583,7 +1591,7 @@ The [BSIMM Code Review](https://www.bsimm.com/online/ssdl/cr/) resource has some
 
 #### Why? {#process-agile-development-and-practices-code-review-why}
 
-When humans are in a creative mode, we often struggle to see the defects in our own creation. That is why tightly knit teams with high morale (as discussed in the people chapter under the "Morale, Productivity and Engagement Killers" sections) are a force to be reckoned with. We are all watching each other's backs and we are good at seeing faults in others and their creations. That is why we really do need each other. Never underestimate this creative blindness that shows in us all and that we have a very powerful mitigation tool in the team. Use it.
+When humans are in a creative mode, we often struggle to see the defects in our own creation. That is why tightly knit teams with high morale (as discussed in Chapter 6, *People* under the *Morale, Productivity and Engagement Killers sections*) are a force to be reckoned with. We are all watching each other's backs and we are good at seeing faults in others and their creations. That is why we really do need each other. Never underestimate this creative blindness that shows in us all and that we have a very powerful mitigation tool in the team. Use it.
 
 #### Linting, Static Analysis
 
@@ -1628,18 +1636,19 @@ Here is an example from the Flow website.
     }
     foo('Hello, world!');
 
+**Run flow**:
 {title="Run flow", linenos=off, lang=bash}
     $> flow
     hello.js:5:5,19: string
     This type is incompatible with
       hello.js:3:10,15: number
-    
+**Refactoring to DbC**: 
 {title="Refactoring to DbC", linenos=off, lang=JavaScript}
     function foo(x: string, y: number): string {
       return x.length * y;
     }
     foo('Hello', 42);
-
+**Run flow**:
 {title="Run flow", linenos=off, lang=bash}
     $> flow
     hello.js:3:10,21: number
@@ -1674,7 +1683,7 @@ Code Monkey finishes his task much faster than Professional Developer.
 
 The Code Monkey is solely focused on completing the task as fast as possible. They cut some code and declare that the task is done. The Professional Developer thinks the problem through, does a little research to satisfy them self that their proposed approach is in fact the most appropriate approach for the problem. They organise a [test condition workshop](http://blog.binarymist.net/2012/03/24/how-to-optimise-your-testing-effort/#testConditionWorkshop), which solidifies requirements and drives out design defects via active stake holder participation. They drive there low level design with TDD, and make sure they follow [coding standards](http://blog.binarymist.net/2013/03/02/how-to-increase-software-developer-productivity/#codingStandardsAndGuidelines), thus ensuring that future maintenance to their code is easier, and much [easier to read](http://blog.binarymist.net/2009/12/24/keeping-encapsulation-on-ones-mind/).
 They ask for a pair to [review](http://blog.binarymist.net/2012/03/24/how-to-optimise-your-testing-effort/#pairReview) their code or perhaps requests a fellow team member to sit with them and [pair program](#process-agile-development-and-practices-pair-programming) for a bit on some complex areas of the code base.
-This makes sure their code is being run in the [continuous integration](http://blog.binarymist.net/2012/03/24/how-to-optimise-your-testing-effort/#continuousIntegration) suite, that their [acceptance tests](http://www.slideshare.net/kimcarter75098/moving-to-tdd-bdd) (which has been driving their feature) are passing, and that [security regression tests](#process-agile-development-and-practices-security-regression-testing) are not regressing.
+This makes sure their code is being run in the [continuous integration](http://blog.binarymist.net/2012/03/24/how-to-optimise-your-testing-effort/#continuousIntegration) suite, that their [acceptance tests](http://www.slideshare.net/kimcarter75098/moving-to-tdd-bdd) (which has been driving their feature) are passing, and that (refer to sub-section, Agile Development  of section, Security regression testing of this chapter) are not regressing.
 They check that their work complies with the [Definition of Done](http://blog.binarymist.net/2013/03/02/how-to-increase-software-developer-productivity/#definitionOfDone). You do have a Definition of Done, right?
 
 What the Product Owner or software development manager often fails to understand is that it is the slower (professional) developer that is creating code that can be maintained and extended at a sustainable pace. The Professional Developer is investing time and effort into creating a better quality of code than the Code Monkey, who appears to be producing code faster. The Product Owner and/or manager do not necessarily see this, in which case the Code Monkey clearly looks to be the superior developer. What also often occurs is that the Code Monkey rides on the Professional Developer's quality and adds their lower quality code on top, thus making the Code Monkey appear god-like.
