@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Starting with the 30,000’ View</title>
+  <link href="stylesheet.css" rel="stylesheet" />
+  <link href="external/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+<body dir="ltr" class="kramdown">
+  <div id="top-bar">
+    <div id="top-bar-content">
+        <b>Starting with the 30,000’ View</b><br>
+        <a href="toc.html">Table of contents</a><br>
+        Please support this book:
+        <a href="https://leanpub.com/holistic-infosec-for-web-developers/">buy it (PDF, EPUB, MOBI)</a>       
+    </div>
+  </div>
+</div>
+<div id="page-content" class="kramdown">
+<h2 id="starting-with-the-30000-foot-view">Starting with the 30,000’ View</h2>
+
+
+<img src="images/30000View.png" alt="" />
+
+
+
+<p>First of all, why? Why start so high? Developers spend most of their lives focusing on code, and sometimes on architectural concepts and patterns. Software developers rarely focus on anything higher than this which has the affect of causing blind spots. The reason we start so high, and encourage the developer to come back to this level every so often, is to ensure that they are actually creating good, secure code and that their priorities are correctly aligned with the needs of their business. Ironically, as is often the case, a security focus may not necessarily align with the business’ wants.</p>
+
+<p>Stepping back allows your peripheral vision to kick in.</p>
+
+<p>This stepping back process (a form of modelling), should be performed by a collection of the following people:</p>
+
+<ol class="numeric">
+  <li>Deeply technical (software expert (developer/engineer)). I specifically do not mention tester(s) here, as testing should be the job of the developer. The developer is responsible for delivering high quality working code every Sprint</li>
+  <li>Network expert(s)</li>
+  <li>Domain expert(s) </li>
+  <li>The person solely responsible for the project or product being delivered</li>
+  <li>Person(s) with security specialisations in the areas involved in the finished product</li>
+</ol>
+
+<p>You might be thinking that this team looks very familiar. It probably is, as it looks very much like a Scrum Team.</p>
+
+<p>“<em>Scrum Teams are self-organizing and <strong>cross-functional</strong>. Self-organizing teams choose how best to accomplish their work, rather than being directed by others outside the team. Cross-functional teams have <strong>all competencies needed to accomplish the work</strong> without depending on others not part of the team. The team model in Scrum is designed to optimize flexibility, creativity, and productivity.</em>”</p>
+
+<blockquote>
+  <p><a href="http://www.scrumguides.org/scrum-guide.html">Scrum Guide</a></p>
+</blockquote>
+
+<p>Performing this process as a team brings out the best in everyone. There are, of course, times when it is more effective to break out and work alone for a period of time.</p>
+
+<h3 id="starting-with-the-30000-foot-view-asset-identification">1. SSM Asset Identification</h3>
+<ul>
+  <li><a href="https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_006">Microsoft (MS) 1. Identify Assets</a></li>
+  <li><a href="https://www.owasp.org/index.php/Application_Threat_Modeling#Assets">Open Web Application Security Project (OWASP) Assets</a></li>
+</ul>
+
+<p>The first question we must ask ourselves: What are assets in the context of threat modelling? Assets are something we or our clients place value on that we are responsible for, and subsequently will want to protect from unauthorised access.</p>
+
+<p>Assets often emerge as you progress through the following steps, you will probably end up modifying this list as you go, but it is vital that you do not miss this step in your eagerness to increase security. If you do not have a good grasp on what it is that you are trying to protect, then there may be nothing, or at least little, to protect. You must have some idea of what your assets are before taking the next step. Feel free, even obligated, as you progress, to jump back and modify the list of assets. It is more than likely you will keep adding to it as you identify additional risks and work through the countermeasures of each chapter. This is commonly how the process unfolds.</p>
+
+<p>Identifying your assets is a domain-specific task, so you are the best person(s) to do this. I will help to direct your thoughts as we progress though.</p>
+
+<p>Many of the following chapters will address asset identification as the first step. Many assets will be the same for many chapters. Do not think about the assets as the be all and end all, but they are useful to keep in the forefront as you proceed through the following steps of this chapter.</p>
+
+<p>Here are some assets to consider as part of your domain:</p>
+
+<ul>
+  <li>User credentials: often stored within data stores, but also often found on the likes of post-it notes stuck to monitors or under a keyboard etc.</li>
+  <li>Identity information such as: Email addresses, physical addresses, phone numbers, birth certificates</li>
+  <li>Credit card numbers and similar</li>
+  <li>Confidential business information, could come in many forms such as email, organisation wide wikis, document storage, and be stored in many places, such as: in data stores, code, configuration files, peoples heads, peoples desks and many others</li>
+  <li>Confidential client information</li>
+  <li>Reputation: I am sure you can think of a few ways that you or your organisations reputation could be tarnished or worse</li>
+</ul>
+
+<p>Now, if you relate the potential loses with information security vectors, you will come up with a target list we can take into the next stages.</p>
+
+<h3 id="starting-with-the-30000-foot-view-identify-risks">2. SSM Identify Risks</h3>
+
+<ul>
+  <li><a href="https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_007">MS 2. Create an Architecture Overview</a></li>
+  <li><a href="https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_008">MS 3. Decompose the Application</a></li>
+  <li><a href="https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_009">MS 4. Identify the Threats</a></li>
+  <li><a href="https://www.owasp.org/index.php/Application_Threat_Modeling#Threat_Model_Information">OWASP Threat Model Information</a></li>
+  <li><a href="https://www.owasp.org/index.php/Application_Threat_Modeling#External_Dependencies">OWASP External Dependencies</a></li>
+  <li><a href="https://www.owasp.org/index.php/Application_Threat_Modeling#Entry_Points">OWASP Entry Points</a></li>
+</ul>
+
+<p>This is where we abstract things a bit and think about some of the entities that could be risky to the target business.</p>
+
+
+<img src="images/ThreatAgents.png" alt="Threat agents" />
+
+
+
+<p>Think about some of the relationships the target business takes a dependency on, and how they could be leaking intellectual property (IP).</p>
+
+
+<img src="images/LikelihoodAndImpact.png" alt="threat modelling" />
+
+
+
+<p id="ms-5-document-the-threats">
+  <a href="https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_010">MS 5. Document the Threats</a>
+</p>
+
+<p><a href="https://www.owasp.org/index.php/OWASP_Risk_Rating_Methodology">OWASP Risk Rating Methodology</a> is also useful here</p>
+
+<ul>
+  <li>Likelihood “Threat Agent Factors”
+    <ul>
+      <li>How likely are particular exploits to be carried out?</li>
+      <li>How technically skilled is each group of threat agents?</li>
+      <li>How motivated is this group of threat agents to find and exploit this vulnerability?</li>
+      <li>What resources and opportunities are required for this group of threat agents to find and exploit this vulnerability?</li>
+      <li>What sort of access can they acquire?</li>
+      <li>How large is this group of threat agents?</li>
+    </ul>
+  </li>
+  <li>Likelihood “Vulnerability Factors”
+    <ul>
+      <li>How easy is it for this group of threat agents to discover this vulnerability?</li>
+      <li>How easy is it for this group of threat agents to actually exploit this vulnerability?</li>
+      <li>How well known is this vulnerability to this group of threat agents?</li>
+      <li>How likely is an exploit to be detected?</li>
+    </ul>
+  </li>
+  <li>Impact    “Technical Factors”
+    <ul>
+      <li>What’s the impact likely to be if a particular exploit is executed?</li>
+      <li>How much data could be disclosed and how sensitive is it?</li>
+      <li>How much data could be corrupted and how damaged is it?</li>
+      <li>Which services could be lost, how vital are they and how long could they be down for?</li>
+      <li>Would you be able to trace the threat agents actions to an individual?</li>
+    </ul>
+  </li>
+  <li>Impact    “Business Factors”
+    <ul>
+      <li>What would the financial damage be to any given exploit?</li>
+      <li>Would the exploit result in reputation damage that could harm your business?</li>
+      <li>How much exposure does non-compliance introduce?</li>
+      <li>How much personally identifiable information could be disclosed?</li>
+    </ul>
+  </li>
+</ul>
+
+<p id="intel-threat-agent-library">and the <a href="https://communities.intel.com/servlet/JiveServlet/previewBody/1151-102-1-1111/Threat%20Agent%20Library_07-2202w.pdf">Intel Threat Agent Library</a></p>
+
+<h4 id="ms-6-rate-the-threats">Rating of Threats</h4>
+
+<p>How do we rate the threats we have just discovered? With a simple formula
+Based on the <a href="https://msdn.microsoft.com/en-us/library/ff648644.aspx#c03618429_011">MicroSoft 6. Rate the Threats</a></p>
+
+<aside>
+   <i class="fa fa-2x fa-info-circle sr-icons aside-icon"></i>
+   <p>Risk = Likelihood * Impact</p>
+</aside>
+
+<p>Record the risks you have identified and rank as per above formula.</p>
+
+<p>Keep your eye on the vulnerability advisories, as that is part of what an attacker or penetration tester will use to <a href="chap06.html#process-and-practises-penetration-testing-vulnerability-searching">formulate their exploits</a> for you:</p>
+
+<ul id="vulnerability-advisories">
+  <li>
+<a href="https://github.com/offensive-security/exploit-database">Exploit Database</a> from Offensive Security
+    <ul>
+      <li><a href="https://www.exploit-db.com/">Web Front-end</a></li>
+      <li>CLI (searchsploit) in Kali Linux</li>
+    </ul>
+  </li>
+  <li>SecurityFocus <a href="http://www.securityfocus.com/archive/1">BugTraq</a>
+</li>
+  <li>Rapid7 (current owner of Metasploit) also has a <a href="http://www.rapid7.com/db/modules/search">database</a>
+</li>
+  <li><a href="https://nodesecurity.io/advisories">NodeSecurity</a></li>
+  <li><a href="https://web.nvd.nist.gov/view/vuln/search">National Vulnerability Database</a></li>
+</ul>
+
+<h3 id="starting-with-the-30000-foot-view-countermeasures">3. SSM Countermeasures</h3>
+
+<p><img src="images/ProductBacklog.png" alt="Product Backlog" />
+ </p>
+
+<p>Here is where you work through collaboratively creating countermeasure Product Backlog Items (PBIs). Countermeasure PBIs are like any other PBI. PBI qualities:</p>
+
+<ul>
+  <li>Estimable</li>
+  <li>Independent</li>
+  <li>Testable</li>
+  <li>Should promote collaboration</li>
+  <li>Must fit within a Sprint by the time they are properly groomed</li>
+</ul>
+
+<p>Your countermeasure PBIs also need to reference the risk they were created in response to, thus providing context and urgency information. The PBIs need to be integrated into the Product Backlog, ordered based on the risk ratings. This way what you decide to fix first will be determined by the highest scoring risks.</p>
+
+<ul>
+  <li><a href="https://www.owasp.org/index.php/Application_Threat_Modeling#Countermeasure_Identification">OWASP Countermeasure Identification</a></li>
+  <li><a href="https://msdn.microsoft.com/en-us/library/ff648641.aspx#c02618429_005">MS STRIDE provides countermeasures to identified threats</a></li>
+  <li><a href="https://msdn.microsoft.com/en-us/library/ff648641.aspx">MS Threats and Countermeasures</a></li>
+</ul>
+
+<h3 id="starting-with-the-30000-foot-view-risks-that-solution-causes">4. SSM Risks that Solution Causes</h3>
+
+<p>This is really dependent on the solution(s) you discover. Often there will be new risks that the mitigation techniques introduce. We will work through many possibilities in the following chapters.</p>
+
+<ul>
+  <li>Make sure before you test that you have written permission for all the areas that you are about to test, documenting what could possibly go wrong</li>
+  <li>Make sure you have backups and that they work</li>
+  <li>Complacency?</li>
+  <li>Spending too much on technological solutions and ignoring the fact that the person on the front desk can easily be tricked to reveal information an attacker needs or lower the defences of a computer system. See the section on <a href="chap08.html#people">People</a>
+</li>
+</ul>
+
+<p>As we work through later chapters we will discuss many more hypothetical risks that proposed countermeasures may cause.</p>
+
+<h3 id="starting-with-the-30000-foot-view-costs-and-trade-offs">5. SSM Costs and Trade-offs</h3>
+<p>I am not here to do the work for you, but rather to help you do it.</p>
+
+<blockquote>
+  <p>“Give a man a fish and feed him for a day. Teach a man to fish and feed him for life” - Anne Isabella Ritchie.</p>
+</blockquote>
+
+<p>This, again, is really dependent on the solution(s) you discover.</p>
+
+<p>Think in terms of Counter-Measure costs - vs - Breach Costs, and weigh them against each other.</p>
+
+  <div class="next-chapter">
+     Next: <a href="chap04.html">10,000’ View and Lower</a>
+  </div>
+
+</div>
+</body>
+</html>

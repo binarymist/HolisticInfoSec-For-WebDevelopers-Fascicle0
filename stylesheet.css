@@ -11,6 +11,51 @@ div#page-content {
   
 }
 
+#top-bar {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: white;
+    border-bottom: thin solid gray;
+    overflow: auto;
+}
+#top-bar-content {
+    font-size: 10pt;
+    margin: 0px auto 0px auto;
+    padding: 7px 0px 0px 0px;
+    max-width: 600px;
+    text-align: center;
+}
+
+figcaption {
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  font-size: 10pt;
+  font-weight: bold;
+}
+
+figure.code {
+  margin-left: 0em;
+  font-size: 0.86em;
+}
+
+figure.code > figcaption {
+  text-align: left;
+}
+
+code {
+  font-size: 0.86em;
+}
+
+.threat-tags {
+  margin-top: 1.4em;
+  margin-bottom: 0.2em;
+}
+
 // Book ToC
 // ----------------------
 
@@ -19,7 +64,7 @@ div#page-content {
 }
 .toc li {
   list-style: none;
-  margin-left: 0;
+  margin-left: 0;  
   padding-left: 0;
 }
 .toc.has-parts li {
@@ -56,8 +101,51 @@ div#page-content {
   font-weight: bold;
 }
 
+
+
+#toc-cover {
+    display: block;
+    margin: 90px auto -60px auto;
+}
+ul.toc {
+    line-height: 1.4;
+}
+ul.toc > li > ul > li {
+    margin-top: 1em;
+}
+ul.toc a:link, ul.toc a:active, ul.toc a:visited {
+    text-decoration: none;
+    color: black;
+}
+ul.toc a:hover {
+    text-decoration: underline;
+}
+ul.toc > li {
+    border-top: thin solid gray;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+ul.toc {
+    border-bottom: thin solid gray;
+}
+.verso {
+    margin-top: 20px;
+}
+.next-chapter {
+    margin-top: 3em;
+    border-top: thin solid gray;
+    text-align: right;
+}
+
 /* headings */
 
+h1 { /* parts */
+    margin-top: 90px;
+}
+
+h2 { /* chapters */
+    margin-top: 90px;
+}
 
 h1#toc { text-align: left;}
 
@@ -80,7 +168,7 @@ body.kramdown h1, body.markua h1.part {
 /* Chapters */
 h1#toc, body.kramdown h2, body.markua h1.chapter {
    font-size: 1.5em;
-   margin-top: 10%;
+   margin-top: 90px;
    margin-bottom: 1em;
 }
 
@@ -129,6 +217,29 @@ span.lineno, code.lineno {
 }
 
 /* asides, warnings, etc */
+
+aside {
+  padding-top: 1.2em;
+  padding-left: 2em;
+  padding-right: 1em;
+  padding-bottom: 1.2em;
+  margin-top: 1.2em;
+  margin-bottom: 1.2em;
+  background-color: #FAFAFA;
+}
+
+div > i.aside-icon, aside > i.aside-icon {
+  float: left;
+  margin-right: 20px;
+}
+
+body.kramdown aside > i ~ h3 {
+  margin-top: 0.4em;
+}
+
+
+
+
 
 div.sidebarish h1, div.sidebarish h2, div.sidebarish h3, div.sidebarish h4 {
   margin-bottom: 0.5em;

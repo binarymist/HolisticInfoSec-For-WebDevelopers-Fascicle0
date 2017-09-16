@@ -1,0 +1,2184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>4. Process and Practises</title>
+  <link href="stylesheet.css" rel="stylesheet" />
+</head>
+<body dir="ltr" class="kramdown">
+  <div id="top-bar">
+    <div id="top-bar-content">
+        <b>4. Process and Practises</b><br>
+        <a href="toc.html">Table of contents</a><br>
+        Please support this book:
+        <a href="https://leanpub.com/holistic-infosec-for-web-developers/">buy it (PDF, EPUB, MOBI)</a>       
+    </div>
+  </div>
+</div>
+<div id="page-content" class="kramdown">
+<h2 id="process-and-practises">4. Process and Practises</h2>
+
+<p>This chapter details the common work-flow of a penetration tester, followed with tried and tested practises to augment your agile development work-flow.</p>
+
+<p>Approaching the security “problem” from a penetration tester’s point of view (red team) can be quite different than coming at it from a software developer’s point of view (blue team). The software developer’s role as a blue team member (defender) requires heightened awareness and additional perspective, some of which I’ll offer here. </p>
+
+<ul>
+  <li>The penetration tester tries to find all the faults in your system. This is not limited to the technology aspect either, as we address throughout this book</li>
+  <li>As a web developer, you are more focused on delivering a solution that makes a problem less of a problem. Often, you’re not thinking so much about what could go wrong, rather more focused on how to make it work</li>
+</ul>
+
+<p>These two disciplines can and do work in harmony together. There is a real need for improving security-related awareness for software developers, including skills and knowledge. Since this book is focused on the web developer, it is my intention to show you, as a web developer, how to take the lessons learned from the penetration tester’s perspective, and apply some of them to your own work and life. Yes, security needs to become part of who you are, and grow with you as you do. I have the advantage of working in both of these disciplines, as well as have been on some very successful Scrum teams, often as Scrum Master. This has enabled relatively easy empathy with both sides of the red/blue discussion, and the ability to take the best from one side, then apply it to the other. Both can, in fact, exist in harmony.</p>
+
+<h3 id="process-and-practises-penetration-testing">Penetration Testing</h3>
+
+<p>Following are processes and procedures commonly utilized by a penetration tester.</p>
+
+<h4 id="process-and-practises-penetration-testing-reconnaissance">Reconnaissance</h4>
+
+<p>Reconnaissance, or recon, is the act of information gathering. The quieter you can be during this phase, the less likely you will be to raise suspicions or trigger your client’s defences.<br />
+Here, we want to gather as much potentially useful information as possible for use in later phases. This is where we start to obtain information about services, and other software being used, moving from the passive to the more active techniques. We must learn as much as possible about the people who are in scope for the target organization, and how they are related to that organisation, their roles, skills, and potential level of privilege and access.<br />
+This allows us to create effective attack strategies, including non-technical aspects such as physical security and pretexts for the people we want to exploit.</p>
+
+<h5 id="process-and-practises-penetration-testing-reconnaissance-reconnaissance-forms">Reconnaissance Forms</h5>
+
+<p>Information gathering can and should be done (initially) in such a way that the target does not know you are doing it (passive). However, reconnaissance can achieve “noise” levels so loud that the target <em>should</em> absolutely know you are doing it (active). Unfortunately, all too often target organisations do not notice more active assessment due to insufficient logging, monitoring, and alerting, as discussed in several of the following chapters. These activities also require that someone actually take notice, as discussed in the People chapter specific to engagement.</p>
+
+<h5 id="leanpub-auto-passive">Passive</h5>
+
+<p>Passive reconnaissance is the phase when information gathering cannot be detected by the target. Information is gathered indirectly from the target, often from:</p>
+
+<ul>
+  <li>Sources that have had a direct relationship with the target</li>
+  <li>Social media web sites</li>
+  <li>Search engines</li>
+</ul>
+
+<p>The pen tester or attacker cannot directly probe the target, they must use third party information. Sometimes this may be out of date, so confirmation and validation are desirable, even required. This is usually not too difficult, but it takes more time than if the passive constraint was lifted, and the pen tester could probe directly.</p>
+
+<p>If you refer back to the diagram in the 30,000’ view chapter under <a href="chap03.html#starting-with-the-30000-foot-view-identify-risks-likelihood-and-impact">Identify Risks</a>, you will note “Your Organisation” and  indirect relationships to the “Competitor”. You will see that your competitor, or attacker, has what is known as a passive or third party relationship with you via your bank, accountants, domain and/or technical consultants, professional services, telcos, ISP and any other number of intermediaries. These include social media, whois, DNS (and reverse) lookups and endless amounts of information floating available via the Internet and even our physical cities. Once you have acquired the names of the technology workers at the target organisation, you can search technology specific forums to see what sort of questions they are asking or possibly blogging about.</p>
+
+<h5 id="leanpub-auto-semi-active">Semi-Active</h5>
+
+<p>Semi-active reconnaissance includes gathering information directly from the target, but in a manner that looks non-suspicious, as if it was any casual browser, passer-by, or normal Internet traffic. The <code>nmap -sV</code> example below almost fits into this form.</p>
+
+<h5 id="leanpub-auto-active">Active</h5>
+
+<p>Active reconnaissance involves interacting with the target directly, engaging in activities such as:</p>
+
+<ul>
+  <li>Snooping physical premises</li>
+  <li>Port scanning the entire range <code>nmap -p- &lt;target&gt;</code> and some of the aggressive nmap scanning modes shown below</li>
+  <li>Spidering public facing resources. Directories and files, often public without the administrators realising it. If they ran a spidering tool against their servers they would see all the publicly accessible resources</li>
+  <li>Banner grabbing and probing, which we address below under the <a href="chap06.html#process-and-practises-penetration-testing-reconnaissance-service-fingerprinting">Service Fingerprinting</a> section</li>
+</ul>
+
+<h6 id="leanpub-auto-netcat">Netcat</h6>
+
+<p> </p>
+
+<p>Netcat, the network Swiss army knife, is not nearly as configurable as a dedicated port scanner, but can be used to scan ports, as well as:</p>
+
+<ul>
+  <li>Host a web page</li>
+  <li>Send files</li>
+  <li>Poke at things to elicit responses</li>
+  <li>Listen for a reverse shell: <code>nc -l &lt;listening port&gt;</code>
+</li>
+  <li>So many other uses…</li>
+</ul>
+
+<p>Consider these uses.</p>
+
+<figure class="code">
+<div class="highlight"><pre><code></code><code class="c1"># -z is the argument to instruct for a port scan.</code>
+<code class="c1"># 1-1000 is the port range</code>
+<code class="c1"># -r randomises the order of port scans to make it a little less obvious</code>
+<code class="c1"># -w 1 instructs nc to wait 1 second for a response to each port.</code>
+nc -v -r -w <code class="m">1</code> -z &lt;target&gt; <code class="m">1</code>-1000
+
+<code class="c1"># This won't conceal the attacker's IP address.</code>
+<code class="c1"># For example: sshd logs will show a failed attempt from specific IP address.</code>
+<code class="c1"># Netcat is a rather blunt tool for port scanning.</code>
+</pre></div>
+
+</figure>
+
+<h6 id="leanpub-auto-nmap">Nmap</h6>
+
+<p> </p>
+
+<p>
+  <strong>Hardened Web Server</strong>
+</p>
+
+<p>Following is an example using Nmap against a hardened target, with an SSH daemon and web server running…</p>
+
+<p>Using the aggressive option, <code>-A</code>, the pen tester makes a lot of noise, and any logs under even the most casual inspection by a system administrator, should clearly identify Nmap probes.</p>
+
+<figure class="code">
+  <figcaption>nmap command</figcaption>
+
+<div class="highlight"><pre><code></code><code class="c1"># Attempt to detect hardened target OS and services running on it.</code>
+nmap -A &lt;target&gt;
+</pre></div>
+
+</figure>
+
+<figure class="code">
+  <figcaption>nmap result</figcaption>
+
+<div class="highlight"><pre><code></code>Nmap scan report <code class="k">for</code> &lt;target&gt; <code class="o">(</code>&lt;target ip&gt;<code class="o">)</code>
+Host is up <code class="o">(</code><code class="m">0</code>.0014s latency<code class="o">)</code>.
+rDNS record <code class="k">for</code> &lt;target ip&gt;: &lt;target&gt;
+Not shown: <code class="m">997</code> closed ports
+PORT     STATE    SERVICE    VERSION
+<code class="m">23</code>/tcp   filtered telnet
+<code class="m">22</code>/tcp  open     tcpwrapped
+<code class="m">2000</code>/tcp open     http       Node.js <code class="o">(</code>Express middleware<code class="o">)</code>
+<code class="p">|</code>_http-title: title
+No exact OS matches <code class="k">for</code> host
+<code class="o">(</code>If you know what OS is running on it, see http://nmap.org/submit/ <code class="o">)</code>.
+TCP/IP fingerprint:
+<code class="c1"># Some more info that isn't really helpful</code>
+
+Network Distance: <code class="m">2</code> hops
+
+TRACEROUTE <code class="o">(</code>using port <code class="m">139</code>/tcp<code class="o">)</code>
+HOP RTT     ADDRESS
+<code class="m">1</code>   <code class="m">2</code>.58 ms &lt;target router&gt; <code class="o">(</code>&lt;target router ip&gt;<code class="o">)</code>
+<code class="m">2</code>   <code class="m">1</code>.79 ms &lt;target&gt; <code class="o">(</code>&lt;target ip&gt;<code class="o">)</code>
+
+OS and Service detection performed.
+Please report any incorrect results at http://nmap.org/submit/ .
+Nmap <code class="k">done</code>: <code class="m">1</code> IP address <code class="o">(</code><code class="m">1</code> host up<code class="o">)</code> scanned in <code class="m">35</code>.18 seconds
+</pre></div>
+
+</figure>
+
+<figure class="code">
+  <figcaption>target system logs</figcaption>
+
+<div class="highlight"><pre><code></code>&lt;time&gt; &lt;target&gt; sshd:  refused connect from &lt;kali ip&gt; (&lt;kali ip&gt;)
+   &lt;time&gt; &lt;target&gt; &lt;logger instance&gt;:  [info] ::ffff:&lt;kali ip&gt; - - 
+   [&lt;time&gt;] "OPTIONS / HTTP/1.1" 200 8 "-" 
+   "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+&lt;time&gt; &lt;target&gt; &lt;logger instance&gt;:  [info] ::ffff:&lt;kali ip&gt; - - 
+   [&lt;time&gt;] "GET / HTTP/1.1" 200 56328 "-" 
+   "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+&lt;time&gt; &lt;target&gt; &lt;logger instance&gt;:  [info] ::ffff:&lt;kali ip&gt; - - 
+   [&lt;time&gt;] "OPTIONS / HTTP/1.1" 200 8 "-" 
+   "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+&lt;time&gt; &lt;target&gt; &lt;logger instance&gt;:  [info] ::ffff:&lt;kali ip&gt; - - 
+   [&lt;time&gt;] "GET /master.jsp HTTP/1.1" 404 23 "-" 
+   "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+&lt;time&gt; &lt;target&gt; &lt;logger instance&gt;:  [info] ::ffff:&lt;kali ip&gt; - - 
+   [&lt;time&gt;] "GET /flumemaster.jsp HTTP/1.1" 404 28 "-" 
+   "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+&lt;time&gt; &lt;target&gt; &lt;logger instance&gt;:  [info] ::ffff:&lt;kali ip&gt; - - 
+   [&lt;time&gt;] "GET /tasktracker.jsp HTTP/1.1" 404 28 "-" 
+   "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+&lt;time&gt; &lt;target&gt; &lt;logger instance&gt;:  [info] ::ffff:&lt;kali ip&gt; - - 
+   [&lt;time&gt;] "GET /dfshealth.jsp HTTP/1.1" 404 26 "-" 
+   "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+&lt;time&gt; &lt;target&gt; &lt;logger instance&gt;:  [info] ::ffff:&lt;kali ip&gt; - - 
+   [&lt;time&gt;] "GET /jobtracker.jsp HTTP/1.1" 404 27 "-" 
+   "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+&lt;time&gt; &lt;target&gt; &lt;logger instance&gt;:  [info] ::ffff:&lt;kali ip&gt; - - 
+   [&lt;time&gt;] "GET /robots.txt HTTP/1.1" 404 23 "-" 
+   "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+&lt;time&gt; &lt;target&gt; &lt;logger instance&gt;:  [info] ::ffff:&lt;kali ip&gt; - - 
+   [&lt;time&gt;] "GET /status.jsp HTTP/1.1" 404 23 "-" 
+   "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+&lt;time&gt; &lt;target&gt; &lt;logger instance&gt;:  [info] ::ffff:&lt;kali ip&gt; - - 
+   [&lt;time&gt;] "GET /rs-status HTTP/1.1" 404 22 "-" 
+   "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+&lt;time&gt; &lt;target&gt; &lt;logger instance&gt;:  [info] ::ffff:&lt;kali ip&gt; - - 
+   [&lt;time&gt;] "GET /.git/HEAD HTTP/1.1" 404 22 "-" 
+   "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+&lt;time&gt; &lt;target&gt; &lt;logger instance&gt;:  [info] ::ffff:&lt;kali ip&gt; - - 
+   [&lt;time&gt;] "GET /browseDirectory.jsp HTTP/1.1" 404 32 "-" 
+   "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+&lt;time&gt; &lt;target&gt; &lt;logger instance&gt;:  [info] ::ffff:&lt;kali ip&gt; - - 
+   [&lt;time&gt;] "OPTIONS / HTTP/1.1" 200 8 "-" 
+   "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+&lt;time&gt; &lt;target&gt; &lt;logger instance&gt;:  [info] ::ffff:&lt;kali ip&gt; - - 
+   [&lt;time&gt;] "OPTIONS / HTTP/1.1" 200 8 "-" 
+   "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+&lt;time&gt; &lt;target&gt; &lt;logger instance&gt;:  [info] ::ffff:&lt;kali ip&gt; - - 
+   [&lt;time&gt;] "OPTIONS / HTTP/1.1" 200 8 "-" 
+   "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+&lt;time&gt; &lt;target&gt; &lt;logger instance&gt;:  [info] ::ffff:&lt;kali ip&gt; - - 
+   [&lt;time&gt;] "OPTIONS / HTTP/1.1" 200 8 "-" 
+   "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+&lt;time&gt; &lt;target&gt; &lt;logger instance&gt;:  [info] ::ffff:&lt;kali ip&gt; - - 
+   [&lt;time&gt;] "OPTIONS / HTTP/1.1" 200 8 "-" 
+   "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+&lt;time&gt; &lt;target&gt; &lt;logger instance&gt;:  [info] ::ffff:&lt;kali ip&gt; - - 
+   [&lt;time&gt;] "OPTIONS / HTTP/1.1" 200 8 "-" 
+   "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+&lt;time&gt; &lt;target&gt; &lt;logger instance&gt;:  [info] ::ffff:&lt;kali ip&gt; - - 
+   [&lt;time&gt;] "OPTIONS / HTTP/1.1" 200 8 "-" 
+   "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+&lt;time&gt; &lt;target&gt; &lt;logger instance&gt;:  [info] ::ffff:&lt;kali ip&gt; - - 
+   [&lt;time&gt;] "OPTIONS / HTTP/1.1" 200 8 "-" 
+   "Mozilla/5.0 (compatible; Nmap Scripting Engine; http://nmap.org/book/nse.html)"
+&lt;time&gt; &lt;target&gt; sshd:  refused connect from &lt;kali ip&gt; (&lt;kali ip&gt;)
+</pre></div>
+
+</figure>
+
+<p>Using the service detection option, <code>-sV</code>, the results provide almost as much information. Even with the intensity set to maximum, the pen tester makes very little noise, and if the logs are under review, the chance of missing these probes is likely. The only indicator that really stands out at all is the <code>sshd</code> auth request failure. As there are only two such references, it’s likely that a system administrator wouldn’t think that much of it. Without the <code>sshd</code> entries, this would fall under the Semi-Active phase mentioned above.</p>
+
+<figure class="code">
+  <figcaption>nmap command</figcaption>
+
+<div class="highlight"><pre><code></code>nmap -sV --version-intensity <code class="m">9</code> &lt;target&gt;
+</pre></div>
+
+</figure>
+
+<figure class="code">
+  <figcaption>nmap result</figcaption>
+
+<div class="highlight"><pre><code></code>Nmap scan report for &lt;target&gt; (&lt;target ip&gt;)
+Host is up (0.0061s latency).
+rDNS record for &lt;target ip&gt;: &lt;target&gt;
+Not shown: 997 closed ports
+PORT     STATE    SERVICE    VERSION
+23/tcp   filtered telnet
+22/tcp  open     tcpwrapped
+2000/tcp open     http       Node.js (Express middleware)
+
+Service detection performed. Please report any incorrect results at http://nmap.org/submit/
+Nmap done: 1 IP address (1 host up) scanned in 17.63 seconds
+</pre></div>
+
+</figure>
+
+<figure class="code">
+  <figcaption>target system logs</figcaption>
+
+<div class="highlight"><pre><code></code>&lt;time&gt; &lt;target&gt; sshd:  refused connect from &lt;kali ip&gt; (&lt;kali ip&gt;)
+&lt;time&gt; &lt;target&gt; &lt;logger instance&gt;:  [info] ::ffff:&lt;kali ip&gt; - - 
+   &lt;time&gt; "GET / HTTP/1.0" 200 56328 "-" "-"
+&lt;time&gt; &lt;target&gt; sshd:  refused connect from &lt;kali ip&gt; (&lt;kali ip&gt;)
+</pre></div>
+
+</figure>
+
+<p>
+  <strong>Metasploitable 2</strong>
+</p>
+
+<p>An example of using Nmap against an un-hardened target follows. In later chapters I will discuss how to go about the hardening process. I have also provided quite a bit of information specific to hardening servers on my <a href="http://blog.binarymist.net/">blog</a>.</p>
+
+<figure class="code">
+  <figcaption>nmap command</figcaption>
+
+<div class="highlight"><pre><code></code><code class="c1"># Attempt to detect un-hardened target OS and services running on it.</code>
+nmap -A &lt;target&gt;
+</pre></div>
+
+</figure>
+
+<figure class="code">
+  <figcaption>nmap result</figcaption>
+
+<div class="highlight"><pre><code></code>Starting Nmap <code class="m">6</code>.47 <code class="o">(</code> http://nmap.org <code class="o">)</code> at <code class="m">2015</code>-11-12 <code class="m">20</code>:17 NZDT
+Nmap scan report <code class="k">for</code> &lt;target&gt;
+Host is up <code class="o">(</code><code class="m">0</code>.00067s latency<code class="o">)</code>.
+Not shown: <code class="m">977</code> closed ports
+PORT     STATE SERVICE     VERSION
+<code class="m">21</code>/tcp   open  ftp         vsftpd <code class="m">2</code>.3.4
+<code class="p">|</code>_ftp-anon: Anonymous FTP login allowed <code class="o">(</code>FTP code <code class="m">230</code><code class="o">)</code>
+<code class="m">22</code>/tcp   open  ssh         OpenSSH <code class="m">4</code>.7p1 Debian 8ubuntu1 <code class="o">(</code>protocol <code class="m">2</code>.0<code class="o">)</code>
+<code class="p">|</code> ssh-hostkey: 
+<code class="p">|</code>   <code class="m">1024</code> <code class="m">60</code>:0f:cf:e1:c0:5f:6a:74:d6:90:24:fa:c4:d5:6c:cd <code class="o">(</code>DSA<code class="o">)</code>
+<code class="p">|</code>_  <code class="m">2048</code> <code class="m">56</code>:56:24:0f:21:1d:de:a7:2b:ae:61:b1:24:3d:e8:f3 <code class="o">(</code>RSA<code class="o">)</code>
+<code class="m">23</code>/tcp   open  telnet      Linux telnetd
+<code class="m">25</code>/tcp   open  smtp        Postfix smtpd
+<code class="p">|</code>_smtp-commands: metasploitable.localdomain, PIPELINING, SIZE <code class="m">10240000</code>, VRFY, ETRN, STARTTLS,<code class="se">\</code>
+ ENHANCEDSTATUSCODES, 8BITMIME, DSN, 
+<code class="p">|</code> ssl-cert: Subject: <code class="nv">commonName</code><code class="o">=</code>ubuntu804-base.localdomain/organizationName<code class="o">=</code>OCOSA/stateOrProv<code class="se">\</code>
+<code class="nv">inceName</code><code class="o">=</code>There is no such thing outside US/countryName<code class="o">=</code>XX
+<code class="p">|</code> Not valid before: <code class="m">2010</code>-03-17T13:07:45+00:00
+<code class="p">|</code>_Not valid after:  <code class="m">2010</code>-04-16T14:07:45+00:00
+<code class="p">|</code>_ssl-date: <code class="m">2015</code>-11-12T07:17:50+00:00<code class="p">;</code> -2s from <code class="nb">local</code> time.
+<code class="m">53</code>/tcp   open  domain      ISC BIND <code class="m">9</code>.4.2
+<code class="p">|</code> dns-nsid: 
+<code class="p">|</code>_  bind.version: <code class="m">9</code>.4.2
+<code class="m">80</code>/tcp   open  http        Apache httpd <code class="m">2</code>.2.8 <code class="o">((</code>Ubuntu<code class="o">)</code> DAV/2<code class="o">)</code>
+<code class="p">|</code>_http-methods: No Allow or Public header in OPTIONS response <code class="o">(</code>status code <code class="m">200</code><code class="o">)</code>
+<code class="p">|</code>_http-title: Metasploitable2 - Linux
+<code class="m">111</code>/tcp  open  rpcbind     <code class="m">2</code> <code class="o">(</code>RPC <code class="c1">#100000)</code>
+<code class="p">|</code> rpcinfo: 
+<code class="p">|</code>   program version   port/proto  service
+<code class="p">|</code>   <code class="m">100000</code>  <code class="m">2</code>            <code class="m">111</code>/tcp  rpcbind
+<code class="p">|</code>   <code class="m">100000</code>  <code class="m">2</code>            <code class="m">111</code>/udp  rpcbind
+<code class="p">|</code>   <code class="m">100003</code>  <code class="m">2</code>,3,4       <code class="m">2049</code>/tcp  nfs
+<code class="p">|</code>   <code class="m">100003</code>  <code class="m">2</code>,3,4       <code class="m">2049</code>/udp  nfs
+<code class="p">|</code>   <code class="m">100005</code>  <code class="m">1</code>,2,3      <code class="m">37486</code>/udp  mountd
+<code class="p">|</code>   <code class="m">100005</code>  <code class="m">1</code>,2,3      <code class="m">52274</code>/tcp  mountd
+<code class="p">|</code>   <code class="m">100021</code>  <code class="m">1</code>,3,4      <code class="m">48376</code>/tcp  nlockmgr
+<code class="p">|</code>   <code class="m">100021</code>  <code class="m">1</code>,3,4      <code class="m">53826</code>/udp  nlockmgr
+<code class="p">|</code>   <code class="m">100024</code>  <code class="m">1</code>          <code class="m">36762</code>/tcp  status
+<code class="p">|</code>_  <code class="m">100024</code>  <code class="m">1</code>          <code class="m">45387</code>/udp  status
+<code class="m">139</code>/tcp  open  netbios-ssn Samba smbd <code class="m">3</code>.X <code class="o">(</code>workgroup: WORKGROUP<code class="o">)</code>
+<code class="m">445</code>/tcp  open  netbios-ssn Samba smbd <code class="m">3</code>.X <code class="o">(</code>workgroup: WORKGROUP<code class="o">)</code>
+<code class="m">512</code>/tcp  open  <code class="nb">exec</code>        netkit-rsh rexecd
+<code class="m">513</code>/tcp  open  login?
+<code class="m">514</code>/tcp  open  shell?
+<code class="m">1099</code>/tcp open  java-rmi    Java RMI Registry
+<code class="m">1524</code>/tcp open  shell       Metasploitable root shell
+<code class="m">2049</code>/tcp open  nfs         <code class="m">2</code>-4 <code class="o">(</code>RPC <code class="c1">#100003)</code>
+<code class="p">|</code> rpcinfo: 
+<code class="p">|</code>   program version   port/proto  service
+<code class="p">|</code>   <code class="m">100000</code>  <code class="m">2</code>            <code class="m">111</code>/tcp  rpcbind
+<code class="p">|</code>   <code class="m">100000</code>  <code class="m">2</code>            <code class="m">111</code>/udp  rpcbind
+<code class="p">|</code>   <code class="m">100003</code>  <code class="m">2</code>,3,4       <code class="m">2049</code>/tcp  nfs
+<code class="p">|</code>   <code class="m">100003</code>  <code class="m">2</code>,3,4       <code class="m">2049</code>/udp  nfs
+<code class="p">|</code>   <code class="m">100005</code>  <code class="m">1</code>,2,3      <code class="m">37486</code>/udp  mountd
+<code class="p">|</code>   <code class="m">100005</code>  <code class="m">1</code>,2,3      <code class="m">52274</code>/tcp  mountd
+<code class="p">|</code>   <code class="m">100021</code>  <code class="m">1</code>,3,4      <code class="m">48376</code>/tcp  nlockmgr
+<code class="p">|</code>   <code class="m">100021</code>  <code class="m">1</code>,3,4      <code class="m">53826</code>/udp  nlockmgr
+<code class="p">|</code>   <code class="m">100024</code>  <code class="m">1</code>          <code class="m">36762</code>/tcp  status
+<code class="p">|</code>_  <code class="m">100024</code>  <code class="m">1</code>          <code class="m">45387</code>/udp  status
+<code class="m">2121</code>/tcp open  ftp         ProFTPD <code class="m">1</code>.3.1
+<code class="m">3306</code>/tcp open  mysql       MySQL <code class="m">5</code>.0.51a-3ubuntu5
+<code class="p">|</code> mysql-info: 
+<code class="p">|</code>   Protocol: <code class="m">53</code>
+<code class="p">|</code>   Version: .0.51a-3ubuntu5
+<code class="p">|</code>   Thread ID: <code class="m">24</code>
+<code class="p">|</code>   Capabilities flags: <code class="m">43564</code>
+<code class="p">|</code>   Some Capabilities: SupportsTransactions, Support41Auth, LongColumnFlag, SwitchToSSLAfterH<code class="se">\</code>
+andshake, Speaks41ProtocolNew, ConnectWithDatabase, SupportsCompression
+<code class="p">|</code>   Status: Autocommit
+<code class="p">|</code>_  Salt: mA<code class="p">;</code>F+EZtW9V%ST-!<code class="o">]</code><code class="m">1</code><code class="o">{</code><code class="p">;</code>
+<code class="m">5432</code>/tcp open  postgresql  PostgreSQL DB <code class="m">8</code>.3.0 - <code class="m">8</code>.3.7
+<code class="m">5900</code>/tcp open  vnc         VNC <code class="o">(</code>protocol <code class="m">3</code>.3<code class="o">)</code>
+<code class="p">|</code> vnc-info: 
+<code class="p">|</code>   Protocol version: <code class="m">3</code>.3
+<code class="p">|</code>   Security types: 
+<code class="p">|</code>_    Unknown security <code class="nb">type</code> <code class="o">(</code><code class="m">33554432</code><code class="o">)</code>
+<code class="m">6000</code>/tcp open  X11         <code class="o">(</code>access denied<code class="o">)</code>
+<code class="m">6667</code>/tcp open  irc         Unreal ircd
+<code class="p">|</code> irc-info: 
+<code class="p">|</code>   server: irc.Metasploitable.LAN
+<code class="p">|</code>   version: Unreal3.2.8.1. irc.Metasploitable.LAN 
+<code class="p">|</code>   servers: <code class="m">1</code>
+<code class="p">|</code>   users: <code class="m">1</code>
+<code class="p">|</code>   lservers: <code class="m">0</code>
+<code class="p">|</code>   lusers: <code class="m">1</code>
+<code class="p">|</code>   uptime: <code class="m">0</code> days, <code class="m">2</code>:03:56
+<code class="p">|</code>   <code class="nb">source</code> host: 3C9CF97E.97684684.FFFA6D49.IP
+<code class="p">|</code>_  <code class="nb">source</code> ident: nmap
+<code class="m">8009</code>/tcp open  ajp13       Apache Jserv <code class="o">(</code>Protocol v1.3<code class="o">)</code>
+<code class="p">|</code>_ajp-methods: Failed to get a valid response <code class="k">for</code> the OPTION request
+<code class="m">8180</code>/tcp open  http        Apache Tomcat/Coyote JSP engine <code class="m">1</code>.1
+<code class="p">|</code>_http-favicon: Apache Tomcat
+<code class="p">|</code>_http-methods: No Allow or Public header in OPTIONS response <code class="o">(</code>status code <code class="m">200</code><code class="o">)</code>
+<code class="p">|</code>_http-title: Apache Tomcat/5.5
+<code class="m">1</code> service unrecognized despite returning data. If you know the service/version, please submit<code class="se">\</code>
+ the following fingerprint at http://www.insecure.org/cgi-bin/servicefp-submit.cgi :
+SF-Port514-TCP:V<code class="o">=</code><code class="m">6</code>.47%I<code class="o">=</code><code class="m">7</code>%D<code class="o">=</code><code class="m">11</code>/12%Time<code class="o">=</code>56443D13%P<code class="o">=</code>x86_64-unknown-linux-gnu
+SF:%r<code class="o">(</code>NULL,33,<code class="s2">"\x01getnameinfo:\x20Temporary\x20failure\x20in\x20name\x20r</code>
+<code class="s2">SF:esolution\n"</code><code class="o">)</code><code class="p">;</code>
+MAC Address: <code class="m">08</code>:00:27:24:2B:3F <code class="o">(</code>Cadmus Computer Systems<code class="o">)</code>
+Device type: general purpose
+Running: Linux <code class="m">2</code>.6.X
+OS CPE: cpe:/o:linux:linux_kernel:2.6
+OS details: Linux <code class="m">2</code>.6.9 - <code class="m">2</code>.6.33
+Network Distance: <code class="m">1</code> hop
+Service Info: Hosts:  metasploitable.localdomain, localhost, irc.Metasploitable.LAN<code class="p">;</code> OSs: Uni<code class="se">\</code>
+x, Linux<code class="p">;</code> CPE: cpe:/o:linux:linux_kernel
+
+Host script results:
+<code class="p">|</code>_nbstat: NetBIOS name: METASPLOITABLE, NetBIOS user: &lt;unknown&gt;, NetBIOS MAC: &lt;unknown&gt; <code class="o">(</code>unkn<code class="se">\</code>
+own<code class="o">)</code>
+<code class="p">|</code> smb-os-discovery: 
+<code class="p">|</code>   OS: Unix <code class="o">(</code>Samba <code class="m">3</code>.0.20-Debian<code class="o">)</code>
+<code class="p">|</code>   NetBIOS computer name: 
+<code class="p">|</code>   Workgroup: WORKGROUP
+<code class="p">|</code>_  System time: <code class="m">2015</code>-11-12T02:17:49-05:00
+
+TRACEROUTE
+HOP RTT     ADDRESS
+<code class="m">1</code>   <code class="m">0</code>.67 ms &lt;target&gt;
+
+OS and Service detection performed. Please report any incorrect results at http://nmap.org/su<code class="se">\</code>
+bmit/ .
+Nmap <code class="k">done</code>: <code class="m">1</code> IP address <code class="o">(</code><code class="m">1</code> host up<code class="o">)</code> scanned in <code class="m">44</code>.27 seconds
+</pre></div>
+
+</figure>
+
+<p>Using the service detection option, <code>-sV</code>, on the un-hardened metasploitable 2, we don’t observe as much verbosity as with the <code>-A</code> flag set, but we still note quite a bit.</p>
+
+<figure class="code">
+  <figcaption>nmap command</figcaption>
+
+<div class="highlight"><pre><code></code>nmap -sV --version-intensity 9 &lt;target&gt;
+</pre></div>
+
+</figure>
+
+<figure class="code">
+  <figcaption>nmap result</figcaption>
+
+<div class="highlight"><pre><code></code>Starting Nmap <code class="m">6</code>.47 <code class="o">(</code> http://nmap.org <code class="o">)</code> at <code class="m">2015</code>-11-12 <code class="m">19</code>:38 NZDT
+Nmap scan report <code class="k">for</code> &lt;target&gt;
+Host is up <code class="o">(</code><code class="m">0</code>.000085s latency<code class="o">)</code>.
+Not shown: <code class="m">977</code> closed ports
+PORT     STATE SERVICE     VERSION
+<code class="m">21</code>/tcp   open  ftp         vsftpd <code class="m">2</code>.3.4
+<code class="m">22</code>/tcp   open  ssh         OpenSSH <code class="m">4</code>.7p1 Debian 8ubuntu1 <code class="o">(</code>protocol <code class="m">2</code>.0<code class="o">)</code>
+<code class="m">23</code>/tcp   open  telnet      Linux telnetd
+<code class="m">25</code>/tcp   open  smtp        Postfix smtpd
+<code class="m">53</code>/tcp   open  domain      ISC BIND <code class="m">9</code>.4.2
+<code class="m">80</code>/tcp   open  http        Apache httpd <code class="m">2</code>.2.8 <code class="o">((</code>Ubuntu<code class="o">)</code> DAV/2<code class="o">)</code>
+<code class="m">111</code>/tcp  open  rpcbind     <code class="m">2</code> <code class="o">(</code>RPC <code class="c1">#100000)</code>
+<code class="m">139</code>/tcp  open  netbios-ssn Samba smbd <code class="m">3</code>.X <code class="o">(</code>workgroup: WORKGROUP<code class="o">)</code>
+<code class="m">445</code>/tcp  open  netbios-ssn Samba smbd <code class="m">3</code>.X <code class="o">(</code>workgroup: WORKGROUP<code class="o">)</code>
+<code class="m">512</code>/tcp  open  <code class="nb">exec</code>        netkit-rsh rexecd
+<code class="m">513</code>/tcp  open  login?
+<code class="m">514</code>/tcp  open  shell?
+<code class="m">1099</code>/tcp open  rmiregistry GNU Classpath grmiregistry
+<code class="m">1524</code>/tcp open  shell       Metasploitable root shell
+<code class="m">2049</code>/tcp open  nfs         <code class="m">2</code>-4 <code class="o">(</code>RPC <code class="c1">#100003)</code>
+<code class="m">2121</code>/tcp open  ftp         ProFTPD <code class="m">1</code>.3.1
+<code class="m">3306</code>/tcp open  mysql       MySQL <code class="m">5</code>.0.51a-3ubuntu5
+<code class="m">5432</code>/tcp open  postgresql  PostgreSQL DB <code class="m">8</code>.3.0 - <code class="m">8</code>.3.7
+<code class="m">5900</code>/tcp open  vnc         VNC <code class="o">(</code>protocol <code class="m">3</code>.3<code class="o">)</code>
+<code class="m">6000</code>/tcp open  X11         <code class="o">(</code>access denied<code class="o">)</code>
+<code class="m">6667</code>/tcp open  irc         Unreal ircd
+<code class="m">8009</code>/tcp open  ajp13       Apache Jserv <code class="o">(</code>Protocol v1.3<code class="o">)</code>
+<code class="m">8180</code>/tcp open  http        Apache Tomcat/Coyote JSP engine <code class="m">1</code>.1
+<code class="m">1</code> service unrecognized despite returning data. If you know the service/version, please submit<code class="se">\</code>
+ the following fingerprint at http://www.insecure.org/cgi-bin/servicefp-submit.cgi :
+SF-Port514-TCP:V<code class="o">=</code><code class="m">6</code>.47%I<code class="o">=</code><code class="m">9</code>%D<code class="o">=</code><code class="m">11</code>/12%Time<code class="o">=</code>564433FA%P<code class="o">=</code>x86_64-unknown-linux-gnu
+SF:%r<code class="o">(</code>NULL,33,<code class="s2">"\x01getnameinfo:\x20Temporary\x20failure\x20in\x20name\x20r</code>
+<code class="s2">SF:esolution\n"</code><code class="o">)</code><code class="p">;</code>
+MAC Address: <code class="m">08</code>:00:27:24:2B:3F <code class="o">(</code>Cadmus Computer Systems<code class="o">)</code>
+Service Info: Hosts:  metasploitable.localdomain, localhost, irc.Metasploitable.LAN<code class="p">;</code> OSs: Uni<code class="se">\</code>
+x, Linux<code class="p">;</code> CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at http://nmap.org/submit/ .
+Nmap <code class="k">done</code>: <code class="m">1</code> IP address <code class="o">(</code><code class="m">1</code> host up<code class="o">)</code> scanned in <code class="m">11</code>.47 seconds
+</pre></div>
+
+</figure>
+
+<p> </p>
+
+<p>Unless you put a lot of work into hardening a system, it will respond with a lot of information, which is of excellent use to attackers. Most WWW web servers produce information about themselves that looks like a mix between these two systems.</p>
+
+<p>NMap and the NSE scripting engine are a very powerful tool-set for information gathering, from passive to active phases. There are many scripts available, and it’s easy to assess their functionality using the <code>--script-help</code> option.</p>
+
+<h5 id="process-and-practises-penetration-testing-reconnaissance-concealing-nmap-source-ip-address">Concealing NMap Source IP Address</h5>
+
+<p>An attacker will often attempt to conceal their source IP address during an Nmap port scan with the likes of:</p>
+
+<h6 id="leanpub-auto-decoy-host--d">Decoy host <code>-D</code>
+</h6>
+
+<p> </p>
+
+<p>This makes it appear to the target that the scans are coming from decoy hosts. You can optionally use <code>ME</code> as one of the decoys to represent your/the attackers address. Putting <code>ME</code> in the sixth position or later will cause some common port scan detectors such as Scanlogd to miss your IP address entirely. You can also use <code>RND</code> to generate a random non-reserved IP address. For more details check the man page.</p>
+
+<p>You probably want to make sure that the hosts you use as fakes/decoys are actually up and answering, otherwise you may <code>SYN</code> flood your target(s). There will be no <code>RST</code> flag sent to the target being scanned from the decoy, thus keeping the connection open. As Nmap continues to send more requests to the target using decoy IP address as the source, the target will maintain a growing list of open connections.</p>
+
+<aside>
+  <p>The <code>RST</code> (TCP reset) flag used to be sent to indicate  that a session be terminated due to problems. In more recent years, the <code>RST</code> flag has been used to terminate sessions, instead of <code>FIN</code>-&gt; &lt;-<code>ACK</code>, &lt;-<code>FIN</code> <code>ACK</code>-&gt;  because it is faster, and releases stack resources immediately.</p>
+
+</aside>
+
+<p>When the decoy receives &lt;-<code>SYN</code> <code>ACK</code>-&gt; it responds with TCP reset, the target then knows the connection is finished and releases its resources.</p>
+
+<p>It is relatively obvious which IP address the attack is coming from if the decoy hosts are not actually active.</p>
+
+<p>Too many decoys will slow your scan down and often lead to less accurate results. Some ISPs may also filter out your spoofed packets.</p>
+
+<figure class="code">
+<div class="highlight"><pre><code></code><code class="c1"># Make sure your decoys are up unless you want to DOS your target.</code>
+nmap -D &lt;decoyip1&gt;,&lt;decoyip2&gt;,&lt;decoyip3&gt;,&lt;decoyip4&gt;,&lt;decoyip5&gt;,ME &lt;target&gt;
+</pre></div>
+
+</figure>
+
+<h6 id="leanpub-auto-idle-scan--si">Idle scan <code>-sI</code>
+</h6>
+
+<p> </p>
+
+<p>There are a few things to know in order to use the idle scan properly and understand resulting behaviours and consequences. An idle scan is a side-channel attack which exploits predictable IP fragmentation ID sequence generation on the decoy host to glean information about open ports on the target. This is a clever yet simple technique. Intrusion Detection Systems (IDSs) will display the scan as coming from the decoy machine you specify (which must be active within certain criteria). Check the <a href="chap09.html#additional-resources-process">Additional Resources</a> chapter for further details.</p>
+
+<figure class="code">
+<div class="highlight"><pre><code></code><code class="c1"># 1.1.1.1:1234 is the IP address and port of the decoy machine.</code>
+nmap -sI <code class="m">1</code>.1.1.1:1234 &lt;target&gt;
+</pre></div>
+
+</figure>
+
+<h5 id="process-and-practises-penetration-testing-reconnaissance-service-fingerprinting">Service Fingerprinting</h5>
+
+<p>Adding to what we have learnt above, the simplest way to deduce the details of the service running as bound to a particular port is to see what banner is returned, or for HTTP, the <code>Server</code> header field.</p>
+
+<p>Feel free to try the same requests against the likes of the Metasploitable 2 VM. Its legitimate HTTP protocol is 1.0</p>
+
+<h6 id="leanpub-auto-depending-on-the-server-field">Depending on the Server field</h6>
+
+<p> </p>
+
+<figure class="code">
+  <figcaption>Request</figcaption>
+
+<div class="highlight"><pre><code></code><code class="c1"># Run netcat against your targets web server</code>
+nc &lt;target&gt; <code class="m">80</code>
+<code class="c1"># Now you need to issue the request.</code>
+HEAD / HTTP/1.1
+<code class="c1"># You will probably need to hit the enter key twice.</code>
+</pre></div>
+
+</figure>
+
+<p>If the target is running Apache 2.2.3, you may see something resembling the following:</p>
+
+<figure class="code">
+  <figcaption>Response</figcaption>
+
+<div class="highlight"><pre><code></code><code class="kr">HTTP</code><code class="o">/</code><code class="m">1.1</code> <code class="m">400</code> <code class="ne">Bad Request</code>
+<code class="na">Date</code><code class="o">:</code> <code class="l">Thu, 29 Oct 2015 04:44:09 GMT</code>
+<code class="na">Server</code><code class="o">:</code> <code class="l">Apache/2.2.3 (CentOS)</code>
+<code class="na">Connection</code><code class="o">:</code> <code class="l">close</code>
+<code class="na">Content-Type</code><code class="o">:</code> <code class="l">text/html; charset=iso-8859-1</code>
+</pre></div>
+
+</figure>
+
+<p>You can not rely on the Server field though as it could be obfuscated:</p>
+
+<figure class="code">
+  <figcaption>Response</figcaption>
+
+<div class="highlight"><pre><code></code><code class="err">403 HTTP/1.1 Forbidden</code>
+<code class="err">Date: Thu, 29 Oct 2015 04:44:09 GMT</code>
+<code class="err">Server: Unknown-Webserver/1.0</code>
+<code class="err">Connection: close</code>
+<code class="err">Content-Type: text/html; charset=iso-8859-1</code>
+</pre></div>
+
+</figure>
+
+<p>If your target is running an Express server, you will probably see something like:</p>
+
+<figure class="code">
+  <figcaption>Response</figcaption>
+
+<div class="highlight"><pre><code></code><code class="kr">HTTP</code><code class="o">/</code><code class="m">1.1</code> <code class="m">200</code> <code class="ne">OK</code>
+<code class="na">X-Powered-By</code><code class="o">:</code> <code class="l">Express</code>
+<code class="na">Content-Type</code><code class="o">:</code> <code class="l">text/html; charset=utf-8</code>
+<code class="na">Content-Length</code><code class="o">:</code> <code class="l">56328</code>
+<code class="na">ETag</code><code class="o">:</code> <code class="l">W/"dc08-0R4KyLlbTHepNS8qdLYCyQ"</code>
+<code class="na">Date</code><code class="o">:</code> <code class="l">Thu, 29 Oct 2015 04:31:20 GMT</code>
+<code class="na">Connection</code><code class="o">:</code> <code class="l">keep-alive</code>
+</pre></div>
+
+</figure>
+
+<h6 id="leanpub-auto-ordering-of-header-fields">Ordering of Header Fields</h6>
+
+<p> </p>
+
+<p>Every web server has its own specific ordering of header fields. This is usually more reliable for deducing the server type.</p>
+
+<h6 id="leanpub-auto-malformed-requests">Malformed Requests</h6>
+
+<p> </p>
+
+<p>If we try malformed requests or requests of non existent resources:</p>
+
+<figure class="code">
+  <figcaption>Request (not malformed)</figcaption>
+
+<div class="highlight"><pre><code></code># Express is using HTTP 1.1
+nc &lt;experss 4.0 server&gt; 80
+GET / HTTP/1.1
+</pre></div>
+
+</figure>
+
+<figure class="code">
+  <figcaption>Response</figcaption>
+
+<div class="highlight"><pre><code></code><code class="kr">HTTP</code><code class="o">/</code><code class="m">1.1</code> <code class="m">200</code> <code class="ne">OK</code>
+<code class="na">X-Powered-By</code><code class="o">:</code> <code class="l">Express</code>
+<code class="na">Content-Type</code><code class="o">:</code> <code class="l">text/html; charset=utf-8</code>
+<code class="na">Content-Length</code><code class="o">:</code> <code class="l">56328</code>
+<code class="na">ETag</code><code class="o">:</code> <code class="l">W/"dc08-0R4KyLlbTHepNS8qdLYCyQ"</code>
+<code class="na">Date</code><code class="o">:</code> <code class="l">Thu, 29 Oct 2015 05:03:46 GMT</code>
+<code class="na">Connection</code><code class="o">:</code> <code class="l">keep-alive</code>
+
+# We get the page markup here.
+</pre></div>
+
+</figure>
+
+<figure class="code">
+  <figcaption>Request (malformed)</figcaption>
+
+<div class="highlight"><pre><code></code>nc &lt;experss 4.0 server&gt; 80
+GET / HTTP/3.0
+</pre></div>
+
+</figure>
+
+<p>We receive a closed connection, but we still get the resource if there is one.</p>
+
+<figure class="code">
+  <figcaption>Response</figcaption>
+
+<div class="highlight"><pre><code></code><code class="kr">HTTP</code><code class="o">/</code><code class="m">1.1</code> <code class="m">200</code> <code class="ne">OK</code>
+<code class="na">X-Powered-By</code><code class="o">:</code> <code class="l">Express</code>
+<code class="na">Content-Type</code><code class="o">:</code> <code class="l">text/html; charset=utf-8</code>
+<code class="na">Content-Length</code><code class="o">:</code> <code class="l">56328</code>
+<code class="na">ETag</code><code class="o">:</code> <code class="l">W/"dc08-0R4KyLlbTHepNS8qdLYCyQ"</code>
+<code class="na">Date</code><code class="o">:</code> <code class="l">Thu, 29 Oct 2015 05:04:20 GMT</code>
+<code class="na">Connection</code><code class="o">:</code> <code class="l">close</code>
+
+# We get the page markup here.
+</pre></div>
+
+</figure>
+
+<p> </p>
+
+<p>When we try an Apache server, we note that different versions exhibit different behaviour.</p>
+
+<figure class="code">
+  <figcaption>Request (not malformed)</figcaption>
+
+<div class="highlight"><pre><code></code>nc &lt;apache 2.2.3 server&gt; 80
+GET / HTTP/1.0
+</pre></div>
+
+</figure>
+
+<figure class="code">
+  <figcaption>Response</figcaption>
+
+<div class="highlight"><pre><code></code><code class="kr">HTTP</code><code class="o">/</code><code class="m">1.1</code> <code class="m">200</code> <code class="ne">OK</code>
+<code class="na">Date</code><code class="o">:</code> <code class="l">Thu, 29 Oct 2015 05:02:03 GMT</code>
+<code class="na">Server</code><code class="o">:</code> <code class="l">Apache/2.2.3 (CentOS)</code>
+<code class="na">Accept-Ranges</code><code class="o">:</code> <code class="l">bytes</code>
+<code class="na">Connection</code><code class="o">:</code> <code class="l">close</code>
+<code class="na">Content-Type</code><code class="o">:</code> <code class="l">text/html; charset=UTF-8</code>
+
+No Host: header seen.
+</pre></div>
+
+</figure>
+
+<figure class="code">
+  <figcaption>Request (malformed)</figcaption>
+
+<div class="highlight"><pre><code></code>nc &lt;apache 2.2.3 server&gt; 80
+GET / HTTP/1.1
+</pre></div>
+
+</figure>
+
+<figure class="code">
+  <figcaption>Response</figcaption>
+
+<div class="highlight"><pre><code></code><code class="kr">HTTP</code><code class="o">/</code><code class="m">1.1</code> <code class="m">400</code> <code class="ne">Bad Request</code>
+<code class="na">Date</code><code class="o">:</code> <code class="l">Thu, 29 Oct 2015 05:01:51 GMT</code>
+<code class="na">Server</code><code class="o">:</code> <code class="l">Apache/2.2.3 (CentOS)</code>
+<code class="na">Content-Length</code><code class="o">:</code> <code class="l">226</code>
+<code class="na">Connection</code><code class="o">:</code> <code class="l">close</code>
+<code class="na">Content-Type</code><code class="o">:</code> <code class="l">text/html; charset=iso-8859-1</code>
+
+<code class="cp">&lt;!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"&gt;</code>
+<code class="p">&lt;</code><code class="nt">html</code><code class="p">&gt;&lt;</code><code class="nt">head</code><code class="p">&gt;</code>
+<code class="p">&lt;</code><code class="nt">title</code><code class="p">&gt;</code>400 Bad Request<code class="p">&lt;/</code><code class="nt">title</code><code class="p">&gt;</code>
+<code class="p">&lt;/</code><code class="nt">head</code><code class="p">&gt;&lt;</code><code class="nt">body</code><code class="p">&gt;</code>
+<code class="p">&lt;</code><code class="nt">h1</code><code class="p">&gt;</code>Bad Request<code class="p">&lt;/</code><code class="nt">h1</code><code class="p">&gt;</code>
+<code class="p">&lt;</code><code class="nt">p</code><code class="p">&gt;</code>Your browser sent a request that this server could not understand.<code class="p">&lt;</code><code class="nt">br</code> <code class="p">/&gt;</code>
+<code class="p">&lt;/</code><code class="nt">p</code><code class="p">&gt;</code>
+<code class="p">&lt;/</code><code class="nt">body</code><code class="p">&gt;&lt;/</code><code class="nt">html</code><code class="p">&gt;</code>
+</pre></div>
+
+</figure>
+
+<p>Interesting, isn’t it? Every server type answers in a different manner.</p>
+
+<h6 id="leanpub-auto-non-existent-protocol">Non-existent protocol</h6>
+
+<p> </p>
+
+<p>If we use a non-existent protocol:</p>
+
+<figure class="code">
+  <figcaption>Request</figcaption>
+
+<div class="highlight"><pre><code></code>nc &lt;express 4.0 server&gt; 80
+GET / CATSFORDINNER/1.1
+# Express ignores cats for dinner. No response
+</pre></div>
+
+</figure>
+
+<figure class="code">
+  <figcaption>Request</figcaption>
+
+<div class="highlight"><pre><code></code>nc &lt;apache 2.2.3 server&gt; 80
+GET / CATSFORDINNER/1.0
+</pre></div>
+
+</figure>
+
+<p>We see Apache is <code>200 OK</code> happy to have cats for dinner.</p>
+
+<figure class="code">
+  <figcaption>Response</figcaption>
+
+<div class="highlight"><pre><code></code><code class="nt">HTTP</code><code class="o">/</code><code class="nt">1</code><code class="p">.</code><code class="nc">1</code> <code class="nt">200</code> <code class="nt">OK</code>
+<code class="nt">Date</code><code class="o">:</code> <code class="nt">Thu</code><code class="o">,</code> <code class="nt">29</code> <code class="nt">Oct</code> <code class="nt">2015</code> <code class="nt">05</code><code class="p">:</code><code class="nd">12</code><code class="p">:</code><code class="nd">51</code> <code class="nt">GMT</code>
+<code class="nt">Server</code><code class="o">:</code> <code class="nt">Apache</code><code class="o">/</code><code class="nt">2</code><code class="p">.</code><code class="nc">2</code><code class="p">.</code><code class="nc">3</code> <code class="o">(</code><code class="nt">CentOS</code><code class="o">)</code>
+<code class="nt">Accept-Ranges</code><code class="o">:</code> <code class="nt">bytes</code>
+<code class="nt">Connection</code><code class="o">:</code> <code class="nt">close</code>
+<code class="nt">Content-Type</code><code class="o">:</code> <code class="nt">text</code><code class="o">/</code><code class="nt">html</code><code class="o">;</code> <code class="nt">charset</code><code class="o">=</code><code class="nt">UTF-8</code>
+
+<code class="nt">No</code> <code class="nt">Host</code><code class="o">:</code> <code class="nt">header</code> <code class="nt">seen</code><code class="o">.</code>
+</pre></div>
+
+</figure>
+
+<h6 id="process-and-practises-penetration-testing-reconnaissance-service-fingerprinting-other-services">Other Services</h6>
+
+<p> </p>
+
+<p>Let’s review the Secure Shell (SSH) service.</p>
+
+<p>Using Nmap’s service detection option, <code>-sV</code>, is ideal because Nmap uses service-specific probes. Relying on higher level tools such as Nmap is often quicker and more effective than manual work, as all the necessary capabilities are already baked into the tool.</p>
+
+<figure class="code">
+<div class="highlight"><pre><code></code>nmap -sV -p 22 &lt;target&gt;
+</pre></div>
+
+</figure>
+
+<figure class="code">
+  <figcaption>Results</figcaption>
+
+<div class="highlight"><pre><code></code><code class="nt">Starting</code> <code class="nt">Nmap</code> <code class="nt">6</code><code class="p">.</code><code class="nc">40</code> <code class="o">(</code> <code class="nt">http</code><code class="o">://</code><code class="nt">nmap</code><code class="p">.</code><code class="nc">org</code> <code class="o">)</code> <code class="nt">at</code> <code class="nt">2015-10-29</code> <code class="nt">19</code><code class="p">:</code><code class="nd">46</code> <code class="nt">NZDT</code>
+<code class="nt">Nmap</code> <code class="nt">scan</code> <code class="nt">report</code> <code class="nt">for</code> <code class="o">&lt;</code><code class="nt">target</code><code class="o">&gt;</code> <code class="o">(&lt;</code><code class="nt">target</code> <code class="nt">ip</code><code class="o">&gt;)</code>
+<code class="nt">Host</code> <code class="nt">is</code> <code class="nt">up</code> <code class="o">(</code><code class="nt">0</code><code class="p">.</code><code class="nc">00049s</code> <code class="nt">latency</code><code class="o">).</code>
+<code class="nt">rDNS</code> <code class="nt">record</code> <code class="nt">for</code> <code class="o">&lt;</code><code class="nt">target</code> <code class="nt">ip</code><code class="o">&gt;:</code> <code class="o">&lt;</code><code class="nt">target</code><code class="p">.</code><code class="nc">domain</code><code class="o">&gt;</code>
+<code class="nt">PORT</code>    <code class="nt">STATE</code> <code class="nt">SERVICE</code> <code class="nt">VERSION</code>
+<code class="nt">22</code><code class="o">/</code><code class="nt">tcp</code> <code class="nt">open</code>  <code class="nt">ssh</code>     <code class="nt">OpenSSH</code> <code class="nt">6</code><code class="p">.</code><code class="nc">7p1</code> <code class="nt">Debian</code> <code class="nt">3</code> <code class="o">(</code><code class="nt">protocol</code> <code class="nt">2</code><code class="p">.</code><code class="nc">0</code><code class="o">)</code>
+<code class="nt">Service</code> <code class="nt">Info</code><code class="o">:</code> <code class="nt">OS</code><code class="o">:</code> <code class="nt">Linux</code><code class="o">;</code> <code class="nt">CPE</code><code class="o">:</code> <code class="nt">cpe</code><code class="o">:/</code><code class="nt">o</code><code class="p">:</code><code class="nd">linux</code><code class="p">:</code><code class="nd">linux_kernel</code>
+</pre></div>
+
+</figure>
+
+<p>Typically, identifying banners are part of the released binary for a given service. If you want to get rid of them, you will need to modify the source and recompile. Doing so will not stop service identification though. With SSH, as with most other services, the version info is baked into the protocol.</p>
+
+<figure class="code">
+<div class="highlight"><pre><code></code>nc -v &lt;target&gt; 22
+</pre></div>
+
+</figure>
+
+<figure class="code">
+  <figcaption>Results</figcaption>
+
+<div class="highlight"><pre><code></code>Connection to &lt;target&gt; 22 port [tcp/*] succeeded!
+SSH-2.0-OpenSSH_6.7p1 Debian-3
+</pre></div>
+
+</figure>
+
+<p>In the VPS chapter we will discuss further risks, countermeasures, and hardening of the SSH daemon.</p>
+
+<h5 id="leanpub-auto-web-application-firewall-waf-fingerprinting">Web Application Firewall (WAF) Fingerprinting</h5>
+
+<p>Determining that a WAF is in place, it is often as simple as inspecting the responses from the server side. A WAF may add a cookie; with a little searching you may discover which WAF it is from its cookie. Likewise, when inspecting the HTTP headers, there are often give-aways such as a session timing out very quickly. This can be observed when you telnet or netcat to a web application, but don’t issue a request quickly enough.</p>
+
+<h6 id="leanpub-auto-nmap-1">Nmap</h6>
+
+<p>includes a couple of scripts optimised out-of-the-box for WAF detection.</p>
+
+<p>To view all of the currently available local Nmap scripts:</p>
+
+<figure class="code">
+<div class="highlight"><pre><code></code>locate *.nse
+</pre></div>
+
+</figure>
+
+<p>will give you the full listing. To narrow down the listing to specifics for the scenario:</p>
+
+<figure class="code">
+<div class="highlight"><pre><code></code>nmap --script-help "http-waf*"
+</pre></div>
+
+</figure>
+
+<p>yields the following two scripts, which are very useful:</p>
+
+<ol class="numeric">
+  <li>
+<code>http-waf-detect.nse</code><br />
+attempts to determine whether the web server is protected by an IDS, IPS or WAF</li>
+  <li>
+<code>http-waf-fingerprint.nse</code><br />
+attempts to discover the presence of a WAF, its type, and version</li>
+</ol>
+
+<figure class="code">
+  <figcaption>Run both scripts</figcaption>
+
+<div class="highlight"><pre><code></code>nmap -p80 --script "http-waf-*" &lt;target&gt;
+</pre></div>
+
+</figure>
+
+<h6 id="leanpub-auto-wafw00fhttpsgithubcomsandrogauciwafw00f">
+  <a href="https://github.com/sandrogauci/wafw00f">WAFW00F</a>
+</h6>
+
+<p>is also an excellent tool included in Kali Linux. WAFW00F, or <code>wafw00f</code>, tests for a large number of known WAFs (26 at last check). Running it is self explanatory, simply do so against the target host.</p>
+
+<p>“<em>Sends a normal HTTP request and analyses the response; this identifies a number of WAF solutions</em><br />
+<em>If that is not successful, it sends a number of (potentially malicious) HTTP requests and uses simple logic to deduce which WAF it is</em><br />
+<em>If that is also not successful, it analyses the responses previously returned and uses another simple algorithm to guess if a WAF or security solution is actively responding to our attacks</em>”</p>
+
+<h5 id="leanpub-auto-dns">DNS</h5>
+
+<h6 id="leanpub-auto-domain-information-groper-dig">Domain Information Groper (dig)</h6>
+
+<p> </p>
+
+<p>To perform a DNS lookup:</p>
+
+<figure class="code">
+  <figcaption>dig</figcaption>
+
+<div class="highlight"><pre><code></code>dig &lt;domain you are wanting info on&gt;
+</pre></div>
+
+</figure>
+
+<p>To perform a reverse lookup on an IP address:</p>
+
+<figure class="code">
+  <figcaption>dig reverse lookup</figcaption>
+
+<div class="highlight"><pre><code></code>dig -x &lt;ip address&gt;
+</pre></div>
+
+</figure>
+
+<figure class="code">
+  <figcaption>dig for email servers</figcaption>
+
+<div class="highlight"><pre><code></code><code class="c1"># mx (email servers) is the type of record to look for.</code>
+<code class="c1"># by default, dig will perform a lookup for an A record</code>
+dig &lt;domain you are wanting info on&gt; mx
+</pre></div>
+
+</figure>
+
+<p>There are many other options you can use with dig, the output is clear and informative. There are also the programs “host”, and the deprecated “nslookup”. These generally provide less information and use their own internal libraries, as opposed to the operating system resolver libraries that dig uses.</p>
+
+<h6 id="leanpub-auto-dnsenum">dnsenum</h6>
+
+<p>will do everything dig can do and more.
+There is no man page for dnsenum, simply run and you will be presented with its help content.</p>
+
+<p>In order to find all subdomains associated with the target domain, you can use a wordlist. A good collection can be found in the Kali Linux distribution by issuing the following command:</p>
+
+<figure class="code">
+<div class="highlight"><pre><code></code>locate wordlist
+</pre></div>
+
+</figure>
+
+<p>Recon-ng, as discussed below, also has some in <code>/usr/share/recon-ng/data/</code> that it uses for similar tasks. Choose your wordlist, then apply it to dnsenum. The results found will only be as good as your wordlist, so choose wisely.<br />
+<code>/usr/share/dirbuster/wordlists/directories.jbrofuzz</code> is a reasonable option as well.</p>
+
+<figure class="code">
+<div class="highlight"><pre><code></code><code class="c1"># This is a noisy command, but it is still passive, the target is not being touched.</code>
+<code class="c1"># Be patient, it can take some time if you use a large wordlist.</code>
+dnsenum &lt;target domain&gt; -f &lt;your chosen wordlist&gt;
+<code class="c1"># We used binarymist.net for the target domain</code>
+<code class="c1"># and your chosen wordlist in place of directories.jbrofuzz mentioned above.</code>
+<code class="c1"># dnsenum can also recurse on all the subdomains with the -r option</code>
+</pre></div>
+
+</figure>
+
+<p>This provides the same results as a simple <code>dnsenum &lt;target domain&gt;</code>, and then begins bruteforcing, which lists the IP addresses with the domains and record types. I have had some trouble with dnsenum in Kali 2016.1 rolling, so dnsrecon is my current preference.</p>
+
+<figure class="code">
+<div class="highlight"><pre><code></code>binarymist.net.             3174    IN   A       202.46.170.8
+binarymist.net.             3174    IN   A       202.46.170.8
+binarymist.net.             3174    IN   A       202.46.170.8
+blog.binarymist.net.        3600    IN   CNAME   binarymist.wordpress.com.
+binarymist.wordpress.com.   14400   IN   CNAME   lb.wordpress.com.
+lb.wordpress.com.           225     IN   A       192.0.78.13
+lb.wordpress.com.           225     IN   A       192.0.78.12
+Blog.binarymist.net.        3600    IN   CNAME   binarymist.wordpress.com.
+binarymist.wordpress.com.   14400   IN   CNAME   lb.wordpress.com.
+lb.wordpress.com.           225     IN   A       192.0.78.12
+lb.wordpress.com.           225     IN   A       192.0.78.13
+CODE.binarymist.net.        3600    IN   CNAME   bitbucket.org.
+bitbucket.org.              65798   IN   A       131.103.20.167
+bitbucket.org.              65798   IN   A       131.103.20.168
+code.binarymist.net.        3600    IN   CNAME   bitbucket.org.
+bitbucket.org.              65798   IN   A       131.103.20.168
+bitbucket.org.              65798   IN   A       131.103.20.167
+Code.binarymist.net.        3600    IN   CNAME   bitbucket.org.
+bitbucket.org.              65798   IN   A       131.103.20.167
+bitbucket.org.              65798   IN   A       131.103.20.168
+dashboard.binarymist.net.   3600    IN   A       202.46.170.7
+Dashboard.binarymist.net.   3600    IN   A       202.46.170.7
+www.binarymist.net.         3600    IN   A       202.46.170.8
+WWW.binarymist.net.         3600    IN   A       202.46.170.8
+Www.binarymist.net.         3600    IN   A       202.46.170.8
+</pre></div>
+
+</figure>
+
+<h6 id="leanpub-auto-dnsrecon">dnsrecon</h6>
+
+<p>is another tool similar to dnsenum, with a few different options. It is usually helpful to try several similar tools for the same or similar exercise, as you will receive different results. It is good not to depend on any single tool for a specific task, do not become tool dependent.</p>
+
+<figure class="code">
+<div class="highlight"><pre><code></code>dnsrecon -d &lt;target domain&gt; -D &lt;your chosen wordlist&gt; -t brt
+</pre></div>
+
+</figure>
+
+<p>There are many other options. Simply run the tool without arguments to read its help content.</p>
+
+<p> </p>
+
+<aside>
+  <p>I’ve found the following three tools (I like to call multi-tools) to be really useful, and use them before and during just about every penetration testing assignment.</p>
+
+</aside>
+
+<h5 id="leanpub-auto-theharvester">theHarvester</h5>
+
+<p>An Open Source Intelligence (OSINT) tool that can be used via discover-scripts.</p>
+
+<p>“<em>theHarvester is a tool for gathering e-mail accounts, subdomain names, virtual hosts, open ports/ banners, and employee names from different public sources (search engines, pgp key servers).</em>”</p>
+
+<p>It is also useful for determining what an attacker can find out about you, your organisation, or your client.</p>
+
+<p>It is installed <a href="http://tools.kali.org/information-gathering/theharvester">out of the box</a> on Kali Linux.</p>
+
+<p>If not running from discover-scripts:<br />
+Within Kali Linux you can go through the menus: Information Gathering -&gt; OSINT Analysis -&gt; theharvester<br />
+or run from the terminal</p>
+
+<p>Just beware though, that if you want to perform a DNS brute force (<code>-c</code>), then at the time of writing, the <code>/usr/share/theharvester/discovery/dnssearch.py</code> script assumes that the word list you will be using is the non existent <code>/usr/share/theharvester/dns-names.txt</code> wordlist. Running theHarvester from anywhere other than <code>/usr/share/theharvester/</code> if you use the <code>-c</code> option will fail. It’s been fixed (by way of providing a command line argument) in the latest code base, I haven’t tested it yet though, as at this time it isn’t in the Kali 2016.1 rolling repository. See <a href="https://github.com/laramies/theHarvester/issues/30">issue 30</a>. So I just symlink any wordlist I would like to use:</p>
+
+<figure class="code">
+<div class="highlight"><pre><code></code>ln -s /usr/share/dirbuster/wordlists/directories.jbrofuzz /usr/share/theharvester/dns-names.t<code class="se">\</code>
+xt
+</pre></div>
+
+</figure>
+
+<p>Then run like this:</p>
+
+<figure class="code">
+<div class="highlight"><pre><code></code>/usr/share/theharvester# python theHarvester.py -d &lt;target domain&gt; -b all -c -t
+<code class="c1"># Running theharvester without any options provides examples and details on the options.</code>
+</pre></div>
+
+</figure>
+
+<p>The sources used are:</p>
+
+<ul>
+  <li>google search engine</li>
+  <li>googleCSE custom search engine. A custom search engine needs to be <a href="https://cse.google.co.nz/cse/">created</a>, then add your API key and CSE id to discovery/googleCSE.py</li>
+  <li>google profiles specific</li>
+  <li>googleplus: finds users that work in target organisation (uses google search)</li>
+  <li>baidu search engine</li>
+  <li>yahoo search engine</li>
+  <li>bing search engine</li>
+  <li>bingapi (API key needs to be added to the discovery/bingsearch.py file)</li>
+  <li>-vhost: This is the Microsoft bing virtual hosts search feature. The idea is that you provide an IP address of a web server using the <code>ip:</code> operator and the search engine enumerates all of the host names it has in its database</li>
+  <li>pgp.rediris.es</li>
+  <li>linkedin via specific google search</li>
+  <li>twitter accounts related to specific domain (uses google search)</li>
+  <li>shodan (for internet connected devices). Their website states they search The Web, Refrigerators, Webcams, Power Plants, IoT, Buildings. To use, you need to register and put your API key in discovery/shodansearch.py</li>
+</ul>
+
+<p>Both passive and active options available.</p>
+
+
+<h5 id="process-and-practises-penetration-testing-reconnaissance-discover-scripts">Discover-scripts</h5>
+
+<p>is an excellent Open Source Intelligence (OSINT) tool.</p>
+
+
+<img src="images/discover.png" alt="discover scripts"/>
+
+
+<p>Discover is a collection of shell scripts to aggregate Kali Linux tools &amp; automate various penetration testing tasks. Both passive and active options are available, allowing you to dig up a lot of information about your target long before you start trying to penetrate them. I have found both Domain and Person to be very useful.</p>
+
+<p>To run within Kali Linux you need to run the <code>/opt/discover/discover.sh</code> script. This is one of the additional tools we <a href="chap05.html#tooling-setup-kali-linux-tools-i-use-that-need-adding-to-kali-linux-discover-scripts">added</a> to Kali.</p>
+
+<p>For example,<br />
+Recon -&gt; Domain -&gt; Passive combines:</p>
+
+<ul>
+  <li>goofile</li>
+  <li>goog-mail</li>
+  <li>goohost</li>
+  <li>theHarvester</li>
+  <li>Metasploit</li>
+  <li>dnsrecon</li>
+  <li>URLCrazy</li>
+  <li>Whois</li>
+  <li>and multiple websites</li>
+</ul>
+
+<p>Recon -&gt; Domain -&gt; Active combines:</p>
+
+<ul>
+  <li>Nmap</li>
+  <li>dnsrecon</li>
+  <li>Fierce</li>
+  <li>lbd</li>
+  <li>Wafw00f</li>
+  <li>traceroute</li>
+  <li>Whatweb</li>
+</ul>
+
+<p>Rather than having to become familiar with all the recon tools at once, you get the benefit of many tools in one here. You don’t get quite the flexibility of using each of the tools by themselves though, but as time is often the constraining factor, discover can be a good trade-off.</p>
+
+<h5 id="process-and-practises-penetration-testing-reconnaissance-recon-ng">recon-ng</h5>
+
+<p>Another tool in a similar vein to discover-scripts, Recon-ng has a similar feel to metasploit, but for web based reconnaissance. If you are familiar with the metasploit framework, you will notice most of the options are very similar. Recon-ng has a modular framework, allowing anyone who can write some Python to contribute to the modules collection. This is a very powerful and easy-to-use recon tool.</p>
+
+<p>recon-ng <a href="https://bitbucket.org/LaNMaSteR53/recon-ng/commits/eab6307">tracks users</a> by default using google analytics. You can dissable this with the <a href="https://bitbucket.org/LaNMaSteR53/recon-ng/commits/717c7c6"><code>--no-analytics</code></a> argument, also discussed in the <a href="https://bitbucket.org/LaNMaSteR53/recon-ng/wiki/Usage%20Guide#!analytics">wiki.</a></p>
+
+<p>Some of the information you may gather is:</p>
+
+<ol class="numeric">
+  <li>Additional companies</li>
+  <li>Hosts you did not know existed, with their IP addresses, domain names, countries of origin, region, latitude, longitude and the module used to find the information</li>
+  <li>Contacts, first and last names, email addresses, pgp key associations</li>
+  <li>Vulnerabilities, credentials</li>
+  <li>So much more</li>
+</ol>
+
+<p>Which modules you use determines what information you receive.</p>
+
+<p>When you run <code>recon-ng</code> with no arguments, you will be presented with the titles of the collections of included modules, and you will be dropped into a <code>recon-ng</code> prompt showing the current workspace you are in. It looks like:</p>
+
+<figure class="code">
+<div class="highlight"><pre><code></code><code class="o">[</code>recon-ng<code class="o">][</code>default<code class="o">]</code> &gt; 
+</pre></div>
+
+</figure>
+
+<p>Type:</p>
+
+<figure class="code">
+<div class="highlight"><pre><code></code>help
+</pre></div>
+
+</figure>
+
+<p>and you will be presented with the <code>recon-ng</code> commands.</p>
+
+<p>Prepend any of the commands with help, or simply type the command by itself if you want to know more about the specific command.</p>
+
+<p>For example, type <code>show</code> and you will be presented with:</p>
+
+<figure class="code">
+<div class="highlight"><pre><code></code>Shows various framework items
+
+Usage: show [banner|companies|contacts|credentials|dashboard|domains|hosts|leaks|locations|mo\
+dules|netblocks|options|ports|profiles|pushpins|schema|vulnerabilities]
+</pre></div>
+
+</figure>
+
+<p>The above outputs are actually table names that contain data you add (discussed soon).</p>
+
+<p>Then type:</p>
+
+<figure class="code">
+<div class="highlight"><pre><code></code>show modules
+</pre></div>
+
+</figure>
+
+<p>and you will be presented with a listing of all the modules in <code>/usr/share/recon-ng/modules/</code>:</p>
+
+<figure class="code">
+  <figcaption>recon-ng modules</figcaption>
+
+<div class="highlight"><pre><code></code><code class="gh">Discovery</code>
+<code class="gh">---------</code>
+  discovery/info_disclosure/cache_snoop
+  discovery/info_disclosure/interesting_files
+  
+<code class="gh">Exploitation</code>
+<code class="gh">------------</code>
+  exploitation/injection/command_injector
+  exploitation/injection/xpath_bruter
+  
+<code class="gh">Import</code>
+<code class="gh">------</code>
+  import/csv_file
+  import/list
+  
+<code class="gh">Recon</code>
+<code class="gh">-----</code>
+  recon/companies-contacts/facebook
+  recon/companies-contacts/jigsaw/point_usage
+  recon/companies-contacts/jigsaw/purchase_contact
+  recon/companies-contacts/jigsaw/search_contacts
+  recon/companies-contacts/linkedin_auth
+  recon/companies-contacts/linkedin_crawl
+  recon/companies-multi/whois_miner
+  recon/contacts-contacts/mailtester
+  recon/contacts-contacts/mangle
+  recon/contacts-contacts/unmangle
+  recon/contacts-credentials/hibp_breach
+  recon/contacts-credentials/hibp_paste
+  recon/contacts-credentials/pwnedlist
+  recon/contacts-domains/migrate_contacts
+  recon/contacts-profiles/fullcontact
+  recon/credentials-credentials/adobe
+  recon/credentials-credentials/bozocrack
+  recon/credentials-credentials/hashes_org
+  recon/credentials-credentials/leakdb
+  recon/domains-contacts/pgp_search
+  recon/domains-contacts/salesmaple
+  recon/domains-contacts/whois_pocs
+  recon/domains-credentials/pwnedlist/account_creds
+  recon/domains-credentials/pwnedlist/api_usage
+  recon/domains-credentials/pwnedlist/domain_creds
+  recon/domains-credentials/pwnedlist/domain_ispwned
+  recon/domains-credentials/pwnedlist/leak_lookup
+  recon/domains-credentials/pwnedlist/leaks_dump
+  recon/domains-domains/brute_suffix
+  recon/domains-hosts/baidu_site
+  recon/domains-hosts/bing_domain_api
+  recon/domains-hosts/bing_domain_web
+  recon/domains-hosts/brute_hosts
+  recon/domains-hosts/builtwith
+  recon/domains-hosts/google_site_api
+  recon/domains-hosts/google_site_web
+  recon/domains-hosts/netcraft
+  recon/domains-hosts/shodan_hostname
+  recon/domains-hosts/ssl_san
+  recon/domains-hosts/vpnhunter
+  recon/domains-hosts/yahoo_domain
+  recon/domains-vulnerabilities/punkspider
+  recon/domains-vulnerabilities/xssed
+  recon/domains-vulnerabilities/xssposed
+  recon/hosts-domains/migrate_hosts
+  recon/hosts-hosts/bing_ip
+  recon/hosts-hosts/ip_neighbor
+  recon/hosts-hosts/ipinfodb
+  recon/hosts-hosts/resolve
+  recon/hosts-hosts/reverse_resolve
+  recon/locations-locations/geocode
+  recon/locations-locations/reverse_geocode
+  recon/locations-pushpins/flickr
+  recon/locations-pushpins/instagram
+  recon/locations-pushpins/picasa
+  recon/locations-pushpins/shodan
+  recon/locations-pushpins/twitter
+  recon/locations-pushpins/youtube
+  recon/netblocks-companies/whois_orgs
+  recon/netblocks-hosts/reverse_resolve
+  recon/netblocks-hosts/shodan_net
+  recon/netblocks-ports/census_2012
+  recon/ports-hosts/migrate_ports
+  recon/profiles-contacts/dev_diver
+  recon/profiles-profiles/namechk
+  recon/profiles-profiles/profiler
+  recon/profiles-profiles/twitter
+  
+<code class="gh">Reporting</code>
+<code class="gh">---------</code>
+  reporting/csv
+  reporting/html
+  reporting/json
+  reporting/list
+  reporting/pushpin
+  reporting/xlsx
+  reporting/xml
+</pre></div>
+
+</figure>
+
+<aside>
+  <p>As <code>recon-ng</code> uses workspaces, you can keep all your specific assignment data in its own workspace.</p>
+
+</aside>
+
+<p>Data is persisted to the file system <code>/&lt;user&gt;/.recon-ng/workspaces/&lt;your new workspace name&gt;/</code> as it’s gathered. You can exit and restart <code>recon-ng</code> any time without losing the data you have already gathered. Let’s see which workspaces we already have.</p>
+
+<figure class="code">
+<div class="highlight"><pre><code></code><code class="c1"># Typing workspaces alone tells us which arguments workspaces expects.</code>
+workspaces list
+<code class="c1"># Should show us that we only have the default workspace.</code>
+workspaces add &lt;your new workspace name&gt;
+</pre></div>
+
+</figure>
+
+<p>Usually before you <code>use</code> then <code>run</code> each desired module, you will want to <code>add</code> initial records. The sort of records you may want to add can be seen by typing:</p>
+
+<figure class="code">
+<div class="highlight"><pre><code></code>show
+</pre></div>
+
+</figure>
+
+<figure class="code">
+<div class="highlight"><pre><code></code>add domains &lt;a target domain&gt;
+add companies
+<code class="c1"># Now you are prompted for some details like name and description</code>
+</pre></div>
+
+</figure>
+
+<p>To see what records you have already <code>add</code>ed, type <code>show [item]</code> (where <code>item</code> is actually a table name listed from the output of the <code>show</code> command). For example: <code>show domains</code> or <code>show companies</code></p>
+
+<p>To delete an item you have added: <code>del [item] [rowid]</code>, for example:</p>
+
+<figure class="code">
+<div class="highlight"><pre><code></code>del domains <code class="m">1</code> <code class="c1"># To remove the first record </code>
+</pre></div>
+
+</figure>
+
+<p>You can also query the workspace database with the <code>query</code> command. Just type query, you will receive help content and be running in no time. Many commands can be performed using <code>recon-ng</code> commands or by using the <code>query</code> command and building up SQL queries.</p>
+
+<p>To use a specific module:</p>
+
+<figure class="code">
+<div class="highlight"><pre><code></code>use &lt;one of the modules listed from show modules command&gt;
+</pre></div>
+
+</figure>
+
+<p>To find out what options you need, if any, to set for your chosen module, type:</p>
+
+<figure class="code">
+<div class="highlight"><pre><code></code><code class="nb">set</code>
+<code class="c1"># This prints the Names of the options you need to set, if not</code>
+<code class="c1"># already set, if it is a Required field, Current Value, and Description.</code>
+<code class="c1"># The Current Value should be the second argument you provide to set.</code>
+</pre></div>
+
+</figure>
+
+<p>If you need more information about the current module you have <code>use</code>ed, type:</p>
+
+<figure class="code">
+<div class="highlight"><pre><code></code>show info
+</pre></div>
+
+</figure>
+
+<p>You will be notified when you attempt to <code>run</code> if you need an API key. Details on where to find these are on the <a href="https://bitbucket.org/LaNMaSteR53/recon-ng/wiki/Usage%20Guide#!acquiring-api-keys"><code>recon-ng</code> wiki</a>.</p>
+
+<p>Before you add any social media API keys, you will want to create throwaway social media accounts. Many of the social media sites where you will perform recon will show the visiting user. You will want that visiting user to be your throwaway account.</p>
+
+<figure class="code">
+<div class="highlight"><pre><code></code><code class="c1"># To show your currently installed API keys:</code>
+keys list
+<code class="c1"># To add an API key:</code>
+keys add <code class="o">[</code>specific_key_listed_from_previous_command<code class="o">]</code> &lt;yourkey&gt;
+</pre></div>
+
+</figure>
+
+<p>Once you are ready to <code>run</code> the module you have chosen with the <code>use</code> command, just type <code>run</code>. All the information will be gathered into the workspace-specific database, which you can query or create reports from. Between each new module you <code>use</code> and <code>run</code>, you can view what was discovered simply by watching the screen, or:</p>
+
+<figure class="code">
+<div class="highlight"><pre><code></code>query SELECT * FROM <code class="o">[</code>any of the tables listed with the show command<code class="o">]</code>
+<code class="c1"># For example:</code>
+query SELECT * FROM contacts
+query SELECT * FROM hosts
+</pre></div>
+
+</figure>
+
+<p>or</p>
+
+<figure class="code">
+<div class="highlight"><pre><code></code>use reporting/html
+<code class="nb">set</code> CREATOR &lt;you or your company&gt;
+<code class="nb">set</code> CUSTOMER &lt;your client/target&gt;
+run
+<code class="c1"># You will be told where your report lives.</code>
+<code class="c1"># It should be in the workspace you created, which you can access at any time.</code>
+</pre></div>
+
+</figure>
+
+<p>The report types you can use can be seen by typing:</p>
+
+<figure class="code">
+<div class="highlight"><pre><code></code>show modules reporting
+<code class="c1"># These include html, json, csv, xml and others</code>
+</pre></div>
+
+</figure>
+
+<p><code>exit</code> to quit <code>recon-ng</code>. Any data gathered will be retained.</p>
+
+<p>The commands may feel a bit heavy to start with, but they are very intuitive. Spend some time with <code>recon-ng</code>, and it will end up being one of the first recon tools you turn to.</p>
+
+
+
+
+
+
+
+
+
+
+
+<h5 id="leanpub-auto-password-profiling">Password Profiling</h5>
+
+<p>An attacker will start to collate information, and will often feed it into a tool, or specific set of tools. If they have lots of time, which is rare, perform the same process manually. I find that the tools which have well thought out algorithms are the quickest and best way to create a short list of probable passwords to later attempt to access accounts via brute force attack.</p>
+
+<p>I discuss this further in the <a href="chap08.html#people-identify-risks-weak-password-strategies">People</a> chapter.</p>
+
+<h4 id="leanpub-auto-vulnerability-scanning--discovery">Vulnerability Scanning / Discovery</h4>
+
+<p>In this phase an attacker directs their attention to obtaining (scanning for) weaknesses in their target, weaknesses that they think they may be able to exploit in the next step. These steps often overlap, the attacker may already have some exploits in mind that they think may work against the target. Often, they need to come back to this step to verify that there is actually a matching, exploitable weakness.</p>
+
+<p>Much of the work the attacker accomplishes in the reconnaissance stage will also reveal vulnerabilities, in addition to all sorts of useful information.</p>
+
+<p>I am not going to spend much time in this section looking for vulnerabilities, as we do this throughout the book, especially in the Identify Risks sections of most chapters. I will list a handful of tools though that I find very useful in this stage.</p>
+
+<h5 id="leanpub-auto-nmap-2">Nmap</h5>
+
+<p>In addition to scripts and extensibility, Nmap provides a very powerful and easy to use tool for locating potential vulnerabilities. There are many good and easy-to-find resources specific to Nmap, some of which we have already covered, and others throughout the rest of the book.</p>
+
+<h5 id="leanpub-auto-metasploit">Metasploit</h5>
+
+<p>msfconsole has many modules available out of the box for poking and prodding at potential vulnerabilities. Once you have started the msfconsole dependencies, <code>postgresql</code> and <code>metasploit</code>, start <code>msfconsole</code>. Show the modules available:</p>
+
+<figure class="code">
+  <figcaption>using modules</figcaption>
+
+<div class="highlight"><pre><code></code>show auxiliary
+<code class="c1"># Will list all the auxiliary modules available,</code>
+<code class="c1"># which include many scanners.</code>
+
+<code class="c1"># Once you decide which one you want to use or look at:</code>
+use <code class="o">[</code>yourchosenmodule<code class="o">]</code> <code class="c1"># For example:</code>
+use auxiliary/scanner/ssh/ssh_version
+
+<code class="c1"># Show all available options with:</code>
+show options
+
+<code class="c1"># Set any mandatory or optional options with:</code>
+<code class="nb">set</code> <code class="o">[</code>theoption<code class="o">]</code> <code class="c1"># For example:</code>
+<code class="nb">set</code> RHOSTS <code class="m">203</code>.97.26.48
+<code class="c1"># Alternative target port?</code>
+<code class="nb">set</code> RPORT <code class="m">20</code>
+
+<code class="c1"># Run it:</code>
+run
+</pre></div>
+
+</figure>
+
+<p>I have also written about some other vulnerability scanners on my <a href="http://blog.binarymist.net/2014/03/29/up-and-running-with-kali-linux-and-friends/#vulnerability-scanners">blog</a> such as:</p>
+
+<ul>
+  <li>OpenVAS</li>
+  <li>OWASP ZAP, which we will use in a few places in this book. ZAP is also an HTTP intercepting proxy with plenty of great built in features and is of course free and open source</li>
+  <li>SkipFish</li>
+  <li>Web Application Attack and Audit Framework (w3af)</li>
+  <li>Nikto</li>
+</ul>
+
+<p>There are also many other scanning tools installed natively in Kali Linux.</p>
+
+<p>Keep in mind that most of this scanning is quite noisy and has the potential to be easily noticed if logs are being monitored. There are good event notifications that are set-up, and IDSs are up to date and running.</p>
+
+<h4 id="process-and-practises-penetration-testing-vulnerability-searching">Vulnerability Searching</h4>
+
+<p>The vulnerability advisories that were mentioned in the <a href="chap03.html#vulnerability-advisories">30,000 View</a> chapter will be covered here in a little more detail.</p>
+
+<p>By now, we should have a good idea of some of the target’s weaknesses; it is time to find some exploits.</p>
+
+<h5 id="leanpub-auto-security-focus-bugtraq">Security Focus BugTraq</h5>
+
+<p>BugTraq continues to be an excellent source of exploits based on known vulnerabilities, you can search by vendor or CVE.</p>
+
+
+<img src="images/SecurityFocusBugTraq.png" alt="Security Focus Bug Traq"/>
+
+
+<h5 id="leanpub-auto-exploit-database">Exploit Database</h5>
+
+<p>Exploit Database can be found at <a href="https://github.com/offensive-security/exploit-database">github</a>. From Offensive Security, the creators of Kali Linux, it has a very easy to use web front-end.</p>
+
+
+<img src="images/ExploitDd.png" alt="ExploitDb"/>
+
+
+<p>The Google Hacking Database is linked from the Exploit Database, and is very useful for finding devious goodies on the Interwebs.</p>
+
+<p>Also a CLI: searchsploit found in Kali Linux.<br />
+Menu: Exploitation Tools -&gt; Exploit Database -&gt; searchsploit<br />
+Or run from the command line: <code>searchsploit &lt;search phrase&gt;</code>
+From the Menu: Exploitation Tools -&gt; Exploit Database -&gt; searchsploit<br />
+From the command line: <code>searchsploit &lt;search phrase&gt;</code></p>
+
+<h5 id="leanpub-auto-metasploit-1">Metasploit</h5>
+
+<p>To find an exploit or any other type of module easily, once you have <code>msfconsole</code> running:</p>
+
+<figure class="code">
+  <figcaption>search for modules to exploit nodejs</figcaption>
+
+<div class="highlight"><pre><code></code>search nodejs
+# Provided 21 modules targeting NodeJS.
+# 10 of which were exploits, 8 were payloads.
+</pre></div>
+
+</figure>
+
+<h4 id="leanpub-auto-exploitation">Exploitation</h4>
+
+<p>During this stage, contemplating and capturing countermeasures for vulnerabilities you are able to exploit successfully, is just as important as finding and recording the exploited vulnerabilities. That is why each of the following chapters contain Countermeasures sections.</p>
+
+<p>Hammer your own systems and watch logs. Become familiar with the signatures and indicators of different tools and attacks, you will then know when you are actually under attack. You can take the same steps with active and semi-active reconnaissance. In this manner, you will be able to pre-empt your attacker’s attempts at exploitation.</p>
+
+<p>We will go through actual exploitation that would be carried out by an attacker or penetration tester in each of the following chapter’s Identify Risks sections.</p>
+
+<h5 id="leanpub-auto-isolating-testing-potential-malware">Isolating, Testing Potential Malware</h5>
+
+<p>There are many ways to isolate potentially infectious malware, such as air gaping, virtualisation, Linux Containers (LXC and later LXD) to some extent, and their derivatives, as well as the purpose built tools Firejail and Qubes.</p>
+
+<p>Air gaping can be somewhat impractical, and with the likes of WiFi, Bluetooth, and others, air gaps are not always as effective as they used to be.</p>
+
+<p>A few suggestions. This topic, as most, goes very deep and broad, and could be the content of an array of books. I will attempt to give you an idea of some of the offerings that you could consider for this. Generally speaking, offerings presented below start with systems with some isolation, down to systems purposely designed for containing infectious malware towards the end of the section.</p>
+
+<h6 id="leanpub-auto-linux-containers-lxc">linux containers (LXC)</h6>
+
+<p>Containers on a host share the same kernel and operating system. The rest of the operating system files can be unique per container. This makes it “possible” to isolate running applications within a container from other applications on the container host.</p>
+
+
+<p>Windows containers are also advancing, but they are also scoped to the Windows operating system they run inside.</p>
+
+<p>In terms of performance, containers outperform VMs because they share more resources, which also means that, in terms of isolating malware, generally speaking, VMs do a better job.</p>
+
+<h6 id="leanpub-auto-docker">Docker</h6>
+
+
+<img src="images/DockerHighLevel.png" alt="Docker High Level"/>
+
+
+<p>Docker was open sourced in <a href="http://www.infoq.com/news/2013/03/Docker">March 2013</a> and is focused on containing application environments. Docker was designed to “<em>pack, ship and run any application as a lightweight container</em>” as stated in their github <a href="https://github.com/docker/docker">README.md</a>. Docker containers, unlike virtual machines, do not require a separate operating system.</p>
+
+<p>Docker containers can be run on any x64-bit Linux kernel that supports <a href="https://en.wikipedia.org/wiki/Cgroups">cgroups</a> (“<em>a Linux kernel feature that limits, accounts for and isolates the resource usage (CPU, memory, disk I/O, network, etc) of a collection of processes</em>”).</p>
+
+<p>Docker used LXC as the default execution environment before the release of version 0.9 March 13 2014. After that, Docker’s own <code>libcontainer</code> library written in GoLang became default. </p>
+
+<p>It is good to see “Security Disclosure” directions and contact details as the second header on the Docker github page, this instills confidence.</p>
+
+<p>I am not going to go into Docker in depth here because, by default, it doesn’t really provide enough isolation for the purpose of containing infectious malware. Docker is more focused on assisting dev-ops.</p>
+
+<h6 id="leanpub-auto-virtual-machines">Virtual Machines</h6>
+
+<p>VM network adapters can be configured to provide the isolation you require. 
+VMs offer a greater degree of separation than containers and don’t share their operating system with the host or other guests. Although, as discussed further on, Type-2 does use the host operating systems services, which dramatically increases the surface area for attack.
+* <a href="http://blog.binarymist.net/2012/01/23/bare-metal-hypervisor-setup-evaluation/">Type-1, native or bare-metal</a> (Xen, VMware ESX(i), KVM, ProxMox, Archipel, etc.)
+* Type-2 or Hosted (VMware Workstation, Server, Player, VirtualBox, etc.)) </p>
+
+
+<img src="images/HypervisorTypesHighLevel.png" alt="Types of Hypervisor"/>
+
+
+<p>The guest (or VM) emulates a real physical machine, but requests for resources such as CPU, memory, disk storage, network, USB, etc., are managed by a virtualisation layer controlled by the host system, which delegates its resources as it sees fit. </p>
+
+<p>Malware can still cross all of these boundaries to varying extent. It’s these boundaries that you need to consider when attempting to isolate potentially infectious binaries.</p>
+
+<h6 id="leanpub-auto-firejailhttpsfirejailwordpresscom">
+  <a href="https://firejail.wordpress.com/">FireJail</a>
+</h6>
+
+<p>FireJail is a SUID (Set owner User ID upon execution) program that sandboxes the specified running environments of untrusted processes (servers, graphical applications, user login sessions) using <a href="https://lwn.net/Articles/531114/">Linux namespaces</a> and <a href="https://l3net.wordpress.com/2015/04/13/firejail-seccomp-guide/">seccomp-bpf</a> (introduced into the Linux kernel in v3.5). Firejail “<em>allows a process and all its descendants to have their own private view of the globally shared kernel resources, such as the network stack, process table, mount table.</em>”</p>
+
+<p>“<em>Written in C with virtually no dependencies, the software runs on any Linux computer with a 3.x kernel version or newer. The sandbox is lightweight, the overhead is low. There are no complicated configuration files to edit, no socket connections open, no daemons running in the background. All security features are implemented directly in Linux kernel and available on any Linux computer.</em>”. The source code is on <a href="https://github.com/netblue30/firejail">github</a>. Pre-built DEB, AUR and RPM packages are available for <a href="https://firejail.wordpress.com/download-2/">download</a>. Gentoo is also supported.</p>
+
+<p>FireJail has been modeled after the same security sandbox that Google Chrome uses.</p>
+
+<p>FireJail “<em>includes security profiles for a large number of Linux programs</em>”. Additional profiles can be created for programs not included, and the profiles can be fine-tuned to suit your needs. FireJail can even run LXC, Docker and OpenVZ containers.</p>
+
+<p>To start a sandbox, just prefix your command with <code>firejail</code> like so:</p>
+
+<figure class="code">
+  <figcaption>As seen on firejail website</figcaption>
+
+<div class="highlight"><pre><code></code>$ firejail firefox                       <code class="c1"># starting Mozilla Firefox</code>
+$ firejail transmission-gtk              <code class="c1"># starting Transmission BitTorrent </code>
+$ firejail vlc                           <code class="c1"># starting VideoLAN Client</code>
+$ sudo firejail /etc/init.d/nginx start  <code class="c1"># starting nginx web server</code>
+</pre></div>
+
+</figure>
+
+<p>This makes it really simple to sandbox whatever you want to test. Prefixing your programs, creating menu items, and/or modifying existing desktop menu items makes for a very convenient way to run your programs in the FireJail sandbox.</p>
+
+<p>FireJail also provides a separate graphical tool (Firetools). The FireJail <a href="https://firejail.wordpress.com/">web site</a> includes good documentation about this process.</p>
+
+<h6 id="leanpub-auto-qubeshttpswwwqubes-osorg">
+  <a href="https://www.qubes-os.org/">Qubes</a>
+</h6>
+
+<p>Before we look at Qubes, I would like to address Tails as well, as they are often talked about in the same sentence. Tails is a live system (usually loaded from a DVD, USB stick, or SD card). It leaves no trace on the computer it is loaded from unless you explicitly ask it to. All connections to the Internet are forced to go through the Tor network. Tails whole aim is to provide anonymity for the user. Tails provides many options specific to anonymity, even forgetting user passwords, which you can specify on boot if you desire. I use Tails on a daily basis for some jobs given its target qualities of amnesia and anonymity.</p>
+
+<p>Qubes will not keep you anonymous without customisation. Its primary goal is to keep infectious malware contained and isolated. Technically, Qubes is not a Linux distribution, it’s closer to being a Xen distribution.</p>
+
+<p>Qubes is a standalone operating system which uses Xen to create isolated containers (AKA security domains, zones). A fairly standard use case would include a user with a small number of domains such as: “work”, “personal”, “banking”. Typically, a user will use approximately five domains. More domains are always available if your paranoia warrants it.</p>
+
+<p>Qubes also contains system domains such as a Networking domain (or VM), and USB domains, as it considers these untrusted. The USB stacks and drivers are sandboxed in their own unprivileged VM (currently experimental). A storage domain has also been <a href="https://github.com/QubesOS/qubes-secpack/blob/master/QSBs/qsb-020-2015.txt#L97">considered</a>.</p>
+
+
+<img src="images/qubes-arch-diagram-1.png" alt="qubes"/>
+
+
+<p>As noted in the above image, the “Storage Domain” is actually a USB domain.</p>
+
+<p>It provides proper GUI-level (one of the main goals) isolation. Security is one of the primary goals of the GUI virtualisation subsystem, but performance is also priority, so the virtualised applications feel as if they were executed natively. The GUI infrastructure introduces only about 2500 lines of C code (LOC) into the privileged domain (Dom0), thus keeping the attack surface small.</p>
+
+<p>This is in stark opposition to mainstream desktop operating systems which:</p>
+
+<p>“<em>are based on monolithic kernels usually containing tens of millions of lines of code. Most of this code is reachable from untrusted applications via all sorts of APIs, making the attack surface on the kernel huge.</em>”. All networking, USB, drivers, etc. are also hosted in the kernel.<br />
+Or<br />
+Type-2 (hosted) hyper-visors, which suffer from similar weaknesses, as well as some of their own because they run inside of the hosting operating system as processes and/or kernel modules. This means they are trusting the underlying operating systems services for networking, USB, graphics, and Human Interface Devices (HIDs) such as keyboards and mice. They thus inherit any buggy utilised resources in the underlying operating system. </p>
+
+<p>Fedora is currently used as the default template for AppVMs. Reduced Fedora and Debian templates are also supported by Invisible Things Lab (the creators of Qubes). There are also community supported templates built around Whonix (providing anonymity), Ubuntu and Archlinux. Windows 7 can be run in a VM, <a href="https://www.qubes-os.org/doc/windows-appvms/">support for Windows 8+ is in development</a>.<br />
+Qubes VMs are lightweight, allowing many to run at once, requiring little memory, and optimised to start almost instantly. Each VM is automatically assigned a private static IP.</p>
+
+<p>In order to expose services within a VM to the host’s interface, port forwarding needs to be configured in the host. Qubes provides advanced networking configurations.</p>
+
+<p>There is no direct communication between VMs unless you explicitly set it up. That said, Qubes provides secure inter-VM clip-board and file sharing.</p>
+
+<h5 id="leanpub-auto-offensive">Offensive</h5>
+
+<p>In terms of tooling up for offensive exploitation, there are at least three scenarios:</p>
+
+<ol class="numeric">
+  <li>Penetration Tester: Using your favourite security focused OS in a VM on any host is often good enough if you are not expecting to be attacked yourself</li>
+  <li>Black Hat in potentially hostile environment: Use your favourite security focused OS as a Whonix-Workstation as a Qubes TemplateVM communicating through a Whonix-Gateway as a Qubes TemplateVM, both of which reside in a Qubes bare metal hyper-visor (installed directly onto your hardware)</li>
+  <li>Black Hat with a requirement for amnesia: Same as 2, but you need to do a lot of work to clean up all your foot prints. Another option to save manual clean-up is to use Tails as a Qubes TemplateVM in the 2 scenario. Tails is however not a penetration testing distribution, so you can not cover all these scenarios at once with out of the box solutions</li>
+</ol>
+
+<p>See the Additional Resources chapter for more information.</p>
+
+<h4 id="leanpub-auto-documenting-and-reporting">Documenting and Reporting</h4>
+
+<p>While this section is last in the Penetration Testing section, that does not mean carry it out last. Penetration tester and attacker alike will be recording information throughout their entire engagement, especially during the Reconnaissance stage, so too should you.</p>
+
+<p>There are many tools that can help us capture, organise, and provide physical representations of how data relates. Listed below are excellent tools for this task but there are also others, many of which are <a href="http://tools.kali.org/reporting-tools">included</a> in Kali Linux.</p>
+
+<h5 id="leanpub-auto-dradishttpdradisframeworkorg">
+  <a href="http://dradisframework.org/">Dradis</a>
+</h5>
+
+<p>Software engineers often use wikis for storing and collaborating on information that is meant for the team’s benefit; Dradis is a similar type of web application that stores all the information specific to what work has been completed, and what is left to be accomplished on an engagement for info-sec teams. It is self contained, and can be run from the likes of a laptop wherever you are working from.</p>
+
+<p>Like good wikis, Dradis provides the ability to add attachments and create reports. Dradis is included in Kali Linux, and the source code can be accessed from the dradisframework <a href="https://github.com/dradis/dradisframework">repository</a> of dradis, which can be found on GitHub. There is a collection of security tools that Dradis <a href="https://github.com/dradis/dradisframework#some-of-the-features">integrates with</a>, and creating connectors to additional tools is stated to be easy.</p>
+
+<h5 id="leanpub-auto-casefile">CaseFile</h5>
+
+<p>Created by Paterva, the same organisation who offers Maltego (which falls into the Reconnaissance category). CaseFile has similar characteristics, but it is targeted toward information that is manually gathered and entered off-line. It doesn’t use transforms like Maltego, and costs about two thirds less than the commercial version of Maltego. Both Maltego and CaseFile community editions are packaged in Kali Linux.</p>
+
+<p>CaseFile is useful for mapping the relationships between the types of information you enter, providing the ability to view the ascending and descending relationships on many levels of depth. By default, it comes with its own entity types for you to store your information, and you can create custom types as well.</p>
+
+<p>Your CSV, XLS and XLSX formatted datasets can also be used, and CaseFile will produce visualisations of how the data is related to each other.</p>
+
+<h3 id="process-and-practises-agile-development-and-practices">Agile Development and Practices</h3>
+
+<aside>
+  <p>Taking Back the Security Focus… but why?<br />
+As technologists, we are hired to create business value and reduce business costs. If you look at the <a href="http://www.meetup.com/OWASP-New-Zealand-Chapter-Christchurch/events/223462991/">public statistics</a> on businesses losing value when compromised regularly, the figures are staggering, and they are growing exponentially due to the popularity of cyber-crime.</p>
+
+</aside>
+
+<p>I hope to encourage, even if its just one developer within each team to lead the charge on taking back the responsibility of creating secure solutions. These solutions should withstand the types of attacks that are being launched against our physical locations, people, infrastructure, products, and our everyday life on a regular basis today. If we can accomplish this, I think we may be able to move forward and make our industry a better place, a place that we want to be part of. </p>
+
+<p>This process is most significantly about reducing the cost of producing quality products.</p>
+
+<p>The 10,000’ View should be carried out in each Sprint and for each PBI as it is pulled into WIP. If the particular PBI includes Physical, IoT, Mobile, People, Cloud, VPS, Network, Web Applications attributes, you can apply the concepts and direction discussed in these chapters to the PBI that you are working on.</p>
+
+<p>It is not my intention to encourage you to think only about security (in this book at least), because then you would not deliver a product. I would rather security become part of who you are, so part of your normal work-flow includes being security conscious, and habits that you build become firmly entrenched. As such, your deliverables will no longer be at the bottom of the tree where your attackers will pick off the low hanging fruit.</p>
+
+<p>I have compiled a collection of some of the most powerful practises designed to increase quality with the least money spent. Use these to augment your agile work-flow. </p>
+
+<p> </p>
+
+<aside>
+  <p>Let’s look at some of the practices we can use as developers to enhance the level of security within our software, and how to integrate them into our Scrum process framework.</p>
+
+</aside>
+
+<h4 id="leanpub-auto-architecture">Architecture</h4>
+
+<p>There are no architects on the Scrum Team, just Developers. Some of those developers have architect qualities. They are often the ones who step back to see the bigger picture, and understand the interactions between components and the people using the software, including every aspect of the end product, the people intending to use it, and the risks.</p>
+
+<p>Agile architecture includes some design up front, in collaboration with the team and everyone with a vested interest. Agile architecture is not siloed, it is part of development, just as it is with requirements analysis and testing; all done in parallel.</p>
+
+<p>We appreciate a software developer who excels at what is traditional architecture, as well as software engineering. An architect is essentially an extreme version of the ‘T’ shaped developer. They have very broad knowledge and skill sets, with multiple deep specialities.<br />
+Another defining factor that sets the architect apart, is their ability to translate effectively between the most technical people on a project and the least technical. I like to think of them as the people who spend a lot of time on the elevator of a high rise office building, where most technical people are on the bottom floors of the building, and the least technical are at the top. The architect spends time on each level accumulating what he/she has learned from all the other levels, then translating and applying it to the specific level to whom they are communicating too.</p>
+
+<p> </p>
+
+<h4 id="leanpub-auto-cheapest-place-to-deal-with-defects">Cheapest Place to Deal with Defects</h4>
+
+<p>There have been many studies specifically looking at the costs of finding and fixing defects early, as opposed to the planning of how to fix defects once the product is delivered, or not planning at all.</p>
+
+<p>The following table shows the average cost of fixing defects based on when they were introduced versus when they are detected. Putting these practises in the right order can reduce costs by up to 100 times.</p>
+
+
+<img src="images/AverageCostOfFixingDefects.png" alt="Average Cost Of Fixing Defects"/>
+
+
+<blockquote>
+  <p>This material is used with the author’s permission from Code Complete, by Steve McConnell © 2004. All Rights Reserved.</p>
+</blockquote>
+
+<p>Steve McConnel goes on to say: The data in the above table “<em>shows that, for example, an architecture defect that costs $1000 to fix when the architecture is being created can cost $15,000 to fix during system test.</em>” The below figure illustrates this same phenomenon.</p>
+
+
+<img src="images/AverageCostOfFixingDefectsDiagram.png" alt="Cost of Fixing Defects"/>
+
+
+<p>“<em>The cost to fix a defect rises dramatically as the time from when it’s introduced to when it’s detected increases. This remains true whether the project is highly sequential (doing 100 percent of requirements and design up front) or highly iterative (doing 5 percent of requirements and design up front).</em>”</p>
+
+<blockquote>
+  <p>This material is used with the author’s permission from Code Complete, by Steve McConnell © 2004. All Rights Reserved.</p>
+</blockquote>
+
+<h4 id="process-and-practises-agile-development-and-practices-evil-test-conditions">Evil Test Conditions</h4>
+
+<p>Many developers will be familiar with the test condition workshop that is often used within a Scrum Team immediately before the developers pulling a PBI into work-in-progress (WIP) start work on it. I am not going to go into the exercise here, as it is non-security related, and I have already discussed the test condition workshop many times <a href="http://blog.binarymist.net/2012/03/24/how-to-optimise-your-testing-effort/#planningTheTestEffort">on-line</a>. I am going to provide a slight variation on the exercise though, just as you would create the usual test conditions:</p>
+
+
+<img src="images/TestCondition.png" alt="Test Conditions"/>
+
+
+<p>Also consider creating evil test conditions. Often, developers do not have the mind set for this. That is why we need that “person(s) with security specialisations” within the team, as discussed right at the beginning of the 30,000’ View chapter.</p>
+
+
+<img src="images/TestConditionEvil.png" alt="Evil Test Conditions"/>
+
+
+<h4 id="leanpub-auto-security-focussed-tdd">Security Focussed TDD</h4>
+
+<p>Once you have your evil test conditions defined, along with your normal test conditions, you can start the Test Driven Development (TDD) cycling, but augment those usual test conditions with the evil ones.</p>
+
+<p>Adding <strong>security focused TDD/BDD/ATDD</strong> tests is the same amount of work as any other developer test driven development, but it includes the significant benefit of finding not just faults, but security faults, moving from very expensive to fix:  </p>
+
+
+<img src="images/CostOfChange.png" alt="Cost of Change">
+
+
+<p>to the least expensive possible phase to fix. Enhance your test conditions with automatable security focused “<a href="http://blog.binarymist.net/2012/03/24/how-to-optimise-your-testing-effort/#planningTheTestEffort">Given, When, Thens</a>”:</p>
+
+
+<img src="images/CostOfChange-WithSTDD.png" alt="Cost of Change with Security TDD">
+</figure>
+
+
+<p>Now, instead of the business waiting until go-live before contracting experts to attack our systems, and telling us that <strong>your security sucks</strong>, we take a proactive approach (as the self managing team that we are). We move a lot of the effort traditionally performed at go-live, to <strong>up front</strong>, where you yourself, as the developer, can test and fix, thus saving the embarrassment and the business a lot of money. This is what being a professional developer is all about: taking the initiative and leading from the front.</p>
+
+<p>What is so good about STDD and SBDD, is that it rolls up Specifications, Design, Implementation and Verification all into one process, thus working toward delivering each increment that is truly <a href="http://blog.binarymist.net/2013/03/02/how-to-increase-software-developer-productivity/#definitionOfDone">“Done”</a>. Driving development with tests is not about testing! It is about creating code that is testable. Testable code is inherently well designed and gives us the ability to reason about its state at any given time.<br />
+OpenSSL Heartbleed and Apple’s Goto Fail could have been prevented if (S)TDD was used. Check out Mike Bland’s <a href="http://martinfowler.com/articles/testing-culture.html">excellent study and POC</a>.</p>
+
+<p>BSIMM also has some good <a href="https://www.bsimm.com/online/ssdl/st/">guidance on security testing</a>.</p>
+
+
+<h4 id="process-agile-development-and-practices-security-regression-testing">Security Regression Testing</h4>
+
+<p>If you are using NodeJS, and have not already gotten your tests running as part of a CI build or pre-commit hook, check out the Consuming Free and Open Source Tooling section in <a href="https://leanpub.com/holistic-infosec-for-web-developers-fascicle1-vps-network-cloud-webapplications">Fascicle 1</a> for some information on how to set this up.</p>
+
+<p>As I see it, this is one of the biggest wins you can take, with minimum expenditure. You can simply continue to use your existing automated test suites and frameworks. All you have to do is add a <strong>security focused test API</strong> into the mix. You can continue to use your chosen (language specific) TDD/BDD framework of choice, just proxy your existing tests through the security API. Then, simply tell the API to attack your application, targeting all known vulnerabilities that the API is aware of. The API will learn your application’s external facing structure given that it has proxied all your requests and responses. The security API should already exist, all you have to do is use it.</p>
+
+<p>I created a <a href="https://github.com/binarymist/NodeGoat/wiki/Security-Regression-Testing-with-Zap-API">proof of concept (POC)</a> by using the existing NodeGoat, purposely vulnerable web application written in NodeJS and used the RESTful API of OWASP Zap to proxy the selenium tests, then launch it’s own tests. The “own tests” are already part of Zap. It is all done for you for free. We will discuss this soon on how to set-up the NodeGoat Web Application along with the Zap REST API.</p>
+
+<p>I have demonstrated this to many of my clients, and in my training classes. I have also created a video that I use for short talks, which exhibits a run of the regression testing suite before and after a security defect is introduced and mitigated. You can see the short demonstration here: <a href="https://youtu.be/DrwXUOJWMoo">https://youtu.be/DrwXUOJWMoo</a></p>
+
+<p><a href="https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project">OWASP ZAP</a> (which also comes <a href="http://blog.binarymist.net/2014/03/29/up-and-running-with-kali-linux-and-friends/#zap">pre-installed on Kali Linux</a> ) is a particularly useful tool for security regression testing. It provides manual tooling similar to that of Burp Suite, with many other features.</p>
+
+<p>The ZAP API can be accessed directly or by any of the following client implementations:</p>
+
+<ul>
+  <li>Node.JS (by way of <a href="https://www.npmjs.com/package/zaproxy">zaproxy</a>), all of which you can use via <a href="https://github.com/binarymist/NodeGoat/tree/master/test/security">my code</a>. The source for zaproxy is in the Zap core project “<a href="https://github.com/zaproxy/zaproxy/tree/develop/nodejs/api/zapv2">zaproxy</a>”</li>
+  <li>Python</li>
+  <li>PHP</li>
+  <li>Ruby</li>
+  <li>.Net
+    <ol class="numeric">
+      <li>ZapPenTester: <a href="http://www.codeproject.com/Articles/708129/Automated-penetration-testing-in-the-Microsoft-sta">write-up</a> on codeproject and the <a href="https://github.com/gustavorhm/ZapPenTester">source</a> on the github gustavorhm account. API use is well defined from the <a href="https://github.com/gustavorhm/ZapPenTester/blob/master/ZAPPenTester/Zap.cs">Zap.cs</a> file</li>
+      <li>There is also the Zap supported <a href="https://github.com/zaproxy/zap-api-dotnet">zap-api-dotnet</a> offering, which I have had good success with for a large international clients web application</li>
+    </ol>
+  </li>
+</ul>
+
+<p>There is also the <a href="https://www.owasp.org/index.php/OWASP_Secure_TDD_Project">OWASP Secure TDD Project</a>, a .NET solution. This project appears to either be abandoned or very low on activity. Do feel free to offer to help though if you are a .NET developer.</p>
+
+<p>There are links to the API clients from the zaproxy wiki on <a href="https://github.com/zaproxy/zaproxy/wiki/ApiDetails">github</a>.</p>
+
+<h5 id="leanpub-auto-zap-rest-api-regression-testing-nodegoat">Zap REST API Regression Testing NodeGoat</h5>
+
+<p>My set-up was accomplished by fetching the NodeGoat source code from a physical host machine with Zap running from a Kali Linux VirtualBox guest on the same physical machine.</p>
+
+<p>Details on running Zap in a Docker container can be found on the <a href="https://github.com/zaproxy/zaproxy/wiki/Docker">Zap wiki</a></p>
+
+<h6 id="process-agile-development-and-practices-security-regression-testing-nodegoat-set-up-on-your-local-machine">NodeGoat Set-up on your local machine</h6>
+
+<p>The following is also addressed in the <a href="chap05.html#tooling-setup-kali-linux-kali-linux-install">Kali Linux Install</a> section of the Tooling Setup chapter.</p>
+
+<p>In VirtualBox you will need to add a Host-only Network. By default, this will be called <code>vboxnet0</code> in your VirtualBox settings. Running an <code>ifconfig</code> on the host will reveal a new network interface called <code>vboxnet0</code>. This allows guests and host to communicate with each other without anyone outside of the host network interface being able to see the communications. In this example, we set the Adapter IP address to <code>192.168.56.1</code>, an address then assigned to the host as an additional network interface.</p>
+
+<p>You will then need to make sure the <code>hostName</code> property in the <code>config/env/all.js</code> is set to the same IP address, as this IP address is used in the regression test(s) to inform the selenium web driver where the NodeGoat is listening from. Additionally, requests are proxied through the Zap API via this same address.</p>
+
+<p>If you have a firewall running, You will need to allow TCP in on interface <code>vboxnet0</code>. From: <code>192.168.56.0/24</code> To: <code>192.168.56.1</code> on port <code>4000</code> (NodeGoat) and <code>35729</code> (LiveReload).</p>
+
+<h6 id="leanpub-auto-zap-running-on-a-local-virtualbox-guest">Zap Running on a local VirtualBox guest</h6>
+
+<p>On the guest machine, in the VirtualBox Network settings, set one of the Adapter tabs so that the network adapter is attached to the Host-only Adapter. Once networking is restarted on this guest, it will have a network interface bound to something like <code>192.168.56.20</code>, specified by the <code>192.168.56.0/24</code> range decided above when you set-up the <code>vboxnet0</code> interface.</p>
+
+<p>The Zap local proxy should be bound to the same IP address and port that the guest Host-only adapter is bound to in order to process requests received from the Host-only adapter destined for the host that NodeGoat is listening on, <code>192.168.56.1</code> in this example. By default the Zap local proxy will be set to <code>127.0.0.1</code>. Change it to the VM’s externally visible network interface. You can set the Zap local proxy and port to <code>192.168.56.20</code> and <code>8080</code> for this example via the Zap GUI:<br />
+Tools -&gt; Options -&gt; Local proxy.<br />
+The other option is to utilise the <code>~/ZAP/config.xml</code> file found in the following section:</p>
+
+<figure class="code">
+<div class="highlight"><pre><code></code><code class="nt">&lt;proxy&gt;</code>
+   <code class="nt">&lt;ip&gt;</code>192.168.56.20<code class="nt">&lt;/ip&gt;</code>
+   <code class="nt">&lt;port&gt;</code>8080<code class="nt">&lt;/port&gt;</code>        
+<code class="nt">&lt;/proxy&gt;</code>
+</pre></div>
+
+</figure>
+
+<p>Update the <code>zapHostName</code> and <code>zapPort</code> properties in the <code>config/env/test.js</code> file to reflect the host name (or IP address) and port that the Zap API is listening on within your virtual guest. If you want to debug the security regression tests, add the same properties to the <code>config/env/development.js</code> file.</p>
+
+<p>You will also need to make sure the zapApiKey in the <code>config/env/test.js</code> file matches that in the Zap UI Options menu -&gt; API -&gt; API Key, or in the <code>~/ZAP/config.xml</code> file in the <code>&lt;api&gt;&lt;key&gt;&lt;/key&gt;&lt;/api&gt;</code> section. Again, if you want to debug the security regression tests, make sure the key value matches in the <code>config/env/development.js</code> file also.</p>
+
+<p>Start Zap the usual way. Zap can, and probably should, be scripted to start automatically on each test or suite run, and to also reset the database so you have a known state if you are planning on using the API in your development team. Zap can be terminated via its API and is usually good practice to do so on each test or suite run. Alternatively, you can just create a new session via the Zap Api. If you don’t have a UI:</p>
+
+<figure class="code">
+<div class="highlight"><pre><code></code>owasp-zap -daemon
+</pre></div>
+
+</figure>
+
+<p>Now you should be able to browse the Zap API from either machine at<br />
+<code>http://192.168.56.20:8080/</code>.</p>
+
+<h6 id="leanpub-auto-start-the-security-regression-tests-from-your-local-machine">Start the Security Regression test(s) from your local machine</h6>
+
+<p>For each test run, this is the usual set of steps:</p>
+
+<figure class="code">
+<div class="highlight"><pre><code></code><code class="c1"># In one terminal create clean state in datastore:</code>
+grunt db-reset
+<code class="c1"># Then start NodeGoat:</code>
+npm start
+</pre></div>
+
+</figure>
+
+<figure class="code">
+<div class="highlight"><pre><code></code><code class="c1"># In another terminal start the security regression test(s):</code>
+grunt testsecurity
+</pre></div>
+
+</figure>
+
+<p>By default, XSS vulnerabilities exist in the <code>/profile</code> route. By running <code>grunt testsecurity</code>, the <code>test/security/profile-test.js</code> will execute. You should be informed of a failed test with the following output:</p>
+
+<figure class="code">
+  <figcaption>Zap Found Vulnerabilities</figcaption>
+
+<div class="highlight"><pre><code></code>me@myBox in Source/NodeGoat git:<code class="o">(</code>workshop<code class="o">)</code>   grunt testsecurity
+Running <code class="s2">"env:test"</code> <code class="o">(</code>env<code class="o">)</code> task
+
+Running <code class="s2">"mochaTest:security"</code> <code class="o">(</code>mochaTest<code class="o">)</code> task
+
+
+  profile regression <code class="nb">test</code> suite
+Scan <code class="m">0</code> is <code class="m">26</code>% <code class="nb">complete</code> with <code class="m">10</code> alerts.
+Scan <code class="m">0</code> is <code class="m">53</code>% <code class="nb">complete</code> with <code class="m">10</code> alerts.
+Scan <code class="m">0</code> is <code class="m">100</code>% <code class="nb">complete</code> with <code class="m">10</code> alerts.
+We are finishing scan <code class="m">0</code>. Please see the report <code class="k">for</code> further details.
+About to write report.
+Scan <code class="m">0</code> is <code class="m">100</code>% <code class="nb">complete</code> with <code class="m">10</code> alerts.
+Scan <code class="m">0</code> is <code class="m">100</code>% <code class="nb">complete</code> with <code class="m">10</code> alerts.
+Writing report to Source/NodeGoat/test/security/report_2015-11-24-20-57.html
+
+Search the generated report <code class="k">for</code> <code class="s2">"/profile"</code> to see the <code class="m">7</code> vulnerabilities that exceed the user <code class="se">\</code>
+defined threshold of: <code class="m">3</code>
+    <code class="m">1</code><code class="o">)</code> Should not exceed the decided threshold of vulnerabilities known to Zap
+
+
+  <code class="m">0</code> passing <code class="o">(</code>28s<code class="o">)</code>
+  <code class="m">1</code> failing
+
+  <code class="m">1</code><code class="o">)</code> profile regression <code class="nb">test</code> suite Should not exceed the decided threshold of vulnerabilities<code class="se">\</code>
+ known to Zap:
+     Uncaught AssertionError: expected <code class="s1">'10'</code> to be below or equal3
+      at Assertion.fail <code class="o">(</code>node_modules/should/lib/assertion.js:180:17<code class="o">)</code>
+      at Assertion.prop.value <code class="o">(</code>node_modules/should/lib/assertion.js:65:17<code class="o">)</code>
+      at onCompletion <code class="o">(</code>test/security/profile-test.js:124:38<code class="o">)</code>
+      at node_modules/async/lib/async.js:721:13
+      at node_modules/async/lib/async.js:52:16
+      at node_modules/async/lib/async.js:269:32
+      at node_modules/async/lib/async.js:44:16
+      at node_modules/async/lib/async.js:718:17
+      at node_modules/async/lib/async.js:167:37
+      at test/security/profile-test.js:268:41
+
+
+Warning: Task <code class="s2">"mochaTest:security"</code> failed. Used --force, continuing.
+
+Done, but with warnings.
+</pre></div>
+
+</figure>
+
+<p>Complete these steps:</p>
+
+<ol class="numeric">
+  <li>Fix the XSS vulnerabilities in the <code>/profile</code> route, explained in the NodeGoat <a href="http://nodegoat.herokuapp.com/tutorial/a3#source-code-example">Tutorial Guide</a>
+</li>
+  <li>Restart Zap</li>
+  <li>Reset the datastore</li>
+  <li>Restart NodeGoat</li>
+  <li>Rerun the security regression test(s)</li>
+</ol>
+
+<p>You should then be informed of a successful test with the following output:</p>
+
+<figure class="code">
+  <figcaption>Fixed Vulnerabilities</figcaption>
+
+<div class="highlight"><pre><code></code>me@myBox in Source/NodeGoat git:<code class="o">(</code>workshop<code class="o">)</code>   grunt testsecurity
+Running <code class="s2">"env:test"</code> <code class="o">(</code>env<code class="o">)</code> task
+
+Running <code class="s2">"mochaTest:security"</code> <code class="o">(</code>mochaTest<code class="o">)</code> task
+
+
+  profile regression <code class="nb">test</code> suite
+Scan <code class="m">0</code> is <code class="m">26</code>% <code class="nb">complete</code> with <code class="m">3</code> alerts.
+Scan <code class="m">0</code> is <code class="m">66</code>% <code class="nb">complete</code> with <code class="m">3</code> alerts.
+Scan <code class="m">0</code> is <code class="m">100</code>% <code class="nb">complete</code> with <code class="m">3</code> alerts.
+We are finishing scan <code class="m">0</code>. Please see the report <code class="k">for</code> further details.
+About to write report.
+Scan <code class="m">0</code> is <code class="m">100</code>% <code class="nb">complete</code> with <code class="m">3</code> alerts.
+Scan <code class="m">0</code> is <code class="m">100</code>% <code class="nb">complete</code> with <code class="m">3</code> alerts.
+Writing report to Source/NodeGoat/test/security/report_2015-11-24-20-52.html
+
+     Should not exceed the decided threshold of vulnerabilities known to Zap <code class="o">(</code>21106ms<code class="o">)</code>
+
+
+  <code class="m">1</code> passing <code class="o">(</code>28s<code class="o">)</code>
+
+
+Done, without errors.
+</pre></div>
+
+</figure>
+
+<p> </p>
+
+<h4 id="leanpub-auto-hand-crafted-penetration-testing">Hand-crafted Penetration Testing</h4>
+
+<p>Hand-crafted penetration testing is sometimes also referred to as “guerrilla testing”.</p>
+
+<p>As previously discussed, this can be costly when performed late in a project’s life cycle. By automating as much as possible, including high level scans which help to identify starting points to attack, developers are left to do what they do best…being creative.</p>
+
+<p>Get creative.</p>
+
+<p>There is no reason why developers can not take on a good chunk of the manual penetration testing process as part of their daily development practices. In fact, on most teams I have lead, this has been exactly how we have worked. Guerilla testing needs to be performed in parallel with the PBIs in the Scrum Backlog as developers pull them into Work I Progress (WIP).</p>
+
+<p>BSIMM again has some <a href="https://www.bsimm.com/online/deployment/pt/">good guidance</a> on hands-on penetration testing.</p>
+
+<h4 id="leanpub-auto-establish-a-security-champion">Establish a Security Champion</h4>
+
+<p>Some developers have an inquisitiveness about how their work can be exploited, so it is important to have at least a non zero number of developers with a security focus within each team to:</p>
+
+<ol class="numeric">
+  <li>Take the lead on the security front</li>
+  <li>Mentor; infect with their passion, and pass on their knowledge to their co-workers</li>
+</ol>
+
+<p>I mention in the People chapter, specifically the <a href="chap08.html#people-countermeasures-morale-productivity-and-engagement-killers-top-developer-motivators-in-order">“Top Developer Motivators in Order”</a> section, how developers love being the champion of something. The role of the security champion or any champion for that matter, needs to be applied to the developer as a vacuum. People do not respond well to being pushed into anything. The best developers will just pick up the role, but many will not be as proactive. For less proactive developers, it pays to create the role and, as the Product Owner or manager, approach them and ask them if they would like to take on the responsibility as security champion. Once a developer has taken up this responsibility, they will usually do a pretty good job of infusing the rest of their team with their passion and knowledge.</p>
+
+<h4 id="process-agile-development-and-practices-pair-programming">Pair Programming</h4>
+
+<p>Two pairs of eyes on the same code has proven to drastically reduce defects, and does it at the least expensive phase: as code is being created. Pair programming can also be a very effective discipline, but not all the time, and not for all people. There are a lot of resources on the topic. If you have not tried it, do so, but it is probably counter-productive to mandate that all developers should do it all the time. It is best to encourage developers to pair on complex tasks. Pairing is a tool, try it, and use it wisely.</p>
+
+<h4 id="leanpub-auto-code-review">Code Review</h4>
+
+<p>If we can not get the simple things right, such as <a href="http://blog.binarymist.net/2012/12/19/javascript-coding-standards-and-guidelines/">Coding standards and conventions</a>, to help remove the “wild west” attitudes and behaviours, then how will we ever get the complicated things right? The whole team doesn’t necessarily have to agree on everything, but does need to be in alignment with, and abide by the coding standards, conventions, and guidelines.</p>
+
+<p>Have a programming pair review your code against the standards you have created, and offer <a href="http://blog.binarymist.net/2014/07/26/node-js-asynchronicity-and-callback-nesting/">alternative</a> approaches and techniques, not only for standards violations, but also for possible semantic modifications.</p>
+
+<p>It is often a good idea to automate as much of your coding standards as possible with static analysis and other related tooling, ideally using your source control commit hooks to trigger the review process. This is discussed in more detail in the “Consuming Free and Open Source” sections of the Web Applications chapter.</p>
+
+<p>Automating is not going to catch everything though. Human pair reviews should not be neglected. Team reviews should be carried out in moderation. I have found them to be less effective, as sometimes we lose face when our defects are highlighted in front of the entire team.</p>
+
+<p>The <a href="https://www.bsimm.com/online/ssdl/cr/">BSIMM Code Review</a> resource has some good ideas worth exploring.</p>
+
+<h5 id="process-agile-development-and-practices-code-review-why">Why?</h5>
+
+<p>When humans are in a creative mode, we often struggle to see the defects in our own creation. That is why tightly knit teams with high morale (as discussed in the people chapter under the “Morale, Productivity and Engagement Killers” sections) are a force to be reckoned with. We are all watching each other’s backs and we are good at seeing faults in others and their creations. That is why we really do need each other. Never underestimate this creative blindness that shows in us all and that we have a very powerful mitigation tool in the team. Use it.</p>
+
+<h5 id="leanpub-auto-linting-static-analysis">Linting, Static Analysis</h5>
+
+<p>Start with the likes of JSHint for general purpose JavaScript linting. There are lots of other good tooling options.</p>
+
+<p>Techniques and tools to assist with automating</p>
+
+<ul>
+  <li>
+<a href="https://wiki.mozilla.org/Security/B2G/JavaScript_code_analysis">https://wiki.mozilla.org/Security/B2G/JavaScript_code_analysis</a>
+    <ul>
+      <li>
+<a href="https://github.com/yaph/domxssscanner">DOMXSSScanner</a>. Does what the name suggests</li>
+      <li>
+<a href="https://www.youtube.com/watch?v=Vk5SPGpqiLc">JSPrime</a>. Security focused. Not currently maintained at this point in time. The owners are keen for someone to pick it up</li>
+      <li>
+<a href="http://www.jswebtools.org/">JSWebTools</a>. A collection of research papers and JS related security tools</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://codeclimate.com/">Code Climate</a> is a static analysis platform that provides an open and extensible model to run <a href="https://codeclimate.com/engines">community provided analysis engines</a>
+</li>
+</ul>
+
+<h5 id="leanpub-auto-dynamic-analysis">Dynamic Analysis</h5>
+
+<p>Tooling is still immature here, we have got a way to go, but lets start by getting our feet wet. Here are a few resources in which to dip your toes:</p>
+
+<ul>
+  <li>
+<a href="https://theoreticalideations.com/tag/titanium-code-processor/">Titanium Code Processor</a> For <a href="https://github.com/appcelerator/titanium_mobile">Titanium Mobile</a> (native mobile applications using JavaScript) projects. You can find the source code at the appcelerator account on <a href="https://github.com/appcelerator/titanium-code-processor">github</a> </li>
+  <li>
+<a href="https://speakerdeck.com/ariya/dynamic-code-analysis-for-javascript">Slide Deck</a> by Ariya Hidayat</li>
+  <li><a href="https://www.eecs.berkeley.edu/~gongliang13/jalangi_ff/">Jalangi</a></li>
+</ul>
+
+<h4 id="leanpub-auto-techniques-for-asserting-discipline">Techniques for Asserting Discipline</h4>
+
+<p>JavaScript is an inherently flexible and undisciplined language. This quality is a double edged sword. It provides us with extreme power, and also allows us to slaughter ourselves. Discipline is very much needed in order to stay safe and be able to assess our applications as they grow larger.</p>
+
+<p>I have been involved in many JavaScript project rescue missions where a Development Team can no longer understand what the monster they have created is doing, what state it is in and why. In almost all occasions, the developers on the team do not have a deep understanding of the language, and often of any language. Given this, I always try and push the fact that JavaScript developers must do everything they can to understand the language. In most cases this means taking their learning home and becoming intimate with JavaScript’s beauty.</p>
+
+<p>Because of the distinct lack of discipline within JavaScript (unlike most other languages) I try and convey as much understanding around techniques as possible to help impose extra rigour where and when needed. The remarkable thing about JavaScript is that when you really need to do something unconventional, you can, but I like to <strong>weigh up the trade-offs</strong> of either approach.</p>
+
+<h5 id="leanpub-auto-static-type-checking">Static Type Checking</h5>
+
+<p>In JavaScript, we need as much help as we can to fail fast. Static type checking gives us this. It also feels like the step before <a href="http://blog.binarymist.net/2010/10/11/lsp-dbc-and-nets-support/">DbC</a>.</p>
+
+<p><a href="http://flowtype.org/">Flow</a> is a good option. It provides consumers with the ability to introduce type checking progressively and/or to certain parts that make the most sense. This can include missing parts that require extra flexibility.</p>
+
+<p>Here is an example from the Flow website.</p>
+
+<figure class="code">
+  
+
+<div class="highlight"><pre><code></code><code class="cm">/* @flow */</code>
+<code class="kd">function</code> <code class="nx">foo</code><code class="p">(</code><code class="nx">x</code><code class="p">)</code> <code class="p">{</code>
+  <code class="k">return</code> <code class="nx">x</code> <code class="o">*</code> <code class="mi">10</code><code class="p">;</code>
+<code class="p">}</code>
+<code class="nx">foo</code><code class="p">(</code><code class="s1">'Hello, world!'</code><code class="p">);</code>
+</pre></div>
+
+</figure>
+
+<figure class="code">
+  <figcaption>Run flow</figcaption>
+
+<div class="highlight"><pre><code></code>$&gt; flow
+hello.js:5:5,19: string
+This <code class="nb">type</code> is incompatible with
+  hello.js:3:10,15: number
+</pre></div>
+
+</figure>
+
+<figure class="code">
+  <figcaption>Refactoring to DbC</figcaption>
+
+<div class="highlight"><pre><code></code><code class="kd">function</code> <code class="nx">foo</code><code class="p">(</code><code class="nx">x</code><code class="o">:</code> <code class="nx">string</code><code class="p">,</code> <code class="nx">y</code><code class="o">:</code> <code class="nx">number</code><code class="p">)</code><code class="o">:</code> <code class="nx">string</code> <code class="p">{</code>
+  <code class="k">return</code> <code class="nx">x</code><code class="p">.</code><code class="nx">length</code> <code class="o">*</code> <code class="nx">y</code><code class="p">;</code>
+<code class="p">}</code>
+<code class="nx">foo</code><code class="p">(</code><code class="s1">'Hello'</code><code class="p">,</code> <code class="mi">42</code><code class="p">);</code>
+</pre></div>
+
+</figure>
+
+<figure class="code">
+  <figcaption>Run flow</figcaption>
+
+<div class="highlight"><pre><code></code>$&gt; flow
+hello.js:3:10,21: number
+This <code class="nb">type</code> is incompatible with
+  hello.js:2:37,42: string
+</pre></div>
+
+</figure>
+
+<h5 id="leanpub-auto-design-by-contract-dbc">Design by Contract (DbC)</h5>
+
+<p>DbC enforces preconditions, postconditions and invariants in our routines.
+We can employ this design principle in JavaScript. I wrote about DbC in a <a href="http://blog.binarymist.net/2010/10/11/lsp-dbc-and-nets-support/#dbc">previous post</a> with regard to usage in .Net.<br />
+In JavaScript, I believe employing the DbC principle is even more important as part of adding discipline, and keeping us on the straight and narrow. I believe DbC is the principle that helps us achieve the <a href="http://blog.binarymist.net/2010/10/11/lsp-dbc-and-nets-support/#lsp">Liskov Substitution Principle</a>, which is the ‘L’ in the SOLID design mnemonic. These are the offerings I have noticed that provide additional support to the flow just mentioned above:</p>
+
+<ol class="numeric">
+  <li>
+<a href="https://www.npmjs.com/package/contracts-js">contract-js on NPM</a> is our current leader in the DbC space
+    <ul>
+      <li><a href="http://www.contractsjs.org/">contract.js at home</a></li>
+    </ul>
+  </li>
+  <li><a href="https://www.npmjs.com/package/contractual">contractual on NPM</a></li>
+  <li>
+<a href="https://code.google.com/p/ristretto-js/w/list">ristretto-js</a>. Doesn’t look to be currently maintained</li>
+</ol>
+
+<p>In many cases, you can implement cross cutting code contracts using AOP. This gets it out of your code, and thus out of your face.</p>
+
+<h4 id="leanpub-auto-essentials-for-creating-and-maintaining-a-high-performance-development-team">Essentials for Creating and Maintaining a High Performance Development Team</h4>
+
+<h5 id="leanpub-auto-how-and-why-many-software-development-shops-fail">How and Why Many Software Development Shops Fail</h5>
+
+<p>I have seen many organizations hire code monkeys rather than professionals. 
+They sometimes hire the cheapest talent they can get their hands on. They want the best, but the developers pay (as little as possible) is the most important factor to them.
+Alternatively, they hire the person that can complete feature implementations as fast as possible (sometimes known or thought of as rock stars). These are often the young developers without much experience, which causes the more professional developers to slow down a bit and think tasks through a little more.<br />
+Both approaches are short sighted. Code monkeys write code fast and incur technical debt that is hidden at first, but over time slows the Development Team down until it can barely move.</p>
+
+<h6 id="process-agile-development-and-practices-essentials-for-creating-and-maintaining-a-high-performance-development-team-how-and-why-many-software-development-shops-fail-the-scenario">The Scenario</h6>
+
+<p>Code Monkey finishes his task much faster than Professional Developer.</p>
+
+<p>The Code Monkey is solely focused on completing the task as fast as possible. They cut some code and declare that the task is done. The Professional Developer thinks the problem through, does a little research to satisfy them self that their proposed approach is in fact the most appropriate approach for the problem. They organise a <a href="http://blog.binarymist.net/2012/03/24/how-to-optimise-your-testing-effort/#testConditionWorkshop">test condition workshop</a>, which solidifies requirements and drives out design defects via active stake holder participation. They drive there low level design with TDD, and make sure they follow <a href="http://blog.binarymist.net/2013/03/02/how-to-increase-software-developer-productivity/#codingStandardsAndGuidelines">coding standards</a>, thus ensuring that future maintenance to their code is easier, and much <a href="http://blog.binarymist.net/2009/12/24/keeping-encapsulation-on-ones-mind/">easier to read</a>.
+They ask for a pair to <a href="http://blog.binarymist.net/2012/03/24/how-to-optimise-your-testing-effort/#pairReview">review</a> their code or perhaps requests a fellow team member to sit with them and <a href="chap06.html#process-agile-development-and-practices-pair-programming">pair program</a> for a bit on some complex areas of the code base.
+This makes sure their code is being run in the <a href="http://blog.binarymist.net/2012/03/24/how-to-optimise-your-testing-effort/#continuousIntegration">continuous integration</a> suite, that their <a href="http://www.slideshare.net/kimcarter75098/moving-to-tdd-bdd">acceptance tests</a> (which has been driving their feature) are passing, and that <a href="chap06.html#process-agile-development-and-practices-security-regression-testing">security regression tests</a> are not regressing.
+They check that their work complies with the <a href="http://blog.binarymist.net/2013/03/02/how-to-increase-software-developer-productivity/#definitionOfDone">Definition of Done</a>. You do have a Definition of Done, right?</p>
+
+<p>What the Product Owner or software development manager often fails to understand is that it is the slower (professional) developer that is creating code that can be maintained and extended at a sustainable pace. The Professional Developer is investing time and effort into creating a better quality of code than the Code Monkey, who appears to be producing code faster. The Product Owner and/or manager do not necessarily see this, in which case the Code Monkey clearly looks to be the superior developer. What also often occurs is that the Code Monkey rides on the Professional Developer’s quality and adds their lower quality code on top, thus making the Code Monkey appear god-like.</p>
+
+<p>The Product Owner sees output immediately produced by the Code Monkey who “appears” to be working very fast. They do not see the quality being created by the Professional Developer, who “appears” to be working slower.</p>
+
+<p>Time goes by. The Sprint Review rolls around. Stake holders love the new features that have been implemented and now want some additions and refinements. They ask the Product Owner to add some more User Stories into the Product Backlog. The Development Team pull these stories into a Sprint and start work. New functionality is added on top of the code that the Professional Developer wrote previously. New functionality is also added on top of the code that Code Monkey wrote.</p>
+
+<p>Sprint Review roles around again, and stake holders are happy with the new features that have been added on top of the Professional Developers code. Of course, they have no idea that the underlying code was crated by the Professional Developer. Now, the stake holders have been using the software that had the new features added on top of the Code Monkey’s lower quality code, and they are starting to notice other areas of the application that are no longer behaving the way they are supposed to. This continues to happen, and the stake holders are oblivious to the fact that it is due to the code that the Code Monkey is writing. They still think he is a rock star because he appears to pump out code so fast.</p>
+
+<p>So… while the Professional Developer seems to be slowing The Team down and clearly the Code Monkey is simply amazing because they deliver their features so much faster. The actual truth is exactly the opposite. The Professional Developer is creating <a href="http://blog.binarymist.net/2012/12/01/moving-to-tdd/#solidPrinciples">SOLID</a> code and running at a pace that is sustainable (a key principle of the agile manifesto).</p>
+
+<p>The code that the Professional Developer wrote is easier to modify and extend as its design is superior, and it is well thought out and driven by tests. Their code satisfies acceptance tests, so everyone knows it meets the living specification. It is faster to add changes to their code because it is easier to read and therefore fewer surprises. If any other team members changes the Professional Developer’s code in a manner that no longer conforms with the specification, the acceptance Tests around their code fail, thus providing instant feedback to the developer making the change.</p>
+
+<p>It is the practices (formed by habit) of the Professional Developer that:</p>
+
+<ol class="numeric">
+  <li>Provide the entire Development Team assurity that the software satisfies the requirements of the specification at all times</li>
+  <li>Allow The Development Team to run at a sustainable pace</li>
+  <li>Provide confidence in ongoing future estimations due to less surprises</li>
+  <li>Produce code that everyone wants to work with</li>
+  <li>Produce less error prone software that does what it says it will do on the box</li>
+</ol>
+
+<h5 id="leanpub-auto-scrum-teams-can-fail-too">Scrum Teams can Fail Too</h5>
+
+<p>Velocity of the Development Team starts high, then declines. Often it is hard for people (including the Product Owner) to pin-point why this is happening. The Scrum Team may have started out delivering at a consistently high cadence and appeared to be really on fire.</p>
+
+<p>The code base is small but growing fast. As it starts to get larger, the Development Team starts to feel the technical weight of a lot of code that has been hacked together in a rush. This causes the team’s ability to release software fast to wane. A Scrum Team can get to this point quite quickly, as they are a high performance team. When you arrive at this point, almost every change to the code base is hard. You make one change and something else fails (the whac-a-mole effect). This degradation can be driven by the fact that:</p>
+
+<ol class="numeric">
+  <li>Routines are hundreds of lines long. Developers have to understand hundreds of lines of code in order to make a small change</li>
+  <li>Names are not as meaningful as they should be</li>
+  <li>Routines have multiple levels of abstraction, so multiple levels of code need to be understood to make a single change</li>
+  <li>Inheritance is over used/abused, thus creating unnecessarily tight coupling</li>
+  <li>There are many aspects of the code that have become terrible to work with</li>
+</ol>
+
+<h6 id="leanpub-auto-how-does-this-happen">How Does This Happen?</h6>
+
+<p>How does the Product Owner determine that the quality of code being created is not good? The Product Owner is not generally a developer so does not know. Even if he is a developer, he is not in the code day in, day out. It is also not generally the primary concern of the Product Owner, getting new functionality out the door is the priority, so this is what Development Teams are rewarded for. When they pass a Sprint, the Product Owner is happy and praises the Development Team. The Product Owner has no idea that the quality of code is not as good as it needs to be to sustain a code base that is easy to extend.</p>
+
+<p>So, the Development Team does what ever it must to make sure they deliver right now (the current Sprint). Quality becomes secondary, because no one is rewarding them for it. This is a lack of professionalism on the Development Team’s part. Bear in mind though, that each developer is competing against each other to appear as though they have produced the most. After all, that is what they are being rewarded for. Often, this means they are working too fast and not thinking enough about what they are doing. Thus the quality of the code-base is deteriorating, as seen in the example above with Code Monkey.</p>
+
+<p>I have personally seen this nearly 100% of all non-Scrum projects I have been involved with. Scrum Teams are sometimes better off because they have other practises in place that ensure the quality remains high, but these practises are not prescribed by Scrum.</p>
+
+<h6 id="leanpub-auto-so-what-do-we-do">So… What do We Do?</h6>
+
+<p>We not only reward the Development Team for delivering features fast, but we also reward them for the sort of practises that Professional Developer (from our example <a href="chap06.html#process-agile-development-and-practices-essentials-for-creating-and-maintaining-a-high-performance-development-team-how-and-why-many-software-development-shops-fail-the-scenario">above</a> performs.</p>
+
+<h6 id="leanpub-auto-how-do-we-do-this">How do We Do This</h6>
+
+<p>We add the practises that Professional Developer from <a href="chap06.html#process-agile-development-and-practices-essentials-for-creating-and-maintaining-a-high-performance-development-team-how-and-why-many-software-development-shops-fail-the-scenario">above</a> performs to our <a href="http://blog.binarymist.net/2013/03/02/how-to-increase-software-developer-productivity/#definitionOfDone">Definition of Done</a>.</p>
+
+<p>The Product Owner runs through Acceptance Criteria, which should be included on every Product Backlog Item (preferably during the Sprint) indicating acceptance, and runs through the Definition of Done, querying the Development Team ensuring that each point has been met for the Backlog item in question. This, of course, should be done by the developers themselves first. This provides the Team with confidence that the Sprint Backlog Item is actually complete. Essentially, the work is not Done, until all the Acceptance Criteria points and Definition of Done points are checked off. Then the Development Team is rewarded for delivering fast, and also delivering high quality features that do what the stake holders expect them to do with no nasty surprises.</p>
+
+<p>In addition to what our solo Professional Developer accomplished <a href="chap06.html#process-agile-development-and-practices-essentials-for-creating-and-maintaining-a-high-performance-development-team-how-and-why-many-software-development-shops-fail-the-scenario">above</a>, we should:</p>
+
+<ol class="numeric">
+  <li>Measure test speed and reward fast running tests</li>
+  <li>Measure cyclomatic Complexity</li>
+  <li>Run static code analysis and use productivity enhancing tools. This is not cheating, it is allowing the developers to work faster and create cleaner code. This can even be set-up as pre-commit hooks etc. on source control. This is discussed in more detail in the “Consuming Free and Open Source” sections in the Web Applications chapter</li>
+  <li>Code reviews need to be based on the coding standards and guidelines</li>
+  <li>Encourage developers to commit regularly, thus their code is being run against the entire test suite, providing confidence that their code plays nicely with everyone else’s code. Commit frequency can be measured</li>
+  <li>Shame developers when they break the <a href="http://blog.binarymist.net/2014/02/22/automating-specification-by-example-for-net">CI build</a>. Report on how long builds stay broken for and shame when the duration is longer than an agreed on time</li>
+</ol>
+
+<p>Most of these practises can be added to the Definition of Done, this way Developers can and should be rewarded for doing these activities. Even better, you can automate most of these practises.</p>
+
+<h4 id="leanpub-auto-forming-habits-and-sharpening-skills">Forming Habits and Sharpening Skills</h4>
+
+<p>Something I have learnt as part of my career progression, and have applied to multiple areas of my life, is starting out as you plan on finishing or progressing. Habits that you establish early in your career will steer you in the direction of those habits.</p>
+
+<p>There are a collection of people that I would call as mentors from whom I have taken advice from that helped to firm up some of my beliefs in terms of forming habits. Most of these have been from reading books, blog posts, and listening to technology pod-casts.</p>
+
+<p>I really liked what Moxie Marlinspike said on the topic of <a href="http://www.thoughtcrime.org/blog/career-advice/">career advice</a>. Distilled down: Essentially we become what we do for a job. It is just habits. What ever you do all the time will shape who you become as a person. If you want to become outstanding at something, you need to put the effort into learning everything you possibly can about it and pushing yourself relentlessly. Of course, sacrifices must be made somewhere in order to do this, and you need to count the costs first.</p>
+
+<p>You have probably heard the saying “No pain, no gain” or “What doesn’t kill you will make you stronger”. Making a habit of constantly pushing yourself will pay off in terms of becoming very good at what ever it is you’re doing.</p>
+
+<p>Steer your career by reading the right books, specifically those written by our software greats. Steve McConnel, Bob Martin, and others have striven for excellence, and are people that understand what goes into making a great crafts person.<br />
+The book: “So Good They Can’t Ignore You” by Cal Newport goes through a collection of interviews and analyses of some of the most successful people. The overarching theme is that excellence is a by-product of forming the right habits and pushing yourself relentlessly, especially in your early years.</p>
+
+<p>Listen to educational technology pod-casts when you have time, during travel as an example. Cram that information into your head!</p>
+
+<p>Be ready to admit mistakes, seek out positions where you are the worst developer, and you feel uncomfortable. Being around the best will lift your abilities quickly if you are willing to push yourself and learn from those who are better than you. I have seen this in many professions. The lower performer can lift their game quickly in a pressured environment like this if they are given the space to do so.</p>
+
+<p>Forming habits such as TDDing your code and making your code as readable as possible, favouring read time convenience over write time. Your code will be read many times more than it is written. By making it as easy as possible to read (not making your code too clever), you will weed out many bugs that have been introduced because developers struggled to understand what your code actually does. Yes, you may be able to write something in less lines of code and/or it may be more performant, but is it at the cost of alienating other developers and harbouring defects?
+Establishing Continuous Integration and Deployment helps weed out defects early, thus saving significant cost.
+Finally, conduct exercises such as utilising purposely vulnerable targets (applications, networks, social engineering, etc.) to challenge you and enhance your current skill-set, such efforts are invaluable.</p>
+
+  <div class="next-chapter">
+     Next: <a href="chap07.html">5. Physical</a>
+  </div>
+
+</div>
+</body>
+</html>
