@@ -22,6 +22,9 @@ h2 {
 li {
     margin-top: 0.5em;
 }
+li b {
+  color: #202020;
+}
 .footer {
     text-align: right;
     border-top: thin solid gray;
