@@ -1,6 +1,6 @@
 # 6. People {#people}
 
-![10,000' view of People Security](images/10000People.png)
+![10,000' view and lower of People Security](images/10000People.png)
 
 As in the chapter on [Physical](#physical) security, the people problem is often over-looked, not only by technical personnel, but by everyone. For a proficient social engineer (SE), it is easy to craft and execute attacks, although not quite as easy and simple as walking through the front door that has been left open. With a little patience, practise, and the right frame of mind, the majority of people can be played successfully, even those who are very aware.
 
