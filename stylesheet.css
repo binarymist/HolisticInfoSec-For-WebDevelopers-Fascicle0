@@ -206,14 +206,14 @@ p {
 }
 
 a {
-    color: #B266FF;
+    color: #9933FF;
     text-decoration: none;
 }
 a:hover {
     text-decoration: underline;
 }
 a:visited {
-    color: #6600CC;
+    color: #4C0099;
 }
 
 .hanging-indent p {
