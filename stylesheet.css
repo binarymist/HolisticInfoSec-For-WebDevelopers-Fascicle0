@@ -64,7 +64,7 @@ code {
 }
 .toc li {
   list-style: none;
-  margin-left: 0;  
+  margin-left: 0;
   padding-left: 0;
 }
 .toc.has-parts li {
@@ -135,6 +135,7 @@ ul.toc {
     margin-top: 3em;
     border-top: thin solid gray;
     text-align: right;
+    padding-top: 3px;
 }
 
 /* headings */
@@ -174,23 +175,27 @@ h1#toc, body.kramdown h2, body.markua h1.chapter {
 
 /* Sections */
 body.kramdown h3, body.markua h2.section {
-   font-size: 1.17em;
+   /*font-size: 1.17em;*/
+   font-size: 1.3104em;
    margin-top: 1em;
    margin-bottom: 0.25em;
 }
 
 body.kramdown h4, body.markua h3.subsection { margin-top: 1em;
-   font-size: 1.12em;
+   /*font-size: 1.12em;*/
+   font-size: 1.2em;
    margin-bottom: 0.25em;
 }
 
 body.kramdown h5, body.markua h4.subsubsection { margin-top: 1em;
-   font-size: 0.83em;
+   /*font-size: 0.83em;*/
+   font-size: 0.996em;
    margin-bottom: 0.25em;
 }
 
 body.kramdown h6, body.markua h5.subsubsubsection {
-   font-size: 0.75em;
+   /*font-size: 0.75em;*/
+   font-size: 0.9em;
    margin: 0;
 }
 /* general text */
@@ -198,6 +203,17 @@ body.kramdown h6, body.markua h5.subsubsubsection {
 p {
   text-indent: 0em;
   margin-top: 0.5em;
+}
+
+a {
+    color: purple;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+a:visited {
+    color: purple;
 }
 
 .hanging-indent p {
