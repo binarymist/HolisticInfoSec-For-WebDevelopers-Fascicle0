@@ -154,6 +154,34 @@ Also, have a look through the config file prior to running, and change any setti
 
 Under the `[leet]` section you can remove any characters or add additional ones. For example you could add `a=@` as well as `a=^`.
 
+The following is how I set up the config file:
+
+{linenos=off, lang=text}
+    [leet]
+    a=4
+    i=1
+    e=3
+    t=7
+    o=0
+    s=5
+    g=9
+    z=2
+
+    [specialchars]
+    chars=!,@,#,$,%,&,*
+
+    [years]
+    years = 2008,2009,2010,2011,2012,2013,2014,2015
+
+    [nums]
+    from=0
+    to=100
+
+    wcfrom=5
+    wcto=12
+
+    threshold=200
+
 There are a number of other options to customise the output.
 
 {linenos=off, lang=text}
