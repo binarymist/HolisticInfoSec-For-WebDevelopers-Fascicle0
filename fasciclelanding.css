@@ -34,7 +34,7 @@ li b {
   padding-left: 1em;
 }
 a {
-    color: #9933FF;
+    color: #9b6bcc;
     text-decoration: none;
 }
 a:hover {
@@ -43,3 +43,62 @@ a:hover {
 a:visited {
     color: #4C0099;
 }
+
+/* Purchase button */
+
+.btn-primary.btn-outline {
+    color: #9b6bcc;
+    border-color: #9b6bcc;
+}
+
+.btn-outline {
+  background-color: transparent;
+  transition: all .5s;
+  transition-property: all;
+  transition-duration: 0.5s;
+  transition-timing-function: initial;
+  transition-delay: initial;
+}
+
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.btn.focus, .btn:focus, .btn:hover {
+    text-decoration: none;
+}
+
+.btn-primary.btn-outline:hover, .btn-primary.btn-outline:active {
+  color: #fff;
+  background-color: #53237f;
+  background: #53237f;
+}
+
+.btn-primary.btn-outline:focus {
+  color: #9b6bcc;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-color: -webkit-focus-ring-color;
+  outline-style: auto;
+  outline-width: 5px;
+  outline-offset: -2px;
+}
+
+/* End Purchase button */
