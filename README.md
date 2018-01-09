@@ -3,7 +3,7 @@
 
 [f0.holisticinfosecforwebdevelopers.com](https://f0.holisticinfosecforwebdevelopers.com/)
 
-The contents of Fascicle 0 is now complete and can be found at the books [landing page](https://f0.holisticinfosecforwebdevelopers.com/). Hard copies can be purchased from [Amazon](https://www.amazon.com/Holistic-InfoSec-Web-Developers-Physical/dp/1537444190/).
+The contents of Fascicle 0 is now complete, and can be found at the books [landing page](https://f0.holisticinfosecforwebdevelopers.com/). Hard copies can be purchased from [Amazon](https://www.amazon.com/Holistic-InfoSec-Web-Developers-Physical/dp/1537444190/).
 
 The entire book series can be found [here](https://holisticinfosecforwebdevelopers.com/) at [www.holisticinfosecforwebdevelopers.com](https://holisticinfosecforwebdevelopers.com/)
 
