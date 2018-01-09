@@ -1,15 +1,15 @@
 # Holistic InfoSec For Web Developers
 ## Fascicle 0
-Physical, People
 
-The contents of fascicle 0 is now considered complete. The actual fascicle can be found [here](https://leanpub.com/holistic-infosec-for-web-developers), Hard copy can be found on [Amazon](https://www.amazon.com/Holistic-InfoSec-Web-Developers-Physical/dp/1537444190/)
+The contents of Fascicle 0 is now considered complete and can be found at the books [landing page](https://f0.holisticinfosecforwebdevelopers.com/). Hard copies can be purchased from [Amazon](https://www.amazon.com/Holistic-InfoSec-Web-Developers-Physical/dp/1537444190/).
 
+The entire book series can be found [here](https://holisticinfosecforwebdevelopers.com/) at [www.holisticinfosecforwebdevelopers.com](https://holisticinfosecforwebdevelopers.com/)
 
 [![](manuscript/images/title_page.png)](https://leanpub.com/holistic-infosec-for-web-developers)
 
 <br>
 
-## Table of Contents
+## Table of Contents (in source)
 
 * [Foreward](manuscript/markdown/front/foreword.md)
 * [Preface](manuscript/markdown/front/preface.md)
