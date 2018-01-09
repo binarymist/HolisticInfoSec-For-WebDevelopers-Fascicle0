@@ -5,6 +5,8 @@ The contents of Fascicle 0 is now considered complete and can be found at the bo
 
 The entire book series can be found [here](https://holisticinfosecforwebdevelopers.com/) at [www.holisticinfosecforwebdevelopers.com](https://holisticinfosecforwebdevelopers.com/)
 
+<br>
+
 [![](manuscript/images/title_page.png)](https://leanpub.com/holistic-infosec-for-web-developers)
 
 <br>
