@@ -9,7 +9,7 @@ The entire book series can be found [here](https://holisticinfosecforwebdevelope
 
 <br>
 
-[![](manuscript/images/title_page.png)](https://leanpub.com/holistic-infosec-for-web-developers)
+[![Holistic Info-Sec For Web Developers](manuscript/images/title_page.png)](https://f0.holisticinfosecforwebdevelopers.com)
 
 <br>
 
