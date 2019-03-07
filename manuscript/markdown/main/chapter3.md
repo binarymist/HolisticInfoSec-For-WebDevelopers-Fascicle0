@@ -413,11 +413,11 @@ According to the installation directions, swig2.0 was required, although the rel
 
 %% Issue submitted: https://github.com/breenmachine/httpscreenshot/issues/20
 
-#### [Psmsf](https://github.com/nixawk/psmsf)
+#### [Psmsf](https://github.com/nixawk/hello-python2/tree/master/misc/psmsf)
 
 Useful for PowerShell and other attacks. Generates PowerShell and other payloads useful for evading anti-virus (AV) detection. Also provides the Metasploit resource files.
 
-`git clone https://github.com/nixawk/psmsf.git /opt/psmsf`
+Download the `psmsf` file from [github.com/nixawk/hello-python2/tree/master/misc/psmsf](https://github.com/nixawk/hello-python2/tree/master/misc/psmsf) into `/opt/psmsf`
 
 #### Responder
 
